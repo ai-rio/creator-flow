@@ -1,10 +1,10 @@
 // ref: https://github.com/vercel/next.js/blob/canary/examples/with-supabase/utils/supabase/server.ts
 
+import { type CookieOptions, createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
 import { Database } from '@/libs/supabase/types';
 import { getEnvVar } from '@/utils/get-env-var';
-import { type CookieOptions, createServerClient } from '@supabase/ssr';
 
 export async function createSupabaseServerClient() {
   const cookieStore = await cookies();
@@ -18,10 +18,18 @@ export async function createSupabaseServerClient() {
           return cookieStore.get(name)?.value;
         },
         set(name: string, value: string, options: CookieOptions) {
-          cookieStore.set({ name, value, ...options });
+          try {
+            cookieStore.set({ name, value, ...options });
+          } catch (error) {
+            // Ignore cookie errors in non-server contexts
+          }
         },
         remove(name: string, options: CookieOptions) {
-          cookieStore.set({ name, value: '', ...options });
+          try {
+            cookieStore.set({ name, value: '', ...options });
+          } catch (error) {
+            // Ignore cookie errors in non-server contexts
+          }
         },
       },
     }
