@@ -1,0 +1,21 @@
+# Gitleaks ignore patterns for CreatorFlow
+# Based on QuoteKit's security patterns
+
+# Example environment files are safe
+.env.example
+.env.local.example
+.env.test.example
+.env.production.example
+
+# Documentation files
+docs/
+README.md
+CLAUDE.md
+
+# Test fixtures with mock data
+tests/fixtures/
+*.test.ts
+*.spec.ts
+
+# Supabase generated types (no secrets)
+src/libs/supabase/types.ts

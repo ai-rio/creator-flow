@@ -1,0 +1,38 @@
+# Gitleaks configuration for CreatorFlow
+# Based on QuoteKit's proven security patterns
+
+[extend]
+# Use default gitleaks rules
+useDefault = true
+
+[[rules]]
+description = "TikTok API Keys"
+id = "tiktok-api-key"
+regex = '''(?i)(tiktok[_-]?api[_-]?key|tiktok[_-]?secret)['"]*\s*[:=]\s*['"][a-zA-Z0-9]{32,}['"]'''
+tags = ["key", "tiktok"]
+
+[[rules]]
+description = "Shipping API Keys"
+id = "shipping-api-key"
+regex = '''(?i)(ups[_-]?api[_-]?key|fedex[_-]?api[_-]?key|usps[_-]?api[_-]?key)['"]*\s*[:=]\s*['"][a-zA-Z0-9]{16,}['"]'''
+tags = ["key", "shipping"]
+
+[[rules]]
+description = "Creator Flow Database URLs"
+id = "creator-flow-db-url"
+regex = '''postgresql://[a-zA-Z0-9._-]+:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+:[0-9]+/[a-zA-Z0-9_-]+'''
+tags = ["database", "url"]
+
+[allowlist]
+description = "Allowlist for CreatorFlow"
+files = [
+    '''\.env\.example$''',
+    '''\.env\.local\.example$''',
+    '''\.env\.test\.example$''',
+    '''\.env\.production\.example$''',
+]
+paths = [
+    '''docs/''',
+    '''README\.md$''',
+    '''CLAUDE\.md$''',
+]

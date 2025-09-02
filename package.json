@@ -8,6 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky",
     "email:build": "email build",
     "email:dev": "email dev --dir ./src/features/emails --port 3001",
     "email:export": "email export",
@@ -16,7 +19,8 @@
     "supabase:link": "env-cmd -f ./.env.local supabase link --project-ref UPDATE_THIS_WITH_YOUR_SUPABASE_PROJECT_ID",
     "migration:new": "supabase migration new",
     "migration:up": "supabase migration up --linked --debug && npm run generate-types",
-    "migration:squash": "supabase migration squash --linked"
+    "migration:squash": "supabase migration squash --linked",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.2",
@@ -59,6 +63,8 @@
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-tailwindcss": "^3.17.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "postcss": "^8.4.49",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
@@ -68,5 +74,10 @@
   "overrides": {
     "@types/react": "19.0.4",
     "@types/react-dom": "19.0.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
