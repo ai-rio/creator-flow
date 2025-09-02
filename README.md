@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">QuoteKit</h1>
+  <h1 align="center">CreatorFlow</h1>
 </p>
 
 <p align="center">
@@ -8,28 +8,28 @@
 
 ## Introduction
 
-Bootstrap your SaaS with a modern tech stack built to move quick. Follow the guide to get started.
+TikTok Shop fulfillment automation platform designed to scale creators from 50 to 500+ orders per day without operational headaches. Built with Next.js 15, React, TypeScript, and Supabase.
+
+**Target Users**: TikTok Shop sellers, e-commerce creators, scaling micro-brands  
+**Business Model**: Subscription-based SaaS ($49-$199/month) with usage-based pricing  
+**Status**: Production-ready MVP with active development roadmap
 
 ### What's included
 
-- Next.js 15
-- [Supabase](https://supabase.com) - Postgres database & user authentication
-- [Stripe](https://stripe.com) - [Checkout](https://stripe.com/docs/payments/checkout), [subscriptions](https://stripe.com/docs/billing/subscriptions/overview), and [customer portal](https://stripe.com/docs/customer-management)
-- [React Email](https://react.email/) - Easily build emails and send them with [Resend](https://resend.com)
-- [Tailwindcss](https://tailwindcss.com/) - CSS framework
-- [shadcn/ui](https://ui.shadcn.com) - Prebuilt accessible components
-- Webhooks to automatically synchronize Stripe with Supabase
-- Stripe fixture to bootstrap product data
-- Supabase migrations to bootstrap and manage your db schema
-- Responsive, performant, and accessible prebuilt pages
-- Animated button borders! Now you can look cool without nerds saying you shipped too late
+- **Framework**: Next.js 15 with App Router, React 19, TypeScript 5.7+
+- **Database**: Supabase (PostgreSQL) with RLS, Edge Functions (Deno runtime)
+- **Payments**: Stripe integration with webhooks and subscription management
+- **UI**: Tailwind CSS, Radix UI, Shadcn/ui components, Lucide React icons
+- **Testing**: Jest (unit), Playwright (E2E), Testing Library (React)
+- **Analytics**: PostHog (product analytics), Vercel Analytics
+- **Deployment**: Vercel/Fly.io with global CDN, Bun package manager
 
 ## Getting started
 
 ### 1. Setup Supabase
 
 1. Go to [supabase.com](https://supabase.com) and create a project
-2. Go to Project Settings → Database → Database password and click reset database password then click generate a new password. (I know you already made one, but this fixes a [bug with their CLI where it doesn't like special characters in the password](https://github.com/supabase/supabase/issues/15184))
+2. Go to Project Settings → Database → Database password and click reset database password then click generate a new password
 3. Save this password somewhere, you can't see it after closing the box
 
 ### 2. Setup Stripe
@@ -43,144 +43,134 @@ Bootstrap your SaaS with a modern tech stack built to move quick. Follow the gui
 2. Go to the [API Keys page](https://resend.com/api-keys) and create an API Key
 3. Add the [Supabase Resend integration](https://supabase.com/partners/integrations/resend)
 
-### 4. Deploy
+### 4. Environment Setup
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FKolbySisk%2Fnext-supabase-stripe-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,SUPABASE_DB_PASSWORD,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,STRIPE_SECRET_KEY,STRIPE_WEBHOOK_SECRET,RESEND_API_KEY&demo-title=AI%20Twitter%20Banner%20Demo&demo-url=https%3A%2F%2Fai-twitter-banner.vercel.app&integration-ids=oac_VqOgBHqhEoFTPzGkPd7L0iH6)
+1. Clone the repository
+2. Create `.env.local` file from `.env.local.example`
+3. Add your Supabase, Stripe, and Resend credentials
+4. Run `bun install` to install dependencies
 
-1. Next click the deploy button ⬆️
-2. On the form create a new repo and add the Supabase integration
-3. Add the environment variables that you have available. For the stripe webhook secret just put any value - we will come back to update this after configuring the webhook
-4. Click Deploy
-5. While you wait, clone your new repo and open it in your code editor. Then create a file named `.env.local`. Copy and pase the contents of `.env.local.example` into this file and add the correct values. They should be the same values you added in above.
-
-![Vercel env config](/delete-me/deplyoment-env.png)
-
-### 5. Stripe Webhook
-
-1. After deploying go to your Vercel dashboard and find your Vercel URL
-2. Next go to your Stripe dashboard, click `Developers` in the top nav, and then the `Webhooks` tab
-3. Add an endpoint. Enter your Vercel URL followed by `/api/webhooks`
-4. Click `Select events`
-5. Check `Select all events`
-6. Scroll to the bottom of the page and click `Add endpoint`
-7. Click to `Reveal` signing secret and copy it
-8. Go to your `Vercel project settings` → `Environment Variables`
-9. Update the value of the `STRIPE_WEBHOOK_SECRET` env with your newly acquired webhook secret. Press `Save`
-
-### 6. Run Supabase Migration
-
-Now we're going to run the initial [Supabase Migration](https://supabase.com/docs/reference/cli/supabase-migration-new) to create your database tables.
+### 5. Database Setup
 
 1. Run `bunx supabase login`
 2. Run `bunx supabase init`
-3. Open your `package.json` and update both `UPDATE_THIS_WITH_YOUR_SUPABASE_PROJECT_ID` strings with your supabase project id
+3. Update `package.json` with your Supabase project ID
 4. Run `bun run supabase:link`
 5. Run `bun run migration:up`
 
-### 7. Run Stripe Fixture
+### 6. Stripe Configuration
 
-[Stripe fixtures](https://stripe.com/docs/cli/fixtures) are an easy way to configure your product offering without messing around in the Stripe UI.
+1. Install the [Stripe CLI](https://stripe.com/docs/stripe-cli#install)
+2. Run `stripe fixtures ./stripe-fixtures.json --api-key YOUR_STRIPE_SK`
+3. Setup webhook endpoint at `/api/webhooks`
 
-1. Install the [Stripe CLI](https://stripe.com/docs/stripe-cli#install). For Macs run: `brew install stripe/stripe-cli/stripe`
-2. Run (make sure to update the command with your Stripe sk) `stripe fixtures ./stripe-fixtures.json --api-key UPDATE_THIS_WITH_YOUR_STRIPE_SK`
+### 7. Development
 
-### 8. Last steps
+1. Run `bun run dev` to start development server
+2. Visit `http://localhost:3000`
+3. Test TikTok Shop integration and creator workflows
 
-1. Do a `Search All` in your code editor for `UPDATE_THIS` and update all instances with the relevant value (**except for .env.local.example!**)
-2. Delete the `delete-me` dir
+## Core Features
 
-### 9. Check it out!
+### TikTok Shop Integration
+- Automated order synchronization
+- Real-time webhook handling
+- Order status management
+- Product catalog sync
 
-You did it! You should be able to look in your Stripe dashboard and see your products, and you should also see the same data has been populated in your Supabase database. Now let's test everything.
+### Creator Analytics
+- Performance metrics dashboard
+- Revenue tracking
+- Order fulfillment analytics
+- Growth insights
 
-1. Run `bun i`
-2. Run `bun run dev`.
-3. Go to the app and click `Get started for free` - this will take you to the login page
-4. We haven't configured auth providers, so for now click `Continue with Email` and submit your email address
-5. Click the link sent to your email and you should be redirected back to your app - authenticated
-6. Click `Get Started` on one of the plans. This will take you to a Stripe checkout page (In test mode)
-7. Enter `4242424242424242` as your credit card number. Fill out the rest of the form with any valid data and click Subscribe
-8. You should be redirect to the Account page where you can see your active subscription
-9. Click the `Manage your subscription` button
+### Shipping Automation
+- Multi-carrier integration
+- Automated label generation
+- Tracking synchronization
+- Delivery notifications
 
-**That's the end of the setup. The following are guides to help you code in your new codebase.**
+### Subscription Management
+- Creator tier subscriptions
+- Usage-based billing
+- Payment processing
+- Account management
+
+## Development Commands
+
+```bash
+# Development
+bun run dev              # Start development server
+bun run type-check       # TypeScript checking
+bun run lint            # ESLint checking
+bun run lint:fix        # Fix linting issues
+
+# Testing
+bun test                # Unit tests
+bun run test:e2e        # E2E tests
+bun run test:e2e:ui     # E2E tests with UI
+
+# Database
+bun run generate-types  # Generate Supabase types
+bun run migration:new   # Create new migration
+bun run migration:up    # Run migrations
+
+# Stripe
+bun run stripe:listen   # Listen to webhooks
+
+# Email
+bun run email:dev       # Email development server
+```
+
+## Project Structure
+
+```
+creator-flow/
+├── src/
+│   ├── app/                 # Next.js App Router pages & API routes
+│   │   ├── (auth)/         # Authentication pages
+│   │   ├── (dashboard)/    # Main application pages
+│   │   └── api/            # API routes and webhooks
+│   ├── components/         # Reusable UI components
+│   │   ├── ui/            # Base shadcn/ui components
+│   │   └── custom/        # Custom application components
+│   ├── features/          # Feature-specific modules
+│   │   ├── auth/          # Authentication logic
+│   │   ├── orders/        # Order management
+│   │   ├── shipping/      # Shipping integration
+│   │   ├── analytics/     # Analytics and reporting
+│   │   └── tiktok/        # TikTok Shop integration
+│   ├── lib/               # Utilities, Supabase client, helpers
+│   │   ├── supabase/      # Database client and helpers
+│   │   ├── stripe/        # Payment processing
+│   │   ├── tiktok/        # TikTok Shop API client
+│   │   └── utils/         # General utilities
+│   └── types/             # TypeScript type definitions
+├── supabase/              # Database migrations, Edge Functions
+├── docs/                  # Comprehensive project documentation
+├── tests/                 # E2E tests and testing utilities
+└── scripts/               # Development and deployment scripts
+```
+
+## Documentation
+
+- **[Complete Documentation](./docs/README.md)** - Full documentation index
+- **[Development Guide](./docs/development/README.md)** - Development setup and guidelines
+- **[Architecture Overview](./docs/architecture/README.md)** - System architecture
+- **[Features Overview](./docs/features/README.md)** - Feature specifications
+- **[Business Model](./docs/business/README.md)** - Business strategy and roadmap
+
+## Contributing
+
+1. Follow the [Development Standards](./CLAUDE.md)
+2. Use feature branches: `feature/description`
+3. Run tests before committing: `bun test && bun run test:e2e`
+4. Follow the [Documentation Standards](./docs/development/documentation-standards/DOCUMENTATION_STANDARDS.md)
+
+## License
+
+MIT License - see [LICENSE](./LICENSE) file for details.
 
 ---
 
-## Guides
-
-### Managing products
-
-Your products and prices are managed via the `stripe-fixtures.json` file. You can delete your test data in Stripe on the [Developers page](https://dashboard.stripe.com/test/developers), make the changes you'd like, and then run the fixture command from above. When changes are made in Stripe the webhook hits the api route at `src/app/api/webhooks`. The handler will synchronize the data sent from Stripe to your Supabase database.
-
-The `metadata` field in your fixture is where we can store info about the product that can be used in your app. For example, say you have a basic product, and one of the features of the product includes a max number of team invites. You can add a field to the metadata like `team_invites`. Then update the Zod schema in `src/features/pricing/models/product-metadata.ts`
-
-Then you can make use of it like this:
-
-```ts
-const products = await getProducts();
-const productMetadata = productMetadataSchema.parse(products[0].metadata); // Now it's typesafe 🙌!
-productMetadata.teamInvites; // The value you set in the fixture
-```
-
-### Managing your database schema
-
-[Migrations](https://supabase.com/docs/reference/cli/supabase-migration-new) are a powerful concept for managing your database schema. Any changes you make to your database schema should be done through migrations.
-
-Say you want to add a table named `invites`.
-
-First run `bun run migration:new add-invites-table`
-Then edit your file to include:
-
-```sql
-create table invites (
-  id uuid not null primary key default gen_random_uuid(),
-  email text not null,
-);
-alter table invites enable row level security;
-```
-
-Then run `bun run migration:up` and your table will be added.
-
-### Configuring auth providers
-
-There are many auth providers you can choose from. [See the Supabase docs](https://supabase.com/docs/guides/auth#providers) for the full the list and their respective guides to configure them.
-
-### Styling
-
-- [Learn more about shadcn/ui components](https://ui.shadcn.com/docs)
-- [Learn more about theming with shadcn/ui](https://ui.shadcn.com/docs/theming)
-- [Learn more about the Tailwindcss theme config](https://tailwindcss.com/docs/theme)
-
-### Emails
-
-Your emails live in the `src/features/emails` dir. Emails are finicky and difficult to style correctly, so make sure to reference the [React Email docs](https://react.email/docs/introduction). After creating your email component, sending an email is as simple as:
-
-```ts
-import WelcomeEmail from '@/features/emails/welcome';
-import { resendClient } from '@/libs/resend/resend-client';
-
-resendClient.emails.send({
-  from: 'no-reply@your-domain.com',
-  to: userEmail,
-  subject: 'Welcome!',
-  react: <WelcomeEmail />,
-});
-```
-
-### File structure
-
-The file structure uses the group by `feature` concept. This is where you will colocate code related to a specific feature, with the exception of UI code. Typically you want to keep your UI code in the `app` dir, with the exception of reusable components. Most of the time reusable components will be agnostic to a feature and should live in the `components` dir. The `components/ui` dir is where `shadcn/ui` components are generated to.
-
-### Going live
-
-Follow these steps when you're ready to go live:
-
-1. Activate your Stripe account and set the dashboard to live mode
-2. Repeat the steps above to create a Stripe webhook in live mode, this time using your live url
-3. Update Vercel env variables with your live Stripe pk, sk, and whsec
-4. After Vercel has redeployed with your new env variables, run the fixture command using your Stripe sk
-
----
-
-This project was inspired by Vercel's [nextjs-subscription-payments](https://github.com/vercel/nextjs-subscription-payments).
+*CreatorFlow - Scaling TikTok Shop creators through automation*

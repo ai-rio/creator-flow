@@ -2,7 +2,11 @@
 
 ## 📚 Complete Documentation Index
 
-Welcome to CreatorFlow's comprehensive documentation system. This documentation follows the [Project Documentation Standards](development/documentation-standards/DOCUMENTATION_STANDARDS.md) for consistent organization and quality.
+Welcome to CreatorFlow's TikTok Shop fulfillment automation platform documentation. This documentation follows the [Project Documentation Standards](development/documentation-standards/DOCUMENTATION_STANDARDS.md) and **MoSCoW agile methodology** for consistent organization and priority-based development.
+
+## 🎯 **START HERE: Master Implementation Plan**
+
+- **[MoSCoW Implementation Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md)** - **SINGLE SOURCE OF TRUTH** for all development priorities, timelines, and business objectives. Updated with CDH and QuoteKit integration findings for $10M ARR target.
 
 ## 🏗️ Architecture & System Design
 
@@ -17,6 +21,13 @@ Welcome to CreatorFlow's comprehensive documentation system. This documentation 
 - **[Coding Standards](development/coding-standards/README.md)** - Code style and conventions
 - **[Testing Strategy](development/testing/README.md)** - Testing approaches and guidelines
 - **[Deployment Guide](deployment/README.md)** - Production deployment and infrastructure
+
+### 📋 Strategic Initiative Documentation
+- **[UI Enhancement Initiative](development/ui-enhancement-initiative/00-planning/P001-cdh-design-system-investigation.md)** - CDH design system integration analysis
+- **[Content Management Initiative](development/content-management-initiative/00-planning/P001-quotekit-mdx-blog-investigation.md)** - QuoteKit MDX blog system integration
+- **[Billing Enhancement Initiative](development/billing-enhancement-initiative/00-planning/P001-quotekit-stripe-integration-investigation.md)** - Enterprise Stripe billing integration
+- **[Analytics & Communication Initiative](development/analytics-communication-initiative/00-planning/P001-quotekit-analytics-communication-investigation.md)** - PostHog, Formbricks, Resend integration
+- **[Edge Functions Initiative](development/edge-functions-initiative/00-planning/P001-quotekit-edge-functions-investigation.md)** - Advanced Edge Functions architecture
 
 ## 🎯 Features & Specifications
 
@@ -38,7 +49,7 @@ Welcome to CreatorFlow's comprehensive documentation system. This documentation 
 - **[Business Model](business/README.md)** - Revenue model and pricing strategy
 - **[User Stories](business/user-stories/README.md)** - User journey and requirements
 - **[Market Analysis](business/market/README.md)** - Market research and positioning
-- **[Roadmap](business/roadmap/README.md)** - Product development roadmap
+- **[MoSCoW Implementation Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md)** - **SINGLE SOURCE OF TRUTH** for product development roadmap
 
 ## 🔒 Security & Compliance
 
@@ -69,14 +80,25 @@ Welcome to CreatorFlow's comprehensive documentation system. This documentation 
 - [Development Setup](development/README.md) → [Coding Standards](development/coding-standards/README.md) → [Testing](development/testing/README.md)
 
 ### For Product Managers
-- [Business Model](business/README.md) → [User Stories](business/user-stories/README.md) → [Roadmap](business/roadmap/README.md)
+- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Business Model](business/README.md) → [User Stories](business/user-stories/README.md)
 
 ### For DevOps
 - [Architecture](architecture/README.md) → [Security](security/README.md) → [Deployment](deployment/README.md)
 
 ### For New Team Members
-- [Onboarding Guide](learning/onboarding/README.md) → [Development Setup](development/README.md) → [Best Practices](learning/best-practices/README.md)
+- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Onboarding Guide](learning/onboarding/README.md) → [Development Setup](development/README.md) → [Best Practices](learning/best-practices/README.md)
+
+### For Executives & Stakeholders
+- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Business Model](business/README.md) → [Strategic Initiative Documentation](#-strategic-initiative-documentation)
 
 ---
 
-*This documentation is version-controlled and follows our [Documentation Standards](development/documentation-standards/DOCUMENTATION_STANDARDS.md). All documentation should be kept up-to-date with implementation changes.*
+*This documentation is version-controlled and follows our [Documentation Standards](development/documentation-standards/DOCUMENTATION_STANDARDS.md) and **MoSCoW agile methodology**. The [MoSCoW Implementation Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) serves as the single source of truth for all development priorities and eliminates documentation redundancy.*
+
+## 🚀 **Key Business Objectives**
+
+- **Target Market**: TikTok Shop creators scaling from 50 to 500+ orders per day
+- **Business Model**: $49-$199/month usage-based SaaS subscriptions
+- **Revenue Target**: $10M ARR (8,333 customers × $100 average MRR)
+- **Value Proposition**: Eliminate operational bottlenecks for viral TikTok products
+- **Enterprise Foundation**: CDH UI/UX + QuoteKit billing/analytics/Edge Functions

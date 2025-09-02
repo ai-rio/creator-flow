@@ -170,6 +170,7 @@ bun run security:audit
 3. **Proper naming convention**: P###/S###/I###-DRAFT/R###-DRAFT format
 4. **No root-level documentation**: All docs in appropriate `docs/` subdirectories
 5. **DRAFT prefixes required**: Implementation and Report docs use DRAFT prefix until approved
+6. **MoSCoW Methodology**: All documentation and feature planning must follow MoSCoW prioritization framework
 
 ### File Naming Conventions
 
@@ -321,6 +322,48 @@ Before committing:
 ✅ `docs/development/[initiative]/00-planning/P001-investigation-findings.md`
 ✅ Wait for user validation before removing `DRAFT-` prefix
 
+### **MoSCoW Methodology Requirements**
+
+**MANDATORY**: All feature planning and documentation MUST follow MoSCoW prioritization:
+
+#### **Must Have (M)** - Critical, Non-negotiable Requirements
+- Core TikTok Shop order processing and fulfillment automation
+- Secure webhook handling with signature verification
+- Basic shipping label generation and tracking
+- User authentication and data security (RLS policies)
+- Payment processing and subscription management
+- Mobile-responsive UI for creator dashboard
+
+#### **Should Have (S)** - Important, High-Priority Features  
+- Advanced analytics and performance metrics
+- Multi-carrier shipping integration
+- Automated email notifications and alerts
+- Inventory synchronization across platforms
+- Customer support chat integration
+- Advanced order filtering and search
+
+#### **Could Have (C)** - Nice-to-Have Features
+- AI-powered order forecasting
+- Advanced reporting and business intelligence
+- Multi-language support for international creators
+- Custom branding and white-label options
+- Advanced workflow automation rules
+- Third-party app integrations
+
+#### **Won't Have (W)** - Explicitly Out of Scope
+- Full e-commerce platform functionality (shopping cart, checkout)
+- Social media content creation tools
+- Accounting and tax preparation features
+- Customer service chatbots for end customers
+- Physical product sourcing or manufacturing
+- Competitor analysis tools
+
+#### **Documentation MoSCoW Application**
+- **Planning documents**: Include MoSCoW breakdown for all features
+- **Specifications**: Prioritize requirements using MoSCoW categories  
+- **Implementation**: Focus on Must Have → Should Have → Could Have sequence
+- **Reports**: Track completion by MoSCoW priority levels
+
 ### **CreatorFlow-Specific Guidelines**
 
 - **TikTok Shop Integration**: Always test webhook handling and API rate limits
@@ -328,6 +371,7 @@ Before committing:
 - **Shipping Integration**: Test with multiple carriers and edge cases
 - **Analytics**: Validate data accuracy and real-time updates
 - **Security**: Implement proper webhook signature verification
+- **MoSCoW Prioritization**: Apply to all feature development and documentation
 
 ### **Documentation Approval Flow**
 
