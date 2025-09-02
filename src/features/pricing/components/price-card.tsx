@@ -1,7 +1,7 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { IoCheckmark } from 'react-icons/io5';
 
 import { SexyBoarder } from '@/components/sexy-boarder';
