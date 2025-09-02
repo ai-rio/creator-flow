@@ -1,0 +1,64 @@
+graph TD
+    subgraph USER_PLATFORMS["User & External Platforms"]
+        U[TikTok Creator / Seller]
+        TSS[TikTok Shop API]
+        SA["Shipping Aggregator API
+(Shippo, EasyPost, etc.)"]
+        OEP["Other E-commerce APIs
+(Shopify, Instagram)"]
+    end
+
+    subgraph OUR_PLATFORM["Our Platform (CreatorFlow)"]
+        WebApp["CreatorFlow Web App
+(React/Next.js)"]
+        MainAPI["Main API Server
+(Node.js / Python)"]
+        SyncEngine["Sync & Automation Engine
+(Serverless Functions / Job Queue)"]
+        DB[("PostgreSQL Database")]
+        Stripe["Stripe API
+(For Billing)"]
+    end
+
+    %% User Interactions
+    U -- "Manages Account & Views Dashboard" --> WebApp
+    WebApp -- "REST/GraphQL API Calls" --> MainAPI
+
+    %% Data Flows & Integrations
+    MainAPI -- "Reads/Writes User & Order Data" --> DB
+    MainAPI -- "Processes Subscriptions" --> Stripe
+
+    %% Core Automation Loop
+    TSS -- "1. New Order Webhook" --> SyncEngine
+    SyncEngine -- "2. Saves Order" --> DB
+    SyncEngine -- "3. Pushes Order Details" --> SA
+    SA -- "4. Returns Label & Tracking #" --> SyncEngine
+    SyncEngine -- "5. Updates Order in DB" --> DB
+    SyncEngine -- "6. Marks Order 'Fulfilled'" --> TSS
+
+    %% Future Expansion
+    SyncEngine -- "Syncs Orders/Inventory" --> OEP
+    OEP -- "Sends Webhooks" --> SyncEngine
+
+    %% Styling
+    style U fill:#d4edda,stroke:#155724
+    style TSS fill:#e2e3e5,stroke:#383d41
+    style SA fill:#e2e3e5,stroke:#383d41
+    style OEP fill:#e2e3e5,stroke:#383d41
+    style WebApp fill:#cce5ff,stroke:#004085
+    style MainAPI fill:#cce5ff,stroke:#004085
+    style SyncEngine fill:#f8d7da,stroke:#721c24
+    style DB fill:#fff3cd,stroke:#856404
+    style Stripe fill:#e2e3e5,stroke:#383d41
+
+    classDef userPlatform fill:#d4edda,stroke:#155724;
+    classDef externalAPI fill:#e2e3e5,stroke:#383d41;
+    classDef internalSystem fill:#cce5ff,stroke:#004085;
+    classDef automation fill:#f8d7da,stroke:#721c24;
+    classDef dataStore fill:#fff3cd,stroke:#856404;
+
+    class U userPlatform
+    class TSS,SA,OEP externalAPI
+    class WebApp,MainAPI internalSystem
+    class SyncEngine automation
+    class DB dataStore

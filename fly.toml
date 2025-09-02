@@ -1,0 +1,100 @@
+# CreatorFlow Production Deployment Configuration
+# Extends QuoteKit's proven Fly.io setup for TikTok creator fulfillment
+
+app = "creatorflow-production"
+primary_region = "iad"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[experimental]
+  auto_rollback = true
+
+[build]
+  [build.args]
+    NEXT_PUBLIC_SUPABASE_URL = "https://your-creatorflow-project.supabase.co"
+    NEXT_PUBLIC_SUPABASE_ANON_KEY = "your_anon_key"
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = "pk_live_your_stripe_key"
+    NEXT_PUBLIC_POSTHOG_KEY = "phc_your_posthog_key"
+    NEXT_PUBLIC_POSTHOG_HOST = "https://us.i.posthog.com"
+    NEXT_PUBLIC_SITE_URL = "https://creatorflow-production.fly.dev"
+    NEXT_PUBLIC_TIKTOK_CLIENT_ID = "your_tiktok_client_id"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3000"
+  NODE_OPTIONS = "--max-old-space-size=2048"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NEXT_PUBLIC_APP_ENV = "production"
+  
+  # CreatorFlow specific
+  CREATORFLOW_ENV = "production"
+  TIKTOK_API_VERSION = "v1.3"
+  SHIPPING_API_TIMEOUT = "30000"
+
+[deploy]
+  strategy = "rolling"
+  wait_timeout = "15m"
+
+[processes]
+  web = "node server.js"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  processes = ["web"]
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 2
+  
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 100
+    soft_limit = 50
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "10s"
+    grace_period = "30s"
+    method = "GET"
+    path = "/api/health/creatorflow"
+    protocol = "http"
+
+# CreatorFlow Security Headers
+[[headers]]
+  for = "/*"
+  
+  [headers.values]
+    X-Environment = "creatorflow-production"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' 
+                 https://js.stripe.com 
+                 https://sf16-website-login.neutral.ttwstatic.com
+                 https://lf16-tiktok-web.ttwstatic.com;
+      connect-src 'self' 
+                  https://api.stripe.com
+                  https://open-api.tiktokglobalshop.com
+                  https://auth.tiktok-shops.com
+                  https://onlinetools.ups.com
+                  https://apis.fedex.com
+                  https://secure.shippingapis.com
+                  https://*.supabase.co
+                  https://us.i.posthog.com;
+      img-src 'self' data: https: blob:;
+      frame-src https://js.stripe.com https://www.tiktok.com;
+    """
+
+# Required secrets (set via fly secrets set):
+# SUPABASE_SERVICE_ROLE_KEY
+# STRIPE_SECRET_KEY  
+# STRIPE_WEBHOOK_SECRET
+# TIKTOK_CLIENT_SECRET
+# TIKTOK_WEBHOOK_SECRET
+# UPS_CLIENT_SECRET
+# FEDEX_SECRET_KEY
+# USPS_PASSWORD
+# RESEND_API_KEY
