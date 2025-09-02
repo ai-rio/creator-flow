@@ -48,6 +48,27 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
+        // LawnQuote Brand Colors
+        'forest-green': 'hsl(var(--forest-green))',
+        'equipment-yellow': 'hsl(var(--equipment-yellow))',
+        'light-concrete': 'hsl(var(--light-concrete))',
+        'stone-gray': 'hsl(var(--stone-gray))',
+        'charcoal': 'hsl(var(--charcoal))',
+        'paper-white': 'hsl(var(--paper-white))',
+        // System Status Colors
+        'success-green': 'hsl(var(--success-green))',
+        'error-red': 'hsl(var(--error-red))',
+        'info-blue': 'hsl(var(--info-blue))',
       },
       borderRadius: {
         lg: `var(--radius)`,
@@ -55,8 +76,9 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-montserrat)', ...fontFamily.sans],
-        alt: ['var(--font-montserrat-alternates)'],
+        sans: ['var(--font-inter)', ...fontFamily.sans],
+        mono: ['var(--font-roboto-mono)', ...fontFamily.mono],
+        handwriting: ['var(--font-kalam)', 'cursive'],
       },
       keyframes: {
         'accordion-down': {
@@ -79,7 +101,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require('tailwindcss-animate')
+  ],
 };
 
 export default config;

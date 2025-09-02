@@ -1,28 +1,78 @@
-const nextJest = require('next/jest')
-
-const createJestConfig = nextJest({
-  // Provide the path to your Next.js app to load next.config.js and .env files
-  dir: './',
-})
-
-// Add any custom config to be passed to Jest
-const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testEnvironment: 'jest-environment-jsdom',
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+/** @type {import('jest').Config} */
+const config = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src', '<rootDir>/tests'],
+  testMatch: [
+    '**/__tests__/**/*.+(ts|tsx|js)',
+    '**/*.(test|spec).+(ts|tsx|js)'
+  ],
+  transform: {
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      useESM: false,
+    }],
   },
   collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx}',
+    'src/**/*.{ts,tsx}',
     '!src/**/*.d.ts',
-    '!src/libs/supabase/types.ts',
+    '!src/app/**/layout.tsx',
+    '!src/app/**/page.tsx',
   ],
-  testMatch: [
-    '<rootDir>/tests/**/*.test.{js,jsx,ts,tsx}',
-    '<rootDir>/src/**/*.test.{js,jsx,ts,tsx}',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^next/cache$': '<rootDir>/tests/__mocks__/next-cache.js',
+    '^next/navigation$': '<rootDir>/tests/__mocks__/next-navigation.js',
+  },
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
   ],
-}
+  transformIgnorePatterns: [
+    '/node_modules/',
+    '^.+\\.module\\.(css|sass|scss)$',
+  ],
+  // Separate configurations for different test types
+  projects: [
+    {
+      displayName: 'unit',
+      testMatch: ['<rootDir>/tests/unit/**/*.test.ts'],
+      testEnvironment: 'node',
+      setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+      transform: {
+        '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: false }],
+      },
+      moduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/src/$1',
+        '^next/cache$': '<rootDir>/tests/__mocks__/next-cache.js',
+        '^next/navigation$': '<rootDir>/tests/__mocks__/next-navigation.js',
+      },
+    },
+    {
+      displayName: 'integration',
+      testMatch: [
+        '<rootDir>/tests/integration/checkout-flow-simple.test.ts',
+        '<rootDir>/tests/integration/checkout-flow-comprehensive.test.ts',
+        '<rootDir>/tests/integration/invoice-generation.test.ts',
+        '<rootDir>/tests/integration/enhanced-billing-history.test.ts',
+        '<rootDir>/tests/integration/edge-case-handling.test.ts',
+        '<rootDir>/tests/integration/quote-calculation-simple.test.ts',
+        '<rootDir>/tests/integration/quote-management.test.ts',
+        '<rootDir>/tests/integration/end-to-end-workflow.test.ts',
+        '<rootDir>/tests/integration/formbricks-api-integration.test.ts'
+      ],
+      testEnvironment: 'node',
+      setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+      transform: {
+        '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: false }],
+      },
+      moduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/src/$1',
+        '^next/cache$': '<rootDir>/tests/__mocks__/next-cache.js',
+        '^next/navigation$': '<rootDir>/tests/__mocks__/next-navigation.js',
+      },
+    }
+  ]
+};
 
-// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig)
+module.exports = config;
