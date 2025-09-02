@@ -1,27 +1,38 @@
 {
-  "extends": ["next/core-web-vitals"],
-  "plugins": ["simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "simple-import-sort",
+    "@typescript-eslint"
+  ],
   "rules": {
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/prefer-const": "error",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "prefer-const": "error",
+    "no-var": "error"
   },
   "overrides": [
     {
-      "files": ["**/*.js", "**/*.ts", "**/*.tsx"],
+      "files": ["**/*.test.ts", "**/*.test.tsx", "tests/**/*"],
       "rules": {
-        "simple-import-sort/imports": [
-          "error",
-          {
-            "groups": [
-              ["^react$", "^next", "^[a-z]"],
-              ["^~", "^@"],
-              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-              ["^.+\\.s?css$"],
-              ["^\\u0000"]
-            ]
-          }
-        ]
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["src/features/creatorflow/**/*"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "error",
+        "no-console": "error"
       }
     }
   ]

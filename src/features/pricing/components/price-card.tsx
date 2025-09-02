@@ -38,11 +38,11 @@ export function PricingCard({
     if (product.prices.length === 1) return product.prices[0];
 
     // Lastly we can assume the product is a subscription one with a month and year price, so we get the price according to the select billingInterval
-    return product.prices.find((price) => price.interval === billingInterval);
+    return product.prices.find((price: any) => price.interval === billingInterval);
   }, [billingInterval, price, product.prices]);
 
-  const monthPrice = product.prices.find((price) => price.interval === 'month')?.unit_amount;
-  const yearPrice = product.prices.find((price) => price.interval === 'year')?.unit_amount;
+  const monthPrice = product.prices.find((price: any) => price.interval === 'month')?.unit_amount;
+  const yearPrice = product.prices.find((price: any) => price.interval === 'year')?.unit_amount;
   const isBillingIntervalYearly = billingInterval === 'year';
   const metadata = productMetadataSchema.parse(product.metadata);
   const buttonVariantMap = {
