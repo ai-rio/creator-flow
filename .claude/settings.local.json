@@ -20,7 +20,10 @@
       "mcp__context7__get-library-docs",
       "Bash(bunx mvpblocks:*)",
       "Bash(git add:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(chmod:*)",
+      "Bash(bun git:safe-start:*)",
+      "Bash(bun git:done:*)"
     ],
     "deny": [],
     "ask": []

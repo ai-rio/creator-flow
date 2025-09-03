@@ -25,7 +25,13 @@
     "supabase:link": "env-cmd -f ./.env.local supabase link --project-ref UPDATE_THIS_WITH_YOUR_SUPABASE_PROJECT_ID",
     "migration:new": "supabase migration new",
     "migration:up": "supabase migration up --linked --debug && npm run generate-types",
-    "migration:squash": "supabase migration squash --linked"
+    "migration:squash": "supabase migration squash --linked",
+    "git:safe-start": "git status && echo '✅ Ready for new task (ensure clean working tree above shows clean)'",
+    "git:status": "git status",
+    "git:save": "node scripts/git-save.js",
+    "git:wip": "node scripts/git-wip.js", 
+    "git:done": "node scripts/git-done.js",
+    "git:push": "git push origin HEAD"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.2",

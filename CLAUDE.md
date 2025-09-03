@@ -167,57 +167,26 @@ bun run security:audit
 
 **Core Principle**: **"Never Start New Work with Uncommitted Changes"**
 
-#### **Before ANY New Task** (Mandatory 5-second check):
+**Quick Workflow**:
 ```bash
-# 1. Check current state
-git status
+# Before starting new task (5-second safety check)
+bun git:safe-start
 
-# 2. If changes exist, commit immediately
-git add .
-git commit -m "wip: [brief description]"  # or proper message if complete
+# Save work in progress  
+bun git:wip "description of current work"
 
-# 3. If work is approved/complete, push
-git push origin main
-
-# 4. Verify clean state before proceeding
-git status  # Must show "nothing to commit, working tree clean"
+# Complete and push approved work
+bun git:done "feat: implement feature name"
 ```
 
-#### **During Development**:
-- **Commit at logical breakpoints**: tests pass, feature works, bug fixed
-- **Use conventional commits**: `feat:`, `fix:`, `docs:`, `refactor:`, `wip:`
-- **Push immediately** when work is approved/complete
-- **Never commit broken code** to main (unless clearly marked `wip:`)
+**📋 Full Documentation**: [Git Workflow Guide](./docs/development/GIT_WORKFLOW.md)
 
-#### **Smart Branching Strategy**:
-- **Small changes** (<30min): Work on `main`, commit when done
-- **Features/Large work** (>30min): Create feature branch → PR → merge
-
-```bash
-# For larger features:
-git checkout -b feature/description
-# work, commit, test, push
-git push origin feature/description
-# Create PR when complete
-```
-
-#### **Speed Optimization - Git Aliases**:
-Add to `~/.gitconfig` for faster workflows:
-```bash
-[alias]
-    s = status                    # git s
-    ac = "!git add . && git commit -m"  # git ac "message"  
-    p = push origin HEAD         # git p
-    co = checkout               # git co main
-    cb = checkout -b           # git cb feature/new
-```
-
-#### **Emergency Recovery**:
-All work is committed, so you can always:
-- `git log --oneline -10` → See recent work
-- `git reset HEAD~1` → Undo last commit (keep changes)
-- `git revert <commit>` → Undo specific change safely
-- All approved work is pushed → Never lose important changes
+**Available Commands**:
+- `bun git:safe-start` - Check if ready for new task
+- `bun git:status` - Quick status check  
+- `bun git:save "message"` - Commit without push
+- `bun git:wip "description"` - Save work in progress
+- `bun git:done "message"` - Commit and push complete work
 
 ### Documentation Standards
 
