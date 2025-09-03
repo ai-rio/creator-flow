@@ -187,6 +187,10 @@ bun git:done "feat: implement feature name"
 - `bun git:save "message"` - Commit without push
 - `bun git:wip "description"` - Save work in progress
 - `bun git:done "message"` - Commit and push complete work
+- `bun git:branch "name"` - Create feature branch safely
+- `bun git:switch "branch"` - Switch branches (auto-saves work)
+- `bun git:pr "title"` - Create pull request from current branch
+- `bun git:cleanup` - Delete merged branches automatically
 
 ### Documentation Standards
 

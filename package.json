@@ -31,7 +31,11 @@
     "git:save": "node scripts/git-save.js",
     "git:wip": "node scripts/git-wip.js", 
     "git:done": "node scripts/git-done.js",
-    "git:push": "git push origin HEAD"
+    "git:push": "git push origin HEAD",
+    "git:branch": "node scripts/git-branch.js",
+    "git:switch": "node scripts/git-switch.js",
+    "git:pr": "node scripts/git-pr.js",
+    "git:cleanup": "node scripts/git-cleanup.js"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.2",

@@ -46,7 +46,26 @@ bun git:done "feat: implement order automation"
 - **Experimental work**: Always use feature branch
 - **Bug fixes**: Depends on size (small → main, complex → branch)
 
-### **Feature Branch Workflow**:
+### **Enhanced Feature Branch Workflow**:
+
+#### **Automated Approach** (Recommended):
+```bash
+# Create feature branch with safety checks
+bun git:branch "order-automation"
+
+# Work on feature, commit progress
+bun git:wip "implementing order validation"
+bun git:save "feat: add order processing logic"
+
+# Create PR when ready
+bun git:pr "Add Order Automation" "Implements automated order processing"
+
+# After PR is merged, cleanup
+bun git:switch main
+bun git:cleanup "feature/order-automation"
+```
+
+#### **Manual Approach** (Traditional):
 ```bash
 # Create and switch to feature branch
 git checkout -b feature/order-automation
@@ -63,12 +82,23 @@ gh pr create --title "Add Order Automation" --body "Description..."
 ## ⚡ Speed Optimization
 
 ### **Bun Scripts** (Available in package.json):
+
+#### **Basic Workflow:**
 ```bash
 bun git:safe-start          # Check if ready for new task
 bun git:status              # Quick status check
 bun git:save "message"      # Add, commit with message
 bun git:done "message"      # Add, commit, and push
 bun git:wip "description"   # Quick work-in-progress commit
+```
+
+#### **Branch Management:**
+```bash
+bun git:branch "feature-name"     # Create and switch to new feature branch
+bun git:switch "branch-name"      # Switch branches safely (auto-saves work)
+bun git:pr "title" "description"  # Create pull request from current branch
+bun git:cleanup                   # Delete merged branches automatically
+bun git:cleanup "branch-name"     # Delete specific branch
 ```
 
 ### **Recommended Git Aliases** (Optional - add to ~/.gitconfig):
@@ -83,6 +113,8 @@ bun git:wip "description"   # Quick work-in-progress commit
 ```
 
 ### **Usage Examples**:
+
+#### **Main Branch Workflow**:
 ```bash
 # Starting new task
 bun git:safe-start
@@ -95,6 +127,60 @@ bun git:done "feat: complete order automation system"
 
 # Just commit without push
 bun git:save "fix: resolve shipping calculation bug"
+```
+
+#### **Feature Branch Workflow**:
+```bash
+# Create new feature branch
+bun git:branch "shipping-optimization"
+
+# Work and commit
+bun git:wip "implementing rate comparison"
+bun git:done "feat: add multi-carrier rate comparison"
+
+# Create pull request
+bun git:pr "Shipping Rate Optimization" "Adds rate comparison across carriers"
+
+# Switch back to main
+bun git:switch main
+
+# Clean up after merge
+bun git:cleanup "feature/shipping-optimization"
+```
+
+## 🛡️ Advanced Branch Safety Features
+
+### **Auto-Save Before Branch Switch**:
+```bash
+# Automatically saves uncommitted work before switching
+bun git:switch main  # Auto-commits current work if needed
+```
+
+### **Smart Branch Creation**:
+```bash
+# Updates main, creates clean branch
+bun git:branch "new-feature"
+# - Checks for uncommitted changes
+# - Updates main branch from remote
+# - Creates feature branch with clean naming
+```
+
+### **Automated PR Creation**:
+```bash
+# Creates PR with template
+bun git:pr "Feature Title" "Description"
+# - Pushes branch automatically
+# - Uses standardized PR template
+# - Falls back to manual URL if gh CLI unavailable
+```
+
+### **Intelligent Cleanup**:
+```bash
+# Auto-finds and removes merged branches
+bun git:cleanup
+# - Finds all merged branches
+# - Safely deletes local and remote branches
+# - Preserves main and current branch
 ```
 
 ## 🚨 Emergency Recovery
