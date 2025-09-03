@@ -96,12 +96,75 @@ creator-flow/
 ├── supabase/              # Database migrations and functions
 ├── docs/                  # Project documentation
 │   ├── development/       # Development guides and specifications
-│   │   └── dashboard-design/  # Premium dashboard design system
+│   │   ├── order-management/          # Core orchestrator system
+│   │   ├── tiktok-inventory-tracking/ # Inventory component system
+│   │   ├── shipping-automation/       # Multi-carrier shipping system
+│   │   ├── tiktok-shop-integration/   # TikTok Shop API integration
+│   │   ├── creator-analytics/         # Analytics and reporting system
+│   │   ├── creator-authentication/    # Auth and subscription system
+│   │   ├── dashboard-design/          # Premium dashboard design system
+│   │   ├── public-pages/              # Public-facing website components
+│   │   └── documentation-standards/   # Project documentation standards
 │   ├── architecture/      # System architecture documentation
 │   └── business/          # Business model and strategy
 ├── tests/                 # Test files and utilities
 └── scripts/               # Development and deployment scripts
 ```
+
+## 🏗️ Core Systems Documentation
+
+CreatorFlow is built around eight core systems that work together to deliver seamless TikTok Shop fulfillment automation:
+
+### 📋 **Master Implementation Plan**
+**[CreatorFlow Master Roadmap](./moscow-methodology/02-implementation/I001-DRAFT-roadmap.md)** - Single source of truth consolidating all system planning, specifications, and implementation details using MoSCoW methodology.
+
+### 🎯 [Order Management](./order-management/) - Core Orchestrator
+Central system coordinating all fulfillment operations. Manages order lifecycle, workflow engine, and system integrations.
+- **Status**: Production Ready
+- **Performance**: 500+ orders/day per creator, <30s processing
+- **Integration**: Coordinates all other systems
+
+### 📦 [TikTok Inventory Tracking](./tiktok-inventory-tracking/) - Component System  
+Real-time inventory synchronization with TikTok Shop, preventing oversells and managing stock levels.
+- **Status**: Production Ready
+- **Performance**: <5min sync latency, 99.9% accuracy
+- **Integration**: Feeds order management system
+
+### 🚚 [Shipping Automation](./shipping-automation/) - Multi-Carrier System
+Automated label generation, rate shopping, and tracking across USPS, UPS, FedEx, and DHL carriers.
+- **Status**: In Development
+- **Performance Target**: <30s label generation, 15-25% cost savings
+- **Integration**: Receives orders from order management
+
+### 🔗 [TikTok Shop Integration](./tiktok-shop-integration/) - External API System
+Comprehensive TikTok Shop API integration for orders, products, webhooks, and seller management.
+- **Status**: Planned
+- **Performance Target**: <500ms API response, 99.9% uptime
+- **Integration**: Primary data source for order management
+
+### 📊 [Creator Analytics](./creator-analytics/) - Reporting System
+Performance metrics, revenue tracking, and business intelligence for creator growth optimization.
+- **Status**: Planned  
+- **Performance Target**: Real-time dashboards, <2s query response
+- **Integration**: Aggregates data from all systems
+
+### 🔐 [Creator Authentication](./creator-authentication/) - Auth & Subscription System
+User authentication, subscription management, and creator tier access control with Stripe integration.
+- **Status**: Planned
+- **Performance Target**: <200ms auth response, 99.99% uptime
+- **Integration**: Secures access to all systems
+
+### 🎨 [Dashboard Design](./dashboard-design/) - Premium User Interface System
+Premium dashboard design system implementing CDH manifesto principles with comprehensive design tokens and MVPBlocks integration.
+- **Status**: In Development
+- **Performance Target**: CEO-grade interface experience, 100% design consistency
+- **Integration**: Unified design language across all dashboard interfaces
+
+### 🌐 [Public Pages](./public-pages/) - Marketing Website Components
+Public-facing website development using strategic MVPBlocks integration while preserving CDH manifesto principles for creator marketing.
+- **Status**: In Development  
+- **Performance Target**: <2s page load, 90+ Lighthouse score, >5% conversion rate
+- **Integration**: Marketing funnel feeding into authenticated dashboard experience
 
 ## 🔧 Essential Commands
 
@@ -287,9 +350,13 @@ bun test --watch
 - [Testing Library](https://testing-library.com/docs)
 
 ### CreatorFlow-Specific Documentation
-- **Dashboard Design System**: `docs/development/dashboard-design/`
-- **CDH Manifesto Implementation**: See conversation backup at `docs/claude-conversation-bkp.txt`
-- **Premium Component Specifications**: `docs/development/dashboard-design/01-specifications/S001-dashboard-wireframes.md`
+- **Master Implementation Roadmap**: `docs/development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md`
+- **Dashboard Design System**: `docs/development/dashboard-design/01-specifications/S001-dashboard-wireframes.md`
+- **Design Tokens & Style Guide**: `docs/development/dashboard-design/01-specifications/S002-DRAFT-style-guide-design-tokens.md`
+- **Public Pages Strategy**: `docs/development/public-pages/01-specifications/S001-DRAFT-public-pages-component-strategy.md`
+- **MVPBlocks Integration**: `docs/development/public-pages/02-implementation/I001-DRAFT-mvpblocks-installation-guide.md`
+- **CDH vs MVPBlocks Analysis**: `docs/development/public-pages/00-planning/P001-cdh-vs-mvpblocks-analysis.md`
+- **Documentation Standards**: `docs/development/documentation-standards/DOCUMENTATION_STANDARDS.md`
 
 ---
 

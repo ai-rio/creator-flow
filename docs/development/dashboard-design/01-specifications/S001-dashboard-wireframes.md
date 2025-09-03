@@ -964,3 +964,25 @@ interface DesignTokenManifestoSuccess {
 **Summary**: This updated wireframes specification now integrates our comprehensive design token system, replacing all hard-coded colors and styling patterns with maintainable, CDH manifesto-aligned design tokens. Every visual element, animation, and interaction pattern now references our systematic design token approach, ensuring consistent premium brand execution while enabling rapid development through enhanced MVPBlocks integration.
 
 The wireframes now serve as a practical implementation guide showing exactly how design tokens should be applied across mobile and desktop interfaces, with clear mapping between MVPBlocks components and our CreatorFlow design token enhancements.
+
+---
+
+## Related Documents
+
+### Dashboard Design Initiative
+- **[S002-DRAFT-style-guide-design-tokens.md](./S002-DRAFT-style-guide-design-tokens.md)** - Complete design token system and implementation guide
+- **Documentation Standards**: [DOCUMENTATION_STANDARDS.md](../../documentation-standards/DOCUMENTATION_STANDARDS.md)
+
+### Cross-Initiative Dependencies  
+- **Public Pages Strategy**: [S001-DRAFT-public-pages-component-strategy.md](../../public-pages/01-specifications/S001-DRAFT-public-pages-component-strategy.md) - MVPBlocks integration patterns
+- **MVPBlocks Implementation**: [I001-DRAFT-mvpblocks-installation-guide.md](../../public-pages/02-implementation/I001-DRAFT-mvpblocks-installation-guide.md) - Component installation guide
+
+### Core Project Documentation
+- **Project Instructions**: [CLAUDE.md](../../../../CLAUDE.md) - CDH manifesto and development guidelines  
+- **Development Guide**: [README.md](../../README.md) - Complete development setup and tech stack
+- **Architecture Overview**: [README.md](../../../architecture/README.md) - System architecture and design patterns
+
+### Technical Implementation Files
+- **Design Token Configuration**: `src/app/globals.css` - CSS custom properties and design tokens
+- **Tailwind Configuration**: `tailwind.config.ts` - Enhanced Tailwind setup with manifesto theming
+- **Component Library**: `src/components/ui/` - Shadcn/ui and MVPBlocks foundation components

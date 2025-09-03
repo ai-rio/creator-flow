@@ -1,74 +1,64 @@
-# CreatorFlow Essential Commands
+# Suggested Commands for CreatorFlow Development
 
-## Development Workflow
+## Development Commands
+
+### Starting the Development Server
 ```bash
-# Start development server (hot reload on :3000)
-bun run dev
-
-# Type checking (ALWAYS run after code changes)
-bun run type-check
-
-# Linting and auto-fix
-bun run lint
-bun run lint:fix
-
-# Build for production
-bun run build
+bun run dev              # Start development server with Turbopack
 ```
 
-## Testing Commands
+### Code Quality and Type Checking
 ```bash
-# Run all unit tests
-bun test
-
-# Run tests in watch mode
-bun run test:watch
-
-# Run tests with coverage report
-bun run test:coverage
-
-# End-to-end testing
-bun run test:e2e
-bun run test:e2e:ui          # Playwright UI mode
+bun run type-check       # TypeScript checking
+bun run lint             # ESLint checking
+bun run lint:fix         # Fix linting issues
 ```
 
-## Database Operations (Supabase)
+### Testing
 ```bash
-# Generate TypeScript types from database schema
-bun run generate-types
-
-# Create new migration
-bun run migration:new <name>
-
-# Run migrations
-bun run migration:up
-
-# Link to Supabase project
-bun run supabase:link
+bun test                 # Run all unit tests
+bun run test:watch       # Run unit tests in watch mode
+bun run test:coverage    # Run unit tests with coverage report
+bun run test:e2e         # Run E2E tests
+bun run test:e2e:ui      # Run E2E tests with UI
 ```
 
-## External Service Commands
+### Database Management
 ```bash
-# Listen to Stripe webhooks locally
-bun run stripe:listen
-
-# Email development server
-bun run email:dev
-
-# Build email templates
-bun run email:build
+bun run generate-types   # Generate Supabase types
+bun run supabase:link    # Link local project to Supabase project
+bun run migration:new    # Create new database migration
+bun run migration:up     # Run database migrations
+bun run migration:squash # Squash database migrations
 ```
 
-## System Commands (Linux)
+### Stripe Integration
 ```bash
-# File operations
-ls -la                       # List files with details
-find . -name "*.tsx"         # Find TypeScript React files
-grep -r "searchterm" src/    # Search in source code
-
-# Git operations
-git status                   # Check repository status
-git add .                    # Stage all changes
-git commit -m "message"      # Commit changes
-git push origin main         # Push to main branch
+bun run stripe:listen    # Listen to Stripe webhooks
 ```
+
+### Email Development
+```bash
+bun run email:dev        # Start email development server
+bun run email:build      # Build email templates
+bun run email:export     # Export email templates
+```
+
+## Production Commands
+
+### Building and Starting the Application
+```bash
+bun run build            # Build the Next.js application
+bun run start            # Start the built Next.js application
+```
+
+## Package Management
+```bash
+bun install              # Install dependencies
+bun add <package>        # Add a new dependency
+bun remove <package>     # Remove a dependency
+```
+
+## Git Hooks
+The project uses Husky for Git hooks, which will automatically run:
+- Linting fixes on staged files before commit (via lint-staged)

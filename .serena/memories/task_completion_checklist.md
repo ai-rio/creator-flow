@@ -1,48 +1,43 @@
-# Task Completion Checklist
+# Task Completion Checklist for CreatorFlow
 
-## Pre-Commit Validation (MANDATORY)
-Before committing any code changes:
+When completing a task, ensure you follow these steps:
 
-- [ ] `bun run type-check` passes without errors
-- [ ] `bun run lint` passes without errors  
-- [ ] Critical tests pass: `bun test`
-- [ ] No console.errors in development
-- [ ] Security considerations addressed (no secrets committed)
+## Code Quality Checks
+1. Run TypeScript type checking:
+   ```bash
+   bun run type-check
+   ```
 
-## UI/Component Development
-- [ ] **Shadcn/ui components** used as base building blocks
-- [ ] **CreatorFlow design system** patterns applied consistently
-- [ ] **Accessibility**: All interactive elements properly accessible
-- [ ] **Mobile-first**: Tested on mobile devices and responsive
-- [ ] **Design tokens**: Used consistent Tailwind CSS classes
+2. Run ESLint to check for linting issues:
+   ```bash
+   bun run lint
+   ```
 
-## Database & API Changes
-- [ ] **RLS policies** implemented for data access
-- [ ] **Input validation** with Zod schemas where applicable
-- [ ] **Error handling** with proper ActionResponse<T> patterns
-- [ ] **Webhook signatures** verified for external integrations
+3. Fix any linting issues that can be automatically resolved:
+   ```bash
+   bun run lint:fix
+   ```
 
-## Testing Requirements
-- [ ] **Unit tests** for business logic components
-- [ ] **Integration tests** for API routes and external services
-- [ ] **E2E tests** for critical user journeys (if applicable)
-- [ ] **>80% coverage** maintained for critical paths
+## Testing
+1. Run unit tests to ensure no regressions:
+   ```bash
+   bun test
+   ```
 
-## CreatorFlow-Specific Quality Gates
-- [ ] **TikTok Shop integration**: Webhook verification and rate limiting respected
-- [ ] **Order processing**: Error handling for high-volume scenarios
-- [ ] **Shipping integration**: Multiple carrier support and edge cases
-- [ ] **Analytics validation**: Data accuracy and real-time updates
-- [ ] **Stripe webhooks**: Proper signature verification
+2. For UI-related changes, consider running E2E tests:
+   ```bash
+   bun run test:e2e
+   ```
 
-## Documentation Quality Gates (AI Agents)
-- [ ] **Documentation Standards**: All docs follow project standards
-- [ ] **Proper location**: No root-level documentation files
-- [ ] **DRAFT prefixes**: Implementation docs use DRAFT until approved
-- [ ] **Four-category structure**: Proper folder organization used
-- [ ] **No premature completion**: No "COMPLETE" files without user validation
+## Code Review
+1. Ensure code follows the style and conventions documented in code_style_and_conventions.md
+2. Verify that the code change is focused and doesn't include unrelated modifications
+3. Check that any new components or functions are properly typed
+4. Confirm that any new features are appropriately documented
 
-## Environment & Deployment
-- [ ] **Environment variables** documented and not committed
-- [ ] **Build succeeds**: `bun run build` completes without errors
-- [ ] **Production considerations**: Rate limiting, CORS, security headers
+## Git Practices
+1. Make sure your commit message is clear and concise
+2. Follow conventional commit message format if applicable
+3. Ensure you've only staged the files that are part of this specific task
+
+After completing these steps, your task can be considered complete and ready for review or deployment.

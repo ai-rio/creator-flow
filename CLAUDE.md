@@ -171,6 +171,7 @@ bun run security:audit
 4. **No root-level documentation**: All docs in appropriate `docs/` subdirectories
 5. **DRAFT prefixes required**: Implementation and Report docs use DRAFT prefix until approved
 6. **MoSCoW Methodology**: All documentation and feature planning must follow MoSCoW prioritization framework
+7. **Related Documents Required**: All documents MUST include "Related Documents" section at bottom with links to relevant files
 
 ### File Naming Conventions
 
@@ -271,6 +272,7 @@ Before committing:
 - [ ] **No root-level documentation**: All docs in appropriate subdirectories
 - [ ] **No premature completion claims**: No "COMPLETE" files without validation
 - [ ] **DRAFT prefixes required**: Implementation docs use DRAFT until approved
+- [ ] **Related Documents**: "Related Documents" section included at bottom
 
 ### TikTok Shop Integration Quality Gates
 
@@ -321,6 +323,7 @@ Before committing:
 ✅ `docs/development/[initiative]/01-specifications/S001-technical-requirements.md`
 ✅ `docs/development/[initiative]/00-planning/P001-investigation-findings.md`
 ✅ Wait for user validation before removing `DRAFT-` prefix
+✅ **MANDATORY**: Include "Related Documents" section at bottom of every document
 
 ### **MoSCoW Methodology Requirements**
 

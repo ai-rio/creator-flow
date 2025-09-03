@@ -1833,3 +1833,26 @@ This comprehensive style guide establishes CreatorFlow as a premium, systematica
 - **Systematic approach** to design evolution and maintenance
 
 This style guide serves as the single source of truth for all CreatorFlow design decisions, ensuring our premium brand vision is consistently implemented across every component and interaction while empowering developers with clear, unambiguous implementation patterns.
+
+---
+
+## Related Documents
+
+### Dashboard Design Initiative  
+- **[S001-dashboard-wireframes.md](./S001-dashboard-wireframes.md)** - Dashboard wireframes and component specifications using design tokens
+- **Documentation Standards**: [DOCUMENTATION_STANDARDS.md](../../documentation-standards/DOCUMENTATION_STANDARDS.md)
+
+### Cross-Initiative Dependencies
+- **Public Pages Strategy**: [S001-DRAFT-public-pages-component-strategy.md](../../public-pages/01-specifications/S001-DRAFT-public-pages-component-strategy.md) - MVPBlocks theming with design tokens
+- **MVPBlocks Implementation**: [I001-DRAFT-mvpblocks-installation-guide.md](../../public-pages/02-implementation/I001-DRAFT-mvpblocks-installation-guide.md) - Design token integration examples
+
+### Core Project Documentation
+- **Project Instructions**: [CLAUDE.md](../../../../CLAUDE.md) - CDH manifesto principles and design philosophy
+- **Development Guide**: [README.md](../../README.md) - UI development guidelines and component patterns
+- **Architecture Overview**: [README.md](../../../architecture/README.md) - System design patterns
+
+### Technical Implementation Files
+- **Enhanced Tailwind Config**: `tailwind.config.ts` - Complete implementation of design token system
+- **Global CSS with Tokens**: `src/app/globals.css` - CSS custom properties and manifesto styling classes  
+- **Component Enhancement Layer**: `src/lib/design-tokens/mvpblocks-enhancements.ts` - MVPBlocks integration utilities
+- **Design Token Governance**: `src/lib/design-tokens/governance.ts` - Token validation and maintenance guidelines
