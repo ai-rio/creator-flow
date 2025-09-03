@@ -92,13 +92,22 @@ bun git:done "message"      # Add, commit, and push
 bun git:wip "description"   # Quick work-in-progress commit
 ```
 
-#### **Branch Management:**
+#### **Smart Branch Management:**
 ```bash
-bun git:branch "feature-name"     # Create and switch to new feature branch
+# Smart branch type detection
+bun git:branch "fix-webhook-bug"         # → fix/webhook  (detects "fix", removes redundant words)
+bun git:branch "critical-payment"        # → hotfix/payment  (detects "critical")  
+bun git:branch "update-docs"             # → docs/update  (detects "docs")
+bun git:branch "optimize-queries"        # → perf/queries  (detects "optimize")
+bun git:branch "tiktok-integration"      # → feature/tiktok-integration  (default)
+
+# Explicit type override
+bun git:branch "dashboard" --type=refactor  # → refactor/dashboard
+
+# Other commands
 bun git:switch "branch-name"      # Switch branches safely (auto-saves work)
 bun git:pr "title" "description"  # Create pull request from current branch
 bun git:cleanup                   # Delete merged branches automatically
-bun git:cleanup "branch-name"     # Delete specific branch
 ```
 
 ### **Recommended Git Aliases** (Optional - add to ~/.gitconfig):
@@ -147,6 +156,44 @@ bun git:switch main
 # Clean up after merge
 bun git:cleanup "feature/shipping-optimization"
 ```
+
+## 🧠 Smart Branch Type Detection
+
+### **Supported Branch Types:**
+
+| Branch Type | Keywords | Purpose | Examples |
+|-------------|----------|---------|----------|
+| `feature/` | *(default)* | New functionality | `feature/tiktok-integration` |
+| `fix/` | fix, bug, issue, error, broken, resolve, repair | Bug fixes | `fix/webhook-validation` |
+| `hotfix/` | hotfix, critical, urgent, emergency, prod, production | Critical production fixes | `hotfix/payment-failure` |
+| `docs/` | doc, docs, readme, guide, documentation, manual | Documentation updates | `docs/api-reference` |
+| `refactor/` | refactor, cleanup, restructure, reorganize, rewrite | Code restructuring | `refactor/order-service` |
+| `test/` | test, spec, testing, coverage, e2e, unit | Adding/updating tests | `test/shipping-integration` |
+| `perf/` | perf, performance, optimize, speed, fast, slow | Performance improvements | `perf/database-queries` |
+| `security/` | security, auth, secure, vulnerability, exploit | Security-related changes | `security/webhook-validation` |
+| `chore/` | chore, deps, dependency, config, setup, update, upgrade | Maintenance tasks | `chore/update-dependencies` |
+
+### **Smart Detection Examples:**
+```bash
+# Input → Detection → Final Branch Name
+bun git:branch "fix-order-bug"           # → fix/order (removes "fix" and "bug")
+bun git:branch "critical-webhook"        # → hotfix/webhook (critical = hotfix)
+bun git:branch "update-readme"           # → docs/readme (update + docs keyword)
+bun git:branch "refactor-components"     # → refactor/components
+bun git:branch "optimize-shipping"       # → perf/shipping (optimize = performance)
+bun git:branch "add-auth-tests"          # → test/add-auth
+bun git:branch "order-management"        # → feature/order-management (default)
+
+# Explicit type override when smart detection isn't perfect
+bun git:branch "performance-dashboard" --type=feature  # → feature/performance-dashboard
+```
+
+### **Priority Detection Order:**
+Smart detection prioritizes more specific keywords first to avoid false matches:
+1. `hotfix` (checked before `fix` to avoid "hotfix" → "fix")
+2. `security`, `perf`, `refactor`, `test`, `docs`, `chore`
+3. `fix` (checked last since it appears in "hotfix")
+4. `feature` (default fallback)
 
 ## 🛡️ Advanced Branch Safety Features
 

@@ -52,11 +52,17 @@ function detectBranchType(name) {
     }
   }
   
-  // Check for keywords in branch name
+  // Check for keywords in branch name - prioritize more specific terms first
   const nameLower = name.toLowerCase();
-  for (const [type, keywords] of Object.entries(branchTypeKeywords)) {
-    if (type === 'feature') continue; // Skip default type for keyword detection
-    
+  
+  // Priority order: more specific keywords first to avoid false matches
+  const priorityOrder = [
+    'hotfix', 'security', 'perf', 'refactor', 
+    'test', 'docs', 'chore', 'fix' // fix last since it's in hotfix
+  ];
+  
+  for (const type of priorityOrder) {
+    const keywords = branchTypeKeywords[type] || [];
     for (const keyword of keywords) {
       if (nameLower.includes(keyword)) {
         return { type, detected: true, reason: `keyword: '${keyword}'` };

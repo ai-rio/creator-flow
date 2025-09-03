@@ -172,6 +172,11 @@ bun run security:audit
 # Before starting new task (5-second safety check)
 bun git:safe-start
 
+# Create smart-typed branch (auto-detects branch type)
+bun git:branch "fix-webhook-bug"        # → fix/webhook
+bun git:branch "critical-payment"       # → hotfix/payment
+bun git:branch "tiktok-integration"     # → feature/tiktok-integration
+
 # Save work in progress  
 bun git:wip "description of current work"
 
