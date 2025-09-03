@@ -40,6 +40,7 @@ Welcome to CreatorFlow's TikTok Shop fulfillment automation platform documentati
 ## 🔧 Integrations & APIs
 
 - **[Third-party Integrations](integrations/README.md)** - External service integrations
+- **[TikTok Shop API](integrations/tiktok-shop/01-specifications/S001-DRAFT-api-integration-specifications.md)** - Complete TikTok Shop API integration specs
 - **[Stripe Integration](integrations/stripe/README.md)** - Payment processing
 - **[Shipping APIs](integrations/shipping/README.md)** - Shippo, EasyPost integrations
 - **[Webhook Management](integrations/webhooks/README.md)** - Webhook handling patterns

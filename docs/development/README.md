@@ -54,6 +54,8 @@ CreatorFlow is a TikTok Shop fulfillment automation platform built with modern w
 - **UI**: Tailwind CSS + shadcn/ui components
 
 ### Development Tools
+- **UI Components**: shadcn/ui + mvpblocks for rapid development
+- **Design System**: Comprehensive design tokens with CDH manifesto alignment
 - **Linting**: ESLint + Prettier
 - **Testing**: Jest (unit) + Playwright (E2E)
 - **Type Safety**: TypeScript strict mode
@@ -74,22 +76,29 @@ creator-flow/
 │   │   ├── (auth)/         # Authentication pages
 │   │   ├── (dashboard)/    # Main application pages
 │   │   ├── api/            # API routes and webhooks
-│   │   └── globals.css     # Global styles
+│   │   └── globals.css     # Global styles with design tokens
 │   ├── components/         # Reusable UI components
-│   │   ├── ui/            # shadcn/ui base components
-│   │   └── custom/        # Custom application components
+│   │   ├── ui/            # shadcn/ui + mvpblocks base components
+│   │   ├── custom/        # Custom CreatorFlow components
+│   │   └── dashboard/     # Premium dashboard components
 │   ├── features/          # Feature-specific modules
 │   │   ├── auth/          # Authentication logic
-│   │   ├── orders/        # Order management
+│   │   ├── orders/        # TikTok order management
 │   │   ├── shipping/      # Shipping integration
-│   │   └── analytics/     # Analytics and reporting
+│   │   ├── analytics/     # Analytics and reporting
+│   │   └── tiktok/        # TikTok Shop integration
 │   ├── lib/               # Utilities and configurations
 │   │   ├── supabase/      # Database client and helpers
 │   │   ├── stripe/        # Payment processing
+│   │   ├── tiktok/        # TikTok Shop API client
 │   │   └── utils/         # General utilities
 │   └── types/             # TypeScript type definitions
 ├── supabase/              # Database migrations and functions
 ├── docs/                  # Project documentation
+│   ├── development/       # Development guides and specifications
+│   │   └── dashboard-design/  # Premium dashboard design system
+│   ├── architecture/      # System architecture documentation
+│   └── business/          # Business model and strategy
 ├── tests/                 # Test files and utilities
 └── scripts/               # Development and deployment scripts
 ```
@@ -110,6 +119,22 @@ bun run lint:fix
 
 # Build for production
 bun run build
+```
+
+### MVPBlocks Component Management
+```bash
+# Explore available components
+bunx mvpblocks --help
+bunx mvpblocks list
+
+# Add specific components for dashboard
+npx mvpblocks add admin-dashboard-1
+npx mvpblocks add dashboard-card
+npx mvpblocks add revenue-chart
+
+# Search for specific component types
+bunx mvpblocks search dashboard
+bunx mvpblocks search analytics
 ```
 
 ### Database Operations
@@ -149,10 +174,12 @@ bun test --watch
 - Use **Zod** for runtime type validation
 
 ### Component Development
-- Use **shadcn/ui** components as base building blocks
+- Use **shadcn/ui + mvpblocks** components as base building blocks
+- Follow **CDH manifesto design principles** (Clarity, Art, Automation, CEO-grade)
+- Use **design tokens** from comprehensive style guide (never hard-code colors)
 - Follow **composition patterns** for complex components
 - Implement **proper accessibility** (ARIA labels, keyboard navigation)
-- Use **Tailwind CSS** for styling with consistent design tokens
+- Use **premium animations** aligned with manifesto tenets
 
 ### API Development
 - Use **Next.js API routes** for backend logic
@@ -245,16 +272,24 @@ bun test --watch
 - [Supabase Documentation](https://supabase.com/docs)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs)
 - [Stripe API Reference](https://stripe.com/docs/api)
+- [TikTok Shop API Documentation](https://partner.tiktokshop.com/docv2)
 
-### UI & Styling
+### UI & Design System
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [shadcn/ui Components](https://ui.shadcn.com)
+- [MVPBlocks Documentation](https://mvpblocks.dev)
 - [Radix UI Primitives](https://www.radix-ui.com/primitives)
+- **CreatorFlow Design System**: `docs/development/dashboard-design/01-specifications/S002-DRAFT-style-guide-design-tokens.md`
 
 ### Testing
 - [Jest Documentation](https://jestjs.io/docs)
 - [Playwright Documentation](https://playwright.dev/docs)
 - [Testing Library](https://testing-library.com/docs)
+
+### CreatorFlow-Specific Documentation
+- **Dashboard Design System**: `docs/development/dashboard-design/`
+- **CDH Manifesto Implementation**: See conversation backup at `docs/claude-conversation-bkp.txt`
+- **Premium Component Specifications**: `docs/development/dashboard-design/01-specifications/S001-dashboard-wireframes.md`
 
 ---
 

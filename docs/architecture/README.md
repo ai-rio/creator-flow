@@ -28,6 +28,462 @@ graph TB
         TikTok[TikTok Shop API]
         Shippo[Shipping APIs<br/>Shippo, EasyPost]
         Stripe[Stripe API]
+        Resend[Resend Email API]
+        PostHog[PostHog Analytics]
+    end
+    
+    subgraph "CreatorFlow Platform"
+        subgraph "Frontend Layer"
+            UI[Next.js UI<br/>React 19 + TypeScript]
+            Components[Shadcn/UI Components<br/>Tailwind CSS]
+        end
+        
+        subgraph "API Layer"
+            Routes[API Routes<br/>Next.js App Router]
+            Middleware[Auth Middleware<br/>Rate Limiting]
+            Webhooks[Webhook Handlers<br/>TikTok + Stripe]
+        end
+        
+        subgraph "Business Logic"
+            OrderEngine[Order Processing Engine]
+            FulfillmentEngine[Fulfillment Automation]
+            SyncEngine[Product Sync Engine]
+            BillingEngine[Subscription Billing]
+        end
+        
+        subgraph "Data Layer"
+            Supabase[(Supabase PostgreSQL<br/>RLS + Edge Functions)]
+            Cache[Redis Cache<br/>Rate Limiting]
+        end
+    end
+    
+    subgraph "Infrastructure"
+        CDN[Vercel Edge Network]
+        Monitoring[Error Tracking<br/>Performance Monitoring]
+    end
+    
+    %% Frontend connections
+    UI --> Components
+    UI --> Routes
+    
+    %% API Layer connections
+    Routes --> Middleware
+    Routes --> Webhooks
+    Routes --> OrderEngine
+    Routes --> FulfillmentEngine
+    Routes --> SyncEngine
+    Routes --> BillingEngine
+    
+    %% Business Logic connections
+    OrderEngine --> Supabase
+    FulfillmentEngine --> Supabase
+    SyncEngine --> Supabase
+    BillingEngine --> Supabase
+    
+    %% External API connections
+    OrderEngine --> TikTok
+    FulfillmentEngine --> Shippo
+    SyncEngine --> TikTok
+    BillingEngine --> Stripe
+    Routes --> Resend
+    Routes --> PostHog
+    
+    %% Infrastructure connections
+    UI --> CDN
+    Routes --> Cache
+    Routes --> Monitoring
+    
+    %% Styling
+    classDef external fill:#ff9999
+    classDef frontend fill:#99ccff
+    classDef api fill:#99ff99
+    classDef business fill:#ffcc99
+    classDef data fill:#cc99ff
+    classDef infra fill:#ffff99
+    
+    class TikTok,Shippo,Stripe,Resend,PostHog external
+    class UI,Components frontend
+    class Routes,Middleware,Webhooks api
+    class OrderEngine,FulfillmentEngine,SyncEngine,BillingEngine business
+    class Supabase,Cache data
+    class CDN,Monitoring infra
+```
+
+## 🔄 Data Flow Architecture
+
+### Order Processing Flow
+
+```mermaid
+sequenceDiagram
+    participant Creator as Creator
+    participant CF as CreatorFlow
+    participant TS as TikTok Shop
+    participant Ship as Shipping API
+    participant DB as Supabase
+    
+    Note over Creator,DB: Order Processing Workflow
+    
+    TS->>CF: Webhook: New Order
+    CF->>DB: Store Order Data
+    CF->>Creator: Notification: New Order
+    
+    Creator->>CF: Review & Approve Order
+    CF->>Ship: Generate Shipping Label
+    Ship->>CF: Return Label & Tracking
+    CF->>DB: Update Order Status
+    CF->>TS: Update Fulfillment Status
+    CF->>Creator: Notification: Order Shipped
+    
+    Note over Creator,DB: Real-time Updates
+    Ship->>CF: Webhook: Delivery Update
+    CF->>DB: Update Tracking Status
+    CF->>TS: Sync Delivery Status
+    CF->>Creator: Notification: Order Delivered
+```
+
+### Authentication & Authorization Flow
+
+```mermaid
+sequenceDiagram
+    participant User as Creator
+    participant CF as CreatorFlow
+    participant SB as Supabase Auth
+    participant TS as TikTok Shop
+    participant Stripe as Stripe
+    
+    Note over User,Stripe: Creator Onboarding Flow
+    
+    User->>CF: Sign Up
+    CF->>SB: Create User Account
+    SB->>CF: User Created
+    
+    User->>CF: Connect TikTok Shop
+    CF->>TS: OAuth Authorization
+    TS->>CF: Access Token
+    CF->>SB: Store Shop Connection
+    
+    User->>CF: Select Subscription Plan
+    CF->>Stripe: Create Customer & Subscription
+    Stripe->>CF: Subscription Active
+    CF->>SB: Update User Subscription
+    
+    Note over User,Stripe: Ongoing Operations
+    CF->>SB: Check User Permissions (RLS)
+    CF->>TS: API Calls (with stored token)
+    CF->>Stripe: Usage-based Billing Updates
+```
+
+## 🗄️ Database Architecture
+
+### Core Database Schema
+
+```mermaid
+erDiagram
+    USERS ||--o{ SHOPS : owns
+    USERS ||--o{ SUBSCRIPTIONS : has
+    SHOPS ||--o{ ORDERS : contains
+    SHOPS ||--o{ PRODUCTS : manages
+    ORDERS ||--o{ ORDER_ITEMS : includes
+    ORDERS ||--o{ SHIPMENTS : generates
+    PRODUCTS ||--o{ ORDER_ITEMS : referenced_in
+    
+    USERS {
+        uuid id PK
+        string email UK
+        string name
+        string avatar_url
+        jsonb metadata
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    SHOPS {
+        uuid id PK
+        uuid user_id FK
+        string tiktok_shop_id UK
+        string shop_name
+        string access_token
+        string refresh_token
+        timestamp token_expires_at
+        string shop_region
+        boolean is_active
+        timestamp connected_at
+        timestamp last_sync_at
+    }
+    
+    ORDERS {
+        uuid id PK
+        uuid shop_id FK
+        string tiktok_order_id UK
+        string order_status
+        decimal total_amount
+        string currency
+        jsonb customer_info
+        jsonb shipping_address
+        timestamp order_date
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    ORDER_ITEMS {
+        uuid id PK
+        uuid order_id FK
+        uuid product_id FK
+        string tiktok_product_id
+        string product_name
+        integer quantity
+        decimal unit_price
+        decimal total_price
+        jsonb product_variant
+    }
+    
+    PRODUCTS {
+        uuid id PK
+        uuid shop_id FK
+        string tiktok_product_id UK
+        string product_name
+        string product_status
+        decimal price
+        integer inventory_quantity
+        jsonb product_images
+        jsonb product_attributes
+        timestamp last_synced_at
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    SHIPMENTS {
+        uuid id PK
+        uuid order_id FK
+        string tracking_number
+        string carrier
+        string shipping_status
+        jsonb shipping_label_url
+        decimal shipping_cost
+        timestamp shipped_at
+        timestamp delivered_at
+        timestamp created_at
+    }
+    
+    SUBSCRIPTIONS {
+        uuid id PK
+        uuid user_id FK
+        string stripe_customer_id
+        string stripe_subscription_id
+        string plan_name
+        string status
+        decimal monthly_price
+        integer order_limit
+        timestamp current_period_start
+        timestamp current_period_end
+        timestamp created_at
+        timestamp updated_at
+    }
+```
+
+## 🔐 Security Architecture
+
+### Security Layers
+
+```mermaid
+graph TB
+    subgraph "Security Layers"
+        subgraph "Network Security"
+            WAF[Web Application Firewall]
+            DDoS[DDoS Protection]
+            SSL[SSL/TLS Encryption]
+        end
+        
+        subgraph "Application Security"
+            Auth[Supabase Authentication]
+            RLS[Row Level Security]
+            RBAC[Role-Based Access Control]
+            RateLimit[Rate Limiting]
+        end
+        
+        subgraph "Data Security"
+            Encryption[Data Encryption at Rest]
+            Backup[Encrypted Backups]
+            Audit[Audit Logging]
+        end
+        
+        subgraph "API Security"
+            JWT[JWT Token Validation]
+            CORS[CORS Configuration]
+            Webhook[Webhook Signature Verification]
+            APIKey[API Key Management]
+        end
+    end
+    
+    subgraph "External Integrations"
+        TikTokAPI[TikTok Shop API]
+        StripeAPI[Stripe API]
+        ShippingAPI[Shipping APIs]
+    end
+    
+    %% Security flow
+    WAF --> Auth
+    Auth --> RLS
+    RLS --> JWT
+    JWT --> APIKey
+    APIKey --> TikTokAPI
+    APIKey --> StripeAPI
+    APIKey --> ShippingAPI
+    
+    %% Data protection
+    Encryption --> Backup
+    Backup --> Audit
+    
+    %% Rate limiting
+    RateLimit --> CORS
+    CORS --> Webhook
+```
+
+## 📊 Performance Architecture
+
+### Caching Strategy
+
+```mermaid
+graph LR
+    subgraph "Caching Layers"
+        CDN[Vercel Edge CDN<br/>Static Assets]
+        Redis[Redis Cache<br/>API Responses]
+        Browser[Browser Cache<br/>Client-side]
+        Database[Supabase Cache<br/>Query Results]
+    end
+    
+    subgraph "Performance Optimizations"
+        ISR[Incremental Static Regeneration]
+        Streaming[React Streaming]
+        Prefetch[Link Prefetching]
+        Compression[Gzip/Brotli Compression]
+    end
+    
+    CDN --> Browser
+    Redis --> Database
+    ISR --> Streaming
+    Streaming --> Prefetch
+    Prefetch --> Compression
+```
+
+### Scalability Targets
+
+| Metric | Target | Current | Strategy |
+|--------|--------|---------|----------|
+| **Orders/Day** | 500+ per creator | 50 | Horizontal scaling, caching |
+| **API Response Time** | <200ms | <100ms | Edge deployment, Redis cache |
+| **Database Queries** | <50ms | <30ms | Optimized indexes, connection pooling |
+| **Webhook Processing** | <5s | <2s | Queue-based processing |
+| **Concurrent Users** | 1000+ | 100 | Load balancing, CDN |
+
+## 🚀 Deployment Architecture
+
+### Multi-Environment Strategy
+
+```mermaid
+graph TB
+    subgraph "Development"
+        DevLocal[Local Development<br/>bun dev]
+        DevDB[(Local Supabase)]
+        DevStripe[Stripe Test Mode]
+    end
+    
+    subgraph "Staging"
+        StagingApp[Vercel Preview<br/>staging.creatorflow.com]
+        StagingDB[(Supabase Staging)]
+        StagingStripe[Stripe Test Mode]
+    end
+    
+    subgraph "Production"
+        ProdApp[Vercel Production<br/>creatorflow.com]
+        ProdDB[(Supabase Production)]
+        ProdStripe[Stripe Live Mode]
+        ProdCDN[Global CDN]
+    end
+    
+    DevLocal --> StagingApp
+    StagingApp --> ProdApp
+    
+    DevDB --> StagingDB
+    StagingDB --> ProdDB
+    
+    DevStripe --> StagingStripe
+    StagingStripe --> ProdStripe
+```
+
+## 📈 Monitoring & Observability
+
+### Monitoring Stack
+
+```mermaid
+graph TB
+    subgraph "Application Monitoring"
+        Vercel[Vercel Analytics<br/>Performance Metrics]
+        PostHog[PostHog<br/>User Analytics]
+        Sentry[Error Tracking<br/>Performance Monitoring]
+    end
+    
+    subgraph "Infrastructure Monitoring"
+        Supabase[Supabase Metrics<br/>Database Performance]
+        Uptime[Uptime Monitoring<br/>Service Availability]
+        Logs[Centralized Logging<br/>Application Logs]
+    end
+    
+    subgraph "Business Metrics"
+        Revenue[Stripe Dashboard<br/>Revenue Tracking]
+        Orders[Order Processing<br/>Success Rates]
+        Users[User Engagement<br/>Retention Metrics]
+    end
+    
+    Vercel --> Sentry
+    PostHog --> Users
+    Supabase --> Logs
+    Revenue --> Orders
+```
+
+## 🔄 Integration Patterns
+
+### API Integration Architecture
+
+```mermaid
+graph TB
+    subgraph "CreatorFlow Core"
+        APIGateway[API Gateway<br/>Rate Limiting & Auth]
+        EventBus[Event Bus<br/>Webhook Processing]
+        JobQueue[Job Queue<br/>Background Processing]
+    end
+    
+    subgraph "External APIs"
+        TikTok[TikTok Shop API<br/>Orders, Products, Fulfillment]
+        Shipping[Shipping APIs<br/>Shippo, EasyPost]
+        Payment[Stripe API<br/>Subscriptions, Billing]
+        Email[Resend API<br/>Transactional Emails]
+    end
+    
+    APIGateway --> TikTok
+    APIGateway --> Shipping
+    APIGateway --> Payment
+    APIGateway --> Email
+    
+    EventBus --> JobQueue
+    JobQueue --> APIGateway
+    
+    TikTok -.->|Webhooks| EventBus
+    Payment -.->|Webhooks| EventBus
+    Shipping -.->|Webhooks| EventBus
+```
+
+## Related Documentation
+
+- [Development Guide](../development/README.md) - Setup and development workflow
+- [Business Model](../business/README.md) - Business context and objectives
+- [TikTok Shop Integration](../integrations/tiktok-shop/01-specifications/S001-DRAFT-api-integration-specifications.md) - API integration specs
+- [Security Overview](../security/README.md) - Detailed security implementation
+- [MoSCoW Roadmap](../development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) - Implementation priorities
+
+---
+
+*This architecture supports CreatorFlow's mission to scale TikTok Shop creators from 50 to 500+ orders per day through automated fulfillment processes.*
     end
 
     subgraph "CreatorFlow Platform"
