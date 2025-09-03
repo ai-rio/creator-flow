@@ -1,106 +1,535 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
+    /* Base shadcn/ui variables (maintained for compatibility) */
     --background: 240 6% 10%;
     --foreground: 60 0% 90%;
-
     --muted: 240 6% 10%;
     --muted-foreground: 240 5% 84%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
-
     --ring: 215 20.2% 65.1%;
-
     --radius: 0.5rem;
+
+    /* CDH Manifesto Tenet 1: Clarity Over Chaos */
+    --clarity-primary: 215 100% 50%;        /* #3b82f6 */
+    --clarity-neutral: 215 14% 34%;         /* #475569 */
+    --clarity-background: 210 20% 98%;      /* #f8fafc */
+    --clarity-focus: 215 100% 50%;          /* Focus indicator */
+
+    /* CDH Manifesto Tenet 2: Data is Art */
+    --data-art-primary: 258 90% 66%;        /* #8b5cf6 */
+    --data-art-creative: 285 85% 68%;       /* #a855f7 */
+    --data-art-canvas: 237 36% 20%;         /* #1e1b4b */
+    --data-art-inspiration: 330 81% 60%;    /* #ec4899 */
+
+    /* CDH Manifesto Tenet 3: Empowerment Through Automation */
+    --automation-primary: 159 64% 40%;      /* #10b981 */
+    --automation-liberated: 159 64% 56%;    /* #34d399 */
+    --automation-celebrating: 159 64% 72%;  /* #6ee7b7 */
+    --automation-flow: 159 64% 88%;         /* #a7f3d0 */
+
+    /* CDH Manifesto Tenet 4: Creator is the CEO */
+    --executive-primary: 41 96% 48%;        /* #f59e0b */
+    --executive-authority: 41 96% 40%;      /* #d97706 */
+    --executive-commanding: 41 96% 32%;     /* #92400e */
+    --executive-platinum: 60 9% 87%;        /* #e5e4e2 */
+
+    /* TikTok Integration Brand Colors */
+    --tiktok-pink: 350 100% 50%;            /* #ff0050 */
+    --tiktok-blue: 180 100% 53%;            /* #25f4ee */
+    --tiktok-black: 234 18% 12%;            /* #161823 */
+    
+    /* Enhanced System Colors */
+    --success-enhanced: 159 64% 40%;        /* #10b981 */
+    --warning-enhanced: 41 96% 48%;         /* #f59e0b */
+    --error-enhanced: 0 84% 60%;            /* #ef4444 */
+    --info-enhanced: 215 100% 50%;          /* #3b82f6 */
+
+    /* Premium Spacing Scale */
+    --spacing-xs: 0.25rem;                  /* 4px */
+    --spacing-sm: 0.5rem;                   /* 8px */
+    --spacing-tactical: 1rem;               /* 16px */
+    --spacing-strategic: 1.5rem;            /* 24px */
+    --spacing-command: 2rem;                /* 32px */
+    --spacing-executive: 3rem;              /* 48px */
+    --spacing-presidential: 4rem;           /* 64px */
+    --spacing-imperial: 6rem;               /* 96px */
+
+    /* Animation Timing Variables */
+    --duration-instant: 100ms;
+    --duration-fast: 200ms;
+    --duration-medium: 300ms;
+    --duration-slow: 500ms;
+    --duration-cinematic: 800ms;
+    --duration-epic: 1200ms;
+
+    /* Premium Easing Functions */
+    --ease-executive: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-cinematic: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* Border Radius Variables */
+    --radius-premium: 0.75rem;              /* 12px */
+    --radius-executive: 1rem;               /* 16px */
+
+    /* Typography Scale Variables */
+    --font-display: 'Montserrat', system-ui, sans-serif;
+    --font-creative: 'Poppins', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
   }
 
   .dark {
+    /* Dark mode overrides (maintaining existing structure) */
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
-
     --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
-
     --accent: 216 34% 17%;
     --accent-foreground: 210 40% 98%;
-
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
-
     --border: 216 34% 17%;
     --input: 216 34% 17%;
-
     --card: 224 71% 4%;
     --card-foreground: 213 31% 91%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 1.2%;
-
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
-
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-
     --ring: 216 34% 17%;
 
-    --radius: 0.5rem;
+    /* Dark mode CDH Manifesto adjustments */
+    --clarity-background: 224 71% 4%;
+    --data-art-canvas: 224 71% 4%;
+    --executive-platinum: 215.4 16.3% 25%;
   }
-  ::selection {
-    @apply text-black;
-    @apply bg-cyan-400;
-  }
-  *:focus-visible {
-    @apply outline;
-    @apply outline-2;
-    @apply outline-offset-2;
-    @apply outline-pink-500;
-  }
+
+  /* Enhanced base styles */
   * {
-    @apply border-border;
-    @apply min-w-0;
+    @apply border-border min-w-0;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
-  html {
+
+  html, body {
     @apply h-full;
   }
-  body {
-    @apply h-full;
-  }
+
+  /* CDH Manifesto Typography Styles */
   h1 {
-    @apply font-bold;
-    @apply text-4xl;
-    @apply text-white;
-    @apply lg:text-6xl;
-    @apply bg-clip-text;
-    @apply drop-shadow-[0_0_15px_rgba(0,0,0,1)];
-    @apply lg:text-transparent;
-    @apply lg:bg-gradient-to-br;
-    @apply from-white;
-    @apply to-neutral-400;
+    @apply font-display font-bold text-4xl lg:text-6xl;
+    @apply text-white bg-clip-text drop-shadow-[0_0_15px_rgba(0,0,0,1)];
+    @apply lg:text-transparent lg:bg-gradient-to-br from-white to-neutral-400;
+  }
+
+  /* Executive heading style */
+  .heading-executive {
+    @apply font-display font-bold text-heading-xl text-executive-600;
+    @apply drop-shadow-sm;
+  }
+
+  /* Data art heading style */
+  .heading-artistic {
+    @apply font-display font-semibold text-heading-lg;
+    @apply bg-gradient-to-r from-data-art-600 via-artistic-creativity to-artistic-inspiration;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Automation status heading */
+  .heading-automation {
+    @apply font-sans font-medium text-heading-md text-automation-600;
+    @apply tracking-wide uppercase;
+  }
+
+  /* Clarity focus heading */
+  .heading-clarity {
+    @apply font-sans font-semibold text-heading-lg text-clarity-600;
+    @apply tracking-tight;
+  }
+
+  /* Premium selection styling */
+  ::selection {
+    @apply text-black bg-tiktok-blue;
+  }
+
+  /* Enhanced focus styling */
+  *:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-clarity-500;
+  }
+
+  /* Executive focus variant */
+  .focus-executive:focus-visible {
+    @apply outline-executive-500 shadow-authority-glow;
+  }
+
+  /* Artistic focus variant */
+  .focus-artistic:focus-visible {
+    @apply outline-data-art-500 shadow-artistic;
+  }
+
+  /* Premium scroll styling */
+  .scroll-premium {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--executive-primary)) hsl(var(--clarity-background));
+  }
+
+  .scroll-premium::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scroll-premium::-webkit-scrollbar-track {
+    background: hsl(var(--clarity-background));
+    border-radius: 4px;
+  }
+
+  .scroll-premium::-webkit-scrollbar-thumb {
+    background: hsl(var(--executive-primary));
+    border-radius: 4px;
+  }
+
+  .scroll-premium::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--executive-authority));
+  }
+}
+
+/* CDH Manifesto Component Classes */
+@layer components {
+  /* Clarity Over Chaos Components */
+  .card-clarity {
+    @apply bg-clarity-neutral-50 border border-clarity-neutral-100 rounded-premium shadow-premium;
+    @apply transition-all duration-fast hover:shadow-clarity-glow;
+  }
+
+  .button-clarity {
+    @apply bg-clarity-500 hover:bg-clarity-600 text-white font-medium;
+    @apply px-tactical py-2 rounded-md transition-all duration-fast;
+    @apply focus:ring-2 focus:ring-clarity-500/20 focus:ring-offset-2;
+  }
+
+  /* Data is Art Components */
+  .card-artistic {
+    @apply bg-gradient-to-br from-data-art-50 to-data-art-100 border-0 rounded-executive shadow-artistic;
+    @apply transition-all duration-cinematic hover:shadow-2xl hover:scale-[1.02];
+  }
+
+  .visualization-canvas {
+    @apply bg-data-canvas rounded-executive p-strategic;
+    @apply border border-data-art-500/20 shadow-artistic;
+  }
+
+  .metric-artistic {
+    @apply font-mono text-metric-lg text-data-art-600 font-bold;
+    @apply drop-shadow-sm;
+  }
+
+  /* Automation Empowerment Components */
+  .card-automation {
+    @apply bg-gradient-to-r from-automation-50 to-automation-100 border border-automation-500/20 rounded-premium;
+    @apply shadow-automation transition-all duration-medium;
+  }
+
+  .status-automated {
+    @apply bg-automation-500 text-white px-tactical py-1 rounded-full text-sm font-medium;
+    @apply animate-pulse;
+  }
+
+  .flow-indicator {
+    @apply h-1 bg-gradient-to-r from-automation-500 to-liberation-celebrating rounded-full;
+    @apply animate-automation-flow;
+  }
+
+  /* Creator is the CEO Components */
+  .card-executive {
+    @apply bg-gradient-to-br from-executive-50 to-executive-100 border-2 border-executive-500/30 rounded-executive;
+    @apply shadow-executive transition-all duration-slow hover:shadow-authority-glow;
+  }
+
+  .button-executive {
+    @apply bg-executive-500 hover:bg-executive-600 text-white font-semibold;
+    @apply px-command py-tactical rounded-executive transition-all duration-medium;
+    @apply shadow-lg hover:shadow-authority-glow transform hover:-translate-y-1;
+  }
+
+  .heading-ceo {
+    @apply font-display font-bold text-executive-600 tracking-tight;
+    @apply drop-shadow-md;
+  }
+
+  /* TikTok Integration Components */
+  .status-tiktok-connected {
+    @apply bg-gradient-to-r from-tiktok-pink to-tiktok-blue text-white;
+    @apply px-tactical py-1 rounded-full text-sm font-medium;
+    @apply shadow-lg animate-pulse;
+  }
+
+  .alert-viral {
+    @apply bg-gradient-to-r from-tiktok-pink/10 to-tiktok-pink/20 border-l-4 border-tiktok-pink;
+    @apply p-tactical rounded-md shadow-viral-glow;
+    @apply animate-priority-highlight;
+  }
+
+  /* Premium Loading States */
+  .skeleton-premium {
+    @apply animate-pulse bg-gradient-to-r from-clarity-neutral-100 via-clarity-neutral-200 to-clarity-neutral-100;
+    @apply bg-[length:200%_100%] animate-shimmer;
+  }
+
+  .loading-executive {
+    @apply inline-flex items-center gap-2 text-executive-600 font-medium;
+  }
+
+  .loading-executive::after {
+    content: '';
+    @apply w-4 h-4 border-2 border-executive-600/30 border-t-executive-600 rounded-full animate-spin;
+  }
+}
+
+/* Premium Animation Classes */
+@layer utilities {
+  /* CDH Manifesto Animation Utilities */
+  .animate-revenue-flow {
+    animation: revenue-flow 3s ease-in-out infinite;
+  }
+
+  .animate-liberation-celebration {
+    animation: liberation-celebration 2s ease-in-out;
+  }
+
+  .animate-executive-entrance {
+    animation: executive-entrance 0.8s var(--ease-executive) forwards;
+  }
+
+  .animate-priority-highlight {
+    animation: priority-highlight 2s infinite;
+  }
+
+  .animate-data-aurora {
+    animation: data-aurora 4s ease-in-out infinite;
+  }
+
+  .animate-profit-landscape {
+    animation: profit-landscape 1.2s var(--ease-cinematic) forwards;
+  }
+
+  .animate-automation-flow {
+    animation: automation-flow 2s ease-in-out infinite;
+  }
+
+  .animate-stress-elimination {
+    animation: stress-elimination 0.8s ease-in forwards;
+  }
+
+  .animate-focus-flow {
+    animation: focus-flow 2s ease-in-out infinite;
+  }
+
+  .animate-authority-glow {
+    animation: authority-glow 1.5s ease-in-out infinite;
+  }
+
+  .animate-strategic-pulse {
+    animation: strategic-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Gesture Interaction Classes */
+  .swipe-action {
+    @apply transition-transform duration-fast ease-out;
+    touch-action: pan-x;
+  }
+
+  .long-press {
+    @apply transition-all duration-medium;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Premium Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-fast hover:-translate-y-1 hover:shadow-premium;
+  }
+
+  .hover-executive {
+    @apply transition-all duration-medium hover:-translate-y-2 hover:shadow-authority-glow;
+  }
+
+  .hover-artistic {
+    @apply transition-all duration-cinematic hover:scale-[1.02] hover:shadow-artistic;
+  }
+
+  /* Premium Focus States */
+  .focus-executive {
+    @apply focus:outline-none focus:ring-4 focus:ring-executive-500/20 focus:shadow-authority-glow;
+  }
+
+  .focus-artistic {
+    @apply focus:outline-none focus:ring-4 focus:ring-data-art-500/20 focus:shadow-artistic;
+  }
+
+  .focus-clarity {
+    @apply focus:outline-none focus:ring-2 focus:ring-clarity-500/20 focus:shadow-clarity-glow;
+  }
+
+  /* Premium Text Effects */
+  .text-gradient-executive {
+    @apply bg-gradient-to-r from-executive-500 to-executive-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-artistic {
+    @apply bg-gradient-to-r from-data-art-500 via-artistic-creativity to-artistic-inspiration bg-clip-text text-transparent;
+  }
+
+  .text-gradient-automation {
+    @apply bg-gradient-to-r from-automation-500 to-liberation-celebrating bg-clip-text text-transparent;
+  }
+
+  .text-gradient-viral {
+    @apply bg-gradient-to-r from-tiktok-pink to-tiktok-blue bg-clip-text text-transparent;
+  }
+
+  /* Premium Layout Utilities */
+  .container-executive {
+    @apply max-w-screen-executive mx-auto px-command lg:px-executive;
+  }
+
+  .grid-executive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-strategic lg:gap-command;
+  }
+
+  .stack-executive {
+    @apply space-y-command;
+  }
+
+  .stack-strategic {
+    @apply space-y-strategic;
+  }
+
+  .stack-tactical {
+    @apply space-y-tactical;
+  }
+
+  /* Premium Border Utilities */
+  .border-premium {
+    @apply border border-opacity-20 rounded-premium;
+  }
+
+  .border-executive {
+    @apply border-2 border-executive-500/30 rounded-executive;
+  }
+
+  .border-artistic {
+    @apply border border-data-art-500/20 rounded-executive;
+  }
+
+  /* Premium Background Utilities */
+  .bg-premium-card {
+    @apply bg-white/80 backdrop-blur-sm;
+  }
+
+  .bg-executive-card {
+    @apply bg-gradient-to-br from-executive-50 to-executive-100;
+  }
+
+  .bg-artistic-card {
+    @apply bg-gradient-to-br from-data-art-50 to-data-art-100;
+  }
+
+  .bg-automation-card {
+    @apply bg-gradient-to-r from-automation-50 to-automation-100;
+  }
+
+  .bg-clarity-card {
+    @apply bg-clarity-neutral-50;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    @apply text-black bg-white;
+  }
+
+  .card-executive,
+  .card-artistic,
+  .card-automation,
+  .card-clarity {
+    @apply border border-gray-300 shadow-none bg-white;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --clarity-primary: 0 0% 0%;
+    --data-art-primary: 0 0% 0%;
+    --automation-primary: 0 0% 0%;
+    --executive-primary: 0 0% 0%;
+  }
+
+  .card-executive,
+  .card-artistic,
+  .card-automation,
+  .card-clarity {
+    @apply border-2 border-black;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-revenue-flow,
+  .animate-liberation-celebration,
+  .animate-executive-entrance,
+  .animate-priority-highlight,
+  .animate-data-aurora,
+  .animate-profit-landscape,
+  .animate-automation-flow,
+  .animate-stress-elimination,
+  .animate-focus-flow,
+  .animate-authority-glow,
+  .animate-strategic-pulse,
+  .animate-shimmer {
+    animation: none;
+  }
+
+  .hover-lift,
+  .hover-executive,
+  .hover-artistic {
+    @apply transform-none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
