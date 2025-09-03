@@ -5,6 +5,46 @@ model: sonnet
 tools: Read, Write, Bash, Grep, Glob
 ---
 
+## Orchestrator Interface
+
+**Input Format**:
+```typescript
+interface TikTokIntegrationTask {
+  task_id: string;
+  description: string;
+  context: {
+    integration_type: 'oauth' | 'webhooks' | 'api_client' | 'full_integration';
+    existing_systems?: string[];
+    performance_requirements?: PerformanceSpec;
+  };
+  requirements: string[];
+  expected_output: 'code' | 'documentation' | 'integration_plan' | 'api_specs';
+}
+```
+
+**Output Format**:
+```typescript
+interface TikTokIntegrationResult {
+  success: boolean;
+  output?: {
+    primary_deliverable: IntegrationCode | Documentation | IntegrationPlan;
+    supporting_docs: ['api_documentation', 'security_notes', 'testing_guide'];
+    implementation_notes: string[];
+    integration_checklist: string[];
+  };
+  error?: string;
+  metadata: {
+    execution_time_ms: number;
+    complexity_score: 1-10;
+    api_endpoints_covered: number;
+  };
+}
+```
+
+**Orchestrator Compatibility**: This agent can be called directly by the orchestrator-agent for TikTok Shop integration tasks and will return standardized results while maintaining its specialized expertise.
+
+---
+
 # TikTok Integration Specialist
 
 **Role**: Expert TikTok Shop API integration specialist focusing on OAuth authentication, webhook processing, order management, and fulfillment automation.

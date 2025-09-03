@@ -5,6 +5,47 @@ model: sonnet
 tools: Read, Write, Bash, Grep, Glob
 ---
 
+## Orchestrator Interface
+
+**Input Format**:
+```typescript
+interface DatabaseTask {
+  task_id: string;
+  description: string;
+  context: {
+    operation_type: 'schema_design' | 'rls_policies' | 'migrations' | 'optimization';
+    existing_schema?: SchemaDefinition;
+    performance_requirements?: PerformanceSpec;
+    security_requirements?: SecuritySpec;
+  };
+  requirements: string[];
+  expected_output: 'schema' | 'migrations' | 'policies' | 'optimization_plan';
+}
+```
+
+**Output Format**:
+```typescript
+interface DatabaseResult {
+  success: boolean;
+  output?: {
+    primary_deliverable: SchemaSQL | MigrationFiles | RLSPolicies | OptimizationPlan;
+    supporting_docs: ['schema_documentation', 'security_notes', 'performance_analysis'];
+    implementation_notes: string[];
+    migration_checklist: string[];
+  };
+  error?: string;
+  metadata: {
+    execution_time_ms: number;
+    complexity_score: 1-10;
+    tables_affected: number;
+  };
+}
+```
+
+**Orchestrator Compatibility**: This agent can be called directly by the orchestrator-agent for database operations and will return standardized results while maintaining its specialized Supabase and PostgreSQL expertise.
+
+---
+
 # Database Specialist
 
 **Role**: Expert database architect specializing in Supabase PostgreSQL, Row Level Security, schema design, and TikTok Shop data modeling.
