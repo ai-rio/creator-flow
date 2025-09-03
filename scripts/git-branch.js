@@ -83,10 +83,39 @@ if (explicitType) {
   detectionInfo = detection;
 }
 
+// Remove redundant keywords from branch name
+function removeRedundantKeywords(name, type) {
+  const keywords = branchTypeKeywords[type] || [];
+  let cleanedName = name;
+  
+  // Remove the branch type itself if it's at the beginning
+  if (cleanedName.startsWith(`${type}-`)) {
+    cleanedName = cleanedName.substring(type.length + 1);
+  }
+  
+  // Remove other keywords of the same type
+  for (const keyword of keywords) {
+    const keywordPattern = new RegExp(`^${keyword}-|^${keyword}$|-${keyword}-|-${keyword}$`, 'gi');
+    cleanedName = cleanedName.replace(keywordPattern, (match) => {
+      if (match.startsWith('-') && match.endsWith('-')) return '-';
+      if (match.startsWith('-')) return '';
+      if (match.endsWith('-')) return '';
+      return '';
+    });
+  }
+  
+  // Clean up multiple dashes and trailing/leading dashes
+  cleanedName = cleanedName.replace(/-+/g, '-').replace(/^-|-$/g, '');
+  
+  return cleanedName || name; // Fallback to original if cleaning results in empty string
+}
+
+const finalBranchName = removeRedundantKeywords(cleanBranchName, branchType);
+
 // Create full branch name
 const fullBranchName = cleanBranchName.includes('/') 
   ? cleanBranchName 
-  : `${branchType}/${cleanBranchName}`;
+  : `${branchType}/${finalBranchName}`;
 
 try {
   // Show branch type detection info
