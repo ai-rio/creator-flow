@@ -205,6 +205,69 @@ bun git:done "feat: implement feature name"
 - `bun git:mirror setup [url]` - Add backup remotes (GitLab, Bitbucket)
 - `bun git:mirror sync` - Sync to all backup locations
 
+### 🤖 Intelligent Automation System
+
+**Zero-Touch Development Experience**: Automatic execution of commands based on file changes and context.
+
+```bash
+# Start intelligent automation (recommended)
+bun auto:start
+
+# Automation levels
+bun auto:full      # Maximum automation
+bun auto:smart     # Context-aware automation (default)  
+bun auto:minimal   # Critical commands only
+bun auto:off       # Disable automation
+
+# Status and configuration
+bun auto:status    # Show automation status and statistics
+bun auto:config    # Interactive configuration
+```
+
+**🎯 Automation Levels**:
+- **FULL**: All commands run automatically on file changes
+- **SMART**: Intelligent command selection based on file context and branch type
+- **MINIMAL**: Only critical commands (type-check, essential tests)
+- **OFF**: Manual execution only
+
+**🔄 Smart File Watching**:
+- **Components** (`src/components/**/*.tsx`) → `type-check`, `test:components`, `lint:fix`
+- **API Routes** (`src/app/api/**/*.ts`) → `type-check`, `test:api`, `build:verify`
+- **Tests** (`**/*.test.ts`) → `test:file`, `type-check`
+- **Database** (`supabase/**/*.sql`) → `db:check`, `generate-types`
+- **Config** (`*.config.js`, `package.json`) → `health-check:full`, `install`
+
+**🧠 Context Intelligence**:
+- **Feature Development** (branch: `feature/*`) → Auto git workflow, focused testing
+- **Bug Fixing** (branch: `fix/*`) → Strict type checking, failure-focused tests
+- **Refactoring** (branch: `refactor/*`) → Full test suite, build verification
+
+**⚡ Performance Features**:
+- Smart debouncing (prevents command spam)
+- Resource monitoring (respects CPU/memory limits)
+- Parallel execution for independent commands
+- Intelligent command batching and caching
+
+**🖥️ VS Code Integration**:
+```bash
+# Setup VS Code integration with keyboard shortcuts
+bun vscode:setup-full
+```
+
+**Keyboard Shortcuts** (after VS Code setup):
+- `Ctrl+Alt+A` - Toggle automation
+- `Ctrl+Alt+S` - Show automation status
+- `Ctrl+Alt+T` - Run type check
+- `Ctrl+Alt+G` - Git safe start
+- `Ctrl+Alt+W` - Git WIP save
+- `Ctrl+Alt+D` - Git done
+
+**📊 Real-time Monitoring**:
+- Live command execution status
+- Performance metrics and timing
+- Error handling with recovery suggestions
+- Command history and success rates
+
 ### Documentation Standards
 
 1. **Follow Documentation Standards**: All docs follow [Project Documentation Standards](./docs/development/documentation-standards/DOCUMENTATION_STANDARDS.md)

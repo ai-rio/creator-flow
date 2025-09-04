@@ -29,7 +29,7 @@
     "git:safe-start": "git status && echo '✅ Ready for new task (ensure clean working tree above shows clean)'",
     "git:status": "git status",
     "git:save": "node scripts/git-save.js",
-    "git:wip": "node scripts/git-wip.js", 
+    "git:wip": "node scripts/git-wip.js",
     "git:done": "node scripts/git-done.js",
     "git:push": "git push origin HEAD",
     "git:branch": "node scripts/git-branch.js",
@@ -40,7 +40,15 @@
     "git:backup": "node scripts/git-backup.js",
     "git:restore-backup": "node scripts/git-restore-backup.js",
     "git:recover": "node scripts/git-recover.js",
-    "git:mirror": "node scripts/git-mirror.js"
+    "git:mirror": "node scripts/git-mirror.js",
+    "auto:start": "node scripts/automation-engine.js smart",
+    "auto:full": "node scripts/automation-engine.js full",
+    "auto:minimal": "node scripts/automation-engine.js minimal",
+    "auto:off": "node scripts/automation-engine.js off",
+    "auto:status": "node scripts/automation-status.js",
+    "auto:config": "node scripts/automation-config.js",
+    "vscode:setup": "node scripts/vscode-integration.js",
+    "vscode:setup-full": "node scripts/vscode-integration.js --full"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.2",
@@ -88,6 +96,7 @@
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "autoprefixer": "^10.4.20",
+    "chokidar": "^4.0.3",
     "env-cmd": "^10.1.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.1.4",
