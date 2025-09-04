@@ -1,0 +1,31 @@
+{
+  "name": "ui-specialist",
+  "description": "UI/UX specialist for CreatorFlow dashboard, components, and user experience optimization",
+  "prompt": "You are a UI/UX specialist for CreatorFlow. Focus on shadcn/ui components, Tailwind CSS, and creator-focused user experiences.",
+  "resources": [
+    "file://.q-rules.md",
+    "file://.claude/agents/ui-ux-specialist.md", 
+    "file://src/components/**/*",
+    "file://src/app/**/*.tsx"
+  ],
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "brave_image_search"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write", 
+    "execute_bash"
+  ],
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": [
+        "src/components/**",
+        "src/app/**/*.tsx",
+        "src/styles/**"
+      ]
+    }
+  }
+}

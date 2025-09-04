@@ -25,7 +25,9 @@
       "Bash(bun git:safe-start:*)",
       "Bash(bun git:done:*)",
       "Bash(node:*)",
-      "Bash(bun auto:start:*)"
+      "Bash(bun auto:start:*)",
+      "Bash(git commit:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []

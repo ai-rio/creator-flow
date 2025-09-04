@@ -1,0 +1,28 @@
+{
+  "name": "orchestrator",
+  "description": "Central orchestrator for complex multi-system tasks requiring coordination of multiple specialist agents",
+  "prompt": "You are the central orchestrator for CreatorFlow. Analyze complex tasks, decompose them, delegate to specialists, and synthesize results.",
+  "resources": [
+    "file://.q-rules.md",
+    "file://.claude/agents/orchestrator-agent.md",
+    "file://.claude/agents/**/*.md",
+    "file://docs/architecture/**/*.md"
+  ],
+  "tools": ["*"],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "use_aws",
+    "brave_*"
+  ],
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": [
+        "docs/**",
+        "src/**",
+        "tests/**"
+      ]
+    }
+  }
+}
