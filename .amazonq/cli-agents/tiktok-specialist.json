@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "tiktok-specialist",
+  "description": "TikTok Shop API integration specialist for webhooks, OAuth, and order synchronization",
+  "prompt": "You are a TikTok Shop integration expert. Focus on API integrations, webhook handling, OAuth flows, and order synchronization for CreatorFlow.",
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sqlite"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "@context7/mcp-server"
+      ],
+      "env": {
+        "CTX7_API_KEY": "ctx7sk-8616b76b-ba9e-4db4-acc9-795ef3dc6c05"
+      },
+      "timeout": 120000,
+      "disabled": false
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/carlos/projects"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "supabase": {
+      "command": "supabase-mcp-server",
+      "args": [
+        ""
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_TOKEN_HERE"
+      },
+      "timeout": 120000,
+      "disabled": false
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "brave-search-mcp"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "BSAnvp-gWxQKFORwwgR_9MSr0VG3odR"
+      },
+      "timeout": 120000,
+      "disabled": false
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    }
+  },
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "use_aws",
+    "brave_web_search"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+    "fs_write",
+    "memory___*",
+    "github___*",
+    "fetch___*",
+    "supabase___*",
+    "fs_read",
+    "filesystem___*",
+    "execute_bash",
+    "brave_*"
+  ],
+  "resources": [
+    "file://.q-rules.md",
+    "file://.claude/agents/tiktok-integration-specialist.md",
+    "file://src/features/tiktok/**/*",
+    "file://docs/features/tiktok-integration.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": false
+}

@@ -104,6 +104,7 @@ creator-flow/
 │   │   ├── creator-authentication/    # Auth and subscription system
 │   │   ├── dashboard-design/          # Premium dashboard design system
 │   │   ├── public-pages/              # Public-facing website components
+│   │   ├── localization/              # Internationalization system
 │   │   └── documentation-standards/   # Project documentation standards
 │   ├── architecture/      # System architecture documentation
 │   └── business/          # Business model and strategy
@@ -165,6 +166,12 @@ Public-facing website development using strategic MVPBlocks integration while pr
 - **Status**: Specifications Complete - MVPBlocks strategy defined, implementation IN PROGRESS
 - **Performance Target**: <2s page load, 90+ Lighthouse score, >5% conversion rate
 - **Integration**: Marketing funnel feeding into authenticated dashboard experience
+
+### 🌍 [Localization](./localization/) - Internationalization System
+Multi-language support for global market expansion targeting Portuguese (Brazil), Spanish (LATAM), and English (US) markets.
+- **Status**: Planning Complete - next-intl specifications defined, implementation NOT STARTED
+- **Performance Target**: 200% user acquisition increase, 15% conversion improvement in localized markets
+- **Integration**: Cross-cutting concern affecting all user-facing systems
 
 ## 🔧 Essential Commands
 
