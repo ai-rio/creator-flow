@@ -80,7 +80,7 @@
   /* Data art heading style */
   .heading-artistic {
     @apply font-display font-semibold text-heading-lg;
-    @apply bg-gradient-to-r from-data-art-600 via-artistic-creativity to-artistic-inspiration;
+    @apply bg-gradient-to-r from-data-art-600 via-data-art-500 to-data-art-900;
     @apply bg-clip-text text-transparent;
   }
 
@@ -146,12 +146,12 @@
 
   /* Enhanced Header Styling */
   .mvp-header-2 {
-    @apply bg-clarity-background/90 backdrop-blur-sm;
+    @apply bg-clarity-neutral-50/90 backdrop-blur-sm;
     border-bottom: 1px solid hsl(var(--clarity-neutral) / 0.2);
   }
 
   .mvp-header-2 .nav-link {
-    @apply text-clarity-neutral hover:text-clarity-primary;
+    @apply text-clarity-neutral-700 hover:text-clarity-500;
     transition: color var(--duration-fast) var(--ease-executive);
   }
 
@@ -192,7 +192,7 @@
 
   /* Testimonials Marquee Styling */
   .mvp-testimonials-marquee {
-    @apply bg-artistic-canvas/10;
+    @apply bg-data-art-50/10;
   }
 
   .mvp-testimonials-marquee .testimonial-card {
@@ -207,7 +207,7 @@
   }
 
   .footer-newsletter .newsletter-section {
-    @apply bg-gradient-to-r from-executive-500 via-executive-600 to-executive-700;
+    @apply bg-gradient-to-r from-executive-500 via-executive-600 to-executive-900;
   }
 }
 

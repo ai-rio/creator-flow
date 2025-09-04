@@ -41,7 +41,8 @@
       "Bash(curl:*)",
       "Read(//tmp/**)",
       "Bash(pkill:*)",
-      "Bash(/dev/null)"
+      "Bash(/dev/null)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []
