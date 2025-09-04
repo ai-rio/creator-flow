@@ -1,7 +1,7 @@
 {
   "navigation": {
     "dashboard": "Dashboard",
-    "orders": "Orders",
+    "orders": "Orders", 
     "analytics": "Analytics",
     "settings": "Settings"
   },
@@ -9,7 +9,7 @@
     "title": "Order Management",
     "status": {
       "received": "Received",
-      "processing": "Processing",
+      "processing": "Processing", 
       "shipped": "Shipped",
       "delivered": "Delivered"
     }
@@ -22,5 +22,9 @@
   "errors": {
     "pageNotFound": "Page not found",
     "goHome": "Go to Home"
+  },
+  "test": {
+    "welcome": "Welcome to CreatorFlow!",
+    "description": "This is a test page for Tolgee integration."
   }
 }

@@ -2,7 +2,7 @@
   "navigation": {
     "dashboard": "Painel",
     "orders": "Pedidos",
-    "analytics": "Análises",
+    "analytics": "Análises", 
     "settings": "Configurações"
   },
   "orders": {
@@ -10,7 +10,7 @@
     "status": {
       "received": "Recebido",
       "processing": "Processando",
-      "shipped": "Enviado",
+      "shipped": "Enviado", 
       "delivered": "Entregue"
     }
   },
@@ -22,5 +22,9 @@
   "errors": {
     "pageNotFound": "Página não encontrada",
     "goHome": "Ir para Início"
+  },
+  "test": {
+    "welcome": "Bem-vindo ao CreatorFlow!",
+    "description": "Esta é uma página de teste para integração Tolgee."
   }
 }

@@ -6,7 +6,7 @@
     "settings": "Configuración"
   },
   "orders": {
-    "title": "Gestión de Pedidos",
+    "title": "Gestión de Pedidos", 
     "status": {
       "received": "Recibido",
       "processing": "Procesando",
@@ -16,11 +16,15 @@
   },
   "auth": {
     "login": "Iniciar Sesión",
-    "signup": "Registrarse",
+    "signup": "Registrarse", 
     "logout": "Cerrar Sesión"
   },
   "errors": {
     "pageNotFound": "Página no encontrada",
     "goHome": "Ir al Inicio"
+  },
+  "test": {
+    "welcome": "¡Bienvenido a CreatorFlow!",
+    "description": "Esta es una página de prueba para la integración de Tolgee."
   }
 }

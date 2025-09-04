@@ -5,10 +5,16 @@ const tolgee = Tolgee()
   .use(FormatSimple())
   .init({
     defaultLanguage: 'en',
-    // for dev mode
-    apiKey: process.env.NEXT_PUBLIC_TOLGEE_API_KEY,
-    apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL,
-    // for production and server
+    availableLanguages: ['en', 'pt-br', 'es'],
+    // Only enable API in development with proper configuration
+    ...(typeof window !== 'undefined' && 
+        process.env.NODE_ENV === 'development' && 
+        process.env.NEXT_PUBLIC_TOLGEE_API_KEY && {
+      apiKey: process.env.NEXT_PUBLIC_TOLGEE_API_KEY,
+      apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL || 'https://app.tolgee.io',
+      projectId: 22132,
+    }),
+    // Static data as primary source
     staticData: {
       en: () => import('../../messages/en.json'),
       'pt-br': () => import('../../messages/pt-br.json'),
