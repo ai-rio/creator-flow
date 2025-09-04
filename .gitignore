@@ -70,3 +70,10 @@ Thumbs.db
 .eslintcache
 *.tgz
 *.zip
+
+# Automation and backup system operational files
+.automation-status
+.git-backup-*
+.recovery-*
+.disaster-recovery-*
+.mirror-sync-*
