@@ -192,10 +192,18 @@ bun git:done "feat: implement feature name"
 - `bun git:save "message"` - Commit without push
 - `bun git:wip "description"` - Save work in progress
 - `bun git:done "message"` - Commit and push complete work
-- `bun git:branch "name"` - Create feature branch safely
+- `bun git:branch "name"` - Create feature branch safely (smart type detection)
 - `bun git:switch "branch"` - Switch branches (auto-saves work)
 - `bun git:pr "title"` - Create pull request from current branch
 - `bun git:cleanup` - Delete merged branches automatically
+
+**🚨 Disaster Recovery**:
+- `bun git:health-check` - Complete repository health scan
+- `bun git:backup` - Create complete repository backup
+- `bun git:restore-backup` - Restore from backups
+- `bun git:recover emergency` - Emergency recovery mode
+- `bun git:mirror setup [url]` - Add backup remotes (GitLab, Bitbucket)
+- `bun git:mirror sync` - Sync to all backup locations
 
 ### Documentation Standards
 

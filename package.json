@@ -35,7 +35,12 @@
     "git:branch": "node scripts/git-branch.js",
     "git:switch": "node scripts/git-switch.js",
     "git:pr": "node scripts/git-pr.js",
-    "git:cleanup": "node scripts/git-cleanup.js"
+    "git:cleanup": "node scripts/git-cleanup.js",
+    "git:health-check": "node scripts/git-health-check.js",
+    "git:backup": "node scripts/git-backup.js",
+    "git:restore-backup": "node scripts/git-restore-backup.js",
+    "git:recover": "node scripts/git-recover.js",
+    "git:mirror": "node scripts/git-mirror.js"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.2",
