@@ -17,6 +17,13 @@ interface TikTokShopResponse<T = any> {
   request_id: string
 }
 
+interface TokenResponse {
+  access_token: string
+  refresh_token: string
+  expires_in: number
+  shop_id: string
+}
+
 export class TikTokShopAPIClient {
   private config: TikTokShopConfig
   private baseURL: string
@@ -46,13 +53,8 @@ export class TikTokShopAPIClient {
   /**
    * Exchange authorization code for access token
    */
-  async exchangeCodeForToken(code: string, redirectUri: string): Promise<{
-    access_token: string
-    refresh_token: string
-    expires_in: number
-    shop_id: string
-  }> {
-    const response = await this.makeRequest('/authorization/v202309/token/get', {
+  async exchangeCodeForToken(code: string, redirectUri: string): Promise<TokenResponse> {
+    const response = await this.makeRequest<TokenResponse>('/authorization/v202309/token/get', {
       method: 'POST',
       body: {
         app_key: this.config.appKey,
@@ -96,7 +98,7 @@ export class TikTokShopAPIClient {
       throw new Error(`TikTok Shop API error: ${response.status} ${response.statusText}`)
     }
 
-    return response.json()
+    return response.json() as Promise<TikTokShopResponse<T>>
   }
 
   /**

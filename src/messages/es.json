@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "dashboard": "Panel",
+    "orders": "Pedidos",
+    "analytics": "Análisis",
+    "settings": "Configuración"
+  },
+  "orders": {
+    "title": "Gestión de Pedidos",
+    "status": {
+      "received": "Recibido",
+      "processing": "Procesando",
+      "shipped": "Enviado",
+      "delivered": "Entregado"
+    }
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse",
+    "logout": "Cerrar Sesión"
+  },
+  "errors": {
+    "pageNotFound": "Página no encontrada",
+    "goHome": "Ir al Inicio"
+  }
+}

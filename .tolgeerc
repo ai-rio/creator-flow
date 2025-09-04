@@ -1,0 +1,23 @@
+{
+  "projectId": 22132,
+  "apiUrl": "https://app.tolgee.io",
+  "push": {
+    "files": [
+      {
+        "path": "./src/messages/en.json",
+        "language": "en"
+      },
+      {
+        "path": "./src/messages/pt-br.json", 
+        "language": "pt-br"
+      },
+      {
+        "path": "./src/messages/es.json",
+        "language": "es"
+      }
+    ]
+  },
+  "pull": {
+    "path": "./src/messages"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "analytics": "Analytics",
+    "settings": "Settings"
+  },
+  "orders": {
+    "title": "Order Management",
+    "status": {
+      "received": "Received",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout"
+  },
+  "errors": {
+    "pageNotFound": "Page not found",
+    "goHome": "Go to Home"
+  }
+}

@@ -3,6 +3,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const createNextIntlPlugin = require('next-intl/plugin');
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
+
 const nextConfig = {
   // Temporarily disable ESLint during build to focus on functionality
   eslint: {
@@ -89,4 +92,4 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withNextIntl(withBundleAnalyzer(nextConfig));
