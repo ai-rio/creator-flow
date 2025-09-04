@@ -1,3 +1,5 @@
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono, Montserrat, Poppins } from 'next/font/google';
 

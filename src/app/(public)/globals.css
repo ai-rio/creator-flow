@@ -189,6 +189,26 @@
     content: '';
     @apply w-4 h-4 border-2 border-executive-600/30 border-t-executive-600 rounded-full animate-spin;
   }
+
+  /* Testimonials Marquee Styling */
+  .mvp-testimonials-marquee {
+    @apply bg-artistic-canvas/10;
+  }
+
+  .mvp-testimonials-marquee .testimonial-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl;
+    @apply hover:shadow-xl transform hover:-translate-y-1;
+    @apply transition-all duration-medium;
+  }
+
+  /* Footer Newsletter Styling */
+  .footer-newsletter {
+    @apply bg-slate-900;
+  }
+
+  .footer-newsletter .newsletter-section {
+    @apply bg-gradient-to-r from-executive-500 via-executive-600 to-executive-700;
+  }
 }
 
 /* Premium Animation Classes */
@@ -204,6 +224,23 @@
 
   .animate-executive-entrance {
     animation: executive-entrance 0.8s var(--ease-executive) forwards;
+  }
+
+  /* Marquee Animation Utilities */
+  .animate-marquee-slow {
+    animation: marquee 60s linear infinite;
+  }
+
+  .animate-marquee-medium {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee-fast {
+    animation: marquee 20s linear infinite;
+  }
+
+  .paused {
+    animation-play-state: paused;
   }
 
   /* Premium Hover Effects */
@@ -250,4 +287,32 @@
     transform: translateY(0) scale(1); 
     opacity: 1; 
   }
+}
+
+/* Marquee Animation Keyframes */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Additional TikTok-inspired animations */
+@keyframes viral-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3), 0 0 25px hsl(var(--tiktok-blue) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px hsl(var(--tiktok-pink) / 0.5), 0 0 35px hsl(var(--tiktok-blue) / 0.4);
+  }
+}
+
+.shadow-viral-glow {
+  box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3), 0 0 25px hsl(var(--tiktok-blue) / 0.2);
+}
+
+.shadow-authority-glow {
+  box-shadow: 0 0 20px hsl(var(--executive-primary) / 0.3);
 }

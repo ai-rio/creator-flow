@@ -34,7 +34,14 @@
       "Bash(bun git:wip:*)",
       "Bash(npx mvpblocks add:*)",
       "Bash(mkdir:*)",
-      "Bash(bun run:*)"
+      "Bash(bun run:*)",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_navigate",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Read(//tmp/**)",
+      "Bash(pkill:*)",
+      "Bash(/dev/null)"
     ],
     "deny": [],
     "ask": []
