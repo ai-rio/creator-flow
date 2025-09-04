@@ -29,7 +29,9 @@
       "Bash(git commit:*)",
       "Bash(git rm:*)",
       "WebSearch",
-      "mcp__serena__read_memory"
+      "mcp__serena__read_memory",
+      "Bash(npm ls:*)",
+      "Bash(bun git:wip:*)"
     ],
     "deny": [],
     "ask": []
