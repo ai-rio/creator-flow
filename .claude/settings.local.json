@@ -24,7 +24,8 @@
       "Bash(chmod:*)",
       "Bash(bun git:safe-start:*)",
       "Bash(bun git:done:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(bun auto:start:*)"
     ],
     "deny": [],
     "ask": []
