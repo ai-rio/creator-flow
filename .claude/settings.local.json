@@ -28,7 +28,8 @@
       "Bash(bun auto:start:*)",
       "Bash(git commit:*)",
       "Bash(git rm:*)",
-      "WebSearch"
+      "WebSearch",
+      "mcp__serena__read_memory"
     ],
     "deny": [],
     "ask": []
