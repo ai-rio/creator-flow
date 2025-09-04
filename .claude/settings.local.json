@@ -31,7 +31,10 @@
       "WebSearch",
       "mcp__serena__read_memory",
       "Bash(npm ls:*)",
-      "Bash(bun git:wip:*)"
+      "Bash(bun git:wip:*)",
+      "Bash(npx mvpblocks add:*)",
+      "Bash(mkdir:*)",
+      "Bash(bun run:*)"
     ],
     "deny": [],
     "ask": []

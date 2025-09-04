@@ -3,8 +3,8 @@
  * Interactive shipping cost calculator for creators
  */
 
+import { Calculator,Package, Truck } from 'lucide-react';
 import React, { useState } from 'react';
-import { Package, Truck, Calculator } from 'lucide-react';
 
 interface ShippingRate {
   provider: string;

@@ -3,8 +3,8 @@
  * Displays performance analytics in MDX content
  */
 
+import { BarChart3, DollarSign, Package,TrendingUp } from 'lucide-react';
 import React from 'react';
-import { BarChart3, TrendingUp, DollarSign, Package } from 'lucide-react';
 
 interface AnalyticsData {
   period: string;

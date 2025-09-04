@@ -3,8 +3,8 @@
  * Shows creator performance metrics in MDX content
  */
 
+import { Heart, Share,TrendingUp, Users } from 'lucide-react';
 import React from 'react';
-import { TrendingUp, Users, Heart, Share } from 'lucide-react';
 
 interface TikTokMetricsProps {
   followers: number;

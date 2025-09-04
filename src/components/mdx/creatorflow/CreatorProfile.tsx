@@ -3,8 +3,8 @@
  * Displays creator information in MDX content
  */
 
+import { Calendar, MapPin, Star } from 'lucide-react';
 import React from 'react';
-import { MapPin, Calendar, Star } from 'lucide-react';
 
 interface CreatorProfileProps {
   name: string;
