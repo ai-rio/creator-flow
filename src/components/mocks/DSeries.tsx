@@ -1,0 +1,121 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
+
+// Import D-Series components
+import D1D3EnhancedDesctopCcc from './D1D3EnhancedDesctopCcc-768px';
+import D4EnhancedDesctopCcc from './D4EnhancedDesctopCcc-768px';
+import D5EnhancedDesctopCcc from './D5EnhancedDesctopCcc-768px';
+import D6EnhancedDesctopCcc from './D6EnhancedDesctopCcc-768px';
+
+const components = [
+  { id: 'd1', name: 'D1-D3: Enhanced Desktop CCC', component: D1D3EnhancedDesctopCcc },
+  { id: 'd4', name: 'D4: Enhanced Desktop CCC', component: D4EnhancedDesctopCcc },
+  { id: 'd5', name: 'D5: Enhanced Desktop CCC', component: D5EnhancedDesctopCcc },
+  { id: 'd6', name: 'D6: Enhanced Desktop CCC', component: D6EnhancedDesctopCcc },
+];
+
+interface DSeriesProps {
+  initialComponent?: string;
+  mode?: 'browser' | 'individual';
+}
+
+export default function DSeries({ initialComponent = 'd1', mode = 'individual' }: DSeriesProps) {
+  const [currentIndex, setCurrentIndex] = useState(
+    components.findIndex(c => c.id === initialComponent) || 0
+  );
+
+  const currentComponent = components[currentIndex];
+  const Component = currentComponent.component;
+
+  const navigate = (direction: 'prev' | 'next') => {
+    if (direction === 'prev' && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (direction === 'next' && currentIndex < components.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') navigate('prev');
+      if (e.key === 'ArrowRight') navigate('next');
+      if (e.key === 'Escape') window.history.back();
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentIndex]);
+
+  return (
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-900 relative">
+      {/* Navigation Panel */}
+      <motion.div
+        initial={{ x: 300 }}
+        animate={{ x: 0 }}
+        className="fixed top-4 right-4 z-[9999] bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-slate-200 dark:border-slate-700"
+      >
+        <div className="flex flex-col gap-2">
+          <div className="text-xs font-bold text-slate-600 dark:text-slate-400 text-center">
+            D-SERIES ({currentIndex + 1}/{components.length})
+          </div>
+          
+          <div className="flex gap-1">
+            <button
+              onClick={() => navigate('prev')}
+              disabled={currentIndex === 0}
+              className="p-1.5 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 disabled:opacity-50"
+              title="Previous (←)"
+            >
+              <ChevronLeft size={14} />
+            </button>
+            
+            <button
+              onClick={() => navigate('next')}
+              disabled={currentIndex === components.length - 1}
+              className="p-1.5 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 disabled:opacity-50"
+              title="Next (→)"
+            >
+              <ChevronRight size={14} />
+            </button>
+            
+            <button
+              onClick={() => window.history.back()}
+              className="p-1.5 rounded bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300"
+              title="Back (ESC)"
+            >
+              <Home size={14} />
+            </button>
+            
+            <button
+              onClick={() => window.location.reload()}
+              className="p-1.5 rounded bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300"
+              title="Reload"
+            >
+              <RotateCcw size={14} />
+            </button>
+          </div>
+          
+          <div className="text-xs text-slate-500 dark:text-slate-400 text-center">
+            {currentComponent.name}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Component Display */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentComponent.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Component />
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}

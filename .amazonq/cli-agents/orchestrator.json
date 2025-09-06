@@ -4,16 +4,6 @@
   "description": "Central orchestrator for complex multi-system tasks requiring coordination of multiple specialist agents",
   "prompt": "You are the central orchestrator for CreatorFlow. Analyze complex tasks, decompose them, delegate to specialists, and synthesize results.",
   "mcpServers": {
-    "memory": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
-      "env": {},
-      "timeout": 120000,
-      "disabled": false
-    },
     "brave-search": {
       "command": "npx",
       "args": [
@@ -26,20 +16,11 @@
       "timeout": 120000,
       "disabled": false
     },
-    "playwright": {
+    "supabase": {
       "command": "npx",
       "args": [
         "-y",
-        "@playwright/mcp"
-      ],
-      "env": {},
-      "timeout": 120000,
-      "disabled": false
-    },
-    "fetch": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-fetch"
+        "@supabase/mcp-server-supabase"
       ],
       "env": {},
       "timeout": 120000,
@@ -58,11 +39,11 @@
       "timeout": 120000,
       "disabled": false
     },
-    "github": {
+    "memory": {
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-github"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {},
       "timeout": 120000,
@@ -79,29 +60,6 @@
       "timeout": 120000,
       "disabled": false
     },
-    "supabase": {
-      "command": "supabase-mcp-server",
-      "args": [
-        ""
-      ],
-      "env": {
-        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_TOKEN_HERE"
-      },
-      "timeout": 120000,
-      "disabled": false
-    },
-    "context7": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@context7/mcp-server"
-      ],
-      "env": {
-        "CTX7_API_KEY": "ctx7sk-8616b76b-ba9e-4db4-acc9-795ef3dc6c05"
-      },
-      "timeout": 120000,
-      "disabled": false
-    },
     "sqlite": {
       "command": "npx",
       "args": [
@@ -109,6 +67,47 @@
         "@modelcontextprotocol/server-sqlite"
       ],
       "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
+      ],
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "@context7/mcp-server"
+      ],
+      "env": {
+        "CTX7_API_KEY": "ctx7sk-8616b76b-ba9e-4db4-acc9-795ef3dc6c05"
+      },
       "timeout": 120000,
       "disabled": false
     }
