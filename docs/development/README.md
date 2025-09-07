@@ -124,10 +124,45 @@ creator-flow/
 
 ## 🏗️ Core Systems Documentation
 
-CreatorFlow is built around eight core systems that work together to deliver seamless TikTok Shop fulfillment automation:
+CreatorFlow is built around comprehensive systems that work together to deliver seamless TikTok Shop fulfillment automation:
 
 ### 📋 **Master Implementation Plan**
 **[CreatorFlow Master Roadmap](./moscow-methodology/02-implementation/I001-DRAFT-roadmap.md)** - Single source of truth consolidating all system planning, specifications, and implementation details using MoSCoW methodology.
+
+### 🏛️ [System Architecture](./system-architecture/) - **NEW** Integration Framework
+Comprehensive cross-system integration flows mapping 96 touchpoints across 4 core systems with real-time synchronization.
+- **Status**: ✅ **COMPLETE** - Full architecture specifications and implementation guides
+- **Performance Target**: 10x traffic spike handling, <200ms cross-system latency
+- **Integration**: Orchestrates all system interactions and data flows
+- **Key Features**: Event-driven architecture, conflict resolution, performance optimization
+
+### 🔄 [Order Workflow Automation](./order-workflow-automation/) - **NEW** State Machine Engine
+Advanced order lifecycle management with state machines, business rules engine, and automated workflow orchestration.
+- **Status**: ✅ **COMPLETE** - Comprehensive workflow specifications and implementation plan
+- **Performance Target**: 500+ orders/day per creator, <30s end-to-end processing
+- **Integration**: Central orchestrator coordinating all fulfillment operations
+- **Key Features**: 8-state workflow, priority classification, viral content correlation
+
+### 🔄 [Real-time Sync](./real-time-sync/) - **NEW** Synchronization Engine
+Event sourcing and real-time data synchronization with conflict resolution and performance optimization.
+- **Status**: ✅ **COMPLETE** - Event sourcing architecture and Supabase integration specs
+- **Performance Target**: <5s sync latency, 99.9% data consistency
+- **Integration**: Ensures data integrity across all systems
+- **Key Features**: Event sourcing, conflict resolution, real-time subscriptions
+
+### 🗄️ [Database Architecture](./database-architecture/) - **NEW** Data Foundation
+Comprehensive ERD design with 15+ interconnected tables supporting viral content correlation and performance tracking.
+- **Status**: ✅ **COMPLETE** - Full database schema and migration scripts
+- **Performance Target**: <50ms query response, 99.99% data durability
+- **Integration**: Foundation for all system data storage and relationships
+- **Key Features**: RLS policies, performance optimization, viral content tracking
+
+### 🔗 [TikTok Shop Integration](./tiktok-shop-integration/) - **ENHANCED** External API System
+Production-ready TikTok Shop API integration with viral content correlation, enhanced security, and performance optimization.
+- **Status**: ✅ **COMPLETE** - Full implementation with components and infrastructure
+- **Performance Target**: <500ms API response, 99.9% uptime, viral spike handling
+- **Integration**: Primary data source with enhanced webhook processing
+- **Key Features**: Viral content detection, priority classification, secure webhook processing
 
 ### 🎯 [Order Management](./order-management/) - Core Orchestrator
 Central system coordinating all fulfillment operations. Manages order lifecycle, workflow engine, and system integrations.
@@ -146,12 +181,6 @@ Automated label generation, rate shopping, and tracking across USPS, UPS, FedEx,
 - **Status**: Planning Only - Multi-carrier investigation, no specifications yet
 - **Performance Target**: <30s label generation, 15-25% cost savings
 - **Integration**: Receives orders from order management
-
-### 🔗 [TikTok Shop Integration](./tiktok-shop-integration/) - External API System
-Comprehensive TikTok Shop API integration for orders, products, webhooks, and seller management.
-- **Status**: Planning Complete - API specs defined, implementation NOT STARTED
-- **Performance Target**: <500ms API response, 99.9% uptime
-- **Integration**: Primary data source for order management
 
 ### 📊 [Creator Analytics](./creator-analytics/) - Reporting System
 Performance metrics, revenue tracking, and business intelligence for creator growth optimization.
@@ -368,6 +397,11 @@ bun test --watch
 
 ### CreatorFlow-Specific Documentation
 - **Master Implementation Roadmap**: `docs/development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md`
+- **System Architecture**: `docs/development/system-architecture/01-specifications/S001-cross-system-integration-flows.md`
+- **Order Workflow Automation**: `docs/development/order-workflow-automation/01-specifications/S001-DRAFT-technical-requirements.md`
+- **Real-time Sync Engine**: `docs/development/real-time-sync/01-specifications/S001-comprehensive-realtime-sync-architecture.md`
+- **Database Architecture**: `docs/development/database-architecture/03-reports/R001-DRAFT-comprehensive-erd-design.md`
+- **TikTok Shop Integration**: `docs/development/tiktok-shop-integration/01-specifications/S001-DRAFT-complete-integration-architecture.md`
 - **Dashboard Design System**: `docs/development/dashboard-design/01-specifications/S001-dashboard-wireframes.md`
 - **Design Tokens & Style Guide**: `docs/development/dashboard-design/01-specifications/S002-DRAFT-style-guide-design-tokens.md`
 - **Public Pages Strategy**: `docs/development/public-pages/01-specifications/S001-DRAFT-public-pages-component-strategy.md`
