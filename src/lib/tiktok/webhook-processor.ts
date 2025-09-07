@@ -5,7 +5,7 @@
 
 import crypto from 'crypto';
 
-import { createClient } from '@/libs/supabase/supabase-server-client';
+import { createClient } from '@/libs/supabase/supabase-client-client';
 
 import { EnhancedTikTokAPIClient, TikTokWebhookEvent, WebhookPerformanceStats,WebhookProcessingResult } from './enhanced-api-client';
 
@@ -439,7 +439,7 @@ export class TikTokWebhookProcessor {
     if (!products) return;
 
     // Generate visualization data (this would match the UI component requirements)
-    const visualizationData = products.map(product => ({
+    const visualizationData = products.map((product: any) => ({
       name: product.product_data?.name || 'Unknown',
       level: product.inventory_quantity > 100 ? 'High' : 
              product.inventory_quantity > 50 ? 'Med' : 'Low',

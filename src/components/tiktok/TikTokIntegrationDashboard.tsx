@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/components/ui/use-toast';
-import { useSupabase } from '@/libs/supabase/supabase-client-client';
+import { createClient } from '@/libs/supabase/supabase-client-client';
 
 // === TYPES ===
 
@@ -405,7 +405,7 @@ export const TikTokIntegrationDashboard: React.FC = () => {
   });
   const [loading, setLoading] = useState(true);
 
-  const { supabase } = useSupabase();
+  const supabase = createClient();
   const { toast } = useToast();
 
   // Load data on component mount
@@ -455,8 +455,8 @@ export const TikTokIntegrationDashboard: React.FC = () => {
 
       // Generate stock alerts from products
       const alerts: StockAlert[] = (productsData || [])
-        .filter(p => p.inventory_quantity < 50)
-        .map(p => ({
+        .filter((p: any) => p.inventory_quantity < 50)
+        .map((p: any) => ({
           product_id: p.tiktok_product_id,
           product_name: p.title.substring(0, 30) + '...',
           current_stock: p.inventory_quantity,
@@ -486,7 +486,7 @@ export const TikTokIntegrationDashboard: React.FC = () => {
       .channel('tiktok-order-updates')
       .on('postgres_changes', 
         { event: '*', schema: 'public', table: 'tiktok_orders' },
-        (payload) => {
+        (payload: any) => {
           console.log('Order update received:', payload);
           loadTikTokData(); // Reload data on updates
         }
@@ -498,7 +498,7 @@ export const TikTokIntegrationDashboard: React.FC = () => {
       .channel('tiktok-inventory-updates')
       .on('postgres_changes',
         { event: '*', schema: 'public', table: 'tiktok_products' },
-        (payload) => {
+        (payload: any) => {
           console.log('Inventory update received:', payload);
           loadTikTokData(); // Reload data on updates
         }
