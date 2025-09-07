@@ -81,45 +81,85 @@
 
 ```
 creator-flow/
-├── src/
-│   ├── app/                 # Next.js App Router pages & API routes
-│   │   ├── (auth)/         # Authentication pages
-│   │   ├── (dashboard)/    # Main application pages
-│   │   ├── api/            # API routes and webhooks
-│   │   └── globals.css     # Global styles with design tokens
-│   ├── components/         # Reusable UI components
-│   │   ├── ui/            # shadcn/ui + mvpblocks base components
-│   │   ├── custom/        # Custom CreatorFlow components
-│   │   └── dashboard/     # Premium dashboard components
-│   ├── features/          # Feature-specific modules
-│   │   ├── auth/          # Authentication logic
-│   │   ├── orders/        # TikTok order management
-│   │   ├── shipping/      # Shipping integration
-│   │   ├── analytics/     # Analytics and reporting
-│   │   └── tiktok/        # TikTok Shop integration
-│   ├── lib/               # Utilities and configurations
-│   │   ├── supabase/      # Database client and helpers
-│   │   ├── stripe/        # Payment processing
-│   │   ├── tiktok/        # TikTok Shop API client
-│   │   └── utils/         # General utilities
-│   └── types/             # TypeScript type definitions
-├── supabase/              # Database migrations and functions
-├── docs/                  # Project documentation
-│   ├── development/       # Development guides and specifications
-│   │   ├── order-management/          # Core orchestrator system
-│   │   ├── tiktok-inventory-tracking/ # Inventory component system
-│   │   ├── shipping-automation/       # Multi-carrier shipping system
-│   │   ├── tiktok-shop-integration/   # TikTok Shop API integration
-│   │   ├── creator-analytics/         # Analytics and reporting system
-│   │   ├── creator-authentication/    # Auth and subscription system
-│   │   ├── dashboard-design/          # Premium dashboard design system
-│   │   ├── public-pages/              # Public-facing website components
-│   │   ├── localization/              # Internationalization system
-│   │   └── documentation-standards/   # Project documentation standards
-│   ├── architecture/      # System architecture documentation
-│   └── business/          # Business model and strategy
-├── tests/                 # Test files and utilities
-└── scripts/               # Development and deployment scripts
+├── src/                           # Main application source
+│   ├── app/                      # Next.js App Router pages & API routes
+│   │   ├── (account)/           # Account management pages (grouped route)
+│   │   ├── (auth)/              # Authentication pages (grouped route)
+│   │   ├── (public)/            # Public pages with MVPBlocks integration
+│   │   ├── [locale]/            # Internationalized routes with Tolgee
+│   │   ├── api/                 # API routes and webhooks
+│   │   │   ├── webhooks/        # External webhook handlers
+│   │   │   │   └── tiktok/      # TikTok Shop webhook processing
+│   │   │   └── health/          # Health check endpoints
+│   │   ├── pricing/             # Pricing page
+│   │   └── [core files]         # layout.tsx, page.tsx, etc.
+│   ├── components/              # Reusable UI components
+│   │   ├── ui/                  # Base shadcn/ui components
+│   │   ├── mdx/                 # MDX-specific components
+│   │   ├── mocks/               # Dashboard mock components (60+ files)
+│   │   ├── tiktok/              # TikTok integration components
+│   │   └── [custom components]  # Application-specific components
+│   ├── features/                # Feature-specific modules
+│   │   ├── account/             # Account management logic
+│   │   ├── emails/              # Email templates and logic
+│   │   │   └── creatorflow/     # CreatorFlow-specific email templates
+│   │   └── pricing/             # Pricing logic and components
+│   ├── libs/                    # External service integrations
+│   │   ├── supabase/            # Database client and helpers
+│   │   ├── stripe/              # Payment processing
+│   │   ├── posthog/             # Analytics integration
+│   │   └── resend/              # Email service
+│   ├── lib/                     # Core utilities and configurations
+│   │   ├── tiktok/              # TikTok Shop API client and processors
+│   │   └── i18n/                # Internationalization configuration
+│   ├── types/                   # TypeScript type definitions
+│   ├── utils/                   # General utilities
+│   ├── constants/               # Application constants
+│   ├── messages/                # i18n message files (en, es, pt-br)
+│   └── styles/                  # Global styles with CDH design tokens
+├── supabase/                    # Database and serverless functions
+│   ├── functions/               # Edge Functions (Deno runtime)
+│   │   ├── _shared/             # Shared utilities
+│   │   └── tiktok-webhook-processor/ # TikTok webhook processing
+│   └── migrations/              # Database migration files
+├── docs/                        # Comprehensive project documentation
+│   ├── development/             # Development guides and specifications
+│   │   ├── system-architecture/        # **NEW** Integration framework
+│   │   ├── order-workflow-automation/  # **NEW** State machine engine
+│   │   ├── real-time-sync/             # **NEW** Synchronization engine
+│   │   ├── database-architecture/      # **NEW** Data foundation
+│   │   ├── tiktok-shop-integration/    # **ENHANCED** TikTok integration
+│   │   ├── order-management/           # Core orchestrator system
+│   │   ├── tiktok-inventory-tracking/  # Inventory component system
+│   │   ├── shipping-automation/        # Multi-carrier shipping system
+│   │   ├── creator-analytics/          # Analytics and reporting system
+│   │   ├── creator-authentication/     # Auth and subscription system
+│   │   ├── dashboard-design/           # Premium dashboard design system
+│   │   ├── public-pages/               # Public-facing website components
+│   │   ├── localization/               # Internationalization system
+│   │   ├── moscow-methodology/         # MoSCoW prioritization framework
+│   │   ├── intelligent-automation/     # Automation system specifications
+│   │   └── documentation-standards/    # Project documentation standards
+│   ├── architecture/            # System architecture documentation
+│   ├── business/                # Business model and strategy
+│   ├── security/                # Security implementation guides
+│   ├── features/                # Feature specifications
+│   └── integrations/            # External integration documentation
+├── tests/                       # Test files and utilities
+│   ├── e2e/                     # End-to-end tests (Playwright)
+│   ├── integration/             # Integration tests
+│   ├── unit/                    # Unit tests (Jest)
+│   ├── helpers/                 # Test helper utilities
+│   └── utils/                   # Testing utilities
+├── scripts/                     # Development and deployment scripts
+│   ├── git-*.js                 # Git workflow automation scripts
+│   ├── automation-*.js          # Intelligent automation system
+│   ├── convert-*.ts             # JSX to TSX conversion tools
+│   └── [various utilities]      # Development, testing, deployment
+├── content/                     # Content management
+│   └── creatorflow/             # CreatorFlow-specific content
+├── public/                      # Static assets
+└── [config files]              # Various configuration files
 ```
 
 ## 🏗️ Core Systems Documentation
