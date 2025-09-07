@@ -46,7 +46,8 @@
       "Bash(git clone:*)",
       "Read(//home/carlos/projects/cdh-reference/src/app/(frontend)/components/**)",
       "Read(//home/carlos/projects/cdh-reference/src/app/**)",
-      "Bash(bun add:*)"
+      "Bash(bun add:*)",
+      "mcp__serena__list_memories"
     ],
     "deny": [],
     "ask": []
