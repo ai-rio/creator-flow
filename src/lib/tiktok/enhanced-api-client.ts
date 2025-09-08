@@ -31,14 +31,14 @@ export interface TikTokAuthTokens {
 
 // === ENHANCED ORDER INTERFACES ===
 
-export type TikTokOrderStatus = 
-  | 'UNPAID' 
-  | 'AWAITING_SHIPMENT' 
-  | 'PARTIAL_SHIPPING' 
-  | 'IN_TRANSIT' 
-  | 'SHIPPED' 
-  | 'DELIVERED' 
-  | 'CANCELLED' 
+export type TikTokOrderStatus =
+  | 'UNPAID'
+  | 'AWAITING_SHIPMENT'
+  | 'PARTIAL_SHIPPING'
+  | 'IN_TRANSIT'
+  | 'SHIPPED'
+  | 'DELIVERED'
+  | 'CANCELLED'
   | 'COMPLETED';
 
 export type TikTokPaymentStatus = 'PENDING' | 'PAID' | 'FAILED' | 'REFUNDED';
@@ -58,24 +58,24 @@ export interface CreatorFlowTikTokOrder {
   shop_id: string;
   order_status: TikTokOrderStatus;
   payment_status: TikTokPaymentStatus;
-  
+
   // CreatorFlow Enhancement Fields
   priority: TikTokOrderPriority;
   viral_content_id?: string; // Link to TikTok video driving orders
   processing_queue: 'express' | 'standard' | 'bulk';
   sync_status: 'pending' | 'processing' | 'synced' | 'failed';
-  
+
   // Performance Tracking
   received_at: string;
   processed_at?: string;
   sync_duration_ms?: number;
-  
+
   // Basic order data
   total_amount: number;
   currency: string;
   shipping_info: TikTokShippingInfo;
   order_items: TikTokOrderItem[];
-  
+
   // Relationships
   creator_id: string;
   creator?: any; // Profile type
@@ -116,7 +116,7 @@ export interface ViralContentMonitor {
     growth_rate: number; // views per hour
     engagement_score: number;
   };
-  
+
   // Order Correlation
   linked_products: string[];
   order_correlation: {
@@ -125,7 +125,7 @@ export interface ViralContentMonitor {
     peak_order_velocity: number; // orders per minute
     total_revenue: number;
   };
-  
+
   // Inventory Impact
   inventory_alerts: {
     product_id: string;
@@ -193,7 +193,7 @@ export interface TikTokProduct {
   sku: string;
   price: number;
   inventory_quantity: number;
-  
+
   // CreatorFlow Enhancement Fields
   velocity_tracking: {
     current_velocity: number; // units per hour
@@ -202,7 +202,7 @@ export interface TikTokProduct {
     velocity_trend: 'increasing' | 'decreasing' | 'stable';
     last_calculated: string;
   };
-  
+
   stock_alerts: {
     level: 'critical' | 'low' | 'medium' | 'high';
     threshold_hours: number; // hours until stockout
@@ -210,7 +210,7 @@ export interface TikTokProduct {
     auto_reorder_enabled: boolean;
     viral_boost_factor: number; // multiplier for viral content
   };
-  
+
   // Visualization Data
   visual_metadata: {
     category_icon: string;
@@ -261,9 +261,10 @@ export class EnhancedTikTokAPIClient {
 
   constructor(config: TikTokShopConfig) {
     this.config = config;
-    this.baseURL = config.environment === 'production' 
-      ? 'https://open-api.tiktokglobalshop.com'
-      : 'https://open-api-sandbox.tiktokglobalshop.com';
+    this.baseURL =
+      config.environment === 'production'
+        ? 'https://open-api.tiktokglobalshop.com'
+        : 'https://open-api-sandbox.tiktokglobalshop.com';
   }
 
   // === AUTHENTICATION ===
@@ -274,21 +275,21 @@ export class EnhancedTikTokAPIClient {
       redirect_uri: redirectUri,
       response_type: 'code',
       scope: 'user.info.basic,product.list,order.list,fulfillment.write',
-      ...(state && { state })
+      ...(state && { state }),
     });
 
     return `${this.baseURL}/authorization/v${this.config.apiVersion}/authorize?${params}`;
   }
 
-  async exchangeCodeForToken(code: string, redirectUri: string): Promise<TikTokAuthTokens> {
+  async exchangeCodeForToken(code: string, _redirectUri: string): Promise<TikTokAuthTokens> {
     const response = await this.makeRequest<TikTokAuthTokens>('/authorization/v202309/token/get', {
       method: 'POST',
       body: {
         app_key: this.config.appKey,
         app_secret: this.config.appSecret,
         auth_code: code,
-        grant_type: 'authorization_code'
-      }
+        grant_type: 'authorization_code',
+      },
     });
 
     return response.data;
@@ -301,8 +302,8 @@ export class EnhancedTikTokAPIClient {
         app_key: this.config.appKey,
         app_secret: this.config.appSecret,
         refresh_token: refreshToken,
-        grant_type: 'refresh_token'
-      }
+        grant_type: 'refresh_token',
+      },
     });
 
     return response.data;
@@ -313,20 +314,20 @@ export class EnhancedTikTokAPIClient {
   getRateLimitStatus(): RateLimitStatus {
     const currentMinute = Math.floor(Date.now() / 60000);
     const usage = this.rateLimitUsage.get(currentMinute.toString()) || { count: 0, resetTime: currentMinute + 1 };
-    
+
     return {
       current_usage: usage.count,
       limit_per_minute: 1000, // TikTok Shop API limit
       reset_time: new Date(usage.resetTime * 60000).toISOString(),
       queue_length: this.requestQueue.length,
-      estimated_wait_time: this.calculateEstimatedWaitTime()
+      estimated_wait_time: this.calculateEstimatedWaitTime(),
     };
   }
 
   canMakeRequest(requestType: string = 'standard'): boolean {
     const currentMinute = Math.floor(Date.now() / 60000);
     const usage = this.rateLimitUsage.get(currentMinute.toString()) || { count: 0, resetTime: currentMinute + 1 };
-    
+
     // Reserve 100 requests for high-priority viral content requests
     const effectiveLimit = requestType === 'viral' ? 1000 : 900;
     return usage.count < effectiveLimit;
@@ -352,7 +353,7 @@ export class EnhancedTikTokAPIClient {
         },
         priority,
         created_at: new Date().toISOString(),
-        retry_count: 0
+        retry_count: 0,
       };
 
       this.requestQueue.push(queuedRequest);
@@ -367,30 +368,30 @@ export class EnhancedTikTokAPIClient {
 
   private calculateEstimatedWaitTime(): number {
     if (this.requestQueue.length === 0) return 0;
-    
+
     const rateLimitStatus = this.getRateLimitStatus();
     const remainingCapacity = rateLimitStatus.limit_per_minute - rateLimitStatus.current_usage;
-    
+
     if (remainingCapacity <= 0) {
       return 60000; // Wait for next minute
     }
-    
+
     const queuePosition = this.requestQueue.length;
     return Math.max(0, (queuePosition - remainingCapacity) * 60); // seconds
   }
 
   private async executeRequest<T>(operation: () => Promise<T>): Promise<T> {
     const startTime = Date.now();
-    
+
     try {
       this.updateRateLimitUsage();
       const result = await operation();
-      
+
       // Track performance
       const responseTime = Date.now() - startTime;
       this.performanceMetrics.responseTimeSum += responseTime;
       this.performanceMetrics.requestCount++;
-      
+
       return result;
     } catch (error) {
       this.performanceMetrics.errorCount++;
@@ -402,10 +403,10 @@ export class EnhancedTikTokAPIClient {
     const currentMinute = Math.floor(Date.now() / 60000);
     const key = currentMinute.toString();
     const current = this.rateLimitUsage.get(key) || { count: 0, resetTime: currentMinute + 1 };
-    
+
     this.rateLimitUsage.set(key, {
       count: current.count + 1,
-      resetTime: current.resetTime
+      resetTime: current.resetTime,
     });
 
     // Clean up old entries
@@ -419,7 +420,7 @@ export class EnhancedTikTokAPIClient {
   // === ENHANCED API REQUESTS ===
 
   private async makeRequest<T>(
-    endpoint: string, 
+    endpoint: string,
     options: {
       method: 'GET' | 'POST';
       body?: any;
@@ -428,18 +429,18 @@ export class EnhancedTikTokAPIClient {
     }
   ): Promise<TikTokShopResponse<T>> {
     const url = `${this.baseURL}${endpoint}`;
-    const timestamp = Math.floor(Date.now() / 1000);
-    
+    // const timestamp = Math.floor(Date.now() / 1000); // Reserved for future signature generation
+
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       'x-tts-access-token': options.accessToken || '',
-      'x-tts-shop-id': options.shopId || ''
+      'x-tts-shop-id': options.shopId || '',
     };
 
     const response = await fetch(url, {
       method: options.method,
       headers,
-      ...(options.body && { body: JSON.stringify(options.body) })
+      ...(options.body && { body: JSON.stringify(options.body) }),
     });
 
     if (!response.ok) {
@@ -452,7 +453,7 @@ export class EnhancedTikTokAPIClient {
   // === ORDER OPERATIONS ===
 
   async getOrders(
-    accessToken: string, 
+    accessToken: string,
     shopId: string,
     params: {
       page_size?: number;
@@ -468,13 +469,13 @@ export class EnhancedTikTokAPIClient {
         ...(params.page_token && { page_token: params.page_token }),
         ...(params.order_status && { order_status: params.order_status }),
         ...(params.create_time_from && { create_time_from: params.create_time_from.toString() }),
-        ...(params.create_time_to && { create_time_to: params.create_time_to.toString() })
+        ...(params.create_time_to && { create_time_to: params.create_time_to.toString() }),
       });
 
       return this.makeRequest(`/order/v202309/orders?${queryParams}`, {
         method: 'GET',
         accessToken,
-        shopId
+        shopId,
       });
     });
   }
@@ -484,18 +485,23 @@ export class EnhancedTikTokAPIClient {
       return this.makeRequest(`/order/v202309/orders/${orderId}`, {
         method: 'GET',
         accessToken,
-        shopId
+        shopId,
       });
     });
   }
 
-  async updateOrderStatus(accessToken: string, shopId: string, orderId: string, status: TikTokOrderStatus): Promise<TikTokShopResponse<any>> {
+  async updateOrderStatus(
+    accessToken: string,
+    shopId: string,
+    orderId: string,
+    status: TikTokOrderStatus
+  ): Promise<TikTokShopResponse<any>> {
     return this.queueRequest(() => {
       return this.makeRequest(`/order/v202309/orders/${orderId}/status`, {
         method: 'POST',
         accessToken,
         shopId,
-        body: { order_status: status }
+        body: { order_status: status },
       });
     }, 'high'); // High priority for status updates
   }
@@ -515,48 +521,62 @@ export class EnhancedTikTokAPIClient {
       const queryParams = new URLSearchParams({
         page_size: (params.page_size || 50).toString(),
         ...(params.page_token && { page_token: params.page_token }),
-        ...(params.search_status && { search_status: params.search_status })
+        ...(params.search_status && { search_status: params.search_status }),
       });
 
       return this.makeRequest(`/product/v202309/products?${queryParams}`, {
         method: 'GET',
         accessToken,
-        shopId
+        shopId,
       });
     });
   }
 
-  async updateProductInventory(accessToken: string, shopId: string, productId: string, quantity: number): Promise<TikTokShopResponse<any>> {
+  async updateProductInventory(
+    accessToken: string,
+    shopId: string,
+    productId: string,
+    quantity: number
+  ): Promise<TikTokShopResponse<any>> {
     return this.queueRequest(() => {
       return this.makeRequest(`/product/v202309/products/${productId}/inventory`, {
         method: 'POST',
         accessToken,
         shopId,
-        body: { inventory_quantity: quantity }
+        body: { inventory_quantity: quantity },
       });
     }, 'high'); // High priority for inventory updates
   }
 
   // === FULFILLMENT OPERATIONS ===
 
-  async createShippingLabel(accessToken: string, shopId: string, fulfillmentRequest: any): Promise<TikTokShopResponse<any>> {
+  async createShippingLabel(
+    accessToken: string,
+    shopId: string,
+    fulfillmentRequest: any
+  ): Promise<TikTokShopResponse<any>> {
     return this.queueRequest(() => {
       return this.makeRequest('/fulfillment/v202309/shipping_labels', {
         method: 'POST',
         accessToken,
         shopId,
-        body: fulfillmentRequest
+        body: fulfillmentRequest,
       });
     }, 'high'); // High priority for fulfillment
   }
 
-  async updateTrackingInfo(accessToken: string, shopId: string, orderId: string, trackingInfo: any): Promise<TikTokShopResponse<any>> {
+  async updateTrackingInfo(
+    accessToken: string,
+    shopId: string,
+    orderId: string,
+    trackingInfo: any
+  ): Promise<TikTokShopResponse<any>> {
     return this.queueRequest(() => {
       return this.makeRequest(`/fulfillment/v202309/orders/${orderId}/tracking`, {
         method: 'POST',
         accessToken,
         shopId,
-        body: trackingInfo
+        body: trackingInfo,
       });
     }, 'high'); // High priority for tracking updates
   }
@@ -569,13 +589,15 @@ export class EnhancedTikTokAPIClient {
     totalRequests: number;
     rateLimitUtilization: number;
   } {
-    const averageResponseTime = this.performanceMetrics.requestCount > 0 
-      ? this.performanceMetrics.responseTimeSum / this.performanceMetrics.requestCount 
-      : 0;
-    
-    const errorRate = this.performanceMetrics.requestCount > 0 
-      ? (this.performanceMetrics.errorCount / this.performanceMetrics.requestCount) * 100 
-      : 0;
+    const averageResponseTime =
+      this.performanceMetrics.requestCount > 0
+        ? this.performanceMetrics.responseTimeSum / this.performanceMetrics.requestCount
+        : 0;
+
+    const errorRate =
+      this.performanceMetrics.requestCount > 0
+        ? (this.performanceMetrics.errorCount / this.performanceMetrics.requestCount) * 100
+        : 0;
 
     const rateLimitStatus = this.getRateLimitStatus();
     const rateLimitUtilization = (rateLimitStatus.current_usage / rateLimitStatus.limit_per_minute) * 100;
@@ -584,7 +606,7 @@ export class EnhancedTikTokAPIClient {
       averageResponseTime,
       errorRate,
       totalRequests: this.performanceMetrics.requestCount,
-      rateLimitUtilization
+      rateLimitUtilization,
     };
   }
 
@@ -592,15 +614,9 @@ export class EnhancedTikTokAPIClient {
 
   static verifyWebhookSignature(payload: string, signature: string, timestamp: string, appSecret: string): boolean {
     const message = timestamp + payload;
-    const expectedSignature = crypto
-      .createHmac('sha256', appSecret)
-      .update(message)
-      .digest('hex');
-    
-    return crypto.timingSafeEqual(
-      Buffer.from(signature),
-      Buffer.from(expectedSignature)
-    );
+    const expectedSignature = crypto.createHmac('sha256', appSecret).update(message).digest('hex');
+
+    return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature));
   }
 }
 
@@ -613,23 +629,26 @@ export class TikTokContentService {
     this.apiClient = apiClient;
   }
 
-  async trackVideoPerformance(videoUrl: string): Promise<ViralContentMonitor> {
+  async trackVideoPerformance(_videoUrl: string): Promise<ViralContentMonitor> {
     // Implementation would integrate with TikTok Content API or third-party analytics
     // This is a placeholder for the interface
     throw new Error('Method not implemented - requires TikTok Content API integration');
   }
 
-  async correlateOrderSpikes(contentId: string): Promise<OrderCorrelationData> {
+  async correlateOrderSpikes(_contentId: string): Promise<OrderCorrelationData> {
     // Implementation would analyze order patterns against content performance
     throw new Error('Method not implemented - requires analytics data correlation');
   }
 
-  async generateReorderSuggestions(viralData: ViralContentMonitor): Promise<ReorderSuggestion[]> {
+  async generateReorderSuggestions(_viralData: ViralContentMonitor): Promise<ReorderSuggestion[]> {
     // Implementation would use ML models to predict reorder needs
     throw new Error('Method not implemented - requires predictive analytics');
   }
 
-  async calculateInventoryVelocity(productId: string, contentPerformance: ViralContentMonitor): Promise<VelocityProjection> {
+  async calculateInventoryVelocity(
+    _productId: string,
+    _contentPerformance: ViralContentMonitor
+  ): Promise<VelocityProjection> {
     // Implementation would calculate velocity based on content performance
     throw new Error('Method not implemented - requires velocity calculation engine');
   }
@@ -641,7 +660,7 @@ export const enhancedTikTokClient = new EnhancedTikTokAPIClient({
   appKey: process.env.TIKTOK_SHOP_APP_KEY!,
   appSecret: process.env.TIKTOK_SHOP_APP_SECRET!,
   apiVersion: '202309',
-  environment: process.env.NODE_ENV === 'production' ? 'production' : 'sandbox'
+  environment: process.env.NODE_ENV === 'production' ? 'production' : 'sandbox',
 });
 
 export const tiktokContentService = new TikTokContentService(enhancedTikTokClient);

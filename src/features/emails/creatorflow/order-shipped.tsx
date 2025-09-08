@@ -13,14 +13,14 @@ interface OrderShippedEmailProps {
   commission: number;
 }
 
-export function OrderShippedEmail({ 
-  creatorName, 
-  orderNumber, 
-  trackingNumber, 
-  carrier, 
-  estimatedDelivery, 
+export function OrderShippedEmail({
+  creatorName,
+  orderNumber,
+  trackingNumber,
+  carrier,
+  estimatedDelivery,
   customerName,
-  commission 
+  commission,
 }: OrderShippedEmailProps) {
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -32,15 +32,15 @@ export function OrderShippedEmail({
   return (
     <Html>
       <Head />
-      <Preview>Order #{orderNumber} shipped - You earned {formatCurrency(commission)}!</Preview>
+      <Preview>
+        Order #{orderNumber} shipped - You earned {formatCurrency(commission)}!
+      </Preview>
       <Tailwind config={tailwindConfig}>
-        <Body className='mx-auto my-auto bg-light-concrete px-2 py-10 font-sans'>
-          <Container className='mx-auto mt-[40px] w-[580px] overflow-hidden rounded-lg bg-paper-white shadow-lg'>
+        <Body className='bg-light-concrete mx-auto my-auto px-2 py-10 font-sans'>
+          <Container className='bg-paper-white mx-auto mt-[40px] w-[580px] overflow-hidden rounded-lg shadow-lg'>
             {/* Header */}
             <Section className='bg-gradient-to-r from-green-500 to-blue-600 px-8 py-6'>
-              <Heading className='mb-2 text-center text-[32px] font-bold text-white'>
-                📦 Order Shipped!
-              </Heading>
+              <Heading className='mb-2 text-center text-[32px] font-bold text-white'>📦 Order Shipped!</Heading>
               <Text className='mb-0 text-center text-lg text-white/90'>
                 Another successful sale from your TikTok content
               </Text>
@@ -48,60 +48,56 @@ export function OrderShippedEmail({
 
             {/* Main Content */}
             <Section className='px-8 py-6'>
-              <Heading className='mb-4 text-xl font-semibold text-charcoal'>
-                Great news, {creatorName}! 🎉
-              </Heading>
-              
-              <Text className='mb-6 text-charcoal leading-relaxed'>
-                Order <strong>#{orderNumber}</strong> from your TikTok campaign has been shipped to {customerName}. 
-                You've earned <strong>{formatCurrency(commission)}</strong> in commission!
+              <Heading className='text-charcoal mb-4 text-xl font-semibold'>Great news, {creatorName}! 🎉</Heading>
+
+              <Text className='text-charcoal mb-6 leading-relaxed'>
+                Order <strong>#{orderNumber}</strong> from your TikTok campaign has been shipped to {customerName}.
+                You&rsquo;ve earned <strong>{formatCurrency(commission)}</strong> in commission!
               </Text>
 
               {/* Order Details */}
-              <Section className='mb-6 rounded-lg border border-stone-gray bg-light-concrete p-6'>
-                <Heading className='mb-4 text-lg font-semibold text-forest-green'>
-                  Shipping Details 📋
-                </Heading>
+              <Section className='border-stone-gray bg-light-concrete mb-6 rounded-lg border p-6'>
+                <Heading className='text-forest-green mb-4 text-lg font-semibold'>Shipping Details 📋</Heading>
                 <div className='space-y-3'>
                   <div className='flex justify-between'>
-                    <Text className='mb-0 font-medium text-charcoal/70'>Order Number:</Text>
-                    <Text className='mb-0 font-semibold text-charcoal'>#{orderNumber}</Text>
+                    <Text className='text-charcoal/70 mb-0 font-medium'>Order Number:</Text>
+                    <Text className='text-charcoal mb-0 font-semibold'>#{orderNumber}</Text>
                   </div>
                   <div className='flex justify-between'>
-                    <Text className='mb-0 font-medium text-charcoal/70'>Tracking Number:</Text>
-                    <Text className='mb-0 font-mono text-charcoal'>{trackingNumber}</Text>
+                    <Text className='text-charcoal/70 mb-0 font-medium'>Tracking Number:</Text>
+                    <Text className='text-charcoal mb-0 font-mono'>{trackingNumber}</Text>
                   </div>
                   <div className='flex justify-between'>
-                    <Text className='mb-0 font-medium text-charcoal/70'>Carrier:</Text>
-                    <Text className='mb-0 font-semibold text-charcoal'>{carrier}</Text>
+                    <Text className='text-charcoal/70 mb-0 font-medium'>Carrier:</Text>
+                    <Text className='text-charcoal mb-0 font-semibold'>{carrier}</Text>
                   </div>
                   <div className='flex justify-between'>
-                    <Text className='mb-0 font-medium text-charcoal/70'>Estimated Delivery:</Text>
-                    <Text className='mb-0 font-semibold text-equipment-yellow'>{estimatedDelivery}</Text>
+                    <Text className='text-charcoal/70 mb-0 font-medium'>Estimated Delivery:</Text>
+                    <Text className='text-equipment-yellow mb-0 font-semibold'>{estimatedDelivery}</Text>
                   </div>
-                  <div className='flex justify-between border-t border-stone-gray pt-3'>
-                    <Text className='mb-0 font-medium text-charcoal/70'>Your Commission:</Text>
+                  <div className='border-stone-gray flex justify-between border-t pt-3'>
+                    <Text className='text-charcoal/70 mb-0 font-medium'>Your Commission:</Text>
                     <Text className='mb-0 text-xl font-bold text-green-600'>{formatCurrency(commission)}</Text>
                   </div>
                 </div>
               </Section>
 
-              <Text className='mb-6 text-charcoal leading-relaxed'>
-                Your commission will be included in your next weekly payout. Keep creating amazing content 
-                to drive more sales and grow your earnings!
+              <Text className='text-charcoal mb-6 leading-relaxed'>
+                Your commission will be included in your next weekly payout. Keep creating amazing content to drive more
+                sales and grow your earnings!
               </Text>
 
               {/* CTA Buttons */}
-              <Section className='text-center space-y-3'>
+              <Section className='space-y-3 text-center'>
                 <Button
                   href={`https://www.${carrier.toLowerCase()}.com/tracking/${trackingNumber}`}
-                  className='mr-3 rounded-lg bg-forest-green px-6 py-3 font-medium text-white hover:opacity-90'
+                  className='bg-forest-green mr-3 rounded-lg px-6 py-3 font-medium text-white hover:opacity-90'
                 >
                   Track Package
                 </Button>
                 <Button
                   href='/dashboard/analytics'
-                  className='rounded-lg border border-forest-green bg-white px-6 py-3 font-medium text-forest-green hover:bg-light-concrete'
+                  className='border-forest-green text-forest-green hover:bg-light-concrete rounded-lg border bg-white px-6 py-3 font-medium'
                 >
                   View Analytics
                 </Button>
@@ -109,9 +105,10 @@ export function OrderShippedEmail({
             </Section>
 
             {/* Footer */}
-            <Section className='border-t border-stone-gray bg-light-concrete px-8 py-4'>
-              <Text className='mb-0 text-center text-sm text-charcoal'>
-                Keep up the great work! 🚀<br />
+            <Section className='border-stone-gray bg-light-concrete border-t px-8 py-4'>
+              <Text className='text-charcoal mb-0 text-center text-sm'>
+                Keep up the great work! 🚀
+                <br />
                 <strong>CreatorFlow Team</strong>
               </Text>
             </Section>
