@@ -1,14 +1,15 @@
 'use client';
 
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; import { animate } from 'framer-motion';
+import { AnimatePresence,motion } from 'framer-motion'; 
+import { animate } from 'framer-motion';
 import {
-    Zap, Target, Flame, Bot, Truck, Package, Moon, Sun, ChevronDown,
-    Palette, BrainCircuit, Rocket, BarChart3, RadioTower, Globe,
-    TrendingUp, ShieldCheck, Wrench, ChevronsLeft, DollarSign, Clapperboard,
-    Star, CheckCircle2, AlertTriangle
-} from 'lucide-react';
+AlertTriangle,
+BarChart3, Bot, BrainCircuit, CheckCircle2, ChevronDown,
+ChevronsLeft, Clapperboard,
+DollarSign, Flame, Globe,
+Moon, Package,     Palette, RadioTower, Rocket, ShieldCheck,     Star, Sun, Target,     TrendingUp, Truck, Wrench,     Zap} from 'lucide-react';
+import * as React from 'react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---

@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { CreditCard, Moon,PlusCircle, Star, Sun, Trash2 } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CreditCard, PlusCircle, Trash2, Star, Sun, Moon } from 'lucide-react';
 
 
 // --- TypeScript Interfaces ---

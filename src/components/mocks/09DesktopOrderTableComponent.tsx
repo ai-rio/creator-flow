@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { BarChart, Bot, Flame, Gem, HardDriveDownload, Package, PackageCheck,Rocket, Target, Zap } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Flame, Target, Bot, Rocket, Gem, BarChart, HardDriveDownload, Package, PackageCheck } from 'lucide-react';
 
 
 // --- TypeScript Interfaces ---

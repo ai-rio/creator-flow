@@ -1,22 +1,4 @@
-'use client';
-
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; import { animate } from 'framer-motion';
-import { Zap, Target, Flame, Bot, Sun, Moon, ArrowLeft, Clock, Music, Timer } from 'lucide-react';
-
-
-// --- TypeScript Interfaces ---
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
-
-interface SystemStatus {
-  sales: 'nominal' | 'warning' | 'critical';
-  viral: 'nominal' | 'warning' | 'critical';
-  automation: 'nominal' | 'warning' | 'critical';
-}
+import React from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -24,6 +6,8 @@ interface ComponentProps {
 }
 
 
+import { animate,AnimatePresence, motion } from 'framer-motion';
+import { ArrowLeft, Bot, Clock, Flame, Moon, Music, Sun, Target, Timer,Zap } from 'lucide-react';
 
 // --- Mock Data ---
 const initialSystemStatus = { sales: 'nominal', automation: 'nominal' };
@@ -35,13 +19,13 @@ const orderSystemStats = {
 };
 
 // --- Reusable Components (Condensed) ---
-const GlassPane = ({ children, className = '' }: any) => <div className={`bg-white/30 dark:bg-slate-800/20 backdrop-blur-xl border border-slate-900/10 dark:border-slate-100/10 shadow-lg ${className}`}>{children}</div>;
-const ThemeToggle = ({ theme, setTheme  }: any) => ( <motion.button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="absolute top-20 right-4 z-50 p-2 rounded-full text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-slate-800/40" whileHover={{ scale: 1.1, rotate: 15 }} whileTap={{ scale: 0.9 }}> <AnimatePresence mode="wait" initial={false}> <motion.div key={theme} initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}> {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />} </motion.div> </AnimatePresence> </motion.button> );
-const StatusIcon: React.FC<any> = ({ icon: Icon, status  }: any) => { const c: any = { nominal: 'text-teal-800 dark:text-teal-400', warning: 'text-amber-600 dark:text-amber-400', critical: 'text-red-600 dark:text-red-400' }; return <Icon size={20} className={c[status] || c.nominal} />; };
-const AnimatedNumber: React.FC<any> = ({ value  }: any) => { const [displayValue, setDisplayValue] = useState<number>(0); useEffect(() => { const controls = animate(0, value, { duration: 1, ease: "easeOut", onUpdate(latest: any) { setDisplayValue(Math.round(latest)); } }); return () => controls.stop(); }, [value]); return (<span>{displayValue.toLocaleString()}</span>); };
+const GlassPane = ({ children, className = '' }) => <div className={`bg-white/30 dark:bg-slate-800/20 backdrop-blur-xl border border-slate-900/10 dark:border-slate-100/10 shadow-lg ${className}`}>{children}</div>;
+const ThemeToggle: React.FC<any> = ({ theme, setTheme  }) => ( <motion.button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="absolute top-20 right-4 z-50 p-2 rounded-full text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-slate-800/40" whileHover={{ scale: 1.1, rotate: 15 }} whileTap={{ scale: 0.9 }}> <AnimatePresence mode="wait" initial={false}> <motion.div key={theme} initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}> {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />} </motion.div> </AnimatePresence> </motion.button> );
+const StatusIcon = ({ icon: Icon, status }) => { const c = { nominal: 'text-teal-800 dark:text-teal-400', warning: 'text-amber-600 dark:text-amber-400', critical: 'text-red-600 dark:text-red-400' }; return <Icon size={20} className={c[status] || c.nominal} />; };
+const AnimatedNumber = ({ value }) => { const [displayValue, setdisplayValue] = useState<any>(0); useEffect(() => { const controls = animate(0, value, { duration: 1, ease: "easeOut", onUpdate(latest) { setDisplayValue(Math.round(latest)); } }); return () => controls.stop(); }, [value]); return (<span>{displayValue.toLocaleString()}</span>); };
 
 // --- O1: The System Focus Header Component ---
-const SystemFocusHeader = ({ title, metric, metricLabel, systemStatus  }: any) => (
+const SystemFocusHeader: React.FC<any> = ({ title, metric, metricLabel, systemStatus  }) => (
     <motion.header initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }} className="fixed top-2 left-2 right-2 z-40">
         <GlassPane className="px-3 py-3 rounded-xl border-b-0">
             <div className="flex items-center justify-between">
@@ -60,7 +44,7 @@ const SystemFocusHeader = ({ title, metric, metricLabel, systemStatus  }: any) =
 );
 
 // --- O2: The Order System Stats Card ---
-const OrderSystemStatsCard: React.FC<any> = ({ stats  }: any) => {
+const OrderSystemStatsCard = ({ stats }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -99,7 +83,7 @@ const OrderSystemStatsCard: React.FC<any> = ({ stats  }: any) => {
 
 // --- Main App Frame for this View ---
 const OrderManagementView = () => {
-    const [theme, setTheme] = useState<string>('dark');
+    const [theme, settheme] = useState<any>('dark');
 
     return (
         <div className={`${theme} font-sans`}>

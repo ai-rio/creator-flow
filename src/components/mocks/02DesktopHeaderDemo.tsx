@@ -1,8 +1,8 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
 import * as React from 'react';
-import { useState, useEffect, createContext, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { createContext, useContext,useEffect, useState } from 'react';
 
 // --- Theme Context & Provider ---
 const ThemeContext = createContext<any>(null);

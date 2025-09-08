@@ -1,10 +1,10 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { AlertTriangle, BarChart2, BrainCircuit, ChevronLeft, ChevronRight, DollarSign, Eye, HelpCircle, LogOut, Moon,Repeat, Settings, ShoppingCart, Sun, Users, Zap } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceArea } from 'recharts';
-import { Users, AlertTriangle, Zap, BrainCircuit, BarChart2, Settings, HelpCircle, LogOut, ChevronLeft, ChevronRight, ShoppingCart, DollarSign, Eye, Repeat, Sun, Moon } from 'lucide-react';
+import { useEffect, useRef,useState } from 'react';
+import { CartesianGrid, Line, LineChart, ReferenceArea,ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 
 // --- TypeScript Interfaces ---
@@ -49,7 +49,7 @@ const ParticleCanvas = () => {
         };
         resizeCanvas();
 
-        let particles = [];
+        const particles = [];
         const particleCount = 50;
 
         for (let i = 0; i < particleCount; i++) {

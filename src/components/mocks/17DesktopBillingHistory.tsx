@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { ArrowDown, ArrowUp, DownloadCloud, History, Moon,Sun } from 'lucide-react';
 import * as React from 'react';
-import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { History, DownloadCloud, ArrowUp, ArrowDown, Sun, Moon } from 'lucide-react';
+import { useMemo,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---
@@ -75,7 +75,7 @@ const InvoiceHistoryCard = () => {
     const [sortConfig, setSortConfig] = useState<any>({ key: 'date', direction: 'descending' });
 
     const sortedInvoices = useMemo(() => {
-        let sortableItems = [...invoices];
+        const sortableItems = [...invoices];
         if (sortConfig !== null) {
             sortableItems.sort((a: any, b: any) => {
                 if ((a as any)[sortConfig.key] < (b as any)[sortConfig.key]) {

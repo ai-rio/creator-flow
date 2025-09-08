@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 
 export default function AutoMockPage() {
@@ -21,7 +22,7 @@ export default function AutoMockPage() {
         <div className="text-center py-12">
           <h2 className="text-xl font-semibold mb-4">Page Under Maintenance</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            We're updating this page to work with the new TypeScript components.
+            We&apos;re updating this page to work with the new TypeScript components.
           </p>
           <Button onClick={() => window.location.href = '/en/direct-mock'}>
             Go to Direct Mock Page

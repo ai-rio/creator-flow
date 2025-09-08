@@ -1,17 +1,13 @@
-'use client';
+import React from 'react';
 
-import * as React from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; import { animate } from 'framer-motion';
-import { ArrowRight, Bell, CheckCircle2, ChevronDown, Clock, Home, Inbox, Layers, Settings, ShoppingCart, Siren, Zap } from 'lucide-react';
-
-
-// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
 
 
+import { motion } from 'framer-motion';
+import { ArrowRight, Bell, CheckCircle2, ChevronDown, Clock, Home, Inbox, Layers, Settings, ShoppingCart, Siren, Zap } from 'lucide-react';
 
 // --- MOCK DATA FOR I3: CriticalStockCard ---
 const criticalStockData = [
@@ -50,7 +46,7 @@ const criticalStockData = [
 
 // --- REUSABLE GlassPane COMPONENT ---
 // This ensures all components share the exact same base style as defined in the style guide.
-const GlassPane: React.FC<any> = ({ children, className = ''  }: any) => {
+const GlassPane = ({ children, className = '' }) => {
     return (
         <div className={`bg-slate-400/10 backdrop-blur-xl border border-slate-100/10 rounded-2xl ${className}`}>
             {children}
@@ -81,9 +77,9 @@ const InventoryFocusHeader = () => {
 const SyncStatusCard = () => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 } as any}
-            animate={{ opacity: 1, y: 0 } as any}
-            transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.1 } as any}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.1 }}
         >
             <GlassPane className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -125,14 +121,14 @@ const CriticalStockCard = () => {
     };
 
     return (
-        <motion.div variants={containerVariants as any} initial="hidden" animate="visible">
-            <motion.div variants={itemVariants as any} className="flex items-center gap-2 px-1 mb-2">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
+            <motion.div variants={itemVariants} className="flex items-center gap-2 px-1 mb-2">
                 <Siren className="text-red-400" size={20} />
                 <h2 className="text-lg font-bold text-red-400 tracking-wide">CRITICAL STOCK ALERTS</h2>
             </motion.div>
-            <motion.div variants={containerVariants as any} className="space-y-4">
+            <motion.div variants={containerVariants} className="space-y-4">
                 {criticalStockData.map((item) => (
-                    <motion.div key={item.id} variants={itemVariants as any}>
+                    <motion.div key={item.id} variants={itemVariants}>
                         <GlassPane className="p-4 overflow-hidden">
                             {/* Card Header */}
                             <div className="flex justify-between items-start">
@@ -169,17 +165,17 @@ const CriticalStockCard = () => {
                              {/* Action Bar */}
                             <div className="mt-4 grid grid-cols-3 gap-3">
                                 <motion.button 
-                                    whileTap={{ scale: 0.95 } as any}
+                                    whileTap={{ scale: 0.95 }}
                                     className="bg-teal-500/80 text-white font-semibold py-2 rounded-lg hover:bg-teal-500 transition-colors">
                                     Auto-Order
                                 </motion.button>
                                 <motion.button 
-                                     whileTap={{ scale: 0.95 } as any}
+                                     whileTap={{ scale: 0.95 }}
                                     className="bg-slate-500/60 text-slate-100 font-semibold py-2 rounded-lg hover:bg-slate-500/80 transition-colors">
                                     Manual
                                 </motion.button>
                                  <motion.button 
-                                     whileTap={{ scale: 0.95 } as any}
+                                     whileTap={{ scale: 0.95 }}
                                     className="bg-slate-800/60 text-slate-300 font-semibold py-2 rounded-lg hover:bg-slate-700/80 transition-colors">
                                     Defer
                                 </motion.button>

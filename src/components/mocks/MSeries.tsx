@@ -2,9 +2,9 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, animate } from 'framer-motion';
+import { animate,AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
+import React, { useEffect,useState } from 'react';
 
 // Import M-Series components
 import M1ExecutiveHeader from './M1ExecutiveHeader';

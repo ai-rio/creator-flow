@@ -1,19 +1,4 @@
-'use client';
-
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; import { animate } from 'framer-motion';
-import {
-    ArrowLeft, Box, CheckCircle2, Palette, RefreshCw, Moon, Sun, Zap, Siren, 
-    Flame, TrendingUp, Target, BarChart3, Settings 
-} from 'lucide-react';
-
-
-// --- TypeScript Interfaces ---
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
+import React from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -21,9 +6,14 @@ interface ComponentProps {
 }
 
 
+import { motion } from 'framer-motion';
+import { 
+    ArrowLeft, BarChart3, Box, CheckCircle2,     Flame, Moon, Palette, RefreshCw, Settings, 
+Siren, 
+Sun, Target, TrendingUp, Zap} from 'lucide-react';
 
 // --- THEME MANAGEMENT ---
-const ThemeToggle: React.FC<any> = ({ theme, setTheme  }: any) => {
+const ThemeToggle = ({ theme, setTheme }) => {
     const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
     return (
         <motion.button
@@ -37,7 +27,7 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme  }: any) => {
 };
 
 // --- BASE COMPONENT: GlassPane ---
-const GlassPane = ({ children, className = ''  }: any) => (
+const GlassPane: React.FC<any> = ({ children, className = ''  }) => (
     <div className={`bg-white/50 dark:bg-slate-400/10 backdrop-blur-xl border border-slate-900/10 dark:border-slate-100/10 rounded-2xl ${className}`}>
         {children}
     </div>
@@ -57,8 +47,8 @@ const itemVariants = {
 // --- I-SERIES COMPONENTS ---
 
 // [BUILT & THEMED] I1: InventorySystemFocusHeader
-const InventorySystemFocusHeader = ({ theme, setTheme  }: any) => (
-    <motion.div variants={itemVariants as any}>
+const InventorySystemFocusHeader: React.FC<any> = ({ theme, setTheme  }) => (
+    <motion.div variants={itemVariants}>
         <GlassPane className="p-3 flex items-center justify-between sticky top-4 z-10">
             <div className="flex items-center gap-3">
                 <ArrowLeft className="text-slate-600 dark:text-slate-300" />
@@ -78,7 +68,7 @@ const InventorySystemFocusHeader = ({ theme, setTheme  }: any) => (
 
 // [BUILT & THEMED] I2: SyncPerformanceMetricsCard
 const SyncPerformanceMetricsCard = () => (
-    <motion.div variants={itemVariants as any}>
+    <motion.div variants={itemVariants}>
         <GlassPane className="p-4 space-y-3 text-sm">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -103,7 +93,7 @@ const SyncPerformanceMetricsCard = () => (
 const CriticalStockAlertsCard = () => {
     const alerts = [{ product: "📱 iPhone Case Pro", stock: 12, context: "🔥 Viral video driving orders", velocity: "📈 Selling 47/hour, 6hr stock", suggestion: "🎯 Auto-reorder suggested: 500" }];
     return (
-        <motion.div variants={itemVariants as any} className="space-y-4">
+        <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-2 px-2">
                 <Siren className="text-red-600 dark:text-red-500" />
                 <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">CRITICAL STOCK ALERTS</h2>
@@ -128,9 +118,9 @@ const CriticalStockAlertsCard = () => {
 // [BUILT & THEMED] I4: InventoryArtGalleryCard
 const InventoryArtGalleryCard = () => {
     const landscapeData = [ { name: "Phone", level: 'High', height: 'h-16' }, { name: "Grip", level: 'Med', height: 'h-10' }, { name: "Case", level: 'Low', height: 'h-6' }, { name: "Stand", level: 'High', height: 'h-20' } ];
-    const levelColorClasses: any = { High: 'bg-teal-800 dark:bg-teal-400', Med: 'bg-yellow-600 dark:bg-yellow-500', Low: 'bg-red-600 dark:bg-red-500' };
+    const levelColorClasses = { High: 'bg-teal-800 dark:bg-teal-400', Med: 'bg-yellow-600 dark:bg-yellow-500', Low: 'bg-red-600 dark:bg-red-500' };
     return (
-        <motion.div variants={itemVariants as any} className="space-y-4">
+        <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-2 px-2">
                 <Palette className="text-purple-700 dark:text-purple-400" />
                 <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">Inventory Art Gallery</h2>
@@ -165,7 +155,7 @@ const InventorySubNavBar = () => {
         { name: 'Config', icon: <Settings size={20} /> },
     ];
     return (
-        <motion.div variants={itemVariants as any} className="sticky bottom-4 z-10">
+        <motion.div variants={itemVariants} className="sticky bottom-4 z-10">
             <GlassPane className="p-2 flex items-center justify-around">
                 {navItems.map((item) => (
                     <motion.button 
@@ -184,7 +174,7 @@ const InventorySubNavBar = () => {
 
 // --- MAIN APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, setTheme] = useState<string>('dark');
+  const [theme, settheme] = useState<any>('dark');
 
   useEffect(() => {
       document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -196,7 +186,7 @@ export default function App(): React.JSX.Element {
         <div className="max-w-md mx-auto">
             <motion.div 
                 className="space-y-4 pb-24" // Added padding-bottom to prevent overlap with sticky nav
-                variants={containerVariants as any}
+                variants={containerVariants}
                 initial="hidden"
                 animate="visible"
             >

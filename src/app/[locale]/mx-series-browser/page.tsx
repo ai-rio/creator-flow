@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+
 import MxSeries from '@/components/mocks/MxSeries';
 
 export default function MxSeriesBrowser() {

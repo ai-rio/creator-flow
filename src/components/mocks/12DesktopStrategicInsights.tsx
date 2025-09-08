@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { Bot,Eye, ShieldCheck, TrendingUp, Trophy } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, ShieldCheck, TrendingUp, Eye, Bot } from 'lucide-react';
 
 
 // --- TypeScript Interfaces ---

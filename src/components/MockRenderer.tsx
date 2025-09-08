@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect,useState } from 'react'
 
 // Simple JSX renderer that executes the component
 export function MockRenderer({ jsxContent, filename }: { jsxContent: string, filename: string }) {
@@ -40,7 +40,7 @@ export function MockRenderer({ jsxContent, filename }: { jsxContent: string, fil
         })
       } else {
         // Placeholder for non-converted components
-        setRenderedComponent(() => () => (
+        const PlaceholderComponent = () => (
           <div className="p-8 bg-yellow-50 dark:bg-yellow-950 rounded-lg border border-yellow-200 dark:border-yellow-800">
             <h3 className="text-lg font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
               Component: {filename}
@@ -54,7 +54,9 @@ export function MockRenderer({ jsxContent, filename }: { jsxContent: string, fil
               </p>
             </div>
           </div>
-        ))
+        );
+        PlaceholderComponent.displayName = `Placeholder_${filename}`;
+        setRenderedComponent(() => PlaceholderComponent);
       }
     } catch (err) {
       setError(`Error loading component: ${err}`)

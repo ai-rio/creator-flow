@@ -1,20 +1,4 @@
-'use client';
-
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; import { animate } from 'framer-motion';
-import {
-    Zap, Target, Flame, Bot, Truck, Package, Moon, Sun, ChevronDown,
-    Palette, BrainCircuit, Rocket, BarChart3, RadioTower, Globe,
-    TrendingUp, ShieldCheck, Wrench, ChevronsLeft, DollarSign, Clapperboard
-} from 'lucide-react';
-
-
-// --- TypeScript Interfaces ---
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
+import React from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -22,9 +6,15 @@ interface ComponentProps {
 }
 
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { 
+BarChart3, Bot, BrainCircuit, ChevronDown,
+ChevronsLeft, Clapperboard,
+DollarSign, Flame, Globe,
+Moon, Package,     Palette, RadioTower, Rocket, ShieldCheck, Sun, Target,     TrendingUp, Truck, Wrench,     Zap} from 'lucide-react';
 
 // --- THEME MANAGEMENT ---
-const ThemeToggle: React.FC<any> = ({ theme, setTheme  }: any) => {
+const ThemeToggle = ({ theme, setTheme }) => {
     const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
     return (
         <motion.button onClick={toggleTheme} whileTap={{ scale: 0.9, rotate: 15 }} className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-500/10 transition-colors" aria-label="Toggle theme">
@@ -34,7 +24,7 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme  }: any) => {
 };
 
 // --- BASE COMPONENT: GlassPane ---
-const GlassPane = ({ children, className = ''  }: any) => (
+const GlassPane: React.FC<any> = ({ children, className = ''  }) => (
     <div className={`bg-white/50 dark:bg-slate-400/10 backdrop-blur-xl border border-slate-900/10 dark:border-slate-100/10 rounded-2xl ${className}`}>
         {children}
     </div>
@@ -43,7 +33,7 @@ const GlassPane = ({ children, className = ''  }: any) => (
 // --- D-SERIES COMPONENTS (Desktop) ---
 
 // D1: ExecutiveDesktopHeader
-const ExecutiveDesktopHeader: React.FC<any> = ({ theme, setTheme  }: any) => {
+const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
     const systemIcons = [ { icon: <Target size={16} />, key: 'target' }, { icon: <Flame size={16} />, key: 'flame' }, { icon: <Bot size={16} />, key: 'bot' }, { icon: <Truck size={16} />, key: 'truck' }, { icon: <Package size={16} />, key: 'package' } ];
     return (
         <motion.header initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="fixed top-4 left-4 right-4 z-50">
@@ -71,7 +61,7 @@ const ExecutiveDesktopHeader: React.FC<any> = ({ theme, setTheme  }: any) => {
 };
 
 // D2: DesktopSidebarNav (Collapsible)
-const DesktopSidebarNav: React.FC<any> = ({ isCollapsed, setIsCollapsed  }: any) => {
+const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }) => {
     const navItems = [ { icon: <BrainCircuit size={20} />, label: "Strategic Command" }, { icon: <Palette size={20} />, label: "Data Art" }, { icon: <Rocket size={20} />, label: "Automation Liberation" }, { icon: <BarChart3 size={20} />, label: "Executive Intelligence" }, { icon: <RadioTower size={20} />, label: "TikTok Empire" }, { icon: <TrendingUp size={20} />, label: "Market Intelligence" }, { icon: <Globe size={20} />, label: "Multi-Platform" }, { icon: <ShieldCheck size={20} />, label: "Advanced Analytics" }, { icon: <Wrench size={20} />, label: "Predictive Intel" } ];
     return (
         <motion.aside className="fixed top-24 left-4 bottom-4 hidden md:flex flex-col z-40" initial={false} animate={{ width: isCollapsed ? '4.5rem' : '16rem' }} transition={{ type: 'spring', stiffness: 200, damping: 25 }}>
@@ -100,7 +90,7 @@ const DesktopSidebarNav: React.FC<any> = ({ isCollapsed, setIsCollapsed  }: any)
 };
 
 // [NEWLY BUILT & THEMED] D3: CrossSystemMasterpieceCard
-const SymphonyCard = ({ icon, title, subtitle, primaryMetric, secondaryMetric, colorClass  }: any) => (
+const SymphonyCard: React.FC<any> = ({ icon, title, subtitle, primaryMetric, secondaryMetric, colorClass  }) => (
     <GlassPane className="p-4 flex flex-col justify-between">
         <div>
             <div className={`flex items-center gap-3 mb-2`}>
@@ -151,8 +141,8 @@ const CrossSystemMasterpieceCard = () => {
 
 // --- MAIN DESKTOP APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, setTheme] = useState<string>('dark');
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+  const [theme, settheme] = useState<any>('dark');
+  const [isSidebarCollapsed, setisSidebarCollapsed] = useState<any>(false);
 
   useEffect(() => {
       document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');

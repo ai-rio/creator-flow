@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence,motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
+import React, { useEffect,useState } from 'react';
 
 // Import I-Series components
 import I1I5InventoryManagementFocusComponents from './I1I5InventoryManagementFocusComponents';

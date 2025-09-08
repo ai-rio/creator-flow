@@ -1,285 +1,332 @@
-# S001: Component Navigation UX Patterns
+# S001: Unified Component Navigation UX Patterns
 
 ## Overview
 
-This specification defines the standardized navigation UX patterns developed for component series browsing, ensuring consistent user experience across all component collections (A-Series, O-Series, D-Series, I-Series).
+This specification defines the unified navigation UX patterns implemented for component browsing across all series (A, O, D, I, M, Dx, FP), providing a centralized, accessible, and efficient component discovery experience.
 
-## Navigation Architecture
+## Unified Navigation Architecture
 
-### Dual-Mode System
+### Single-Source Navigation System
 
-#### Browser Mode
-- **URL**: `/en/[series]-browser`
-- **Purpose**: Overview mode with horizontal navigation and component switching
-- **Navigation**: Internal state management with React useState
+#### Unified Component Browser
+- **URL**: `/en/component-browser`
+- **Purpose**: Centralized navigation for all component series with category-based organization
+- **Navigation**: Hierarchical category → series → component selection
+- **State Management**: React useState with URL parameter synchronization
 
-#### Individual Mode  
-- **URL**: `/en/[series]-browser?component=[ComponentName]`
-- **Purpose**: Focused view of single components
-- **Navigation**: URL-based navigation with browser history
+#### Legacy Series Support
+- **URLs**: `/en/[series]` (e.g., `/en/a-series`)
+- **Purpose**: Backward compatibility with simplified notification
+- **Behavior**: Displays notification directing users to unified browser
 
-### Vertical Navigation Panel
+### Floating Navigation Panel Architecture
 
-#### Positioning Strategy
+#### Positioning & Interaction
 ```css
-.navigation-panel {
+.unified-navigation-panel {
   position: fixed;
-  right: 1rem;              /* right-4 */
-  top: 50%;                 /* top-1/2 */
-  transform: translateY(-50%); /* -translate-y-1/2 */
-  z-index: 100;             /* z-[100] */
-  display: flex;
-  flex-direction: column;   /* flex-col */
-  gap: 0.75rem;            /* gap-3 */
+  top: 16px;                    /* Configurable via drag */
+  right: 16px;                  /* Configurable via drag */
+  z-index: 50;
+  width: 384px;                 /* w-96 when expanded */
+  max-height: 90vh;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 2px solid #d1d5db;    /* AAA contrast compliance */
 }
 ```
 
-**Advantages**:
-- ✅ No header conflicts (floats independently)
-- ✅ Always accessible regardless of component content
-- ✅ Consistent positioning across all viewports
-- ✅ Intuitive vertical metaphor (↑ previous, ↓ next)
+**Key Features**:
+- ✅ **Draggable**: Click and drag header to reposition anywhere on screen
+- ✅ **Collapsible**: Toggle between full panel (384px) and compact mode (48px)
+- ✅ **Persistent Position**: Maintains position during drag operations
+- ✅ **AAA Contrast**: WCAG AAA compliant color ratios (>7:1)
+- ✅ **Responsive**: Adapts to different screen sizes
 
-#### Visual Design System
+#### Collapsible States
 
-**Color Coding**:
-- **Yellow** (`bg-yellow-100/95`): Exit/Back actions
-- **Blue** (`bg-blue-100/95`): Information displays
-- **Green** (`bg-green-100/95`): Navigation actions  
-- **Purple** (`bg-purple-100/95`): Mode switching
-- **Gray** (`bg-slate-100/75`): Disabled states
+**Expanded State** (Default):
+- Full 384px width with complete navigation interface
+- Category selection, series selection, component list
+- Navigation controls and component information
+- All interactive elements visible
 
-**Component Sizes**:
-- **Circular buttons**: 48x48px (`w-12 h-12`) for actions
-- **Info card**: Variable width with padding (`px-3 py-4`)
-- **Border radius**: Full circles (`rounded-full`) for buttons, larger radius (`rounded-xl`) for cards
+**Collapsed State**:
+- Compact 48x48px panel with toggle button only
+- Minimal visual footprint for focused component viewing
+- Single button (📋) to expand back to full interface
 
-### Browser Mode Navigation
+### Hierarchical Navigation Structure
 
-#### Structure (Top to Bottom)
-1. **Component Info Card** (Blue)
-   - Current component name
-   - Position indicator (e.g., "1/6")
-   - Mode indicator ("Browser Mode")
-   - Keyboard shortcuts hint ("←→ Nav")
+#### Three-Level Hierarchy
 
-2. **Previous Button** (Green)
-   - ↑ Arrow icon
-   - Tooltip showing previous component name
-   - Disabled state when at first component
-
-3. **Next Button** (Green)  
-   - ↓ Arrow icon
-   - Tooltip showing next component name
-   - Disabled state when at last component
-
-4. **Individual View Link** (Purple)
-   - ↗ Arrow icon
-   - Opens current component in individual mode
-   - New tab/focused viewing
-
-#### Implementation
+**Level 1: Categories**
 ```typescript
-// Browser mode navigation logic
-const currentIndex = COMPONENT_NAMES.indexOf(selectedComponent);
-const hasPrevious = currentIndex > 0;
-const hasNext = currentIndex < COMPONENT_NAMES.length - 1;
-
-// State-based navigation (no URL changes)
-<button onClick={() => setSelectedComponent(previousComponent!)}>
-  ↑
-</button>
-```
-
-### Individual Mode Navigation
-
-#### Structure (Top to Bottom)
-1. **Back to Browser** (Yellow)
-   - ← Arrow icon
-   - Returns to browser mode
-   - Clear exit path
-
-2. **Component Info Card** (Blue)
-   - Current component name
-   - Position indicator (e.g., "1/6") 
-   - Keyboard shortcuts ("←→ Navigate • ESC Exit")
-
-3. **Previous Button** (Green)
-   - ↑ Arrow icon  
-   - URL-based navigation to previous component
-   - Maintains individual mode
-
-4. **Next Button** (Green)
-   - ↓ Arrow icon
-   - URL-based navigation to next component
-   - Maintains individual mode
-
-#### Implementation
-```typescript
-// Individual mode navigation logic - URL based
-const handleKeyDown = (event: KeyboardEvent) => {
-  if (event.key === 'ArrowLeft' && hasPrevious && previousComponent) {
-    window.location.href = `/en/a-series-browser?component=${previousComponent}`;
-  } else if (event.key === 'ArrowRight' && hasNext && nextComponent) {
-    window.location.href = `/en/a-series-browser?component=${nextComponent}`;
-  } else if (event.key === 'Escape') {
-    window.location.href = '/en/a-series-browser';
+const componentCategories = {
+  'Dashboard Components': {
+    'A Series': [...], // SHM Dashboard variants
+    'O Series': [...], // Order system components  
+    'D Series': [...], // Enhanced desktop components
+    'I Series': [...], // Inventory management
+    'M Series': [...]  // Executive/mobile components
+  },
+  'Desktop Components': {
+    'Dx Series': [...] // Desktop-specific components (02-18)
+  },
+  'Public Pages': {
+    'FP Series': [...] // Feature page components
   }
 };
 ```
 
-## Keyboard Interaction Design
+**Level 2: Series Selection**
+- Dynamic dropdown based on selected category
+- Automatic series selection when category changes
+- Clear visual hierarchy with bold typography
 
-### Browser Mode Shortcuts
-- **← Left Arrow**: Navigate to previous component (internal state)
-- **→ Right Arrow**: Navigate to next component (internal state)
-- **Enter**: Open current component in individual mode
-- **Tab**: Focus next navigation element
+**Level 3: Component Selection**
+- List view: Full component names with selection highlighting
+- Grid view: Compact component cards with abbreviated names
+- Real-time component count display
 
-### Individual Mode Shortcuts  
-- **← Left Arrow**: Navigate to previous component (URL change)
-- **→ Right Arrow**: Navigate to next component (URL change)
-- **Escape**: Return to browser mode
-- **Home**: Jump to first component
-- **End**: Jump to last component
+### Visual Design System
 
-### Accessibility Considerations
-- All buttons have proper `title` attributes
-- Keyboard navigation follows logical tab order
-- Disabled states clearly indicated visually and programmatically
-- ARIA labels for screen readers
-- High contrast mode support
-
-## Component Integration Pattern
-
-### Wrapper Component Structure
-```typescript
-interface SeriesProps {
-  mode?: 'individual' | 'browser';
-  componentName?: string;
+#### AAA Contrast Compliance
+```css
+/* High contrast color palette */
+.header-section {
+  background: #f3f4f6;         /* Gray-100 background */
+  color: #111827;              /* Gray-900 text (21:1 ratio) */
+  border-bottom: 2px solid #d1d5db; /* Strong visual separation */
 }
 
-export default function Series({ mode = 'browser', componentName }: SeriesProps) {
-  // Component registry
-  const COMPONENTS = {
-    'Component1': Component1,
-    'Component2': Component2,
-    // ...
-  };
-  
-  // Mode switching logic
-  if (mode === 'individual' && componentName) {
-    return <IndividualView />;
+.interactive-elements {
+  border: 2px solid #6b7280;   /* Strong borders for definition */
+  color: #111827;              /* High contrast text */
+  font-weight: 700;            /* Bold typography for readability */
+}
+
+.selected-state {
+  background: #dcfce7;         /* Green-200 background */
+  color: #14532d;              /* Green-900 text (>7:1 ratio) */
+  border: 2px solid #16a34a;   /* Green-600 border */
+}
+```
+
+#### Interactive States
+- **Default**: High contrast borders and bold typography
+- **Hover**: Enhanced background with maintained contrast ratios
+- **Focus**: Strong focus rings for keyboard navigation
+- **Selected**: Green color scheme with maximum contrast
+- **Disabled**: Clear visual indication with reduced opacity
+
+### Component Organization Patterns
+
+#### Category-Based Grouping
+
+**Dashboard Components** (Primary UI Elements):
+- A Series: SHM Dashboard variations (A1-A6)
+- O Series: Order system components (O2, O5)
+- D Series: Enhanced desktop components (D1, D4-D6)
+- I Series: Inventory management (I1, I3)
+- M Series: Executive and mobile components (M1-M6)
+
+**Desktop Components** (Desktop-Specific):
+- Dx Series: Desktop application components (DX2-DX18)
+
+**Public Pages** (Marketing/Landing):
+- FP Series: Feature page components (FP020-FP050)
+
+#### Component Flattening Strategy
+```typescript
+// Flatten all components for navigation
+const allComponents = Object.values(componentCategories)
+  .flatMap(category => Object.values(category))
+  .flat();
+
+// Safe index calculation with fallback
+const initialIndex = allComponents.findIndex(c => c.id === initialComponent);
+const currentIndex = initialIndex >= 0 ? initialIndex : 0;
+```
+
+## Interaction Design Patterns
+
+### Drag and Drop Functionality
+
+#### Mouse Event Handling
+```typescript
+const handleMouseDown = (e: React.MouseEvent) => {
+  setIsDragging(true);
+  setDragStart({
+    x: e.clientX - position.x,
+    y: e.clientY - position.y
+  });
+};
+
+const handleMouseMove = (e: MouseEvent) => {
+  if (isDragging) {
+    setPosition({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y
+    });
   }
-  
-  return <BrowserView />;
-}
+};
 ```
 
-### Page Route Integration
+#### Visual Feedback
+- **Cursor States**: `grab` → `grabbing` during drag operations
+- **Drag Handle**: Entire header area acts as drag handle
+- **Position Persistence**: Maintains position across component changes
+
+### Keyboard Navigation
+
+#### Global Shortcuts
+- **← Left Arrow**: Navigate to previous component in sequence
+- **→ Right Arrow**: Navigate to next component in sequence  
+- **Escape**: Return to home page (`/en`)
+
+#### Component-Specific Navigation
+- **Category Selection**: Dropdown with keyboard navigation
+- **Series Selection**: Automatic focus management
+- **Component List**: Arrow key navigation with visual feedback
+
+### View Mode Switching
+
+#### List View (Default)
+- Full component names with clear hierarchy
+- Selection highlighting with high contrast
+- Optimal for component discovery and identification
+
+#### Grid View
+- Compact 2-column layout
+- Abbreviated component names (e.g., "A1", "DX5")
+- Space-efficient for quick navigation
+
+## URL Parameter Integration
+
+### Component Deep Linking
 ```typescript
-// pages/[locale]/[series]-browser/page.tsx
-interface PageProps {
-  searchParams: Promise<{ component?: string }>;
-}
-
-export default async function Page({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const selectedComponent = params.component;
-  
-  if (selectedComponent) {
-    return <Series mode="individual" componentName={selectedComponent} />;
-  }
-  
-  return <Series mode="browser" />;
-}
+// URL structure: /en/component-browser?component=a1
+const navigateToComponent = (index: number) => {
+  setCurrentIndex(index);
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.set('component', allComponents[index].id);
+  window.history.pushState({}, '', newUrl.toString());
+};
 ```
 
-## User Experience Flows
+### State Synchronization
+- URL parameters reflect current component selection
+- Browser back/forward navigation supported
+- Shareable URLs for specific components
+- Initial component loading from URL parameters
 
-### Primary User Journeys
+## Accessibility Implementation
 
-#### Component Discovery Flow
-1. User visits `/en/a-series-browser`
-2. Sees all components in browser mode with horizontal tabs
-3. Uses vertical navigation or horizontal tabs to explore
-4. Clicks ↗ button or uses keyboard shortcut to focus on specific component
+### WCAG AAA Compliance
 
-#### Component Deep Dive Flow  
-1. User visits `/en/a-series-browser?component=A3ShmDashboard`
-2. Sees focused view of A3 component
-3. Uses ↑↓ navigation or ←→ keyboard shortcuts to browse series
-4. Uses ← Back button or ESC key to return to browser overview
+#### Color Contrast
+- **Text on Background**: Minimum 7:1 contrast ratio
+- **Interactive Elements**: Enhanced contrast with bold typography
+- **Focus Indicators**: Strong visual focus rings
+- **State Changes**: Clear visual feedback for all interactions
 
-#### Comparative Analysis Flow
-1. User opens browser mode
-2. Opens multiple individual components in new tabs using ↗ buttons
-3. Compares components side-by-side
-4. Uses keyboard shortcuts for rapid navigation within each tab
+#### Keyboard Navigation
+- **Tab Order**: Logical progression through interface elements
+- **Focus Management**: Proper focus handling during state changes
+- **Keyboard Shortcuts**: Consistent across all components
+- **Screen Reader Support**: Proper ARIA labels and descriptions
 
-### Error Handling
+#### Motor Accessibility
+- **Touch Targets**: Minimum 44x44px for all interactive elements
+- **Drag Tolerance**: Forgiving drag detection with proper thresholds
+- **Alternative Navigation**: Keyboard alternatives for all mouse interactions
 
-#### Invalid Component Names
+## Performance Optimization
+
+### Component Loading Strategy
+
+#### Lazy Loading
 ```typescript
-if (!SelectedComponent) {
-  return (
-    <div className="error-state">
-      <h1>Component Not Found</h1>
-      <p>Component "{componentName}" does not exist.</p>
-      <p>Available: {COMPONENT_NAMES.join(', ')}</p>
-      <a href="/en/a-series-browser">← Back to Browser</a>
-    </div>
-  );
-}
+// Components loaded on-demand to reduce initial bundle size
+const CurrentComponent = currentComponent?.component;
+
+// Safe rendering with fallback
+{CurrentComponent ? <CurrentComponent /> : <div>Component not found</div>}
 ```
 
-#### Network/Loading States
-- Skeleton placeholders during component loading
-- Error boundaries for component rendering failures
-- Graceful degradation when navigation fails
+#### State Management
+- Minimal re-renders through targeted state updates
+- Efficient component flattening with memoization
+- Optimized drag event handling with proper cleanup
 
-## Implementation Checklist
+### Memory Management
+- Event listener cleanup on component unmount
+- Proper dependency arrays in useEffect hooks
+- Efficient state updates without unnecessary re-renders
 
-### For Each New Component Series
+## Implementation Guidelines
 
-- [ ] Create wrapper component with COMPONENTS registry
-- [ ] Implement dual-mode rendering logic  
-- [ ] Add vertical navigation panel with proper positioning
-- [ ] Configure keyboard event handlers
-- [ ] Set up page route with async searchParams
-- [ ] Add proper TypeScript interfaces
-- [ ] Implement error handling for invalid components
-- [ ] Test navigation flows in both modes
+### Component Integration Checklist
+
+For adding new component series:
+
+- [ ] Add component imports to UnifiedComponentBrowser
+- [ ] Define component entries in componentCategories object
+- [ ] Assign appropriate category (Dashboard/Desktop/Public Pages)
+- [ ] Ensure component follows naming convention (ID + display name)
+- [ ] Test component loading and navigation
 - [ ] Verify keyboard shortcuts work correctly
-- [ ] Ensure accessibility compliance
+- [ ] Confirm AAA contrast compliance
+- [ ] Test drag and collapse functionality
 
 ### Quality Gates
 
-- [ ] Navigation works without JavaScript (progressive enhancement)
-- [ ] Keyboard navigation follows logical tab order
-- [ ] Screen readers can access all functionality  
-- [ ] High contrast mode displays properly
-- [ ] Mobile responsive design maintained
-- [ ] Performance: Navigation actions < 100ms response time
-- [ ] Cross-browser compatibility (Chrome, Firefox, Safari, Edge)
+#### Functionality
+- [ ] All components load without errors
+- [ ] Navigation works in both directions
+- [ ] URL parameters sync correctly
+- [ ] Keyboard shortcuts respond properly
+- [ ] Drag and drop functions smoothly
+- [ ] Collapse/expand maintains state
 
-## Future Enhancements
+#### Accessibility  
+- [ ] WCAG AAA contrast ratios verified
+- [ ] Keyboard navigation complete
+- [ ] Screen reader compatibility tested
+- [ ] Focus management working properly
+- [ ] Touch targets meet minimum size requirements
 
-### Planned Improvements
-- **Component search/filter** within browser mode
-- **Bookmarking** favorite components  
-- **Comparison mode** for side-by-side viewing
-- **Component documentation** integration
-- **Usage analytics** for popular components
+#### Performance
+- [ ] Initial load time < 2 seconds
+- [ ] Navigation response time < 100ms
+- [ ] Drag operations smooth (60fps)
+- [ ] Memory usage stable during extended use
 
-### Advanced Navigation Features  
-- **Breadcrumb navigation** for nested component hierarchies
-- **Tag-based filtering** by component type/category
-- **Recently viewed** component history
-- **Keyboard shortcut customization**
+## Future Enhancement Opportunities
+
+### Advanced Navigation Features
+- **Search Functionality**: Filter components by name or category
+- **Favorites System**: Bookmark frequently used components
+- **Recent History**: Quick access to recently viewed components
+- **Comparison Mode**: Side-by-side component viewing
+
+### Customization Options
+- **Panel Themes**: Light/dark mode support
+- **Size Preferences**: Configurable panel dimensions
+- **Keyboard Shortcuts**: User-customizable key bindings
+- **Layout Options**: Alternative panel positions and orientations
+
+### Integration Enhancements
+- **Component Documentation**: Inline documentation display
+- **Usage Analytics**: Track popular components and usage patterns
+- **Export Functionality**: Export component configurations
+- **Collaboration Features**: Share component collections
 
 ## Related Documents
 
 - [AST-Based JSX to TypeScript Methodology](../00-planning/P001-ast-based-jsx-to-tsx-methodology.md)
 - [Component Architecture Standards](../../architecture/component-patterns.md)
-- [Accessibility Guidelines](../../accessibility/navigation-patterns.md)
+- [Accessibility Guidelines](../../accessibility/wcag-aaa-compliance.md)
+- [Performance Optimization Guide](../../performance/component-loading-strategies.md)

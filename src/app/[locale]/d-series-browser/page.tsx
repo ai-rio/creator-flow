@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+
 import DSeries from '@/components/mocks/DSeries';
 
 export default function DSeriesBrowser() {

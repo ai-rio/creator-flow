@@ -1,27 +1,4 @@
-'use client';
-
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, animate } from 'framer-motion';
-import { Zap, Target, Flame, Bot, Sun, Moon, Palette, DollarSign, Package, Truck, Video } from 'lucide-react';
-
-
-// --- TypeScript Interfaces ---
-interface User {
-  handle: string;
-  avatarUrl: string;
-}
-
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
-
-interface SystemStatus {
-  sales: 'nominal' | 'warning' | 'critical';
-  viral: 'nominal' | 'warning' | 'critical';
-  automation: 'nominal' | 'warning' | 'critical';
-}
+import React from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -29,6 +6,8 @@ interface ComponentProps {
 }
 
 
+import { animate,AnimatePresence, motion } from 'framer-motion';
+import { Bot, DollarSign, Flame, Moon, Package, Palette, Sun, Target, Truck, Video,Zap } from 'lucide-react';
 
 // --- Mock Data ---
 const initialSystemStatus = {
@@ -51,13 +30,13 @@ const dailyStats = {
 };
 
 // --- Reusable Components ---
-const GlassPane = ({ children, className = ''  }: any) => (
+const GlassPane: React.FC<any> = ({ children, className = ''  }) => (
     <div className={`bg-white/30 dark:bg-slate-800/20 backdrop-blur-xl border border-slate-900/10 dark:border-slate-100/10 shadow-lg ${className}`}>
         {children}
     </div>
 );
 
-const ThemeToggle = ({ theme, setTheme  }: any) => (
+const ThemeToggle: React.FC<any> = ({ theme, setTheme  }) => (
     <motion.button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         className="absolute top-20 right-4 z-50 p-2 rounded-full text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-slate-800/40"
@@ -72,24 +51,24 @@ const ThemeToggle = ({ theme, setTheme  }: any) => (
     </motion.button>
 );
 
-const StatusIcon: React.FC<any> = ({ icon: Icon, status  }: any) => {
+const StatusIcon = ({ icon: Icon, status }) => {
     const statusConfig = {
         nominal: { color: 'text-teal-800 dark:text-teal-400' },
         warning: { color: 'text-amber-600 dark:text-amber-400' },
         critical: { color: 'text-red-600 dark:text-red-400' }
     };
-    const config = (statusConfig as any)[status] || statusConfig.nominal;
+    const config = statusConfig[status] || statusConfig.nominal;
     return <Icon size={20} className={`${config.color}`} />;
 };
 
-const AnimatedNumber: React.FC<any> = ({ value, isCurrency = false  }: any) => {
-    const [displayValue, setDisplayValue] = useState<number>(0);
+const AnimatedNumber = ({ value, isCurrency = false }) => {
+    const [displayValue, setdisplayValue] = useState<any>(0);
 
     useEffect(() => {
         const controls = animate(0, value, {
             duration: 1.5,
             ease: "easeOut",
-            onUpdate(latest: any) {
+            onUpdate(latest) {
                 setDisplayValue(Math.round(latest));
             }
         });
@@ -104,12 +83,12 @@ const AnimatedNumber: React.FC<any> = ({ value, isCurrency = false  }: any) => {
     );
 };
 
-const Sparkline: React.FC<any> = ({ data, className = ''  }: any) => {
+const Sparkline = ({ data, className = '' }) => {
     const width = 100;
     const height = 20;
     const max = Math.max(...data);
     const min = Math.min(...data);
-    const points = data.map((d: any, i: any) => {
+    const points = data.map((d, i) => {
         const x = (i / (data.length - 1)) * width;
         const y = height - ((d - min) / (max - min) * height);
         return `${x},${y}`;
@@ -132,7 +111,7 @@ const Sparkline: React.FC<any> = ({ data, className = ''  }: any) => {
 
 
 // --- M1: The Header Component ---
-const MobileExecutiveHeader = ({ systemStatus, user  }: any) => (
+const MobileExecutiveHeader: React.FC<any> = ({ systemStatus, user  }) => (
     <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -150,7 +129,7 @@ const MobileExecutiveHeader = ({ systemStatus, user  }: any) => (
 );
 
 // --- M2: The Business Symphony Card ---
-const BusinessSymphonyCard = ({ stats  }: any) => (
+const BusinessSymphonyCard: React.FC<any> = ({ stats  }) => (
     <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -209,7 +188,7 @@ const BusinessSymphonyCard = ({ stats  }: any) => (
 
 // --- Main App Frame ---
 const MobileDashboard = () => {
-    const [theme, setTheme] = useState<string>('dark');
+    const [theme, settheme] = useState<any>('dark');
     const user = { handle: '@ceo', avatarUrl: 'https://placehold.co/64x64/0A090F/FFF?text=CEO' };
 
     return (

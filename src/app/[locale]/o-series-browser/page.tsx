@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+
 import OSeries from '@/components/mocks/OSeries';
 
 export default function OSeriesBrowser() {

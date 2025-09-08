@@ -1,27 +1,4 @@
-'use client';
-
-import * as React from 'react';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Target, Flame, Bot, Sun, Moon } from 'lucide-react';
-
-
-// --- TypeScript Interfaces ---
-interface User {
-  handle: string;
-  avatarUrl: string;
-}
-
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
-
-interface SystemStatus {
-  sales: 'nominal' | 'warning' | 'critical';
-  viral: 'nominal' | 'warning' | 'critical';
-  automation: 'nominal' | 'warning' | 'critical';
-}
+import React from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -29,6 +6,8 @@ interface ComponentProps {
 }
 
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { Bot, Flame, Moon,Sun, Target, Zap } from 'lucide-react';
 
 // --- Mock Data ---
 // This simulates the live status of different backend systems.
@@ -39,13 +18,13 @@ const initialSystemStatus = {
 };
 
 // --- Reusable Components ---
-const GlassPane = ({ children, className = ''  }: any) => (
+const GlassPane: React.FC<any> = ({ children, className = ''  }) => (
     <div className={`bg-white/30 dark:bg-slate-800/20 backdrop-blur-xl border-b border-slate-900/10 dark:border-slate-100/10 shadow-md ${className}`}>
         {children}
     </div>
 );
 
-const ThemeToggle = ({ theme, setTheme  }: any) => (
+const ThemeToggle: React.FC<any> = ({ theme, setTheme  }) => (
     <motion.button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         className="absolute top-20 right-4 z-50 p-2 rounded-full text-slate-500 dark:text-slate-400 bg-white/40 dark:bg-slate-800/40"
@@ -60,7 +39,7 @@ const ThemeToggle = ({ theme, setTheme  }: any) => (
     </motion.button>
 );
 
-const StatusIcon: React.FC<any> = ({ icon: Icon, status  }: any) => {
+const StatusIcon = ({ icon: Icon, status }) => {
     const statusConfig = {
         nominal: {
             color: 'text-teal-800 dark:text-teal-400',
@@ -76,7 +55,7 @@ const StatusIcon: React.FC<any> = ({ icon: Icon, status  }: any) => {
         }
     };
 
-    const config = (statusConfig as any)[status] || statusConfig.nominal;
+    const config = statusConfig[status] || statusConfig.nominal;
 
     return (
         <motion.div
@@ -97,7 +76,7 @@ const StatusIcon: React.FC<any> = ({ icon: Icon, status  }: any) => {
 
 
 // --- M1: The Header Component ---
-const MobileExecutiveHeader: React.FC<any> = ({ systemStatus, user  }: any) => {
+const MobileExecutiveHeader = ({ systemStatus, user }) => {
     return (
         <motion.header
             initial={{ y: -100, opacity: 0 }}
@@ -141,7 +120,7 @@ const MobileExecutiveHeader: React.FC<any> = ({ systemStatus, user  }: any) => {
 
 // --- Main App Frame ---
 const MobileDashboard = () => {
-    const [theme, setTheme] = useState<string>('dark');
+    const [theme, settheme] = useState<any>('dark');
     const user = { handle: '@ceo', avatarUrl: 'https://placehold.co/64x64/0A090F/FFF?text=CEO' };
 
     return (

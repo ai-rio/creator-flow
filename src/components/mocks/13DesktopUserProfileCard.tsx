@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { Moon,Sun, UploadCloud, User } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { User, UploadCloud, Sun, Moon } from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---

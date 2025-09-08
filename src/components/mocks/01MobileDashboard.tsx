@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
 import * as React from 'react';
-import { useState, useEffect, createContext, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
+import { createContext, useContext,useEffect, useState } from 'react';
+import { Bar, BarChart, Cell,ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 
 // --- TypeScript Interfaces ---

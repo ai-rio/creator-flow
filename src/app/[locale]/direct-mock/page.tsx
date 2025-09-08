@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 
 // Import only existing converted components
 import M1ExecutiveHeader from '@/components/mocks/M1ExecutiveHeader';
@@ -11,6 +9,8 @@ import M3StrategicCommandCard from '@/components/mocks/M3StrategicCommandCard';
 import M4LiberationOrchestraCard from '@/components/mocks/M4LiberationOrchestraCard';
 import M5IntelBriefingCard from '@/components/mocks/M5IntelBriefingCard';
 import M6MobileNavbar from '@/components/mocks/M6MobileNavbar';
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 
 // Component registry - only existing components
 const COMPONENTS = {

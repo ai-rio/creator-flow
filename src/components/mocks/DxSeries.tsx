@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence,motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
+import React, { useEffect,useState } from 'react';
 
 // Import Dx-Series components (Desktop)
 import DesktopHeaderDemo from './02DesktopHeaderDemo';

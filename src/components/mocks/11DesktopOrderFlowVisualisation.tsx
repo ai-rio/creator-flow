@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { Bot, Inbox, Package, PackageCheck } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Inbox, Bot, Package, PackageCheck } from 'lucide-react';
 
 
 // --- TypeScript Interfaces ---

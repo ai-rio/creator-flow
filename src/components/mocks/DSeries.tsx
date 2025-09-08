@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence,motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
+import React, { useEffect,useState } from 'react';
 
 // Import D-Series components
 import D1D3EnhancedDesctopCcc from './D1D3EnhancedDesctopCcc-768px';

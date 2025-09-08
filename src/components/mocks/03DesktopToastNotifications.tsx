@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { AlertTriangle, CheckCircle, Info, X,XCircle } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, AlertTriangle, XCircle, Info, X } from 'lucide-react';
+import { useCallback,useEffect, useState } from 'react';
 
 
 // --- TypeScript Interfaces ---

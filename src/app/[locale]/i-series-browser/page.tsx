@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+
 import ISeries from '@/components/mocks/ISeries';
 
 export default function ISeriesBrowser() {

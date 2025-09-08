@@ -1,9 +1,9 @@
 'use client';
 
+import { AnimatePresence,motion } from 'framer-motion';
+import { KeyRound, LogOut, Monitor, Moon,ShieldCheck, Smartphone, Sun } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { KeyRound, ShieldCheck, Monitor, Smartphone, LogOut, Sun, Moon } from 'lucide-react';
 
 
 // --- TypeScript Interfaces ---
