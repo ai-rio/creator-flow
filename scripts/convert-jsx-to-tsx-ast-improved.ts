@@ -3,7 +3,7 @@
 import { readFile, writeFile } from 'fs/promises';
 import * as ts from 'typescript';
 
-const JSX_DIR = '/home/carlos/projects/creator-flow/docs/development/dashboard-design/03-jsx-mock';
+const JSX_DIR = '/home/carlos/projects/creator-flow/docs/development/public-pages/03-jsx-mocks';
 const TSX_DIR = '/home/carlos/projects/creator-flow/src/components/mocks';
 
 interface ComponentAnalysis {
@@ -174,7 +174,7 @@ class ReactToTypeScriptTransformer {
 
     // Extract multi-line imports properly
     const lines = content.split('\n');
-    let importLines = [];
+    const importLines = [];
     let i = 0;
     
     while (i < lines.length) {
@@ -282,7 +282,7 @@ class ReactToTypeScriptTransformer {
 
 async function convertSingleFile(jsxFileName: string) {
   const jsxPath = `${JSX_DIR}/${jsxFileName}`;
-  let content = await readFile(jsxPath, 'utf-8');
+  const content = await readFile(jsxPath, 'utf-8');
   
   if (content.trim().length === 0) {
     console.log(`❌ Skipping empty file: ${jsxFileName}`);
