@@ -87,7 +87,7 @@ const ConfirmationModal = ({ isOpen, onClose, config }) => {
 
                             {type === "destructive" && (
                                 <div className="mt-4">
-                                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">To confirm, please type "<span className="font-bold">{frictionText}</span>" in the box below.</p>
+                                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">To confirm, please type &quot;<span className="font-bold">{frictionText}</span>&quot; in the box below.</p>
                                     <input 
                                         type="text"
                                         value={inputValue}
