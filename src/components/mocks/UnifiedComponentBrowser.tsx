@@ -121,15 +121,18 @@ interface UnifiedComponentBrowserProps {
 }
 
 export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: UnifiedComponentBrowserProps) {
-  const [currentIndex, setCurrentIndex] = useState(
-    allComponents.findIndex(c => c.id === initialComponent) || 0
-  );
+  const initialIndex = allComponents.findIndex(c => c.id === initialComponent);
+  const [currentIndex, setCurrentIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [selectedCategory, setSelectedCategory] = useState<string>('Dashboard Components');
   const [selectedSeries, setSelectedSeries] = useState<string>('A Series');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const currentComponent = allComponents[currentIndex];
-  const CurrentComponent = currentComponent.component;
+  const CurrentComponent = currentComponent?.component;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -160,47 +163,106 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
     return Object.values((componentCategories as any)[category]).flat();
   };
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y
+    });
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (isDragging) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging, dragStart]);
+
   return (
     <div className="min-h-screen bg-gray-50 relative">
       {/* Unified Navigation Panel */}
-      <div className="fixed top-4 right-4 z-50 bg-white rounded-lg shadow-lg border p-4 w-96 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-gray-900">Component Browser</h3>
+      <div 
+        className={`fixed z-50 bg-white rounded-lg shadow-xl border-2 border-gray-300 transition-all duration-300 ${
+          isCollapsed ? 'w-12 h-12' : 'w-96 max-h-[90vh]'
+        }`}
+        style={{
+          top: position.y || 16,
+          right: position.x || 16,
+          cursor: isDragging ? 'grabbing' : 'grab'
+        }}
+      >
+        {/* Drag Handle & Collapse Toggle */}
+        <div 
+          className="flex items-center justify-between p-4 cursor-grab active:cursor-grabbing bg-gray-100 rounded-t-lg border-b border-gray-300"
+          onMouseDown={handleMouseDown}
+        >
+          {!isCollapsed && <h3 className="font-bold text-gray-900">Component Browser</h3>}
           <div className="flex gap-2">
             <button
-              onClick={() => window.location.href = '/en'}
-              className="p-1 text-yellow-600 hover:bg-yellow-50 rounded"
-              title="Back to Home (ESC)"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              className="p-2 text-gray-800 hover:bg-gray-200 rounded border border-gray-400 font-bold"
+              title={isCollapsed ? "Expand Panel" : "Collapse Panel"}
             >
-              <Home className="w-4 h-4" />
+              {isCollapsed ? '📋' : '➖'}
             </button>
-            <button
-              onClick={() => window.location.reload()}
-              className="p-1 text-blue-600 hover:bg-blue-50 rounded"
-              title="Reload Component"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
-              className="p-1 text-purple-600 hover:bg-purple-50 rounded"
-              title="Toggle View Mode"
-            >
-              {viewMode === 'grid' ? <List className="w-4 h-4" /> : <Grid3X3 className="w-4 h-4" />}
-            </button>
+            {!isCollapsed && (
+              <>
+                <button
+                  onClick={() => window.location.href = '/en'}
+                  className="p-2 text-yellow-800 hover:bg-yellow-100 rounded border border-yellow-400"
+                  title="Back to Home (ESC)"
+                >
+                  <Home className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="p-2 text-blue-800 hover:bg-blue-100 rounded border border-blue-400"
+                  title="Reload Component"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                  className="p-2 text-purple-800 hover:bg-purple-100 rounded border border-purple-400"
+                  title="Toggle View Mode"
+                >
+                  {viewMode === 'grid' ? <List className="w-4 h-4" /> : <Grid3X3 className="w-4 h-4" />}
+                </button>
+              </>
+            )}
           </div>
         </div>
 
+        {!isCollapsed && (
+          <div className="px-4 pb-4 overflow-y-auto bg-white" style={{ maxHeight: 'calc(90vh - 80px)' }}>
+
         {/* Category Selection */}
         <div className="mb-4">
-          <label className="text-sm font-medium text-gray-700 mb-2 block">Category</label>
+          <label className="text-sm font-bold text-gray-900 mb-2 block">Category</label>
           <select
             value={selectedCategory}
             onChange={(e) => {
               setSelectedCategory(e.target.value);
               setSelectedSeries(Object.keys(componentCategories[e.target.value as keyof typeof componentCategories])[0]);
             }}
-            className="w-full p-2 border rounded text-sm"
+            className="w-full p-3 border-2 border-gray-400 rounded text-sm font-medium text-gray-900 bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-200"
           >
             {Object.keys(componentCategories).map(category => (
               <option key={category} value={category}>{category}</option>
@@ -210,11 +272,11 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
 
         {/* Series Selection */}
         <div className="mb-4">
-          <label className="text-sm font-medium text-gray-700 mb-2 block">Series</label>
+          <label className="text-sm font-bold text-gray-900 mb-2 block">Series</label>
           <select
             value={selectedSeries}
             onChange={(e) => setSelectedSeries(e.target.value)}
-            className="w-full p-2 border rounded text-sm"
+            className="w-full p-3 border-2 border-gray-400 rounded text-sm font-medium text-gray-900 bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-200"
           >
             {Object.keys(componentCategories[selectedCategory as keyof typeof componentCategories]).map(series => (
               <option key={series} value={series}>{series}</option>
@@ -225,8 +287,8 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
         {/* Component List */}
         <div className="space-y-2 mb-4">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-gray-700">Components</label>
-            <span className="text-xs text-gray-500">
+            <label className="text-sm font-bold text-gray-900">Components</label>
+            <span className="text-xs font-medium text-gray-800 bg-gray-200 px-2 py-1 rounded">
               {getComponentsByCategory(selectedCategory, selectedSeries).length} items
             </span>
           </div>
@@ -239,10 +301,10 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
                   <button
                     key={comp.id}
                     onClick={() => navigateToComponent(globalIndex)}
-                    className={`w-full text-left p-2 rounded text-sm transition-colors ${
+                    className={`w-full text-left p-3 rounded-md text-sm font-medium transition-colors border-2 ${
                       globalIndex === currentIndex
-                        ? 'bg-green-100 text-green-800 border border-green-200'
-                        : 'hover:bg-gray-100 text-gray-700'
+                        ? 'bg-green-200 text-green-900 border-green-600'
+                        : 'hover:bg-gray-100 text-gray-900 border-gray-300 hover:border-gray-400'
                     }`}
                   >
                     {comp.name}
@@ -258,10 +320,10 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
                   <button
                     key={comp.id}
                     onClick={() => navigateToComponent(globalIndex)}
-                    className={`p-3 rounded text-xs transition-colors text-center ${
+                    className={`p-3 rounded-md text-xs font-medium transition-colors text-center border-2 ${
                       globalIndex === currentIndex
-                        ? 'bg-green-100 text-green-800 border border-green-200'
-                        : 'hover:bg-gray-100 text-gray-700 border border-gray-200'
+                        ? 'bg-green-200 text-green-900 border-green-600'
+                        : 'hover:bg-gray-100 text-gray-900 border-gray-300 hover:border-gray-400'
                     }`}
                   >
                     {comp.name.split(':')[0]}
@@ -273,22 +335,22 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
         </div>
 
         {/* Navigation Controls */}
-        <div className="flex justify-between items-center pt-3 border-t">
+        <div className="flex justify-between items-center pt-3 border-t-2 border-gray-300">
           <button
             onClick={() => navigateToComponent(currentIndex > 0 ? currentIndex - 1 : allComponents.length - 1)}
-            className="flex items-center gap-1 px-3 py-1 text-sm text-green-600 hover:bg-green-50 rounded"
+            className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100 rounded-md border-2 border-green-600"
           >
             <ChevronLeft className="w-4 h-4" />
             Prev
           </button>
           
-          <span className="text-sm text-gray-500">
+          <span className="text-sm font-bold text-gray-900 bg-gray-200 px-3 py-1 rounded">
             {currentIndex + 1} / {allComponents.length}
           </span>
           
           <button
             onClick={() => navigateToComponent(currentIndex < allComponents.length - 1 ? currentIndex + 1 : 0)}
-            className="flex items-center gap-1 px-3 py-1 text-sm text-green-600 hover:bg-green-50 rounded"
+            className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100 rounded-md border-2 border-green-600"
           >
             Next
             <ChevronRight className="w-4 h-4" />
@@ -296,24 +358,26 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
         </div>
 
         {/* Current Component Info */}
-        <div className="mt-3 pt-3 border-t">
-          <div className="text-sm text-gray-600">
-            <div className="font-medium">{currentComponent.name}</div>
-            <div className="text-xs text-gray-500 mt-1">
+        <div className="mt-3 pt-3 border-t-2 border-gray-300">
+          <div className="text-sm text-gray-900">
+            <div className="font-bold">{currentComponent?.name || 'Unknown Component'}</div>
+            <div className="text-xs font-medium text-gray-800 mt-1">
               {selectedCategory} → {selectedSeries}
             </div>
           </div>
         </div>
 
-        <div className="mt-3 pt-3 border-t text-xs text-gray-500">
-          <div>← → Navigate | ESC Home</div>
+        <div className="mt-3 pt-3 border-t-2 border-gray-300 text-xs font-medium text-gray-900">
+          <div>← → Navigate | ESC Home | Drag to move</div>
           <div className="mt-1">
-            <span className="text-yellow-600">●</span> Back | 
-            <span className="text-blue-600">●</span> Reload | 
-            <span className="text-green-600">●</span> Nav | 
-            <span className="text-purple-600">●</span> View
+            <span className="text-yellow-800">●</span> Back | 
+            <span className="text-blue-800">●</span> Reload | 
+            <span className="text-green-800">●</span> Nav | 
+            <span className="text-purple-800">●</span> View
           </div>
         </div>
+          </div>
+        )}
       </div>
 
       {/* Component Display */}
@@ -326,7 +390,7 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <CurrentComponent />
+            {CurrentComponent ? <CurrentComponent /> : <div>Component not found</div>}
           </motion.div>
         </AnimatePresence>
       </div>
