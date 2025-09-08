@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
+import { motion } from 'framer-motion';
 
+import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
 import HP010Header from './public-pages/HP-010-Header';
-import HP010HeaderHero from './public-pages/HP-010-Header-Hero';
 import HP010HeaderVariant from './public-pages/HP-010-Header-Variant';
 import HP020Hero from './public-pages/HP-020-Hero';
 import HP030BenefitsReelShowcase from './public-pages/HP-030-BenefitsReel-Showcase';
@@ -142,19 +141,7 @@ export default function HpSeries({ initialComponent = 'hp1', mode = 'individual'
         </div>
       </motion.div>
 
-      <div className="w-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentComponent.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <CurrentComponent />
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      <CurrentComponent />
     </div>
   );
 }
