@@ -9,7 +9,6 @@ export default async function FPSeriesBrowserPage({ searchParams }: PageProps) {
   return (
     <FPSeries 
       initialComponent={params.component || 'fp020'} 
-      mode="browser" 
     />
   );
 }

@@ -1,9 +1,14 @@
 import ASeries from '@/components/mocks/ASeries';
 
-export default function ASeriesPage() {
+interface PageProps {
+  searchParams: Promise<{ component?: string }>;
+}
+
+export default async function ASeriesPage({ searchParams }: PageProps) {
+  const params = await searchParams;
   return (
-    <div className="min-h-screen">
-      <ASeries mode="individual" initialComponent="a1" />
-    </div>
+    <ASeries 
+      initialComponent={params.component || 'a1'} 
+    />
   );
 }

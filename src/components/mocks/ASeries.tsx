@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
+import { AnimatePresence,motion } from 'framer-motion';
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 // Import A-Series components
 import A1ShmDashboard from './A1ShmDashboard';
@@ -23,86 +23,23 @@ const components = [
 
 interface ASeriesProps {
   initialComponent?: string;
-  mode?: 'browser' | 'individual';
 }
 
-export default function ASeries({ initialComponent = 'a1', mode = 'individual' }: ASeriesProps) {
-  const [currentIndex, setCurrentIndex] = useState(
+export default function ASeries({ initialComponent = 'a1' }: ASeriesProps) {
+  const [currentIndex] = useState(
     components.findIndex(c => c.id === initialComponent) || 0
   );
 
   const currentComponent = components[currentIndex];
-  const Component = currentComponent.component;
-
-  const navigate = (direction: 'prev' | 'next') => {
-    if (direction === 'prev' && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else if (direction === 'next' && currentIndex < components.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') navigate('prev');
-      if (e.key === 'ArrowRight') navigate('next');
-      if (e.key === 'Escape') window.history.back();
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentIndex]);
+  const CurrentComponent = currentComponent.component;
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-900 relative">
-      <motion.div
-        initial={{ x: 300 }}
-        animate={{ x: 0 }}
-        className="fixed top-4 right-4 z-[9999] bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-slate-200 dark:border-slate-700"
-      >
-        <div className="flex flex-col gap-2">
-          <div className="text-xs font-bold text-slate-600 dark:text-slate-400 text-center">
-            A-SERIES ({currentIndex + 1}/{components.length})
-          </div>
-          
-          <div className="flex gap-1">
-            <button
-              onClick={() => navigate('prev')}
-              disabled={currentIndex === 0}
-              className="p-1.5 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 disabled:opacity-50"
-            >
-              <ChevronLeft size={14} />
-            </button>
-            
-            <button
-              onClick={() => navigate('next')}
-              disabled={currentIndex === components.length - 1}
-              className="p-1.5 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 disabled:opacity-50"
-            >
-              <ChevronRight size={14} />
-            </button>
-            
-            <button
-              onClick={() => window.history.back()}
-              className="p-1.5 rounded bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300"
-            >
-              <Home size={14} />
-            </button>
-            
-            <button
-              onClick={() => window.location.reload()}
-              className="p-1.5 rounded bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300"
-            >
-              <RotateCcw size={14} />
-            </button>
-          </div>
-          
-          <div className="text-xs text-slate-500 dark:text-slate-400 text-center">
-            {currentComponent.name}
-          </div>
-        </div>
-      </motion.div>
-
+    <div className="min-h-screen bg-gray-50">
+      <div className="text-center py-4 bg-blue-50 border-b">
+        <p className="text-sm text-blue-600">
+          Use the <Link href="/en/component-browser" className="underline font-medium">Unified Component Browser</Link> for full navigation
+        </p>
+      </div>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentComponent.id}
@@ -111,7 +48,7 @@ export default function ASeries({ initialComponent = 'a1', mode = 'individual' }
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <Component />
+          <CurrentComponent />
         </motion.div>
       </AnimatePresence>
     </div>
