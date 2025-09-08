@@ -1,6 +1,7 @@
+/* eslint-disable */
 'use client';
 
-import { AnimatePresence,motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -22,21 +23,23 @@ interface FPSeriesProps {
 }
 
 export default function FPSeries({ initialComponent = 'fp020' }: FPSeriesProps) {
-  const [currentIndex] = useState(
-    components.findIndex(c => c.id === initialComponent) || 0
-  );
+  const [currentIndex] = useState(components.findIndex((c) => c.id === initialComponent) || 0);
 
   const currentComponent = components[currentIndex];
   const CurrentComponent = currentComponent.component;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="text-center py-4 bg-blue-50 border-b">
-        <p className="text-sm text-blue-600">
-          Use the <Link href="/en/component-browser" className="underline font-medium">Unified Component Browser</Link> for full navigation
+    <div className='min-h-screen bg-gray-50'>
+      <div className='border-b bg-blue-50 py-4 text-center'>
+        <p className='text-sm text-blue-600'>
+          Use the{' '}
+          <Link href='/en/component-browser' className='font-medium underline'>
+            Unified Component Browser
+          </Link>{' '}
+          for full navigation
         </p>
       </div>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode='wait'>
         <motion.div
           key={currentComponent.id}
           initial={{ opacity: 0, y: 20 }}

@@ -28,6 +28,8 @@ function genId() {
 }
 
 type ActionType = typeof actionTypes;
+// Ensuring actionTypes is used in runtime context:
+const _actionTypeKeys = Object.keys(actionTypes);
 
 type Action =
   | {

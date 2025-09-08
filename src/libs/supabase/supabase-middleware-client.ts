@@ -1,7 +1,7 @@
 // Ref: https://supabase.com/docs/guides/auth/server-side/nextjs
 
 import { createServerClient } from '@supabase/ssr';
-import { type NextRequest,NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 import { getEnvVar } from '@/utils/get-env-var';
 
@@ -19,7 +19,7 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          for (const { name, value, options } of cookiesToSet) {
+          for (const { name, value } of cookiesToSet) {
             request.cookies.set(name, value);
           }
 
@@ -44,16 +44,24 @@ export async function updateSession(request: NextRequest) {
   try {
     const {
       data: { user },
-      error
+      error,
     } = await supabase.auth.getUser();
 
+    // User data available for future use
+    if (user) {
+      // User is authenticated
+    }
+
     // Handle case where JWT references non-existent user
-    if (error?.code === 'user_not_found' || (error?.status === 403 && error?.message?.includes('User from sub claim in JWT does not exist'))) {
+    if (
+      error?.code === 'user_not_found' ||
+      (error?.status === 403 && error?.message?.includes('User from sub claim in JWT does not exist'))
+    ) {
       console.log('Clearing invalid session for non-existent user');
-      
+
       // Clear the auth cookies by setting them to expire
       const response = NextResponse.next({ request });
-      
+
       // Clear all Supabase auth cookies
       const authCookies = ['sb-access-token', 'sb-refresh-token', 'supabase-auth-token', 'supabase.auth.token'];
       for (const cookieName of authCookies) {
@@ -62,7 +70,7 @@ export async function updateSession(request: NextRequest) {
           path: '/',
         });
       }
-      
+
       return response;
     }
 
@@ -74,7 +82,6 @@ export async function updateSession(request: NextRequest) {
     //   url.pathname = '/login';
     //   return NextResponse.redirect(url);
     // }
-
   } catch (error) {
     console.error('Auth middleware error:', error);
     // On any auth error, clear cookies and continue

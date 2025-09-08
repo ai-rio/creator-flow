@@ -5,17 +5,28 @@
 
 'use client';
 
-import { AnimatePresence,motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
-Activity,
-AlertTriangle,   ArrowLeft, BarChart3, Box, CheckCircle2, Clock,
-DollarSign,   Flame, Moon, Package, Palette, RefreshCw, Settings,   ShoppingCart, Siren,
-Sun, Target, TrendingUp, Truck, Zap} from 'lucide-react';
-import React, { useEffect,useState } from 'react';
+  Activity,
+  AlertTriangle,
+  ArrowLeft,
+  BarChart3,
+  Box,
+  CheckCircle2,
+  Clock,
+  Moon,
+  Palette,
+  RefreshCw,
+  Settings,
+  ShoppingCart,
+  Siren,
+  Sun,
+  Zap,
+} from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/components/ui/use-toast';
 import { createClient } from '@/libs/supabase/supabase-client-client';
@@ -87,12 +98,12 @@ interface PerformanceStats {
 
 const ThemeToggle: React.FC<{ theme: string; setTheme: (theme: string) => void }> = ({ theme, setTheme }) => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
-  
+
   return (
     <motion.button
       onClick={toggleTheme}
       whileTap={{ scale: 0.9, rotate: 15 }}
-      className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-500/10 transition-colors"
+      className='rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-500/10 dark:text-slate-400'
     >
       {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
     </motion.button>
@@ -101,11 +112,10 @@ const ThemeToggle: React.FC<{ theme: string; setTheme: (theme: string) => void }
 
 // === GLASS PANE COMPONENT ===
 
-const GlassPane: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
-  children, 
-  className = '' 
-}) => (
-  <div className={`bg-white/50 dark:bg-slate-400/10 backdrop-blur-xl border border-slate-900/10 dark:border-slate-100/10 rounded-2xl ${className}`}>
+const GlassPane: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
+  <div
+    className={`rounded-2xl border border-slate-900/10 bg-white/50 backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-400/10 ${className}`}
+  >
     {children}
   </div>
 );
@@ -124,25 +134,25 @@ const itemVariants = {
 
 // === HEADER COMPONENT ===
 
-const TikTokIntegrationHeader: React.FC<{ 
-  theme: string; 
+const TikTokIntegrationHeader: React.FC<{
+  theme: string;
   setTheme: (theme: string) => void;
   connectionStatus: string;
   totalSKUs: number;
 }> = ({ theme, setTheme, connectionStatus, totalSKUs }) => (
   <motion.div variants={itemVariants as any}>
-    <GlassPane className="p-3 flex items-center justify-between sticky top-4 z-10">
-      <div className="flex items-center gap-3">
-        <ArrowLeft className="text-slate-600 dark:text-slate-300" />
-        <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">TikTok Command</h1>
-        <Badge variant={connectionStatus === 'connected' ? 'default' : 'secondary'} className="hidden sm:inline">
+    <GlassPane className='sticky top-4 z-10 flex items-center justify-between p-3'>
+      <div className='flex items-center gap-3'>
+        <ArrowLeft className='text-slate-600 dark:text-slate-300' />
+        <h1 className='text-xl font-bold text-slate-900 dark:text-slate-100'>TikTok Command</h1>
+        <Badge variant={connectionStatus === 'connected' ? 'default' : 'secondary'} className='hidden sm:inline'>
           {connectionStatus === 'connected' ? `${totalSKUs} SKUs synced` : connectionStatus}
         </Badge>
       </div>
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-2 mr-2">
-          <Box className="text-teal-800 dark:text-teal-400" />
-          <Zap className="text-purple-700 dark:text-purple-400" />
+      <div className='flex items-center gap-2'>
+        <div className='mr-2 flex items-center gap-2'>
+          <Box className='text-teal-800 dark:text-teal-400' />
+          <Zap className='text-purple-700 dark:text-purple-400' />
         </div>
         <ThemeToggle theme={theme} setTheme={setTheme} />
       </div>
@@ -152,30 +162,33 @@ const TikTokIntegrationHeader: React.FC<{
 
 // === SYNC PERFORMANCE METRICS CARD ===
 
-const SyncPerformanceMetricsCard: React.FC<{ performanceStats: PerformanceStats }> = ({ 
-  performanceStats 
-}) => (
+const SyncPerformanceMetricsCard: React.FC<{ performanceStats: PerformanceStats }> = ({ performanceStats }) => (
   <motion.div variants={itemVariants as any}>
-    <GlassPane className="p-4 space-y-3 text-sm">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <RefreshCw className="text-slate-600 dark:text-slate-300" size={16} />
-          <span className="font-semibold text-slate-900 dark:text-slate-100">TikTok Sync:</span>
-          <span className="text-slate-700 dark:text-slate-300">
-            {(performanceStats.average_processing_time / 1000).toFixed(1)}s avg ({Math.round(performanceStats.success_rate)}%)
+    <GlassPane className='space-y-3 p-4 text-sm'>
+      <div className='flex items-center justify-between'>
+        <div className='flex items-center gap-2'>
+          <RefreshCw className='text-slate-600 dark:text-slate-300' size={16} />
+          <span className='font-semibold text-slate-900 dark:text-slate-100'>TikTok Sync:</span>
+          <span className='text-slate-700 dark:text-slate-300'>
+            {(performanceStats.average_processing_time / 1000).toFixed(1)}s avg (
+            {Math.round(performanceStats.success_rate)}%)
           </span>
         </div>
-        <CheckCircle2 className="text-teal-800 dark:text-teal-400" size={18} />
+        <CheckCircle2 className='text-teal-800 dark:text-teal-400' size={18} />
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Activity className="text-slate-600 dark:text-slate-300" size={16} />
-          <span className="font-semibold text-slate-900 dark:text-slate-100">Events processed:</span>
-          <span className="text-slate-700 dark:text-slate-300">{performanceStats.total_events_processed.toLocaleString()}</span>
+      <div className='flex items-center justify-between'>
+        <div className='flex items-center gap-2'>
+          <Activity className='text-slate-600 dark:text-slate-300' size={16} />
+          <span className='font-semibold text-slate-900 dark:text-slate-100'>Events processed:</span>
+          <span className='text-slate-700 dark:text-slate-300'>
+            {performanceStats.total_events_processed.toLocaleString()}
+          </span>
         </div>
-        <Badge variant="outline" className="text-xs">Active</Badge>
+        <Badge variant='outline' className='text-xs'>
+          Active
+        </Badge>
       </div>
-      <Progress value={performanceStats.success_rate} className="h-2" />
+      <Progress value={performanceStats.success_rate} className='h-2' />
     </GlassPane>
   </motion.div>
 );
@@ -183,57 +196,57 @@ const SyncPerformanceMetricsCard: React.FC<{ performanceStats: PerformanceStats 
 // === CRITICAL STOCK ALERTS CARD ===
 
 const CriticalStockAlertsCard: React.FC<{ alerts: StockAlert[] }> = ({ alerts }) => (
-  <motion.div variants={itemVariants as any} className="space-y-4">
-    <div className="flex items-center gap-2 px-2">
-      <Siren className="text-red-600 dark:text-red-500" />
-      <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">CRITICAL STOCK ALERTS</h2>
-      <Badge variant="destructive" className="ml-auto">{alerts.length}</Badge>
+  <motion.div variants={itemVariants as any} className='space-y-4'>
+    <div className='flex items-center gap-2 px-2'>
+      <Siren className='text-red-600 dark:text-red-500' />
+      <h2 className='text-lg font-bold text-slate-900 dark:text-slate-100'>CRITICAL STOCK ALERTS</h2>
+      <Badge variant='destructive' className='ml-auto'>
+        {alerts.length}
+      </Badge>
     </div>
-    
-    <div className="space-y-3">
+
+    <div className='space-y-3'>
       {alerts.length === 0 ? (
-        <GlassPane className="p-4">
-          <div className="text-center text-slate-500 dark:text-slate-400">
-            <CheckCircle2 className="mx-auto mb-2" size={32} />
+        <GlassPane className='p-4'>
+          <div className='text-center text-slate-500 dark:text-slate-400'>
+            <CheckCircle2 className='mx-auto mb-2' size={32} />
             <p>No critical stock alerts</p>
-            <p className="text-xs">All inventory levels are healthy</p>
+            <p className='text-xs'>All inventory levels are healthy</p>
           </div>
         </GlassPane>
       ) : (
         alerts.map((alert, i) => (
-          <GlassPane key={i} className="p-4 space-y-3">
-            <div className="flex items-start justify-between">
+          <GlassPane key={i} className='space-y-3 p-4'>
+            <div className='flex items-start justify-between'>
               <div>
-                <p className="text-lg font-bold text-slate-900 dark:text-slate-100">
-                  {alert.product_name}: <span className="text-red-600 dark:text-red-500">{alert.current_stock} left</span>
+                <p className='text-lg font-bold text-slate-900 dark:text-slate-100'>
+                  {alert.product_name}:{' '}
+                  <span className='text-red-600 dark:text-red-500'>{alert.current_stock} left</span>
                 </p>
-                <Badge 
-                  variant={alert.alert_level === 'critical' ? 'destructive' : 'secondary'}
-                  className="mt-1"
-                >
+                <Badge variant={alert.alert_level === 'critical' ? 'destructive' : 'secondary'} className='mt-1'>
                   {alert.alert_level.toUpperCase()}
                 </Badge>
               </div>
-              <AlertTriangle className="text-red-500 flex-shrink-0" size={20} />
+              <AlertTriangle className='flex-shrink-0 text-red-500' size={20} />
             </div>
-            
-            <div className="text-sm space-y-2 text-slate-700 dark:text-slate-300">
+
+            <div className='space-y-2 text-sm text-slate-700 dark:text-slate-300'>
               <p>{alert.context}</p>
-              <p className="flex items-center gap-1">
+              <p className='flex items-center gap-1'>
                 <Clock size={14} />
                 {alert.velocity}
               </p>
-              <p className="font-semibold text-slate-800 dark:text-slate-200">{alert.suggestion}</p>
+              <p className='font-semibold text-slate-800 dark:text-slate-200'>{alert.suggestion}</p>
             </div>
-            
-            <div className="flex items-center gap-2 pt-2">
-              <Button size="sm" className="flex-1">
+
+            <div className='flex items-center gap-2 pt-2'>
+              <Button size='sm' className='flex-1'>
                 Auto-Order
               </Button>
-              <Button size="sm" variant="outline">
+              <Button size='sm' variant='outline'>
                 Manual
               </Button>
-              <Button size="sm" variant="ghost">
+              <Button size='sm' variant='ghost'>
                 Defer
               </Button>
             </div>
@@ -247,68 +260,72 @@ const CriticalStockAlertsCard: React.FC<{ alerts: StockAlert[] }> = ({ alerts })
 // === INVENTORY VISUALIZATION CARD ===
 
 const InventoryVisualizationCard: React.FC<{ products: TikTokProduct[] }> = ({ products }) => {
-  const landscapeData = products.slice(0, 4).map(product => ({
+  const landscapeData = products.slice(0, 4).map((product) => ({
     name: product.title.substring(0, 8),
     level: product.stock_alerts.level,
-    height: Math.min(20, Math.max(6, product.visual_metadata.landscape_height))
+    height: Math.min(20, Math.max(6, product.visual_metadata.landscape_height)),
   }));
 
   const levelColorClasses: Record<string, string> = {
     high: 'bg-teal-800 dark:bg-teal-400',
-    medium: 'bg-yellow-600 dark:bg-yellow-500', 
+    medium: 'bg-yellow-600 dark:bg-yellow-500',
     low: 'bg-red-600 dark:bg-red-500',
-    critical: 'bg-red-800 dark:bg-red-600'
+    critical: 'bg-red-800 dark:bg-red-600',
   };
 
   return (
-    <motion.div variants={itemVariants as any} className="space-y-4">
-      <div className="flex items-center gap-2 px-2">
-        <Palette className="text-purple-700 dark:text-purple-400" />
-        <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">Inventory Visualization</h2>
-        <Badge variant="outline" className="ml-auto text-xs">Live</Badge>
+    <motion.div variants={itemVariants as any} className='space-y-4'>
+      <div className='flex items-center gap-2 px-2'>
+        <Palette className='text-purple-700 dark:text-purple-400' />
+        <h2 className='text-lg font-bold text-slate-900 dark:text-slate-100'>Inventory Visualization</h2>
+        <Badge variant='outline' className='ml-auto text-xs'>
+          Live
+        </Badge>
       </div>
-      
-      <GlassPane className="p-4 space-y-4">
+
+      <GlassPane className='space-y-4 p-4'>
         {/* Stock Flow Visualization */}
         <div>
-          <h3 className="text-center text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
+          <h3 className='mb-3 text-center text-sm font-semibold text-slate-700 dark:text-slate-300'>
             STOCK FLOW VISUALIZATION
           </h3>
-          <div className="flex items-center justify-between px-2">
+          <div className='flex items-center justify-between px-2'>
             {[...Array(12)].map((_, i) => (
               <React.Fragment key={i}>
-                <div className={`w-2 h-2 rounded-full ${
-                  i % 3 === 0 ? 'bg-purple-700 dark:bg-purple-400' : 'bg-slate-500/50'
-                }`}></div>
-                {i < 11 && <div className="flex-1 h-px bg-slate-500/30"></div>}
+                <div
+                  className={`h-2 w-2 rounded-full ${
+                    i % 3 === 0 ? 'bg-purple-700 dark:bg-purple-400' : 'bg-slate-500/50'
+                  }`}
+                ></div>
+                {i < 11 && <div className='h-px flex-1 bg-slate-500/30'></div>}
               </React.Fragment>
             ))}
           </div>
         </div>
-        
+
         {/* Stock Level Landscape */}
-        <div className="pt-4">
-          <h3 className="text-center text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">
+        <div className='pt-4'>
+          <h3 className='mb-4 text-center text-sm font-semibold text-slate-700 dark:text-slate-300'>
             STOCK LEVEL LANDSCAPE
           </h3>
-          <div className="flex items-end justify-around h-24 gap-2 px-2">
+          <div className='flex h-24 items-end justify-around gap-2 px-2'>
             {landscapeData.map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-2 text-center flex-1">
-                <div 
+              <div key={i} className='flex flex-1 flex-col items-center gap-2 text-center'>
+                <div
                   className={`w-full ${levelColorClasses[item.level]} rounded-t-md transition-all duration-500`}
                   style={{ height: `${item.height * 4}px` }}
                 ></div>
-                <p className="text-xs font-bold text-slate-800 dark:text-slate-200">{item.name}</p>
+                <p className='text-xs font-bold text-slate-800 dark:text-slate-200'>{item.name}</p>
               </div>
             ))}
           </div>
         </div>
-        
-        <div className="flex items-center gap-2 pt-4">
-          <Button size="sm" variant="outline" className="flex-1">
+
+        <div className='flex items-center gap-2 pt-4'>
+          <Button size='sm' variant='outline' className='flex-1'>
             Expand View
           </Button>
-          <Button size="sm" variant="ghost" className="flex-1">
+          <Button size='sm' variant='ghost' className='flex-1'>
             Adjust All
           </Button>
         </div>
@@ -320,41 +337,39 @@ const InventoryVisualizationCard: React.FC<{ products: TikTokProduct[] }> = ({ p
 // === ORDER STATS CARD ===
 
 const OrderStatsCard: React.FC<{ orders: TikTokOrder[] }> = ({ orders }) => {
-  const viralOrders = orders.filter(o => o.priority_level === 'VIRAL').length;
+  const viralOrders = orders.filter((o) => o.priority_level === 'VIRAL').length;
   const totalRevenue = orders.reduce((sum, o) => sum + o.total_amount, 0);
   const avgOrderValue = orders.length > 0 ? totalRevenue / orders.length : 0;
 
   return (
     <motion.div variants={itemVariants as any}>
-      <GlassPane className="p-4">
-        <div className="flex items-center gap-2 mb-3">
-          <ShoppingCart className="text-blue-600 dark:text-blue-400" />
-          <h3 className="font-semibold text-slate-900 dark:text-slate-100">Order Intelligence</h3>
+      <GlassPane className='p-4'>
+        <div className='mb-3 flex items-center gap-2'>
+          <ShoppingCart className='text-blue-600 dark:text-blue-400' />
+          <h3 className='font-semibold text-slate-900 dark:text-slate-100'>Order Intelligence</h3>
         </div>
-        
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-slate-900 dark:text-slate-100">{orders.length}</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Total Orders</div>
+
+        <div className='grid grid-cols-2 gap-4'>
+          <div className='text-center'>
+            <div className='text-2xl font-bold text-slate-900 dark:text-slate-100'>{orders.length}</div>
+            <div className='text-xs text-slate-600 dark:text-slate-400'>Total Orders</div>
           </div>
-          
-          <div className="text-center">
-            <div className="text-2xl font-bold text-purple-700 dark:text-purple-400">{viralOrders}</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Viral Orders</div>
+
+          <div className='text-center'>
+            <div className='text-2xl font-bold text-purple-700 dark:text-purple-400'>{viralOrders}</div>
+            <div className='text-xs text-slate-600 dark:text-slate-400'>Viral Orders</div>
           </div>
-          
-          <div className="text-center">
-            <div className="text-2xl font-bold text-green-700 dark:text-green-400">
+
+          <div className='text-center'>
+            <div className='text-2xl font-bold text-green-700 dark:text-green-400'>
               ${totalRevenue.toLocaleString()}
             </div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Revenue</div>
+            <div className='text-xs text-slate-600 dark:text-slate-400'>Revenue</div>
           </div>
-          
-          <div className="text-center">
-            <div className="text-2xl font-bold text-teal-700 dark:text-teal-400">
-              ${avgOrderValue.toFixed(0)}
-            </div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Avg Order</div>
+
+          <div className='text-center'>
+            <div className='text-2xl font-bold text-teal-700 dark:text-teal-400'>${avgOrderValue.toFixed(0)}</div>
+            <div className='text-xs text-slate-600 dark:text-slate-400'>Avg Order</div>
           </div>
         </div>
       </GlassPane>
@@ -372,17 +387,17 @@ const TikTokSubNavBar: React.FC = () => {
   ];
 
   return (
-    <motion.div variants={itemVariants as any} className="sticky bottom-4 z-10">
-      <GlassPane className="p-2 flex items-center justify-around">
+    <motion.div variants={itemVariants as any} className='sticky bottom-4 z-10'>
+      <GlassPane className='flex items-center justify-around p-2'>
         {navItems.map((item) => (
           <Button
             key={item.name}
-            variant="ghost"
-            size="sm"
-            className="flex flex-col items-center gap-1.5 py-1 px-4 rounded-lg w-24 h-auto"
+            variant='ghost'
+            size='sm'
+            className='flex h-auto w-24 flex-col items-center gap-1.5 rounded-lg px-4 py-1'
           >
             {item.icon}
-            <span className="text-xs font-bold">{item.name}</span>
+            <span className='text-xs font-bold'>{item.name}</span>
           </Button>
         ))}
       </GlassPane>
@@ -401,7 +416,7 @@ export const TikTokIntegrationDashboard: React.FC = () => {
   const [performanceStats, setPerformanceStats] = useState<PerformanceStats>({
     average_processing_time: 3200,
     success_rate: 98,
-    total_events_processed: 1247
+    total_events_processed: 1247,
   });
   const [loading, setLoading] = useState(true);
 
@@ -463,17 +478,16 @@ export const TikTokIntegrationDashboard: React.FC = () => {
           alert_level: p.inventory_quantity < 10 ? 'critical' : 'low',
           context: 'Automated velocity calculation',
           velocity: `Selling ${Math.round(p.velocity_tracking?.current_velocity || 0)}/hour`,
-          suggestion: `Auto-reorder suggested: ${p.stock_alerts?.reorder_suggestion || 100}`
+          suggestion: `Auto-reorder suggested: ${p.stock_alerts?.reorder_suggestion || 100}`,
         }));
 
       setStockAlerts(alerts);
-
     } catch (error) {
       console.error('Failed to load TikTok data:', error);
       toast({
         title: 'Error',
         description: 'Failed to load TikTok integration data',
-        variant: 'destructive'
+        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -484,25 +498,19 @@ export const TikTokIntegrationDashboard: React.FC = () => {
     // Subscribe to order updates
     const orderChannel = supabase
       .channel('tiktok-order-updates')
-      .on('postgres_changes', 
-        { event: '*', schema: 'public', table: 'tiktok_orders' },
-        (payload: any) => {
-          console.log('Order update received:', payload);
-          loadTikTokData(); // Reload data on updates
-        }
-      )
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'tiktok_orders' }, (payload: any) => {
+        console.log('Order update received:', payload);
+        loadTikTokData(); // Reload data on updates
+      })
       .subscribe();
 
     // Subscribe to inventory updates
     const inventoryChannel = supabase
       .channel('tiktok-inventory-updates')
-      .on('postgres_changes',
-        { event: '*', schema: 'public', table: 'tiktok_products' },
-        (payload: any) => {
-          console.log('Inventory update received:', payload);
-          loadTikTokData(); // Reload data on updates
-        }
-      )
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'tiktok_products' }, (payload: any) => {
+        console.log('Inventory update received:', payload);
+        loadTikTokData(); // Reload data on updates
+      })
       .subscribe();
 
     return () => {
@@ -513,9 +521,9 @@ export const TikTokIntegrationDashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-100 dark:bg-[#0A090F] flex items-center justify-center">
-        <div className="flex items-center gap-2">
-          <RefreshCw className="animate-spin" />
+      <div className='flex min-h-screen items-center justify-center bg-slate-100 dark:bg-[#0A090F]'>
+        <div className='flex items-center gap-2'>
+          <RefreshCw className='animate-spin' />
           <span>Loading TikTok integration...</span>
         </div>
       </div>
@@ -526,30 +534,25 @@ export const TikTokIntegrationDashboard: React.FC = () => {
   const connectionStatus = connections.length > 0 ? connections[0].connection_status : 'disconnected';
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-[#0A090F] font-sans p-4 transition-colors duration-300">
-      <div className="max-w-md mx-auto">
-        <motion.div 
-          className="space-y-4 pb-24"
-          variants={containerVariants as any}
-          initial="hidden"
-          animate="visible"
-        >
-          <TikTokIntegrationHeader 
-            theme={theme} 
+    <div className='min-h-screen bg-slate-100 p-4 font-sans transition-colors duration-300 dark:bg-[#0A090F]'>
+      <div className='mx-auto max-w-md'>
+        <motion.div className='space-y-4 pb-24' variants={containerVariants as any} initial='hidden' animate='visible'>
+          <TikTokIntegrationHeader
+            theme={theme}
             setTheme={setTheme}
             connectionStatus={connectionStatus}
             totalSKUs={totalSKUs}
           />
-          
+
           <SyncPerformanceMetricsCard performanceStats={performanceStats} />
-          
+
           <OrderStatsCard orders={orders} />
-          
+
           <CriticalStockAlertsCard alerts={stockAlerts} />
-          
+
           <InventoryVisualizationCard products={products} />
         </motion.div>
-        
+
         <TikTokSubNavBar />
       </div>
     </div>

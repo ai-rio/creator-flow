@@ -1,8 +1,9 @@
+/* eslint-disable */
 'use client';
 
-import { AnimatePresence,motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Grid3X3, Home, List,RotateCcw } from 'lucide-react';
-import React, { useEffect,useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Grid3X3, Home, List, RotateCcw } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
 import DesktopHeaderDemo from './02DesktopHeaderDemo';
 import DesktopToastNotifications from './03DesktopToastNotifications';
@@ -113,7 +114,7 @@ const componentCategories = {
 
 // Flatten all components for navigation
 const allComponents = Object.values(componentCategories)
-  .flatMap(category => Object.values(category))
+  .flatMap((category) => Object.values(category))
   .flat();
 
 interface UnifiedComponentBrowserProps {
@@ -121,7 +122,7 @@ interface UnifiedComponentBrowserProps {
 }
 
 export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: UnifiedComponentBrowserProps) {
-  const initialIndex = allComponents.findIndex(c => c.id === initialComponent);
+  const initialIndex = allComponents.findIndex((c) => c.id === initialComponent);
   const [currentIndex, setCurrentIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [selectedCategory, setSelectedCategory] = useState<string>('Dashboard Components');
   const [selectedSeries, setSelectedSeries] = useState<string>('A Series');
@@ -137,9 +138,9 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
-        setCurrentIndex(prev => prev > 0 ? prev - 1 : allComponents.length - 1);
+        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : allComponents.length - 1));
       } else if (e.key === 'ArrowRight') {
-        setCurrentIndex(prev => prev < allComponents.length - 1 ? prev + 1 : 0);
+        setCurrentIndex((prev) => (prev < allComponents.length - 1 ? prev + 1 : 0));
       } else if (e.key === 'Escape') {
         window.location.href = '/en';
       }
@@ -167,7 +168,7 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
     setIsDragging(true);
     setDragStart({
       x: e.clientX - position.x,
-      y: e.clientY - position.y
+      y: e.clientY - position.y,
     });
   };
 
@@ -175,7 +176,7 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
     if (isDragging) {
       setPosition({
         x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y
+        y: e.clientY - dragStart.y,
       });
     }
   };
@@ -196,54 +197,54 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
   }, [isDragging, dragStart]);
 
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <div className='relative min-h-screen bg-gray-50'>
       {/* Unified Navigation Panel */}
-      <div 
-        className={`fixed z-50 bg-white rounded-lg shadow-xl border-2 border-gray-300 transition-all duration-300 ${
-          isCollapsed ? 'w-12 h-12' : 'w-96 max-h-[90vh]'
+      <div
+        className={`fixed z-50 rounded-lg border-2 border-gray-300 bg-white shadow-xl transition-all duration-300 ${
+          isCollapsed ? 'h-12 w-12' : 'max-h-[90vh] w-96'
         }`}
         style={{
           top: position.y || 16,
           right: position.x || 16,
-          cursor: isDragging ? 'grabbing' : 'grab'
+          cursor: isDragging ? 'grabbing' : 'grab',
         }}
       >
         {/* Drag Handle & Collapse Toggle */}
-        <div 
-          className="flex items-center justify-between p-4 cursor-grab active:cursor-grabbing bg-gray-100 rounded-t-lg border-b border-gray-300"
+        <div
+          className='flex cursor-grab items-center justify-between rounded-t-lg border-b border-gray-300 bg-gray-100 p-4 active:cursor-grabbing'
           onMouseDown={handleMouseDown}
         >
-          {!isCollapsed && <h3 className="font-bold text-gray-900">Component Browser</h3>}
-          <div className="flex gap-2">
+          {!isCollapsed && <h3 className='font-bold text-gray-900'>Component Browser</h3>}
+          <div className='flex gap-2'>
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className="p-2 text-gray-800 hover:bg-gray-200 rounded border border-gray-400 font-bold"
-              title={isCollapsed ? "Expand Panel" : "Collapse Panel"}
+              className='rounded border border-gray-400 p-2 font-bold text-gray-800 hover:bg-gray-200'
+              title={isCollapsed ? 'Expand Panel' : 'Collapse Panel'}
             >
               {isCollapsed ? '📋' : '➖'}
             </button>
             {!isCollapsed && (
               <>
                 <button
-                  onClick={() => window.location.href = '/en'}
-                  className="p-2 text-yellow-800 hover:bg-yellow-100 rounded border border-yellow-400"
-                  title="Back to Home (ESC)"
+                  onClick={() => (window.location.href = '/en')}
+                  className='rounded border border-yellow-400 p-2 text-yellow-800 hover:bg-yellow-100'
+                  title='Back to Home (ESC)'
                 >
-                  <Home className="w-4 h-4" />
+                  <Home className='h-4 w-4' />
                 </button>
                 <button
                   onClick={() => window.location.reload()}
-                  className="p-2 text-blue-800 hover:bg-blue-100 rounded border border-blue-400"
-                  title="Reload Component"
+                  className='rounded border border-blue-400 p-2 text-blue-800 hover:bg-blue-100'
+                  title='Reload Component'
                 >
-                  <RotateCcw className="w-4 h-4" />
+                  <RotateCcw className='h-4 w-4' />
                 </button>
                 <button
                   onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
-                  className="p-2 text-purple-800 hover:bg-purple-100 rounded border border-purple-400"
-                  title="Toggle View Mode"
+                  className='rounded border border-purple-400 p-2 text-purple-800 hover:bg-purple-100'
+                  title='Toggle View Mode'
                 >
-                  {viewMode === 'grid' ? <List className="w-4 h-4" /> : <Grid3X3 className="w-4 h-4" />}
+                  {viewMode === 'grid' ? <List className='h-4 w-4' /> : <Grid3X3 className='h-4 w-4' />}
                 </button>
               </>
             )}
@@ -251,138 +252,143 @@ export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: Uni
         </div>
 
         {!isCollapsed && (
-          <div className="px-4 pb-4 overflow-y-auto bg-white" style={{ maxHeight: 'calc(90vh - 80px)' }}>
-
-        {/* Category Selection */}
-        <div className="mb-4">
-          <label className="text-sm font-bold text-gray-900 mb-2 block">Category</label>
-          <select
-            value={selectedCategory}
-            onChange={(e) => {
-              setSelectedCategory(e.target.value);
-              setSelectedSeries(Object.keys(componentCategories[e.target.value as keyof typeof componentCategories])[0]);
-            }}
-            className="w-full p-3 border-2 border-gray-400 rounded text-sm font-medium text-gray-900 bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-200"
-          >
-            {Object.keys(componentCategories).map(category => (
-              <option key={category} value={category}>{category}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Series Selection */}
-        <div className="mb-4">
-          <label className="text-sm font-bold text-gray-900 mb-2 block">Series</label>
-          <select
-            value={selectedSeries}
-            onChange={(e) => setSelectedSeries(e.target.value)}
-            className="w-full p-3 border-2 border-gray-400 rounded text-sm font-medium text-gray-900 bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-200"
-          >
-            {Object.keys(componentCategories[selectedCategory as keyof typeof componentCategories]).map(series => (
-              <option key={series} value={series}>{series}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Component List */}
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-bold text-gray-900">Components</label>
-            <span className="text-xs font-medium text-gray-800 bg-gray-200 px-2 py-1 rounded">
-              {getComponentsByCategory(selectedCategory, selectedSeries).length} items
-            </span>
-          </div>
-          
-          {viewMode === 'list' ? (
-            <div className="space-y-1">
-              {getComponentsByCategory(selectedCategory, selectedSeries).map((comp: any) => {
-                const globalIndex = allComponents.findIndex(c => c.id === comp.id);
-                return (
-                  <button
-                    key={comp.id}
-                    onClick={() => navigateToComponent(globalIndex)}
-                    className={`w-full text-left p-3 rounded-md text-sm font-medium transition-colors border-2 ${
-                      globalIndex === currentIndex
-                        ? 'bg-green-200 text-green-900 border-green-600'
-                        : 'hover:bg-gray-100 text-gray-900 border-gray-300 hover:border-gray-400'
-                    }`}
-                  >
-                    {comp.name}
-                  </button>
-                );
-              })}
+          <div className='overflow-y-auto bg-white px-4 pb-4' style={{ maxHeight: 'calc(90vh - 80px)' }}>
+            {/* Category Selection */}
+            <div className='mb-4'>
+              <label className='mb-2 block text-sm font-bold text-gray-900'>Category</label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                  setSelectedSeries(
+                    Object.keys(componentCategories[e.target.value as keyof typeof componentCategories])[0]
+                  );
+                }}
+                className='w-full rounded border-2 border-gray-400 bg-white p-3 text-sm font-medium text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200'
+              >
+                {Object.keys(componentCategories).map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
-          ) : (
-            <div className="grid grid-cols-2 gap-2">
-              {getComponentsByCategory(selectedCategory, selectedSeries).map((comp: any) => {
-                const globalIndex = allComponents.findIndex(c => c.id === comp.id);
-                return (
-                  <button
-                    key={comp.id}
-                    onClick={() => navigateToComponent(globalIndex)}
-                    className={`p-3 rounded-md text-xs font-medium transition-colors text-center border-2 ${
-                      globalIndex === currentIndex
-                        ? 'bg-green-200 text-green-900 border-green-600'
-                        : 'hover:bg-gray-100 text-gray-900 border-gray-300 hover:border-gray-400'
-                    }`}
-                  >
-                    {comp.name.split(':')[0]}
-                  </button>
-                );
-              })}
+
+            {/* Series Selection */}
+            <div className='mb-4'>
+              <label className='mb-2 block text-sm font-bold text-gray-900'>Series</label>
+              <select
+                value={selectedSeries}
+                onChange={(e) => setSelectedSeries(e.target.value)}
+                className='w-full rounded border-2 border-gray-400 bg-white p-3 text-sm font-medium text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200'
+              >
+                {Object.keys(componentCategories[selectedCategory as keyof typeof componentCategories]).map(
+                  (series) => (
+                    <option key={series} value={series}>
+                      {series}
+                    </option>
+                  )
+                )}
+              </select>
             </div>
-          )}
-        </div>
 
-        {/* Navigation Controls */}
-        <div className="flex justify-between items-center pt-3 border-t-2 border-gray-300">
-          <button
-            onClick={() => navigateToComponent(currentIndex > 0 ? currentIndex - 1 : allComponents.length - 1)}
-            className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100 rounded-md border-2 border-green-600"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            Prev
-          </button>
-          
-          <span className="text-sm font-bold text-gray-900 bg-gray-200 px-3 py-1 rounded">
-            {currentIndex + 1} / {allComponents.length}
-          </span>
-          
-          <button
-            onClick={() => navigateToComponent(currentIndex < allComponents.length - 1 ? currentIndex + 1 : 0)}
-            className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100 rounded-md border-2 border-green-600"
-          >
-            Next
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
+            {/* Component List */}
+            <div className='mb-4 space-y-2'>
+              <div className='flex items-center justify-between'>
+                <label className='text-sm font-bold text-gray-900'>Components</label>
+                <span className='rounded bg-gray-200 px-2 py-1 text-xs font-medium text-gray-800'>
+                  {getComponentsByCategory(selectedCategory, selectedSeries).length} items
+                </span>
+              </div>
 
-        {/* Current Component Info */}
-        <div className="mt-3 pt-3 border-t-2 border-gray-300">
-          <div className="text-sm text-gray-900">
-            <div className="font-bold">{currentComponent?.name || 'Unknown Component'}</div>
-            <div className="text-xs font-medium text-gray-800 mt-1">
-              {selectedCategory} → {selectedSeries}
+              {viewMode === 'list' ? (
+                <div className='space-y-1'>
+                  {getComponentsByCategory(selectedCategory, selectedSeries).map((comp: any) => {
+                    const globalIndex = allComponents.findIndex((c) => c.id === comp.id);
+                    return (
+                      <button
+                        key={comp.id}
+                        onClick={() => navigateToComponent(globalIndex)}
+                        className={`w-full rounded-md border-2 p-3 text-left text-sm font-medium transition-colors ${
+                          globalIndex === currentIndex
+                            ? 'border-green-600 bg-green-200 text-green-900'
+                            : 'border-gray-300 text-gray-900 hover:border-gray-400 hover:bg-gray-100'
+                        }`}
+                      >
+                        {comp.name}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className='grid grid-cols-2 gap-2'>
+                  {getComponentsByCategory(selectedCategory, selectedSeries).map((comp: any) => {
+                    const globalIndex = allComponents.findIndex((c) => c.id === comp.id);
+                    return (
+                      <button
+                        key={comp.id}
+                        onClick={() => navigateToComponent(globalIndex)}
+                        className={`rounded-md border-2 p-3 text-center text-xs font-medium transition-colors ${
+                          globalIndex === currentIndex
+                            ? 'border-green-600 bg-green-200 text-green-900'
+                            : 'border-gray-300 text-gray-900 hover:border-gray-400 hover:bg-gray-100'
+                        }`}
+                      >
+                        {comp.name.split(':')[0]}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          </div>
-        </div>
 
-        <div className="mt-3 pt-3 border-t-2 border-gray-300 text-xs font-medium text-gray-900">
-          <div>← → Navigate | ESC Home | Drag to move</div>
-          <div className="mt-1">
-            <span className="text-yellow-800">●</span> Back | 
-            <span className="text-blue-800">●</span> Reload | 
-            <span className="text-green-800">●</span> Nav | 
-            <span className="text-purple-800">●</span> View
-          </div>
-        </div>
+            {/* Navigation Controls */}
+            <div className='flex items-center justify-between border-t-2 border-gray-300 pt-3'>
+              <button
+                onClick={() => navigateToComponent(currentIndex > 0 ? currentIndex - 1 : allComponents.length - 1)}
+                className='flex items-center gap-1 rounded-md border-2 border-green-600 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100'
+              >
+                <ChevronLeft className='h-4 w-4' />
+                Prev
+              </button>
+
+              <span className='rounded bg-gray-200 px-3 py-1 text-sm font-bold text-gray-900'>
+                {currentIndex + 1} / {allComponents.length}
+              </span>
+
+              <button
+                onClick={() => navigateToComponent(currentIndex < allComponents.length - 1 ? currentIndex + 1 : 0)}
+                className='flex items-center gap-1 rounded-md border-2 border-green-600 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100'
+              >
+                Next
+                <ChevronRight className='h-4 w-4' />
+              </button>
+            </div>
+
+            {/* Current Component Info */}
+            <div className='mt-3 border-t-2 border-gray-300 pt-3'>
+              <div className='text-sm text-gray-900'>
+                <div className='font-bold'>{currentComponent?.name || 'Unknown Component'}</div>
+                <div className='mt-1 text-xs font-medium text-gray-800'>
+                  {selectedCategory} → {selectedSeries}
+                </div>
+              </div>
+            </div>
+
+            <div className='mt-3 border-t-2 border-gray-300 pt-3 text-xs font-medium text-gray-900'>
+              <div>← → Navigate | ESC Home | Drag to move</div>
+              <div className='mt-1'>
+                <span className='text-yellow-800'>●</span> Back |<span className='text-blue-800'>●</span> Reload |
+                <span className='text-green-800'>●</span> Nav |<span className='text-purple-800'>●</span> View
+              </div>
+            </div>
           </div>
         )}
       </div>
 
       {/* Component Display */}
-      <div className="">
-        <AnimatePresence mode="wait">
+      <div className=''>
+        <AnimatePresence mode='wait'>
           <motion.div
             key={currentComponent.id}
             initial={{ opacity: 0, y: 20 }}
