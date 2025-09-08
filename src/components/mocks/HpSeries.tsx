@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
 import HP010Header from './public-pages/HP-010-Header';
+import HP010HeaderHero from './public-pages/HP-010-Header-Hero';
 import HP010HeaderVariant from './public-pages/HP-010-Header-Variant';
 import HP020Hero from './public-pages/HP-020-Hero';
 import HP030BenefitsReelShowcase from './public-pages/HP-030-BenefitsReel-Showcase';
