@@ -1,7 +1,7 @@
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { Check,Moon, Sun } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Check } from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---
@@ -99,7 +99,7 @@ const BillingToggle = ({ billingCycle, setBillingCycle  }: any) => (
 // --- Pricing Card (Conventional Rounded Rectangle) ---
 const PricingCard: React.FC<any> = ({ name, price, description, features, recommended, color, billingCycle, index  }: any) => {
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const accentColor = colors[color];
+    const accentColor = (colors as any)[color];
     
     const yearlyPrice = Math.round((price * 12) * 0.8);
 
@@ -146,7 +146,7 @@ const PricingCard: React.FC<any> = ({ name, price, description, features, recomm
                     </div>
                 </div>
                 <motion.ul className="space-y-2">
-                    {features.map((feature, i) => (
+                    {features.map((feature: string, i: number) => (
                         <motion.li key={i} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300"
                             initial={{ opacity: 0.5 }}
                             animate={{ opacity: isHovered ? 1 : 0.5 }}

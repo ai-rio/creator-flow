@@ -1,7 +1,7 @@
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { Bolt,Instagram, Linkedin, Moon, Sun, Twitter } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Twitter, Instagram, Linkedin, Bolt } from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---

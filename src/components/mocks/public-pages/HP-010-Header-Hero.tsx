@@ -1,7 +1,7 @@
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { Bolt, CheckCircle, Menu, Moon, ShieldCheck,Sun, TrendingUp, X } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Bolt, Menu, X, Sun, Moon, TrendingUp, CheckCircle, ShieldCheck } from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---
@@ -116,27 +116,27 @@ const HP020Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 tracking-tight">
+        <motion.h1 variants={itemVariants as any} className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 tracking-tight">
           Stop Drowning in Orders.
           <br />
           Start Commanding Your Growth.
         </motion.h1>
 
-        <motion.p variants={itemVariants} className="mt-6 text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200">
+        <motion.p variants={itemVariants as any} className="mt-6 text-lg md:text-xl font-semibold text-slate-800 dark:text-slate-200">
           The All-in-One Platform for Automated Order Processing, Inventory Sync, and Shipping for TikTok Shops.
         </motion.p>
         
-        <motion.p variants={itemVariants} className="mt-4 max-w-2xl mx-auto text-base text-slate-600 dark:text-slate-400">
+        <motion.p variants={itemVariants as any} className="mt-4 max-w-2xl mx-auto text-base text-slate-600 dark:text-slate-400">
           We turn operational chaos into a CEO-level command center, so you can scale from 50 to 500+ orders a day—effortlessly.
         </motion.p>
         
-        <motion.div variants={itemVariants} className="mt-10">
+        <motion.div variants={itemVariants as any} className="mt-10">
           <motion.button className="px-8 py-4 text-lg font-bold text-white rounded-lg bg-blue-600 transition-all shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50" whileHover={{ scale: 1.05, y: -4 }} whileTap={{ scale: 0.95 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
             Start Your 14-Day Free Trial
           </motion.button>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="mt-16">
+        <motion.div variants={itemVariants as any} className="mt-16">
             <CommandCenterSnippet />
         </motion.div>
       </motion.div>

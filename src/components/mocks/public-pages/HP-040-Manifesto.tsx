@@ -1,7 +1,7 @@
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { ArrowUpRight, Brush, Eye, Moon, Sun, X } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Eye, Brush, ArrowUpRight, X } from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---
@@ -98,7 +98,7 @@ const ManifestoCard: React.FC<any> = ({ item, onClick  }: any) => {
         >
             <motion.div 
                 className="absolute inset-0 -z-10"
-                style={{ background: `radial-gradient(circle at 50% 50%, ${colors[item.color].dark}40, transparent 80%)` }}
+                style={{ background: `radial-gradient(circle at 50% 50%, ${(colors as any)[item.color].dark}40, transparent 80%)` }}
                 animate={{ scale: isHovered ? [1, 1.3, 1] : 1, opacity: isHovered ? 1 : 0.5 }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
             />
@@ -113,7 +113,7 @@ const ManifestoCard: React.FC<any> = ({ item, onClick  }: any) => {
                     </motion.div>
                 )}
             </AnimatePresence>
-            <AnimatePresence>{isHovered && <SharpEdgeAndSpark color={colors[item.color].dark} />}</AnimatePresence>
+            <AnimatePresence>{isHovered && <SharpEdgeAndSpark color={(colors as any)[item.color].dark} />}</AnimatePresence>
         </motion.div>
     );
 };

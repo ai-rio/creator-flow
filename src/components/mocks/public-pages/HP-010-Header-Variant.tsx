@@ -1,7 +1,7 @@
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight,Bolt, Menu, Moon, Sun, X } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Bolt, Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---
@@ -81,7 +81,7 @@ const HP010HeaderDefinitive: React.FC<any> = ({ theme  }: any) => {
     const { scrollY } = useScroll();
     const currentTheme = theme === 'dark' ? darkTheme : lightTheme;
 
-    useMotionValueEvent(scrollY, "change", (latest) => {
+    useMotionValueEvent(scrollY, "change", (latest: any) => {
         setIsScrolled(latest > 50);
     });
 

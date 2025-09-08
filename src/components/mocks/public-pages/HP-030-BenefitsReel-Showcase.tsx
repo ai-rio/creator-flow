@@ -1,7 +1,7 @@
+import { animate,AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { Moon, PackageCheck,ShieldCheck, Sun, Zap } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, ShieldCheck, Zap, PackageCheck } from 'lucide-react';
+import { useEffect, useRef,useState } from 'react';
 
 
 // --- TypeScript Interfaces ---
@@ -78,7 +78,7 @@ const HP030BenefitsReel = () => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
 
     useEffect(() => {
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
+        const unsubscribe = scrollYProgress.on("change", (latest: any) => {
             const newIndex = Math.min(Math.floor(latest * benefits.length), benefits.length - 1);
             if(newIndex !== activeIndex) {
                 setActiveIndex(newIndex);
@@ -173,7 +173,7 @@ const BenefitCard: React.FC<any> = ({ data  }: any) => {
 };
 
 // --- Helper: Animated Number ---
-function AnimatedNumber({ n }) {
+function AnimatedNumber({ n }: { n: number }) {
     const [number, setNumber] = useState<number>(0);
 
     useEffect(() => {
@@ -188,7 +188,7 @@ function AnimatedNumber({ n }) {
         return () => controls.stop();
     }, [n]);
 
-    const formatNumber = (val) => {
+    const formatNumber = (val: any) => {
         if (n >= 1000) return Math.round(val).toLocaleString();
         return Math.round(val);
     };

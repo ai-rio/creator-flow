@@ -1,8 +1,8 @@
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import { DollarSign, Moon,Repeat, ShoppingCart, Sun, Zap } from 'lucide-react';
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { LineChart, Line, ResponsiveContainer } from 'recharts';
-import { DollarSign, ShoppingCart, Repeat, Zap, Sun, Moon } from 'lucide-react';
+import { useEffect, useRef,useState } from 'react';
+import { Line, LineChart, ResponsiveContainer } from 'recharts';
 
 
 // --- TypeScript Interfaces ---
@@ -169,9 +169,9 @@ const Revenue_Card: React.FC<any> = ({ scrollYProgress, theme  }: any) => {
     const pathLength = useTransform(scrollYProgress, [0.45, 0.6], [0, 1]);
 
     useEffect(() => {
-        if (chartContainerRef.current) {
+        if (chartContainerRef.current!) {
             const observer = new MutationObserver(() => {
-                const pathEl = chartContainerRef.current.querySelector('.recharts-line-curve path');
+                const pathEl = (chartContainerRef.current! as any).querySelector('.recharts-line-curve path');
                 if (pathEl) {
                     const d = pathEl.getAttribute('d');
                     if(d) {
@@ -180,7 +180,7 @@ const Revenue_Card: React.FC<any> = ({ scrollYProgress, theme  }: any) => {
                     }
                 }
             });
-            observer.observe(chartContainerRef.current, { childList: true, subtree: true });
+            observer.observe(chartContainerRef.current!, { childList: true, subtree: true });
             return () => observer.disconnect();
         }
     }, []);
@@ -243,17 +243,17 @@ const ParticleCanvas: React.FC<any> = ({ theme  }: any) => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
-        const canvas = canvasRef.current;
+        const canvas = canvasRef.current!;
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
+        const ctx = (canvas as any).getContext('2d');
+        let animationFrameId: any;
         
         const resizeCanvas = () => {
-            canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-            canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+            (canvas as any).width = (canvas as any).offsetWidth * window.devicePixelRatio;
+            (canvas as any).height = (canvas as any).offsetHeight * window.devicePixelRatio;
         };
         
-        let particles = [];
+        let particles: any[] = [];
         const particleCount = 100;
         const particleColorDark = `rgba(45, 212, 191, 0.7)`;
         const particleColorLight = `rgba(13, 148, 136, 0.7)`;
@@ -262,8 +262,8 @@ const ParticleCanvas: React.FC<any> = ({ theme  }: any) => {
             particles = [];
              for (let i = 0; i < particleCount; i++) {
                 particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
+                    x: Math.random() * (canvas as any).width,
+                    y: Math.random() * (canvas as any).height,
                     radius: Math.random() * 1.5 * window.devicePixelRatio,
                     vx: (Math.random() - 0.5) * 0.5,
                     vy: (Math.random() - 0.5) * 0.5
@@ -272,13 +272,13 @@ const ParticleCanvas: React.FC<any> = ({ theme  }: any) => {
         };
 
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, (canvas as any).width, (canvas as any).height);
             particles.forEach(p => {
                 p.x += p.vx;
                 p.y += p.vy;
 
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                if (p.x < 0 || p.x > (canvas as any).width) p.vx *= -1;
+                if (p.y < 0 || p.y > (canvas as any).height) p.vy *= -1;
                 
                 ctx.fillStyle = theme === 'dark' ? particleColorDark : particleColorLight;
                 ctx.beginPath();

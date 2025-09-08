@@ -48,7 +48,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // FIXED: Proper typography hierarchy with font-black for H1/H2, font-bold for H3
     // ENHANCED: Added ID generation for TOC navigation
     h1: ({ children }) => {
-      const id = generateHeadingId(children);
+      const id = generateHeadingId(children as string);
       
       return (
         <h1 id={id} className="text-4xl md:text-6xl font-black text-forest-green mb-8 mt-12 first:mt-0">
@@ -57,7 +57,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     h2: ({ children }) => {
-      const id = generateHeadingId(children);
+      const id = generateHeadingId(children as string);
       
       return (
         <h2 id={id} className="text-3xl md:text-4xl font-black text-forest-green mb-6 mt-10">
@@ -66,7 +66,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     h3: ({ children }) => {
-      const id = generateHeadingId(children);
+      const id = generateHeadingId(children as string);
       
       return (
         <h3 id={id} className="text-xl md:text-2xl font-bold text-forest-green mb-4 mt-8">
@@ -75,7 +75,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     h4: ({ children }) => {
-      const id = generateHeadingId(children);
+      const id = generateHeadingId(children as string);
       
       return (
         <h4 id={id} className="text-lg md:text-xl font-bold text-forest-green mb-3 mt-6">
