@@ -21,12 +21,7 @@ class ReactToTypeScriptTransformer {
   private analysis: ComponentAnalysis;
 
   constructor(source: string, fileName: string) {
-    this.sourceFile = ts.createSourceFile(
-      fileName,
-      source,
-      ts.ScriptTarget.Latest,
-      true
-    );
+    this.sourceFile = ts.createSourceFile(fileName, source, ts.ScriptTarget.Latest, true);
     this.analysis = this.analyzeComponent();
   }
 
@@ -38,7 +33,7 @@ class ReactToTypeScriptTransformer {
       stateTypes: [],
       propTypes: [],
       eventHandlers: [],
-      imports: []
+      imports: [],
     };
 
     const visit = (node: ts.Node) => {
@@ -57,7 +52,7 @@ class ReactToTypeScriptTransformer {
             if (node.initializer.arguments.length > 0) {
               const arg = node.initializer.arguments[0];
               const argText = arg.getFullText(this.sourceFile).trim();
-              
+
               // Try to infer type from initial value
               if (ts.isStringLiteral(arg) || argText.includes("'") || argText.includes('"')) {
                 analysis.stateTypes.push('string');
@@ -80,11 +75,11 @@ class ReactToTypeScriptTransformer {
         if (node.parameters.length > 0) {
           const firstParam = node.parameters[0];
           if (ts.isObjectBindingPattern(firstParam.name)) {
-            firstParam.name.elements.forEach(element => {
+            firstParam.name.elements.forEach((element) => {
               if (ts.isBindingElement(element) && ts.isIdentifier(element.name)) {
                 const propName = element.name.text;
                 analysis.propTypes.push(`${propName}: any`);
-                
+
                 // Check for common patterns
                 if (propName === 'theme' || propName === 'setTheme') {
                   analysis.hasTheme = true;
@@ -118,7 +113,7 @@ class ReactToTypeScriptTransformer {
 
   private generateInterfaces(): string {
     let interfaces = '\n// --- TypeScript Interfaces ---\n';
-    
+
     if (this.analysis.hasUser) {
       interfaces += `interface User {
   handle: string;
@@ -156,10 +151,10 @@ class ReactToTypeScriptTransformer {
     const needsHooks = content.includes('useState') || content.includes('useEffect') || content.includes('useContext');
     const needsRef = content.includes('useRef');
     const needsMotion = content.includes('motion.') || content.includes('AnimatePresence');
-    
+
     // Replace React import with proper TypeScript import
     let newImports = "import * as React from 'react';";
-    
+
     if (needsHooks || needsRef) {
       const hooks = [];
       if (content.includes('useState')) hooks.push('useState');
@@ -167,7 +162,7 @@ class ReactToTypeScriptTransformer {
       if (content.includes('useRef')) hooks.push('useRef');
       newImports += `\nimport { ${hooks.join(', ')} } from 'react';`;
     }
-    
+
     if (needsMotion) {
       newImports += "\nimport { motion, AnimatePresence } from 'framer-motion';";
     }
@@ -176,12 +171,12 @@ class ReactToTypeScriptTransformer {
     const lines = content.split('\n');
     const importLines = [];
     let i = 0;
-    
+
     while (i < lines.length) {
       const line = lines[i].trim();
       if (line.startsWith('import')) {
         let importStatement = line;
-        
+
         // Handle multi-line imports
         if (!line.includes(';')) {
           i++;
@@ -193,12 +188,14 @@ class ReactToTypeScriptTransformer {
             importStatement += '\n' + lines[i]; // Add the closing line with ;
           }
         }
-        
+
         // Preserve non-React/non-framer-motion imports
-        if (!importStatement.includes("from 'react'") && 
-            !importStatement.includes('from "react"') &&
-            !importStatement.includes("'framer-motion'") &&
-            !importStatement.includes('"framer-motion"')) {
+        if (
+          !importStatement.includes("from 'react'") &&
+          !importStatement.includes('from "react"') &&
+          !importStatement.includes("'framer-motion'") &&
+          !importStatement.includes('"framer-motion"')
+        ) {
           importLines.push(importStatement);
         }
       }
@@ -215,7 +212,7 @@ class ReactToTypeScriptTransformer {
     const lines = content.split('\n');
     let nonImportContent = [];
     let i = 0;
-    
+
     // Skip all import statements (including multi-line ones)
     while (i < lines.length) {
       const line = lines[i].trim();
@@ -234,10 +231,10 @@ class ReactToTypeScriptTransformer {
         break;
       }
     }
-    
+
     const fixedImports = this.fixImports(content);
     const interfaces = this.generateInterfaces();
-    
+
     // 2. Fix component function signatures
     content = nonImportContent.join('\n');
     content = content.replace(
@@ -266,24 +263,20 @@ class ReactToTypeScriptTransformer {
     );
 
     // 6. Fix arrow function parameters
-    content = content.replace(
-      /\(\s*\{\s*([^}]+)\s*\}\s*\) => \(/g,
-      '({ $1 }: any) => ('
-    );
+    content = content.replace(/\(\s*\{\s*([^}]+)\s*\}\s*\) => \(/g, '({ $1 }: any) => (');
 
     // Combine everything with proper spacing
-    return [
-      fixedImports,
-      interfaces,
-      content
-    ].join('\n');
+    return [fixedImports, interfaces, content].join('\n');
   }
 }
 
-async function convertSingleFile(jsxFileName: string) {
-  const jsxPath = `${JSX_DIR}/${jsxFileName}`;
+async function convertSingleFile(jsxFileName: string, sourceDir?: string, destDir?: string) {
+  const srcDir = sourceDir || JSX_DIR;
+  const dstDir = destDir || TSX_DIR;
+
+  const jsxPath = `${srcDir}/${jsxFileName}`;
   const content = await readFile(jsxPath, 'utf-8');
-  
+
   if (content.trim().length === 0) {
     console.log(`❌ Skipping empty file: ${jsxFileName}`);
     return false;
@@ -302,12 +295,12 @@ async function convertSingleFile(jsxFileName: string) {
     const transformer = new ReactToTypeScriptTransformer(content, jsxFileName);
     const transformedContent = transformer.transform(content);
 
-    const tsxPath = `${TSX_DIR}/${tsxFileName}`;
+    const tsxPath = `${dstDir}/${tsxFileName}`;
     await writeFile(tsxPath, transformedContent, 'utf-8');
 
     console.log(`✅ ${tsxFileName} - Converted successfully with AST analysis`);
     console.log(`📁 Saved to: ${tsxPath}`);
-    
+
     return true;
   } catch (error) {
     console.error(`❌ Error converting ${jsxFileName}:`, error);
@@ -317,10 +310,16 @@ async function convertSingleFile(jsxFileName: string) {
 
 // Get filename from command line argument
 const fileName = process.argv[2];
+const sourceDir = process.argv[3];
+const destDir = process.argv[4];
+
 if (!fileName) {
-  console.log('Usage: bun run scripts/convert-jsx-to-tsx-ast-improved.ts <filename.jsx>');
+  console.log('Usage: bun run scripts/convert-jsx-to-tsx-ast-improved.ts <filename.jsx> [source-dir] [dest-dir]');
   console.log('Example: bun run scripts/convert-jsx-to-tsx-ast-improved.ts o1-system-focus-header.jsx');
+  console.log(
+    'Example: bun run scripts/convert-jsx-to-tsx-ast-improved.ts BP-Complete-Content-Hub.jsx /path/to/source /path/to/dest'
+  );
   process.exit(1);
 }
 
-convertSingleFile(fileName).catch(console.error);
+convertSingleFile(fileName, sourceDir, destDir).catch(console.error);

@@ -87,6 +87,16 @@ import CreatorFlowThemeSwitcher from './CreatorFlow-Theme-Switcher';
 import GDPRDataSovereignty from './GDPR-Data-Sovereignty';
 import LP010Legal from './LP-010-Legal';
 import NotFound404 from './404-NotFound';
+// Blog Page Components
+import BPCompleteContentHub from './blog-page/BP-Complete-Content-Hub';
+import BPContentHubToolbar from './blog-page/BP-Content-Hub-Toolbar';
+import BPPostCard from './blog-page/BP-PostCard';
+// Blog Post Components (AC Series)
+import ACArticleHero from './blog-post/AC-ArticleHero';
+import ACCallout from './blog-post/AC-Callout';
+import ACDataTable from './blog-post/AC-DataTable';
+import ACKeyTakeawaysComponent from './blog-post/AC-KeyTakeaways Component';
+import ACTableOfContents from './blog-post/AC-TableOfContents';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -177,6 +187,20 @@ const componentCategories = {
       { id: 'fp030', name: 'FP030: Digital Twin Command', component: FP030DigitalTwinCommand },
       { id: 'fp040', name: 'FP040: Logistics CoPilot', component: FP040LogisticsCoPilot },
       { id: 'fp050', name: 'FP050: Data Prism', component: FP050DataPrism },
+    ],
+  },
+  'Blog Components': {
+    'Blog Page Components': [
+      { id: 'bp-hub', name: 'BP: Complete Content Hub', component: BPCompleteContentHub },
+      { id: 'bp-toolbar', name: 'BP: Content Hub Toolbar', component: BPContentHubToolbar },
+      { id: 'bp-card', name: 'BP: Post Card', component: BPPostCard },
+    ],
+    'Blog Post Components': [
+      { id: 'ac-hero', name: 'AC: Article Hero', component: ACArticleHero },
+      { id: 'ac-callout', name: 'AC: Callout', component: ACCallout },
+      { id: 'ac-datatable', name: 'AC: Data Table', component: ACDataTable },
+      { id: 'ac-keytakeaways', name: 'AC: Key Takeaways', component: ACKeyTakeawaysComponent },
+      { id: 'ac-toc', name: 'AC: Table of Contents', component: ACTableOfContents },
     ],
   },
   'Component Series': {
