@@ -2,6 +2,7 @@
   "parser": "@typescript-eslint/parser",
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "plugins": ["simple-import-sort", "@typescript-eslint"],
+  "ignorePatterns": ["docs/**/*.jsx", "docs/**/*.js"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
