@@ -80,6 +80,12 @@ import HP090Footer from './HP-090-Footer';
 import AP010Hero from './AP-010-Hero';
 import AP020OurMission from './AP-020-OurMission';
 import AP030TheTeam from './AP-030-TheTeam';
+import CP020OpenMissions from './CP-020-OpenMissions';
+import CookiePolicyBar from './Cookie-Policy-Bar';
+import CreatorFlowThemeSwitcher from './CreatorFlow-Theme-Switcher';
+import GDPRDataSovereignty from './GDPR-Data-Sovereignty';
+import LP010Legal from './LP-010-Legal';
+import NotFound404 from './404-NotFound';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -153,6 +159,14 @@ const componentCategories = {
       { id: 'ap010', name: 'AP010: Hero', component: AP010Hero },
       { id: 'ap020', name: 'AP020: Our Mission', component: AP020OurMission },
       { id: 'ap030', name: 'AP030: The Team', component: AP030TheTeam },
+    ],
+    'CP Series': [{ id: 'cp020', name: 'CP020: Open Missions', component: CP020OpenMissions }],
+    'LP Series': [{ id: 'lp010', name: 'LP010: Legal', component: LP010Legal }],
+    'Utility Components': [
+      { id: 'cookie-bar', name: 'Cookie Policy Bar', component: CookiePolicyBar },
+      { id: 'theme-switcher', name: 'Theme Switcher', component: CreatorFlowThemeSwitcher },
+      { id: 'gdpr', name: 'GDPR Data Sovereignty', component: GDPRDataSovereignty },
+      { id: '404', name: '404 Not Found', component: NotFound404 },
     ],
     'FP Series': [
       { id: 'fp020', name: 'FP020: Order Management', component: FP020OrderManagement },
