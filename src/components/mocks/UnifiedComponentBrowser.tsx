@@ -97,6 +97,10 @@ import ACCallout from './blog-post/AC-Callout';
 import ACDataTable from './blog-post/AC-DataTable';
 import ACKeyTakeawaysComponent from './blog-post/AC-KeyTakeaways Component';
 import ACTableOfContents from './blog-post/AC-TableOfContents';
+// New batch 2 components
+import ACFAQAccordion from './blog-post/AC-FAQAccordion';
+import ACMilestoneCelebration from './blog-post/AC-MilestoneCelebration';
+import ACProfitCommandDashboard from './blog-post/AC-ProfitCommandDashboard';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -201,6 +205,9 @@ const componentCategories = {
       { id: 'ac-datatable', name: 'AC: Data Table', component: ACDataTable },
       { id: 'ac-keytakeaways', name: 'AC: Key Takeaways', component: ACKeyTakeawaysComponent },
       { id: 'ac-toc', name: 'AC: Table of Contents', component: ACTableOfContents },
+      { id: 'ac-faq', name: 'AC: FAQ Accordion', component: ACFAQAccordion },
+      { id: 'ac-milestone', name: 'AC: Milestone Celebration', component: ACMilestoneCelebration },
+      { id: 'ac-profit', name: 'AC: Profit Command Dashboard', component: ACProfitCommandDashboard },
     ],
   },
   'Component Series': {
