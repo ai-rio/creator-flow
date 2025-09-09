@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -10,11 +10,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(undefined);
 const useTheme = () => useContext(ThemeContext);
 
-const ThemeProvider = ({ children }) => {
-  const [theme, settheme] = useState<any>('dark');
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<any>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -24,8 +24,8 @@ const ThemeProvider = ({ children }) => {
 };
 
 // --- Responsive Hook ---
-const useMediaQuery = (query) => {
-  const [matches, setmatches] = useState<any>(false);
+const useMediaQuery = (query: string) => {
+  const [matches, setMatches] = useState<any>(false);
   useEffect(() => {
     const media = window.matchMedia(query);
     if (media.matches !== matches) {
@@ -336,7 +336,7 @@ const businessArtData = [
   { name: 'Orders', value: 347, max: 500 },
   { name: 'Health', value: 96, max: 100 },
 ];
-const BusinessArtCard = ({ variants }) => {
+const BusinessArtCard = ({ variants }: { variants: any }) => {
   const { theme } = useTheme();
   const colors = theme === 'dark' ? ['#2dd4bf', '#a78bfa', '#f472b6'] : ['#0d9488', '#7c3aed', '#db2777'];
   return (
@@ -486,8 +486,8 @@ const ExecutiveIntelligenceCard: React.FC<any> = ({ variants }) => (
 );
 
 // --- Core App Structure (Updated with Responsive Sidebar) ---
-const Sidebar = ({ isCollapsed, isMobile, setMobileOpen }) => {
-  const NavLink: React.FC<any> = ({ icon, children }) => (
+const Sidebar = ({ isCollapsed, isMobile, setMobileOpen }: { isCollapsed: any; isMobile: any; setMobileOpen: any }) => {
+  const NavLink: React.FC<any> = ({ icon, children }: { icon: any; children: React.ReactNode }) => (
     <a
       href='#'
       className='flex items-center gap-4 rounded-lg px-4 py-2.5 text-slate-600 transition-colors duration-200 hover:bg-slate-300/60 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'
@@ -593,7 +593,7 @@ const Sidebar = ({ isCollapsed, isMobile, setMobileOpen }) => {
   );
 };
 
-const Header = ({ setMobileOpen, isMobile }) => {
+const Header = ({ setMobileOpen, isMobile }: { setMobileOpen: any; isMobile: any }) => {
   const { theme, setTheme } = useTheme();
   return (
     <div className='flex items-center justify-between'>
@@ -620,8 +620,8 @@ const Header = ({ setMobileOpen, isMobile }) => {
 
 const AppContent = () => {
   const isMobile = useMediaQuery('(max-width: 1024px)');
-  const [isSidebarCollapsed, setisSidebarCollapsed] = useState<any>(false); // Default to expanded on desktop
-  const [isMobileMenuOpen, setisMobileMenuOpen] = useState<any>(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<any>(false); // Default to expanded on desktop
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState<any>(false);
 
   useEffect(() => {
     setIsSidebarCollapsed(isMobile ? false : true);
@@ -655,7 +655,7 @@ const AppContent = () => {
 
       {!isMobile && (
         <div className='relative flex-shrink-0'>
-          <Sidebar isCollapsed={isSidebarCollapsed} isMobile={false} />
+          <Sidebar isCollapsed={isSidebarCollapsed} isMobile={false} setMobileOpen={setMobileMenuOpen} />
           <button
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             className='absolute -right-3 top-[50%] flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-slate-300 bg-slate-200 text-slate-600 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300'

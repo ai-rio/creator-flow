@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -37,7 +37,7 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT (Placeholder for brevity) ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, setTheme }: any) => {
   return (
     <motion.button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -60,9 +60,9 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 );
 
 // --- HOOK for detecting outside clicks (Placeholder for brevity) ---
-const useOutsideClick = (ref, callback) => {
+const useOutsideClick = (ref: any, callback: any) => {
   useEffect(() => {
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
       if (ref.current && !ref.current.contains(e.target)) callback();
     };
     document.addEventListener('mousedown', handleClick);
@@ -73,7 +73,7 @@ const useOutsideClick = (ref, callback) => {
 // --- A-SERIES COMPONENTS (Admin) ---
 
 // A1: AdminDesktopHeader (Placeholder for brevity)
-const AdminDesktopHeader = ({ theme, setTheme }) => {
+const AdminDesktopHeader = ({ theme, setTheme }: any) => {
   return (
     <motion.header className='fixed left-4 right-4 top-4 z-50'>
       <GlassPane className='flex h-16 items-center justify-between p-3 px-6'>
@@ -85,7 +85,7 @@ const AdminDesktopHeader = ({ theme, setTheme }) => {
 };
 
 // A2: AdminSidebarNav (Placeholder for brevity)
-const AdminSidebarNav = ({ isExpanded, isPinned, onPinToggle, onHoverStart, onHoverEnd }) => {
+const AdminSidebarNav = ({ isExpanded, isPinned, onPinToggle, onHoverStart, onHoverEnd }: any) => {
   return (
     <motion.aside
       onMouseEnter={onHoverStart}
@@ -103,7 +103,7 @@ const AdminSidebarNav = ({ isExpanded, isPinned, onPinToggle, onHoverStart, onHo
 };
 
 // [NEWLY BUILT & THEMED] A3: UnifiedSystemHealthCard
-const HealthMetricCard = ({ icon, title, metrics, status, colorClass }) => {
+const HealthMetricCard = ({ icon, title, metrics, status, colorClass }: any) => {
   const statusConfig = {
     automated: { text: 'Automated', color: 'bg-teal-700 dark:bg-teal-400' },
     tiktok: { text: 'Healthy', color: 'bg-green-600 dark:bg-green-400' },
@@ -116,14 +116,16 @@ const HealthMetricCard = ({ icon, title, metrics, status, colorClass }) => {
           <h3 className='font-bold text-slate-900 dark:text-slate-100'>{title}</h3>
         </div>
         <ul className='space-y-1 text-sm text-slate-700 dark:text-slate-300'>
-          {metrics.map((metric, i) => (
+          {metrics.map((metric: any, i: any) => (
             <li key={i}>{metric}</li>
           ))}
         </ul>
       </div>
       <div className='mt-4 flex items-center gap-2'>
-        <div className={`h-2.5 w-2.5 rounded-full ${statusConfig[status].color}`}></div>
-        <span className='text-xs font-semibold text-slate-600 dark:text-slate-400'>{statusConfig[status].text}</span>
+        <div className={`h-2.5 w-2.5 rounded-full ${(statusConfig as any)[status].color}`}></div>
+        <span className='text-xs font-semibold text-slate-600 dark:text-slate-400'>
+          {(statusConfig as any)[status].text}
+        </span>
       </div>
     </GlassPane>
   );
@@ -206,13 +208,13 @@ export default function App(): React.JSX.Element {
 
   return (
     <div className='min-h-screen bg-slate-100 font-sans text-slate-900 transition-colors duration-300 dark:bg-[#0A090F] dark:text-slate-100'>
-      <AdminDesktopHeader theme={theme} setTheme={setTheme} />
+      <AdminDesktopHeader theme={theme} setTheme={settheme} />
       <AdminSidebarNav
         isExpanded={isExpanded}
         isPinned={isPinned}
-        onPinToggle={() => setIsPinned(!isPinned)}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        onPinToggle={() => setisPinned(!isPinned)}
+        onHoverStart={() => setisHovered(true)}
+        onHoverEnd={() => setisHovered(false)}
       />
       <main className={`px-4 pt-24 transition-all duration-300 ease-in-out ${isExpanded ? 'md:ml-72' : 'md:ml-24'}`}>
         <div className='space-y-8 p-4'>

@@ -64,7 +64,7 @@ const ParticleCanvas = () => {
     };
     resizeCanvas();
 
-    const particles = [];
+    const particles: any[] = [];
     const particleCount = 50;
 
     for (let i = 0; i < particleCount; i++) {

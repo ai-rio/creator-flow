@@ -58,7 +58,7 @@ const criticalStockData = [
 
 // --- REUSABLE GlassPane COMPONENT ---
 // This ensures all components share the exact same base style as defined in the style guide.
-const GlassPane = ({ children, className = '' }) => {
+const GlassPane = ({ children, className = '' }: any) => {
   return (
     <div className={`rounded-2xl border border-slate-100/10 bg-slate-400/10 backdrop-blur-xl ${className}`}>
       {children}
@@ -117,7 +117,7 @@ const CriticalStockCard = () => {
         staggerChildren: 0.1,
       },
     },
-  };
+  } as any;
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -126,7 +126,7 @@ const CriticalStockCard = () => {
       y: 0,
       transition: { type: 'spring', stiffness: 120, damping: 20 },
     },
-  };
+  } as any;
 
   return (
     <motion.div variants={containerVariants} initial='hidden' animate='visible'>

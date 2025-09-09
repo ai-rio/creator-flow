@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, setTheme }: any) => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   return (
     <motion.button
@@ -51,12 +51,12 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { type: 'spring', staggerChildren: 0.1 } },
-};
+} as any;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 120, damping: 20 } },
-};
+} as any;
 
 // --- I-SERIES COMPONENTS ---
 
@@ -203,7 +203,7 @@ const InventoryArtGalleryCard = () => {
                 {' '}
                 <div
                   className={`w-full ${item.height} ${
-                    levelColorClasses[item.level]
+                    (levelColorClasses as any)[item.level]
                   } rounded-t-md transition-all duration-500`}
                 ></div>{' '}
                 <p className='text-xs font-bold text-slate-800 dark:text-slate-200'>{item.name}</p>{' '}
@@ -257,7 +257,7 @@ const InventorySubNavBar = () => {
 
 // --- MAIN APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
 
   useEffect(() => {
     document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -47,11 +47,11 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
 );
 
 const ProfileSettingsCard = () => {
-  const [userData, setuserData] = useState<any>(initialUserData);
-  const [newAvatar, setnewAvatar] = useState<any>(null);
-  const [previewUrl, setpreviewUrl] = useState<any>(initialUserData.avatarUrl);
-  const [isDirty, setisDirty] = useState<any>(false);
-  const [theme, settheme] = useState<any>('dark');
+  const [userData, setUserData] = useState<any>(initialUserData);
+  const [newAvatar, setNewAvatar] = useState<any>(null);
+  const [previewUrl, setPreviewUrl] = useState<any>(initialUserData.avatarUrl);
+  const [isDirty, setIsDirty] = useState<any>(false);
+  const [theme, setTheme] = useState<any>('dark');
 
   useEffect(() => {
     const hasChanged =
@@ -64,7 +64,7 @@ const ProfileSettingsCard = () => {
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-    setUserData((prev) => ({ ...prev, [name]: value }));
+    setUserData((prev: any) => ({ ...prev, [name]: value }));
   };
 
   const handleAvatarChange = (e: any) => {
@@ -150,6 +150,7 @@ const ProfileSettingsCard = () => {
                     name='fullName'
                     value={userData.fullName}
                     onChange={handleInputChange}
+                    helperText=''
                   />
                   <InputField
                     label='Display Name'
@@ -197,7 +198,23 @@ const ProfileSettingsCard = () => {
   );
 };
 
-const InputField = ({ label, id, name, value, onChange, helperText, isTextArea = false }) => {
+const InputField = ({
+  label,
+  id,
+  name,
+  value,
+  onChange,
+  helperText,
+  isTextArea = false,
+}: {
+  label: any;
+  id: any;
+  name: any;
+  value: any;
+  onChange: any;
+  helperText: any;
+  isTextArea?: boolean;
+}) => {
   const commonProps = {
     id,
     name,
@@ -214,7 +231,7 @@ const InputField = ({ label, id, name, value, onChange, helperText, isTextArea =
       </label>
       <div className='relative'>
         {isTextArea ? (
-          <motion.textarea {...commonProps} rows='3' whileFocus={{ boxShadow: '0 0 0 2px rgba(13, 148, 136, 0.4)' }} />
+          <motion.textarea {...commonProps} rows={3} whileFocus={{ boxShadow: '0 0 0 2px rgba(13, 148, 136, 0.4)' }} />
         ) : (
           <motion.input {...commonProps} type='text' whileFocus={{ boxShadow: '0 0 0 2px rgba(13, 148, 136, 0.4)' }} />
         )}

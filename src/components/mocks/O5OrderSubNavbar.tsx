@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -68,7 +68,7 @@ const completedOrders = [
 ];
 
 // --- Reusable Components (Condensed) ---
-const GlassPane = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: { children: any; className?: string }) => (
   <div
     className={`border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -97,16 +97,16 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
     </AnimatePresence>{' '}
   </motion.button>
 );
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: { icon: any; status: any }) => {
   const c = {
     nominal: 'text-teal-800 dark:text-teal-400',
     warning: 'text-amber-600 dark:text-amber-400',
     critical: 'text-red-600 dark:text-red-400',
   };
-  return <Icon size={20} className={c[status] || c.nominal} />;
+  return <Icon size={20} className={(c as any)[status] || c.nominal} />;
 };
-const AnimatedNumber = ({ value }) => {
-  const [displayValue, setdisplayValue] = useState<any>(0);
+const AnimatedNumber = ({ value }: { value: any }) => {
+  const [displayValue, setDisplayValue] = useState<any>(0);
   useEffect(() => {
     const controls = animate(0, value, {
       duration: 1,
@@ -227,7 +227,7 @@ const PriorityOrdersList: React.FC<any> = ({ orders }) => (
       variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
     >
       {' '}
-      {orders.map((order) => (
+      {orders.map((order: any) => (
         <motion.div key={order.id} variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
           {' '}
           <GlassPane className='rounded-xl p-4'>
@@ -320,7 +320,7 @@ const WorkflowPath: React.FC<any> = ({ steps }) => (
     </svg>{' '}
     <div className='relative flex h-full w-full items-center justify-between'>
       {' '}
-      {steps.map((Step, index) => (
+      {steps.map((Step: any, index: any) => (
         <motion.div
           key={index}
           initial={{ scale: 0 }}
@@ -349,7 +349,7 @@ const AutomatedFlowList: React.FC<any> = ({ orders }) => (
     </div>{' '}
     <div className='space-y-4'>
       {' '}
-      {orders.map((order) => (
+      {orders.map((order: any) => (
         <GlassPane key={order.id} className='rounded-xl p-4'>
           {' '}
           <div className='space-y-3'>
@@ -438,8 +438,8 @@ const OrderSubNavBar: React.FC<any> = ({ activeFilter, setActiveFilter, orderCou
 
 // --- Main App Frame for this View ---
 const OrderManagementView = () => {
-  const [theme, settheme] = useState<any>('dark');
-  const [activeFilter, setactiveFilter] = useState<any>('priority');
+  const [theme, setTheme] = useState<any>('dark');
+  const [activeFilter, setActiveFilter] = useState<any>('priority');
 
   return (
     <div className={`${theme} font-sans`}>

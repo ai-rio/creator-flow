@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -64,7 +64,7 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
   </motion.button>
 );
 
-const UsageBar = ({ current, limit, label }) => {
+const UsageBar = ({ current, limit, label }: { current: any; limit: any; label: any }) => {
   const percentage = (current / limit) * 100;
   return (
     <div>
@@ -98,7 +98,7 @@ const InfoBlock: React.FC<any> = ({ icon: Icon, title, children }) => (
 
 // --- Main Component ---
 const BillingOverviewCard = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
   const { plan, nextBilling, paymentMethod } = billingData;
 
   return (

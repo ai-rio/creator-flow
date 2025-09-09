@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -35,7 +35,7 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, setTheme }: { theme: any; setTheme: any }) => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   return (
     <motion.button
@@ -61,7 +61,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 // --- D-SERIES COMPONENTS (Desktop) ---
 
 // D1: ExecutiveDesktopHeader (Code omitted for brevity)
-const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
+const ExecutiveDesktopHeader = ({ theme, setTheme }: { theme: any; setTheme: any }) => {
   /* ... existing code ... */ return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -119,7 +119,7 @@ const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
 };
 
 // D2: DesktopSidebarNav (Code omitted for brevity)
-const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }) => {
+const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }: { isCollapsed: any; setIsCollapsed: any }) => {
   /* ... existing code ... */ return (
     <motion.aside
       className='fixed bottom-4 left-4 top-24 z-40 hidden flex-col md:flex'
@@ -192,12 +192,12 @@ const CrossSystemMasterpieceCard = () => {
 };
 
 // [NEWLY BUILT & THEMED] D4: CrisisCommandCenterCard
-const SystemStatus = ({ system, status }) => {
+const SystemStatus = ({ system, status }: { system: any; status: any }) => {
   const statusConfig = {
     ok: { icon: <CheckCircle2 size={16} />, color: 'text-teal-800 dark:text-teal-400' },
     warn: { icon: <AlertTriangle size={16} />, color: 'text-yellow-600 dark:text-yellow-500' },
   };
-  const config = statusConfig[status];
+  const config = (statusConfig as any)[status];
   return (
     <span className={`flex items-center gap-1 font-semibold ${config.color}`}>
       {system}
@@ -270,8 +270,8 @@ const CrisisCommandCenterCard = () => {
 
 // --- MAIN DESKTOP APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
-  const [isSidebarCollapsed, setisSidebarCollapsed] = useState<any>(false);
+  const [theme, setTheme] = useState<any>('dark');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<any>(false);
 
   useEffect(() => {
     document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');

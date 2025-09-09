@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -30,10 +30,10 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT (Placeholder for brevity) ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, settheme }: any) => {
   return (
     <motion.button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => settheme(theme === 'dark' ? 'light' : 'dark')}
       whileTap={{ scale: 0.9, rotate: 15 }}
       className='rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-500/10 dark:text-slate-400'
       aria-label='Toggle theme'
@@ -55,17 +55,17 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 // --- A-SERIES COMPONENTS (Admin) ---
 
 // A1, A2, A3, A4 Placeholders
-const AdminDesktopHeader = ({ theme, setTheme }) => {
+const AdminDesktopHeader = ({ theme, settheme }: any) => {
   return (
     <motion.header className='fixed left-4 right-4 top-4 z-50'>
       <GlassPane className='flex h-16 items-center justify-between p-3 px-6'>
         <h1 className='font-bold'>A1: Header</h1>
-        <ThemeToggle theme={theme} setTheme={setTheme} />
+        <ThemeToggle theme={theme} settheme={settheme} />
       </GlassPane>
     </motion.header>
   );
 };
-const AdminSidebarNav = ({ isExpanded, onPinToggle, onHoverStart, onHoverEnd }) => {
+const AdminSidebarNav = ({ isExpanded, onPinToggle, onHoverStart, onHoverEnd }: any) => {
   return (
     <motion.aside
       onMouseEnter={onHoverStart}
@@ -90,8 +90,8 @@ const PlaceholderCard: React.FC<any> = ({ title }) => (
 );
 
 // [NEWLY BUILT & THEMED] A5: SystemPerformanceArtistryCard
-const PerformanceBar = ({ label, percentage }) => {
-  const getColor = (p) => {
+const PerformanceBar = ({ label, percentage }: any) => {
+  const getColor = (p: any) => {
     if (p >= 90) return 'bg-green-600 dark:bg-green-500';
     if (p >= 80) return 'bg-amber-500';
     return 'bg-red-600 dark:bg-red-500';
@@ -207,13 +207,13 @@ export default function App(): React.JSX.Element {
 
   return (
     <div className='min-h-screen bg-slate-100 font-sans text-slate-900 transition-colors duration-300 dark:bg-[#0A090F] dark:text-slate-100'>
-      <AdminDesktopHeader theme={theme} setTheme={setTheme} />
+      <AdminDesktopHeader theme={theme} settheme={settheme} />
       <AdminSidebarNav
         isExpanded={isExpanded}
         isPinned={isPinned}
-        onPinToggle={() => setIsPinned(!isPinned)}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        onPinToggle={() => setisPinned(!isPinned)}
+        onHoverStart={() => setisHovered(true)}
+        onHoverEnd={() => setisHovered(false)}
       />
       <main className={`px-4 pt-24 transition-all duration-300 ease-in-out ${isExpanded ? 'md:ml-72' : 'md:ml-24'}`}>
         <div className='space-y-8 p-4'>

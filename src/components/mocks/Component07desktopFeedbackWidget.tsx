@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ interface ComponentProps {
 import { AnimatePresence, motion } from 'framer-motion';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }) => {
-  const [theme, settheme] = useState<any>('dark');
+const ThemeProvider = ({ children }: { children: any }) => {
+  const [theme, setTheme] = useState<any>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -141,11 +141,11 @@ const GlassPane: React.FC<any> = ({ children, className }) => (
 );
 
 // --- Feedback Widget Component ---
-const FeedbackWidget = ({ isOpen, onClose }) => {
-  const [step, setstep] = useState<any>(0); // 0: category, 1: form, 2: success
-  const [feedbackType, setfeedbackType] = useState<any>(null);
+const FeedbackWidget = ({ isOpen, onClose }: { isOpen: any; onClose: any }) => {
+  const [step, setStep] = useState<any>(0); // 0: category, 1: form, 2: success
+  const [feedbackType, setFeedbackType] = useState<any>(null);
 
-  const handleCategorySelect = (type) => {
+  const handleCategorySelect = (type: any) => {
     setFeedbackType(type);
     setStep(1);
   };
@@ -286,8 +286,8 @@ const CategoryButton: React.FC<any> = ({ icon, label, onClick }) => (
 
 // --- DEMO APP ---
 function AppContent() {
-  const [widgetOpen, setwidgetOpen] = useState<any>(false);
-  const { theme, setTheme } = useTheme();
+  const [widgetOpen, setWidgetOpen] = useState<any>(false);
+  const { theme, setTheme } = useTheme() as any;
 
   return (
     <div className='relative flex min-h-screen items-center justify-center bg-slate-100 p-8 font-sans text-slate-900 dark:bg-[#0A090F] dark:text-slate-200'>

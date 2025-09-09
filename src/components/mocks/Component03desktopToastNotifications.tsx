@@ -31,8 +31,20 @@ const toastTypes = {
   },
 };
 
-const Toast = ({ id, type, title, message, onDismiss }) => {
-  const { Icon, iconClass, borderClass, glowColor } = toastTypes[type];
+const Toast = ({
+  id,
+  type,
+  title,
+  message,
+  onDismiss,
+}: {
+  id: any;
+  type: any;
+  title: string;
+  message: string;
+  onDismiss: (id: any) => void;
+}) => {
+  const { Icon, iconClass, borderClass, glowColor } = (toastTypes as any)[type];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -83,16 +95,16 @@ const Toast = ({ id, type, title, message, onDismiss }) => {
 
 // --- Toast Manager & Showcase ---
 export default function DesktopToastNotifications(): React.JSX.Element {
-  const [toasts, settoasts] = useState<any>([]);
+  const [toasts, setToasts] = useState<any>([]);
   const [theme, setTheme] = React.useState('dark');
 
-  const addToast = useCallback((type, title, message) => {
+  const addToast = useCallback((type: any, title: string, message: string) => {
     const id = Date.now();
-    setToasts((currentToasts) => [{ id, type, title, message }, ...currentToasts]);
+    setToasts((currentToasts: any) => [{ id, type, title, message }, ...currentToasts]);
   }, []);
 
-  const dismissToast = useCallback((id) => {
-    setToasts((currentToasts) => currentToasts.filter((toast) => toast.id !== id));
+  const dismissToast = useCallback((id: any) => {
+    setToasts((currentToasts: any) => currentToasts.filter((toast: any) => toast.id !== id));
   }, []);
 
   const toggleTheme = () => {
@@ -111,7 +123,7 @@ export default function DesktopToastNotifications(): React.JSX.Element {
         >
           <div className='flex w-full flex-col items-center space-y-4 sm:items-end'>
             <AnimatePresence>
-              {toasts.map((toast) => (
+              {toasts.map((toast: any) => (
                 <Toast key={toast.id} {...toast} onDismiss={dismissToast} />
               ))}
             </AnimatePresence>

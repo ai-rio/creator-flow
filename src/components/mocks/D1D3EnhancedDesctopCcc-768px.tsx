@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, setTheme }: { theme: any; setTheme: any }) => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   return (
     <motion.button
@@ -58,7 +58,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 // --- D-SERIES COMPONENTS (Desktop) ---
 
 // D1: ExecutiveDesktopHeader
-const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
+const ExecutiveDesktopHeader = ({ theme, setTheme }: { theme: any; setTheme: any }) => {
   const systemIcons = [
     { icon: <Target size={16} />, key: 'target' },
     { icon: <Flame size={16} />, key: 'flame' },
@@ -107,7 +107,7 @@ const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
 };
 
 // D2: DesktopSidebarNav (Collapsible)
-const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }) => {
+const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }: { isCollapsed: any; setIsCollapsed: any }) => {
   const navItems = [
     { icon: <BrainCircuit size={20} />, label: 'Strategic Command' },
     { icon: <Palette size={20} />, label: 'Data Art' },
@@ -271,8 +271,8 @@ const CrossSystemMasterpieceCard = () => {
 
 // --- MAIN DESKTOP APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
-  const [isSidebarCollapsed, setisSidebarCollapsed] = useState<any>(false);
+  const [theme, setTheme] = useState<any>('dark');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<any>(false);
 
   useEffect(() => {
     document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');

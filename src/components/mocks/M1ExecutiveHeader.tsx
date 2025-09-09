@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -47,7 +47,7 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
   </motion.button>
 );
 
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: any) => {
   const statusConfig = {
     nominal: {
       color: 'text-teal-800 dark:text-teal-400',
@@ -63,7 +63,7 @@ const StatusIcon = ({ icon: Icon, status }) => {
     },
   };
 
-  const config = statusConfig[status] || statusConfig.nominal;
+  const config = (statusConfig as any)[status] || statusConfig.nominal;
 
   return (
     <motion.div
@@ -87,7 +87,7 @@ const StatusIcon = ({ icon: Icon, status }) => {
 };
 
 // --- M1: The Header Component ---
-const MobileExecutiveHeader = ({ systemStatus, user }) => {
+const MobileExecutiveHeader = ({ systemStatus, user }: any) => {
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -133,7 +133,7 @@ const MobileExecutiveHeader = ({ systemStatus, user }) => {
 
 // --- Main App Frame ---
 const MobileDashboard = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
   const user = { handle: '@ceo', avatarUrl: 'https://placehold.co/64x64/0A090F/FFF?text=CEO' };
 
   return (

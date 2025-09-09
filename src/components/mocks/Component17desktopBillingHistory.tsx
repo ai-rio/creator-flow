@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -86,30 +86,30 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
   </motion.button>
 );
 
-const StatusBadge = ({ status }) => {
+const StatusBadge = ({ status }: { status: any }) => {
   const baseClasses = 'px-3 py-1 text-xs font-semibold rounded-full inline-block';
   const statusClasses = {
     Paid: 'bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300',
     Failed: 'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300',
     Pending: 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300',
   };
-  return <span className={`${baseClasses} ${statusClasses[status]}`}>{status}</span>;
+  return <span className={`${baseClasses} ${(statusClasses as any)[status]}`}>{status}</span>;
 };
 
 // --- Main Component ---
 const InvoiceHistoryCard = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
   const [invoices] = useState(mockInvoices);
-  const [sortConfig, setsortConfig] = useState<any>({ key: 'date', direction: 'descending' });
+  const [sortConfig, setSortConfig] = useState<any>({ key: 'date', direction: 'descending' });
 
   const sortedInvoices = useMemo(() => {
     const sortableItems = [...invoices];
     if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
+      sortableItems.sort((a: any, b: any) => {
+        if ((a as any)[sortConfig.key] < (b as any)[sortConfig.key]) {
           return sortConfig.direction === 'ascending' ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
+        if ((a as any)[sortConfig.key] > (b as any)[sortConfig.key]) {
           return sortConfig.direction === 'ascending' ? 1 : -1;
         }
         return 0;
@@ -118,7 +118,7 @@ const InvoiceHistoryCard = () => {
     return sortableItems;
   }, [invoices, sortConfig]);
 
-  const requestSort = (key) => {
+  const requestSort = (key: any) => {
     let direction = 'ascending';
     if (sortConfig.key === key && sortConfig.direction === 'ascending') {
       direction = 'descending';
@@ -126,7 +126,7 @@ const InvoiceHistoryCard = () => {
     setSortConfig({ key, direction });
   };
 
-  const getSortIcon = (name) => {
+  const getSortIcon = (name: any) => {
     if (sortConfig.key !== name) {
       return null;
     }

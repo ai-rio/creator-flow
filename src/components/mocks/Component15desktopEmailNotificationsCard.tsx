@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -52,12 +52,12 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
 );
 
 const SecuritySettingsCard = () => {
-  const [theme, settheme] = useState<any>('dark');
-  const [is2faEnabled, setis2faEnabled] = useState<any>(true);
-  const [activeSessions, setactiveSessions] = useState<any>(mockSessions);
+  const [theme, setTheme] = useState<any>('dark');
+  const [is2faEnabled, setIs2faEnabled] = useState<any>(true);
+  const [activeSessions, setActiveSessions] = useState<any>(mockSessions);
 
-  const logoutSession = (id) => {
-    setActiveSessions((prev) => prev.filter((session) => session.id !== id));
+  const logoutSession = (id: any) => {
+    setActiveSessions((prev: any) => prev.filter((session: any) => session.id !== id));
   };
 
   return (
@@ -111,7 +111,7 @@ const SecuritySettingsCard = () => {
             <SettingsSection icon={Monitor} title='Active Sessions'>
               <div className='space-y-4'>
                 <AnimatePresence>
-                  {activeSessions.map((session) => (
+                  {activeSessions.map((session: any) => (
                     <motion.div
                       key={session.id}
                       layout

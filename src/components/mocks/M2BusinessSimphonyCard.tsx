@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -59,18 +59,18 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
   </motion.button>
 );
 
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: { icon: any; status: any }) => {
   const statusConfig = {
     nominal: { color: 'text-teal-800 dark:text-teal-400' },
     warning: { color: 'text-amber-600 dark:text-amber-400' },
     critical: { color: 'text-red-600 dark:text-red-400' },
   };
-  const config = statusConfig[status] || statusConfig.nominal;
+  const config = (statusConfig as any)[status] || statusConfig.nominal;
   return <Icon size={20} className={`${config.color}`} />;
 };
 
-const AnimatedNumber = ({ value, isCurrency = false }) => {
-  const [displayValue, setdisplayValue] = useState<any>(0);
+const AnimatedNumber = ({ value, isCurrency = false }: { value: any; isCurrency?: boolean }) => {
+  const [displayValue, setDisplayValue] = useState<any>(0);
 
   useEffect(() => {
     const controls = animate(0, value, {
@@ -91,13 +91,13 @@ const AnimatedNumber = ({ value, isCurrency = false }) => {
   );
 };
 
-const Sparkline = ({ data, className = '' }) => {
+const Sparkline = ({ data, className = '' }: { data: any; className?: string }) => {
   const width = 100;
   const height = 20;
   const max = Math.max(...data);
   const min = Math.min(...data);
   const points = data
-    .map((d, i) => {
+    .map((d: any, i: any) => {
       const x = (i / (data.length - 1)) * width;
       const y = height - ((d - min) / (max - min)) * height;
       return `${x},${y}`;
@@ -216,7 +216,7 @@ const BusinessSymphonyCard: React.FC<any> = ({ stats }) => (
 
 // --- Main App Frame ---
 const MobileDashboard = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
   const user = { handle: '@ceo', avatarUrl: 'https://placehold.co/64x64/0A090F/FFF?text=CEO' };
 
   return (

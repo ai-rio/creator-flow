@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ interface ComponentProps {
 import { AnimatePresence, motion } from 'framer-motion';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(undefined);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }) => {
-  const [theme, settheme] = useState<any>('dark');
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<any>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -149,7 +149,7 @@ const MoonIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane: React.FC<any> = ({ children, className }) => (
+const GlassPane: React.FC<any> = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <div
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
   >
@@ -159,9 +159,9 @@ const GlassPane: React.FC<any> = ({ children, className }) => (
 
 // --- Core Sidebar Component ---
 const Sidebar = () => {
-  const [isCollapsed, setisCollapsed] = useState<any>(true);
+  const [isCollapsed, setIsCollapsed] = useState<any>(true);
 
-  const NavLink: React.FC<any> = ({ icon, children }) => (
+  const NavLink: React.FC<any> = ({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) => (
     <a
       href='#'
       className='flex items-center gap-4 rounded-lg px-4 py-2.5 text-slate-600 transition-colors duration-200 hover:bg-slate-300/60 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'

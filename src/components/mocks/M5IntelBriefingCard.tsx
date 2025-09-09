@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -58,16 +58,16 @@ const intelligenceBriefing = [
 ];
 
 // --- Reusable Components (Condensed for brevity) ---
-const GlassPane = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: any) => (
   <div
     className={`border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
     {children}
   </div>
 );
-const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
+const ThemeToggle: React.FC<any> = ({ theme, settheme }) => (
   <motion.button
-    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    onClick={() => settheme(theme === 'dark' ? 'light' : 'dark')}
     className='absolute right-4 top-20 z-50 rounded-full bg-white/40 p-2 text-slate-500 dark:bg-slate-800/40 dark:text-slate-400'
     whileHover={{ scale: 1.1, rotate: 15 }}
     whileTap={{ scale: 0.9 }}
@@ -87,22 +87,22 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
     </AnimatePresence>{' '}
   </motion.button>
 );
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: any) => {
   const c = {
     nominal: 'text-teal-800 dark:text-teal-400',
     warning: 'text-amber-600 dark:text-amber-400',
     critical: 'text-red-600 dark:text-red-400',
   };
-  return <Icon size={20} className={c[status] || c.nominal} />;
+  return <Icon size={20} className={(c as any)[status] || c.nominal} />;
 };
-const AnimatedNumber = ({ value, isCurrency = false }) => {
+const AnimatedNumber = ({ value, isCurrency = false }: any) => {
   const [val, setval] = useState<any>(0);
   useEffect(() => {
     const anim = animate(0, value, {
       duration: 1.5,
       ease: 'easeOut',
       onUpdate(l) {
-        setVal(Math.round(l));
+        setval(Math.round(l));
       },
     });
     return () => anim.stop();
@@ -114,12 +114,14 @@ const AnimatedNumber = ({ value, isCurrency = false }) => {
     </span>
   );
 };
-const Sparkline = ({ data, className = '' }) => {
+const Sparkline = ({ data, className = '' }: any) => {
   const w = 100,
     h = 20,
     max = Math.max(...data),
     min = Math.min(...data);
-  const p = data.map((d, i) => `${(i / (data.length - 1)) * w},${h - ((d - min) / (max - min)) * h}`).join(' ');
+  const p = data
+    .map((d: any, i: any) => `${(i / (data.length - 1)) * w},${h - ((d - min) / (max - min)) * h}`)
+    .join(' ');
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className={`h-auto w-full ${className}`} preserveAspectRatio='none'>
       <motion.polyline
@@ -134,7 +136,7 @@ const Sparkline = ({ data, className = '' }) => {
     </svg>
   );
 };
-const CircularProgress = ({ percentage }) => {
+const CircularProgress = ({ percentage }: any) => {
   const r = 40,
     c = 2 * Math.PI * r;
   const s = useSpring(0, { stiffness: 50, damping: 20 });
@@ -172,13 +174,13 @@ const CircularProgress = ({ percentage }) => {
     </div>
   );
 };
-const AlertIcon = ({ type }) => {
+const AlertIcon = ({ type }: any) => {
   const i = {
     critical: <AlertTriangle className='text-red-600 dark:text-red-400' size={20} />,
     insight: <TrendingUp className='text-amber-600 dark:text-amber-400' size={20} />,
     operational: <Truck className='text-purple-700 dark:text-purple-400' size={20} />,
   };
-  return i[type] || null;
+  return (i as any)[type] || null;
 };
 
 // --- M1, M2, M3, M4 Components (Condensed) ---
@@ -297,7 +299,7 @@ const StrategicCommandCard: React.FC<any> = ({ alerts }) => (
         variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
       >
         {' '}
-        {alerts.map((a) => (
+        {alerts.map((a: any) => (
           <motion.div
             key={a.id}
             variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
@@ -397,7 +399,7 @@ const LiberationOrchestraCard: React.FC<any> = ({ stats }) => (
 );
 
 // --- M5: The Intelligence Briefing Card ---
-const InsightIcon = ({ type }) => {
+const InsightIcon = ({ type }: any) => {
   const icons = {
     performance: <Crosshair className='text-teal-800 dark:text-teal-400' size={20} />,
     trend: <TrendingUp className='text-amber-600 dark:text-amber-400' size={20} />,
@@ -410,10 +412,10 @@ const InsightIcon = ({ type }) => {
       </motion.div>
     ),
   };
-  return icons[type] || null;
+  return (icons as any)[type] || null;
 };
 
-const IntelligenceBriefingCard = ({ insights }) => {
+const IntelligenceBriefingCard = ({ insights }: any) => {
   const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } };
   const itemVariants = { hidden: { x: -20, opacity: 0 }, visible: { x: 0, opacity: 1 } };
 
@@ -429,7 +431,7 @@ const IntelligenceBriefingCard = ({ insights }) => {
           <h2 className='text-lg font-semibold text-slate-800 dark:text-slate-200'>Your Intelligence Briefing</h2>
         </div>
         <motion.div className='space-y-4' variants={containerVariants} initial='hidden' animate='visible'>
-          {insights.map((insight) => (
+          {insights.map((insight: any) => (
             <motion.div key={insight.id} variants={itemVariants} className='flex items-start gap-3'>
               <div className='mt-1'>
                 <InsightIcon type={insight.type} />
@@ -473,7 +475,7 @@ const MobileDashboard = () => {
       <div className='relative flex min-h-screen items-center justify-center bg-slate-100 transition-colors duration-500 dark:bg-[#0A090F]'>
         <div className='mx-auto h-[800px] w-full max-w-sm rounded-3xl bg-slate-200 p-2 shadow-2xl dark:bg-slate-900/50'>
           <div className='relative h-full w-full overflow-hidden rounded-[20px] bg-slate-100 dark:bg-[#0A090F]'>
-            <ThemeToggle theme={theme} setTheme={setTheme} />
+            <ThemeToggle theme={theme} settheme={settheme} />
             <MobileExecutiveHeader systemStatus={initialSystemStatus} user={user} />
 
             <main className='h-full space-y-4 overflow-y-auto p-2 pt-20'>

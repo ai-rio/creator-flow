@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -19,7 +19,7 @@ const orderSystemStats = {
 };
 
 // --- Reusable Components (Condensed) ---
-const GlassPane = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: { children: any; className?: string }) => (
   <div
     className={`border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -48,16 +48,16 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
     </AnimatePresence>{' '}
   </motion.button>
 );
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: { icon: any; status: any }) => {
   const c = {
     nominal: 'text-teal-800 dark:text-teal-400',
     warning: 'text-amber-600 dark:text-amber-400',
     critical: 'text-red-600 dark:text-red-400',
   };
-  return <Icon size={20} className={c[status] || c.nominal} />;
+  return <Icon size={20} className={(c as any)[status] || c.nominal} />;
 };
-const AnimatedNumber = ({ value }) => {
-  const [displayValue, setdisplayValue] = useState<any>(0);
+const AnimatedNumber = ({ value }: { value: any }) => {
+  const [displayValue, setDisplayValue] = useState<any>(0);
   useEffect(() => {
     const controls = animate(0, value, {
       duration: 1,
@@ -100,7 +100,7 @@ const SystemFocusHeader: React.FC<any> = ({ title, metric, metricLabel, systemSt
 );
 
 // --- O2: The Order System Stats Card ---
-const OrderSystemStatsCard = ({ stats }) => {
+const OrderSystemStatsCard = ({ stats }: { stats: any }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -141,7 +141,7 @@ const OrderSystemStatsCard = ({ stats }) => {
 
 // --- Main App Frame for this View ---
 const OrderManagementView = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
 
   return (
     <div className={`${theme} font-sans`}>

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Book, Bot, ChevronDown, Flame, LogOut, Moon, Radio, Sun, Target, User, Wrench, Zap } from 'lucide-react';
 
 // --- THEME MANAGEMENT ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, setTheme }: { theme: string; setTheme: (theme: string) => void }) => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   return (
     <motion.button
@@ -34,9 +34,9 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 );
 
 // --- HOOK for detecting outside clicks ---
-const useOutsideClick = (ref, callback) => {
+const useOutsideClick = (ref: any, callback: () => void) => {
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }
@@ -51,8 +51,8 @@ const useOutsideClick = (ref, callback) => {
 // --- A-SERIES COMPONENTS (Admin) ---
 
 // [NEWLY BUILT & THEMED] A1: AdminDesktopHeader
-const AdminDesktopHeader = ({ theme, setTheme }) => {
-  const [isDropdownOpen, setisDropdownOpen] = useState<any>(false);
+const AdminDesktopHeader = ({ theme, setTheme }: { theme: string; setTheme: (theme: string) => void }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState<any>(false);
   const dropdownRef = useRef(null);
   useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
 
@@ -151,7 +151,7 @@ const AdminDesktopHeader = ({ theme, setTheme }) => {
 
 // --- MAIN ADMIN APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
 
   useEffect(() => {
     document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');

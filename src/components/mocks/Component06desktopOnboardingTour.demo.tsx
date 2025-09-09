@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ interface ComponentProps {
 import { AnimatePresence, motion } from 'framer-motion';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(undefined);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }) => {
-  const [theme, settheme] = useState<any>('dark');
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<any>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -84,7 +84,7 @@ const RevenueIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane = React.forwardRef(({ children, className }, ref) => (
+const GlassPane = React.forwardRef(({ children, className }: { children: any; className: any }, ref: any) => (
   <div
     ref={ref}
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
@@ -94,8 +94,18 @@ const GlassPane = React.forwardRef(({ children, className }, ref) => (
 ));
 
 // --- ONBOARDING TOUR COMPONENTS ---
-const OnboardingTour = ({ tourSteps, active, setActiveStep, onFinish }) => {
-  const [targetRect, settargetRect] = useState<any>(null);
+const OnboardingTour = ({
+  tourSteps,
+  active,
+  setActiveStep,
+  onFinish,
+}: {
+  tourSteps: any;
+  active: any;
+  setActiveStep: any;
+  onFinish: any;
+}) => {
+  const [targetRect, setTargetRect] = useState<any>(null);
   const activeStep = tourSteps[active];
 
   const handleNext = () => {
@@ -241,8 +251,8 @@ const OnboardingTour = ({ tourSteps, active, setActiveStep, onFinish }) => {
 
 // --- DEMO APP ---
 function AppContent() {
-  const [tourActive, settourActive] = useState<any>(false);
-  const [activeStep, setactiveStep] = useState<any>(0);
+  const [tourActive, setTourActive] = useState<any>(false);
+  const [activeStep, setActiveStep] = useState<any>(0);
   const { theme, setTheme } = useTheme();
 
   const kpiRef = useRef(null);

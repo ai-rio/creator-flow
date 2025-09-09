@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -33,10 +33,10 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT (Placeholder for brevity) ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, settheme }: any) => {
   return (
     <motion.button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => settheme(theme === 'dark' ? 'light' : 'dark')}
       whileTap={{ scale: 0.9, rotate: 15 }}
       className='rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-500/10 dark:text-slate-400'
       aria-label='Toggle theme'
@@ -56,9 +56,9 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 );
 
 // --- HOOK for detecting outside clicks (Placeholder for brevity) ---
-const useOutsideClick = (ref, callback) => {
+const useOutsideClick = (ref: any, callback: any) => {
   useEffect(() => {
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
       if (ref.current && !ref.current.contains(e.target)) callback();
     };
     document.addEventListener('mousedown', handleClick);
@@ -69,10 +69,10 @@ const useOutsideClick = (ref, callback) => {
 // --- A-SERIES COMPONENTS (Admin) ---
 
 // [BUILT & THEMED] A1: AdminDesktopHeader
-const AdminDesktopHeader = ({ theme, setTheme }) => {
+const AdminDesktopHeader = ({ theme, settheme }: any) => {
   const [isDropdownOpen, setisDropdownOpen] = useState<any>(false);
   const dropdownRef = useRef(null);
-  useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
+  useOutsideClick(dropdownRef, () => setisDropdownOpen(false));
   return (
     <motion.header
       initial={{ y: -80 }}
@@ -91,7 +91,7 @@ const AdminDesktopHeader = ({ theme, setTheme }) => {
           {/* ... other header items ... */}
           <div className='relative' ref={dropdownRef}>
             <motion.button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              onClick={() => setisDropdownOpen(!isDropdownOpen)}
               whileTap={{ scale: 0.95 }}
               className='flex items-center gap-2'
             >
@@ -107,7 +107,7 @@ const AdminDesktopHeader = ({ theme, setTheme }) => {
             </motion.button>
             {/* Dropdown Menu */}
           </div>
-          <ThemeToggle theme={theme} setTheme={setTheme} />
+          <ThemeToggle theme={theme} settheme={settheme} />
         </div>
       </GlassPane>
     </motion.header>
@@ -115,7 +115,7 @@ const AdminDesktopHeader = ({ theme, setTheme }) => {
 };
 
 // [REBUILT with Hover & Pin] A2: AdminSidebarNav
-const NavItem = ({ item, isExpanded }) => {
+const NavItem = ({ item, isExpanded }: any) => {
   return (
     <li>
       <button
@@ -141,7 +141,7 @@ const NavItem = ({ item, isExpanded }) => {
     </li>
   );
 };
-const AdminSidebarNav = ({ isExpanded, isPinned, onPinToggle, onHoverStart, onHoverEnd }) => {
+const AdminSidebarNav = ({ isExpanded, isPinned, onPinToggle, onHoverStart, onHoverEnd }: any) => {
   const navItems = [
     { icon: <ServerCog size={20} />, label: 'System Monitoring' },
     { icon: <ShieldAlert size={20} />, label: 'Crisis Management' },
@@ -223,13 +223,13 @@ export default function App(): React.JSX.Element {
 
   return (
     <div className='min-h-screen bg-slate-100 font-sans text-slate-900 transition-colors duration-300 dark:bg-[#0A090F] dark:text-slate-100'>
-      <AdminDesktopHeader theme={theme} setTheme={setTheme} />
+      <AdminDesktopHeader theme={theme} settheme={settheme} />
       <AdminSidebarNav
         isExpanded={isExpanded}
         isPinned={isPinned}
-        onPinToggle={() => setIsPinned(!isPinned)}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        onPinToggle={() => setisPinned(!isPinned)}
+        onHoverStart={() => setisHovered(true)}
+        onHoverEnd={() => setisHovered(false)}
       />
       <main className={`px-4 pt-24 transition-all duration-300 ease-in-out ${isExpanded ? 'md:ml-72' : 'md:ml-24'}`}>
         <div className='space-y-8 p-4'>

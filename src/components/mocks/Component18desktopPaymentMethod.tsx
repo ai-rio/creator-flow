@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -48,21 +48,21 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
 
 // --- Main Component ---
 const PaymentMethodsCard = () => {
-  const [theme, settheme] = useState<any>('dark');
-  const [paymentMethods, setpaymentMethods] = useState<any>(mockPaymentMethods);
+  const [theme, setTheme] = useState<any>('dark');
+  const [paymentMethods, setPaymentMethods] = useState<any>(mockPaymentMethods);
 
-  const handleSetDefault = (id) => {
+  const handleSetDefault = (id: any) => {
     setPaymentMethods(
-      paymentMethods.map((pm) => ({
+      paymentMethods.map((pm: any) => ({
         ...pm,
         isDefault: pm.id === id,
       }))
     );
   };
 
-  const handleRemove = (id) => {
+  const handleRemove = (id: any) => {
     // In a real app, a confirmation modal would be shown first.
-    setPaymentMethods(paymentMethods.filter((pm) => pm.id !== id));
+    setPaymentMethods(paymentMethods.filter((pm: any) => pm.id !== id));
   };
 
   return (
@@ -97,7 +97,7 @@ const PaymentMethodsCard = () => {
 
             <div className='space-y-4 p-8'>
               <AnimatePresence>
-                {paymentMethods.map((pm) => (
+                {paymentMethods.map((pm: any) => (
                   <motion.div
                     key={pm.id}
                     layout

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -40,12 +40,12 @@ const mockOrderData = [
   { id: '#TT12006', priority: 'high', creator: '@trending_now', impact: 'VIRAL', status: 'Shipped', value: 72.0 },
 ];
 
-const TableHeader = ({ children }) => (
+const TableHeader = ({ children }: { children: any }) => (
   <th className='border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-500 dark:border-gray-800 dark:text-gray-400'>
     {children}
   </th>
 );
-const TableCell = ({ children, className = '' }) => (
+const TableCell = ({ children, className = '' }: { children: any; className?: string }) => (
   <td
     className={`border-b border-gray-200/50 p-4 text-sm text-gray-800 dark:border-gray-800/50 dark:text-gray-200 ${className}`}
   >
@@ -55,10 +55,10 @@ const TableCell = ({ children, className = '' }) => (
 
 // --- Main Table Component ---
 export default function CreatorOrdersTable(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme: any) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const containerVariants = {
@@ -97,7 +97,7 @@ export default function CreatorOrdersTable(): React.JSX.Element {
             <table className='w-full'>
               <thead>
                 <tr>
-                  <TableHeader></TableHeader>
+                  <TableHeader>{''}</TableHeader>
                   <TableHeader>Order</TableHeader>
                   <TableHeader>Creator</TableHeader>
                   <TableHeader>Impact</TableHeader>
@@ -106,10 +106,10 @@ export default function CreatorOrdersTable(): React.JSX.Element {
                 </tr>
               </thead>
               <motion.tbody variants={containerVariants} initial='hidden' animate='visible'>
-                {mockOrderData.map((order) => {
-                  const PriorityIcon = priorityIcons[order.priority].Icon;
-                  const ImpactTag = impactTags[order.impact];
-                  const Status = autoStatus[order.status];
+                {mockOrderData.map((order: any) => {
+                  const PriorityIcon = (priorityIcons as any)[order.priority].Icon;
+                  const ImpactTag = (impactTags as any)[order.impact];
+                  const Status = (autoStatus as any)[order.status];
 
                   return (
                     <motion.tr
@@ -120,7 +120,7 @@ export default function CreatorOrdersTable(): React.JSX.Element {
                       <TableCell>
                         <div
                           className={`flex h-8 w-8 items-center justify-center rounded-full ${
-                            priorityIcons[order.priority].className
+                            (priorityIcons as any)[order.priority].className
                           }`}
                         >
                           <PriorityIcon size={16} />

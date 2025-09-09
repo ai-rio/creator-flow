@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -48,10 +48,10 @@ const aiRecommendation = {
 
 // --- Main Insights Component ---
 export default function StrategicInsights(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme: any) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const containerVariants = {
@@ -74,7 +74,7 @@ export default function StrategicInsights(): React.JSX.Element {
       scale: 1,
       transition: { type: 'spring', stiffness: 260, damping: 25 }, // Retuned spring for an orbital feel
     },
-  };
+  } as any;
 
   return (
     <div className={theme}>
@@ -112,7 +112,7 @@ export default function StrategicInsights(): React.JSX.Element {
               </div>
               <motion.ul className='space-y-4 p-6' variants={containerVariants} initial='hidden' animate='visible'>
                 {insightsData.map((insight, index) => {
-                  const HeartbeatWrapper = ({ children }) =>
+                  const HeartbeatWrapper = ({ children }: { children: any }) =>
                     insight.isHeartbeat ? (
                       <motion.div
                         animate={{ scale: [1, 1.03, 1] }}

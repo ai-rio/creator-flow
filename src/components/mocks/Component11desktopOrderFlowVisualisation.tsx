@@ -12,7 +12,7 @@ const flowStages = [
   { name: 'DELIVERED', value: 156, Icon: PackageCheck, color: 'text-green-500 dark:text-green-400' },
 ];
 
-const StressBar = ({ percentage }) => {
+const StressBar = ({ percentage }: { percentage: any }) => {
   return (
     <div className='h-2.5 w-full overflow-hidden rounded-full bg-gray-200/50 dark:bg-gray-800/50'>
       <motion.div
@@ -27,10 +27,10 @@ const StressBar = ({ percentage }) => {
 
 // --- Main Visualization Component ---
 export default function OrderFlowVisualization(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme: any) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const containerVariants = {

@@ -40,13 +40,14 @@ const revenueData = Array.from({ length: 30 }, (_, i) => ({
 
 // Particle Canvas for the background effect of the main chart
 const ParticleCanvas = () => {
-  const canvasRef = React.useRef(null);
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let animationFrameId;
+    if (!ctx) return;
+    let animationFrameId: any;
 
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth;
@@ -54,7 +55,7 @@ const ParticleCanvas = () => {
     };
     resizeCanvas();
 
-    const particles = [];
+    const particles: any[] = [];
     const particleCount = 50;
 
     for (let i = 0; i < particleCount; i++) {
@@ -99,7 +100,7 @@ const ParticleCanvas = () => {
 };
 
 // Custom Tooltip for the Recharts graph with a glowing effect
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label }: { active: any; payload: any; label: any }) => {
   if (active && payload && payload.length) {
     return (
       <div
@@ -145,7 +146,7 @@ export default function CreatorFlowDashboard(): React.JSX.Element {
         stiffness: 100,
       },
     },
-  };
+  } as any;
 
   // --- JSX ---
   return (
@@ -265,7 +266,7 @@ export default function CreatorFlowDashboard(): React.JSX.Element {
                       <XAxis dataKey='name' stroke={theme === 'dark' ? '#6b7280' : '#6b7280'} />
                       <YAxis stroke={theme === 'dark' ? '#6b7280' : '#6b7280'} />
                       <Tooltip
-                        content={<CustomTooltip />}
+                        content={<CustomTooltip active={false} payload={[]} label={''} />}
                         cursor={{ stroke: 'rgba(13, 148, 136, 0.5)', strokeWidth: 1 }}
                       />
                       <Line type='monotone' dataKey='revenue' stroke='url(#colorRevenue)' strokeWidth={3} dot={false} />

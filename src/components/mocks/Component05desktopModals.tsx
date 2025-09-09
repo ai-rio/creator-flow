@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ interface ComponentProps {
 import { AnimatePresence, motion } from 'framer-motion';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(undefined);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }) => {
-  const [theme, settheme] = useState<any>('dark');
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<any>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -109,7 +109,7 @@ const BorderBeam: React.FC<any> = ({ className }) => (
 );
 
 // --- Core Modal Component ---
-const ConfirmationModal = ({ isOpen, onClose, config }) => {
+const ConfirmationModal = ({ isOpen, onClose, config }: { isOpen: any; onClose: () => void; config: any }) => {
   const {
     title,
     message,
@@ -120,7 +120,7 @@ const ConfirmationModal = ({ isOpen, onClose, config }) => {
     frictionText, // The word to type for destructive actions
   } = config;
 
-  const [inputValue, setinputValue] = useState<any>('');
+  const [inputValue, setInputValue] = useState<any>('');
   const isConfirmationDisabled = type === 'destructive' && inputValue !== frictionText;
 
   useEffect(() => {
@@ -224,8 +224,8 @@ const ConfirmationModal = ({ isOpen, onClose, config }) => {
 
 // --- DEMO APP ---
 function AppContent() {
-  const [standardModalOpen, setstandardModalOpen] = useState<any>(false);
-  const [destructiveModalOpen, setdestructiveModalOpen] = useState<any>(false);
+  const [standardModalOpen, setStandardModalOpen] = useState<any>(false);
+  const [destructiveModalOpen, setDestructiveModalOpen] = useState<any>(false);
   const { theme, setTheme } = useTheme();
 
   const standardConfig = {

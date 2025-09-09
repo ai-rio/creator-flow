@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -39,7 +39,7 @@ import {
 } from 'lucide-react';
 
 // --- THEME MANAGEMENT (Placeholder for brevity) ---
-const ThemeToggle = ({ theme, setTheme }) => {
+const ThemeToggle = ({ theme, setTheme }: { theme: any; setTheme: any }) => {
   return (
     <motion.button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -62,7 +62,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
 );
 
 // --- D-SERIES COMPONENTS (Placeholders for brevity) ---
-const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
+const ExecutiveDesktopHeader = ({ theme, setTheme }: { theme: any; setTheme: any }) => {
   return (
     <motion.header className='fixed left-4 right-4 top-4 z-50'>
       {' '}
@@ -73,7 +73,7 @@ const ExecutiveDesktopHeader = ({ theme, setTheme }) => {
     </motion.header>
   );
 };
-const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }) => {
+const DesktopSidebarNav = ({ isCollapsed, setIsCollapsed }: { isCollapsed: any; setIsCollapsed: any }) => {
   return (
     <motion.aside
       className='fixed bottom-4 left-4 top-24 z-40 hidden md:flex'
@@ -223,8 +223,8 @@ const ExecutiveBusinessIntelligenceCard = () => {
 
 // --- MAIN DESKTOP APP CONTAINER ---
 export default function App(): React.JSX.Element {
-  const [theme, settheme] = useState<any>('dark');
-  const [isSidebarCollapsed, setisSidebarCollapsed] = useState<any>(false);
+  const [theme, setTheme] = useState<any>('dark');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<any>(false);
 
   useEffect(() => {
     document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');

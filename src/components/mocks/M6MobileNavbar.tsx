@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -61,7 +61,7 @@ const intelligenceBriefing = [
 ];
 
 // --- Reusable Components (Condensed) ---
-const GlassPane = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: { children: any; className?: string }) => (
   <div
     className={`border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -90,16 +90,16 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
     </AnimatePresence>{' '}
   </motion.button>
 );
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: { icon: any; status: any }) => {
   const c = {
     nominal: 'text-teal-800 dark:text-teal-400',
     warning: 'text-amber-600 dark:text-amber-400',
     critical: 'text-red-600 dark:text-red-400',
   };
-  return <Icon size={20} className={c[status] || c.nominal} />;
+  return <Icon size={20} className={(c as any)[status] || c.nominal} />;
 };
-const AnimatedNumber = ({ value, isCurrency = false }) => {
-  const [val, setval] = useState<any>(0);
+const AnimatedNumber = ({ value, isCurrency = false }: { value: any; isCurrency?: boolean }) => {
+  const [val, setVal] = useState<any>(0);
   useEffect(() => {
     const anim = animate(0, value, {
       duration: 1.5,
@@ -117,12 +117,14 @@ const AnimatedNumber = ({ value, isCurrency = false }) => {
     </span>
   );
 };
-const Sparkline = ({ data, className = '' }) => {
+const Sparkline = ({ data, className = '' }: { data: any; className?: string }) => {
   const w = 100,
     h = 20,
     max = Math.max(...data),
     min = Math.min(...data);
-  const p = data.map((d, i) => `${(i / (data.length - 1)) * w},${h - ((d - min) / (max - min)) * h}`).join(' ');
+  const p = data
+    .map((d: any, i: any) => `${(i / (data.length - 1)) * w},${h - ((d - min) / (max - min)) * h}`)
+    .join(' ');
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className={`h-auto w-full ${className}`} preserveAspectRatio='none'>
       <motion.polyline
@@ -137,7 +139,7 @@ const Sparkline = ({ data, className = '' }) => {
     </svg>
   );
 };
-const CircularProgress = ({ percentage }) => {
+const CircularProgress = ({ percentage }: { percentage: any }) => {
   const r = 40,
     c = 2 * Math.PI * r;
   const s = useSpring(0, { stiffness: 50, damping: 20 });
@@ -175,15 +177,15 @@ const CircularProgress = ({ percentage }) => {
     </div>
   );
 };
-const AlertIcon = ({ type }) => {
+const AlertIcon = ({ type }: { type: any }) => {
   const i = {
     critical: <AlertTriangle className='text-red-600 dark:text-red-400' size={20} />,
     insight: <TrendingUp className='text-amber-600 dark:text-amber-400' size={20} />,
     operational: <Truck className='text-purple-700 dark:text-purple-400' size={20} />,
   };
-  return i[type] || null;
+  return (i as any)[type] || null;
 };
-const InsightIcon = ({ type }) => {
+const InsightIcon = ({ type }: { type: any }) => {
   const i = {
     performance: <Crosshair className='text-teal-800 dark:text-teal-400' size={20} />,
     trend: <TrendingUp className='text-amber-600 dark:text-amber-400' size={20} />,
@@ -196,7 +198,7 @@ const InsightIcon = ({ type }) => {
       </motion.div>
     ),
   };
-  return i[type] || null;
+  return (i as any)[type] || null;
 };
 
 // --- M1-M5 Components (Condensed) ---
@@ -315,7 +317,7 @@ const StrategicCommandCard: React.FC<any> = ({ alerts }) => (
         variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
       >
         {' '}
-        {alerts.map((a) => (
+        {alerts.map((a: any) => (
           <motion.div
             key={a.id}
             variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}
@@ -434,7 +436,7 @@ const IntelligenceBriefingCard: React.FC<any> = ({ insights }) => (
         variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
       >
         {' '}
-        {insights.map((i) => (
+        {insights.map((i: any) => (
           <motion.div
             key={i.id}
             variants={{ hidden: { x: -20, opacity: 0 }, visible: { x: 0, opacity: 1 } }}
@@ -484,7 +486,7 @@ const navItems = [
 ];
 
 const MobileNavBar = () => {
-  const [activeTab, setactiveTab] = useState<any>('dashboard');
+  const [activeTab, setActiveTab] = useState<any>('dashboard');
   return (
     <motion.div
       initial={{ y: 100 }}
@@ -531,7 +533,7 @@ const MobileNavBar = () => {
 
 // --- Main App Frame ---
 const MobileDashboard = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
   const user = { handle: '@ceo', avatarUrl: 'https://placehold.co/64x64/0A090F/FFF?text=CEO' };
 
   return (

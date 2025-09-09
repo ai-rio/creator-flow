@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -41,7 +41,7 @@ const strategicAlerts = [
 ];
 
 // --- Reusable Components (Condensed for brevity) ---
-const GlassPane = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: { children: any; className?: string }) => (
   <div
     className={`border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -70,17 +70,17 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
     </AnimatePresence>{' '}
   </motion.button>
 );
-const StatusIcon = ({ icon: Icon, status }) => {
+const StatusIcon = ({ icon: Icon, status }: { icon: any; status: any }) => {
   const statusConfig = {
     nominal: { color: 'text-teal-800 dark:text-teal-400' },
     warning: { color: 'text-amber-600 dark:text-amber-400' },
     critical: { color: 'text-red-600 dark:text-red-400' },
   };
-  const config = statusConfig[status] || statusConfig.nominal;
+  const config = (statusConfig as any)[status] || statusConfig.nominal;
   return <Icon size={20} className={`${config.color}`} />;
 };
-const AnimatedNumber = ({ value, isCurrency = false }) => {
-  const [displayValue, setdisplayValue] = useState<any>(0);
+const AnimatedNumber = ({ value, isCurrency = false }: { value: any; isCurrency?: boolean }) => {
+  const [displayValue, setDisplayValue] = useState<any>(0);
   useEffect(() => {
     const controls = animate(0, value, {
       duration: 1.5,
@@ -98,13 +98,13 @@ const AnimatedNumber = ({ value, isCurrency = false }) => {
     </span>
   );
 };
-const Sparkline = ({ data, className = '' }) => {
+const Sparkline = ({ data, className = '' }: { data: any; className?: string }) => {
   const width = 100;
   const height = 20;
   const max = Math.max(...data);
   const min = Math.min(...data);
   const points = data
-    .map((d, i) => `${(i / (data.length - 1)) * width},${height - ((d - min) / (max - min)) * height}`)
+    .map((d: any, i: any) => `${(i / (data.length - 1)) * width},${height - ((d - min) / (max - min)) * height}`)
     .join(' ');
   return (
     <svg viewBox={`0 0 ${width} ${height}`} className={`h-auto w-full ${className}`} preserveAspectRatio='none'>
@@ -221,16 +221,16 @@ const BusinessSymphonyCard: React.FC<any> = ({ stats }) => (
 );
 
 // --- M3: The Strategic Command Card ---
-const AlertIcon = ({ type }) => {
+const AlertIcon = ({ type }: { type: any }) => {
   const icons = {
     critical: <AlertTriangle className='text-red-600 dark:text-red-400' size={20} />,
     insight: <TrendingUp className='text-amber-600 dark:text-amber-400' size={20} />,
     operational: <Truck className='text-purple-700 dark:text-purple-400' size={20} />,
   };
-  return icons[type] || null;
+  return (icons as any)[type] || null;
 };
 
-const StrategicCommandCard = ({ alerts }) => {
+const StrategicCommandCard = ({ alerts }: { alerts: any }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -257,7 +257,7 @@ const StrategicCommandCard = ({ alerts }) => {
         </div>
 
         <motion.div className='mb-4 space-y-3' variants={containerVariants} initial='hidden' animate='visible'>
-          {alerts.map((alert) => (
+          {alerts.map((alert: any) => (
             <motion.div
               key={alert.id}
               variants={itemVariants}
@@ -297,7 +297,7 @@ const StrategicCommandCard = ({ alerts }) => {
 
 // --- Main App Frame ---
 const MobileDashboard = () => {
-  const [theme, settheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<any>('dark');
   const user = { handle: '@ceo', avatarUrl: 'https://placehold.co/64x64/0A090F/FFF?text=CEO' };
 
   return (

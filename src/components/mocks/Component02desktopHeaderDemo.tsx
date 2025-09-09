@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 interface ComponentProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ interface ComponentProps {
 import { AnimatePresence, motion } from 'framer-motion';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(undefined);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }) => {
-  const [theme, settheme] = useState<any>('dark');
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<any>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -94,10 +94,10 @@ const MoonIcon = () => (
     />
   </svg>
 );
-const ChevronDownIcon = () => (
+const ChevronDownIcon = ({ className }: any) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className='h-4 w-4'
+    className={className || 'h-4 w-4'}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -106,10 +106,10 @@ const ChevronDownIcon = () => (
     <path strokeLinecap='round' strokeLinejoin='round' d='M19 9l-7 7-7-7' />
   </svg>
 );
-const SearchIcon = () => (
+const SearchIcon = ({ className }: any) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className='h-5 w-5'
+    className={className || 'h-5 w-5'}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -132,7 +132,7 @@ const PlusIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane: React.FC<any> = ({ children, className }) => (
+const GlassPane: React.FC<any> = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <div
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
   >
@@ -143,8 +143,8 @@ const GlassPane: React.FC<any> = ({ children, className }) => (
 // --- Core Header Component ---
 const CEOHeader = () => {
   const [time, setTime] = useState(new Date());
-  const [isProfileOpen, setisProfileOpen] = useState<any>(false);
-  const [isActionsOpen, setisActionsOpen] = useState<any>(false);
+  const [isProfileOpen, setProfileOpen] = useState<any>(false);
+  const [isActionsOpen, setActionsOpen] = useState<any>(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
