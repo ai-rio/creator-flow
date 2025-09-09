@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+
 import HP010Header from './public-pages/HP-010-Header';
 import HP010HeaderHero from './public-pages/HP-010-Header-Hero';
 import HP010HeaderVariant from './public-pages/HP-010-Header-Variant';
@@ -36,9 +36,7 @@ interface HpSeriesProps {
 }
 
 export default function HpSeries({ initialComponent = 'hp1', mode = 'individual' }: HpSeriesProps) {
-  const [currentIndex, setCurrentIndex] = useState(
-    components.findIndex(comp => comp.id === initialComponent) || 0
-  );
+  const [currentIndex, setCurrentIndex] = useState(components.findIndex((comp) => comp.id === initialComponent) || 0);
 
   const currentComponent = components[currentIndex];
   const CurrentComponent = currentComponent.component;
@@ -72,72 +70,70 @@ export default function HpSeries({ initialComponent = 'hp1', mode = 'individual'
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <motion.div 
-        className="fixed top-4 right-4 z-50 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 p-4 min-w-[280px]"
+    <div className='min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800'>
+      <motion.div
+        className='fixed right-4 top-4 z-50 min-w-[280px] rounded-xl border border-slate-200 bg-white/95 p-4 shadow-xl backdrop-blur-md dark:border-slate-700 dark:bg-slate-800/95'
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="font-semibold text-slate-800 dark:text-slate-200">HP Series</h3>
-          <div className="flex gap-1">
+        <div className='mb-3 flex items-center justify-between'>
+          <h3 className='font-semibold text-slate-800 dark:text-slate-200'>HP Series</h3>
+          <div className='flex gap-1'>
             <button
               onClick={goHome}
-              className="p-1.5 rounded-lg bg-yellow-100 hover:bg-yellow-200 dark:bg-yellow-900 dark:hover:bg-yellow-800 transition-colors"
-              title="Home (ESC)"
+              className='rounded-lg bg-yellow-100 p-1.5 transition-colors hover:bg-yellow-200 dark:bg-yellow-900 dark:hover:bg-yellow-800'
+              title='Home (ESC)'
             >
-              <Home className="w-4 h-4 text-yellow-700 dark:text-yellow-300" />
+              <Home className='h-4 w-4 text-yellow-700 dark:text-yellow-300' />
             </button>
             <button
               onClick={resetComponent}
-              className="p-1.5 rounded-lg bg-blue-100 hover:bg-blue-200 dark:bg-blue-900 dark:hover:bg-blue-800 transition-colors"
-              title="Reset (R)"
+              className='rounded-lg bg-blue-100 p-1.5 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:hover:bg-blue-800'
+              title='Reset (R)'
             >
-              <RotateCcw className="w-4 h-4 text-blue-700 dark:text-blue-300" />
+              <RotateCcw className='h-4 w-4 text-blue-700 dark:text-blue-300' />
             </button>
           </div>
         </div>
 
-        <div className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+        <div className='mb-3 text-sm text-slate-600 dark:text-slate-400'>
           {currentIndex + 1} of {components.length}
         </div>
 
-        <div className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-4">
-          {currentComponent.name}
-        </div>
+        <div className='mb-4 text-sm font-medium text-slate-800 dark:text-slate-200'>{currentComponent.name}</div>
 
-        <div className="flex gap-2">
+        <div className='flex gap-2'>
           <button
             onClick={prevComponent}
-            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-green-100 hover:bg-green-200 dark:bg-green-900 dark:hover:bg-green-800 transition-colors"
-            title="Previous (←)"
+            className='flex flex-1 items-center justify-center gap-2 rounded-lg bg-green-100 px-3 py-2 transition-colors hover:bg-green-200 dark:bg-green-900 dark:hover:bg-green-800'
+            title='Previous (←)'
           >
-            <ChevronLeft className="w-4 h-4 text-green-700 dark:text-green-300" />
-            <span className="text-sm font-medium text-green-700 dark:text-green-300">Prev</span>
+            <ChevronLeft className='h-4 w-4 text-green-700 dark:text-green-300' />
+            <span className='text-sm font-medium text-green-700 dark:text-green-300'>Prev</span>
           </button>
           <button
             onClick={nextComponent}
-            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-green-100 hover:bg-green-200 dark:bg-green-900 dark:hover:bg-green-800 transition-colors"
-            title="Next (→)"
+            className='flex flex-1 items-center justify-center gap-2 rounded-lg bg-green-100 px-3 py-2 transition-colors hover:bg-green-200 dark:bg-green-900 dark:hover:bg-green-800'
+            title='Next (→)'
           >
-            <span className="text-sm font-medium text-green-700 dark:text-green-300">Next</span>
-            <ChevronRight className="w-4 h-4 text-green-700 dark:text-green-300" />
+            <span className='text-sm font-medium text-green-700 dark:text-green-300'>Next</span>
+            <ChevronRight className='h-4 w-4 text-green-700 dark:text-green-300' />
           </button>
         </div>
 
         {mode === 'browser' && (
-          <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700">
+          <div className='mt-3 border-t border-slate-200 pt-3 dark:border-slate-700'>
             <button
-              onClick={() => window.location.href = `/hp-series?component=${currentComponent.id}`}
-              className="w-full px-3 py-2 rounded-lg bg-purple-100 hover:bg-purple-200 dark:bg-purple-900 dark:hover:bg-purple-800 transition-colors"
+              onClick={() => (window.location.href = `/hp-series?component=${currentComponent.id}`)}
+              className='w-full rounded-lg bg-purple-100 px-3 py-2 transition-colors hover:bg-purple-200 dark:bg-purple-900 dark:hover:bg-purple-800'
             >
-              <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Individual Mode</span>
+              <span className='text-sm font-medium text-purple-700 dark:text-purple-300'>Individual Mode</span>
             </button>
           </div>
         )}
 
-        <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400">
+        <div className='mt-3 border-t border-slate-200 pt-3 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400'>
           Use ← → arrows to navigate • ESC for home • R to reset
         </div>
       </motion.div>
