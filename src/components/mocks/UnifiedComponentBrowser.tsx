@@ -66,6 +66,12 @@ import Component15desktopEmailNotificationsCard from './Component15desktopEmailN
 import Component16desktopBillinqOverview from './Component16desktopBillinqOverview';
 import Component17desktopBillingHistory from './Component17desktopBillingHistory';
 import Component18desktopPaymentMethod from './Component18desktopPaymentMethod';
+import HP010Header from './HP-010-Header';
+import HP010HeaderHero from './HP-010-Header-Hero';
+import HP010HeaderVariant from './HP-010-Header-Variant';
+import HP020Hero from './HP-020-Hero';
+import HP030BenefitsReelShowcase from './HP-030-BenefitsReel-Showcase';
+import HP040Manifesto from './HP-040-Manifesto';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -122,6 +128,14 @@ const componentCategories = {
     ],
   },
   'Public Pages': {
+    'HP Series': [
+      { id: 'hp010', name: 'HP010: Header', component: HP010Header },
+      { id: 'hp010hero', name: 'HP010: Header Hero', component: HP010HeaderHero },
+      { id: 'hp010variant', name: 'HP010: Header Variant', component: HP010HeaderVariant },
+      { id: 'hp020', name: 'HP020: Hero', component: HP020Hero },
+      { id: 'hp030', name: 'HP030: Benefits Reel Showcase', component: HP030BenefitsReelShowcase },
+      { id: 'hp040', name: 'HP040: Manifesto', component: HP040Manifesto },
+    ],
     'FP Series': [
       { id: 'fp020', name: 'FP020: Order Management', component: FP020OrderManagement },
       { id: 'fp030', name: 'FP030: Digital Twin Command', component: FP030DigitalTwinCommand },
