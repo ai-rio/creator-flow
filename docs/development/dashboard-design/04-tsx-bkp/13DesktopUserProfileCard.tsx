@@ -1,13 +1,21 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { Moon, Sun, UploadCloud, User } from 'lucide-react';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ThemeToggleProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
 
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { Moon, Sun, UploadCloud, User } from 'lucide-react';
 
 // Mock initial user data for standalone demonstration
 const initialUserData = {
@@ -17,7 +25,7 @@ const initialUserData = {
   avatarUrl: 'https://placehold.co/256x256/7e22ce/ffffff?text=EV',
 };
 
-const GlassPane: React.FC<any> = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: any) => (
   <div
     className={`rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -25,7 +33,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
   </div>
 );
 
-const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
+const ThemeToggle = ({ theme, setTheme }: any) => (
   <motion.button
     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     className='absolute right-8 top-8 z-10 rounded-full bg-white/40 p-2 text-slate-500 dark:bg-slate-800/40 dark:text-slate-400'
@@ -50,8 +58,8 @@ const ProfileSettingsCard = () => {
   const [userData, setUserData] = useState<any>(initialUserData);
   const [newAvatar, setNewAvatar] = useState<any>(null);
   const [previewUrl, setPreviewUrl] = useState<any>(initialUserData.avatarUrl);
-  const [isDirty, setIsDirty] = useState<any>(false);
-  const [theme, setTheme] = useState<any>('dark');
+  const [isDirty, setIsDirty] = useState<boolean>(false);
+  const [theme, setTheme] = useState<string>('dark');
 
   useEffect(() => {
     const hasChanged =
@@ -63,13 +71,14 @@ const ProfileSettingsCard = () => {
   }, [userData, newAvatar]);
 
   const handleInputChange = (e: any) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target as HTMLInputElement;
     setUserData((prev: any) => ({ ...prev, [name]: value }));
   };
 
   const handleAvatarChange = (e: any) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
+    const target = e.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+      const file = target.files[0];
       setNewAvatar(file);
       setPreviewUrl(URL.createObjectURL(file));
     }
@@ -94,7 +103,7 @@ const ProfileSettingsCard = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
+          transition={{ duration: 0.5, type: 'spring' as any, stiffness: 120 }}
           className='w-full max-w-4xl'
         >
           <GlassPane className='p-8'>
@@ -112,7 +121,7 @@ const ProfileSettingsCard = () => {
                   <motion.div
                     className='group relative'
                     whileHover={{ scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
+                    transition={{ type: 'spring' as any, stiffness: 300 }}
                   >
                     <img
                       src={previewUrl}
@@ -150,7 +159,6 @@ const ProfileSettingsCard = () => {
                     name='fullName'
                     value={userData.fullName}
                     onChange={handleInputChange}
-                    helperText=''
                   />
                   <InputField
                     label='Display Name'
@@ -181,7 +189,7 @@ const ProfileSettingsCard = () => {
                       exit={{ opacity: 0, y: 10 }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                      transition={{ type: 'spring' as any, stiffness: 400, damping: 15 }}
                       type='submit'
                       className='rounded-lg bg-teal-600 px-6 py-2 font-bold text-white shadow-lg transition-all duration-300 hover:shadow-[0px_0px_12px_rgba(13,148,136,0.5)] dark:bg-teal-500 dark:text-slate-900 dark:hover:shadow-[0px_0px_12px_rgba(29,255,233,0.5)]'
                     >
@@ -198,23 +206,7 @@ const ProfileSettingsCard = () => {
   );
 };
 
-const InputField = ({
-  label,
-  id,
-  name,
-  value,
-  onChange,
-  helperText,
-  isTextArea = false,
-}: {
-  label: any;
-  id: any;
-  name: any;
-  value: any;
-  onChange: any;
-  helperText: any;
-  isTextArea?: boolean;
-}) => {
+const InputField: React.FC<any> = ({ label, id, name, value, onChange, helperText, isTextArea = false }: any) => {
   const commonProps = {
     id,
     name,

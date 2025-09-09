@@ -2,24 +2,24 @@
 
 import { useState } from 'react'
 
-// Import only existing converted components
-import M1ExecutiveHeader from '@/components/mocks/M1ExecutiveHeader';
-import M2BusinessSimphonyCard from '@/components/mocks/M2BusinessSimphonyCard';
-import M3StrategicCommandCard from '@/components/mocks/M3StrategicCommandCard';
-import M4LiberationOrchestraCard from '@/components/mocks/M4LiberationOrchestraCard';
-import M5IntelBriefingCard from '@/components/mocks/M5IntelBriefingCard';
-import M6MobileNavbar from '@/components/mocks/M6MobileNavbar';
+// Import only existing converted components (updated with renamed components)
+import NC030ExecutiveHeader from '@/components/mocks/NC-030-ExecutiveHeader';
+import BI020BusinessSymphony from '@/components/mocks/BI-020-BusinessSymphony';
+import BI030StrategicCommand from '@/components/mocks/BI-030-StrategicCommand';
+import BI040LiberationOrchestra from '@/components/mocks/BI-040-LiberationOrchestra';
+import BI050IntelBriefing from '@/components/mocks/BI-050-IntelBriefing';
+import MC030Navbar from '@/components/mocks/MC-030-Navbar';
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 
 // Component registry - only existing components
 const COMPONENTS = {
-  'M1ExecutiveHeader': M1ExecutiveHeader,
-  'M2BusinessSimphonyCard': M2BusinessSimphonyCard,
-  'M3StrategicCommandCard': M3StrategicCommandCard,
-  'M4LiberationOrchestraCard': M4LiberationOrchestraCard,
-  'M5IntelBriefingCard': M5IntelBriefingCard,
-  'M6MobileNavbar': M6MobileNavbar,
+  'M1ExecutiveHeader': NC030ExecutiveHeader,
+  'M2BusinessSimphonyCard': BI020BusinessSymphony,
+  'M3StrategicCommandCard': BI030StrategicCommand,
+  'M4LiberationOrchestraCard': BI040LiberationOrchestra,
+  'M5IntelBriefingCard': BI050IntelBriefing,
+  'M6MobileNavbar': MC030Navbar,
 };
 
 export default function DirectMockPage() {

@@ -5,13 +5,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-// Import O-Series components
-import O2OrderSystemStatsCard from './O2OrderSystemStatsCard';
-import O5OrderSubNavbar from './O5OrderSubNavbar';
+// Import OM-Series components (renamed from O-Series)
+import OM010SystemStats from './OM-010-SystemStats';
+import OM030SubNavbar from './OM-030-SubNavbar';
 
 const components = [
-  { id: 'o2', name: 'O2: Order System Stats', component: O2OrderSystemStatsCard },
-  { id: 'o5', name: 'O5: Order Sub Navbar', component: O5OrderSubNavbar },
+  { id: 'o2', name: 'OM-010: System Stats', component: OM010SystemStats },
+  { id: 'o5', name: 'OM-030: Sub Navbar', component: OM030SubNavbar },
 ];
 
 interface OSeriesProps {

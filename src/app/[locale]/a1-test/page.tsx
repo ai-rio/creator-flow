@@ -1,9 +1,9 @@
-import A1ShmDashboard from '@/components/mocks/A1ShmDashboard';
+import DC010ShmDashboard from '@/components/mocks/DC-010-ShmDashboard';
 
 export default function A1TestPage() {
   return (
     <div className="min-h-screen">
-      <A1ShmDashboard />
+      <DC010ShmDashboard />
     </div>
   );
 }

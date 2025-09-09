@@ -1,13 +1,21 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { CreditCard, Moon, PlusCircle, Star, Sun, Trash2 } from 'lucide-react';
+import * as React from 'react';
+import { useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ThemeToggleProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
 
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { CreditCard, Moon, PlusCircle, Star, Sun, Trash2 } from 'lucide-react';
 
 // --- Mock Data ---
 // Represents the payment methods saved for a user.
@@ -17,7 +25,7 @@ const mockPaymentMethods = [
 ];
 
 // --- Reusable Components ---
-const GlassPane: React.FC<any> = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: any) => (
   <div
     className={`rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -25,7 +33,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
   </div>
 );
 
-const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
+const ThemeToggle = ({ theme, setTheme }: any) => (
   <motion.button
     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     className='absolute right-8 top-8 z-20 rounded-full bg-white/40 p-2 text-slate-500 dark:bg-slate-800/40 dark:text-slate-400'
@@ -48,7 +56,7 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
 
 // --- Main Component ---
 const PaymentMethodsCard = () => {
-  const [theme, setTheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<string>('dark');
   const [paymentMethods, setPaymentMethods] = useState<any>(mockPaymentMethods);
 
   const handleSetDefault = (id: any) => {

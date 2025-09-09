@@ -15,27 +15,27 @@ export function MockRenderer({ jsxContent, filename }: { jsxContent: string, fil
       
       // Only import existing M-series components
       if (filename.includes('m1-executive')) {
-        import('@/components/mocks/M1ExecutiveHeader').then((module) => {
+        import('@/components/mocks/NC-030-ExecutiveHeader').then((module) => {
           setRenderedComponent(() => module.default)
         })
       } else if (filename.includes('m2-business')) {
-        import('@/components/mocks/M2BusinessSimphonyCard').then((module) => {
+        import('@/components/mocks/BI-020-BusinessSymphony').then((module) => {
           setRenderedComponent(() => module.default)
         })
       } else if (filename.includes('m3-strategic')) {
-        import('@/components/mocks/M3StrategicCommandCard').then((module) => {
+        import('@/components/mocks/BI-030-StrategicCommand').then((module) => {
           setRenderedComponent(() => module.default)
         })
       } else if (filename.includes('m4-liberation')) {
-        import('@/components/mocks/M4LiberationOrchestraCard').then((module) => {
+        import('@/components/mocks/BI-040-LiberationOrchestra').then((module) => {
           setRenderedComponent(() => module.default)
         })
       } else if (filename.includes('m5-intel')) {
-        import('@/components/mocks/M5IntelBriefingCard').then((module) => {
+        import('@/components/mocks/BI-050-IntelBriefing').then((module) => {
           setRenderedComponent(() => module.default)
         })
       } else if (filename.includes('m6-mobile')) {
-        import('@/components/mocks/M6MobileNavbar').then((module) => {
+        import('@/components/mocks/MC-030-Navbar').then((module) => {
           setRenderedComponent(() => module.default)
         })
       } else {

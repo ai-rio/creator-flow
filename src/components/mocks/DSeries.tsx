@@ -5,17 +5,21 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-// Import D-Series components
-import D1D3EnhancedDesctopCcc from './D1D3EnhancedDesctopCcc-768px';
-import D4EnhancedDesctopCcc from './D4EnhancedDesctopCcc-768px';
-import D5EnhancedDesctopCcc from './D5EnhancedDesctopCcc-768px';
-import D6EnhancedDesctopCcc from './D6EnhancedDesctopCcc-768px';
+// Import DC-Series components (renamed from D-Series)
+import DC080EnhancedCccV1 from './DC-080-EnhancedCccV1';
+import DC090EnhancedCccV4 from './DC-090-EnhancedCccV4';
+import DC100EnhancedCccV5 from './DC-100-EnhancedCccV5';
+import DC110EnhancedCccV6 from './DC-110-EnhancedCccV6';
+import DC120EnhancedCccV4Alt from './DC-120-EnhancedCccV4Alt';
+import DC130EnhancedCccV5Alt from './DC-130-EnhancedCccV5Alt';
 
 const components = [
-  { id: 'd1', name: 'D1-D3: Enhanced Desktop CCC', component: D1D3EnhancedDesctopCcc },
-  { id: 'd4', name: 'D4: Enhanced Desktop CCC', component: D4EnhancedDesctopCcc },
-  { id: 'd5', name: 'D5: Enhanced Desktop CCC', component: D5EnhancedDesctopCcc },
-  { id: 'd6', name: 'D6: Enhanced Desktop CCC', component: D6EnhancedDesctopCcc },
+  { id: 'd1', name: 'DC-080: Enhanced CCC V1', component: DC080EnhancedCccV1 },
+  { id: 'd4', name: 'DC-090: Enhanced CCC V4', component: DC090EnhancedCccV4 },
+  { id: 'd5', name: 'DC-100: Enhanced CCC V5', component: DC100EnhancedCccV5 },
+  { id: 'd6', name: 'DC-110: Enhanced CCC V6', component: DC110EnhancedCccV6 },
+  { id: 'd4space', name: 'DC-120: Enhanced CCC V4 Alt', component: DC120EnhancedCccV4Alt },
+  { id: 'd5space', name: 'DC-130: Enhanced CCC V5 Alt', component: DC130EnhancedCccV5Alt },
 ];
 
 interface DSeriesProps {

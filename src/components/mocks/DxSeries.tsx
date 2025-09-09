@@ -5,41 +5,41 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-// Import Dx-Series components (Desktop)
-import DesktopHeaderDemo from './02DesktopHeaderDemo';
-import DesktopToastNotifications from './03DesktopToastNotifications';
-import DesktopSidebarDemo from './04DesktopSidebarDemo';
-import DesktopModals from './05DesktopModals';
-import DesktopOnboardingTourDemo from './06DesktopOnboardingTour.demo';
-import DesktopFeedbackWidget from './07DesktopFeedbackWidget';
-import DesktopOrderTableComponent from './09DesktopOrderTableComponent';
-import DesktopDashboardCommandCenter from './10DesktopDashboardCommandCenter';
-import DesktopOrderFlowVisualisation from './11DesktopOrderFlowVisualisation';
-import DesktopStrategicInsights from './12DesktopStrategicInsights';
-import DesktopUserProfileCard from './13DesktopUserProfileCard';
-import DesktopSecurityCard from './14DesktopSecurityCard';
-import DesktopEmailNotificationsCard from './15DesktopEmailNotificationsCard';
-import DesktopBillinqOverview from './16DesktopBillinqOverview';
-import DesktopBillingHistory from './17DesktopBillingHistory';
-import DesktopPaymentMethod from './18DesktopPaymentMethod';
+// Import Dx-Series components (Desktop) - Updated to use renamed components
+import NC010Header from './NC-010-Header';
+import UX040ToastNotifications from './UX-040-ToastNotifications';
+import NC020Sidebar from './NC-020-Sidebar';
+import UX010Modals from './UX-010-Modals';
+import UX020OnboardingTour from './UX-020-OnboardingTour';
+import UX030FeedbackWidget from './UX-030-FeedbackWidget';
+import DA010OrderTable from './DA-010-OrderTable';
+import DC070CommandCenter from './DC-070-CommandCenter';
+import OM020FlowVisualization from './OM-020-FlowVisualization';
+import BI010StrategicInsights from './BI-010-StrategicInsights';
+import PM010UserProfile from './PM-010-UserProfile';
+import SC010SecurityCard from './SC-010-SecurityCard';
+import AM040EmailNotifications from './AM-040-EmailNotifications';
+import AM010BillingOverview from './AM-010-BillingOverview';
+import AM020BillingHistory from './AM-020-BillingHistory';
+import AM030PaymentMethod from './AM-030-PaymentMethod';
 
 const components = [
-  { id: 'dx2', name: 'DX2: Desktop Header Demo', component: DesktopHeaderDemo },
-  { id: 'dx3', name: 'DX3: Desktop Toast Notifications', component: DesktopToastNotifications },
-  { id: 'dx4', name: 'DX4: Desktop Sidebar Demo', component: DesktopSidebarDemo },
-  { id: 'dx5', name: 'DX5: Desktop Modals', component: DesktopModals },
-  { id: 'dx6', name: 'DX6: Desktop Onboarding Tour', component: DesktopOnboardingTourDemo },
-  { id: 'dx7', name: 'DX7: Desktop Feedback Widget', component: DesktopFeedbackWidget },
-  { id: 'dx9', name: 'DX9: Desktop Order Table', component: DesktopOrderTableComponent },
-  { id: 'dx10', name: 'DX10: Desktop Command Center', component: DesktopDashboardCommandCenter },
-  { id: 'dx11', name: 'DX11: Desktop Order Flow', component: DesktopOrderFlowVisualisation },
-  { id: 'dx12', name: 'DX12: Desktop Strategic Insights', component: DesktopStrategicInsights },
-  { id: 'dx13', name: 'DX13: Desktop User Profile', component: DesktopUserProfileCard },
-  { id: 'dx14', name: 'DX14: Desktop Security Card', component: DesktopSecurityCard },
-  { id: 'dx15', name: 'DX15: Desktop Email Notifications', component: DesktopEmailNotificationsCard },
-  { id: 'dx16', name: 'DX16: Desktop Billing Overview', component: DesktopBillinqOverview },
-  { id: 'dx17', name: 'DX17: Desktop Billing History', component: DesktopBillingHistory },
-  { id: 'dx18', name: 'DX18: Desktop Payment Method', component: DesktopPaymentMethod },
+  { id: 'dx2', name: 'DX2: Desktop Header Demo', component: NC010Header },
+  { id: 'dx3', name: 'DX3: Desktop Toast Notifications', component: UX040ToastNotifications },
+  { id: 'dx4', name: 'DX4: Desktop Sidebar Demo', component: NC020Sidebar },
+  { id: 'dx5', name: 'DX5: Desktop Modals', component: UX010Modals },
+  { id: 'dx6', name: 'DX6: Desktop Onboarding Tour', component: UX020OnboardingTour },
+  { id: 'dx7', name: 'DX7: Desktop Feedback Widget', component: UX030FeedbackWidget },
+  { id: 'dx9', name: 'DX9: Desktop Order Table', component: DA010OrderTable },
+  { id: 'dx10', name: 'DX10: Desktop Command Center', component: DC070CommandCenter },
+  { id: 'dx11', name: 'DX11: Desktop Order Flow', component: OM020FlowVisualization },
+  { id: 'dx12', name: 'DX12: Desktop Strategic Insights', component: BI010StrategicInsights },
+  { id: 'dx13', name: 'DX13: Desktop User Profile', component: PM010UserProfile },
+  { id: 'dx14', name: 'DX14: Desktop Security Card', component: SC010SecurityCard },
+  { id: 'dx15', name: 'DX15: Desktop Email Notifications', component: AM040EmailNotifications },
+  { id: 'dx16', name: 'DX16: Desktop Billing Overview', component: AM010BillingOverview },
+  { id: 'dx17', name: 'DX17: Desktop Billing History', component: AM020BillingHistory },
+  { id: 'dx18', name: 'DX18: Desktop Payment Method', component: AM030PaymentMethod },
 ];
 
 interface DxSeriesProps {

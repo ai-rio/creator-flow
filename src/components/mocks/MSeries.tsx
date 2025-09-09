@@ -7,21 +7,21 @@ import { animate, AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-// Import M-Series components
-import M1ExecutiveHeader from './M1ExecutiveHeader';
-import M2BusinessSimphonyCard from './M2BusinessSimphonyCard';
-import M3StrategicCommandCard from './M3StrategicCommandCard';
-import M4LiberationOrchestraCard from './M4LiberationOrchestraCard';
-import M5IntelBriefingCard from './M5IntelBriefingCard';
-import M6MobileNavbar from './M6MobileNavbar';
+// Import M-Series components (updated to use renamed BI-series and other components)
+import NC030ExecutiveHeader from './NC-030-ExecutiveHeader';
+import BI020BusinessSymphony from './BI-020-BusinessSymphony';
+import BI030StrategicCommand from './BI-030-StrategicCommand';
+import BI040LiberationOrchestra from './BI-040-LiberationOrchestra';
+import BI050IntelBriefing from './BI-050-IntelBriefing';
+import MC030Navbar from './MC-030-Navbar';
 
 const components = [
-  { id: 'm1', name: 'M1: Executive Header', component: M1ExecutiveHeader },
-  { id: 'm2', name: 'M2: Business Simphony Card', component: M2BusinessSimphonyCard },
-  { id: 'm3', name: 'M3: Strategic Command Card', component: M3StrategicCommandCard },
-  { id: 'm4', name: 'M4: Liberation Orchestra Card', component: M4LiberationOrchestraCard },
-  { id: 'm5', name: 'M5: Intel Briefing Card', component: M5IntelBriefingCard },
-  { id: 'm6', name: 'M6: Mobile Navbar', component: M6MobileNavbar },
+  { id: 'm1', name: 'M1: Executive Header', component: NC030ExecutiveHeader },
+  { id: 'm2', name: 'M2: Business Symphony Card', component: BI020BusinessSymphony },
+  { id: 'm3', name: 'M3: Strategic Command Card', component: BI030StrategicCommand },
+  { id: 'm4', name: 'M4: Liberation Orchestra Card', component: BI040LiberationOrchestra },
+  { id: 'm5', name: 'M5: Intel Briefing Card', component: BI050IntelBriefing },
+  { id: 'm6', name: 'M6: Mobile Navbar', component: MC030Navbar },
 ];
 
 interface MSeriesProps {

@@ -5,67 +5,96 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Grid3X3, Home, List, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-import DesktopHeaderDemo from './02DesktopHeaderDemo';
-import DesktopToastNotifications from './03DesktopToastNotifications';
-import DesktopSidebarDemo from './04DesktopSidebarDemo';
-import DesktopModals from './05DesktopModals';
-import DesktopOnboardingTourDemo from './06DesktopOnboardingTour.demo';
-import DesktopFeedbackWidget from './07DesktopFeedbackWidget';
-import MobileOrder from './08MobileOrder';
-import DesktopOrderTableComponent from './09DesktopOrderTableComponent';
-import DesktopDashboardCommandCenter from './10DesktopDashboardCommandCenter';
-import DesktopOrderFlowVisualisation from './11DesktopOrderFlowVisualisation';
-import DesktopStrategicInsights from './12DesktopStrategicInsights';
-import DesktopUserProfileCard from './13DesktopUserProfileCard';
-import DesktopSecurityCard from './14DesktopSecurityCard';
-import DesktopEmailNotificationsCard from './15DesktopEmailNotificationsCard';
-import DesktopBillinqOverview from './16DesktopBillinqOverview';
-import DesktopBillingHistory from './17DesktopBillingHistory';
-import DesktopPaymentMethod from './18DesktopPaymentMethod';
-// Import all series components
-import A1ShmDashboard from './A1ShmDashboard';
-import A2ShmDashboard from './A2ShmDashboard';
-import A3ShmDashboard from './A3ShmDashboard';
-import A4ShmDashboard from './A4ShmDashboard';
-import A5ShmDashboard from './A5ShmDashboard';
-import A6ShmDashboard from './A6ShmDashboard';
-import D1D3EnhancedDesctopCcc768px from './D1D3EnhancedDesctopCcc-768px';
-import D4EnhancedDesctopCcc768px from './D4EnhancedDesctopCcc-768px';
-import D5EnhancedDesctopCcc768px from './D5EnhancedDesctopCcc-768px';
-import D6EnhancedDesctopCcc768px from './D6EnhancedDesctopCcc-768px';
+// import DesktopHeaderDemo from './02DesktopHeaderDemo'; // RENAMED TO NC-010
+// import DesktopToastNotifications from './03DesktopToastNotifications'; // RENAMED TO UX-040
+// import DesktopSidebarDemo from './04DesktopSidebarDemo'; // RENAMED TO NC-020
+// import DesktopModals from './05DesktopModals'; // RENAMED TO UX-010
+// import DesktopOnboardingTourDemo from './06DesktopOnboardingTour.demo'; // RENAMED TO UX-020
+// import DesktopFeedbackWidget from './07DesktopFeedbackWidget'; // RENAMED TO UX-030
+// import MobileOrder from './08MobileOrder'; // RENAMED TO MC-020
+// import DesktopOrderTableComponent from './09DesktopOrderTableComponent'; // RENAMED TO DA-010
+// import DesktopDashboardCommandCenter from './10DesktopDashboardCommandCenter'; // RENAMED TO DC-070
+// import DesktopOrderFlowVisualisation from './11DesktopOrderFlowVisualisation'; // RENAMED TO OM-020
+// import DesktopStrategicInsights from './12DesktopStrategicInsights'; // RENAMED TO BI-010
+// import DesktopUserProfileCard from './13DesktopUserProfileCard'; // RENAMED TO PM-010
+// import DesktopSecurityCard from './14DesktopSecurityCard'; // RENAMED TO SC-010
+// import DesktopEmailNotificationsCard from './15DesktopEmailNotificationsCard'; // RENAMED TO AM-040
+// import DesktopBillinqOverview from './16DesktopBillinqOverview'; // RENAMED TO AM-010
+// import DesktopBillingHistory from './17DesktopBillingHistory'; // RENAMED TO AM-020
+// import DesktopPaymentMethod from './18DesktopPaymentMethod'; // RENAMED TO AM-030
+// Import all series components (DC- Dashboard Components)
+import DC010ShmDashboard from './DC-010-ShmDashboard';
+import DC020ShmDashboardV2 from './DC-020-ShmDashboardV2';
+import DC030ShmDashboardV3 from './DC-030-ShmDashboardV3';
+import DC040ShmDashboardV4 from './DC-040-ShmDashboardV4';
+import DC050ShmDashboardV5 from './DC-050-ShmDashboardV5';
+import DC060ShmDashboardV6 from './DC-060-ShmDashboardV6';
+import DC070CommandCenter from './DC-070-CommandCenter';
+import DC080EnhancedCccV1 from './DC-080-EnhancedCccV1';
+import DC090EnhancedCccV4 from './DC-090-EnhancedCccV4';
+import DC100EnhancedCccV5 from './DC-100-EnhancedCccV5';
+// Additional DC-series components
+import DC110EnhancedCccV6 from './DC-110-EnhancedCccV6';
+import DC120EnhancedCccV4Alt from './DC-120-EnhancedCccV4Alt';
+import DC130EnhancedCccV5Alt from './DC-130-EnhancedCccV5Alt';
+// Mobile Components (MC-)
+import MC010Dashboard from './MC-010-Dashboard';
+import MC020Order from './MC-020-Order';
+import MC030Navbar from './MC-030-Navbar';
+// Navigation Components (NC-)
+import NC010Header from './NC-010-Header';
+import NC020Sidebar from './NC-020-Sidebar';
+import NC030ExecutiveHeader from './NC-030-ExecutiveHeader';
+// Order Management Components (OM-)
+import OM010SystemStats from './OM-010-SystemStats';
+import OM020FlowVisualization from './OM-020-FlowVisualization';
+import OM030SubNavbar from './OM-030-SubNavbar';
+// Business Intelligence Components (BI-)
+import BI010StrategicInsights from './BI-010-StrategicInsights';
+import BI020BusinessSymphony from './BI-020-BusinessSymphony';
+import BI030StrategicCommand from './BI-030-StrategicCommand';
+import BI040LiberationOrchestra from './BI-040-LiberationOrchestra';
+import BI050IntelBriefing from './BI-050-IntelBriefing';
+// User Experience Components (UX-)
+import UX010Modals from './UX-010-Modals';
+import UX020OnboardingTour from './UX-020-OnboardingTour';
+import UX030FeedbackWidget from './UX-030-FeedbackWidget';
+import UX040ToastNotifications from './UX-040-ToastNotifications';
+// Account Management Components (AM-)
+import AM010BillingOverview from './AM-010-BillingOverview';
+import AM020BillingHistory from './AM-020-BillingHistory';
+import AM030PaymentMethod from './AM-030-PaymentMethod';
+import AM040EmailNotifications from './AM-040-EmailNotifications';
+// Inventory Management Components (IM-)
+import IM010CriticalStock from './IM-010-CriticalStock';
+import IM020ManagementFocus from './IM-020-ManagementFocus';
+// Data & Analytics Components (DA-)
+import DA010OrderTable from './DA-010-OrderTable';
+// Profile Management Components (PM-)
+import PM010UserProfile from './PM-010-UserProfile';
+// Security & Compliance Components (SC-)
+import SC010SecurityCard from './SC-010-SecurityCard';
+// System Utilities Components (SU-)
+import SU010NotFound from './SU-010-NotFound';
+import SU020CookiePolicy from './SU-020-CookiePolicy';
+import SU030ThemeSwitcher from './SU-030-ThemeSwitcher';
+import SU040DataSovereignty from './SU-040-DataSovereignty';
 import FP020OrderManagement from './FP-020-OrderManagement';
 import FP030DigitalTwinCommand from './FP-030-DigitalTwinCommand';
 import FP040LogisticsCoPilot from './FP-040-LogisticsCoPilot';
 import FP050DataPrism from './FP-050-DataPrism';
-import I1I5InventoryManagementFocusComponents from './I1I5InventoryManagementFocusComponents';
-import I3CriticalStockCard from './I3CriticalStockCard';
-import M1ExecutiveHeader from './M1ExecutiveHeader';
-import M2BusinessSimphonyCard from './M2BusinessSimphonyCard';
-import M3StrategicCommandCard from './M3StrategicCommandCard';
-import M4LiberationOrchestraCard from './M4LiberationOrchestraCard';
-import M5IntelBriefingCard from './M5IntelBriefingCard';
-import M6MobileNavbar from './M6MobileNavbar';
-import O2OrderSystemStatsCard from './O2OrderSystemStatsCard';
-import O5OrderSubNavbar from './O5OrderSubNavbar';
-// Import Component-prefixed files
-import Component01mobileDashboard from './Component01mobileDashboard';
-import Component02desktopHeaderDemo from './Component02desktopHeaderDemo';
-import Component03desktopToastNotifications from './Component03desktopToastNotifications';
-import Component04desktopSidebarDemo from './Component04desktopSidebarDemo';
-import Component05desktopModals from './Component05desktopModals';
-import Component06desktopOnboardingTourDemo from './Component06desktopOnboardingTour.demo';
-import Component07desktopFeedbackWidget from './Component07desktopFeedbackWidget';
-import Component08mobileOrder from './Component08mobileOrder';
-import Component09desktopOrderTableComponent from './Component09desktopOrderTableComponent';
-import Component10desktopDashboardCommandCenter from './Component10desktopDashboardCommandCenter';
-import Component11desktopOrderFlowVisualisation from './Component11desktopOrderFlowVisualisation';
-import Component12desktopStrategicInsights from './Component12desktopStrategicInsights';
-import Component13desktopUserProfileCard from './Component13desktopUserProfileCard';
-import Component14desktopSecurityCard from './Component14desktopSecurityCard';
-import Component15desktopEmailNotificationsCard from './Component15desktopEmailNotificationsCard';
-import Component16desktopBillinqOverview from './Component16desktopBillinqOverview';
-import Component17desktopBillingHistory from './Component17desktopBillingHistory';
-import Component18desktopPaymentMethod from './Component18desktopPaymentMethod';
+// import I1I5InventoryManagementFocusComponents from './I1I5InventoryManagementFocusComponents'; // RENAMED TO IM-020
+// import I3CriticalStockCard from './I3CriticalStockCard'; // RENAMED TO IM-010
+// import M1ExecutiveHeader from './M1ExecutiveHeader'; // RENAMED TO NC-030
+// import M2BusinessSimphonyCard from './M2BusinessSimphonyCard'; // RENAMED TO BI-020
+// import M3StrategicCommandCard from './M3StrategicCommandCard'; // RENAMED TO BI-030
+// import M4LiberationOrchestraCard from './M4LiberationOrchestraCard'; // RENAMED TO BI-040
+// import M5IntelBriefingCard from './M5IntelBriefingCard'; // RENAMED TO BI-050
+// import M6MobileNavbar from './M6MobileNavbar'; // RENAMED TO MC-030
+// import O2OrderSystemStatsCard from './O2OrderSystemStatsCard'; // RENAMED TO OM-010
+// import O5OrderSubNavbar from './O5OrderSubNavbar'; // RENAMED TO OM-030
+// Component-prefixed files - REMOVED (duplicates)
+// These files no longer exist as they were duplicates
 import HP010Header from './HP-010-Header';
 import HP010HeaderHero from './HP-010-Header-Hero';
 import HP010HeaderVariant from './HP-010-Header-Variant';
@@ -82,11 +111,11 @@ import AP020OurMission from './AP-020-OurMission';
 import AP030TheTeam from './AP-030-TheTeam';
 import CP010Hero from './CP-010-Hero';
 import CP020OpenMissions from './CP-020-OpenMissions';
-import CookiePolicyBar from './Cookie-Policy-Bar';
-import CreatorFlowThemeSwitcher from './CreatorFlow-Theme-Switcher';
-import GDPRDataSovereignty from './GDPR-Data-Sovereignty';
+// import CookiePolicyBar from './Cookie-Policy-Bar'; // RENAMED TO SU-020
+// import CreatorFlowThemeSwitcher from './CreatorFlow-Theme-Switcher'; // RENAMED TO SU-030
+// import GDPRDataSovereignty from './GDPR-Data-Sovereignty'; // RENAMED TO SU-040
 import LP010Legal from './LP-010-Legal';
-import NotFound404 from './404-NotFound';
+// import NotFound404 from './404-NotFound'; // RENAMED TO SU-010
 // Blog Page Components
 import BPCompleteContentHub from './blog-page/BP-Complete-Content-Hub';
 import BPContentHubToolbar from './blog-page/BP-Content-Hub-Toolbar';
@@ -114,56 +143,64 @@ import ACTikTokMetrics from './blog-post/AC-TikTokMetrics';
 
 const componentCategories = {
   'Dashboard Components': {
-    'A Series': [
-      { id: 'a1', name: 'A1: SHM Dashboard', component: A1ShmDashboard },
-      { id: 'a2', name: 'A2: SHM Dashboard', component: A2ShmDashboard },
-      { id: 'a3', name: 'A3: SHM Dashboard', component: A3ShmDashboard },
-      { id: 'a4', name: 'A4: SHM Dashboard', component: A4ShmDashboard },
-      { id: 'a5', name: 'A5: SHM Dashboard', component: A5ShmDashboard },
-      { id: 'a6', name: 'A6: SHM Dashboard', component: A6ShmDashboard },
+    'DC Series': [
+      { id: 'dc010', name: 'DC-010: SHM Dashboard', component: DC010ShmDashboard },
+      { id: 'dc020', name: 'DC-020: SHM Dashboard V2', component: DC020ShmDashboardV2 },
+      { id: 'dc030', name: 'DC-030: SHM Dashboard V3', component: DC030ShmDashboardV3 },
+      { id: 'dc040', name: 'DC-040: SHM Dashboard V4', component: DC040ShmDashboardV4 },
+      { id: 'dc050', name: 'DC-050: SHM Dashboard V5', component: DC050ShmDashboardV5 },
+      { id: 'dc060', name: 'DC-060: SHM Dashboard V6', component: DC060ShmDashboardV6 },
+      { id: 'dc070', name: 'DC-070: Command Center', component: DC070CommandCenter },
+      { id: 'dc080', name: 'DC-080: Enhanced CCC V1', component: DC080EnhancedCccV1 },
+      { id: 'dc090', name: 'DC-090: Enhanced CCC V4', component: DC090EnhancedCccV4 },
+      { id: 'dc100', name: 'DC-100: Enhanced CCC V5', component: DC100EnhancedCccV5 },
+      { id: 'dc110', name: 'DC-110: Enhanced CCC V6', component: DC110EnhancedCccV6 },
+      { id: 'dc120', name: 'DC-120: Enhanced CCC V4 Alt', component: DC120EnhancedCccV4Alt },
+      { id: 'dc130', name: 'DC-130: Enhanced CCC V5 Alt', component: DC130EnhancedCccV5Alt },
     ],
-    'O Series': [
-      { id: 'o2', name: 'O2: Order System Stats', component: O2OrderSystemStatsCard },
-      { id: 'o5', name: 'O5: Order Sub Navbar', component: O5OrderSubNavbar },
+    // O Series renamed to OM Series
+    // All D-series components have been renamed to DC-series
+  },
+  'Mobile Components': {
+    'MC Series': [
+      { id: 'mc010', name: 'MC-010: Dashboard', component: MC010Dashboard },
+      { id: 'mc020', name: 'MC-020: Order', component: MC020Order },
+      { id: 'mc030', name: 'MC-030: Navbar', component: MC030Navbar },
     ],
-    'D Series': [
-      { id: 'd1', name: 'D1: Enhanced Desktop CCC', component: D1D3EnhancedDesctopCcc768px },
-      { id: 'd4', name: 'D4: Enhanced Desktop CCC', component: D4EnhancedDesctopCcc768px },
-      { id: 'd5', name: 'D5: Enhanced Desktop CCC', component: D5EnhancedDesctopCcc768px },
-      { id: 'd6', name: 'D6: Enhanced Desktop CCC', component: D6EnhancedDesctopCcc768px },
-    ],
+  },
+  'Legacy Components': {
     'I Series': [
-      { id: 'i1', name: 'I1: Inventory Management', component: I1I5InventoryManagementFocusComponents },
-      { id: 'i3', name: 'I3: Critical Stock Card', component: I3CriticalStockCard },
+      { id: 'i1', name: 'I1: Inventory Management', component: IM020ManagementFocus },
+      { id: 'i3', name: 'I3: Critical Stock Card', component: IM010CriticalStock },
     ],
     'M Series': [
-      { id: 'm1', name: 'M1: Executive Header', component: M1ExecutiveHeader },
-      { id: 'm2', name: 'M2: Business Symphony', component: M2BusinessSimphonyCard },
-      { id: 'm3', name: 'M3: Strategic Command', component: M3StrategicCommandCard },
-      { id: 'm4', name: 'M4: Liberation Orchestra', component: M4LiberationOrchestraCard },
-      { id: 'm5', name: 'M5: Intel Briefing', component: M5IntelBriefingCard },
-      { id: 'm6', name: 'M6: Mobile Navbar', component: M6MobileNavbar },
+      { id: 'm1', name: 'M1: Executive Header', component: NC030ExecutiveHeader },
+      { id: 'm2', name: 'M2: Business Symphony', component: BI020BusinessSymphony },
+      { id: 'm3', name: 'M3: Strategic Command', component: BI030StrategicCommand },
+      { id: 'm4', name: 'M4: Liberation Orchestra', component: BI040LiberationOrchestra },
+      { id: 'm5', name: 'M5: Intel Briefing', component: BI050IntelBriefing },
+      { id: 'm6', name: 'M6: Mobile Navbar', component: MC030Navbar },
     ],
   },
   'Desktop Components': {
     'Dx Series': [
-      { id: 'dx2', name: 'DX2: Desktop Header', component: DesktopHeaderDemo },
-      { id: 'dx3', name: 'DX3: Toast Notifications', component: DesktopToastNotifications },
-      { id: 'dx4', name: 'DX4: Desktop Sidebar', component: DesktopSidebarDemo },
-      { id: 'dx5', name: 'DX5: Desktop Modals', component: DesktopModals },
-      { id: 'dx6', name: 'DX6: Onboarding Tour', component: DesktopOnboardingTourDemo },
-      { id: 'dx7', name: 'DX7: Feedback Widget', component: DesktopFeedbackWidget },
-      { id: 'dx8', name: 'DX8: Mobile Order', component: MobileOrder },
-      { id: 'dx9', name: 'DX9: Order Table', component: DesktopOrderTableComponent },
-      { id: 'dx10', name: 'DX10: Command Center', component: DesktopDashboardCommandCenter },
-      { id: 'dx11', name: 'DX11: Order Flow', component: DesktopOrderFlowVisualisation },
-      { id: 'dx12', name: 'DX12: Strategic Insights', component: DesktopStrategicInsights },
-      { id: 'dx13', name: 'DX13: User Profile', component: DesktopUserProfileCard },
-      { id: 'dx14', name: 'DX14: Security Card', component: DesktopSecurityCard },
-      { id: 'dx15', name: 'DX15: Email Notifications', component: DesktopEmailNotificationsCard },
-      { id: 'dx16', name: 'DX16: Billing Overview', component: DesktopBillinqOverview },
-      { id: 'dx17', name: 'DX17: Billing History', component: DesktopBillingHistory },
-      { id: 'dx18', name: 'DX18: Payment Method', component: DesktopPaymentMethod },
+      { id: 'dx2', name: 'DX2: Desktop Header', component: NC010Header },
+      { id: 'dx3', name: 'DX3: Toast Notifications', component: UX040ToastNotifications },
+      { id: 'dx4', name: 'DX4: Desktop Sidebar', component: NC020Sidebar },
+      { id: 'dx5', name: 'DX5: Desktop Modals', component: UX010Modals },
+      { id: 'dx6', name: 'DX6: Onboarding Tour', component: UX020OnboardingTour },
+      { id: 'dx7', name: 'DX7: Feedback Widget', component: UX030FeedbackWidget },
+      { id: 'dx8', name: 'DX8: Mobile Order', component: MC020Order },
+      { id: 'dx9', name: 'DX9: Order Table', component: DA010OrderTable },
+      { id: 'dx10', name: 'DX10: Command Center', component: DC070CommandCenter },
+      { id: 'dx11', name: 'DX11: Order Flow', component: OM020FlowVisualization },
+      { id: 'dx12', name: 'DX12: Strategic Insights', component: BI010StrategicInsights },
+      { id: 'dx13', name: 'DX13: User Profile', component: PM010UserProfile },
+      { id: 'dx14', name: 'DX14: Security Card', component: SC010SecurityCard },
+      { id: 'dx15', name: 'DX15: Email Notifications', component: AM040EmailNotifications },
+      { id: 'dx16', name: 'DX16: Billing Overview', component: AM010BillingOverview },
+      { id: 'dx17', name: 'DX17: Billing History', component: AM020BillingHistory },
+      { id: 'dx18', name: 'DX18: Payment Method', component: AM030PaymentMethod },
     ],
   },
   'Public Pages': {
@@ -191,10 +228,10 @@ const componentCategories = {
     ],
     'LP Series': [{ id: 'lp010', name: 'LP010: Legal', component: LP010Legal }],
     'Utility Components': [
-      { id: 'cookie-bar', name: 'Cookie Policy Bar', component: CookiePolicyBar },
-      { id: 'theme-switcher', name: 'Theme Switcher', component: CreatorFlowThemeSwitcher },
-      { id: 'gdpr', name: 'GDPR Data Sovereignty', component: GDPRDataSovereignty },
-      { id: '404', name: '404 Not Found', component: NotFound404 },
+      { id: 'cookie-bar', name: 'Cookie Policy Bar', component: SU020CookiePolicy },
+      { id: 'theme-switcher', name: 'Theme Switcher', component: SU030ThemeSwitcher },
+      { id: 'gdpr', name: 'GDPR Data Sovereignty', component: SU040DataSovereignty },
+      { id: '404', name: '404 Not Found', component: SU010NotFound },
     ],
     'FP Series': [
       { id: 'fp020', name: 'FP020: Order Management', component: FP020OrderManagement },
@@ -228,28 +265,8 @@ const componentCategories = {
       { id: 'ac-tiktok', name: 'AC: TikTok Metrics', component: ACTikTokMetrics },
     ],
   },
-  'Component Series': {
-    'Component Series': [
-      { id: 'c01', name: 'C01: Mobile Dashboard', component: Component01mobileDashboard },
-      { id: 'c02', name: 'C02: Desktop Header Demo', component: Component02desktopHeaderDemo },
-      { id: 'c03', name: 'C03: Toast Notifications', component: Component03desktopToastNotifications },
-      { id: 'c04', name: 'C04: Desktop Sidebar Demo', component: Component04desktopSidebarDemo },
-      { id: 'c05', name: 'C05: Desktop Modals', component: Component05desktopModals },
-      { id: 'c06', name: 'C06: Onboarding Tour Demo', component: Component06desktopOnboardingTourDemo },
-      { id: 'c07', name: 'C07: Feedback Widget', component: Component07desktopFeedbackWidget },
-      { id: 'c08', name: 'C08: Mobile Order', component: Component08mobileOrder },
-      { id: 'c09', name: 'C09: Order Table Component', component: Component09desktopOrderTableComponent },
-      { id: 'c10', name: 'C10: Dashboard Command Center', component: Component10desktopDashboardCommandCenter },
-      { id: 'c11', name: 'C11: Order Flow Visualisation', component: Component11desktopOrderFlowVisualisation },
-      { id: 'c12', name: 'C12: Strategic Insights', component: Component12desktopStrategicInsights },
-      { id: 'c13', name: 'C13: User Profile Card', component: Component13desktopUserProfileCard },
-      { id: 'c14', name: 'C14: Security Card', component: Component14desktopSecurityCard },
-      { id: 'c15', name: 'C15: Email Notifications Card', component: Component15desktopEmailNotificationsCard },
-      { id: 'c16', name: 'C16: Billing Overview', component: Component16desktopBillinqOverview },
-      { id: 'c17', name: 'C17: Billing History', component: Component17desktopBillingHistory },
-      { id: 'c18', name: 'C18: Payment Method', component: Component18desktopPaymentMethod },
-    ],
-  },
+  // Component Series - REMOVED (duplicate files no longer exist)
+  // These were duplicates of the numbered series components
 };
 
 // Flatten all components for navigation
@@ -261,11 +278,11 @@ interface UnifiedComponentBrowserProps {
   initialComponent?: string;
 }
 
-export default function UnifiedComponentBrowser({ initialComponent = 'a1' }: UnifiedComponentBrowserProps) {
+export default function UnifiedComponentBrowser({ initialComponent = 'dc010' }: UnifiedComponentBrowserProps) {
   const initialIndex = allComponents.findIndex((c) => c.id === initialComponent);
   const [currentIndex, setCurrentIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [selectedCategory, setSelectedCategory] = useState<string>('Dashboard Components');
-  const [selectedSeries, setSelectedSeries] = useState<string>('A Series');
+  const [selectedSeries, setSelectedSeries] = useState<string>('DC Series');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });

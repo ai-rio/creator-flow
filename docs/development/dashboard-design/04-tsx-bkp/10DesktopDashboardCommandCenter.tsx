@@ -1,5 +1,7 @@
 /* eslint-disable */
-import { motion } from 'framer-motion';
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   AlertTriangle,
   BarChart2,
@@ -18,8 +20,15 @@ import {
   Users,
   Zap,
 } from 'lucide-react';
-import React from 'react';
+import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CartesianGrid, Line, LineChart, ReferenceArea, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+
+// --- TypeScript Interfaces ---
+interface ComponentProps {
+  children?: React.ReactNode;
+  className?: string;
+}
 
 // Mock Data for the chart and KPIs
 const kpiData = [
@@ -47,7 +56,7 @@ const ParticleCanvas = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    let animationFrameId: any;
+    let animationFrameId: number;
 
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth;
@@ -100,7 +109,7 @@ const ParticleCanvas = () => {
 };
 
 // Custom Tooltip for the Recharts graph with a glowing effect
-const CustomTooltip = ({ active, payload, label }: { active: any; payload: any; label: any }) => {
+const CustomTooltip: React.FC<any> = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div
@@ -142,11 +151,11 @@ export default function CreatorFlowDashboard(): React.JSX.Element {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as any,
         stiffness: 100,
       },
     },
-  } as any;
+  };
 
   // --- JSX ---
   return (
@@ -266,7 +275,7 @@ export default function CreatorFlowDashboard(): React.JSX.Element {
                       <XAxis dataKey='name' stroke={theme === 'dark' ? '#6b7280' : '#6b7280'} />
                       <YAxis stroke={theme === 'dark' ? '#6b7280' : '#6b7280'} />
                       <Tooltip
-                        content={<CustomTooltip active={false} payload={[]} label={''} />}
+                        content={<CustomTooltip />}
                         cursor={{ stroke: 'rgba(13, 148, 136, 0.5)', strokeWidth: 1 }}
                       />
                       <Line type='monotone' dataKey='revenue' stroke='url(#colorRevenue)' strokeWidth={3} dot={false} />

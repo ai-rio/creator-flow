@@ -5,13 +5,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-// Import I-Series components
-import I1I5InventoryManagementFocusComponents from './I1I5InventoryManagementFocusComponents';
-import I3CriticalStockCard from './I3CriticalStockCard';
+// Import I-Series components (renamed to IM-Series)
+import IM020ManagementFocus from './IM-020-ManagementFocus';
+import IM010CriticalStock from './IM-010-CriticalStock';
 
 const components = [
-  { id: 'i1', name: 'I1-I5: Inventory Management Focus', component: I1I5InventoryManagementFocusComponents },
-  { id: 'i3', name: 'I3: Critical Stock Card', component: I3CriticalStockCard },
+  { id: 'i1', name: 'I1-I5: Inventory Management Focus', component: IM020ManagementFocus },
+  { id: 'i3', name: 'I3: Critical Stock Card', component: IM010CriticalStock },
 ];
 
 interface ISeriesProps {

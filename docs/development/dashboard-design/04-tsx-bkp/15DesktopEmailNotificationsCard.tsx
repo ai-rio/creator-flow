@@ -1,13 +1,21 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { KeyRound, LogOut, Monitor, Moon, ShieldCheck, Smartphone, Sun } from 'lucide-react';
+import * as React from 'react';
+import { useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ThemeToggleProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
 
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { KeyRound, LogOut, Monitor, Moon, ShieldCheck, Smartphone, Sun } from 'lucide-react';
 
 // Mock active sessions data for demonstration
 const mockSessions = [
@@ -22,7 +30,7 @@ const mockSessions = [
   { id: 2, type: 'Smartphone', browser: 'Safari', location: 'New York, USA', ip: '207.97.227.239', isCurrent: false },
 ];
 
-const GlassPane: React.FC<any> = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: any) => (
   <div
     className={`rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -30,7 +38,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
   </div>
 );
 
-const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
+const ThemeToggle = ({ theme, setTheme }: any) => (
   <motion.button
     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     className='absolute right-8 top-8 z-10 rounded-full bg-white/40 p-2 text-slate-500 dark:bg-slate-800/40 dark:text-slate-400'
@@ -52,8 +60,8 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
 );
 
 const SecuritySettingsCard = () => {
-  const [theme, setTheme] = useState<any>('dark');
-  const [is2faEnabled, setIs2faEnabled] = useState<any>(true);
+  const [theme, setTheme] = useState<string>('dark');
+  const [is2faEnabled, setIs2faEnabled] = useState<boolean>(true);
   const [activeSessions, setActiveSessions] = useState<any>(mockSessions);
 
   const logoutSession = (id: any) => {
@@ -161,7 +169,7 @@ const SecuritySettingsCard = () => {
   );
 };
 
-const SettingsSection: React.FC<any> = ({ icon: Icon, title, children }) => (
+const SettingsSection = ({ icon: Icon, title, children }: any) => (
   <div className='border-t border-slate-300/50 py-6 dark:border-slate-700/50'>
     <h2 className='mb-4 flex items-center gap-3 text-xl font-semibold text-slate-800 dark:text-slate-200'>
       <Icon className='text-slate-500' size={24} />
@@ -171,7 +179,7 @@ const SettingsSection: React.FC<any> = ({ icon: Icon, title, children }) => (
   </div>
 );
 
-const InputField: React.FC<any> = ({ label, id, type }) => (
+const InputField = ({ label, id, type }: any) => (
   <div>
     <label htmlFor={id} className='mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300'>
       {label}
@@ -185,7 +193,7 @@ const InputField: React.FC<any> = ({ label, id, type }) => (
   </div>
 );
 
-const ActionButton: React.FC<any> = ({ children }) => (
+const ActionButton = ({ children }: any) => (
   <motion.button
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.98 }}
@@ -196,7 +204,7 @@ const ActionButton: React.FC<any> = ({ children }) => (
   </motion.button>
 );
 
-const ToggleSwitch: React.FC<any> = ({ enabled, setEnabled }) => (
+const ToggleSwitch = ({ enabled, setEnabled }: any) => (
   <div
     onClick={() => setEnabled(!enabled)}
     className={`flex h-8 w-14 cursor-pointer items-center rounded-full transition-colors duration-300 ${

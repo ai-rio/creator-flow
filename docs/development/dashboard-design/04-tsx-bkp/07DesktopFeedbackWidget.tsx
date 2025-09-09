@@ -1,18 +1,21 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext, useContext } from 'react';
+'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-import { AnimatePresence, motion } from 'framer-motion';
-
 // --- Theme Context & Provider ---
 const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }: { children: any }) => {
-  const [theme, setTheme] = useState<any>('dark');
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -132,7 +135,7 @@ const CheckIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane: React.FC<any> = ({ children, className }) => (
+const GlassPane = ({ children, className }: any) => (
   <div
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
   >
@@ -141,8 +144,8 @@ const GlassPane: React.FC<any> = ({ children, className }) => (
 );
 
 // --- Feedback Widget Component ---
-const FeedbackWidget = ({ isOpen, onClose }: { isOpen: any; onClose: any }) => {
-  const [step, setStep] = useState<any>(0); // 0: category, 1: form, 2: success
+const FeedbackWidget: React.FC<any> = ({ isOpen, onClose }: any) => {
+  const [step, setStep] = useState<number>(0); // 0: category, 1: form, 2: success
   const [feedbackType, setFeedbackType] = useState<any>(null);
 
   const handleCategorySelect = (type: any) => {
@@ -153,7 +156,7 @@ const FeedbackWidget = ({ isOpen, onClose }: { isOpen: any; onClose: any }) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     // In a real app, you would submit the form data here
-    console.log('Feedback submitted:', { type: feedbackType, message: e.target.message.value });
+    console.log('Feedback submitted:', { type: feedbackType, message: (e.target as any).message.value });
     setStep(2);
     setTimeout(() => {
       onClose();
@@ -272,7 +275,7 @@ const FeedbackWidget = ({ isOpen, onClose }: { isOpen: any; onClose: any }) => {
   );
 };
 
-const CategoryButton: React.FC<any> = ({ icon, label, onClick }) => (
+const CategoryButton = ({ icon, label, onClick }: any) => (
   <motion.button
     onClick={onClick}
     className='flex flex-col items-center justify-center rounded-lg bg-slate-300/50 p-4 transition-colors hover:bg-slate-400/50 dark:bg-slate-800/50 dark:hover:bg-slate-700/50'
@@ -286,8 +289,8 @@ const CategoryButton: React.FC<any> = ({ icon, label, onClick }) => (
 
 // --- DEMO APP ---
 function AppContent() {
-  const [widgetOpen, setWidgetOpen] = useState<any>(false);
-  const { theme, setTheme } = useTheme() as any;
+  const [widgetOpen, setWidgetOpen] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className='relative flex min-h-screen items-center justify-center bg-slate-100 p-8 font-sans text-slate-900 dark:bg-[#0A090F] dark:text-slate-200'>

@@ -1,18 +1,21 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
+'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-import { AnimatePresence, motion } from 'framer-motion';
-
 // --- Theme Context & Provider ---
-const ThemeContext = createContext<any>(undefined);
+const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<any>('dark');
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -84,7 +87,7 @@ const RevenueIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane = React.forwardRef(({ children, className }: { children: any; className: any }, ref: any) => (
+const GlassPane = React.forwardRef<any, any>(({ children, className }: any, ref: any) => (
   <div
     ref={ref}
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
@@ -94,17 +97,7 @@ const GlassPane = React.forwardRef(({ children, className }: { children: any; cl
 ));
 
 // --- ONBOARDING TOUR COMPONENTS ---
-const OnboardingTour = ({
-  tourSteps,
-  active,
-  setActiveStep,
-  onFinish,
-}: {
-  tourSteps: any;
-  active: any;
-  setActiveStep: any;
-  onFinish: any;
-}) => {
+const OnboardingTour: React.FC<any> = ({ tourSteps, active, setActiveStep, onFinish }: any) => {
   const [targetRect, setTargetRect] = useState<any>(null);
   const activeStep = tourSteps[active];
 
@@ -251,8 +244,8 @@ const OnboardingTour = ({
 
 // --- DEMO APP ---
 function AppContent() {
-  const [tourActive, setTourActive] = useState<any>(false);
-  const [activeStep, setActiveStep] = useState<any>(0);
+  const [tourActive, setTourActive] = useState<boolean>(false);
+  const [activeStep, setActiveStep] = useState<number>(0);
   const { theme, setTheme } = useTheme();
 
   const kpiRef = useRef(null);
@@ -292,7 +285,7 @@ function AppContent() {
   };
 
   // Static placeholder components for the demo stage
-  const KpiCard: React.FC<any> = ({ title, value, icon, refProp }) => (
+  const KpiCard = ({ title, value, icon, refProp }: any) => (
     <GlassPane ref={refProp} className='p-4'>
       <div className='flex items-start justify-between'>
         <div className='flex flex-col'>
@@ -303,7 +296,7 @@ function AppContent() {
       </div>
     </GlassPane>
   );
-  const CrisisCard: React.FC<any> = ({ refProp }) => (
+  const CrisisCard = ({ refProp }: any) => (
     <GlassPane ref={refProp} className='h-full p-6'>
       <h2 className='mb-4 flex items-center gap-2 text-xl font-bold text-amber-600 dark:text-amber-300'>
         <AlertIcon /> Crisis Command
@@ -311,7 +304,7 @@ function AppContent() {
       <p className='text-slate-600 dark:text-slate-400'>This is where you manage viral events...</p>
     </GlassPane>
   );
-  const MasterpieceCard: React.FC<any> = ({ refProp }) => (
+  const MasterpieceCard = ({ refProp }: any) => (
     <GlassPane ref={refProp} className='h-full p-6'>
       <h2 className='text-xl font-bold text-slate-900 dark:text-white'>Revenue Masterpiece</h2>
       <p className='text-slate-600 dark:text-slate-400'>Your interactive financial landscape...</p>

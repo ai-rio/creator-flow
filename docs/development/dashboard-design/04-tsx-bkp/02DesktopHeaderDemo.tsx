@@ -1,18 +1,15 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext, useContext } from 'react';
-
-interface ComponentProps {
-  children?: React.ReactNode;
-  className?: string;
-}
+'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 // --- Theme Context & Provider ---
-const ThemeContext = createContext<any>(undefined);
+const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<any>('dark');
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -94,10 +91,10 @@ const MoonIcon = () => (
     />
   </svg>
 );
-const ChevronDownIcon = ({ className }: any) => (
+const ChevronDownIcon = ({ className = '' }: any) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={className || 'h-4 w-4'}
+    className={`h-4 w-4 ${className}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -106,10 +103,10 @@ const ChevronDownIcon = ({ className }: any) => (
     <path strokeLinecap='round' strokeLinejoin='round' d='M19 9l-7 7-7-7' />
   </svg>
 );
-const SearchIcon = ({ className }: any) => (
+const SearchIcon = ({ className = '' }: any) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={className || 'h-5 w-5'}
+    className={`h-5 w-5 ${className}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -132,7 +129,7 @@ const PlusIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane: React.FC<any> = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+const GlassPane = ({ children, className }: any) => (
   <div
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
   >
@@ -144,7 +141,7 @@ const GlassPane: React.FC<any> = ({ children, className }: { children: React.Rea
 const CEOHeader = () => {
   const [time, setTime] = useState(new Date());
   const [isProfileOpen, setProfileOpen] = useState<any>(false);
-  const [isActionsOpen, setActionsOpen] = useState<any>(false);
+  const [isActionsOpen, setActionsOpen] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -160,7 +157,7 @@ const CEOHeader = () => {
     day: 'numeric',
   });
 
-  const StatusIndicator: React.FC<any> = ({ icon, colorClass, pulse = false }) => (
+  const StatusIndicator = ({ icon, colorClass, pulse = false }: any) => (
     <div
       className={`relative flex h-8 w-8 items-center justify-center rounded-full border border-slate-400/50 bg-slate-300/50 dark:border-slate-700/50 dark:bg-slate-800/50 text-${colorClass}-500 dark:text-${colorClass}-400`}
     >
@@ -169,7 +166,7 @@ const CEOHeader = () => {
     </div>
   );
 
-  const DropdownMenuItem: React.FC<any> = ({ children }) => (
+  const DropdownMenuItem = ({ children }: any) => (
     <a
       href='#'
       className='block w-full rounded-md px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-300/50 dark:text-slate-300 dark:hover:bg-slate-700/50'

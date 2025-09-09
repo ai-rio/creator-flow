@@ -1,7 +1,16 @@
 /* eslint-disable */
-import { motion } from 'framer-motion';
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import { Bot, Inbox, Package, PackageCheck } from 'lucide-react';
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ComponentProps {
+  children?: React.ReactNode;
+  className?: string;
+}
 
 // --- Helper Components & Data ---
 
@@ -12,7 +21,7 @@ const flowStages = [
   { name: 'DELIVERED', value: 156, Icon: PackageCheck, color: 'text-green-500 dark:text-green-400' },
 ];
 
-const StressBar = ({ percentage }: { percentage: any }) => {
+const StressBar: React.FC<any> = ({ percentage }: any) => {
   return (
     <div className='h-2.5 w-full overflow-hidden rounded-full bg-gray-200/50 dark:bg-gray-800/50'>
       <motion.div
@@ -27,10 +36,10 @@ const StressBar = ({ percentage }: { percentage: any }) => {
 
 // --- Main Visualization Component ---
 export default function OrderFlowVisualization(): React.JSX.Element {
-  const [theme, setTheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<string>('dark');
 
   const toggleTheme = () => {
-    setTheme((prevTheme: any) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const containerVariants = {

@@ -1,13 +1,21 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { CreditCard, Moon, RefreshCw, Sun, Wallet } from 'lucide-react';
+import * as React from 'react';
+import { useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ThemeToggleProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
 
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { CreditCard, Moon, RefreshCw, Sun, Wallet } from 'lucide-react';
 
 // --- Mock Data ---
 // This data simulates what would be fetched from a backend.
@@ -35,7 +43,7 @@ const billingData = {
 };
 
 // --- Reusable Components ---
-const GlassPane: React.FC<any> = ({ children, className = '' }) => (
+const GlassPane = ({ children, className = '' }: any) => (
   <div
     className={`rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20 ${className}`}
   >
@@ -43,7 +51,7 @@ const GlassPane: React.FC<any> = ({ children, className = '' }) => (
   </div>
 );
 
-const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
+const ThemeToggle = ({ theme, setTheme }: any) => (
   <motion.button
     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     className='absolute right-8 top-8 z-20 rounded-full bg-white/40 p-2 text-slate-500 dark:bg-slate-800/40 dark:text-slate-400'
@@ -64,7 +72,7 @@ const ThemeToggle: React.FC<any> = ({ theme, setTheme }) => (
   </motion.button>
 );
 
-const UsageBar = ({ current, limit, label }: { current: any; limit: any; label: any }) => {
+const UsageBar: React.FC<any> = ({ current, limit, label }: any) => {
   const percentage = (current / limit) * 100;
   return (
     <div>
@@ -86,7 +94,7 @@ const UsageBar = ({ current, limit, label }: { current: any; limit: any; label: 
   );
 };
 
-const InfoBlock: React.FC<any> = ({ icon: Icon, title, children }) => (
+const InfoBlock = ({ icon: Icon, title, children }: any) => (
   <div className='p-6'>
     <div className='mb-3 flex items-center gap-3'>
       <Icon className='text-slate-500' size={22} />
@@ -98,7 +106,7 @@ const InfoBlock: React.FC<any> = ({ icon: Icon, title, children }) => (
 
 // --- Main Component ---
 const BillingOverviewCard = () => {
-  const [theme, setTheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<string>('dark');
   const { plan, nextBilling, paymentMethod } = billingData;
 
   return (

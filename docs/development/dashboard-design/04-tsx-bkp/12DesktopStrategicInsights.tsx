@@ -1,13 +1,16 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import { Bot, Eye, ShieldCheck, TrendingUp, Trophy } from 'lucide-react';
+import * as React from 'react';
+import { useState } from 'react';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
-
-import { motion } from 'framer-motion';
-import { Bot, Eye, ShieldCheck, TrendingUp, Trophy } from 'lucide-react';
 
 // --- Helper Components & Data ---
 
@@ -48,10 +51,10 @@ const aiRecommendation = {
 
 // --- Main Insights Component ---
 export default function StrategicInsights(): React.JSX.Element {
-  const [theme, setTheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<string>('dark');
 
   const toggleTheme = () => {
-    setTheme((prevTheme: any) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const containerVariants = {
@@ -72,9 +75,9 @@ export default function StrategicInsights(): React.JSX.Element {
       x: 0,
       rotate: 0,
       scale: 1,
-      transition: { type: 'spring', stiffness: 260, damping: 25 }, // Retuned spring for an orbital feel
+      transition: { type: 'spring' as any, stiffness: 260, damping: 25 }, // Retuned spring for an orbital feel
     },
-  } as any;
+  };
 
   return (
     <div className={theme}>
@@ -112,7 +115,7 @@ export default function StrategicInsights(): React.JSX.Element {
               </div>
               <motion.ul className='space-y-4 p-6' variants={containerVariants} initial='hidden' animate='visible'>
                 {insightsData.map((insight, index) => {
-                  const HeartbeatWrapper = ({ children }: { children: any }) =>
+                  const HeartbeatWrapper = ({ children }: any) =>
                     insight.isHeartbeat ? (
                       <motion.div
                         animate={{ scale: [1, 1.03, 1] }}

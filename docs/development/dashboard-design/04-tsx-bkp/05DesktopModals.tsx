@@ -1,18 +1,21 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext, useContext } from 'react';
+'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-import { AnimatePresence, motion } from 'framer-motion';
-
 // --- Theme Context & Provider ---
-const ThemeContext = createContext<any>(undefined);
+const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<any>('dark');
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -72,14 +75,14 @@ const AlertTriangleIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane: React.FC<any> = ({ children, className }) => (
+const GlassPane = ({ children, className }: any) => (
   <div
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
   >
     {children}
   </div>
 );
-const BorderBeam: React.FC<any> = ({ className }) => (
+const BorderBeam = ({ className }: any) => (
   <div className={`pointer-events-none absolute inset-0 overflow-hidden rounded-2xl ${className}`}>
     <motion.div
       className='absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-transparent via-red-500 to-transparent'
@@ -109,7 +112,7 @@ const BorderBeam: React.FC<any> = ({ className }) => (
 );
 
 // --- Core Modal Component ---
-const ConfirmationModal = ({ isOpen, onClose, config }: { isOpen: any; onClose: () => void; config: any }) => {
+const ConfirmationModal: React.FC<any> = ({ isOpen, onClose, config }: any) => {
   const {
     title,
     message,
@@ -120,7 +123,7 @@ const ConfirmationModal = ({ isOpen, onClose, config }: { isOpen: any; onClose: 
     frictionText, // The word to type for destructive actions
   } = config;
 
-  const [inputValue, setInputValue] = useState<any>('');
+  const [inputValue, setInputValue] = useState<string>('');
   const isConfirmationDisabled = type === 'destructive' && inputValue !== frictionText;
 
   useEffect(() => {
@@ -172,8 +175,7 @@ const ConfirmationModal = ({ isOpen, onClose, config }: { isOpen: any; onClose: 
               {type === 'destructive' && (
                 <div className='mt-4'>
                   <p className='mb-1 text-xs text-slate-600 dark:text-slate-400'>
-                    To confirm, please type &quot;<span className='font-bold'>{frictionText}</span>&quot; in the box
-                    below.
+                    To confirm, please type "<span className='font-bold'>{frictionText}</span>" in the box below.
                   </p>
                   <input
                     type='text'
@@ -224,8 +226,8 @@ const ConfirmationModal = ({ isOpen, onClose, config }: { isOpen: any; onClose: 
 
 // --- DEMO APP ---
 function AppContent() {
-  const [standardModalOpen, setStandardModalOpen] = useState<any>(false);
-  const [destructiveModalOpen, setDestructiveModalOpen] = useState<any>(false);
+  const [standardModalOpen, setStandardModalOpen] = useState<boolean>(false);
+  const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
   const standardConfig = {

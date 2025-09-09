@@ -5,13 +5,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Home, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-// Import Mx-Series components (Mobile)
-import MobileDashboard from './01MobileDashboard';
-import MobileOrder from './08MobileOrder';
+// Import MC-Series components (Mobile - renamed)
+import MC010Dashboard from './MC-010-Dashboard';
+import MC020Order from './MC-020-Order';
 
 const components = [
-  { id: 'mx1', name: 'MX1: Mobile Dashboard', component: MobileDashboard },
-  { id: 'mx8', name: 'MX8: Mobile Order', component: MobileOrder },
+  { id: 'mx1', name: 'MC-010: Mobile Dashboard', component: MC010Dashboard },
+  { id: 'mx8', name: 'MC-020: Mobile Order', component: MC020Order },
 ];
 
 interface MxSeriesProps {

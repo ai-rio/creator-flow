@@ -1,7 +1,16 @@
 /* eslint-disable */
+'use client';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertTriangle, CheckCircle, Info, X, XCircle } from 'lucide-react';
-import React, { useCallback, useEffect, useState } from 'react';
+import * as React from 'react';
+import { useCallback, useEffect, useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ComponentProps {
+  children?: React.ReactNode;
+  className?: string;
+}
 
 // --- Reusable Toast Component ---
 const toastTypes = {
@@ -31,19 +40,7 @@ const toastTypes = {
   },
 };
 
-const Toast = ({
-  id,
-  type,
-  title,
-  message,
-  onDismiss,
-}: {
-  id: any;
-  type: any;
-  title: string;
-  message: string;
-  onDismiss: (id: any) => void;
-}) => {
+const Toast: React.FC<any> = ({ id, type, title, message, onDismiss }: any) => {
   const { Icon, iconClass, borderClass, glowColor } = (toastTypes as any)[type];
 
   useEffect(() => {
@@ -98,7 +95,7 @@ export default function DesktopToastNotifications(): React.JSX.Element {
   const [toasts, setToasts] = useState<any>([]);
   const [theme, setTheme] = React.useState('dark');
 
-  const addToast = useCallback((type: any, title: string, message: string) => {
+  const addToast = useCallback((type: any, title: any, message: any) => {
     const id = Date.now();
     setToasts((currentToasts: any) => [{ id, type, title, message }, ...currentToasts]);
   }, []);

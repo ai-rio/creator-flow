@@ -1,13 +1,16 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import { BarChart, Bot, Flame, Gem, HardDriveDownload, Package, PackageCheck, Rocket, Target, Zap } from 'lucide-react';
+import * as React from 'react';
+import { useState } from 'react';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
-
-import { motion } from 'framer-motion';
-import { BarChart, Bot, Flame, Gem, HardDriveDownload, Package, PackageCheck, Rocket, Target, Zap } from 'lucide-react';
 
 // --- Helper Components & Data ---
 
@@ -40,12 +43,12 @@ const mockOrderData = [
   { id: '#TT12006', priority: 'high', creator: '@trending_now', impact: 'VIRAL', status: 'Shipped', value: 72.0 },
 ];
 
-const TableHeader = ({ children }: { children: any }) => (
+const TableHeader = ({ children }: any) => (
   <th className='border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-500 dark:border-gray-800 dark:text-gray-400'>
     {children}
   </th>
 );
-const TableCell = ({ children, className = '' }: { children: any; className?: string }) => (
+const TableCell = ({ children, className = '' }: any) => (
   <td
     className={`border-b border-gray-200/50 p-4 text-sm text-gray-800 dark:border-gray-800/50 dark:text-gray-200 ${className}`}
   >
@@ -55,10 +58,10 @@ const TableCell = ({ children, className = '' }: { children: any; className?: st
 
 // --- Main Table Component ---
 export default function CreatorOrdersTable(): React.JSX.Element {
-  const [theme, setTheme] = useState<any>('dark');
+  const [theme, setTheme] = useState<string>('dark');
 
   const toggleTheme = () => {
-    setTheme((prevTheme: any) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const containerVariants = {
@@ -97,7 +100,7 @@ export default function CreatorOrdersTable(): React.JSX.Element {
             <table className='w-full'>
               <thead>
                 <tr>
-                  <TableHeader>{''}</TableHeader>
+                  <TableHeader>Priority</TableHeader>
                   <TableHeader>Order</TableHeader>
                   <TableHeader>Creator</TableHeader>
                   <TableHeader>Impact</TableHeader>
@@ -106,7 +109,7 @@ export default function CreatorOrdersTable(): React.JSX.Element {
                 </tr>
               </thead>
               <motion.tbody variants={containerVariants} initial='hidden' animate='visible'>
-                {mockOrderData.map((order: any) => {
+                {mockOrderData.map((order) => {
                   const PriorityIcon = (priorityIcons as any)[order.priority].Icon;
                   const ImpactTag = (impactTags as any)[order.impact];
                   const Status = (autoStatus as any)[order.status];

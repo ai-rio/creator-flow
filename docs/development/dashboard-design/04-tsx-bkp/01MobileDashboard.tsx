@@ -1,20 +1,23 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext, useContext } from 'react';
+'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis } from 'recharts';
-
 // --- Theme Context & Provider ---
-const ThemeContext = createContext<any>(undefined);
+const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
 
-const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<any>('dark');
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -24,8 +27,8 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 // --- Responsive Hook ---
-const useMediaQuery = (query: string) => {
-  const [matches, setMatches] = useState<any>(false);
+const useMediaQuery = (query: any) => {
+  const [matches, setMatches] = useState<boolean>(false);
   useEffect(() => {
     const media = window.matchMedia(query);
     if (media.matches !== matches) {
@@ -278,7 +281,7 @@ const HealthIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane: React.FC<any> = ({ children, className }) => (
+const GlassPane = ({ children, className }: any) => (
   <div
     className={`relative rounded-2xl border border-slate-300/50 bg-slate-200/50 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
   >
@@ -286,7 +289,7 @@ const GlassPane: React.FC<any> = ({ children, className }) => (
   </div>
 );
 
-const BorderBeam: React.FC<any> = ({ className }) => (
+const BorderBeam = ({ className }: any) => (
   <div className={`pointer-events-none absolute inset-0 overflow-hidden rounded-2xl ${className}`}>
     <motion.div
       className='absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-transparent via-teal-400 to-transparent'
@@ -316,7 +319,7 @@ const BorderBeam: React.FC<any> = ({ className }) => (
 );
 
 // --- Command Center Cards ---
-const KpiCard: React.FC<any> = ({ title, value, change, icon, variants }) => (
+const KpiCard = ({ title, value, change, icon, variants }: any) => (
   <motion.div variants={variants}>
     <GlassPane className='h-full p-4'>
       <div className='flex items-start justify-between'>
@@ -336,13 +339,13 @@ const businessArtData = [
   { name: 'Orders', value: 347, max: 500 },
   { name: 'Health', value: 96, max: 100 },
 ];
-const BusinessArtCard = ({ variants }: { variants: any }) => {
+const BusinessArtCard: React.FC<any> = ({ variants }: any) => {
   const { theme } = useTheme();
   const colors = theme === 'dark' ? ['#2dd4bf', '#a78bfa', '#f472b6'] : ['#0d9488', '#7c3aed', '#db2777'];
   return (
     <motion.div variants={variants}>
       <GlassPane className='flex h-full flex-col p-6'>
-        <h2 className='mb-4 text-xl font-bold text-slate-900 dark:text-white'>Today&apos;s Business Art</h2>
+        <h2 className='mb-4 text-xl font-bold text-slate-900 dark:text-white'>Today's Business Art</h2>
         <div className='flex-grow'>
           <ResponsiveContainer width='100%' height='100%'>
             <BarChart data={businessArtData} layout='vertical' margin={{ top: 0, right: 10, left: -20, bottom: 0 }}>
@@ -380,7 +383,7 @@ const BusinessArtCard = ({ variants }: { variants: any }) => {
     </motion.div>
   );
 };
-const StrategicCommandCard: React.FC<any> = ({ variants }) => (
+const StrategicCommandCard = ({ variants }: any) => (
   <motion.div variants={variants}>
     <GlassPane className='relative h-full p-6'>
       <BorderBeam />
@@ -413,7 +416,7 @@ const StrategicCommandCard: React.FC<any> = ({ variants }) => (
     </GlassPane>
   </motion.div>
 );
-const AutomationLiberationCard: React.FC<any> = ({ variants }) => (
+const AutomationLiberationCard = ({ variants }: any) => (
   <motion.div variants={variants}>
     <GlassPane className='flex h-full flex-col justify-between p-6'>
       <h2 className='mb-4 text-xl font-bold text-slate-900 dark:text-white'>Automation Liberation</h2>
@@ -445,7 +448,7 @@ const AutomationLiberationCard: React.FC<any> = ({ variants }) => (
     </GlassPane>
   </motion.div>
 );
-const ExecutiveIntelligenceCard: React.FC<any> = ({ variants }) => (
+const ExecutiveIntelligenceCard = ({ variants }: any) => (
   <motion.div variants={variants}>
     <GlassPane className='flex h-full flex-col justify-between p-6'>
       <h2 className='mb-4 text-xl font-bold text-slate-900 dark:text-white'>Executive Intelligence</h2>
@@ -486,8 +489,8 @@ const ExecutiveIntelligenceCard: React.FC<any> = ({ variants }) => (
 );
 
 // --- Core App Structure (Updated with Responsive Sidebar) ---
-const Sidebar = ({ isCollapsed, isMobile, setMobileOpen }: { isCollapsed: any; isMobile: any; setMobileOpen: any }) => {
-  const NavLink: React.FC<any> = ({ icon, children }: { icon: any; children: React.ReactNode }) => (
+const Sidebar: React.FC<any> = ({ isCollapsed, isMobile, setMobileOpen }: any) => {
+  const NavLink = ({ icon, children }: any) => (
     <a
       href='#'
       className='flex items-center gap-4 rounded-lg px-4 py-2.5 text-slate-600 transition-colors duration-200 hover:bg-slate-300/60 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700/50 dark:hover:text-white'
@@ -593,7 +596,7 @@ const Sidebar = ({ isCollapsed, isMobile, setMobileOpen }: { isCollapsed: any; i
   );
 };
 
-const Header = ({ setMobileOpen, isMobile }: { setMobileOpen: any; isMobile: any }) => {
+const Header: React.FC<any> = ({ setMobileOpen, isMobile }: any) => {
   const { theme, setTheme } = useTheme();
   return (
     <div className='flex items-center justify-between'>
@@ -620,8 +623,8 @@ const Header = ({ setMobileOpen, isMobile }: { setMobileOpen: any; isMobile: any
 
 const AppContent = () => {
   const isMobile = useMediaQuery('(max-width: 1024px)');
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<any>(false); // Default to expanded on desktop
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState<any>(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false); // Default to expanded on desktop
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setIsSidebarCollapsed(isMobile ? false : true);
@@ -655,7 +658,7 @@ const AppContent = () => {
 
       {!isMobile && (
         <div className='relative flex-shrink-0'>
-          <Sidebar isCollapsed={isSidebarCollapsed} isMobile={false} setMobileOpen={setMobileMenuOpen} />
+          <Sidebar isCollapsed={isSidebarCollapsed} isMobile={false} />
           <button
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             className='absolute -right-3 top-[50%] flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-slate-300 bg-slate-200 text-slate-600 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-300'

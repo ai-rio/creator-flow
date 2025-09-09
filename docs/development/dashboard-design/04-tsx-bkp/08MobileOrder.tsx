@@ -1,18 +1,21 @@
 /* eslint-disable */
-import React, { useState, useEffect, createContext, useContext } from 'react';
+'use client';
 
+import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
+import * as React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+// --- TypeScript Interfaces ---
 interface ComponentProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
-
 // --- Theme Context & Provider ---
 const ThemeContext = createContext<any>(null);
 const useTheme = () => useContext(ThemeContext);
-const ThemeProvider = ({ children }: { children: any }) => {
-  const [theme, setTheme] = useState<any>('dark');
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
@@ -54,10 +57,10 @@ const MoonIcon = () => (
     />
   </svg>
 );
-const SearchIcon = ({ className }: any) => (
+const SearchIcon = ({ className = '' }: any) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={className || 'h-5 w-5'}
+    className={`h-5 w-5 ${className}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -66,10 +69,10 @@ const SearchIcon = ({ className }: any) => (
     <path strokeLinecap='round' strokeLinejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' />
   </svg>
 );
-const BackIcon = ({ className }: any) => (
+const BackIcon = ({ className = '' }: any) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={className || 'h-6 w-6'}
+    className={`h-6 w-6 ${className}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -123,7 +126,7 @@ const ShippedIcon = () => (
 );
 
 // --- Helper Components ---
-const GlassPane = React.forwardRef(({ children, className }: any, ref: any) => (
+const GlassPane = React.forwardRef<any, any>(({ children, className }: any, ref: any) => (
   <div
     ref={ref}
     className={`relative rounded-2xl border border-slate-300 bg-white/80 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-black/20 ${className}`}
@@ -200,7 +203,7 @@ const mockOrders = [
 ];
 
 // --- Order Item Component with Swipe Gesture ---
-const OrderItem = ({ order }: { order: any }) => {
+const OrderItem: React.FC<any> = ({ order }: any) => {
   const x = useMotionValue(0);
   const background = useTransform(x, [-100, 0, 100], ['#ef4444', '#334155', '#22c55e']);
 
@@ -249,10 +252,10 @@ const OrderItem = ({ order }: { order: any }) => {
 
 // --- DEMO APP ---
 function AppContent() {
-  const [activeFilter, setActiveFilter] = useState<any>('Strategic');
-  const { theme, setTheme } = useTheme() as any;
+  const [activeFilter, setActiveFilter] = useState<string>('Strategic');
+  const { theme, setTheme } = useTheme();
 
-  const FilterButton: React.FC<any> = ({ label }) => (
+  const FilterButton = ({ label }: any) => (
     <button
       onClick={() => setActiveFilter(label)}
       className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors 
