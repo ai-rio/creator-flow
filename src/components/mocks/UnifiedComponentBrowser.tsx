@@ -80,6 +80,7 @@ import HP090Footer from './HP-090-Footer';
 import AP010Hero from './AP-010-Hero';
 import AP020OurMission from './AP-020-OurMission';
 import AP030TheTeam from './AP-030-TheTeam';
+import CP010Hero from './CP-010-Hero';
 import CP020OpenMissions from './CP-020-OpenMissions';
 import CookiePolicyBar from './Cookie-Policy-Bar';
 import CreatorFlowThemeSwitcher from './CreatorFlow-Theme-Switcher';
@@ -160,7 +161,10 @@ const componentCategories = {
       { id: 'ap020', name: 'AP020: Our Mission', component: AP020OurMission },
       { id: 'ap030', name: 'AP030: The Team', component: AP030TheTeam },
     ],
-    'CP Series': [{ id: 'cp020', name: 'CP020: Open Missions', component: CP020OpenMissions }],
+    'CP Series': [
+      { id: 'cp010', name: 'CP010: Hero', component: CP010Hero },
+      { id: 'cp020', name: 'CP020: Open Missions', component: CP020OpenMissions },
+    ],
     'LP Series': [{ id: 'lp010', name: 'LP010: Legal', component: LP010Legal }],
     'Utility Components': [
       { id: 'cookie-bar', name: 'Cookie Policy Bar', component: CookiePolicyBar },

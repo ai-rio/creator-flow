@@ -1,6 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
-import React, { useCallback, useEffect, useState } from 'react';
+import * as React from 'react';
+import { useCallback, useEffect, useState } from 'react';
+
+// --- TypeScript Interfaces ---
+interface ThemeToggleProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+interface ComponentProps {
+  children?: React.ReactNode;
+  className?: string;
+}
 
 // --- Configuration & Theming ---
 const darkTheme = {
@@ -42,8 +54,8 @@ const manifesto = {
 };
 
 // --- Helper Components ---
-const Typewriter = ({ text, onComplete }) => {
-  const [displayText, setDisplayText] = useState('');
+const Typewriter: React.FC<any> = ({ text, onComplete }: any) => {
+  const [displayText, setDisplayText] = useState<string>('');
 
   useEffect(() => {
     let i = 0;
@@ -62,7 +74,7 @@ const Typewriter = ({ text, onComplete }) => {
   return <span>{displayText}</span>;
 };
 
-const Cursor = ({ theme }) => (
+const Cursor = ({ theme }: any) => (
   <motion.span
     className={`inline-block h-6 w-3 align-middle ${theme.cursor}`}
     initial={{ opacity: 0 }}
@@ -71,7 +83,7 @@ const Cursor = ({ theme }) => (
   />
 );
 
-const IgnitionShatter = ({ onComplete, theme }) => {
+const IgnitionShatter: React.FC<any> = ({ onComplete, theme }: any) => {
   useEffect(() => {
     const timer = setTimeout(onComplete, 1500);
     return () => clearTimeout(timer);
@@ -110,7 +122,7 @@ const IgnitionShatter = ({ onComplete, theme }) => {
   );
 };
 
-const ThemeToggleButton = ({ theme, setTheme, currentTheme }) => (
+const ThemeToggleButton = ({ theme, setTheme, currentTheme }: any) => (
   <motion.button
     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     className={`fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border backdrop-blur-xl ${currentTheme.toggleButton}`}
@@ -134,10 +146,10 @@ const ThemeToggleButton = ({ theme, setTheme, currentTheme }) => (
 );
 
 // --- Main Component ---
-export default function CP010Hero() {
-  const [theme, setTheme] = useState('dark');
-  const [systemState, setSystemState] = useState('typing_headline');
-  const [bodyLineIndex, setBodyLineIndex] = useState(0);
+export default function CP010Hero(): React.JSX.Element {
+  const [theme, setTheme] = useState<string>('dark');
+  const [systemState, setSystemState] = useState<string>('typing_headline');
+  const [bodyLineIndex, setBodyLineIndex] = useState<number>(0);
   const currentTheme = theme === 'dark' ? darkTheme : lightTheme;
 
   const handleHeadlineComplete = useCallback(() => {
