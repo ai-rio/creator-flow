@@ -47,6 +47,25 @@ import M5IntelBriefingCard from './M5IntelBriefingCard';
 import M6MobileNavbar from './M6MobileNavbar';
 import O2OrderSystemStatsCard from './O2OrderSystemStatsCard';
 import O5OrderSubNavbar from './O5OrderSubNavbar';
+// Import Component-prefixed files
+import Component01mobileDashboard from './Component01mobileDashboard';
+import Component02desktopHeaderDemo from './Component02desktopHeaderDemo';
+import Component03desktopToastNotifications from './Component03desktopToastNotifications';
+import Component04desktopSidebarDemo from './Component04desktopSidebarDemo';
+import Component05desktopModals from './Component05desktopModals';
+import Component06desktopOnboardingTourDemo from './Component06desktopOnboardingTour.demo';
+import Component07desktopFeedbackWidget from './Component07desktopFeedbackWidget';
+import Component08mobileOrder from './Component08mobileOrder';
+import Component09desktopOrderTableComponent from './Component09desktopOrderTableComponent';
+import Component10desktopDashboardCommandCenter from './Component10desktopDashboardCommandCenter';
+import Component11desktopOrderFlowVisualisation from './Component11desktopOrderFlowVisualisation';
+import Component12desktopStrategicInsights from './Component12desktopStrategicInsights';
+import Component13desktopUserProfileCard from './Component13desktopUserProfileCard';
+import Component14desktopSecurityCard from './Component14desktopSecurityCard';
+import Component15desktopEmailNotificationsCard from './Component15desktopEmailNotificationsCard';
+import Component16desktopBillinqOverview from './Component16desktopBillinqOverview';
+import Component17desktopBillingHistory from './Component17desktopBillingHistory';
+import Component18desktopPaymentMethod from './Component18desktopPaymentMethod';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -108,6 +127,28 @@ const componentCategories = {
       { id: 'fp030', name: 'FP030: Digital Twin Command', component: FP030DigitalTwinCommand },
       { id: 'fp040', name: 'FP040: Logistics CoPilot', component: FP040LogisticsCoPilot },
       { id: 'fp050', name: 'FP050: Data Prism', component: FP050DataPrism },
+    ],
+  },
+  'Component Series': {
+    'Component Series': [
+      { id: 'c01', name: 'C01: Mobile Dashboard', component: Component01mobileDashboard },
+      { id: 'c02', name: 'C02: Desktop Header Demo', component: Component02desktopHeaderDemo },
+      { id: 'c03', name: 'C03: Toast Notifications', component: Component03desktopToastNotifications },
+      { id: 'c04', name: 'C04: Desktop Sidebar Demo', component: Component04desktopSidebarDemo },
+      { id: 'c05', name: 'C05: Desktop Modals', component: Component05desktopModals },
+      { id: 'c06', name: 'C06: Onboarding Tour Demo', component: Component06desktopOnboardingTourDemo },
+      { id: 'c07', name: 'C07: Feedback Widget', component: Component07desktopFeedbackWidget },
+      { id: 'c08', name: 'C08: Mobile Order', component: Component08mobileOrder },
+      { id: 'c09', name: 'C09: Order Table Component', component: Component09desktopOrderTableComponent },
+      { id: 'c10', name: 'C10: Dashboard Command Center', component: Component10desktopDashboardCommandCenter },
+      { id: 'c11', name: 'C11: Order Flow Visualisation', component: Component11desktopOrderFlowVisualisation },
+      { id: 'c12', name: 'C12: Strategic Insights', component: Component12desktopStrategicInsights },
+      { id: 'c13', name: 'C13: User Profile Card', component: Component13desktopUserProfileCard },
+      { id: 'c14', name: 'C14: Security Card', component: Component14desktopSecurityCard },
+      { id: 'c15', name: 'C15: Email Notifications Card', component: Component15desktopEmailNotificationsCard },
+      { id: 'c16', name: 'C16: Billing Overview', component: Component16desktopBillinqOverview },
+      { id: 'c17', name: 'C17: Billing History', component: Component17desktopBillingHistory },
+      { id: 'c18', name: 'C18: Payment Method', component: Component18desktopPaymentMethod },
     ],
   },
 };
