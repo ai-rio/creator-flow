@@ -72,6 +72,11 @@ import HP010HeaderVariant from './HP-010-Header-Variant';
 import HP020Hero from './HP-020-Hero';
 import HP030BenefitsReelShowcase from './HP-030-BenefitsReel-Showcase';
 import HP040Manifesto from './HP-040-Manifesto';
+import HP050InteractiveShowcase from './HP-050-InteractiveShowcase';
+import HP060Testimonials from './HP-060-Testimonials';
+import HP070PricingTiers from './HP-070-PricingTiers';
+import HP080FinalCTAVariant from './HP-080-FinalCTA-Variant';
+import HP090Footer from './HP-090-Footer';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -135,6 +140,11 @@ const componentCategories = {
       { id: 'hp020', name: 'HP020: Hero', component: HP020Hero },
       { id: 'hp030', name: 'HP030: Benefits Reel Showcase', component: HP030BenefitsReelShowcase },
       { id: 'hp040', name: 'HP040: Manifesto', component: HP040Manifesto },
+      { id: 'hp050', name: 'HP050: Interactive Showcase', component: HP050InteractiveShowcase },
+      { id: 'hp060', name: 'HP060: Testimonials', component: HP060Testimonials },
+      { id: 'hp070', name: 'HP070: Pricing Tiers', component: HP070PricingTiers },
+      { id: 'hp080', name: 'HP080: Final CTA Variant', component: HP080FinalCTAVariant },
+      { id: 'hp090', name: 'HP090: Footer', component: HP090Footer },
     ],
     'FP Series': [
       { id: 'fp020', name: 'FP020: Order Management', component: FP020OrderManagement },
