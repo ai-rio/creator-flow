@@ -101,6 +101,16 @@ import ACTableOfContents from './blog-post/AC-TableOfContents';
 import ACFAQAccordion from './blog-post/AC-FAQAccordion';
 import ACMilestoneCelebration from './blog-post/AC-MilestoneCelebration';
 import ACProfitCommandDashboard from './blog-post/AC-ProfitCommandDashboard';
+// Batch 1 components
+import ACAuthorBriefing from './blog-post/AC-AuthorBriefing';
+import ACCalloutAdvanced from './blog-post/AC-Callout-Advanced';
+import ACCommandList from './blog-post/AC-CommandList';
+import ACExploreFurther from './blog-post/AC-ExploreFurther';
+import ACShareDossier from './blog-post/AC-ShareDossier';
+// Batch 2 components
+import ACSummonsToTheForge from './blog-post/AC-SummonsToTheForge';
+import ACTestimonialBlock from './blog-post/AC-TestimonialBlock';
+import ACTikTokMetrics from './blog-post/AC-TikTokMetrics';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -202,12 +212,20 @@ const componentCategories = {
     'Blog Post Components': [
       { id: 'ac-hero', name: 'AC: Article Hero', component: ACArticleHero },
       { id: 'ac-callout', name: 'AC: Callout', component: ACCallout },
+      { id: 'ac-callout-advanced', name: 'AC: Callout Advanced', component: ACCalloutAdvanced },
       { id: 'ac-datatable', name: 'AC: Data Table', component: ACDataTable },
       { id: 'ac-keytakeaways', name: 'AC: Key Takeaways', component: ACKeyTakeawaysComponent },
       { id: 'ac-toc', name: 'AC: Table of Contents', component: ACTableOfContents },
       { id: 'ac-faq', name: 'AC: FAQ Accordion', component: ACFAQAccordion },
       { id: 'ac-milestone', name: 'AC: Milestone Celebration', component: ACMilestoneCelebration },
       { id: 'ac-profit', name: 'AC: Profit Command Dashboard', component: ACProfitCommandDashboard },
+      { id: 'ac-author', name: 'AC: Author Briefing', component: ACAuthorBriefing },
+      { id: 'ac-command', name: 'AC: Command List', component: ACCommandList },
+      { id: 'ac-explore', name: 'AC: Explore Further', component: ACExploreFurther },
+      { id: 'ac-share', name: 'AC: Share Dossier', component: ACShareDossier },
+      { id: 'ac-summons', name: 'AC: Summons to the Forge', component: ACSummonsToTheForge },
+      { id: 'ac-testimonial', name: 'AC: Testimonial Block', component: ACTestimonialBlock },
+      { id: 'ac-tiktok', name: 'AC: TikTok Metrics', component: ACTikTokMetrics },
     ],
   },
   'Component Series': {
