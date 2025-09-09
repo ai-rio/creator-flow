@@ -77,6 +77,9 @@ import HP060Testimonials from './HP-060-Testimonials';
 import HP070PricingTiers from './HP-070-PricingTiers';
 import HP080FinalCTAVariant from './HP-080-FinalCTA-Variant';
 import HP090Footer from './HP-090-Footer';
+import AP010Hero from './AP-010-Hero';
+import AP020OurMission from './AP-020-OurMission';
+import AP030TheTeam from './AP-030-TheTeam';
 
 const componentCategories = {
   'Dashboard Components': {
@@ -145,6 +148,11 @@ const componentCategories = {
       { id: 'hp070', name: 'HP070: Pricing Tiers', component: HP070PricingTiers },
       { id: 'hp080', name: 'HP080: Final CTA Variant', component: HP080FinalCTAVariant },
       { id: 'hp090', name: 'HP090: Footer', component: HP090Footer },
+    ],
+    'AP Series': [
+      { id: 'ap010', name: 'AP010: Hero', component: AP010Hero },
+      { id: 'ap020', name: 'AP020: Our Mission', component: AP020OurMission },
+      { id: 'ap030', name: 'AP030: The Team', component: AP030TheTeam },
     ],
     'FP Series': [
       { id: 'fp020', name: 'FP020: Order Management', component: FP020OrderManagement },
