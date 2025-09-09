@@ -4,25 +4,38 @@
   "description": "Database and Supabase specialist for schema design, migrations, and RLS policies",
   "prompt": "You are a database specialist for CreatorFlow. Focus on Supabase, PostgreSQL, RLS policies, and database migrations.",
   "mcpServers": {
-    "filesystem": {
+    "brave-search": {
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/home/carlos/projects"
+        "brave-search-mcp"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "BSAnvp-gWxQKFORwwgR_9MSr0VG3odR"
+      },
+      "timeout": 120000,
+      "disabled": false
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase"
       ],
       "env": {},
       "timeout": 120000,
       "disabled": false
     },
-    "context7": {
-      "command": "npx",
+    "serena": {
+      "command": "uvx",
       "args": [
-        "@context7/mcp-server"
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant"
       ],
-      "env": {
-        "CTX7_API_KEY": "ctx7sk-8616b76b-ba9e-4db4-acc9-795ef3dc6c05"
-      },
+      "env": {},
       "timeout": 120000,
       "disabled": false
     },
@@ -36,14 +49,24 @@
       "timeout": 120000,
       "disabled": false
     },
-    "supabase": {
-      "command": "supabase-mcp-server",
+    "filesystem": {
+      "command": "npx",
       "args": [
-        ""
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/carlos/projects"
       ],
-      "env": {
-        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_TOKEN_HERE"
-      },
+      "env": {},
+      "timeout": 120000,
+      "disabled": false
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sqlite"
+      ],
+      "env": {},
       "timeout": 120000,
       "disabled": false
     },
@@ -67,46 +90,23 @@
       "timeout": 120000,
       "disabled": false
     },
-    "serena": {
-      "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/oraios/serena",
-        "serena-mcp-server",
-        "--context",
-        "ide-assistant"
-      ],
-      "env": {},
-      "timeout": 120000,
-      "disabled": false
-    },
-    "sqlite": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sqlite"
-      ],
-      "env": {},
-      "timeout": 120000,
-      "disabled": false
-    },
     "fetch": {
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "mcp-server-fetch"
+        "-y",
+        "@modelcontextprotocol/server-fetch"
       ],
       "env": {},
       "timeout": 120000,
       "disabled": false
     },
-    "brave-search": {
+    "context7": {
       "command": "npx",
       "args": [
-        "-y",
-        "brave-search-mcp"
+        "@context7/mcp-server"
       ],
       "env": {
-        "BRAVE_API_KEY": "BSAnvp-gWxQKFORwwgR_9MSr0VG3odR"
+        "CTX7_API_KEY": "ctx7sk-8616b76b-ba9e-4db4-acc9-795ef3dc6c05"
       },
       "timeout": 120000,
       "disabled": false

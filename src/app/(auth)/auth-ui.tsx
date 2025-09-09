@@ -1,8 +1,8 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FormEvent, useState } from 'react';
 import { IoLogoGithub, IoLogoGoogle } from 'react-icons/io5';
 
 import { Button } from '@/components/ui/button';

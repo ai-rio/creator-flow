@@ -1,0 +1,114 @@
+/* eslint-disable */
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+
+// Import O-Series components
+import O2OrderSystemStatsCard from './O2OrderSystemStatsCard';
+import O5OrderSubNavbar from './O5OrderSubNavbar';
+
+const components = [
+  { id: 'o2', name: 'O2: Order System Stats', component: O2OrderSystemStatsCard },
+  { id: 'o5', name: 'O5: Order Sub Navbar', component: O5OrderSubNavbar },
+];
+
+interface OSeriesProps {
+  initialComponent?: string;
+  mode?: 'browser' | 'individual';
+}
+
+export default function OSeries({ initialComponent = 'o2', mode = 'individual' }: OSeriesProps) {
+  const [currentIndex, setCurrentIndex] = useState(components.findIndex((c) => c.id === initialComponent) || 0);
+
+  const currentComponent = components[currentIndex];
+  const Component = currentComponent.component;
+
+  const navigate = (direction: 'prev' | 'next') => {
+    if (direction === 'prev' && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (direction === 'next' && currentIndex < components.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') navigate('prev');
+      if (e.key === 'ArrowRight') navigate('next');
+      if (e.key === 'Escape') window.history.back();
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentIndex]);
+
+  return (
+    <div className='relative min-h-screen bg-slate-100 dark:bg-slate-900'>
+      {/* Navigation Panel */}
+      <motion.div
+        initial={{ x: 300 }}
+        animate={{ x: 0 }}
+        className='fixed right-4 top-4 z-50 rounded-lg border border-slate-200 bg-white/90 p-3 shadow-lg backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/90'
+      >
+        <div className='flex flex-col gap-2'>
+          <div className='text-center text-xs font-bold text-slate-600 dark:text-slate-400'>
+            O-SERIES ({currentIndex + 1}/{components.length})
+          </div>
+
+          <div className='flex gap-1'>
+            <button
+              onClick={() => navigate('prev')}
+              disabled={currentIndex === 0}
+              className='rounded bg-green-100 p-1.5 text-green-700 disabled:opacity-50 dark:bg-green-900 dark:text-green-300'
+              title='Previous (←)'
+            >
+              <ChevronLeft size={14} />
+            </button>
+
+            <button
+              onClick={() => navigate('next')}
+              disabled={currentIndex === components.length - 1}
+              className='rounded bg-green-100 p-1.5 text-green-700 disabled:opacity-50 dark:bg-green-900 dark:text-green-300'
+              title='Next (→)'
+            >
+              <ChevronRight size={14} />
+            </button>
+
+            <button
+              onClick={() => window.history.back()}
+              className='rounded bg-yellow-100 p-1.5 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
+              title='Back (ESC)'
+            >
+              <Home size={14} />
+            </button>
+
+            <button
+              onClick={() => window.location.reload()}
+              className='rounded bg-purple-100 p-1.5 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+              title='Reload'
+            >
+              <RotateCcw size={14} />
+            </button>
+          </div>
+
+          <div className='text-center text-xs text-slate-500 dark:text-slate-400'>{currentComponent.name}</div>
+        </div>
+      </motion.div>
+
+      {/* Component Display */}
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={currentComponent.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Component />
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}

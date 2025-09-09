@@ -42,6 +42,22 @@ const nextConfig = {
     'sharp'
     // Note: By not including 'prettier' here, it will be bundled
   ],
+
+  // Fix framer-motion and recharts module resolution
+  webpack: (config) => {
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts', '.tsx'],
+      '.mjs': ['.mjs', '.js', '.ts', '.tsx'],
+    };
+    
+    // Fix recharts selector issue
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'recharts': require.resolve('recharts'),
+    };
+    
+    return config;
+  },
   
   // Security headers for production
   async headers() {
@@ -90,6 +106,6 @@ const nextConfig = {
   // Optimize builds
   compress: true,
   poweredByHeader: false,
-};
+};;;
 
 module.exports = withNextIntl(withBundleAnalyzer(nextConfig));

@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CreatorFlow Public Pages - CDH Manifesto Styling */
+
+@layer base {
+  :root {
+    /* CDH Manifesto Tenet 1: Clarity Over Chaos */
+    --clarity-primary: 215 100% 50%;        /* #3b82f6 */
+    --clarity-neutral: 215 14% 34%;         /* #475569 */
+    --clarity-background: 210 20% 98%;      /* #f8fafc */
+    --clarity-focus: 215 100% 50%;          /* Focus indicator */
+
+    /* CDH Manifesto Tenet 2: Data is Art */
+    --data-art-primary: 258 90% 66%;        /* #8b5cf6 */
+    --data-art-creative: 285 85% 68%;       /* #a855f7 */
+    --data-art-canvas: 237 36% 20%;         /* #1e1b4b */
+    --data-art-inspiration: 330 81% 60%;    /* #ec4899 */
+
+    /* CDH Manifesto Tenet 3: Empowerment Through Automation */
+    --automation-primary: 159 64% 40%;      /* #10b981 */
+    --automation-liberated: 159 64% 56%;    /* #34d399 */
+    --automation-celebrating: 159 64% 72%;  /* #6ee7b7 */
+    --automation-flow: 159 64% 88%;         /* #a7f3d0 */
+
+    /* CDH Manifesto Tenet 4: Creator is the CEO */
+    --executive-primary: 41 96% 48%;        /* #f59e0b */
+    --executive-authority: 41 96% 40%;      /* #d97706 */
+    --executive-commanding: 41 96% 32%;     /* #92400e */
+    --executive-platinum: 60 9% 87%;        /* #e5e4e2 */
+
+    /* TikTok Integration Brand Colors */
+    --tiktok-pink: 350 100% 50%;            /* #ff0050 */
+    --tiktok-blue: 180 100% 53%;            /* #25f4ee */
+    --tiktok-black: 234 18% 12%;            /* #161823 */
+    
+    /* Premium Animation Variables */
+    --duration-instant: 100ms;
+    --duration-fast: 200ms;
+    --duration-medium: 300ms;
+    --duration-slow: 500ms;
+    --duration-cinematic: 800ms;
+    --duration-epic: 1200ms;
+
+    /* Premium Easing Functions */
+    --ease-executive: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-cinematic: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Enhanced base styles for public pages */
+  * {
+    @apply border-border min-w-0;
+  }
+
+  html, body {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* CDH Manifesto Typography Styles */
+  h1 {
+    @apply font-display font-bold text-4xl lg:text-6xl;
+    @apply text-white bg-clip-text drop-shadow-[0_0_15px_rgba(0,0,0,1)];
+    @apply lg:text-transparent lg:bg-gradient-to-br from-white to-neutral-400;
+  }
+
+  /* Executive heading style */
+  .heading-executive {
+    @apply font-display font-bold text-heading-xl text-executive-600;
+    @apply drop-shadow-sm;
+  }
+
+  /* Data art heading style */
+  .heading-artistic {
+    @apply font-display font-semibold text-heading-lg;
+    @apply bg-gradient-to-r from-data-art-600 via-data-art-500 to-data-art-900;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* CEO heading for heroes */
+  .heading-ceo {
+    @apply font-display font-bold text-executive-600 tracking-tight;
+    @apply drop-shadow-md;
+  }
+
+  /* Premium selection styling */
+  ::selection {
+    @apply text-black bg-tiktok-blue;
+  }
+
+  /* Enhanced focus styling */
+  *:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-clarity-500;
+  }
+
+  /* Premium scroll styling */
+  .scroll-premium {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--executive-primary)) hsl(var(--clarity-background));
+  }
+
+  .scroll-premium::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scroll-premium::-webkit-scrollbar-track {
+    background: hsl(var(--clarity-background));
+    border-radius: 4px;
+  }
+
+  .scroll-premium::-webkit-scrollbar-thumb {
+    background: hsl(var(--executive-primary));
+    border-radius: 4px;
+  }
+
+  .scroll-premium::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--executive-authority));
+  }
+}
+
+/* CDH Manifesto Component Classes */
+@layer components {
+  /* MVPBlocks Trading Hero Customization */
+  .mvp-trading-hero {
+    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900;
+    background-image: 
+      radial-gradient(at 40% 20%, hsl(var(--executive-primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(var(--data-art-primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(var(--automation-primary) / 0.1) 0px, transparent 50%);
+  }
+
+  .mvp-trading-hero .hero-title {
+    @apply heading-ceo animate-priority-highlight;
+  }
+
+  .mvp-trading-hero .hero-cta {
+    @apply button-executive;
+  }
+
+  /* Enhanced Header Styling */
+  .mvp-header-2 {
+    @apply bg-clarity-neutral-50/90 backdrop-blur-sm;
+    border-bottom: 1px solid hsl(var(--clarity-neutral) / 0.2);
+  }
+
+  .mvp-header-2 .nav-link {
+    @apply text-clarity-neutral-700 hover:text-clarity-500;
+    transition: color var(--duration-fast) var(--ease-executive);
+  }
+
+  /* Executive Components */
+  .card-executive {
+    @apply bg-gradient-to-br from-executive-50 to-executive-100 border-2 border-executive-500/30 rounded-executive;
+    @apply shadow-executive transition-all duration-slow hover:shadow-authority-glow;
+  }
+
+  .button-executive {
+    @apply bg-executive-500 hover:bg-executive-600 text-white font-semibold;
+    @apply px-6 py-3 rounded-lg transition-all duration-medium;
+    @apply shadow-lg hover:shadow-authority-glow transform hover:-translate-y-1;
+  }
+
+  .button-tiktok {
+    @apply bg-gradient-to-r from-tiktok-pink to-tiktok-blue text-white font-semibold;
+    @apply px-6 py-3 rounded-lg transition-all duration-medium;
+    @apply shadow-lg hover:shadow-viral-glow transform hover:-translate-y-1;
+  }
+
+  /* TikTok Integration Components */
+  .status-tiktok-connected {
+    @apply bg-gradient-to-r from-tiktok-pink to-tiktok-blue text-white;
+    @apply px-4 py-2 rounded-full text-sm font-medium;
+    @apply shadow-lg animate-pulse;
+  }
+
+  /* Premium Loading States */
+  .loading-executive {
+    @apply inline-flex items-center gap-2 text-executive-600 font-medium;
+  }
+
+  .loading-executive::after {
+    content: '';
+    @apply w-4 h-4 border-2 border-executive-600/30 border-t-executive-600 rounded-full animate-spin;
+  }
+
+  /* Testimonials Marquee Styling */
+  .mvp-testimonials-marquee {
+    @apply bg-data-art-50/10;
+  }
+
+  .mvp-testimonials-marquee .testimonial-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl;
+    @apply hover:shadow-xl transform hover:-translate-y-1;
+    @apply transition-all duration-medium;
+  }
+
+  /* Footer Newsletter Styling */
+  .footer-newsletter {
+    @apply bg-slate-900;
+  }
+
+  .footer-newsletter .newsletter-section {
+    @apply bg-gradient-to-r from-executive-500 via-executive-600 to-executive-900;
+  }
+}
+
+/* Premium Animation Classes */
+@layer utilities {
+  /* CDH Manifesto Animation Utilities */
+  .animate-authority-glow {
+    animation: authority-glow 1.5s ease-in-out infinite;
+  }
+
+  .animate-priority-highlight {
+    animation: priority-highlight 2s infinite;
+  }
+
+  .animate-executive-entrance {
+    animation: executive-entrance 0.8s var(--ease-executive) forwards;
+  }
+
+  /* Marquee Animation Utilities */
+  .animate-marquee-slow {
+    animation: marquee 60s linear infinite;
+  }
+
+  .animate-marquee-medium {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee-fast {
+    animation: marquee 20s linear infinite;
+  }
+
+  .paused {
+    animation-play-state: paused;
+  }
+
+  /* Premium Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-fast hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-executive {
+    @apply transition-all duration-medium hover:-translate-y-2 hover:shadow-authority-glow;
+  }
+
+  /* Premium Focus States */
+  .focus-executive {
+    @apply focus:outline-none focus:ring-4 focus:ring-executive-500/20 focus:shadow-authority-glow;
+  }
+}
+
+/* Premium Keyframes */
+@keyframes authority-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--executive-primary) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px hsl(var(--executive-primary) / 0.6);
+  }
+}
+
+@keyframes priority-highlight {
+  0% { box-shadow: 0 0 0 0 hsl(var(--clarity-primary) / 0.4); }
+  70% { box-shadow: 0 0 0 10px hsl(var(--clarity-primary) / 0); }
+  100% { box-shadow: 0 0 0 0 hsl(var(--clarity-primary) / 0); }
+}
+
+@keyframes executive-entrance {
+  0% { 
+    transform: translateY(-20px) scale(0.95); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.02); 
+    opacity: 0.5; 
+  }
+  100% { 
+    transform: translateY(0) scale(1); 
+    opacity: 1; 
+  }
+}
+
+/* Marquee Animation Keyframes */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Additional TikTok-inspired animations */
+@keyframes viral-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3), 0 0 25px hsl(var(--tiktok-blue) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px hsl(var(--tiktok-pink) / 0.5), 0 0 35px hsl(var(--tiktok-blue) / 0.4);
+  }
+}
+
+.shadow-viral-glow {
+  box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3), 0 0 25px hsl(var(--tiktok-blue) / 0.2);
+}
+
+.shadow-authority-glow {
+  box-shadow: 0 0 20px hsl(var(--executive-primary) / 0.3);
+}

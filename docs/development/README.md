@@ -81,53 +81,128 @@
 
 ```
 creator-flow/
-├── src/
-│   ├── app/                 # Next.js App Router pages & API routes
-│   │   ├── (auth)/         # Authentication pages
-│   │   ├── (dashboard)/    # Main application pages
-│   │   ├── api/            # API routes and webhooks
-│   │   └── globals.css     # Global styles with design tokens
-│   ├── components/         # Reusable UI components
-│   │   ├── ui/            # shadcn/ui + mvpblocks base components
-│   │   ├── custom/        # Custom CreatorFlow components
-│   │   └── dashboard/     # Premium dashboard components
-│   ├── features/          # Feature-specific modules
-│   │   ├── auth/          # Authentication logic
-│   │   ├── orders/        # TikTok order management
-│   │   ├── shipping/      # Shipping integration
-│   │   ├── analytics/     # Analytics and reporting
-│   │   └── tiktok/        # TikTok Shop integration
-│   ├── lib/               # Utilities and configurations
-│   │   ├── supabase/      # Database client and helpers
-│   │   ├── stripe/        # Payment processing
-│   │   ├── tiktok/        # TikTok Shop API client
-│   │   └── utils/         # General utilities
-│   └── types/             # TypeScript type definitions
-├── supabase/              # Database migrations and functions
-├── docs/                  # Project documentation
-│   ├── development/       # Development guides and specifications
-│   │   ├── order-management/          # Core orchestrator system
-│   │   ├── tiktok-inventory-tracking/ # Inventory component system
-│   │   ├── shipping-automation/       # Multi-carrier shipping system
-│   │   ├── tiktok-shop-integration/   # TikTok Shop API integration
-│   │   ├── creator-analytics/         # Analytics and reporting system
-│   │   ├── creator-authentication/    # Auth and subscription system
-│   │   ├── dashboard-design/          # Premium dashboard design system
-│   │   ├── public-pages/              # Public-facing website components
-│   │   ├── localization/              # Internationalization system
-│   │   └── documentation-standards/   # Project documentation standards
-│   ├── architecture/      # System architecture documentation
-│   └── business/          # Business model and strategy
-├── tests/                 # Test files and utilities
-└── scripts/               # Development and deployment scripts
+├── src/                           # Main application source
+│   ├── app/                      # Next.js App Router pages & API routes
+│   │   ├── (account)/           # Account management pages (grouped route)
+│   │   ├── (auth)/              # Authentication pages (grouped route)
+│   │   ├── (public)/            # Public pages with MVPBlocks integration
+│   │   ├── [locale]/            # Internationalized routes with Tolgee
+│   │   ├── api/                 # API routes and webhooks
+│   │   │   ├── webhooks/        # External webhook handlers
+│   │   │   │   └── tiktok/      # TikTok Shop webhook processing
+│   │   │   └── health/          # Health check endpoints
+│   │   ├── pricing/             # Pricing page
+│   │   └── [core files]         # layout.tsx, page.tsx, etc.
+│   ├── components/              # Reusable UI components
+│   │   ├── ui/                  # Base shadcn/ui components
+│   │   ├── mdx/                 # MDX-specific components
+│   │   ├── mocks/               # Dashboard mock components (60+ files)
+│   │   ├── tiktok/              # TikTok integration components
+│   │   └── [custom components]  # Application-specific components
+│   ├── features/                # Feature-specific modules
+│   │   ├── account/             # Account management logic
+│   │   ├── emails/              # Email templates and logic
+│   │   │   └── creatorflow/     # CreatorFlow-specific email templates
+│   │   └── pricing/             # Pricing logic and components
+│   ├── libs/                    # External service integrations
+│   │   ├── supabase/            # Database client and helpers
+│   │   ├── stripe/              # Payment processing
+│   │   ├── posthog/             # Analytics integration
+│   │   └── resend/              # Email service
+│   ├── lib/                     # Core utilities and configurations
+│   │   ├── tiktok/              # TikTok Shop API client and processors
+│   │   └── i18n/                # Internationalization configuration
+│   ├── types/                   # TypeScript type definitions
+│   ├── utils/                   # General utilities
+│   ├── constants/               # Application constants
+│   ├── messages/                # i18n message files (en, es, pt-br)
+│   └── styles/                  # Global styles with CDH design tokens
+├── supabase/                    # Database and serverless functions
+│   ├── functions/               # Edge Functions (Deno runtime)
+│   │   ├── _shared/             # Shared utilities
+│   │   └── tiktok-webhook-processor/ # TikTok webhook processing
+│   └── migrations/              # Database migration files
+├── docs/                        # Comprehensive project documentation
+│   ├── development/             # Development guides and specifications
+│   │   ├── system-architecture/        # **NEW** Integration framework
+│   │   ├── order-workflow-automation/  # **NEW** State machine engine
+│   │   ├── real-time-sync/             # **NEW** Synchronization engine
+│   │   ├── database-architecture/      # **NEW** Data foundation
+│   │   ├── tiktok-shop-integration/    # **ENHANCED** TikTok integration
+│   │   ├── order-management/           # Core orchestrator system
+│   │   ├── tiktok-inventory-tracking/  # Inventory component system
+│   │   ├── shipping-automation/        # Multi-carrier shipping system
+│   │   ├── creator-analytics/          # Analytics and reporting system
+│   │   ├── creator-authentication/     # Auth and subscription system
+│   │   ├── dashboard-design/           # Premium dashboard design system
+│   │   ├── public-pages/               # Public-facing website components
+│   │   ├── localization/               # Internationalization system
+│   │   ├── moscow-methodology/         # MoSCoW prioritization framework
+│   │   ├── intelligent-automation/     # Automation system specifications
+│   │   └── documentation-standards/    # Project documentation standards
+│   ├── architecture/            # System architecture documentation
+│   ├── business/                # Business model and strategy
+│   ├── security/                # Security implementation guides
+│   ├── features/                # Feature specifications
+│   └── integrations/            # External integration documentation
+├── tests/                       # Test files and utilities
+│   ├── e2e/                     # End-to-end tests (Playwright)
+│   ├── integration/             # Integration tests
+│   ├── unit/                    # Unit tests (Jest)
+│   ├── helpers/                 # Test helper utilities
+│   └── utils/                   # Testing utilities
+├── scripts/                     # Development and deployment scripts
+│   ├── git-*.js                 # Git workflow automation scripts
+│   ├── automation-*.js          # Intelligent automation system
+│   ├── convert-*.ts             # JSX to TSX conversion tools
+│   └── [various utilities]      # Development, testing, deployment
+├── content/                     # Content management
+│   └── creatorflow/             # CreatorFlow-specific content
+├── public/                      # Static assets
+└── [config files]              # Various configuration files
 ```
 
 ## 🏗️ Core Systems Documentation
 
-CreatorFlow is built around eight core systems that work together to deliver seamless TikTok Shop fulfillment automation:
+CreatorFlow is built around comprehensive systems that work together to deliver seamless TikTok Shop fulfillment automation:
 
 ### 📋 **Master Implementation Plan**
 **[CreatorFlow Master Roadmap](./moscow-methodology/02-implementation/I001-DRAFT-roadmap.md)** - Single source of truth consolidating all system planning, specifications, and implementation details using MoSCoW methodology.
+
+### 🏛️ [System Architecture](./system-architecture/) - **NEW** Integration Framework
+Comprehensive cross-system integration flows mapping 96 touchpoints across 4 core systems with real-time synchronization.
+- **Status**: ✅ **COMPLETE** - Full architecture specifications and implementation guides
+- **Performance Target**: 10x traffic spike handling, <200ms cross-system latency
+- **Integration**: Orchestrates all system interactions and data flows
+- **Key Features**: Event-driven architecture, conflict resolution, performance optimization
+
+### 🔄 [Order Workflow Automation](./order-workflow-automation/) - **NEW** State Machine Engine
+Advanced order lifecycle management with state machines, business rules engine, and automated workflow orchestration.
+- **Status**: ✅ **COMPLETE** - Comprehensive workflow specifications and implementation plan
+- **Performance Target**: 500+ orders/day per creator, <30s end-to-end processing
+- **Integration**: Central orchestrator coordinating all fulfillment operations
+- **Key Features**: 8-state workflow, priority classification, viral content correlation
+
+### 🔄 [Real-time Sync](./real-time-sync/) - **NEW** Synchronization Engine
+Event sourcing and real-time data synchronization with conflict resolution and performance optimization.
+- **Status**: ✅ **COMPLETE** - Event sourcing architecture and Supabase integration specs
+- **Performance Target**: <5s sync latency, 99.9% data consistency
+- **Integration**: Ensures data integrity across all systems
+- **Key Features**: Event sourcing, conflict resolution, real-time subscriptions
+
+### 🗄️ [Database Architecture](./database-architecture/) - **NEW** Data Foundation
+Comprehensive ERD design with 15+ interconnected tables supporting viral content correlation and performance tracking.
+- **Status**: ✅ **COMPLETE** - Full database schema and migration scripts
+- **Performance Target**: <50ms query response, 99.99% data durability
+- **Integration**: Foundation for all system data storage and relationships
+- **Key Features**: RLS policies, performance optimization, viral content tracking
+
+### 🔗 [TikTok Shop Integration](./tiktok-shop-integration/) - **ENHANCED** External API System
+Production-ready TikTok Shop API integration with viral content correlation, enhanced security, and performance optimization.
+- **Status**: ✅ **COMPLETE** - Full implementation with components and infrastructure
+- **Performance Target**: <500ms API response, 99.9% uptime, viral spike handling
+- **Integration**: Primary data source with enhanced webhook processing
+- **Key Features**: Viral content detection, priority classification, secure webhook processing
 
 ### 🎯 [Order Management](./order-management/) - Core Orchestrator
 Central system coordinating all fulfillment operations. Manages order lifecycle, workflow engine, and system integrations.
@@ -146,12 +221,6 @@ Automated label generation, rate shopping, and tracking across USPS, UPS, FedEx,
 - **Status**: Planning Only - Multi-carrier investigation, no specifications yet
 - **Performance Target**: <30s label generation, 15-25% cost savings
 - **Integration**: Receives orders from order management
-
-### 🔗 [TikTok Shop Integration](./tiktok-shop-integration/) - External API System
-Comprehensive TikTok Shop API integration for orders, products, webhooks, and seller management.
-- **Status**: Planning Complete - API specs defined, implementation NOT STARTED
-- **Performance Target**: <500ms API response, 99.9% uptime
-- **Integration**: Primary data source for order management
 
 ### 📊 [Creator Analytics](./creator-analytics/) - Reporting System
 Performance metrics, revenue tracking, and business intelligence for creator growth optimization.
@@ -368,6 +437,11 @@ bun test --watch
 
 ### CreatorFlow-Specific Documentation
 - **Master Implementation Roadmap**: `docs/development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md`
+- **System Architecture**: `docs/development/system-architecture/01-specifications/S001-cross-system-integration-flows.md`
+- **Order Workflow Automation**: `docs/development/order-workflow-automation/01-specifications/S001-DRAFT-technical-requirements.md`
+- **Real-time Sync Engine**: `docs/development/real-time-sync/01-specifications/S001-comprehensive-realtime-sync-architecture.md`
+- **Database Architecture**: `docs/development/database-architecture/03-reports/R001-DRAFT-comprehensive-erd-design.md`
+- **TikTok Shop Integration**: `docs/development/tiktok-shop-integration/01-specifications/S001-DRAFT-complete-integration-architecture.md`
 - **Dashboard Design System**: `docs/development/dashboard-design/01-specifications/S001-dashboard-wireframes.md`
 - **Design Tokens & Style Guide**: `docs/development/dashboard-design/01-specifications/S002-DRAFT-style-guide-design-tokens.md`
 - **Public Pages Strategy**: `docs/development/public-pages/01-specifications/S001-DRAFT-public-pages-component-strategy.md`

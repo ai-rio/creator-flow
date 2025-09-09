@@ -1,13 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": [
-    "simple-import-sort",
-    "@typescript-eslint"
-  ],
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["simple-import-sort", "@typescript-eslint"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
@@ -32,6 +26,14 @@
       "rules": {
         "@typescript-eslint/no-explicit-any": "error",
         "no-console": "error"
+      }
+    },
+    {
+      "files": ["scripts/**/*", "*.config.js", "jest.*.js"],
+      "rules": {
+        "@typescript-eslint/no-require-imports": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-console": "off"
       }
     }
   ]

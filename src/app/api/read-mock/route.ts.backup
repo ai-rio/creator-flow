@@ -1,0 +1,28 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { readFileSync } from 'fs'
+import { join } from 'path'
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url)
+  const filename = searchParams.get('file')
+  
+  if (!filename) {
+    return NextResponse.json({ error: 'No filename provided' }, { status: 400 })
+  }
+
+  try {
+    const filePath = join(process.cwd(), 'docs/development/dashboard-design/03-jsx-mock', filename)
+    const content = readFileSync(filePath, 'utf8')
+    
+    return NextResponse.json({ 
+      filename,
+      content,
+      success: true 
+    })
+  } catch (error) {
+    return NextResponse.json({ 
+      error: `Failed to read file: ${filename}`,
+      details: error.message 
+    }, { status: 500 })
+  }
+}

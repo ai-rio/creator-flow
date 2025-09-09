@@ -2,7 +2,7 @@
 name: ui-ux-specialist
 description: MUST BE USED for ALL UI/UX design, component development, responsive design, and user experience optimization tasks. Critical for CreatorFlow's creator-focused interface and conversion optimization.
 model: sonnet
-tools: Read, Write, Bash, Grep, Glob
+tools: Read, Write, Bash, Grep, Glob, Browser
 ---
 
 ## Orchestrator Interface
