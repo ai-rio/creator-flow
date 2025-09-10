@@ -170,6 +170,7 @@ import AMBillingOverviewDemo from '../atomic/organisms/AM-BillingOverviewDemo';
 import AMBillingHistoryDemo from '../atomic/organisms/AM-BillingHistoryDemo';
 import AMPaymentMethodsDemo from '../atomic/organisms/AM-PaymentMethodsDemo';
 import AMSecuritySettingsDemo from '../atomic/organisms/AM-SecuritySettingsDemo';
+import DAOrderTableDemo from '../atomic/organisms/DA-OrderTableDemo';
 import BIExecutiveIntelligence from '../atomic/organisms/BI-ExecutiveIntelligence';
 import BIStrategicInsightsDemo from '../atomic/organisms/BI-StrategicInsightsDemo';
 import OMFlowVisualizationDemo from '../atomic/organisms/OM-FlowVisualizationDemo';
@@ -257,6 +258,7 @@ const componentCategories: ComponentCategories = {
         name: 'ATOMIC: Security Settings (AM-040)',
         component: AMSecuritySettingsDemo,
       },
+      { id: 'atomic-da-order-table', name: 'ATOMIC: Order Table (DA-010)', component: DAOrderTableDemo },
       { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
       { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },
       {

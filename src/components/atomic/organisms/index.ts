@@ -22,6 +22,7 @@ import { PaymentMethods } from './AM-PaymentMethods';
 import { SecuritySettings } from './AM-SecuritySettings';
 import BIExecutiveIntelligence from './BI-ExecutiveIntelligence';
 import { StrategicInsights } from './BI-StrategicInsights';
+import { OrderTable } from './DA-OrderTable';
 import DCBusinessIntelligence from './DC-BusinessIntelligence';
 import DCCrisisCommand from './DC-CrisisCommand';
 import DCEmergencyControls from './DC-EmergencyControls';
@@ -47,6 +48,7 @@ export { BillingOverview };
 export { BillingHistory };
 export { PaymentMethods };
 export { SecuritySettings };
+export { OrderTable };
 export { DCHealthOverview };
 export { DCPerformanceArtistry };
 export { DCBusinessIntelligence };
@@ -90,6 +92,10 @@ export { StrategicInsights };
 // export type { UserManagementProps } from './UserManagement';
 
 // Grouped exports for domain-specific usage
+export const DataAnalyticsOrganisms = {
+  OrderTable,
+};
+
 export const AnalyticsManagementOrganisms = {
   BillingOverview,
   BillingHistory,
