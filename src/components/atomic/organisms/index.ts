@@ -22,6 +22,8 @@ import DCCrisisCommand from './DC-CrisisCommand';
 import DCEmergencyControls from './DC-EmergencyControls';
 import DCHealthOverview from './DC-HealthOverview';
 import DCPerformanceArtistry from './DC-PerformanceArtistry';
+// Migrated Navigation Components
+import NCNavigationHeader from './NC-NavigationHeader';
 // Migrated Sidebar Components
 import SBAdminSidebar from './SB-AdminSidebar';
 // Migrated Security & Command Components
@@ -34,6 +36,7 @@ export { DCPerformanceArtistry };
 export { DCBusinessIntelligence };
 export { DCCrisisCommand };
 export { DCEmergencyControls };
+export { NCNavigationHeader };
 export { SCStrategicCommand };
 export { SBAdminSidebar };
 export { ALAutomationOrchestra };
@@ -79,6 +82,7 @@ export const SecurityOrganisms = {
 };
 
 export const NavigationOrganisms = {
+  NCNavigationHeader,
   SBAdminSidebar,
   // NavigationSidebar,
 };

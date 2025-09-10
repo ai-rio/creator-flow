@@ -157,6 +157,7 @@ import DCCommandCenter from '../atomic/compositions/dashboard/DC-CommandCenter';
 import DCBusinessIntelligence from '../atomic/organisms/DC-BusinessIntelligence';
 import DCCrisisCommand from '../atomic/organisms/DC-CrisisCommand';
 // Migrated atomic components
+import NCNavigationHeader from '../atomic/organisms/NC-NavigationHeader';
 import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
 import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
 import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
@@ -217,6 +218,7 @@ const componentCategories: ComponentCategories = {
   },
   'Atomic Components': {
     Organisms: [
+      { id: 'atomic-nc-header', name: 'ATOMIC: Navigation Header (NC-010)', component: NCNavigationHeader },
       { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
       { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },
       {
