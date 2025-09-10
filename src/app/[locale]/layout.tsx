@@ -10,6 +10,7 @@ import { getMessages } from 'next-intl/server';
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5';
 
 import { Logo } from '@/components/logo';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 import { TolgeeClientProvider } from '@/components/tolgee-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { locales } from '@/lib/i18n/config';
@@ -37,13 +38,13 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  
+
   if (!locales.includes(locale as never)) {
     notFound();
   }
@@ -51,21 +52,29 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)}>
-        <TolgeeClientProvider>
-          <NextIntlClientProvider messages={messages}>
-            <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
-              <AppBar />
-              <main className='relative flex-1'>
-                <div className='relative h-full'>{children}</div>
-              </main>
-              <Footer />
-            </div>
-            <Toaster />
-            <Analytics />
-          </NextIntlClientProvider>
-        </TolgeeClientProvider>
+    <html lang={locale} className='scroll-smooth' suppressHydrationWarning>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased',
+          montserrat.variable,
+          montserratAlternates.variable
+        )}
+      >
+        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false} disableTransitionOnChange={false}>
+          <TolgeeClientProvider>
+            <NextIntlClientProvider messages={messages}>
+              <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
+                <AppBar />
+                <main className='relative flex-1'>
+                  <div className='relative h-full'>{children}</div>
+                </main>
+                <Footer />
+              </div>
+              <Toaster />
+              <Analytics />
+            </NextIntlClientProvider>
+          </TolgeeClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
@@ -130,9 +139,7 @@ function Footer() {
         </div>
       </div>
       <div className='border-t border-zinc-800 py-6 text-center'>
-        <span className='text-neutral4 text-xs'>
-          Copyright {new Date().getFullYear()} © CreatorFlow
-        </span>
+        <span className='text-neutral4 text-xs'>Copyright {new Date().getFullYear()} © CreatorFlow</span>
       </div>
     </footer>
   );

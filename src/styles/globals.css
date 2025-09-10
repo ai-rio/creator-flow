@@ -6,39 +6,39 @@
 
 @layer base {
   :root {
-    /* Existing shadcn/ui variables (maintained for compatibility) */
-    --background: 240 6% 10%;
-    --foreground: 60 0% 90%;
-    --muted: 240 6% 10%;
-    --muted-foreground: 240 5% 84%;
+    /* CreatorFlow Light Theme - AAA Compliant */
+    --background: 210 20% 98%;               /* Very light slate background */
+    --foreground: 222.2 84% 4.9%;           /* Very dark slate text */
+    --muted: 210 40% 94%;                    /* Light muted background */
+    --muted-foreground: 215.4 16.3% 25%;    /* Dark muted text (AAA compliant) */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 75%;               /* Darker border for visibility */
+    --input: 214.3 31.8% 75%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-    --primary: 222.2 47.4% 11.2%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 84% 4.9%;               /* Dark slate primary */
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 100% 50%;
+    --secondary: 210 40% 90%;                /* Light slate secondary */
+    --secondary-foreground: 222.2 84% 4.9%;
+    --accent: 210 40% 90%;                   /* Light slate accent */
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84% 35%;                /* Darker red for AAA */
     --destructive-foreground: 210 40% 98%;
-    --ring: 215 20.2% 65.1%;
+    --ring: 215 20.2% 45%;
     --radius: 0.5rem;
 
-    /* Real CreatorFlow Brand Colors (Extracted from 100+ components) */
-    --brand-teal-primary: 173 80% 30%;      /* #0d9488 - Primary brand color */
-    --brand-teal-light: 173 80% 52%;        /* #2dd4bf - Light teal accent */
-    --brand-purple-primary: 258 90% 66%;    /* #8b5cf6 - Purple accent */
-    --brand-blue-primary: 215 100% 50%;     /* #3b82f6 - Blue interactions */
+    /* CreatorFlow Brand Colors - AAA Compliant Light Theme */
+    --brand-teal-primary: 173 100% 18%;      /* #005c4f - Darker teal */
+    --brand-teal-light: 173 100% 22%;        /* #007061 - Darker light teal */
+    --brand-purple-primary: 258 100% 30%;    /* #4c1d95 - Darker purple */
+    --brand-blue-primary: 215 100% 30%;      /* #1e40af - Darker blue */
     
-    /* Real Background System (From dark theme components) */
-    --bg-dark-primary: 245 15% 4%;          /* #0A090F - Signature CreatorFlow dark */
-    --bg-dark-secondary: 220 13% 18%;       /* #111827 - Secondary dark */
-    --glass-card-dark: rgba(17, 24, 39, 0.5);    /* Semi-transparent cards */
-    --glass-card-light: rgba(255, 255, 255, 0.6); /* Light glass cards */
+    /* CreatorFlow Background System - Light */
+    --bg-light-primary: 210 20% 98%;         /* Very light slate */
+    --bg-light-secondary: 210 40% 96%;       /* Light slate */
+    --glass-card-light: rgba(248, 250, 252, 0.8); /* Light slate glass */
+    --glass-card-dark: rgba(15, 23, 42, 0.8);     /* Dark slate glass */
     
     /* Real Typography System (From component analysis) */
     --font-weight-normal: 400;
@@ -136,6 +136,10 @@
     --width-content-hero: 50%;            /* Hero content width */
     --width-content-sidebar: 25%;         /* Sidebar content width */
     
+    /* Sidebar Dimensions (From component analysis) */
+    --sidebar-expanded: 16rem;            /* 256px - Expanded sidebar width */
+    --sidebar-collapsed: 4.5rem;         /* 72px - Collapsed sidebar width */
+    
     /* Content Typography (From blog components) */
     --font-content-serif: 'Lora', Georgia, serif;          /* Premium serif for quotes */
     --font-content-reading: 'Inter', system-ui, sans-serif; /* Optimized reading font */
@@ -199,30 +203,42 @@
   }
 
   .dark {
-    /* Dark mode (Primary design approach for CreatorFlow) */
-    --background: 245 15% 4%;               /* #0A090F - Signature CreatorFlow dark */
-    --foreground: 213 31% 91%;
-    --muted: 220 13% 18%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 220 13% 18%;
-    --accent-foreground: 210 40% 98%;
-    --popover: 245 15% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-    --border: 220 13% 18%;
-    --input: 220 13% 18%;
-    --card: 245 15% 4%;
-    --card-foreground: 213 31% 91%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --ring: 220 13% 18%;
+    /* CreatorFlow Dark Theme - AAA Compliant */
+    --background: 245 15% 3%;                /* Signature CreatorFlow dark (darker) */
+    --foreground: 210 40% 98%;               /* Very light slate text */
+    --muted: 220 13% 12%;                    /* Dark slate muted */
+    --muted-foreground: 215.4 16.3% 75%;    /* Light slate muted text (AAA) */
+    --accent: 220 13% 15%;                   /* Dark slate accent */
+    --accent-foreground: 210 40% 98%;        /* Light text on dark */
+    --popover: 245 15% 3%;                   /* Signature dark popover */
+    --popover-foreground: 210 40% 98%;
+    --border: 220 13% 25%;                   /* Lighter border for visibility */
+    --input: 220 13% 15%;                    /* Dark slate input */
+    --card: 245 15% 3%;                      /* Signature dark card */
+    --card-foreground: 210 40% 98%;          /* Light text on dark card */
+    --primary: 210 40% 98%;                  /* Light slate primary */
+    --primary-foreground: 222.2 84% 4.9%;   /* Dark text on light */
+    --secondary: 222.2 47.4% 11.2%;          /* Dark slate secondary */
+    --secondary-foreground: 210 40% 98%;     /* Light text on dark */
+    --destructive: 0 84% 65%;                /* Lighter red for dark theme AAA */
+    --destructive-foreground: 222.2 84% 4.9%;
+    --ring: 220 13% 25%;
+
+    /* CreatorFlow Brand Colors - AAA Compliant Dark Theme */
+    --brand-teal-primary: 173 100% 75%;      /* #00f5d4 - Lighter teal for dark */
+    --brand-teal-light: 173 100% 80%;        /* #1affdb - Even lighter teal */
+    --brand-purple-primary: 258 90% 75%;     /* #a78bfa - Lighter purple */
+    --brand-blue-primary: 215 100% 75%;      /* #60a5fa - Lighter blue */
+
+    /* CreatorFlow Background System - Dark */
+    --bg-dark-primary: 245 15% 3%;           /* Signature CreatorFlow dark */
+    --bg-dark-secondary: 220 13% 8%;         /* Dark slate secondary */
+    --glass-card-dark: rgba(10, 9, 15, 0.8);        /* Signature dark glass */
+    --glass-card-light: rgba(248, 250, 252, 0.1);   /* Subtle light overlay */
 
     /* Dark mode adjustments for content */
-    --clarity-background: 224 71% 4%;
-    --data-art-canvas: 224 71% 4%;
+    --clarity-background: 245 15% 3%;
+    --data-art-canvas: 245 15% 3%;
   }
 
   /* Enhanced base styles */

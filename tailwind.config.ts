@@ -277,6 +277,32 @@ const config: Config = {
         content: '65ch', // Optimal reading line length
         'content-hero': '50%', // Hero content width
         'content-sidebar': '25%', // Sidebar content width
+        // Sidebar widths (from component analysis)
+        'sidebar-expanded': '16rem', // 256px - Expanded sidebar
+        'sidebar-collapsed': '4.5rem', // 72px - Collapsed sidebar
+      },
+
+      // Component Dimensions (from UI component analysis)
+      width: {
+        'sidebar-expanded': '16rem', // 256px - Expanded sidebar
+        'sidebar-collapsed': '4.5rem', // 72px - Collapsed sidebar
+        'icon-sm': '1.25rem', // 20px - Small icons
+        'icon-md': '1.5rem', // 24px - Medium icons
+        'icon-lg': '2rem', // 32px - Large icons
+      },
+
+      height: {
+        'icon-sm': '1.25rem', // 20px - Small icons
+        'icon-md': '1.5rem', // 24px - Medium icons
+        'icon-lg': '2rem', // 32px - Large icons
+      },
+
+      // Z-Index System (from component layering)
+      zIndex: {
+        sidebar: '40', // Sidebar layer
+        header: '50', // Header/navigation layer
+        modal: '60', // Modal/overlay layer
+        tooltip: '70', // Tooltip layer
       },
 
       // Real Border Radius (from component analysis)
@@ -502,6 +528,13 @@ const config: Config = {
         cinematic: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
         'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
         elastic: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      },
+
+      // Animation Spring Constants (from component analysis)
+      animationDelay: {
+        'spring-fast': '0.1s',
+        'spring-medium': '0.2s',
+        'spring-slow': '0.3s',
       },
     },
   },

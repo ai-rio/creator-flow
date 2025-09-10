@@ -52,7 +52,8 @@
       "mcp__serena__think_about_collected_information",
       "Read(//home/carlos/.claude/**)",
       "Read(//home/carlos/.cache/claude-cli-nodejs/**)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(bunx tsc:*)"
     ],
     "deny": [],
     "ask": []

@@ -12,6 +12,33 @@
  * - Advanced state management
  */
 
+// Migrated Dashboard Components from DC- Series
+import AdminDashboardHeader from './AdminDashboardHeader';
+// Migrated Automation & Business Intelligence Components
+import ALAutomationOrchestra from './AL-AutomationOrchestra';
+import BIExecutiveIntelligence from './BI-ExecutiveIntelligence';
+import DCBusinessIntelligence from './DC-BusinessIntelligence';
+import DCCrisisCommand from './DC-CrisisCommand';
+import DCEmergencyControls from './DC-EmergencyControls';
+import DCHealthOverview from './DC-HealthOverview';
+import DCPerformanceArtistry from './DC-PerformanceArtistry';
+// Migrated Sidebar Components
+import SBAdminSidebar from './SB-AdminSidebar';
+// Migrated Security & Command Components
+import SCStrategicCommand from './SC-StrategicCommand';
+
+// Export individual components
+export { AdminDashboardHeader };
+export { DCHealthOverview };
+export { DCPerformanceArtistry };
+export { DCBusinessIntelligence };
+export { DCCrisisCommand };
+export { DCEmergencyControls };
+export { SCStrategicCommand };
+export { SBAdminSidebar };
+export { ALAutomationOrchestra };
+export { BIExecutiveIntelligence };
+
 // Dashboard Organisms
 // export { DashboardHeader } from './DashboardHeader';
 // export type { DashboardHeaderProps } from './DashboardHeader';
@@ -38,17 +65,30 @@
 
 // Grouped exports for domain-specific usage
 export const DashboardOrganisms = {
+  AdminDashboardHeader,
+  DCHealthOverview,
+  DCPerformanceArtistry,
+  DCBusinessIntelligence,
+  DCCrisisCommand,
+  DCEmergencyControls,
   // DashboardHeader,
 };
 
-export const DataOrganisms = {
-  // ChartContainer,
-  // DataTable,
-  // AnalyticsPanel,
+export const SecurityOrganisms = {
+  SCStrategicCommand,
 };
 
 export const NavigationOrganisms = {
+  SBAdminSidebar,
   // NavigationSidebar,
+};
+
+export const AutomationOrganisms = {
+  ALAutomationOrchestra,
+};
+
+export const BusinessIntelligenceOrganisms = {
+  BIExecutiveIntelligence,
 };
 
 export const ContentOrganisms = {

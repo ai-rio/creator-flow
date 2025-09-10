@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Grid3X3, Home, List, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
+import { GlobalThemeToggle } from '@/components/ui/theme-toggle';
+
 // import DesktopHeaderDemo from './02DesktopHeaderDemo'; // RENAMED TO NC-010
 // import DesktopToastNotifications from './03DesktopToastNotifications'; // RENAMED TO UX-040
 // import DesktopSidebarDemo from './04DesktopSidebarDemo'; // RENAMED TO NC-020
@@ -74,6 +76,9 @@ import DA010OrderTable from './DA-010-OrderTable';
 import PM010UserProfile from './PM-010-UserProfile';
 // Security & Compliance Components (SC-)
 import SC010SecurityCard from './SC-010-SecurityCard';
+import SC010StrategicCommandCenter from './SC-010-StrategicCommandCenter';
+// Sidebar Components (SB-)
+import SB010AdminSidebar from './SB-010-AdminSidebar';
 // System Utilities Components (SU-)
 import SU010NotFound from './SU-010-NotFound';
 import SU020CookiePolicy from './SU-020-CookiePolicy';
@@ -141,7 +146,110 @@ import ACSummonsToTheForge from './blog-post/AC-SummonsToTheForge';
 import ACTestimonialBlock from './blog-post/AC-TestimonialBlock';
 import ACTikTokMetrics from './blog-post/AC-TikTokMetrics';
 
-const componentCategories = {
+// === MIGRATED COMPONENTS ===
+// Importing migrated components from atomic structure
+import AdminDashboardHeader from '../atomic/organisms/AdminDashboardHeader';
+import DCHealthOverview from '../atomic/organisms/DC-HealthOverview';
+import DCPerformanceArtistry from '../atomic/organisms/DC-PerformanceArtistry';
+import DCEmergencyControls from '../atomic/organisms/DC-EmergencyControls';
+import DCCommandCenter from '../atomic/compositions/dashboard/DC-CommandCenter';
+// New migrated components
+import DCBusinessIntelligence from '../atomic/organisms/DC-BusinessIntelligence';
+import DCCrisisCommand from '../atomic/organisms/DC-CrisisCommand';
+// Migrated atomic components
+import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
+import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
+import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
+import BIExecutiveIntelligence from '../atomic/organisms/BI-ExecutiveIntelligence';
+
+// Type definitions for component structure
+interface ComponentItem {
+  id: string;
+  name: string;
+  component: React.ComponentType<any>;
+}
+
+interface ComponentSeries {
+  [seriesName: string]: ComponentItem[];
+}
+
+interface ComponentCategories {
+  [categoryName: string]: ComponentSeries;
+}
+
+const componentCategories: ComponentCategories = {
+  'Migrated Components': {
+    'Phase 1 - Streamlined Migration': [
+      { id: 'migrated-dc010', name: 'MIGRATED: Admin Dashboard Header (DC-010)', component: AdminDashboardHeader },
+      {
+        id: 'migrated-health-overview',
+        name: 'MIGRATED: Health Overview (DC-040 Section)',
+        component: DCHealthOverview,
+      },
+      {
+        id: 'migrated-performance-artistry',
+        name: 'MIGRATED: Performance Artistry (DC-050 Section)',
+        component: DCPerformanceArtistry,
+      },
+    ],
+    'Phase 2 - Enhanced Contrast Migration': [
+      {
+        id: 'migrated-emergency-controls',
+        name: 'MIGRATED: Emergency System Controls (DC-060 Section)',
+        component: DCEmergencyControls,
+      },
+      {
+        id: 'migrated-command-center',
+        name: 'MIGRATED: CEO Command Center (DC-070 Content)',
+        component: DCCommandCenter,
+      },
+      {
+        id: 'migrated-business-intelligence',
+        name: 'MIGRATED: Business Intelligence Masterpiece (DC-080 Section)',
+        component: DCBusinessIntelligence,
+      },
+      {
+        id: 'migrated-crisis-command',
+        name: 'MIGRATED: Crisis Command Center (DC-090 Section)',
+        component: DCCrisisCommand,
+      },
+    ],
+  },
+  'Atomic Components': {
+    Organisms: [
+      { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
+      { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },
+      {
+        id: 'atomic-al-orchestra',
+        name: 'ATOMIC: Automation Liberation Orchestra (DC-100 Section)',
+        component: ALAutomationOrchestra,
+      },
+      {
+        id: 'atomic-bi-intelligence',
+        name: 'ATOMIC: Executive Business Intelligence (DC-110 Section)',
+        component: BIExecutiveIntelligence,
+      },
+      { id: 'atomic-admin-header', name: 'ATOMIC: Admin Dashboard Header (DC-010)', component: AdminDashboardHeader },
+      { id: 'atomic-dc-health', name: 'ATOMIC: Health Overview (DC-040 Section)', component: DCHealthOverview },
+      {
+        id: 'atomic-dc-performance',
+        name: 'ATOMIC: Performance Artistry (DC-050 Section)',
+        component: DCPerformanceArtistry,
+      },
+      {
+        id: 'atomic-dc-business',
+        name: 'ATOMIC: Business Intelligence (DC-080 Section)',
+        component: DCBusinessIntelligence,
+      },
+      { id: 'atomic-dc-crisis', name: 'ATOMIC: Crisis Command (DC-090 Section)', component: DCCrisisCommand },
+      {
+        id: 'atomic-dc-emergency',
+        name: 'ATOMIC: Emergency Controls (DC-060 Section)',
+        component: DCEmergencyControls,
+      },
+    ],
+    Compositions: [{ id: 'atomic-dc-command', name: 'ATOMIC: Command Center (DC-070)', component: DCCommandCenter }],
+  },
   'Dashboard Components': {
     'DC Series': [
       { id: 'dc010', name: 'DC-010: SHM Dashboard', component: DC010ShmDashboard },
@@ -227,50 +335,36 @@ const componentCategories = {
       { id: 'cp020', name: 'CP020: Open Missions', component: CP020OpenMissions },
     ],
     'LP Series': [{ id: 'lp010', name: 'LP010: Legal', component: LP010Legal }],
-    'Utility Components': [
-      { id: 'cookie-bar', name: 'Cookie Policy Bar', component: SU020CookiePolicy },
-      { id: 'theme-switcher', name: 'Theme Switcher', component: SU030ThemeSwitcher },
-      { id: 'gdpr', name: 'GDPR Data Sovereignty', component: SU040DataSovereignty },
-      { id: '404', name: '404 Not Found', component: SU010NotFound },
-    ],
-    'FP Series': [
-      { id: 'fp020', name: 'FP020: Order Management', component: FP020OrderManagement },
-      { id: 'fp030', name: 'FP030: Digital Twin Command', component: FP030DigitalTwinCommand },
-      { id: 'fp040', name: 'FP040: Logistics CoPilot', component: FP040LogisticsCoPilot },
-      { id: 'fp050', name: 'FP050: Data Prism', component: FP050DataPrism },
-    ],
   },
-  'Blog Components': {
+  'Content Components': {
     'Blog Page Components': [
-      { id: 'bp-hub', name: 'BP: Complete Content Hub', component: BPCompleteContentHub },
+      { id: 'bp-content-hub', name: 'BP: Complete Content Hub', component: BPCompleteContentHub },
       { id: 'bp-toolbar', name: 'BP: Content Hub Toolbar', component: BPContentHubToolbar },
-      { id: 'bp-card', name: 'BP: Post Card', component: BPPostCard },
+      { id: 'bp-post-card', name: 'BP: Post Card', component: BPPostCard },
     ],
-    'Blog Post Components': [
+    'Article Components': [
       { id: 'ac-hero', name: 'AC: Article Hero', component: ACArticleHero },
       { id: 'ac-callout', name: 'AC: Callout', component: ACCallout },
-      { id: 'ac-callout-advanced', name: 'AC: Callout Advanced', component: ACCalloutAdvanced },
-      { id: 'ac-datatable', name: 'AC: Data Table', component: ACDataTable },
-      { id: 'ac-keytakeaways', name: 'AC: Key Takeaways', component: ACKeyTakeawaysComponent },
+      { id: 'ac-data-table', name: 'AC: Data Table', component: ACDataTable },
+      { id: 'ac-key-takeaways', name: 'AC: Key Takeaways Component', component: ACKeyTakeawaysComponent },
       { id: 'ac-toc', name: 'AC: Table of Contents', component: ACTableOfContents },
       { id: 'ac-faq', name: 'AC: FAQ Accordion', component: ACFAQAccordion },
       { id: 'ac-milestone', name: 'AC: Milestone Celebration', component: ACMilestoneCelebration },
-      { id: 'ac-profit', name: 'AC: Profit Command Dashboard', component: ACProfitCommandDashboard },
-      { id: 'ac-author', name: 'AC: Author Briefing', component: ACAuthorBriefing },
-      { id: 'ac-command', name: 'AC: Command List', component: ACCommandList },
-      { id: 'ac-explore', name: 'AC: Explore Further', component: ACExploreFurther },
-      { id: 'ac-share', name: 'AC: Share Dossier', component: ACShareDossier },
-      { id: 'ac-summons', name: 'AC: Summons to the Forge', component: ACSummonsToTheForge },
+      { id: 'ac-profit-command', name: 'AC: Profit Command Dashboard', component: ACProfitCommandDashboard },
+      { id: 'ac-author-briefing', name: 'AC: Author Briefing', component: ACAuthorBriefing },
+      { id: 'ac-callout-advanced', name: 'AC: Callout Advanced', component: ACCalloutAdvanced },
+      { id: 'ac-command-list', name: 'AC: Command List', component: ACCommandList },
+      { id: 'ac-explore-further', name: 'AC: Explore Further', component: ACExploreFurther },
+      { id: 'ac-share-dossier', name: 'AC: Share Dossier', component: ACShareDossier },
+      { id: 'ac-summons', name: 'AC: Summons To The Forge', component: ACSummonsToTheForge },
       { id: 'ac-testimonial', name: 'AC: Testimonial Block', component: ACTestimonialBlock },
       { id: 'ac-tiktok', name: 'AC: TikTok Metrics', component: ACTikTokMetrics },
     ],
   },
-  // Component Series - REMOVED (duplicate files no longer exist)
-  // These were duplicates of the numbered series components
 };
 
 // Flatten all components for navigation
-const allComponents = Object.values(componentCategories)
+const allComponents: ComponentItem[] = Object.values(componentCategories)
   .flatMap((category) => Object.values(category))
   .flat();
 
@@ -278,11 +372,13 @@ interface UnifiedComponentBrowserProps {
   initialComponent?: string;
 }
 
-export default function UnifiedComponentBrowser({ initialComponent = 'dc010' }: UnifiedComponentBrowserProps) {
+export default function UnifiedComponentBrowser({
+  initialComponent = 'migrated-emergency-controls',
+}: UnifiedComponentBrowserProps) {
   const initialIndex = allComponents.findIndex((c) => c.id === initialComponent);
   const [currentIndex, setCurrentIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
-  const [selectedCategory, setSelectedCategory] = useState<string>('Dashboard Components');
-  const [selectedSeries, setSelectedSeries] = useState<string>('DC Series');
+  const [selectedCategory, setSelectedCategory] = useState<string>('Migrated Components');
+  const [selectedSeries, setSelectedSeries] = useState<string>('Phase 2 - Enhanced Contrast Migration');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -314,13 +410,6 @@ export default function UnifiedComponentBrowser({ initialComponent = 'dc010' }: 
     window.history.pushState({}, '', newUrl.toString());
   };
 
-  const getComponentsByCategory = (category: string, series?: string) => {
-    if (series) {
-      return (componentCategories as any)[category][series] || [];
-    }
-    return Object.values((componentCategories as any)[category]).flat();
-  };
-
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setDragStart({
@@ -329,7 +418,7 @@ export default function UnifiedComponentBrowser({ initialComponent = 'dc010' }: 
     });
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging) {
       setPosition({
         x: e.clientX - dragStart.x,
@@ -342,86 +431,73 @@ export default function UnifiedComponentBrowser({ initialComponent = 'dc010' }: 
     setIsDragging(false);
   };
 
-  useEffect(() => {
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
-      };
-    }
-  }, [isDragging, dragStart]);
+  const getComponentsForSeries = (categoryName: string, seriesName: string): ComponentItem[] => {
+    const category = componentCategories[categoryName];
+    if (!category || typeof category !== 'object') return [];
+
+    const series = category[seriesName];
+    return Array.isArray(series) ? series : [];
+  };
+
+  const componentsToShow = getComponentsForSeries(selectedCategory, selectedSeries);
 
   return (
-    <div className='relative min-h-screen bg-gray-50'>
-      {/* Unified Navigation Panel */}
-      <div
-        className={`fixed z-50 rounded-lg border-2 border-gray-300 bg-white shadow-xl transition-all duration-300 ${
-          isCollapsed ? 'h-12 w-12' : 'max-h-[90vh] w-96'
-        }`}
+    <div
+      className='min-h-screen bg-background'
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+    >
+      {/* Navigation Panel */}
+      <motion.div
+        className={`fixed z-50 rounded-lg border border-border bg-card shadow-lg ${isCollapsed ? 'w-12' : 'w-80'}`}
         style={{
-          top: position.y || 16,
-          right: position.x || 16,
-          cursor: isDragging ? 'grabbing' : 'grab',
+          left: position.x,
+          top: position.y,
         }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.2 }}
       >
-        {/* Drag Handle & Collapse Toggle */}
+        {/* Drag Handle */}
         <div
-          className='flex cursor-grab items-center justify-between rounded-t-lg border-b border-gray-300 bg-gray-100 p-4 active:cursor-grabbing'
+          className='flex cursor-move items-center justify-between rounded-t-lg border-b border-border bg-muted/50 p-3'
           onMouseDown={handleMouseDown}
         >
-          {!isCollapsed && <h3 className='font-bold text-gray-900'>Component Browser</h3>}
-          <div className='flex gap-2'>
+          <div className='flex items-center gap-2'>
+            <Home className='h-4 w-4 text-muted-foreground' />
+            {!isCollapsed && <span className='text-sm font-medium text-foreground'>Component Browser</span>}
+          </div>
+          <div className='flex items-center gap-1'>
+            <GlobalThemeToggle />
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className='rounded border border-gray-400 p-2 font-bold text-gray-800 hover:bg-gray-200'
-              title={isCollapsed ? 'Expand Panel' : 'Collapse Panel'}
+              className='rounded p-1 text-muted-foreground hover:bg-accent hover:text-foreground'
             >
-              {isCollapsed ? '📋' : '➖'}
+              <Grid3X3 className='h-4 w-4' />
             </button>
-            {!isCollapsed && (
-              <>
-                <button
-                  onClick={() => (window.location.href = '/en')}
-                  className='rounded border border-yellow-400 p-2 text-yellow-800 hover:bg-yellow-100'
-                  title='Back to Home (ESC)'
-                >
-                  <Home className='h-4 w-4' />
-                </button>
-                <button
-                  onClick={() => window.location.reload()}
-                  className='rounded border border-blue-400 p-2 text-blue-800 hover:bg-blue-100'
-                  title='Reload Component'
-                >
-                  <RotateCcw className='h-4 w-4' />
-                </button>
-                <button
-                  onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
-                  className='rounded border border-purple-400 p-2 text-purple-800 hover:bg-purple-100'
-                  title='Toggle View Mode'
-                >
-                  {viewMode === 'grid' ? <List className='h-4 w-4' /> : <Grid3X3 className='h-4 w-4' />}
-                </button>
-              </>
-            )}
+            <button
+              onClick={() => (window.location.href = '/en')}
+              className='rounded p-1 text-muted-foreground hover:bg-accent hover:text-foreground'
+            >
+              <RotateCcw className='h-4 w-4' />
+            </button>
           </div>
         </div>
 
         {!isCollapsed && (
-          <div className='overflow-y-auto bg-white px-4 pb-4' style={{ maxHeight: 'calc(90vh - 80px)' }}>
+          <div className='max-h-96 overflow-y-auto p-4'>
             {/* Category Selection */}
             <div className='mb-4'>
-              <label className='mb-2 block text-sm font-bold text-gray-900'>Category</label>
+              <label className='mb-2 block text-xs font-medium text-muted-foreground'>Category</label>
               <select
                 value={selectedCategory}
                 onChange={(e) => {
                   setSelectedCategory(e.target.value);
-                  setSelectedSeries(
-                    Object.keys(componentCategories[e.target.value as keyof typeof componentCategories])[0]
-                  );
+                  const firstSeries = Object.keys(componentCategories[e.target.value] || {})[0];
+                  if (firstSeries) setSelectedSeries(firstSeries);
                 }}
-                className='w-full rounded border-2 border-gray-400 bg-white p-3 text-sm font-medium text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200'
+                className='w-full rounded border border-border bg-background p-2 text-sm text-foreground'
               >
                 {Object.keys(componentCategories).map((category) => (
                   <option key={category} value={category}>
@@ -433,129 +509,111 @@ export default function UnifiedComponentBrowser({ initialComponent = 'dc010' }: 
 
             {/* Series Selection */}
             <div className='mb-4'>
-              <label className='mb-2 block text-sm font-bold text-gray-900'>Series</label>
+              <label className='mb-2 block text-xs font-medium text-muted-foreground'>Series</label>
               <select
                 value={selectedSeries}
                 onChange={(e) => setSelectedSeries(e.target.value)}
-                className='w-full rounded border-2 border-gray-400 bg-white p-3 text-sm font-medium text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200'
+                className='w-full rounded border border-border bg-background p-2 text-sm text-foreground'
               >
-                {Object.keys(componentCategories[selectedCategory as keyof typeof componentCategories]).map(
-                  (series) => (
-                    <option key={series} value={series}>
-                      {series}
-                    </option>
-                  )
-                )}
+                {Object.keys(componentCategories[selectedCategory] || {}).map((series) => (
+                  <option key={series} value={series}>
+                    {series}
+                  </option>
+                ))}
               </select>
             </div>
 
             {/* Component List */}
-            <div className='mb-4 space-y-2'>
-              <div className='flex items-center justify-between'>
-                <label className='text-sm font-bold text-gray-900'>Components</label>
-                <span className='rounded bg-gray-200 px-2 py-1 text-xs font-medium text-gray-800'>
-                  {getComponentsByCategory(selectedCategory, selectedSeries).length} items
+            <div className='space-y-1'>
+              <div className='mb-2 flex items-center justify-between'>
+                <span className='text-xs font-medium text-muted-foreground'>
+                  Components ({componentsToShow.length})
                 </span>
+                <button
+                  onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                  className='rounded p-1 text-muted-foreground hover:bg-accent hover:text-foreground'
+                >
+                  {viewMode === 'grid' ? <List className='h-3 w-3' /> : <Grid3X3 className='h-3 w-3' />}
+                </button>
               </div>
 
-              {viewMode === 'list' ? (
-                <div className='space-y-1'>
-                  {getComponentsByCategory(selectedCategory, selectedSeries).map((comp: any) => {
-                    const globalIndex = allComponents.findIndex((c) => c.id === comp.id);
-                    return (
-                      <button
-                        key={comp.id}
-                        onClick={() => navigateToComponent(globalIndex)}
-                        className={`w-full rounded-md border-2 p-3 text-left text-sm font-medium transition-colors ${
-                          globalIndex === currentIndex
-                            ? 'border-green-600 bg-green-200 text-green-900'
-                            : 'border-gray-300 text-gray-900 hover:border-gray-400 hover:bg-gray-100'
-                        }`}
-                      >
-                        {comp.name}
-                      </button>
-                    );
-                  })}
-                </div>
-              ) : (
-                <div className='grid grid-cols-2 gap-2'>
-                  {getComponentsByCategory(selectedCategory, selectedSeries).map((comp: any) => {
-                    const globalIndex = allComponents.findIndex((c) => c.id === comp.id);
-                    return (
-                      <button
-                        key={comp.id}
-                        onClick={() => navigateToComponent(globalIndex)}
-                        className={`rounded-md border-2 p-3 text-center text-xs font-medium transition-colors ${
-                          globalIndex === currentIndex
-                            ? 'border-green-600 bg-green-200 text-green-900'
-                            : 'border-gray-300 text-gray-900 hover:border-gray-400 hover:bg-gray-100'
-                        }`}
-                      >
-                        {comp.name.split(':')[0]}
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* Navigation Controls */}
-            <div className='flex items-center justify-between border-t-2 border-gray-300 pt-3'>
-              <button
-                onClick={() => navigateToComponent(currentIndex > 0 ? currentIndex - 1 : allComponents.length - 1)}
-                className='flex items-center gap-1 rounded-md border-2 border-green-600 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100'
-              >
-                <ChevronLeft className='h-4 w-4' />
-                Prev
-              </button>
-
-              <span className='rounded bg-gray-200 px-3 py-1 text-sm font-bold text-gray-900'>
-                {currentIndex + 1} / {allComponents.length}
-              </span>
-
-              <button
-                onClick={() => navigateToComponent(currentIndex < allComponents.length - 1 ? currentIndex + 1 : 0)}
-                className='flex items-center gap-1 rounded-md border-2 border-green-600 px-4 py-2 text-sm font-bold text-green-800 hover:bg-green-100'
-              >
-                Next
-                <ChevronRight className='h-4 w-4' />
-              </button>
-            </div>
-
-            {/* Current Component Info */}
-            <div className='mt-3 border-t-2 border-gray-300 pt-3'>
-              <div className='text-sm text-gray-900'>
-                <div className='font-bold'>{currentComponent?.name || 'Unknown Component'}</div>
-                <div className='mt-1 text-xs font-medium text-gray-800'>
-                  {selectedCategory} → {selectedSeries}
-                </div>
-              </div>
-            </div>
-
-            <div className='mt-3 border-t-2 border-gray-300 pt-3 text-xs font-medium text-gray-900'>
-              <div>← → Navigate | ESC Home | Drag to move</div>
-              <div className='mt-1'>
-                <span className='text-yellow-800'>●</span> Back |<span className='text-blue-800'>●</span> Reload |
-                <span className='text-green-800'>●</span> Nav |<span className='text-purple-800'>●</span> View
+              <div className={viewMode === 'grid' ? 'grid grid-cols-2 gap-1' : 'space-y-1'}>
+                {componentsToShow.map((comp, index) => {
+                  const globalIndex = allComponents.findIndex((c) => c.id === comp.id);
+                  const isActive = globalIndex === currentIndex;
+                  return (
+                    <button
+                      key={comp.id}
+                      onClick={() => navigateToComponent(globalIndex)}
+                      className={`rounded p-2 text-left text-xs transition-colors ${
+                        isActive ? 'bg-primary text-primary-foreground' : 'text-foreground hover:bg-accent'
+                      } ${viewMode === 'grid' ? 'flex aspect-square items-center justify-center text-center' : ''}`}
+                      title={comp.name}
+                    >
+                      {viewMode === 'grid' ? comp.name.split(':')[0] : comp.name}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
         )}
+      </motion.div>
+
+      {/* Navigation Controls */}
+      <div className='fixed bottom-4 left-1/2 z-40 -translate-x-1/2 transform'>
+        <div className='flex items-center gap-2 rounded-lg border border-border bg-card p-2 shadow-lg'>
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev > 0 ? prev - 1 : allComponents.length - 1))}
+            className='rounded p-2 text-muted-foreground hover:bg-accent hover:text-foreground'
+          >
+            <ChevronLeft className='h-4 w-4' />
+          </button>
+
+          <span className='rounded bg-muted px-3 py-1 text-xs font-medium text-foreground'>
+            {currentIndex + 1} / {allComponents.length}
+          </span>
+
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev < allComponents.length - 1 ? prev + 1 : 0))}
+            className='rounded p-2 text-muted-foreground hover:bg-accent hover:text-foreground'
+          >
+            <ChevronRight className='h-4 w-4' />
+          </button>
+        </div>
       </div>
 
       {/* Component Display */}
-      <div className=''>
-        <AnimatePresence mode='wait'>
-          <motion.div
-            key={currentComponent.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            {CurrentComponent ? <CurrentComponent /> : <div>Component not found</div>}
-          </motion.div>
-        </AnimatePresence>
+      <div className='p-4'>
+        <div className='mb-4'>
+          <h1 className='mb-2 text-2xl font-bold text-foreground'>
+            {currentComponent?.name || 'No Component Selected'}
+          </h1>
+          <p className='text-sm text-muted-foreground'>
+            Component {currentIndex + 1} of {allComponents.length}
+          </p>
+        </div>
+
+        <div className='rounded-lg border border-border bg-card'>
+          <AnimatePresence mode='wait'>
+            {CurrentComponent && (
+              <motion.div
+                key={currentComponent.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <CurrentComponent />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Keyboard Shortcuts Help */}
+      <div className='fixed bottom-4 right-4 rounded border border-border bg-card p-2 text-xs text-muted-foreground'>
+        <div>← → Navigate | ESC Exit</div>
       </div>
     </div>
   );

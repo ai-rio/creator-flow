@@ -3,35 +3,38 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono, Montserrat, Poppins } from 'next/font/google';
 
+import { ThemeProvider } from '@/components/providers/theme-provider';
+
 // Premium typography stack for CDH manifesto
-const inter = Inter({ 
-  subsets: ['latin'], 
+const inter = Inter({
+  subsets: ['latin'],
   variable: '--font-sans',
-  display: 'swap'
+  display: 'swap',
 });
 
-const montserrat = Montserrat({ 
-  subsets: ['latin'], 
+const montserrat = Montserrat({
+  subsets: ['latin'],
   variable: '--font-display',
-  display: 'swap'
+  display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ['latin'], 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
   variable: '--font-mono',
-  display: 'swap'
+  display: 'swap',
 });
 
-const poppins = Poppins({ 
-  subsets: ['latin'], 
+const poppins = Poppins({
+  subsets: ['latin'],
   variable: '--font-creative',
   weight: ['400', '500', '600'],
-  display: 'swap'
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
-  description: 'Scale your TikTok Shop from 50 to 500+ orders per day. The only fulfillment automation platform built for viral TikTok creators.',
+  description:
+    'Scale your TikTok Shop from 50 to 500+ orders per day. The only fulfillment automation platform built for viral TikTok creators.',
   keywords: ['TikTok Shop', 'fulfillment automation', 'creator economy', 'e-commerce', 'order management'],
   openGraph: {
     title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
@@ -48,27 +51,24 @@ export const metadata: Metadata = {
   viewport: 'width=device-width, initial-scale=1',
 };
 
-export default function PublicLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html 
-      lang="en" 
+    <html
+      lang='en'
       className={`${inter.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${poppins.variable}`}
+      suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#f59e0b" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <meta name='theme-color' content='#f59e0b' />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='' />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased scroll-premium">
-        <div className="relative flex min-h-screen flex-col">
-          <main className="flex-1">
-            {children}
-          </main>
-        </div>
+      <body className='scroll-premium min-h-screen bg-background font-sans antialiased'>
+        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false} disableTransitionOnChange={false}>
+          <div className='relative flex min-h-screen flex-col'>
+            <main className='flex-1'>{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
