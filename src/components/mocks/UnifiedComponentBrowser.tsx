@@ -167,6 +167,7 @@ import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
 import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
 import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
 import BIExecutiveIntelligence from '../atomic/organisms/BI-ExecutiveIntelligence';
+import OMFlowVisualizationDemo from '../atomic/organisms/OM-FlowVisualizationDemo';
 
 // Type definitions for component structure
 interface ComponentItem {
@@ -232,6 +233,11 @@ const componentCategories: ComponentCategories = {
         id: 'atomic-ux-toast-notifications',
         name: 'ATOMIC: Toast Notifications (UX-040)',
         component: UXToastNotificationsDemo,
+      },
+      {
+        id: 'atomic-om-flow-visualization',
+        name: 'ATOMIC: Flow Visualization (OM-020)',
+        component: OMFlowVisualizationDemo,
       },
       { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
       { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },

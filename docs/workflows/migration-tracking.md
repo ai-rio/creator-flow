@@ -51,7 +51,15 @@ This document tracks which mock components have been migrated to the atomic desi
 | ---------------- | ------ | --------------- | --------------------- | -------------------------------------------------- |
 | MC-010-Dashboard | ❌     | -               | -                     | Contains Strategic Command Center (reference only) |
 
-### Navigation Components (NC Series)
+### User Experience Components (UX Series)
+
+| Mock Component            | Status | Atomic Location                       | Component Browser URL                                           | Notes                                    |
+| ------------------------- | ------ | ------------------------------------- | --------------------------------------------------------------- | ---------------------------------------- |
+| UX-010-Modals             | ✅     | `organisms/UX-StandardModal.tsx`      | `/en/component-browser?component=atomic-ux-standard-modal`      | Split into Standard + Destructive modals |
+| UX-010-Modals             | ✅     | `organisms/UX-DestructiveModal.tsx`   | `/en/component-browser?component=atomic-ux-destructive-modal`   | High-friction destructive actions        |
+| UX-020-OnboardingTour     | ✅     | `organisms/UX-OnboardingTour.tsx`     | `/en/component-browser?component=atomic-ux-onboarding-tour`     | Spotlight effect + keyboard navigation   |
+| UX-030-FeedbackWidget     | ✅     | `organisms/UX-FeedbackWidget.tsx`     | `/en/component-browser?component=atomic-ux-feedback-widget`     | Multi-step form + glass morphism         |
+| UX-040-ToastNotifications | ✅     | `organisms/UX-ToastNotifications.tsx` | `/en/component-browser?component=atomic-ux-toast-notifications` | Context provider + auto-dismiss          |
 
 | Mock Component         | Status | Atomic Location                     | Component Browser URL                              | Notes                             |
 | ---------------------- | ------ | ----------------------------------- | -------------------------------------------------- | --------------------------------- |
@@ -64,8 +72,12 @@ This document tracks which mock components have been migrated to the atomic desi
 ### High Priority
 
 1. **NC-020-Sidebar** - Main navigation sidebar
-2. **UX-010-Modals** - Modal system components
-3. **BI-010-StrategicInsights** - Business intelligence cards
+2. **BI-010-StrategicInsights** - Business intelligence cards
+
+### Medium Priority
+
+1. **DA-010-OrderTable** - Data table component
+2. **OM-020-FlowVisualization** - Order flow visualization
 
 ### Low Priority
 
@@ -117,6 +129,13 @@ This document tracks which mock components have been migrated to the atomic desi
 
 # Command Center (pre-existing)
 /en/component-browser?component=atomic-dc-command
+
+# UX Components
+/en/component-browser?component=atomic-ux-standard-modal
+/en/component-browser?component=atomic-ux-destructive-modal
+/en/component-browser?component=atomic-ux-onboarding-tour
+/en/component-browser?component=atomic-ux-feedback-widget
+/en/component-browser?component=atomic-ux-toast-notifications
 ```
 
 ### Atomic File Locations
@@ -128,6 +147,13 @@ src/components/atomic/organisms/SC-StrategicCommand.tsx
 src/components/atomic/organisms/SB-AdminSidebar.tsx
 src/components/atomic/organisms/AL-AutomationOrchestra.tsx
 src/components/atomic/organisms/BI-ExecutiveIntelligence.tsx
+
+# UX Organisms
+src/components/atomic/organisms/UX-StandardModal.tsx
+src/components/atomic/organisms/UX-DestructiveModal.tsx
+src/components/atomic/organisms/UX-OnboardingTour.tsx
+src/components/atomic/organisms/UX-FeedbackWidget.tsx
+src/components/atomic/organisms/UX-ToastNotifications.tsx
 
 # Compositions (page layouts)
 src/components/atomic/compositions/dashboard/DC-CommandCenter.tsx
@@ -142,7 +168,11 @@ src/components/atomic/compositions/dashboard/DC-CommandCenter.tsx
 | 2025-01-10 | SB-010-AdminSidebar                  | ✅ COMPLETED | Migrated to atomic organisms                         |
 | 2025-01-10 | DC-100-AutomationLiberationOrchestra | ✅ COMPLETED | Section migrated to AL-AutomationOrchestra           |
 | 2025-01-10 | DC-110-ExecutiveBusinessIntelligence | ✅ COMPLETED | Section migrated to BI-ExecutiveIntelligence         |
-| 2025-01-10 | Migration Tracking                   | 📝 UPDATED   | Added new migrations                                 |
+| 2025-01-10 | UX-010-Modals                        | ✅ COMPLETED | Split into StandardModal + DestructiveModal          |
+| 2025-01-10 | UX-020-OnboardingTour                | ✅ COMPLETED | Spotlight effect + keyboard navigation               |
+| 2025-01-10 | UX-030-FeedbackWidget                | ✅ COMPLETED | Multi-step form + glass morphism                     |
+| 2025-01-10 | UX-040-ToastNotifications            | ✅ COMPLETED | Context provider + auto-dismiss                      |
+| 2025-01-10 | Migration Tracking                   | 📝 UPDATED   | Added UX series migrations                           |
 
 ---
 

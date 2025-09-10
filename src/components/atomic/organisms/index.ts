@@ -24,11 +24,12 @@ import DCHealthOverview from './DC-HealthOverview';
 import DCPerformanceArtistry from './DC-PerformanceArtistry';
 // Migrated Navigation Components
 import NCNavigationHeader from './NC-NavigationHeader';
+// Migrated Order Management Components
+import { FlowVisualization } from './OM-FlowVisualization';
 // Migrated Sidebar Components
 import SBAdminSidebar from './SB-AdminSidebar';
 // Migrated Security & Command Components
 import SCStrategicCommand from './SC-StrategicCommand';
-// Migrated User Experience Components
 import UXDestructiveModal from './UX-DestructiveModal';
 import { FeedbackWidget } from './UX-FeedbackWidget';
 import { OnboardingTour } from './UX-OnboardingTour';
@@ -47,6 +48,7 @@ export { SCStrategicCommand };
 export { SBAdminSidebar };
 export { UXDestructiveModal };
 export { UXStandardModal };
+export { FlowVisualization };
 export { OnboardingTour };
 export { FeedbackWidget };
 export { ToastContainer };
@@ -104,6 +106,10 @@ export const AutomationOrganisms = {
 
 export const BusinessIntelligenceOrganisms = {
   BIExecutiveIntelligence,
+};
+
+export const OrderManagementOrganisms = {
+  FlowVisualization,
 };
 
 export const UserExperienceOrganisms = {
