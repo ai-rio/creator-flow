@@ -12,26 +12,26 @@ export default function StrategicInsightsDemo(): React.JSX.Element {
       Icon: Trophy,
       text: 'Top Performing Creator: ',
       highlight: '@viral_creator (+$12k this week)',
-      color: 'text-yellow-500',
+      color: 'text-amber-600 dark:text-amber-400',
     },
     {
       Icon: ShieldCheck,
       text: 'Automation ROI: ',
       highlight: '$4,567 saved in labor costs',
-      color: 'text-primary',
+      color: 'text-green-600 dark:text-green-400',
       isHeartbeat: true,
     },
     {
       Icon: TrendingUp,
       text: 'Growth Opportunity: ',
       highlight: 'Phone grips trending (+67% demand)',
-      color: 'text-primary',
+      color: 'text-blue-600 dark:text-blue-400',
     },
     {
       Icon: Eye,
       text: 'Market Intelligence: ',
       highlight: 'Competitors struggling with fulfillment',
-      color: 'text-primary',
+      color: 'text-purple-600 dark:text-purple-400',
     },
   ];
 
@@ -39,7 +39,7 @@ export default function StrategicInsightsDemo(): React.JSX.Element {
     Icon: Bot,
     text: 'AI Recommendation: ',
     highlight: 'Scale phone grip inventory by 200%',
-    color: 'text-primary',
+    color: 'text-teal-600 dark:text-teal-400',
   };
 
   return (

@@ -30,7 +30,7 @@ interface SortConfig {
 const StatusBadge: React.FC<{ status: Invoice['status'] }> = ({ status }) => {
   const statusClasses = {
     Paid: 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300',
-    Failed: 'bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive',
+    Failed: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300',
     Pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-300',
   };
 
