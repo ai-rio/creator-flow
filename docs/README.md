@@ -8,6 +8,13 @@ Welcome to CreatorFlow's TikTok Shop fulfillment automation platform documentati
 
 - **[MoSCoW Implementation Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md)** - **SINGLE SOURCE OF TRUTH** for all development priorities, timelines, and business objectives. Updated with CDH and QuoteKit integration findings for $10M ARR target.
 
+## 🎨 **Design System - Single Source of Truth**
+
+- **[CreatorFlow Design System](development/design-system/README.md)** - **COMPREHENSIVE DESIGN LANGUAGE** extracted from 100+ working components with 200+ design tokens, 50+ component patterns, and 10-week MoSCoW implementation roadmap
+- **[Design Specifications](development/design-system/01-specifications/)** - Core design tokens, responsive system, and component patterns optimized for TikTok Shop creator workflows
+- **[Implementation Guides](development/design-system/02-implementation/)** - Step-by-step deployment strategy with migration guides and testing protocols
+- **[Design System Reference](development/design-system/03-reference/)** - Governance standards and evolution tracking for premium brand consistency
+
 ## 🏗️ Architecture & System Design
 
 - **[Architecture Overview](architecture/README.md)** - System architecture and design patterns
@@ -23,6 +30,8 @@ Welcome to CreatorFlow's TikTok Shop fulfillment automation platform documentati
 - **[Deployment Guide](deployment/README.md)** - Production deployment and infrastructure
 
 ### 📋 Strategic Initiative Documentation
+
+- **[Design System Initiative](development/design-system/README.md)** - **COMPREHENSIVE DESIGN LANGUAGE** with 200+ tokens and 10-week MoSCoW implementation roadmap
 - **[UI Enhancement Initiative](development/ui-enhancement-initiative/00-planning/P001-cdh-design-system-investigation.md)** - CDH design system integration analysis
 - **[Content Management Initiative](development/content-management-initiative/00-planning/P001-quotekit-mdx-blog-investigation.md)** - QuoteKit MDX blog system integration
 - **[Billing Enhancement Initiative](development/billing-enhancement-initiative/00-planning/P001-quotekit-stripe-integration-investigation.md)** - Enterprise Stripe billing integration
@@ -78,23 +87,32 @@ Welcome to CreatorFlow's TikTok Shop fulfillment automation platform documentati
 ## Quick Navigation
 
 ### For Developers
-- [Development Setup](development/README.md) → [Coding Standards](development/coding-standards/README.md) → [Testing](development/testing/README.md)
+
+- [Development Setup](development/README.md) → [Design System](development/design-system/README.md) → [Coding Standards](development/coding-standards/README.md) → [Testing](development/testing/README.md)
+
+### For Designers & Frontend Developers
+
+- [Design System](development/design-system/README.md) → [Design Specifications](development/design-system/01-specifications/) → [Implementation Guides](development/design-system/02-implementation/)
 
 ### For Product Managers
-- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Business Model](business/README.md) → [User Stories](business/user-stories/README.md)
+
+- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Design System](development/design-system/README.md) → [Business Model](business/README.md) → [User Stories](business/user-stories/README.md)
 
 ### For DevOps
+
 - [Architecture](architecture/README.md) → [Security](security/README.md) → [Deployment](deployment/README.md)
 
 ### For New Team Members
-- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Onboarding Guide](learning/onboarding/README.md) → [Development Setup](development/README.md) → [Best Practices](learning/best-practices/README.md)
+
+- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Design System](development/design-system/README.md) → [Onboarding Guide](learning/onboarding/README.md) → [Development Setup](development/README.md) → [Best Practices](learning/best-practices/README.md)
 
 ### For Executives & Stakeholders
-- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Business Model](business/README.md) → [Strategic Initiative Documentation](#-strategic-initiative-documentation)
+
+- [MoSCoW Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) → [Design System](development/design-system/README.md) → [Business Model](business/README.md) → [Strategic Initiative Documentation](#-strategic-initiative-documentation)
 
 ---
 
-*This documentation is version-controlled and follows our [Documentation Standards](development/documentation-standards/DOCUMENTATION_STANDARDS.md) and **MoSCoW agile methodology**. The [MoSCoW Implementation Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) serves as the single source of truth for all development priorities and eliminates documentation redundancy.*
+_This documentation is version-controlled and follows our [Documentation Standards](development/documentation-standards/DOCUMENTATION_STANDARDS.md) and **MoSCoW agile methodology**. The [MoSCoW Implementation Roadmap](development/moscow-methodology/02-implementation/I001-DRAFT-roadmap.md) serves as the single source of truth for all development priorities and eliminates documentation redundancy._
 
 ## 🚀 **Key Business Objectives**
 
@@ -103,3 +121,4 @@ Welcome to CreatorFlow's TikTok Shop fulfillment automation platform documentati
 - **Revenue Target**: $10M ARR (8,333 customers × $100 average MRR)
 - **Value Proposition**: Eliminate operational bottlenecks for viral TikTok products
 - **Enterprise Foundation**: CDH UI/UX + QuoteKit billing/analytics/Edge Functions
+- **Premium Experience**: Comprehensive Design System with 200+ tokens ensuring CEO-level sophistication and creator-optimized workflows

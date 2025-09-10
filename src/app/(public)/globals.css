@@ -2,108 +2,258 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CreatorFlow Public Pages - CDH Manifesto Styling */
+/* CreatorFlow Design System - Real Design Tokens Implementation */
 
 @layer base {
   :root {
-    /* CDH Manifesto Tenet 1: Clarity Over Chaos */
-    --clarity-primary: 215 100% 50%;        /* #3b82f6 */
-    --clarity-neutral: 215 14% 34%;         /* #475569 */
-    --clarity-background: 210 20% 98%;      /* #f8fafc */
-    --clarity-focus: 215 100% 50%;          /* Focus indicator */
+    /* Existing shadcn/ui variables (maintained for compatibility) */
+    --background: 240 6% 10%;
+    --foreground: 60 0% 90%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 240 5% 84%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
 
-    /* CDH Manifesto Tenet 2: Data is Art */
-    --data-art-primary: 258 90% 66%;        /* #8b5cf6 */
-    --data-art-creative: 285 85% 68%;       /* #a855f7 */
-    --data-art-canvas: 237 36% 20%;         /* #1e1b4b */
-    --data-art-inspiration: 330 81% 60%;    /* #ec4899 */
-
-    /* CDH Manifesto Tenet 3: Empowerment Through Automation */
-    --automation-primary: 159 64% 40%;      /* #10b981 */
-    --automation-liberated: 159 64% 56%;    /* #34d399 */
-    --automation-celebrating: 159 64% 72%;  /* #6ee7b7 */
-    --automation-flow: 159 64% 88%;         /* #a7f3d0 */
-
-    /* CDH Manifesto Tenet 4: Creator is the CEO */
-    --executive-primary: 41 96% 48%;        /* #f59e0b */
-    --executive-authority: 41 96% 40%;      /* #d97706 */
-    --executive-commanding: 41 96% 32%;     /* #92400e */
-    --executive-platinum: 60 9% 87%;        /* #e5e4e2 */
-
-    /* TikTok Integration Brand Colors */
-    --tiktok-pink: 350 100% 50%;            /* #ff0050 */
-    --tiktok-blue: 180 100% 53%;            /* #25f4ee */
-    --tiktok-black: 234 18% 12%;            /* #161823 */
+    /* Real CreatorFlow Brand Colors (Extracted from 100+ components) */
+    --brand-teal-primary: 173 80% 30%;      /* #0d9488 - Primary brand color */
+    --brand-teal-light: 173 80% 52%;        /* #2dd4bf - Light teal accent */
+    --brand-purple-primary: 258 90% 66%;    /* #8b5cf6 - Purple accent */
+    --brand-blue-primary: 215 100% 50%;     /* #3b82f6 - Blue interactions */
     
-    /* Premium Animation Variables */
-    --duration-instant: 100ms;
-    --duration-fast: 200ms;
-    --duration-medium: 300ms;
-    --duration-slow: 500ms;
-    --duration-cinematic: 800ms;
-    --duration-epic: 1200ms;
+    /* Real Background System (From dark theme components) */
+    --bg-dark-primary: 245 15% 4%;          /* #0A090F - Signature CreatorFlow dark */
+    --bg-dark-secondary: 220 13% 18%;       /* #111827 - Secondary dark */
+    --glass-card-dark: rgba(17, 24, 39, 0.5);    /* Semi-transparent cards */
+    --glass-card-light: rgba(255, 255, 255, 0.6); /* Light glass cards */
+    
+    /* Real Typography System (From component analysis) */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
+    
+    --text-display-xl: 4rem;           /* 64px - Hero text */
+    --text-display-lg: 3rem;           /* 48px - Section headings */
+    --text-display-md: 2.25rem;        /* 36px - Component titles */
+    --text-xl: 1.25rem;                /* 20px - Card titles */
+    --text-lg: 1.125rem;               /* 18px - Subheadings */
+    --text-base: 1rem;                 /* 16px - Body text */
+    --text-sm: 0.875rem;               /* 14px - Meta text */
+    --text-xs: 0.75rem;                /* 12px - Labels */
+    
+    /* Real Spacing System (Extracted from component padding/margins) */
+    --space-1: 0.25rem;    /* 4px - Tight gaps */
+    --space-2: 0.5rem;     /* 8px - Icon spacing */
+    --space-3: 0.75rem;    /* 12px - Button padding */
+    --space-4: 1rem;       /* 16px - Base spacing */
+    --space-6: 1.5rem;     /* 24px - Primary card padding (Most common) */
+    --space-8: 2rem;       /* 32px - Section padding */
+    --space-12: 3rem;      /* 48px - Large sections */
+    --space-16: 4rem;      /* 64px - Page sections */
+    --space-20: 5rem;      /* 80px - Header areas */
+    --space-24: 6rem;      /* 96px - Major separations */
+    
+    /* Real Animation System (From working components) */
+    --duration-fast: 0.2s;      /* Quick interactions */
+    --duration-normal: 0.5s;    /* Standard transitions */
+    --duration-slow: 1s;        /* Entrance animations */
+    --duration-chart: 1.5s;     /* Chart animations */
+    
+    --spring-gentle: cubic-bezier(0.25, 0.46, 0.45, 0.94);    /* Gentle ease */
+    --spring-bouncy: cubic-bezier(0.68, -0.55, 0.265, 1.55);  /* Bouncy */
+    --spring-snappy: cubic-bezier(0.4, 0, 0.2, 1);            /* Quick (Most used) */
+    --spring-precise: cubic-bezier(0.25, 0.1, 0.25, 1);       /* Precise */
+    
+    /* Real Border Radius System (From component analysis) */
+    --radius-sm: 0.125rem;     /* 2px - Small elements */
+    --radius-md: 0.375rem;     /* 6px - Buttons */
+    --radius-lg: 0.5rem;       /* 8px - Inputs */
+    --radius-xl: 0.75rem;      /* 12px - Cards */
+    --radius-2xl: 1rem;        /* 16px - Primary card radius (Most used) */
+    --radius-full: 9999px;     /* Circular elements */
+    
+    /* Real Glass Morphism System (Signature CreatorFlow effects) */
+    --glass-light: rgba(255, 255, 255, 0.7);
+    --glass-dark: rgba(17, 24, 39, 0.5);
+    --blur-sm: blur(4px);
+    --blur-md: blur(8px);
+    --blur-lg: blur(16px);
+    --blur-xl: blur(24px);    /* Primary card blur */
+    
+    /* Blog Content-Specific Variables (From blog component analysis) */
+    --blog-dark-accent: #2dd4bf;          /* teal-400 - Primary blog accent */
+    --blog-dark-category: #2dd4bf;        /* teal-400 - Category labels */
+    --blog-dark-title: #f1f5f9;          /* slate-100 - Main titles */
+    --blog-dark-content: #cbd5e1;         /* slate-300 - Body text */
+    --blog-dark-meta: #64748b;            /* slate-500 - Meta text */
+    --blog-dark-divider: rgba(241, 245, 249, 0.1); /* Content dividers */
+    
+    --blog-light-accent: #7c3aed;         /* purple-600 - Primary accent */
+    --blog-light-category: #7c3aed;       /* purple-600 - Category labels */
+    --blog-light-title: #1e293b;          /* slate-800 - Main titles */
+    --blog-light-content: #374151;        /* slate-700 - Body text */
+    --blog-light-meta: #64748b;           /* slate-500 - Meta text */
+    --blog-light-divider: rgba(203, 213, 225, 0.8); /* Content dividers */
+    
+    /* Content Glass Morphism (From glass morphism analysis) */
+    --glass-content-dark: rgba(0, 0, 0, 0.4);          /* Dark content cards */
+    --glass-content-light: rgba(255, 255, 255, 0.6);   /* Light content cards */
+    --glass-hero-overlay: rgba(0, 0, 0, 0.7);          /* Hero overlays */
+    --glass-testimonial: rgba(17, 24, 39, 0.5);        /* Testimonial backgrounds */
+    
+    /* Content Border Colors (From component borders) */
+    --border-content-dark: rgba(148, 163, 184, 0.1);   /* Content borders dark */
+    --border-content-light: rgba(203, 213, 225, 1);    /* Content borders light */
+    --border-accent-dark: rgba(45, 212, 191, 0.8);     /* Accent borders dark */
+    --border-accent-light: rgba(147, 51, 234, 0.8);    /* Accent borders light */
+    
+    /* Content Spacing (From blog layouts) */
+    --space-content-section: 4rem;        /* 64px - Major content sections */
+    --space-content-paragraph: 1.5rem;    /* 24px - Paragraph spacing */
+    --space-content-element: 2rem;        /* 32px - Content element spacing */
+    --space-content-tight: 0.75rem;       /* 12px - Tight content spacing */
+    --space-hero-padding: 3rem;           /* 48px - Hero content padding */
+    --space-article-padding: 2rem;        /* 32px - Article body padding */
+    
+    /* Content Widths - Reading optimization */
+    --width-content-max: 65ch;            /* Optimal reading line length */
+    --width-content-hero: 50%;            /* Hero content width */
+    --width-content-sidebar: 25%;         /* Sidebar content width */
+    
+    /* Content Typography (From blog components) */
+    --font-content-serif: 'Lora', Georgia, serif;          /* Premium serif for quotes */
+    --font-content-reading: 'Inter', system-ui, sans-serif; /* Optimized reading font */
+    
+    --text-content-hero: clamp(2.5rem, 8vw, 6rem);   /* Responsive hero text */
+    --text-content-title: 2.25rem;                    /* 36px - Article titles */
+    --text-content-subtitle: 1.5rem;                  /* 24px - Article subtitles */
+    --text-content-quote: 2rem;                       /* 32px - Testimonial quotes */
+    --text-content-meta: 0.875rem;                    /* 14px - Author/date meta */
+    --text-content-category: 0.75rem;                 /* 12px - Category labels */
+    
+    --line-height-content: 1.75;                      /* Standard content reading */
+    --line-height-tight-content: 1.1;                 /* Headlines and titles */
+    --line-height-relaxed-content: 1.8;               /* Long-form paragraphs */
+    
+    --letter-spacing-category: 0.1em;                 /* Category label spacing */
+    --letter-spacing-hero: -0.02em;                   /* Hero text tightening */
+    --letter-spacing-mono-content: 0.05em;            /* Monospace content */
+    
+    /* Real Shadow System (From elevated components) */
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-glass: 0 0 15px rgba(13, 148, 136, 0.6);
+    --shadow-teal-glow: 0 0 20px 0 rgba(52, 211, 153, 0.4);
+    --shadow-blue-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+    --shadow-purple-glow: 0px 0px 12px rgba(29, 255, 233, 0.5);
+    
+    /* Chart & Visualization Colors (From EvilCharts integration) */
+    --chart-primary: #0d9488;          /* Primary data line */
+    --chart-secondary: #8b5cf6;        /* Secondary data line */
+    --chart-tertiary: #3b82f6;         /* Tertiary data line */
+    --chart-success: #22c55e;          /* Positive metrics */
+    --chart-highlight: rgba(251, 191, 36, 0.5);      /* Selection areas */
+    --chart-highlight-fill: rgba(251, 191, 36, 0.1); /* Highlight fills */
+    --chart-grid: rgba(156, 163, 175, 0.1);          /* Grid lines */
+    
+    /* Real Semantic Colors (From working status indicators) */
+    --success-green-400: #4ade80;      /* Light success */
+    --success-green-500: #22c55e;      /* Primary success */
+    --success-green-600: #16a34a;      /* Dark success */
+    --warning-amber-400: #fbbf24;      /* Light warning */
+    --warning-amber-500: #f59e0b;      /* Primary warning */
+    --warning-amber-600: #d97706;      /* Dark warning */
+    --error-red-400: #f87171;          /* Light error */
+    --error-red-500: #ef4444;          /* Primary error */
+    --error-red-600: #dc2626;          /* Dark error */
 
-    /* Premium Easing Functions */
-    --ease-executive: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-cinematic: cubic-bezier(0.25, 0.1, 0.25, 1);
-    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --ease-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Legacy CDH Manifesto variables (maintained for backward compatibility) */
+    --clarity-primary: 215 100% 50%;
+    --clarity-neutral: 215 14% 34%;
+    --clarity-background: 210 20% 98%;
+    --data-art-primary: 258 90% 66%;
+    --data-art-creative: 285 85% 68%;
+    --data-art-canvas: 237 36% 20%;
+    --automation-primary: 159 64% 40%;
+    --executive-primary: 41 96% 48%;
+    --executive-authority: 41 96% 40%;
+    --tiktok-pink: 350 100% 50%;
+    --tiktok-blue: 180 100% 53%;
+    --tiktok-black: 234 18% 12%;
   }
 
-  /* Enhanced base styles for public pages */
+  .dark {
+    /* Dark mode (Primary design approach for CreatorFlow) */
+    --background: 245 15% 4%;               /* #0A090F - Signature CreatorFlow dark */
+    --foreground: 213 31% 91%;
+    --muted: 220 13% 18%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 220 13% 18%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 245 15% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --card: 245 15% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 220 13% 18%;
+
+    /* Dark mode adjustments for content */
+    --clarity-background: 224 71% 4%;
+    --data-art-canvas: 224 71% 4%;
+  }
+
+  /* Enhanced base styles */
   * {
     @apply border-border min-w-0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   html, body {
     @apply h-full;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
-  }
-
-  /* CDH Manifesto Typography Styles */
-  h1 {
-    @apply font-display font-bold text-4xl lg:text-6xl;
-    @apply text-white bg-clip-text drop-shadow-[0_0_15px_rgba(0,0,0,1)];
-    @apply lg:text-transparent lg:bg-gradient-to-br from-white to-neutral-400;
-  }
-
-  /* Executive heading style */
-  .heading-executive {
-    @apply font-display font-bold text-heading-xl text-executive-600;
-    @apply drop-shadow-sm;
-  }
-
-  /* Data art heading style */
-  .heading-artistic {
-    @apply font-display font-semibold text-heading-lg;
-    @apply bg-gradient-to-r from-data-art-600 via-data-art-500 to-data-art-900;
-    @apply bg-clip-text text-transparent;
-  }
-
-  /* CEO heading for heroes */
-  .heading-ceo {
-    @apply font-display font-bold text-executive-600 tracking-tight;
-    @apply drop-shadow-md;
+  /* Enhanced focus styling for accessibility */
+  *:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-brand-teal-600;
   }
 
   /* Premium selection styling */
   ::selection {
-    @apply text-black bg-tiktok-blue;
-  }
-
-  /* Enhanced focus styling */
-  *:focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-clarity-500;
+    @apply text-black bg-brand-teal-400;
   }
 
   /* Premium scroll styling */
   .scroll-premium {
     scrollbar-width: thin;
-    scrollbar-color: hsl(var(--executive-primary)) hsl(var(--clarity-background));
+    scrollbar-color: hsl(var(--brand-teal-primary)) hsl(var(--bg-dark-primary));
   }
 
   .scroll-premium::-webkit-scrollbar {
@@ -111,167 +261,756 @@
   }
 
   .scroll-premium::-webkit-scrollbar-track {
-    background: hsl(var(--clarity-background));
+    background: hsl(var(--bg-dark-primary));
     border-radius: 4px;
   }
 
   .scroll-premium::-webkit-scrollbar-thumb {
-    background: hsl(var(--executive-primary));
+    background: hsl(var(--brand-teal-primary));
     border-radius: 4px;
   }
 
   .scroll-premium::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--executive-authority));
+    background: var(--brand-teal-light);
   }
 }
 
-/* CDH Manifesto Component Classes */
+/* Real Component Classes (Extracted from working components) */
 @layer components {
-  /* MVPBlocks Trading Hero Customization */
-  .mvp-trading-hero {
-    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900;
-    background-image: 
-      radial-gradient(at 40% 20%, hsl(var(--executive-primary) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, hsl(var(--data-art-primary) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsl(var(--automation-primary) / 0.1) 0px, transparent 50%);
+  /* Premium Card System (From component analysis) */
+  .card-primary {
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    background: var(--glass-card-dark);
+    backdrop-filter: var(--blur-xl);
+    border: 1px solid rgba(156, 163, 175, 0.2);
+    box-shadow: var(--shadow-card);
+    transition: all var(--duration-fast) var(--spring-snappy);
   }
 
-  .mvp-trading-hero .hero-title {
-    @apply heading-ceo animate-priority-highlight;
+  .card-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-teal-glow);
   }
 
-  .mvp-trading-hero .hero-cta {
-    @apply button-executive;
-  }
-
-  /* Enhanced Header Styling */
-  .mvp-header-2 {
-    @apply bg-clarity-neutral-50/90 backdrop-blur-sm;
-    border-bottom: 1px solid hsl(var(--clarity-neutral) / 0.2);
-  }
-
-  .mvp-header-2 .nav-link {
-    @apply text-clarity-neutral-700 hover:text-clarity-500;
-    transition: color var(--duration-fast) var(--ease-executive);
-  }
-
-  /* Executive Components */
+  /* Executive Card (CEO-level components) */
   .card-executive {
-    @apply bg-gradient-to-br from-executive-50 to-executive-100 border-2 border-executive-500/30 rounded-executive;
-    @apply shadow-executive transition-all duration-slow hover:shadow-authority-glow;
+    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    background: var(--glass-card-dark);
+    backdrop-filter: var(--blur-xl);
+    border: 2px solid var(--brand-teal-600);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* CEO-Level Typography (From working components) */
+  .heading-ceo {
+    font-family: var(--font-primary);
+    font-size: var(--text-display-md);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.1;
+    color: var(--brand-teal-600);
+    letter-spacing: -0.02em;
+  }
+
+  .metric-display {
+    font-family: var(--font-mono);
+    font-size: var(--text-display-lg);
+    font-weight: var(--font-weight-black);
+    line-height: 1;
+    color: var(--brand-purple-500);
+  }
+
+  .text-professional {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Premium Buttons (From working components) */
+  .btn-primary {
+    background: var(--brand-blue-600);
+    color: white;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-base);
+    transition: all var(--duration-fast) var(--spring-snappy);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--brand-blue-500);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-blue-glow);
+  }
+
+  .btn-executive {
+    background: linear-gradient(90deg, var(--brand-teal-600) 0%, var(--brand-purple-500) 100%);
+    color: white;
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-lg);
+    box-shadow: var(--shadow-2xl);
+  }
+
+  /* Premium Status System (From working status indicators) */
+  .status-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success-green-600);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .status-warning {
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--warning-amber-600);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .status-automated {
+    background: linear-gradient(90deg, var(--brand-teal-600) 0%, var(--brand-purple-500) 100%);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    animation: pulse 2s infinite;
+  }
+
+  /* Glass Morphism Components (Signature CreatorFlow effects) */
+  .glass-card {
+    backdrop-filter: var(--blur-xl);
+    background: var(--glass-card-dark);
+    border: 1px solid rgba(156, 163, 175, 0.2);
+  }
+
+  /* Legacy component classes (maintained for backward compatibility) */
+  .card-clarity {
+    @apply bg-clarity-neutral-50 border border-clarity-neutral-100 rounded-premium shadow-premium;
+    @apply transition-all duration-fast hover:shadow-clarity-glow;
   }
 
   .button-executive {
     @apply bg-executive-500 hover:bg-executive-600 text-white font-semibold;
-    @apply px-6 py-3 rounded-lg transition-all duration-medium;
+    @apply px-command py-tactical rounded-executive transition-all duration-medium;
     @apply shadow-lg hover:shadow-authority-glow transform hover:-translate-y-1;
   }
 
-  .button-tiktok {
-    @apply bg-gradient-to-r from-tiktok-pink to-tiktok-blue text-white font-semibold;
-    @apply px-6 py-3 rounded-lg transition-all duration-medium;
-    @apply shadow-lg hover:shadow-viral-glow transform hover:-translate-y-1;
-  }
-
-  /* TikTok Integration Components */
-  .status-tiktok-connected {
-    @apply bg-gradient-to-r from-tiktok-pink to-tiktok-blue text-white;
-    @apply px-4 py-2 rounded-full text-sm font-medium;
-    @apply shadow-lg animate-pulse;
-  }
-
-  /* Premium Loading States */
-  .loading-executive {
-    @apply inline-flex items-center gap-2 text-executive-600 font-medium;
-  }
-
-  .loading-executive::after {
-    content: '';
-    @apply w-4 h-4 border-2 border-executive-600/30 border-t-executive-600 rounded-full animate-spin;
-  }
-
-  /* Testimonials Marquee Styling */
-  .mvp-testimonials-marquee {
-    @apply bg-data-art-50/10;
-  }
-
-  .mvp-testimonials-marquee .testimonial-card {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl;
-    @apply hover:shadow-xl transform hover:-translate-y-1;
-    @apply transition-all duration-medium;
-  }
-
-  /* Footer Newsletter Styling */
-  .footer-newsletter {
-    @apply bg-slate-900;
-  }
-
-  .footer-newsletter .newsletter-section {
-    @apply bg-gradient-to-r from-executive-500 via-executive-600 to-executive-900;
+  .heading-executive {
+    @apply font-display font-bold text-heading-xl text-executive-600;
+    @apply drop-shadow-sm;
   }
 }
 
-/* Premium Animation Classes */
-@layer utilities {
-  /* CDH Manifesto Animation Utilities */
-  .animate-authority-glow {
-    animation: authority-glow 1.5s ease-in-out infinite;
+/* Blog Content Component Classes (From blog component analysis) */
+@layer components {
+  /* Content Hero Component */
+  .content-hero {
+    height: 100vh;
+    min-height: 450px;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    backdrop-filter: blur(8px);
   }
 
-  .animate-priority-highlight {
-    animation: priority-highlight 2s infinite;
+  /* Content Category Tag */
+  .content-category {
+    font-family: var(--font-mono);
+    font-size: var(--text-content-category);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-category);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    background: rgba(45, 212, 191, 0.1);
+    color: var(--blog-dark-accent);
+    border: 1px solid rgba(45, 212, 191, 0.2);
+    transition: all var(--duration-fast) var(--spring-snappy);
+  }
+
+  .content-category:hover {
+    background: rgba(45, 212, 191, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Content Glass Classes */
+  .glass-content-card {
+    background: var(--glass-content-dark);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--border-content-dark);
+    border-radius: var(--radius-2xl);
+    transition: all var(--duration-fast) var(--spring-snappy);
+  }
+
+  .glass-hero-overlay {
+    background: linear-gradient(
+      to top, 
+      rgba(0, 0, 0, 0.7) 0%, 
+      rgba(0, 0, 0, 0.4) 50%, 
+      transparent 100%
+    );
+    backdrop-filter: blur(8px);
+  }
+
+  .glass-testimonial {
+    background: var(--glass-testimonial);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-accent-dark);
+    border-radius: var(--radius-xl);
+  }
+
+  /* Content Typography Classes */
+  .text-content-hero {
+    font-family: var(--font-primary);
+    font-size: var(--text-content-hero);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight-content);
+    letter-spacing: var(--letter-spacing-hero);
+  }
+
+  .text-content-quote {
+    font-family: var(--font-content-serif);
+    font-size: var(--text-content-quote);
+    font-weight: var(--font-weight-medium);
+    font-style: italic;
+    line-height: var(--line-height-relaxed-content);
+  }
+
+  .text-content-category {
+    font-family: var(--font-mono);
+    font-size: var(--text-content-category);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-category);
+  }
+
+  .text-content-meta {
+    font-family: var(--font-primary);
+    font-size: var(--text-content-meta);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-content);
+  }
+
+  /* Content Layout Grids */
+  .content-hero-grid {
+    height: 100vh;
+    min-height: 450px;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .content-article-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: var(--space-content-element);
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: var(--space-article-padding);
+  }
+
+  @media (max-width: 1024px) {
+    .content-article-grid {
+      grid-template-columns: 1fr;
+      padding: var(--space-4);
+    }
+  }
+
+  /* Interactive Content Effects */
+  .content-glass-tracking {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .content-glass-tracking::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: radial-gradient(
+      500px circle at var(--mouse-x) var(--mouse-y),
+      rgba(45, 212, 191, 0.2),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+  }
+
+  .content-glass-tracking:hover::before {
+    opacity: 1;
+  }
+
+  .content-icon-transform {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                filter 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(45, 212, 191, 0.5));
+  }
+
+  .content-glass-tracking:hover .content-icon-transform {
+    transform: scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 0 15px rgba(45, 212, 191, 1));
+  }
+
+  /* Testimonial Block */
+  .testimonial-block {
+    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    background: var(--glass-testimonial);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-accent-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-content-serif);
+    font-size: var(--text-content-quote);
+    font-weight: var(--font-weight-medium);
+    font-style: italic;
+    line-height: var(--line-height-relaxed-content);
+    color: var(--blog-dark-content);
+    position: relative;
+    z-index: 10;
+  }
+
+  .testimonial-author {
+    margin-top: var(--space-6);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .testimonial-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    transition: transform 0.4s ease;
+  }
+
+  .testimonial-block:hover .testimonial-avatar {
+    transform: scale(1.05);
+  }
+
+  /* Key Takeaways Component */
+  .key-takeaways {
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    background: var(--glass-content-dark);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--border-content-dark);
+    margin: var(--space-content-element) 0;
+  }
+
+  .key-takeaways-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--blog-dark-title);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+  }
+
+  .key-takeaways-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .key-takeaways-item {
+    display: flex;
+    align-items: flex-start;
+    font-size: var(--text-base);
+    line-height: var(--line-height-content);
+    color: var(--blog-dark-content);
+  }
+
+  .key-takeaways-icon {
+    margin-right: var(--space-4);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    color: var(--blog-dark-accent);
+  }
+
+  /* Table of Contents Component */
+  .table-of-contents {
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    background: var(--glass-content-dark);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--border-content-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .table-of-contents-title {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--blog-dark-title);
+    margin-bottom: var(--space-4);
+  }
+
+  .table-of-contents-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    position: relative;
+  }
+
+  .table-of-contents-item {
+    position: relative;
+  }
+
+  .table-of-contents-item[data-level='3'] {
+    padding-left: 20px;
+  }
+
+  .table-of-contents-item[data-level='3']::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .table-of-contents-link {
+    display: block;
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    color: var(--blog-dark-meta);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .table-of-contents-link:hover,
+  .table-of-contents-link.active {
+    color: var(--blog-dark-accent);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Targeting Reticle for TOC */
+  .targeting-reticle {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border: 2px solid var(--border-accent-dark);
+    border-radius: var(--radius-lg);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                height 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                opacity 0.3s ease;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .targeting-reticle.is-active {
+    opacity: 1;
+  }
+
+  .targeting-reticle.is-locking {
+    animation: reticle-lock 0.4s ease-out;
+  }
+
+  /* Callout Component System */
+  .callout {
+    margin: var(--space-content-element) 0;
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    background: var(--glass-content-dark);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--border-content-dark);
+    border-left: 4px solid var(--blog-dark-accent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout.info {
+    border-left-color: var(--blog-dark-accent);
+    background: rgba(45, 212, 191, 0.15);
+  }
+
+  .callout.success {
+    border-left-color: var(--success-green-500);
+    background: rgba(74, 222, 128, 0.15);
+  }
+
+  .callout.warning {
+    border-left-color: var(--warning-amber-500);
+    background: rgba(251, 191, 36, 0.15);
+  }
+
+  .callout.danger {
+    border-left-color: var(--error-red-500);
+    background: rgba(244, 63, 94, 0.15);
+  }
+
+  .callout-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .callout-icon {
+    margin-right: var(--space-4);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                filter 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(45, 212, 191, 0.5));
+  }
+
+  .callout:hover .callout-icon {
+    transform: scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 0 15px rgba(45, 212, 191, 1));
+  }
+
+  .callout-text {
+    flex: 1;
+    font-size: var(--text-base);
+    line-height: var(--line-height-content);
+    color: var(--blog-dark-content);
+  }
+
+  .callout-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--blog-dark-title);
+    margin-bottom: var(--space-2);
+  }
+}
+
+/* Real Animation Classes (From working components) */
+@layer utilities {
+  .animate-heartbeat {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* Content-Specific Animation Classes (From blog components) */
+  .animate-hero-character-forge {
+    animation: hero-character-forge 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  .animate-typewriter-reveal {
+    animation: typewriter-reveal 1s steps(40, end) forwards;
+  }
+  
+  .animate-signal-pulse {
+    animation: signal-pulse 0.6s ease-out forwards;
+  }
+  
+  .animate-reticle-lock {
+    animation: reticle-lock 0.4s ease-out;
+  }
+  
+  .animate-content-fade-in {
+    animation: content-fade-in 1s ease-out forwards;
+  }
+  
+  .animate-nebula-drift {
+    animation: nebula-drift 25s ease-in-out infinite;
+  }
+  
+  .animate-slow-pulse {
+    animation: slow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Premium Hover Effects */
+  .hover-lift {
+    transition: all var(--duration-fast) ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .hover-glow {
+    transition: all var(--duration-fast) ease-out;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-teal-glow);
+  }
+
+  /* Legacy animation utilities (maintained for compatibility) */
+  .animate-revenue-flow {
+    animation: revenue-flow 3s ease-in-out infinite;
   }
 
   .animate-executive-entrance {
     animation: executive-entrance 0.8s var(--ease-executive) forwards;
   }
 
-  /* Marquee Animation Utilities */
-  .animate-marquee-slow {
-    animation: marquee 60s linear infinite;
+  .animate-priority-highlight {
+    animation: priority-highlight 2s infinite;
   }
 
-  .animate-marquee-medium {
-    animation: marquee 40s linear infinite;
-  }
-
-  .animate-marquee-fast {
-    animation: marquee 20s linear infinite;
-  }
-
-  .paused {
-    animation-play-state: paused;
-  }
-
-  /* Premium Hover Effects */
-  .hover-lift {
-    @apply transition-all duration-fast hover:-translate-y-1 hover:shadow-lg;
-  }
-
-  .hover-executive {
-    @apply transition-all duration-medium hover:-translate-y-2 hover:shadow-authority-glow;
-  }
-
-  /* Premium Focus States */
-  .focus-executive {
-    @apply focus:outline-none focus:ring-4 focus:ring-executive-500/20 focus:shadow-authority-glow;
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
   }
 }
 
-/* Premium Keyframes */
-@keyframes authority-glow {
+/* Real Animation Keyframes (From working components) */
+@keyframes heartbeat {
   0%, 100% { 
-    box-shadow: 0 0 20px hsl(var(--executive-primary) / 0.3);
+    transform: scale(1); 
   }
   50% { 
-    box-shadow: 0 0 30px hsl(var(--executive-primary) / 0.6);
+    transform: scale(1.03); 
   }
 }
 
-@keyframes priority-highlight {
-  0% { box-shadow: 0 0 0 0 hsl(var(--clarity-primary) / 0.4); }
-  70% { box-shadow: 0 0 0 10px hsl(var(--clarity-primary) / 0); }
-  100% { box-shadow: 0 0 0 0 hsl(var(--clarity-primary) / 0); }
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.5; 
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(13, 148, 136, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(13, 148, 136, 0.6); 
+  }
+}
+
+/* Content-Focused Animation Keyframes (From blog components) */
+@keyframes hero-character-forge {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+    text-shadow: 0 0 50px rgba(255,255,255,1);
+  }
+  80% {
+    opacity: 1; 
+    transform: translateY(0px) scale(1.1);
+    text-shadow: 0 0 20px rgba(45, 212, 191, 0.7);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0px) scale(1);
+    text-shadow: 0 0 15px rgba(45, 212, 191, 0.3);
+  }
+}
+
+@keyframes typewriter-reveal {
+  0% { 
+    width: 0; 
+    opacity: 0;
+  }
+  1% { 
+    opacity: 1; 
+  }
+  100% { 
+    width: 100%; 
+    opacity: 1;
+  }
+}
+
+@keyframes signal-pulse {
+  0% { 
+    transform: scale(0); 
+    opacity: 0.5; 
+  }
+  100% { 
+    transform: scale(1.5); 
+    opacity: 0; 
+  }
+}
+
+@keyframes reticle-lock {
+  0% { 
+    box-shadow: 0 0 15px 5px rgba(45, 212, 191, 0); 
+  }
+  50% { 
+    box-shadow: 0 0 25px 10px rgba(45, 212, 191, 0.5); 
+  }
+  100% { 
+    box-shadow: 0 0 15px 5px rgba(45, 212, 191, 0); 
+  }
+}
+
+@keyframes content-fade-in {
+  0% { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes nebula-drift {
+  0% { transform: translate(0, 0) scale(1) }
+  50% { transform: translate(15px, 10px) scale(1.1) }
+  100% { transform: translate(0, 0) scale(1) }
+}
+
+@keyframes slow-pulse {
+  0%, 100% { text-shadow: 0 0 15px rgba(45, 212, 191, 0.3) }
+  50% { text-shadow: 0 0 25px rgba(45, 212, 191, 0.5) }
+}
+
+/* Legacy keyframes (maintained for backward compatibility) */
+@keyframes revenue-flow {
+  0% { 
+    background-position: 0% 50%;
+    transform: translateX(0); 
+  }
+  50% {
+    background-position: 50% 50%;
+    transform: translateX(5px);
+  }
+  100% { 
+    background-position: 100% 50%;
+    transform: translateX(10px); 
+  }
 }
 
 @keyframes executive-entrance {
@@ -289,17 +1028,31 @@
   }
 }
 
-/* Marquee Animation Keyframes */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
+@keyframes priority-highlight {
+  0% { box-shadow: 0 0 0 0 hsl(var(--clarity-primary) / 0.4); }
+  70% { box-shadow: 0 0 0 10px hsl(var(--clarity-primary) / 0); }
+  100% { box-shadow: 0 0 0 0 hsl(var(--clarity-primary) / 0); }
+}
+
+@keyframes authority-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--executive-primary) / 0.3);
   }
-  100% {
-    transform: translateX(-50%);
+  50% { 
+    box-shadow: 0 0 30px hsl(var(--executive-primary) / 0.6);
   }
 }
 
-/* Additional TikTok-inspired animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* TikTok-inspired viral animations */
 @keyframes viral-glow {
   0%, 100% {
     box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3), 0 0 25px hsl(var(--tiktok-blue) / 0.2);
@@ -309,6 +1062,74 @@
   }
 }
 
+/* Accessibility and Performance */
+@media (prefers-reduced-motion: reduce) {
+  .animate-heartbeat,
+  .animate-glow-pulse,
+  .animate-hero-character-forge,
+  .animate-typewriter-reveal,
+  .animate-signal-pulse,
+  .animate-reticle-lock,
+  .animate-content-fade-in,
+  .animate-nebula-drift,
+  .animate-slow-pulse,
+  .animate-revenue-flow,
+  .animate-executive-entrance,
+  .animate-priority-highlight,
+  .animate-shimmer {
+    animation: none;
+  }
+
+  .hover-lift,
+  .hover-glow {
+    transform: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --brand-teal-primary: 0 0% 0%;
+    --brand-purple-primary: 0 0% 0%;
+    --brand-blue-primary: 0 0% 0%;
+  }
+
+  .card-primary,
+  .card-executive,
+  .glass-content-card,
+  .glass-testimonial {
+    border: 2px solid black;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .card-primary,
+  .card-executive,
+  .glass-content-card,
+  .glass-testimonial {
+    border: 1px solid black;
+    background: white;
+    box-shadow: none;
+  }
+}
+
+/* Shadow utility classes */
 .shadow-viral-glow {
   box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3), 0 0 25px hsl(var(--tiktok-blue) / 0.2);
 }

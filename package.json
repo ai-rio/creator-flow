@@ -71,6 +71,7 @@
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "evil-charts": "legions-developer/evilcharts",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.474.0",
     "next": "^15.1.4",

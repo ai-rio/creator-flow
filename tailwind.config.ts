@@ -1,7 +1,6 @@
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
-/** @type {import('tailwindcss').Config} */
 const config: Config = {
   darkMode: ['class'],
   content: ['./src/**/*.{ts,tsx}'],
@@ -11,11 +10,11 @@ const config: Config = {
       padding: '2rem',
       screens: {
         '2xl': '1440px',
-        'executive': '1600px' // Premium executive displays
+        executive: '1600px',
       },
     },
     extend: {
-      // CDH Manifesto color system
+      // Real CreatorFlow color system (extracted from 100+ components)
       colors: {
         // Base shadcn/ui colors (maintained for compatibility)
         border: 'hsl(var(--border))',
@@ -62,158 +61,236 @@ const config: Config = {
           ring: 'hsl(var(--sidebar-ring))',
         },
 
-        // CDH Manifesto Tenet 1: Clarity Over Chaos
-        clarity: {
-          50: '#eff6ff',   // Light clarity
-          100: '#dbeafe',  // Soft focus
-          500: '#3b82f6',  // Clear blue (primary)
-          600: '#2563eb',  // Deep focus
-          900: '#1e3a8a'   // Authority blue
+        // Real CreatorFlow Brand Colors (extracted from working components)
+        'brand-teal': {
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          primary: '#0d9488',
         },
-        'clarity-neutral': {
-          50: '#f8fafc',   // Clean background
-          100: '#f1f5f9',  // Light surface
-          500: '#64748b',  // Balanced gray
-          700: '#334155',  // Professional text
-          900: '#0f172a'   // High contrast
+        'brand-purple': {
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
         },
-
-        // CDH Manifesto Tenet 2: Data is Art
-        'data-art': {
-          50: '#faf5ff',   // Light canvas
-          100: '#f3e8ff',  // Soft artistic
-          500: '#8b5cf6',  // Creative purple (primary)
-          600: '#7c3aed',  // Deep creativity
-          900: '#581c87'   // Rich artistic depth
-        },
-        artistic: {
-          creativity: '#a855f7',     // Creative highlights
-          inspiration: '#ec4899',    // Inspiration moments
-          visualization: '#06b6d4',  // Data visualization
-          masterpiece: '#f59e0b'     // Achievement highlights
+        'brand-blue': {
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
         },
 
-        // CDH Manifesto Tenet 3: Empowerment Through Automation
-        automation: {
-          50: '#f0fdf4',   // Light liberation
-          100: '#dcfce7',  // Soft automation
-          500: '#10b981',  // Success green (primary)
-          600: '#059669',  // Active automation
-          900: '#064e3b'   // Deep automation
-        },
-        liberation: {
-          automated: '#10b981',      // Fully automated
-          processing: '#3b82f6',     // Auto-processing
-          liberated: '#34d399',      // Time liberated
-          celebrating: '#6ee7b7'     // Achievement celebration
+        // Real Background System (from dark theme components)
+        'bg-dark': {
+          primary: '#0A090F',
+          secondary: '#111827',
+          card: 'rgba(17, 24, 39, 0.5)',
+          elevated: 'rgba(17, 24, 39, 0.8)',
         },
 
-        // CDH Manifesto Tenet 4: Creator is the CEO
-        executive: {
-          50: '#fffbeb',   // Light executive
-          100: '#fef3c7',  // Soft authority
-          500: '#f59e0b',  // Executive gold (primary)
-          600: '#d97706',  // Deep authority
-          900: '#92400e'   // Commanding presence
+        // Real Semantic Colors (from working status indicators)
+        'success-green': {
+          400: '#4ade80',
+          500: '#22c55e',
+          600: '#16a34a',
         },
-        authority: {
-          strategic: '#f59e0b',      // Strategic decisions
-          commanding: '#d97706',     // Commanding presence
-          prestigious: '#92400e',    // Prestigious status
-          platinum: '#e5e4e2'        // Premium platinum
-        },
-
-        // TikTok Integration Colors
-        tiktok: {
-          pink: '#ff0050',           // TikTok brand pink
-          blue: '#25f4ee',           // TikTok brand blue
-          black: '#161823',          // TikTok brand black
-          viral: '#ff0050',          // Viral content alerts
-          trending: '#25f4ee'        // Trending indicators
-        },
-
-        // Enhanced System Colors with full scale
-        'success-enhanced': {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          500: '#10b981',  // Primary success
-          600: '#059669',
-          900: '#064e3b'
-        },
-        'warning-enhanced': {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          500: '#f59e0b',  // Primary warning
+        'warning-amber': {
+          400: '#fbbf24',
+          500: '#f59e0b',
           600: '#d97706',
-          900: '#92400e'
         },
-        'error-enhanced': {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          500: '#ef4444',  // Primary error
+        'error-red': {
+          400: '#f87171',
+          500: '#ef4444',
           600: '#dc2626',
-          900: '#991b1b'
         },
-        'info-enhanced': {
+
+        // Chart Colors (from EvilCharts integration)
+        'chart-primary': '#0d9488',
+        'chart-secondary': '#8b5cf6',
+        'chart-tertiary': '#3b82f6',
+
+        // Blog Dual-Theme Color System (from blog components analysis)
+        'blog-dark': {
+          accent: '#2dd4bf', // teal-400 - Primary blog accent
+          category: '#2dd4bf', // teal-400 - Category labels
+          title: '#f1f5f9', // slate-100 - Main titles
+          content: '#cbd5e1', // slate-300 - Body text
+          meta: '#64748b', // slate-500 - Meta text
+          divider: 'rgba(241, 245, 249, 0.1)', // Content dividers
+        },
+        'blog-light': {
+          accent: '#7c3aed', // purple-600 - Primary accent
+          category: '#7c3aed', // purple-600 - Category labels
+          title: '#1e293b', // slate-800 - Main titles
+          content: '#374151', // slate-700 - Body text
+          meta: '#64748b', // slate-500 - Meta text
+          divider: 'rgba(203, 213, 225, 0.8)', // Content dividers
+        },
+
+        // Content Glass Morphism (from glass morphism system)
+        'glass-content': {
+          dark: 'rgba(0, 0, 0, 0.4)', // Dark content cards
+          light: 'rgba(255, 255, 255, 0.6)', // Light content cards
+          hero: 'rgba(0, 0, 0, 0.7)', // Hero overlays
+          testimonial: 'rgba(17, 24, 39, 0.5)', // Testimonial backgrounds
+        },
+
+        // Content Border Colors (from component analysis)
+        'border-content': {
+          dark: 'rgba(148, 163, 184, 0.1)', // Content borders dark
+          light: 'rgba(203, 213, 225, 1)', // Content borders light
+          'accent-dark': 'rgba(45, 212, 191, 0.8)', // Accent borders dark
+          'accent-light': 'rgba(147, 51, 234, 0.8)', // Accent borders light
+        },
+
+        // Content State Colors (from interactive elements)
+        'content-highlight': 'rgba(251, 191, 36, 0.2)', // Text highlighting
+        'content-selection': 'rgba(45, 212, 191, 0.3)', // Text selection
+        'content-link-hover': 'rgba(45, 212, 191, 0.8)', // Link hover states
+
+        // Content Callouts (from blog callout components)
+        'callout-info-dark': 'rgba(45, 212, 191, 0.15)', // Info callouts
+        'callout-info-light': 'rgba(147, 51, 234, 0.15)', // Light info callouts
+        'callout-success-dark': 'rgba(74, 222, 128, 0.15)', // Success callouts
+        'callout-warning-dark': 'rgba(251, 191, 36, 0.15)', // Warning callouts
+        'callout-danger-dark': 'rgba(244, 63, 94, 0.15)', // Danger callouts
+
+        // TikTok Integration Colors (preserved from current system)
+        tiktok: {
+          pink: '#ff0050', // TikTok brand pink
+          blue: '#25f4ee', // TikTok brand blue
+          black: '#161823', // TikTok brand black
+          viral: '#ff0050', // Viral content alerts
+          trending: '#25f4ee', // Trending indicators
+        },
+
+        // Legacy color system (maintained for backward compatibility)
+        clarity: {
           50: '#eff6ff',
           100: '#dbeafe',
-          500: '#3b82f6',  // Primary info
+          500: '#3b82f6',
           600: '#2563eb',
-          900: '#1e3a8a'
-        }
+          900: '#1e3a8a',
+        },
+        'data-art': {
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          900: '#581c87',
+        },
+        automation: {
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          500: '#10b981',
+          600: '#059669',
+          900: '#064e3b',
+        },
+        executive: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          500: '#f59e0b',
+          600: '#d97706',
+          900: '#92400e',
+        },
       },
 
-      // Premium typography system
+      // Real Typography System (from component analysis)
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
+        mono: [
+          'ui-monospace',
+          'SF Mono',
+          'Monaco',
+          'Cascadia Code',
+          'Roboto Mono',
+          'Consolas',
+          'Courier New',
+          'monospace',
+        ],
+        'content-serif': ['Lora', 'Georgia', 'serif'], // Premium serif for quotes
+        'content-reading': ['Inter', 'system-ui', 'sans-serif'], // Optimized reading font
         display: ['Montserrat', ...fontFamily.sans],
-        mono: ['JetBrains Mono', ...fontFamily.mono],
-        creative: ['Poppins', ...fontFamily.sans]
+        creative: ['Poppins', ...fontFamily.sans],
       },
       fontSize: {
-        // Executive display sizes
-        'display-xl': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'display-lg': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '600' }],
-        
-        // Strategic heading sizes
+        'display-xl': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-lg': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'display-md': ['2.25rem', { lineHeight: '1.2' }],
+
+        // Content-Specific Font Sizes (from blog components)
+        'content-hero': ['clamp(2.5rem, 8vw, 6rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }], // Responsive hero text
+        'content-title': ['2.25rem', { lineHeight: '1.2' }], // 36px - Article titles
+        'content-subtitle': ['1.5rem', { lineHeight: '1.3' }], // 24px - Article subtitles
+        'content-quote': ['2rem', { lineHeight: '1.8' }], // 32px - Testimonial quotes
+        'content-meta': ['0.875rem', { lineHeight: '1.75' }], // 14px - Author/date meta
+        'content-category': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.1em' }], // 12px - Category labels
+
+        // Legacy sizes (maintained for compatibility)
         'heading-xl': ['2.5rem', { lineHeight: '1.2', fontWeight: '600' }],
         'heading-lg': ['2rem', { lineHeight: '1.25', fontWeight: '500' }],
         'heading-md': ['1.5rem', { lineHeight: '1.35', fontWeight: '500' }],
-        
-        // Body text sizes
         'body-lg': ['1.125rem', { lineHeight: '1.6', fontWeight: '400' }],
         'body-md': ['1rem', { lineHeight: '1.5', fontWeight: '400' }],
         'body-sm': ['0.875rem', { lineHeight: '1.45', fontWeight: '400' }],
-        
-        // Metric display sizes
         'metric-lg': ['2.5rem', { lineHeight: '1.1', fontWeight: '700' }],
-        'metric-md': ['1.5rem', { lineHeight: '1.2', fontWeight: '600' }]
+        'metric-md': ['1.5rem', { lineHeight: '1.2', fontWeight: '600' }],
       },
 
-      // Enhanced spacing scale
+      // Content Line Heights (from blog analysis)
+      lineHeight: {
+        content: '1.75', // Standard content reading
+        'tight-content': '1.1', // Headlines and titles
+        'relaxed-content': '1.8', // Long-form paragraphs
+      },
+
+      // Content Letter Spacing (from typography analysis)
+      letterSpacing: {
+        category: '0.1em', // Category label spacing
+        hero: '-0.02em', // Hero text tightening
+        'mono-content': '0.05em', // Monospace content
+      },
+
+      // Real Spacing System (extracted from component padding/margins)
       spacing: {
-        'xs': '0.25rem',      // 4px
-        'sm': '0.5rem',       // 8px
-        'tactical': '1rem',   // 16px - Tactical spacing
-        'strategic': '1.5rem', // 24px - Strategic spacing
-        'command': '2rem',    // 32px - Command spacing
-        'executive': '3rem',  // 48px - Executive spacing
-        'presidential': '4rem', // 64px - Presidential spacing
-        'imperial': '6rem'    // 96px - Imperial spacing
+        // Legacy spacing (maintained for compatibility)
+        xs: '0.25rem', // 4px
+        sm: '0.5rem', // 8px
+        tactical: '1rem', // 16px - Tactical spacing
+        strategic: '1.5rem', // 24px - Strategic spacing
+        command: '2rem', // 32px - Command spacing
+        executive: '3rem', // 48px - Executive spacing
+        presidential: '4rem', // 64px - Presidential spacing
+        imperial: '6rem', // 96px - Imperial spacing
+
+        // Content-Specific Spacing (from blog components)
+        'content-section': '4rem', // 64px - Major content sections
+        'content-paragraph': '1.5rem', // 24px - Paragraph spacing
+        'content-element': '2rem', // 32px - Content element spacing
+        'content-tight': '0.75rem', // 12px - Tight content spacing
+        'hero-padding': '3rem', // 48px - Hero content padding
+        'article-padding': '2rem', // 32px - Article body padding
       },
 
-      // Premium border radius
+      // Content Widths - Reading optimization (from blog layouts)
+      maxWidth: {
+        content: '65ch', // Optimal reading line length
+        'content-hero': '50%', // Hero content width
+        'content-sidebar': '25%', // Sidebar content width
+      },
+
+      // Real Border Radius (from component analysis)
       borderRadius: {
-        'premium': '0.75rem',  // 12px - Premium elements
-        'executive': '1rem',   // 16px - Executive elements
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        premium: '0.75rem', // 12px - Premium elements
+        executive: '1rem', // 16px - Executive elements
       },
 
-      // CDH Manifesto animations and keyframes
+      // Real Animation System (from working components)
       keyframes: {
-        // Existing animations
+        // Existing shadcn/ui animations
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -222,321 +299,215 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+
+        // Real CreatorFlow animations (from component analysis)
+        heartbeat: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.03)' },
+        },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
+        'glow-pulse': {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(13, 148, 136, 0.3)' },
+          '50%': { boxShadow: '0 0 30px rgba(13, 148, 136, 0.6)' },
+        },
+
+        // Content-Focused Animations (from blog components)
+        'hero-character-forge': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px) scale(0.95)',
+            textShadow: '0 0 50px rgba(255,255,255,1)',
+          },
+          '80%': {
+            opacity: '1',
+            transform: 'translateY(0px) scale(1.1)',
+            textShadow: '0 0 20px rgba(45, 212, 191, 0.7)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px) scale(1)',
+            textShadow: '0 0 15px rgba(45, 212, 191, 0.3)',
+          },
+        },
+        'typewriter-reveal': {
+          '0%': {
+            width: '0',
+            opacity: '0',
+          },
+          '1%': {
+            opacity: '1',
+          },
+          '100%': {
+            width: '100%',
+            opacity: '1',
+          },
+        },
+        'signal-pulse': {
+          '0%': {
+            transform: 'scale(0)',
+            opacity: '0.5',
+          },
+          '100%': {
+            transform: 'scale(1.5)',
+            opacity: '0',
+          },
+        },
+        'reticle-lock': {
+          '0%': {
+            boxShadow: '0 0 15px 5px rgba(45, 212, 191, 0)',
+          },
+          '50%': {
+            boxShadow: '0 0 25px 10px rgba(45, 212, 191, 0.5)',
+          },
+          '100%': {
+            boxShadow: '0 0 15px 5px rgba(45, 212, 191, 0)',
+          },
+        },
+        'content-fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'nebula-drift': {
+          '0%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(15px, 10px) scale(1.1)' },
+          '100%': { transform: 'translate(0, 0) scale(1)' },
+        },
+        'slow-pulse': {
+          '0%, 100%': { textShadow: '0 0 15px rgba(45, 212, 191, 0.3)' },
+          '50%': { textShadow: '0 0 25px rgba(45, 212, 191, 0.5)' },
+        },
+
+        // Legacy animations (maintained for compatibility)
         'spin-slow': {
           '0%': { rotate: '0deg' },
           '100%': { rotate: '360deg' },
         },
-
-        // Data is Art animations
         'revenue-flow': {
-          '0%': { 
-            backgroundPosition: '0% 50%',
-            transform: 'translateX(0)' 
-          },
-          '50%': {
-            backgroundPosition: '50% 50%',
-            transform: 'translateX(5px)'
-          },
-          '100%': { 
-            backgroundPosition: '100% 50%',
-            transform: 'translateX(10px)' 
-          }
-        },
-        'data-aurora': {
-          '0%, 100%': { 
-            opacity: '0.3',
-            transform: 'scale(1) rotate(0deg)' 
-          },
-          '25%': {
-            opacity: '0.6',
-            transform: 'scale(1.02) rotate(1deg)'
-          },
-          '50%': { 
-            opacity: '0.8',
-            transform: 'scale(1.05) rotate(2deg)' 
-          },
-          '75%': {
-            opacity: '0.6',
-            transform: 'scale(1.02) rotate(1deg)'
-          }
-        },
-        'profit-landscape': {
-          '0%': { 
-            transform: 'translateY(10px)', 
-            opacity: '0',
-            filter: 'blur(4px)'
-          },
-          '50%': { 
-            transform: 'translateY(-2px)', 
-            opacity: '0.7',
-            filter: 'blur(1px)'
-          },
-          '100%': { 
-            transform: 'translateY(0)', 
-            opacity: '1',
-            filter: 'blur(0)'
-          }
-        },
-
-        // Automation Empowerment animations
-        'automation-flow': {
-          '0%': { 
-            backgroundPosition: '0% 0%',
-            transform: 'scaleX(0)' 
-          },
-          '50%': {
-            backgroundPosition: '50% 50%',
-            transform: 'scaleX(0.5)'
-          },
-          '100%': { 
-            backgroundPosition: '100% 100%',
-            transform: 'scaleX(1)' 
-          }
-        },
-        'liberation-celebration': {
-          '0%': { 
-            transform: 'scale(1)', 
-            filter: 'hue-rotate(0deg) brightness(1)' 
-          },
-          '25%': { 
-            transform: 'scale(1.05)', 
-            filter: 'hue-rotate(90deg) brightness(1.1)' 
-          },
-          '50%': { 
-            transform: 'scale(1.1)', 
-            filter: 'hue-rotate(180deg) brightness(1.2)' 
-          },
-          '75%': { 
-            transform: 'scale(1.05)', 
-            filter: 'hue-rotate(270deg) brightness(1.1)' 
-          },
-          '100%': { 
-            transform: 'scale(1)', 
-            filter: 'hue-rotate(360deg) brightness(1)' 
-          }
-        },
-        'stress-elimination': {
-          '0%': { 
-            opacity: '1', 
-            transform: 'translateX(0) scale(1)' 
-          },
-          '25%': {
-            opacity: '0.8',
-            transform: 'translateX(5px) scale(0.98)'
-          },
-          '50%': { 
-            opacity: '0.5', 
-            transform: 'translateX(10px) scale(0.95)' 
-          },
-          '75%': {
-            opacity: '0.2',
-            transform: 'translateX(15px) scale(0.9)'
-          },
-          '100%': { 
-            opacity: '0', 
-            transform: 'translateX(20px) scale(0.8)' 
-          }
-        },
-
-        // Clarity Over Chaos animations
-        'priority-highlight': {
-          '0%': { 
-            boxShadow: '0 0 0 0 rgba(59, 130, 246, 0.4)' 
-          },
-          '70%': { 
-            boxShadow: '0 0 0 10px rgba(59, 130, 246, 0)' 
-          },
-          '100%': { 
-            boxShadow: '0 0 0 0 rgba(59, 130, 246, 0)' 
-          }
-        },
-        'focus-flow': {
-          '0%, 100%': { 
-            transform: 'translateX(0)' 
-          },
-          '25%': {
-            transform: 'translateX(2px)'
-          },
-          '50%': { 
-            transform: 'translateX(5px)' 
-          },
-          '75%': {
-            transform: 'translateX(3px)'
-          }
-        },
-
-        // Creator is the CEO animations
-        'executive-entrance': {
-          '0%': { 
-            transform: 'translateY(-20px) scale(0.95)', 
-            opacity: '0' 
-          },
-          '25%': {
-            transform: 'translateY(-15px) scale(0.97)',
-            opacity: '0.2'
-          },
-          '50%': { 
-            transform: 'translateY(-10px) scale(1.02)', 
-            opacity: '0.5' 
-          },
-          '75%': {
-            transform: 'translateY(-5px) scale(1.01)',
-            opacity: '0.8'
-          },
-          '100%': { 
-            transform: 'translateY(0) scale(1)', 
-            opacity: '1' 
-          }
-        },
-        'authority-glow': {
-          '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' 
-          },
-          '25%': {
-            boxShadow: '0 0 25px rgba(245, 158, 11, 0.45)'
-          },
-          '50%': { 
-            boxShadow: '0 0 30px rgba(245, 158, 11, 0.6)' 
-          },
-          '75%': {
-            boxShadow: '0 0 25px rgba(245, 158, 11, 0.45)'
-          }
-        },
-        'strategic-pulse': {
-          '0%': { 
-            transform: 'scale(1)', 
-            opacity: '1' 
-          },
-          '25%': {
-            transform: 'scale(1.02)',
-            opacity: '0.9'
-          },
-          '50%': { 
-            transform: 'scale(1.05)', 
-            opacity: '0.8' 
-          },
-          '75%': {
-            transform: 'scale(1.02)',
-            opacity: '0.9'
-          },
-          '100%': { 
-            transform: 'scale(1)', 
-            opacity: '1' 
-          }
-        },
-
-        // Special effects
-        'shimmer': {
           '0%': {
-            backgroundPosition: '-200% 0'
+            backgroundPosition: '0% 50%',
+            transform: 'translateX(0)',
+          },
+          '50%': {
+            backgroundPosition: '50% 50%',
+            transform: 'translateX(5px)',
           },
           '100%': {
-            backgroundPosition: '200% 0'
-          }
-        }
+            backgroundPosition: '100% 50%',
+            transform: 'translateX(10px)',
+          },
+        },
+        shimmer: {
+          '0%': {
+            backgroundPosition: '-200% 0',
+          },
+          '100%': {
+            backgroundPosition: '200% 0',
+          },
+        },
       },
       animation: {
-        // Existing animations
+        // shadcn/ui animations
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+
+        // Real CreatorFlow animations
+        heartbeat: 'heartbeat 2s ease-in-out infinite',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+
+        // Content Animations (from blog components)
+        'hero-character-forge': 'hero-character-forge 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'typewriter-reveal': 'typewriter-reveal 1s steps(40, end) forwards',
+        'signal-pulse': 'signal-pulse 0.6s ease-out forwards',
+        'reticle-lock': 'reticle-lock 0.4s ease-out',
+        'content-fade-in': 'content-fade-in 1s ease-out forwards',
+        'nebula-drift': 'nebula-drift 25s ease-in-out infinite',
+        'slow-pulse': 'slow-pulse 3s ease-in-out infinite',
+
+        // Legacy animations (maintained for compatibility)
         'spin-slow': 'spin-slow 10s linear infinite',
-
-        // Data is Art animations
         'revenue-flow': 'revenue-flow 3s ease-in-out infinite',
-        'data-aurora': 'data-aurora 4s ease-in-out infinite',
-        'profit-landscape': 'profit-landscape 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards',
-
-        // Automation Empowerment animations
-        'automation-flow': 'automation-flow 2s ease-in-out infinite',
-        'liberation-celebration': 'liberation-celebration 2s ease-in-out',
-        'stress-elimination': 'stress-elimination 0.8s ease-in forwards',
-
-        // Clarity Over Chaos animations
-        'priority-highlight': 'priority-highlight 2s infinite',
-        'focus-flow': 'focus-flow 2s ease-in-out infinite',
-
-        // Creator is the CEO animations
-        'executive-entrance': 'executive-entrance 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-        'authority-glow': 'authority-glow 1.5s ease-in-out infinite',
-        'strategic-pulse': 'strategic-pulse 2s ease-in-out infinite',
-
-        // Utility animations
-        'shimmer': 'shimmer 2s linear infinite'
+        shimmer: 'shimmer 2s linear infinite',
       },
 
-      // Premium gradients
+      // Real Gradients (from working components)
       backgroundImage: {
-        // Data Art gradients
-        'revenue-flow': 'linear-gradient(90deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%)',
-        'profit-landscape': 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%)',
-        'viral-aurora': 'linear-gradient(180deg, #a855f7 0%, #ec4899 35%, #f97316 70%, #eab308 100%)',
-        'data-canvas': 'linear-gradient(45deg, #1e1b4b 0%, #312e81 50%, #3730a3 100%)',
+        'brand-primary': 'linear-gradient(90deg, #0d9488 0%, #8b5cf6 100%)',
+        'teal-purple': 'linear-gradient(90deg, #6EE7B7 5%, #A78BFA 95%)',
+        'blue-teal': 'linear-gradient(90deg, #3b82f6 0%, #14b8a6 100%)',
+        'multi-brand': 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 33%, #14b8a6 66%, #22c55e 100%)',
 
-        // Executive gradients
-        'executive-shine': 'linear-gradient(45deg, #f59e0b 0%, #fcd34d 100%)',
-        'authority-flow': 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)',
-        'strategic-depth': 'linear-gradient(135deg, #92400e 0%, #78350f 100%)',
-
-        // Automation gradients
-        'automation-glow': 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
-        'liberation-flow': 'linear-gradient(90deg, #10b981 0%, #6ee7b7 100%)',
-
-        // TikTok integration gradients
+        // TikTok integration gradients (preserved)
         'tiktok-brand': 'linear-gradient(45deg, #ff0050 0%, #25f4ee 100%)',
         'viral-energy': 'linear-gradient(90deg, #ff0050 0%, #ff6b6b 100%)',
 
-        // Clarity gradients
-        'clarity-focus': 'linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%)',
-        'clarity-calm': 'linear-gradient(135deg, #dbeafe 0%, #f8fafc 100%)',
-
-        // Shimmer effect
-        'shimmer': 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)'
+        // Legacy gradients (maintained for compatibility)
+        'revenue-flow': 'linear-gradient(90deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%)',
+        'executive-shine': 'linear-gradient(45deg, #f59e0b 0%, #fcd34d 100%)',
+        shimmer: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
       },
 
-      // Enhanced box shadows
+      // Real Shadows (from working components)
       boxShadow: {
-        // Premium shadows
-        'premium': '0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        'executive': '0 20px 25px -5px rgba(245, 158, 11, 0.1), 0 10px 10px -5px rgba(245, 158, 11, 0.04)',
-        'artistic': '0 25px 50px -12px rgba(139, 92, 246, 0.25)',
-        'automation': '0 25px 50px -12px rgba(16, 185, 129, 0.25)',
+        card: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        glass: '0 0 15px rgba(13, 148, 136, 0.6)',
+        'teal-glow': '0 0 20px 0 rgba(52, 211, 153, 0.4)',
+        'blue-glow': '0 0 40px rgba(59, 130, 246, 0.15)',
+        'purple-glow': '0px 0px 12px rgba(29, 255, 233, 0.5)',
 
-        // Glow effects
+        // Legacy shadows (maintained for compatibility)
+        premium: '0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        executive: '0 20px 25px -5px rgba(245, 158, 11, 0.1), 0 10px 10px -5px rgba(245, 158, 11, 0.04)',
+        artistic: '0 25px 50px -12px rgba(139, 92, 246, 0.25)',
+        automation: '0 25px 50px -12px rgba(16, 185, 129, 0.25)',
         'clarity-glow': '0 0 20px rgba(59, 130, 246, 0.3)',
         'authority-glow': '0 0 30px rgba(245, 158, 11, 0.4)',
         'viral-glow': '0 0 25px rgba(255, 0, 80, 0.3)',
         'success-glow': '0 0 20px rgba(16, 185, 129, 0.3)',
-
-        // Elevation shadows
-        'elevation-1': '0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06)',
-        'elevation-2': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-        'elevation-3': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)'
       },
 
-      // Animation timing functions
+      // Real Backdrop Blur (from glass morphism system)
+      backdropBlur: {
+        xs: '2px',
+        sm: '4px',
+        md: '8px',
+        lg: '16px',
+        xl: '24px',
+      },
+
+      // Enhanced transition timing (maintained for compatibility)
       transitionDuration: {
         '75': '75ms',
         '150': '150ms',
         '250': '250ms',
-        'fast': '200ms',
-        'medium': '300ms',
-        'slow': '500ms',
-        'cinematic': '800ms',
-        'epic': '1200ms'
+        fast: '200ms',
+        medium: '300ms',
+        slow: '500ms',
+        cinematic: '800ms',
+        epic: '1200ms',
       },
 
-      // Custom transition timing
+      // Custom transition timing (maintained for compatibility)
       transitionTimingFunction: {
-        'executive': 'cubic-bezier(0.4, 0, 0.2, 1)',
-        'cinematic': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        executive: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        cinematic: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
         'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-        'elastic': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-      }
+        elastic: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      },
     },
   },
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    require('tailwindcss-animate')
+    require('tailwindcss-animate'),
   ],
 };
 

@@ -48,7 +48,11 @@
       "Read(//home/carlos/projects/cdh-reference/src/app/**)",
       "Bash(bun add:*)",
       "mcp__serena__list_memories",
-      "Bash(bun git:save:*)"
+      "Bash(bun git:save:*)",
+      "mcp__serena__think_about_collected_information",
+      "Read(//home/carlos/.claude/**)",
+      "Read(//home/carlos/.cache/claude-cli-nodejs/**)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []
