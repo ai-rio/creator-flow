@@ -166,6 +166,10 @@ import UXToastNotificationsDemo from '../atomic/organisms/UX-ToastNotificationsD
 import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
 import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
 import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
+import AMBillingOverviewDemo from '../atomic/organisms/AM-BillingOverviewDemo';
+import AMBillingHistoryDemo from '../atomic/organisms/AM-BillingHistoryDemo';
+import AMPaymentMethodsDemo from '../atomic/organisms/AM-PaymentMethodsDemo';
+import AMSecuritySettingsDemo from '../atomic/organisms/AM-SecuritySettingsDemo';
 import BIExecutiveIntelligence from '../atomic/organisms/BI-ExecutiveIntelligence';
 import BIStrategicInsightsDemo from '../atomic/organisms/BI-StrategicInsightsDemo';
 import OMFlowVisualizationDemo from '../atomic/organisms/OM-FlowVisualizationDemo';
@@ -244,6 +248,14 @@ const componentCategories: ComponentCategories = {
         id: 'atomic-bi-strategic-insights',
         name: 'ATOMIC: Strategic Insights (BI-010)',
         component: BIStrategicInsightsDemo,
+      },
+      { id: 'atomic-am-billing-overview', name: 'ATOMIC: Billing Overview (AM-010)', component: AMBillingOverviewDemo },
+      { id: 'atomic-am-billing-history', name: 'ATOMIC: Billing History (AM-020)', component: AMBillingHistoryDemo },
+      { id: 'atomic-am-payment-methods', name: 'ATOMIC: Payment Methods (AM-030)', component: AMPaymentMethodsDemo },
+      {
+        id: 'atomic-am-security-settings',
+        name: 'ATOMIC: Security Settings (AM-040)',
+        component: AMSecuritySettingsDemo,
       },
       { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
       { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },

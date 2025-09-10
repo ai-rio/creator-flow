@@ -16,6 +16,10 @@
 import AdminDashboardHeader from './AdminDashboardHeader';
 // Migrated Automation & Business Intelligence Components
 import ALAutomationOrchestra from './AL-AutomationOrchestra';
+import { BillingHistory } from './AM-BillingHistory';
+import { BillingOverview } from './AM-BillingOverview';
+import { PaymentMethods } from './AM-PaymentMethods';
+import { SecuritySettings } from './AM-SecuritySettings';
 import BIExecutiveIntelligence from './BI-ExecutiveIntelligence';
 import { StrategicInsights } from './BI-StrategicInsights';
 import DCBusinessIntelligence from './DC-BusinessIntelligence';
@@ -39,6 +43,10 @@ import { ToastContainer } from './UX-ToastNotifications';
 
 // Export individual components
 export { AdminDashboardHeader };
+export { BillingOverview };
+export { BillingHistory };
+export { PaymentMethods };
+export { SecuritySettings };
 export { DCHealthOverview };
 export { DCPerformanceArtistry };
 export { DCBusinessIntelligence };
@@ -82,6 +90,13 @@ export { StrategicInsights };
 // export type { UserManagementProps } from './UserManagement';
 
 // Grouped exports for domain-specific usage
+export const AnalyticsManagementOrganisms = {
+  BillingOverview,
+  BillingHistory,
+  PaymentMethods,
+  SecuritySettings,
+};
+
 export const DashboardOrganisms = {
   AdminDashboardHeader,
   DCHealthOverview,
