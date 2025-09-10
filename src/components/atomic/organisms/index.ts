@@ -30,7 +30,10 @@ import SBAdminSidebar from './SB-AdminSidebar';
 import SCStrategicCommand from './SC-StrategicCommand';
 // Migrated User Experience Components
 import UXDestructiveModal from './UX-DestructiveModal';
+import { FeedbackWidget } from './UX-FeedbackWidget';
+import { OnboardingTour } from './UX-OnboardingTour';
 import UXStandardModal from './UX-StandardModal';
+import { ToastContainer } from './UX-ToastNotifications';
 
 // Export individual components
 export { AdminDashboardHeader };
@@ -44,6 +47,9 @@ export { SCStrategicCommand };
 export { SBAdminSidebar };
 export { UXDestructiveModal };
 export { UXStandardModal };
+export { OnboardingTour };
+export { FeedbackWidget };
+export { ToastContainer };
 export { ALAutomationOrchestra };
 export { BIExecutiveIntelligence };
 
@@ -103,6 +109,9 @@ export const BusinessIntelligenceOrganisms = {
 export const UserExperienceOrganisms = {
   UXStandardModal,
   UXDestructiveModal,
+  OnboardingTour,
+  FeedbackWidget,
+  ToastContainer,
 };
 
 export const ContentOrganisms = {

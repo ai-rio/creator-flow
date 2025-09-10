@@ -159,7 +159,10 @@ import DCCrisisCommand from '../atomic/organisms/DC-CrisisCommand';
 // Migrated atomic components
 import NCNavigationHeader from '../atomic/organisms/NC-NavigationHeader';
 import UXDestructiveModal from '../atomic/organisms/UX-DestructiveModal';
+import UXFeedbackWidgetDemo from '../atomic/organisms/UX-FeedbackWidgetDemo';
+import UXOnboardingTourDemo from '../atomic/organisms/UX-OnboardingTourDemo';
 import UXStandardModal from '../atomic/organisms/UX-StandardModal';
+import UXToastNotificationsDemo from '../atomic/organisms/UX-ToastNotificationsDemo';
 import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
 import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
 import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
@@ -223,6 +226,13 @@ const componentCategories: ComponentCategories = {
       { id: 'atomic-nc-header', name: 'ATOMIC: Navigation Header (NC-010)', component: NCNavigationHeader },
       { id: 'atomic-ux-standard-modal', name: 'ATOMIC: Standard Modal (UX-010)', component: UXStandardModal },
       { id: 'atomic-ux-destructive-modal', name: 'ATOMIC: Destructive Modal (UX-010)', component: UXDestructiveModal },
+      { id: 'atomic-ux-onboarding-tour', name: 'ATOMIC: Onboarding Tour (UX-020)', component: UXOnboardingTourDemo },
+      { id: 'atomic-ux-feedback-widget', name: 'ATOMIC: Feedback Widget (UX-030)', component: UXFeedbackWidgetDemo },
+      {
+        id: 'atomic-ux-toast-notifications',
+        name: 'ATOMIC: Toast Notifications (UX-040)',
+        component: UXToastNotificationsDemo,
+      },
       { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
       { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },
       {
