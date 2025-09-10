@@ -5,8 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowDown, ArrowUp, DownloadCloud, History } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
-
 interface Invoice {
   id: string;
   date: string;
@@ -28,17 +26,14 @@ interface SortConfig {
 }
 
 const StatusBadge: React.FC<{ status: Invoice['status'] }> = ({ status }) => {
+  const baseClasses = 'px-3 py-1 text-xs font-semibold rounded-full inline-block';
   const statusClasses = {
-    Paid: 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300',
-    Failed: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300',
-    Pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-300',
+    Paid: 'bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300',
+    Failed: 'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300',
+    Pending: 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300',
   };
 
-  return (
-    <span className={`inline-block rounded-full px-tactical py-1 text-xs font-semibold ${statusClasses[status]}`}>
-      {status}
-    </span>
-  );
+  return <span className={`${baseClasses} ${(statusClasses as any)[status]}`}>{status}</span>;
 };
 
 const BillingHistory: React.FC<BillingHistoryProps> = ({
@@ -95,23 +90,23 @@ const BillingHistory: React.FC<BillingHistoryProps> = ({
       transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
       className='w-full max-w-5xl'
     >
-      <div className='rounded-executive border border-border bg-background/95 shadow-xl backdrop-blur-lg'>
-        <div className='p-strategic'>
-          <h1 className='flex items-center gap-tactical text-heading-xl font-bold text-foreground'>
-            <History className='text-primary' size={32} />
+      <div className='rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20'>
+        <div className='p-8'>
+          <h1 className='flex items-center gap-3 text-3xl font-bold text-slate-900 dark:text-slate-100'>
+            <History className='text-purple-600 dark:text-purple-400' size={32} />
             {title}
           </h1>
-          <p className='mt-1 text-body-md text-muted-foreground'>{subtitle}</p>
+          <p className='mt-1 text-slate-600 dark:text-slate-400'>{subtitle}</p>
         </div>
 
         <div className='overflow-x-auto'>
           <table className='w-full text-left'>
-            <thead className='border-b border-border'>
+            <thead className='border-b border-slate-300/50 dark:border-slate-700/50'>
               <tr>
                 {headers.map(({ label, key }) => (
                   <th
                     key={key}
-                    className='cursor-pointer p-tactical text-body-sm font-semibold text-muted-foreground hover:text-foreground'
+                    className='cursor-pointer p-4 text-sm font-semibold text-slate-600 dark:text-slate-400'
                     onClick={() => requestSort(key)}
                   >
                     <div className='flex items-center gap-1'>
@@ -119,7 +114,7 @@ const BillingHistory: React.FC<BillingHistoryProps> = ({
                     </div>
                   </th>
                 ))}
-                <th className='p-tactical text-body-sm font-semibold text-muted-foreground'>Actions</th>
+                <th className='p-4 text-sm font-semibold text-slate-600 dark:text-slate-400'>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -131,26 +126,28 @@ const BillingHistory: React.FC<BillingHistoryProps> = ({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
-                    className='border-b border-border hover:bg-muted/20'
+                    className='border-b border-slate-200/50 hover:bg-slate-200/20 dark:border-slate-800/50 dark:hover:bg-slate-800/20'
                   >
-                    <td className='p-tactical font-mono text-body-sm text-foreground'>{invoice.id}</td>
-                    <td className='p-tactical text-body-md text-foreground'>{invoice.date}</td>
-                    <td className='p-tactical text-body-md text-foreground'>{invoice.description}</td>
-                    <td className='p-tactical font-semibold text-foreground'>${invoice.amount.toFixed(2)}</td>
-                    <td className='p-tactical'>
+                    <td className='p-4 font-mono text-sm text-slate-700 dark:text-slate-300'>{invoice.id}</td>
+                    <td className='p-4 text-slate-800 dark:text-slate-200'>{invoice.date}</td>
+                    <td className='p-4 text-slate-800 dark:text-slate-200'>{invoice.description}</td>
+                    <td className='p-4 font-semibold text-slate-900 dark:text-slate-100'>
+                      ${invoice.amount.toFixed(2)}
+                    </td>
+                    <td className='p-4'>
                       <StatusBadge status={invoice.status} />
                     </td>
-                    <td className='p-tactical'>
+                    <td className='p-4'>
                       {invoice.status === 'Paid' && (
-                        <Button
-                          variant='ghost'
-                          size='sm'
+                        <motion.button
                           onClick={() => onDownload?.(invoice.id)}
-                          className='flex items-center gap-2 text-primary hover:text-primary/80'
+                          className='flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400'
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           <DownloadCloud size={16} />
                           Download
-                        </Button>
+                        </motion.button>
                       )}
                     </td>
                   </motion.tr>
