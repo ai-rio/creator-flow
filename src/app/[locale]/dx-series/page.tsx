@@ -1,5 +1,5 @@
-import DxSeries from '@/components/mocks/DxSeries';
+import UnifiedComponentBrowser from '@/components/mocks/UnifiedComponentBrowser';
 
 export default function DxSeriesPage() {
-  return <DxSeries />;
+  return <UnifiedComponentBrowser initialComponent='nc010' />;
 }

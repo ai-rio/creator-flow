@@ -266,8 +266,60 @@ const componentCategories: ComponentCategories = {
       { id: 'dc120', name: 'DC-120: Enhanced CCC V4 Alt', component: DC120EnhancedCccV4Alt },
       { id: 'dc130', name: 'DC-130: Enhanced CCC V5 Alt', component: DC130EnhancedCccV5Alt },
     ],
-    // O Series renamed to OM Series
-    // All D-series components have been renamed to DC-series
+  },
+  'Navigation Components': {
+    'NC Series': [
+      { id: 'nc010', name: 'NC-010: Header', component: NC010Header },
+      { id: 'nc020', name: 'NC-020: Sidebar', component: NC020Sidebar },
+      { id: 'nc030', name: 'NC-030: Executive Header', component: NC030ExecutiveHeader },
+    ],
+  },
+  'User Experience Components': {
+    'UX Series': [
+      { id: 'ux010', name: 'UX-010: Modals', component: UX010Modals },
+      { id: 'ux020', name: 'UX-020: Onboarding Tour', component: UX020OnboardingTour },
+      { id: 'ux030', name: 'UX-030: Feedback Widget', component: UX030FeedbackWidget },
+      { id: 'ux040', name: 'UX-040: Toast Notifications', component: UX040ToastNotifications },
+    ],
+  },
+  'Order Management Components': {
+    'OM Series': [
+      { id: 'om010', name: 'OM-010: System Stats', component: OM010SystemStats },
+      { id: 'om020', name: 'OM-020: Flow Visualization', component: OM020FlowVisualization },
+      { id: 'om030', name: 'OM-030: Sub Navbar', component: OM030SubNavbar },
+    ],
+  },
+  'Business Intelligence Components': {
+    'BI Series': [
+      { id: 'bi010', name: 'BI-010: Strategic Insights', component: BI010StrategicInsights },
+      { id: 'bi020', name: 'BI-020: Business Symphony', component: BI020BusinessSymphony },
+      { id: 'bi030', name: 'BI-030: Strategic Command', component: BI030StrategicCommand },
+      { id: 'bi040', name: 'BI-040: Liberation Orchestra', component: BI040LiberationOrchestra },
+      { id: 'bi050', name: 'BI-050: Intel Briefing', component: BI050IntelBriefing },
+    ],
+  },
+  'Account Management Components': {
+    'AM Series': [
+      { id: 'am010', name: 'AM-010: Billing Overview', component: AM010BillingOverview },
+      { id: 'am020', name: 'AM-020: Billing History', component: AM020BillingHistory },
+      { id: 'am030', name: 'AM-030: Payment Method', component: AM030PaymentMethod },
+      { id: 'am040', name: 'AM-040: Email Notifications', component: AM040EmailNotifications },
+    ],
+  },
+  'Data & Analytics Components': {
+    'DA Series': [{ id: 'da010', name: 'DA-010: Order Table', component: DA010OrderTable }],
+  },
+  'Profile Management Components': {
+    'PM Series': [{ id: 'pm010', name: 'PM-010: User Profile', component: PM010UserProfile }],
+  },
+  'Security & Compliance Components': {
+    'SC Series': [
+      { id: 'sc010-security', name: 'SC-010: Security Card', component: SC010SecurityCard },
+      { id: 'sc010-strategic', name: 'SC-010: Strategic Command Center', component: SC010StrategicCommandCenter },
+    ],
+  },
+  'Sidebar Components': {
+    'SB Series': [{ id: 'sb010', name: 'SB-010: Admin Sidebar', component: SB010AdminSidebar }],
   },
   'Mobile Components': {
     'MC Series': [
@@ -276,65 +328,52 @@ const componentCategories: ComponentCategories = {
       { id: 'mc030', name: 'MC-030: Navbar', component: MC030Navbar },
     ],
   },
-  'Legacy Components': {
-    'I Series': [
-      { id: 'i1', name: 'I1: Inventory Management', component: IM020ManagementFocus },
-      { id: 'i3', name: 'I3: Critical Stock Card', component: IM010CriticalStock },
-    ],
-    'M Series': [
-      { id: 'm1', name: 'M1: Executive Header', component: NC030ExecutiveHeader },
-      { id: 'm2', name: 'M2: Business Symphony', component: BI020BusinessSymphony },
-      { id: 'm3', name: 'M3: Strategic Command', component: BI030StrategicCommand },
-      { id: 'm4', name: 'M4: Liberation Orchestra', component: BI040LiberationOrchestra },
-      { id: 'm5', name: 'M5: Intel Briefing', component: BI050IntelBriefing },
-      { id: 'm6', name: 'M6: Mobile Navbar', component: MC030Navbar },
+  'Inventory Management Components': {
+    'IM Series': [
+      { id: 'im010', name: 'IM-010: Critical Stock', component: IM010CriticalStock },
+      { id: 'im020', name: 'IM-020: Management Focus', component: IM020ManagementFocus },
     ],
   },
-  'Desktop Components': {
-    'Dx Series': [
-      { id: 'dx2', name: 'DX2: Desktop Header', component: NC010Header },
-      { id: 'dx3', name: 'DX3: Toast Notifications', component: UX040ToastNotifications },
-      { id: 'dx4', name: 'DX4: Desktop Sidebar', component: NC020Sidebar },
-      { id: 'dx5', name: 'DX5: Desktop Modals', component: UX010Modals },
-      { id: 'dx6', name: 'DX6: Onboarding Tour', component: UX020OnboardingTour },
-      { id: 'dx7', name: 'DX7: Feedback Widget', component: UX030FeedbackWidget },
-      { id: 'dx8', name: 'DX8: Mobile Order', component: MC020Order },
-      { id: 'dx9', name: 'DX9: Order Table', component: DA010OrderTable },
-      { id: 'dx10', name: 'DX10: Command Center', component: DC070CommandCenter },
-      { id: 'dx11', name: 'DX11: Order Flow', component: OM020FlowVisualization },
-      { id: 'dx12', name: 'DX12: Strategic Insights', component: BI010StrategicInsights },
-      { id: 'dx13', name: 'DX13: User Profile', component: PM010UserProfile },
-      { id: 'dx14', name: 'DX14: Security Card', component: SC010SecurityCard },
-      { id: 'dx15', name: 'DX15: Email Notifications', component: AM040EmailNotifications },
-      { id: 'dx16', name: 'DX16: Billing Overview', component: AM010BillingOverview },
-      { id: 'dx17', name: 'DX17: Billing History', component: AM020BillingHistory },
-      { id: 'dx18', name: 'DX18: Payment Method', component: AM030PaymentMethod },
+  'System Utilities Components': {
+    'SU Series': [
+      { id: 'su010', name: 'SU-010: Not Found', component: SU010NotFound },
+      { id: 'su020', name: 'SU-020: Cookie Policy', component: SU020CookiePolicy },
+      { id: 'su030', name: 'SU-030: Theme Switcher', component: SU030ThemeSwitcher },
+      { id: 'su040', name: 'SU-040: Data Sovereignty', component: SU040DataSovereignty },
+    ],
+  },
+  'Feature Prototypes': {
+    'FP Series': [
+      { id: 'fp020', name: 'FP-020: Order Management', component: FP020OrderManagement },
+      { id: 'fp030', name: 'FP-030: Digital Twin Command', component: FP030DigitalTwinCommand },
+      { id: 'fp040', name: 'FP-040: Logistics Co-Pilot', component: FP040LogisticsCoPilot },
+      { id: 'fp050', name: 'FP-050: Data Prism', component: FP050DataPrism },
     ],
   },
   'Public Pages': {
     'HP Series': [
-      { id: 'hp010', name: 'HP010: Header', component: HP010Header },
-      { id: 'hp010hero', name: 'HP010: Header Hero', component: HP010HeaderHero },
-      { id: 'hp010variant', name: 'HP010: Header Variant', component: HP010HeaderVariant },
-      { id: 'hp020', name: 'HP020: Hero', component: HP020Hero },
-      { id: 'hp030', name: 'HP030: Benefits Reel Showcase', component: HP030BenefitsReelShowcase },
-      { id: 'hp040', name: 'HP040: Manifesto', component: HP040Manifesto },
-      { id: 'hp050', name: 'HP050: Interactive Showcase', component: HP050InteractiveShowcase },
-      { id: 'hp060', name: 'HP060: Testimonials', component: HP060Testimonials },
-      { id: 'hp070', name: 'HP070: Pricing Tiers', component: HP070PricingTiers },
-      { id: 'hp080', name: 'HP080: Final CTA Variant', component: HP080FinalCTAVariant },
-      { id: 'hp090', name: 'HP090: Footer', component: HP090Footer },
+      { id: 'hp010', name: 'HP-010: Header', component: HP010Header },
+      { id: 'hp010hero', name: 'HP-010: Header Hero', component: HP010HeaderHero },
+      { id: 'hp010variant', name: 'HP-010: Header Variant', component: HP010HeaderVariant },
+      { id: 'hp020', name: 'HP-020: Hero', component: HP020Hero },
+      { id: 'hp030', name: 'HP-030: Benefits Reel Showcase', component: HP030BenefitsReelShowcase },
+      { id: 'hp040', name: 'HP-040: Manifesto', component: HP040Manifesto },
+      { id: 'hp050', name: 'HP-050: Interactive Showcase', component: HP050InteractiveShowcase },
+      { id: 'hp060', name: 'HP-060: Testimonials', component: HP060Testimonials },
+      { id: 'hp070', name: 'HP-070: Pricing Tiers', component: HP070PricingTiers },
+      { id: 'hp080', name: 'HP-080: Final CTA Variant', component: HP080FinalCTAVariant },
+      { id: 'hp090', name: 'HP-090: Footer', component: HP090Footer },
     ],
     'AP Series': [
-      { id: 'ap010', name: 'AP010: Hero', component: AP010Hero },
-      { id: 'ap020', name: 'AP020: Our Mission', component: AP020OurMission },
-      { id: 'ap030', name: 'AP030: The Team', component: AP030TheTeam },
+      { id: 'ap010', name: 'AP-010: Hero', component: AP010Hero },
+      { id: 'ap020', name: 'AP-020: Our Mission', component: AP020OurMission },
+      { id: 'ap030', name: 'AP-030: The Team', component: AP030TheTeam },
     ],
     'CP Series': [
-      { id: 'cp010', name: 'CP010: Hero', component: CP010Hero },
-      { id: 'cp020', name: 'CP020: Open Missions', component: CP020OpenMissions },
+      { id: 'cp010', name: 'CP-010: Hero', component: CP010Hero },
+      { id: 'cp020', name: 'CP-020: Open Missions', component: CP020OpenMissions },
     ],
-    'LP Series': [{ id: 'lp010', name: 'LP010: Legal', component: LP010Legal }],
+    'LP Series': [{ id: 'lp010', name: 'LP-010: Legal', component: LP010Legal }],
   },
   'Content Components': {
     'Blog Page Components': [

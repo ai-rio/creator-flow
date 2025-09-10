@@ -2,11 +2,11 @@
 
 import { useSearchParams } from 'next/navigation';
 
-import DxSeries from '@/components/mocks/DxSeries';
+import UnifiedComponentBrowser from '@/components/mocks/UnifiedComponentBrowser';
 
 export default function DxSeriesBrowser() {
   const searchParams = useSearchParams();
-  const component = searchParams.get('component') || 'dx2';
+  const component = searchParams.get('component') || 'nc010';
 
-  return <DxSeries initialComponent={component} mode="browser" />;
+  return <UnifiedComponentBrowser initialComponent={component} />;
 }
