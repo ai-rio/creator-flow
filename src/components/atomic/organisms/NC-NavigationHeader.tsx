@@ -49,6 +49,7 @@ const StatusIndicator = ({ icon: Icon, variant, pulse = false }: any) => (
 const NavigationHeader = () => {
   const [time, setTime] = useState(new Date());
   const [isActionsOpen, setActionsOpen] = useState<boolean>(false);
+  const [isSearchOpen, setSearchOpen] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -76,6 +77,16 @@ const NavigationHeader = () => {
 
         {/* Mobile Right: Essential Controls */}
         <div className='flex items-center gap-tactical'>
+          <Button
+            onClick={() => setSearchOpen(!isSearchOpen)}
+            size='icon'
+            variant='ghost'
+            className='h-icon-md w-icon-md'
+            aria-label='Toggle search'
+          >
+            <Search className='h-icon-sm w-icon-sm' />
+          </Button>
+
           <Button
             onClick={() => setActionsOpen(!isActionsOpen)}
             size='icon'
@@ -109,17 +120,20 @@ const NavigationHeader = () => {
           </p>
         </div>
 
-        {/* Center: Global Command Bar */}
-        <div className='mx-strategic flex items-center gap-tactical rounded-full border-2 bg-background/50 p-tactical'>
-          <div className='relative flex items-center'>
-            <Search className='absolute left-tactical h-icon-sm w-icon-sm text-muted-foreground' />
-            <Input
-              type='text'
-              placeholder='Global Search (Orders, Products, Intel...)'
-              className='w-80 rounded-premium border-0 bg-transparent pl-command pr-tactical text-foreground focus-visible:ring-2 focus-visible:ring-brand-teal-primary xl:w-96'
-              aria-label='Global search input'
-            />
-          </div>
+        {/* Center: Search Toggle & Actions */}
+        <div className='flex items-center gap-tactical'>
+          {/* Search Toggle Button */}
+          <Button
+            onClick={() => setSearchOpen(!isSearchOpen)}
+            size='icon'
+            variant='ghost'
+            className='h-icon-md w-icon-md rounded-full'
+            aria-label='Toggle search'
+          >
+            <Search className='h-icon-sm w-icon-sm' />
+          </Button>
+
+          {/* Actions Button */}
           <div className='relative'>
             <Button
               onClick={() => setActionsOpen(!isActionsOpen)}
@@ -201,6 +215,32 @@ const NavigationHeader = () => {
           </Button>
         </div>
       </div>
+
+      {/* Expandable Search Bar */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className='mt-tactical overflow-hidden'
+          >
+            <div className='rounded-premium border-2 bg-background/50 p-tactical'>
+              <div className='relative flex items-center'>
+                <Search className='absolute left-tactical h-icon-sm w-icon-sm text-muted-foreground' />
+                <Input
+                  type='text'
+                  placeholder='Global Search (Orders, Products, Intel...)'
+                  className='w-full rounded-premium border-0 bg-transparent pl-command pr-tactical text-foreground focus-visible:ring-2 focus-visible:ring-brand-teal-primary'
+                  aria-label='Global search input'
+                  autoFocus
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Actions Dropdown */}
       <AnimatePresence>
