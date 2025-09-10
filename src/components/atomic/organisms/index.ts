@@ -28,6 +28,9 @@ import NCNavigationHeader from './NC-NavigationHeader';
 import SBAdminSidebar from './SB-AdminSidebar';
 // Migrated Security & Command Components
 import SCStrategicCommand from './SC-StrategicCommand';
+// Migrated User Experience Components
+import UXDestructiveModal from './UX-DestructiveModal';
+import UXStandardModal from './UX-StandardModal';
 
 // Export individual components
 export { AdminDashboardHeader };
@@ -39,6 +42,8 @@ export { DCEmergencyControls };
 export { NCNavigationHeader };
 export { SCStrategicCommand };
 export { SBAdminSidebar };
+export { UXDestructiveModal };
+export { UXStandardModal };
 export { ALAutomationOrchestra };
 export { BIExecutiveIntelligence };
 
@@ -93,6 +98,11 @@ export const AutomationOrganisms = {
 
 export const BusinessIntelligenceOrganisms = {
   BIExecutiveIntelligence,
+};
+
+export const UserExperienceOrganisms = {
+  UXStandardModal,
+  UXDestructiveModal,
 };
 
 export const ContentOrganisms = {
