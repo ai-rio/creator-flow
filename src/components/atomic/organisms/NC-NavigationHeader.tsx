@@ -65,10 +65,44 @@ const NavigationHeader = () => {
   });
 
   return (
-    <div className='w-full rounded-executive border-2 bg-background/50 p-strategic backdrop-blur-xl'>
-      <div className='flex items-center justify-between'>
+    <div className='w-full rounded-executive border-2 bg-background/50 p-tactical backdrop-blur-xl md:p-strategic'>
+      {/* Mobile Layout */}
+      <div className='flex items-center justify-between md:hidden'>
+        {/* Mobile Left: Compact Title */}
+        <div className='min-w-0 flex-1'>
+          <h1 className='truncate text-body-lg font-bold text-foreground'>CreatorFlow</h1>
+          <p className='text-body-xs text-muted-foreground'>{formattedTime}</p>
+        </div>
+
+        {/* Mobile Right: Essential Controls */}
+        <div className='flex items-center gap-tactical'>
+          <Button
+            onClick={() => setActionsOpen(!isActionsOpen)}
+            size='icon'
+            variant='ghost'
+            className='h-icon-md w-icon-md'
+            aria-label='Quick actions menu'
+            aria-expanded={isActionsOpen}
+          >
+            <Plus className='h-icon-sm w-icon-sm' />
+          </Button>
+
+          <Button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            variant='outline'
+            size='icon'
+            className='h-icon-md w-icon-md rounded-full border-2'
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+          >
+            {theme === 'dark' ? <Sun className='h-icon-sm w-icon-sm' /> : <Moon className='h-icon-sm w-icon-sm' />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Desktop Layout */}
+      <div className='hidden items-center justify-between md:flex'>
         {/* Left Side: Title & Time */}
-        <div>
+        <div className='flex-shrink-0'>
           <h1 className='text-heading-lg font-bold text-foreground'>CreatorFlow CEO Command Center</h1>
           <p className='text-body-sm text-muted-foreground'>
             {formattedDate} • {formattedTime}
@@ -76,13 +110,13 @@ const NavigationHeader = () => {
         </div>
 
         {/* Center: Global Command Bar */}
-        <div className='hidden items-center gap-tactical rounded-full border-2 bg-background/50 p-tactical lg:flex'>
+        <div className='mx-strategic flex items-center gap-tactical rounded-full border-2 bg-background/50 p-tactical'>
           <div className='relative flex items-center'>
             <Search className='absolute left-tactical h-icon-sm w-icon-sm text-muted-foreground' />
             <Input
               type='text'
               placeholder='Global Search (Orders, Products, Intel...)'
-              className='w-96 rounded-premium border-0 bg-transparent pl-command pr-tactical text-foreground focus-visible:ring-2 focus-visible:ring-brand-teal-primary'
+              className='w-80 rounded-premium border-0 bg-transparent pl-command pr-tactical text-foreground focus-visible:ring-2 focus-visible:ring-brand-teal-primary xl:w-96'
               aria-label='Global search input'
             />
           </div>
@@ -122,9 +156,9 @@ const NavigationHeader = () => {
         </div>
 
         {/* Right Side: Status & Profile */}
-        <div className='flex items-center gap-tactical'>
+        <div className='flex flex-shrink-0 items-center gap-tactical'>
           {/* Status Indicators */}
-          <div className='hidden items-center gap-tactical sm:flex'>
+          <div className='hidden items-center gap-tactical lg:flex'>
             <StatusIndicator icon={Zap} variant='warning' pulse={true} />
             <StatusIndicator icon={CheckCircle} variant='success' />
             <StatusIndicator icon={Brain} variant='info' />
@@ -139,7 +173,7 @@ const NavigationHeader = () => {
                   src='https://placehold.co/100x100/8466D3/FFFFFF?text=C'
                   alt='Creator Avatar'
                 />
-                <div className='hidden text-left md:block'>
+                <div className='hidden text-left lg:block'>
                   <p className='text-body-md font-bold text-foreground'>@ceo</p>
                   <p className='text-body-sm text-muted-foreground'>Creator Tier</p>
                 </div>
@@ -167,6 +201,30 @@ const NavigationHeader = () => {
           </Button>
         </div>
       </div>
+
+      {/* Mobile Actions Dropdown */}
+      <AnimatePresence>
+        {isActionsOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className='mt-tactical rounded-executive border-2 bg-background/95 p-tactical backdrop-blur-xl md:hidden'
+          >
+            <div className='space-y-1'>
+              <Button variant='ghost' className='w-full justify-start text-body-md'>
+                New Report
+              </Button>
+              <Button variant='ghost' className='w-full justify-start text-body-md'>
+                Create Workflow
+              </Button>
+              <Button variant='ghost' className='w-full justify-start text-body-md'>
+                Add Team Member
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -175,7 +233,7 @@ const NavigationHeader = () => {
 const AppContent = () => {
   return (
     <div className='min-h-screen bg-background p-strategic'>
-      <div className='mx-auto max-w-content'>
+      <div className='mx-auto max-w-full'>
         <NavigationHeader />
         <div className='mt-strategic text-center'>
           <h2 className='mb-tactical text-heading-lg font-bold text-foreground'>Main Content Area</h2>
