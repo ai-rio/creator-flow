@@ -17,6 +17,7 @@ import AdminDashboardHeader from './AdminDashboardHeader';
 // Migrated Automation & Business Intelligence Components
 import ALAutomationOrchestra from './AL-AutomationOrchestra';
 import BIExecutiveIntelligence from './BI-ExecutiveIntelligence';
+import { StrategicInsights } from './BI-StrategicInsights';
 import DCBusinessIntelligence from './DC-BusinessIntelligence';
 import DCCrisisCommand from './DC-CrisisCommand';
 import DCEmergencyControls from './DC-EmergencyControls';
@@ -54,6 +55,7 @@ export { FeedbackWidget };
 export { ToastContainer };
 export { ALAutomationOrchestra };
 export { BIExecutiveIntelligence };
+export { StrategicInsights };
 
 // Dashboard Organisms
 // export { DashboardHeader } from './DashboardHeader';
@@ -106,6 +108,7 @@ export const AutomationOrganisms = {
 
 export const BusinessIntelligenceOrganisms = {
   BIExecutiveIntelligence,
+  StrategicInsights,
 };
 
 export const OrderManagementOrganisms = {

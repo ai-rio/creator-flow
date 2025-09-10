@@ -167,6 +167,7 @@ import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
 import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
 import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
 import BIExecutiveIntelligence from '../atomic/organisms/BI-ExecutiveIntelligence';
+import BIStrategicInsightsDemo from '../atomic/organisms/BI-StrategicInsightsDemo';
 import OMFlowVisualizationDemo from '../atomic/organisms/OM-FlowVisualizationDemo';
 
 // Type definitions for component structure
@@ -238,6 +239,11 @@ const componentCategories: ComponentCategories = {
         id: 'atomic-om-flow-visualization',
         name: 'ATOMIC: Flow Visualization (OM-020)',
         component: OMFlowVisualizationDemo,
+      },
+      {
+        id: 'atomic-bi-strategic-insights',
+        name: 'ATOMIC: Strategic Insights (BI-010)',
+        component: BIStrategicInsightsDemo,
       },
       { id: 'atomic-sc-strategic', name: 'ATOMIC: Strategic Command Center (SC-010)', component: SCStrategicCommand },
       { id: 'atomic-sb-sidebar', name: 'ATOMIC: Admin Sidebar (SB-010)', component: SBAdminSidebar },
