@@ -12,26 +12,26 @@ export default function FlowVisualizationDemo(): React.JSX.Element {
       name: 'RECEIVED',
       value: 47,
       Icon: Inbox,
-      color: 'text-blue-500',
+      color: 'text-primary',
     },
     {
       name: 'PROCESS',
       value: 127,
       Icon: Bot,
-      color: 'text-brand-teal-primary',
+      color: 'text-primary',
       automated: true,
     },
     {
       name: 'SHIPPED',
       value: 89,
       Icon: Package,
-      color: 'text-brand-purple-primary',
+      color: 'text-primary',
     },
     {
       name: 'DELIVERED',
       value: 156,
       Icon: PackageCheck,
-      color: 'text-green-500',
+      color: 'text-primary',
     },
   ];
 

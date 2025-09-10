@@ -18,20 +18,20 @@ export default function StrategicInsightsDemo(): React.JSX.Element {
       Icon: ShieldCheck,
       text: 'Automation ROI: ',
       highlight: '$4,567 saved in labor costs',
-      color: 'text-green-500',
+      color: 'text-primary',
       isHeartbeat: true,
     },
     {
       Icon: TrendingUp,
       text: 'Growth Opportunity: ',
       highlight: 'Phone grips trending (+67% demand)',
-      color: 'text-blue-500',
+      color: 'text-primary',
     },
     {
       Icon: Eye,
       text: 'Market Intelligence: ',
       highlight: 'Competitors struggling with fulfillment',
-      color: 'text-purple-500',
+      color: 'text-primary',
     },
   ];
 
@@ -39,7 +39,7 @@ export default function StrategicInsightsDemo(): React.JSX.Element {
     Icon: Bot,
     text: 'AI Recommendation: ',
     highlight: 'Scale phone grip inventory by 200%',
-    color: 'text-brand-teal-primary',
+    color: 'text-primary',
   };
 
   return (
