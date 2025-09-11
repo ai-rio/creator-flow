@@ -37,26 +37,26 @@ export default function OrderTableDemo(): React.JSX.Element {
   ];
 
   return (
-    <div className='flex min-h-screen items-center justify-center bg-gray-100 p-8 font-sans transition-colors duration-300 dark:bg-[#111827]'>
+    <div className='flex min-h-screen items-center justify-center bg-background p-strategic'>
       <div className='w-full space-y-strategic'>
         <div className='text-center'>
-          <h1 className='mb-tactical text-heading-xl font-bold text-gray-900 dark:text-white'>Order Table Demo</h1>
-          <p className='text-body-lg text-gray-500 dark:text-gray-400'>
+          <h1 className='mb-tactical text-heading-xl font-bold text-foreground'>Order Table Demo</h1>
+          <p className='text-body-lg text-muted-foreground'>
             Real-time creator orders with priority indicators and impact tracking
           </p>
         </div>
 
         <OrderTable orders={mockOrderData} />
 
-        <div className='mx-auto max-w-6xl rounded-2xl border border-gray-200 bg-white/60 p-strategic backdrop-blur-xl dark:border-gray-800 dark:bg-gray-900/60'>
-          <h3 className='mb-tactical text-heading-md font-bold text-gray-900 dark:text-white'>Features:</h3>
-          <ul className='space-y-2 text-body-md text-gray-500 dark:text-gray-400'>
-            <li>• Priority indicators with color-coded icons (High, Urgent, Standard, Automated)</li>
-            <li>• Impact tags with gradient backgrounds (VIRAL, HIGH, MED, AUTO)</li>
-            <li>• Auto status tracking with status icons (Processing, Shipped, Delivered)</li>
-            <li>• Staggered entrance animations for smooth table loading</li>
-            <li>• Glass morphism design with backdrop blur effects</li>
-            <li>• Hover effects and responsive table layout</li>
+        <div className='mx-auto max-w-6xl rounded-executive border border-border bg-card p-strategic'>
+          <h3 className='mb-tactical text-heading-md font-bold text-foreground'>Features:</h3>
+          <ul className='space-y-2 text-body-md text-muted-foreground'>
+            <li>• Priority badges using shadcn/ui Badge component variants</li>
+            <li>• Impact tags with gradient backgrounds and proper contrast</li>
+            <li>• Status indicators with semantic color coding</li>
+            <li>• Staggered entrance animations for smooth loading</li>
+            <li>• Design system integration with proper spacing tokens</li>
+            <li>• Responsive table with hover effects and accessibility</li>
           </ul>
         </div>
       </div>
