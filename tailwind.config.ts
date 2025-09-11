@@ -259,6 +259,9 @@ const config: Config = {
 
       // Real Spacing System (extracted from component padding/margins)
       spacing: {
+        // Manifesto Spacing (from HP-040-Manifesto)
+        'manifesto-grid': '2rem', // 32px - Grid gap between manifesto cards (equivalent to gap-8)
+
         // Benefits Reel Spacing (from HP-030-BenefitsReel-Showcase)
         'benefits-title': '1rem', // 16px - Title margin bottom (equivalent to mb-4)
         'benefits-description': '4rem', // 64px - Description margin bottom (equivalent to mb-16)

@@ -79,3 +79,4 @@ export { default as IMSubNavBar } from './IM-SubNavBar';
 export { default as HPBenefitsReel } from './HP-BenefitsReel';
 export { default as HPHeaderVariant } from './HP-HeaderVariant';
 export { default as HPHero } from './HP-Hero';
+export { default as HPManifesto } from './HP-Manifesto';
