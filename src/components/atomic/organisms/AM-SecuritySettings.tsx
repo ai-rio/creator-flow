@@ -36,7 +36,7 @@ const ToggleSwitch: React.FC<{ enabled: boolean; onToggle: (enabled: boolean) =>
   >
     <motion.div
       layout
-      transition={{ type: 'spring', stiffness: 700, damping: 30 }}
+      transition={{ type: 'spring' as any, stiffness: 700, damping: 30 }}
       className='h-6 w-6 rounded-full bg-white shadow-md'
       style={{ marginLeft: enabled ? '1.8rem' : '0.2rem' }}
     />
@@ -84,7 +84,7 @@ const ActionButton: React.FC<{ children: React.ReactNode; onClick?: () => void }
     onClick={onClick}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.98 }}
-    transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+    transition={{ type: 'spring' as any, stiffness: 400, damping: 15 }}
     className='rounded-lg bg-teal-600 px-5 py-2 font-bold text-white shadow-md transition-all duration-300 hover:shadow-lg dark:bg-teal-500 dark:text-slate-900 dark:hover:shadow-[0px_0px_12px_rgba(29,255,233,0.5)]'
   >
     {children}
@@ -115,7 +115,7 @@ const SecuritySettings: React.FC<SecuritySettingsProps> = ({
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
+      transition={{ duration: 0.5, type: 'spring' as any, stiffness: 120 }}
       className='w-full max-w-4xl'
     >
       <div className='rounded-2xl border border-slate-900/10 bg-white/30 p-8 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20'>

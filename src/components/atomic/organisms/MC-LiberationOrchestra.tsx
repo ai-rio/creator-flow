@@ -49,7 +49,7 @@ export function LiberationOrchestra({
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20, delay }}
+      transition={{ type: 'spring' as any, stiffness: 100, damping: 20, delay }}
       className={cn('', className)}
     >
       <GlassPane className='rounded-xl p-4'>

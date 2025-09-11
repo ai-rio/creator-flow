@@ -96,7 +96,7 @@ export const CrossSystemMasterpieceCard: React.FC = () => {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { type: 'spring', staggerChildren: 0.1 } },
+        visible: { opacity: 1, y: 0, transition: { type: 'spring' as any, staggerChildren: 0.1 } },
       }}
       initial='hidden'
       animate='visible'

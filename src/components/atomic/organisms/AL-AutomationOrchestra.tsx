@@ -56,7 +56,7 @@ const AutomationLiberationOrchestra = () => {
 
   const variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, delay: 0.2 } },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring' as any as any, delay: 0.2 } },
   };
 
   return (

@@ -71,7 +71,7 @@ export function MobileExecutiveHeader({
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
+      transition={{ type: 'spring' as any, stiffness: 100, damping: 20, delay: 0.2 }}
       className={cn('fixed left-2 right-2 top-2 z-40', className)}
     >
       <GlassPane className='rounded-xl px-4 py-3'>

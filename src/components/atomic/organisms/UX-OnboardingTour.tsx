@@ -105,7 +105,7 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ tourSteps = [], active 
                     width: targetRect.width + 24,
                     height: targetRect.height + 24,
                   }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  transition={{ type: 'spring' as any, stiffness: 300, damping: 30 }}
                 />
               </mask>
             </defs>
@@ -124,7 +124,7 @@ const OnboardingTour: React.FC<OnboardingTourProps> = ({ tourSteps = [], active 
               left: targetRect.left + targetRect.width / 2,
             }}
             style={{ transform: 'translateX(-50%)' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{ type: 'spring' as any, stiffness: 300, damping: 30 }}
           >
             <div className='max-w-content rounded-executive border border-border bg-background p-strategic shadow-xl backdrop-blur-lg'>
               <div className='mb-tactical flex items-center justify-between'>

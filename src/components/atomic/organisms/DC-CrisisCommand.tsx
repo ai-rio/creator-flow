@@ -47,7 +47,7 @@ export const CrisisCommandCenterCard: React.FC = () => {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { type: 'spring', delay: 0.2 } },
+        visible: { opacity: 1, y: 0, transition: { type: 'spring' as any, delay: 0.2 } },
       }}
       initial='hidden'
       animate='visible'

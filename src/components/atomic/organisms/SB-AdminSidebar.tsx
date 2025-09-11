@@ -183,7 +183,7 @@ const AdminSidebar = () => {
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{ type: 'spring' as any, stiffness: 300, damping: 30 }}
             className='fixed bottom-0 left-0 top-0 z-modal w-sidebar-expanded md:hidden'
           >
             <Card className='flex h-full flex-col overflow-hidden rounded-r-executive border border-border bg-card/95 p-tactical backdrop-blur-xl'>
@@ -216,7 +216,7 @@ const AdminSidebar = () => {
         className='fixed bottom-tactical left-tactical top-tactical z-sidebar hidden flex-col md:flex'
         initial={false}
         animate={{ width: isExpanded ? 'var(--sidebar-expanded)' : 'var(--sidebar-collapsed)' }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        transition={{ type: 'spring' as any, stiffness: 300, damping: 30 }}
       >
         <Card className='flex h-full flex-col justify-between overflow-hidden rounded-executive border border-border bg-card/50 p-tactical backdrop-blur-xl'>
           <nav className='flex-grow'>

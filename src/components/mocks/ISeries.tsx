@@ -6,12 +6,12 @@ import { ChevronLeft, ChevronRight, Home, Info, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 // Import I-Series components (renamed to IM-Series)
-import IM020ManagementFocus from './IM-020-ManagementFocus';
-import IM010CriticalStock from './IM-010-CriticalStock';
+import IM_ManagementFocus from '../atomic/compositions/IM-ManagementFocus';
+import IMInventoryCommand from '../atomic/compositions/IM-InventoryCommand';
 
 const components = [
-  { id: 'i1', name: 'I1-I5: Inventory Management Focus', component: IM020ManagementFocus },
-  { id: 'i3', name: 'I3: Critical Stock Card', component: IM010CriticalStock },
+  { id: 'i1', name: 'I1-I5: Inventory Management Focus (Migrated)', component: IM_ManagementFocus },
+  { id: 'i3', name: 'I3: Critical Stock Card (Migrated)', component: IMInventoryCommand },
 ];
 
 interface ISeriesProps {

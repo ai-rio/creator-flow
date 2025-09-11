@@ -74,7 +74,7 @@ const AdminDesktopHeader = ({ theme, setTheme }: { theme: string; setTheme: (the
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 80, damping: 20 }}
+      transition={{ type: 'spring' as any, stiffness: 80, damping: 20 }}
       className='fixed left-4 right-4 top-4 z-header'
     >
       <GlassPane className='flex items-center justify-between p-strategic px-6'>

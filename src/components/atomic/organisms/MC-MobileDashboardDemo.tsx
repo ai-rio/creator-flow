@@ -21,9 +21,9 @@ const mockBusinessStats = {
 };
 
 const mockStrategicAlerts = [
-  { id: 1, type: 'critical' as const, text: 'Low stock on "Viral Tee"', source: 'Inventory' },
-  { id: 2, type: 'insight' as const, text: 'Viral spike: Scale inventory?', source: 'TikTok' },
-  { id: 3, type: 'operational' as const, text: 'Carrier issue: UPS delayed', source: 'Shipping' },
+  { id: 1, type: 'critical' as any, text: 'Low stock on "Viral Tee"', source: 'Inventory' },
+  { id: 2, type: 'insight' as any, text: 'Viral spike: Scale inventory?', source: 'TikTok' },
+  { id: 3, type: 'operational' as any, text: 'Carrier issue: UPS delayed', source: 'Shipping' },
 ];
 
 const mockAutomationStats = {
@@ -35,19 +35,19 @@ const mockAutomationStats = {
 const mockIntelligenceInsights = [
   {
     id: 1,
-    type: 'performance' as const,
+    type: 'performance' as any,
     title: 'Content ROI: $247/video avg',
     subtitle: 'Focus on short-form unboxing videos.',
   },
   {
     id: 2,
-    type: 'trend' as const,
+    type: 'trend' as any,
     title: 'Growth: 340%/yr sustainable',
     subtitle: 'Based on current supply chain capacity.',
   },
   {
     id: 3,
-    type: 'ai' as const,
+    type: 'ai' as any,
     title: 'Next: EU expansion ready',
     subtitle: 'AI recommends targeting Germany & France.',
   },

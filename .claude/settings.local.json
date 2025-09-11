@@ -55,7 +55,9 @@
       "Bash(tree:*)",
       "Bash(bunx tsc:*)",
       "Bash(bun list:*)",
-      "Bash(netstat:*)"
+      "Bash(netstat:*)",
+      "Bash(sed:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

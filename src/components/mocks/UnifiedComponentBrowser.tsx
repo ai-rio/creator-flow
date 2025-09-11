@@ -98,58 +98,82 @@ import ACProfitCommandDashboard from './blog-post/AC-ProfitCommandDashboard';
 // Batch 1 components
 import ACAuthorBriefing from './blog-post/AC-AuthorBriefing';
 import ACCalloutAdvanced from './blog-post/AC-Callout-Advanced';
-import ACCommandList from './blog-post/AC-CommandList';
-import ACExploreFurther from './blog-post/AC-ExploreFurther';
-import ACShareDossier from './blog-post/AC-ShareDossier';
-// Batch 2 components
-import ACSummonsToTheForge from './blog-post/AC-SummonsToTheForge';
-import ACTestimonialBlock from './blog-post/AC-TestimonialBlock';
-import ACTikTokMetrics from './blog-post/AC-TikTokMetrics';
+// import ACCodeSnippet from './blog-post/AC-CodeSnippet';
+// import ACContentStructure from './blog-post/AC-ContentStructure';
+// import ACFeaturedImage from './blog-post/AC-FeaturedImage';
+// import ACFooterBranding from './blog-post/AC-FooterBranding';
+// import ACInlineCode from './blog-post/AC-InlineCode';
+// import ACInternalLinking from './blog-post/AC-InternalLinking';
+// import ACSocialProof from './blog-post/AC-SocialProof';
 
-// === MIGRATED COMPONENTS ===
-// Importing migrated components from atomic structure
-import AdminDashboardHeader from '../atomic/organisms/AdminDashboardHeader';
+// Atomic Component Imports
+import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
+import NCNavigationHeader from '../atomic/organisms/NC-NavigationHeader';
+import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
+import DCCommandCenter from '../atomic/compositions/dashboard/DC-CommandCenter';
+import DCCrisisCommand from '../atomic/organisms/DC-CrisisCommand';
+import DCEmergencyControls from '../atomic/organisms/DC-EmergencyControls';
 import DCHealthOverview from '../atomic/organisms/DC-HealthOverview';
 import DCPerformanceArtistry from '../atomic/organisms/DC-PerformanceArtistry';
-import DCEmergencyControls from '../atomic/organisms/DC-EmergencyControls';
-import DCCommandCenter from '../atomic/compositions/dashboard/DC-CommandCenter';
-// New migrated components
 import DCBusinessIntelligence from '../atomic/organisms/DC-BusinessIntelligence';
-import DCCrisisCommand from '../atomic/organisms/DC-CrisisCommand';
-// Migrated atomic components
-import NCNavigationHeader from '../atomic/organisms/NC-NavigationHeader';
-import UXDestructiveModal from '../atomic/organisms/UX-DestructiveModal';
-import UXFeedbackWidgetDemo from '../atomic/organisms/UX-FeedbackWidgetDemo';
-import UXOnboardingTourDemo from '../atomic/organisms/UX-OnboardingTourDemo';
-import UXStandardModal from '../atomic/organisms/UX-StandardModal';
-import UXToastNotificationsDemo from '../atomic/organisms/UX-ToastNotificationsDemo';
-import SCStrategicCommand from '../atomic/organisms/SC-StrategicCommand';
-import SBAdminSidebar from '../atomic/organisms/SB-AdminSidebar';
-import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
-import AMBillingOverviewDemo from '../atomic/organisms/AM-BillingOverviewDemo';
-import AMBillingHistoryDemo from '../atomic/organisms/AM-BillingHistoryDemo';
-import AMPaymentMethodsDemo from '../atomic/organisms/AM-PaymentMethodsDemo';
-import AMSecuritySettingsDemo from '../atomic/organisms/AM-SecuritySettingsDemo';
-import DAOrderTableDemo from '../atomic/organisms/DA-OrderTableDemo';
 import BIExecutiveIntelligence from '../atomic/organisms/BI-ExecutiveIntelligence';
-import BIStrategicInsightsDemo from '../atomic/organisms/BI-StrategicInsightsDemo';
+import ALAutomationOrchestra from '../atomic/organisms/AL-AutomationOrchestra';
+import UXDestructiveModal from '../atomic/organisms/UX-DestructiveModal';
+import UXStandardModal from '../atomic/organisms/UX-StandardModal';
+import * as UXFeedbackWidget from '../atomic/organisms/UX-FeedbackWidget';
+import UXFeedbackWidgetDemo from '../atomic/organisms/UX-FeedbackWidgetDemo';
+import * as UXOnboardingTour from '../atomic/organisms/UX-OnboardingTour';
+import UXOnboardingTourDemo from '../atomic/organisms/UX-OnboardingTourDemo';
+import * as UXToastNotifications from '../atomic/organisms/UX-ToastNotifications';
+import UXToastNotificationsDemo from '../atomic/organisms/UX-ToastNotificationsDemo';
+import * as OMFlowVisualization from '../atomic/organisms/OM-FlowVisualization';
 import OMFlowVisualizationDemo from '../atomic/organisms/OM-FlowVisualizationDemo';
-// Mobile components - newly migrated
-import MCMobileExecutiveHeader from '../atomic/organisms/MC-MobileExecutiveHeader';
-import MCMobileNavBar from '../atomic/organisms/MC-MobileNavBar';
-import MCBusinessSymphony from '../atomic/organisms/MC-BusinessSymphony';
-import MCStrategicCommand from '../atomic/organisms/MC-StrategicCommand';
-import MCLiberationOrchestra from '../atomic/organisms/MC-LiberationOrchestra';
-import MCIntelligenceBriefing from '../atomic/organisms/MC-IntelligenceBriefing';
-import MCMobileDashboardDemo from '../atomic/organisms/MC-MobileDashboardDemo';
-// Order management components - migrated from MC-020
-import MCOrderManagement from '../atomic/organisms/MC-OrderManagement';
+import * as BIStrategicInsights from '../atomic/organisms/BI-StrategicInsights';
+import BIStrategicInsightsDemo from '../atomic/organisms/BI-StrategicInsightsDemo';
+import * as AMBillingOverview from '../atomic/organisms/AM-BillingOverview';
+import AMBillingOverviewDemo from '../atomic/organisms/AM-BillingOverviewDemo';
+import * as AMPaymentMethods from '../atomic/organisms/AM-PaymentMethods';
+import AMPaymentMethodsDemo from '../atomic/organisms/AM-PaymentMethodsDemo';
+import * as AMSecuritySettings from '../atomic/organisms/AM-SecuritySettings';
+import AMSecuritySettingsDemo from '../atomic/organisms/AM-SecuritySettingsDemo';
+import * as AMBillingHistory from '../atomic/organisms/AM-BillingHistory';
+import AMBillingHistoryDemo from '../atomic/organisms/AM-BillingHistoryDemo';
+import * as DAOrderTable from '../atomic/organisms/DA-OrderTable';
+import DAOrderTableDemo from '../atomic/organisms/DA-OrderTableDemo';
+
+// Mobile components
 import MCOrderCard from '../atomic/organisms/MC-OrderCard';
-import MCOrderHeader from '../atomic/organisms/MC-OrderHeader';
+import MCOrderManagement from '../atomic/organisms/MC-OrderManagement';
+import MCMobileNavBar from '../atomic/organisms/MC-MobileNavBar';
+import MCMobileExecutiveHeader from '../atomic/organisms/MC-MobileExecutiveHeader';
 import MCOrderFilters from '../atomic/organisms/MC-OrderFilters';
 // Order management demo components
 import MCOrderManagementDemo from '../atomic/organisms/MC-OrderManagement-Demo';
 import MCOrderCardDemo from '../atomic/organisms/MC-OrderCard-Demo';
+
+// Inventory Management Components - Phase 5 Migration (IM-010 Series)
+import IMInventoryCommand from '../atomic/compositions/IM-InventoryCommand';
+import IMCriticalStock from '../atomic/organisms/IM-CriticalStock';
+import IMInventoryHeader from '../atomic/organisms/IM-InventoryHeader';
+import IMSyncStatus from '../atomic/organisms/IM-SyncStatus';
+import IMStockAlert from '../atomic/molecules/IM-StockAlert';
+import IMMetricCard from '../atomic/molecules/IM-MetricCard';
+import IMActionGroup from '../atomic/molecules/IM-ActionGroup';
+import IMStatusIndicator from '../atomic/atoms/IM-StatusIndicator';
+import IMActionButton from '../atomic/atoms/IM-ActionButton';
+import IMMetricValue from '../atomic/atoms/IM-MetricValue';
+
+// Inventory Management Components - Phase 6 Migration (IM-020 Series - Management Focus)
+import IMManagementFocus from '../atomic/compositions/IM-ManagementFocus';
+import IMManagementHeader from '../atomic/organisms/IM-ManagementHeader';
+import IMCriticalStockAlerts from '../atomic/organisms/IM-CriticalStockAlerts';
+import IMInventoryGallery from '../atomic/organisms/IM-InventoryGallery';
+import IMSubNavBar from '../atomic/organisms/IM-SubNavBar';
+import IMSyncMetrics from '../atomic/molecules/IM-SyncMetrics';
+import IMGlassPane from '../atomic/molecules/IM-GlassPane';
+import IMStockLevelBar from '../atomic/molecules/IM-StockLevelBar';
+import IMThemeToggle from '../atomic/atoms/IM-ThemeToggle';
+import IMBrandIcon from '../atomic/atoms/IM-BrandIcon';
 
 // Type definitions for component structure
 interface ComponentItem {
@@ -166,105 +190,123 @@ interface ComponentCategories {
   [categoryName: string]: ComponentSeries;
 }
 
+// Define component categories and their series with descriptions
 const componentCategories: ComponentCategories = {
-  'Migrated Components': {
-    'Phase 1 - Streamlined Migration': [
-      { id: 'migrated-dc010', name: 'MIGRATED: Admin Dashboard Header (DC-010)', component: AdminDashboardHeader },
+  'Atomic Design Components': {
+    'Phase 6 - Management Focus Migration (IM-020)': [
       {
-        id: 'migrated-health-overview',
-        name: 'MIGRATED: Health Overview (DC-040 Section)',
-        component: DCHealthOverview,
+        id: 'im-020-management-focus',
+        name: 'MIGRATED: Complete Management Focus Interface (IM-020 Full)',
+        component: IMManagementFocus,
       },
       {
-        id: 'migrated-performance-artistry',
-        name: 'MIGRATED: Performance Artistry (DC-050 Section)',
-        component: DCPerformanceArtistry,
+        id: 'im-020-management-header',
+        name: 'MIGRATED: Management Header (IM-020 Header)',
+        component: IMManagementHeader,
+      },
+      {
+        id: 'im-020-critical-stock-alerts',
+        name: 'MIGRATED: Critical Stock Alerts (IM-020 Alerts)',
+        component: IMCriticalStockAlerts,
+      },
+      {
+        id: 'im-020-inventory-gallery',
+        name: 'MIGRATED: Inventory Art Gallery (IM-020 Gallery)',
+        component: IMInventoryGallery,
+      },
+      {
+        id: 'im-020-sub-navbar',
+        name: 'MIGRATED: Sub Navigation Bar (IM-020 NavBar)',
+        component: IMSubNavBar,
+      },
+      {
+        id: 'im-020-sync-metrics',
+        name: 'MIGRATED: Sync Performance Metrics (IM-020 Metrics)',
+        component: IMSyncMetrics,
+      },
+      {
+        id: 'im-020-glass-pane',
+        name: 'MIGRATED: Glass Morphism Pane (IM-020 Glass)',
+        component: IMGlassPane,
+      },
+      {
+        id: 'im-020-stock-level-bar',
+        name: 'MIGRATED: Stock Level Visualization (IM-020 StockBar)',
+        component: IMStockLevelBar,
+      },
+      {
+        id: 'im-020-theme-toggle',
+        name: 'MIGRATED: Theme Toggle Button (IM-020 Theme)',
+        component: IMThemeToggle,
+      },
+      {
+        id: 'im-020-brand-icon',
+        name: 'MIGRATED: Brand Icon Component (IM-020 Brand)',
+        component: IMBrandIcon,
       },
     ],
-    'Phase 2 - Enhanced Contrast Migration': [
+    'Phase 5 - Inventory Management Migration (IM-010)': [
       {
-        id: 'migrated-emergency-controls',
-        name: 'MIGRATED: Emergency Controls (DC-050 Section)',
-        component: DCEmergencyControls,
+        id: 'migrated-inventory-command',
+        name: 'MIGRATED: Complete Inventory Command (IM-010 Full Interface)',
+        component: IMInventoryCommand,
       },
       {
-        id: 'migrated-command-center',
-        name: 'MIGRATED: Command Center Dashboard (DC-070 Complete)',
-        component: DCCommandCenter,
+        id: 'migrated-critical-stock',
+        name: 'MIGRATED: Critical Stock Alerts (IM-010 Stock Cards)',
+        component: IMCriticalStock,
       },
       {
-        id: 'migrated-business-intelligence',
-        name: 'MIGRATED: Business Intelligence Center (DC-080 Section)',
-        component: DCBusinessIntelligence,
+        id: 'migrated-inventory-header',
+        name: 'MIGRATED: Inventory Header (IM-010 Header)',
+        component: IMInventoryHeader,
       },
       {
-        id: 'migrated-crisis-command',
-        name: 'MIGRATED: Crisis Command Center (DC-090 Section)',
-        component: DCCrisisCommand,
-      },
-    ],
-    'Phase 3 - Mobile-First Migration': [
-      {
-        id: 'migrated-mobile-executive-header',
-        name: 'MIGRATED: Mobile Executive Header (MC-030 Navigation)',
-        component: MCMobileExecutiveHeader,
+        id: 'migrated-sync-status',
+        name: 'MIGRATED: Sync Status Card (IM-010 Sync)',
+        component: IMSyncStatus,
       },
       {
-        id: 'migrated-mobile-navbar',
-        name: 'MIGRATED: Mobile Navigation Bar (MC-030 Bottom Nav)',
-        component: MCMobileNavBar,
+        id: 'migrated-stock-alert',
+        name: 'MIGRATED: Stock Alert Molecule (IM-010 Alert)',
+        component: IMStockAlert,
       },
       {
-        id: 'migrated-mobile-business-symphony',
-        name: 'MIGRATED: Business Symphony Card (MC-030 Dashboard)',
-        component: MCBusinessSymphony,
+        id: 'migrated-metric-card',
+        name: 'MIGRATED: Metric Display Card (IM-010 Metric)',
+        component: IMMetricCard,
       },
       {
-        id: 'migrated-mobile-strategic-command',
-        name: 'MIGRATED: Strategic Command Card (MC-030 Dashboard)',
-        component: MCStrategicCommand,
+        id: 'migrated-action-group',
+        name: 'MIGRATED: Action Button Group (IM-010 Actions)',
+        component: IMActionGroup,
       },
       {
-        id: 'migrated-mobile-liberation-orchestra',
-        name: 'MIGRATED: Liberation Orchestra Card (MC-030 Dashboard)',
-        component: MCLiberationOrchestra,
+        id: 'migrated-status-indicator',
+        name: 'MIGRATED: Status Indicator Atom (IM-010 Status)',
+        component: IMStatusIndicator,
       },
       {
-        id: 'migrated-mobile-intelligence-briefing',
-        name: 'MIGRATED: Intelligence Briefing Card (MC-030 Dashboard)',
-        component: MCIntelligenceBriefing,
+        id: 'migrated-action-button',
+        name: 'MIGRATED: Action Button Atom (IM-010 Button)',
+        component: IMActionButton,
       },
       {
-        id: 'migrated-mobile-dashboard-demo',
-        name: 'MIGRATED: Complete Mobile Dashboard Demo (MC-030 All Cards)',
-        component: MCMobileDashboardDemo,
+        id: 'migrated-metric-value',
+        name: 'MIGRATED: Metric Value Atom (IM-010 Value)',
+        component: IMMetricValue,
       },
     ],
     'Phase 4 - Order Management Migration': [
       {
-        id: 'migrated-order-management-demo',
-        name: 'MIGRATED: Complete Order Management Demo (MC-020 Full Interface)',
+        id: 'migrated-order-management',
+        name: 'MIGRATED: Complete Order Management (MC-020 Full Interface)',
         component: MCOrderManagementDemo,
       },
       {
-        id: 'migrated-order-management',
-        name: 'MIGRATED: Order Management Interface (MC-020 Core)',
-        component: MCOrderManagement,
-      },
-      {
-        id: 'migrated-order-card-demo',
-        name: 'MIGRATED: Order Card Demo (MC-020 Single Card)',
-        component: MCOrderCardDemo,
-      },
-      {
         id: 'migrated-order-card',
-        name: 'MIGRATED: Swipeable Order Card (MC-020 Component)',
-        component: MCOrderCard,
-      },
-      {
-        id: 'migrated-order-header',
-        name: 'MIGRATED: Order Header with Search & Filters (MC-020 Header)',
-        component: MCOrderHeader,
+        name: 'MIGRATED: Order Card with Swipe (MC-020 Card)',
+        component: MCOrderCardDemo,
       },
       {
         id: 'migrated-order-filters',
@@ -272,325 +314,604 @@ const componentCategories: ComponentCategories = {
         component: MCOrderFilters,
       },
     ],
-  },
-  'Atomic Components': {
+    'Phase 3 - Mobile Navigation Migration': [
+      {
+        id: 'migrated-mobile-navbar',
+        name: 'MIGRATED: Mobile Navigation Bar (MC-030 NavBar)',
+        component: MCMobileNavBar,
+      },
+      {
+        id: 'migrated-mobile-header',
+        name: 'MIGRATED: Mobile Executive Header (MC-030 Header)',
+        component: MCMobileExecutiveHeader,
+      },
+    ],
+    'Dashboard Command Center': [
+      {
+        id: 'atomic-command-center',
+        name: 'Dashboard: Complete Command Center',
+        component: DCCommandCenter,
+      },
+      {
+        id: 'atomic-crisis-command',
+        name: 'Dashboard: Crisis Command Module',
+        component: DCCrisisCommand,
+      },
+      {
+        id: 'atomic-emergency-controls',
+        name: 'Dashboard: Emergency Controls',
+        component: DCEmergencyControls,
+      },
+      {
+        id: 'atomic-health-overview',
+        name: 'Dashboard: System Health Overview',
+        component: DCHealthOverview,
+      },
+      {
+        id: 'atomic-performance-artistry',
+        name: 'Dashboard: Performance Artistry',
+        component: DCPerformanceArtistry,
+      },
+      {
+        id: 'atomic-business-intelligence',
+        name: 'Dashboard: Business Intelligence',
+        component: DCBusinessIntelligence,
+      },
+    ],
     Organisms: [
-      { id: 'navigation-header', name: 'Navigation Header', component: NCNavigationHeader },
-      { id: 'destructive-modal', name: 'Destructive Modal', component: UXDestructiveModal },
-      { id: 'feedback-widget', name: 'Feedback Widget Demo', component: UXFeedbackWidgetDemo },
-      { id: 'onboarding-tour', name: 'Onboarding Tour Demo', component: UXOnboardingTourDemo },
-      { id: 'standard-modal', name: 'Standard Modal', component: UXStandardModal },
-      { id: 'toast-notifications', name: 'Toast Notifications Demo', component: UXToastNotificationsDemo },
-      { id: 'strategic-command', name: 'Strategic Command', component: SCStrategicCommand },
-      { id: 'admin-sidebar', name: 'Admin Sidebar', component: SBAdminSidebar },
-      { id: 'automation-orchestra', name: 'Automation Orchestra', component: ALAutomationOrchestra },
-      { id: 'billing-overview', name: 'Billing Overview Demo', component: AMBillingOverviewDemo },
-      { id: 'billing-history', name: 'Billing History Demo', component: AMBillingHistoryDemo },
-      { id: 'payment-methods', name: 'Payment Methods Demo', component: AMPaymentMethodsDemo },
-      { id: 'security-settings', name: 'Security Settings Demo', component: AMSecuritySettingsDemo },
-      { id: 'order-table', name: 'Order Table Demo', component: DAOrderTableDemo },
-      { id: 'executive-intelligence', name: 'Executive Intelligence', component: BIExecutiveIntelligence },
-      { id: 'strategic-insights', name: 'Strategic Insights Demo', component: BIStrategicInsightsDemo },
-      { id: 'flow-visualization', name: 'Flow Visualization Demo', component: OMFlowVisualizationDemo },
+      {
+        id: 'atomic-strategic-command',
+        name: 'Strategic: Command Center',
+        component: SCStrategicCommand,
+      },
+      {
+        id: 'atomic-navigation-header',
+        name: 'Navigation: Header Component',
+        component: NCNavigationHeader,
+      },
+      {
+        id: 'atomic-admin-sidebar',
+        name: 'Sidebar: Admin Navigation',
+        component: SBAdminSidebar,
+      },
+      {
+        id: 'atomic-executive-intelligence',
+        name: 'BI: Executive Intelligence Dashboard',
+        component: BIExecutiveIntelligence,
+      },
+      {
+        id: 'atomic-automation-orchestra',
+        name: 'Automation: Orchestra Controller',
+        component: ALAutomationOrchestra,
+      },
+      {
+        id: 'atomic-destructive-modal',
+        name: 'UX: Destructive Action Modal',
+        component: UXDestructiveModal,
+      },
+      {
+        id: 'atomic-standard-modal',
+        name: 'UX: Standard Modal Dialog',
+        component: UXStandardModal,
+      },
+      {
+        id: 'atomic-feedback-widget',
+        name: 'UX: User Feedback Widget',
+        component: UXFeedbackWidget as any,
+      },
+      {
+        id: 'atomic-feedback-widget-demo',
+        name: 'UX: Feedback Widget (Demo)',
+        component: UXFeedbackWidgetDemo,
+      },
+      {
+        id: 'atomic-onboarding-tour',
+        name: 'UX: Interactive Onboarding Tour',
+        component: UXOnboardingTour as any,
+      },
+      {
+        id: 'atomic-onboarding-tour-demo',
+        name: 'UX: Onboarding Tour (Demo)',
+        component: UXOnboardingTourDemo,
+      },
+      {
+        id: 'atomic-toast-notifications',
+        name: 'UX: Toast Notification System',
+        component: UXToastNotifications as any,
+      },
+      {
+        id: 'atomic-toast-notifications-demo',
+        name: 'UX: Toast Notifications (Demo)',
+        component: UXToastNotificationsDemo,
+      },
+      {
+        id: 'atomic-flow-visualization',
+        name: 'OM: Order Flow Visualization',
+        component: OMFlowVisualization as any,
+      },
+      {
+        id: 'atomic-flow-visualization-demo',
+        name: 'OM: Flow Visualization (Demo)',
+        component: OMFlowVisualizationDemo,
+      },
+      {
+        id: 'atomic-strategic-insights',
+        name: 'BI: Strategic Business Insights',
+        component: BIStrategicInsights as any,
+      },
+      {
+        id: 'atomic-strategic-insights-demo',
+        name: 'BI: Strategic Insights (Demo)',
+        component: BIStrategicInsightsDemo,
+      },
+      {
+        id: 'atomic-billing-overview',
+        name: 'AM: Billing Overview Dashboard',
+        component: AMBillingOverview as any,
+      },
+      {
+        id: 'atomic-billing-overview-demo',
+        name: 'AM: Billing Overview (Demo)',
+        component: AMBillingOverviewDemo,
+      },
+      {
+        id: 'atomic-payment-methods',
+        name: 'AM: Payment Methods Manager',
+        component: AMPaymentMethods as any,
+      },
+      {
+        id: 'atomic-payment-methods-demo',
+        name: 'AM: Payment Methods (Demo)',
+        component: AMPaymentMethodsDemo,
+      },
+      {
+        id: 'atomic-security-settings',
+        name: 'AM: Security Settings Panel',
+        component: AMSecuritySettings as any,
+      },
+      {
+        id: 'atomic-security-settings-demo',
+        name: 'AM: Security Settings (Demo)',
+        component: AMSecuritySettingsDemo,
+      },
+      {
+        id: 'atomic-billing-history',
+        name: 'AM: Billing History Table',
+        component: AMBillingHistory as any,
+      },
+      {
+        id: 'atomic-billing-history-demo',
+        name: 'AM: Billing History (Demo)',
+        component: AMBillingHistoryDemo,
+      },
+      {
+        id: 'atomic-order-table',
+        name: 'DA: Advanced Order Data Table',
+        component: DAOrderTable as any,
+      },
+      {
+        id: 'atomic-order-table-demo',
+        name: 'DA: Order Table (Demo)',
+        component: DAOrderTableDemo,
+      },
     ],
   },
-  'Dashboard Command Center': {
-    'DC Series': [
-      { id: 'dc010-dashboard', name: 'DC-010: SHM Dashboard', component: DC010ShmDashboard },
-      { id: 'dc020-dashboard', name: 'DC-020: SHM Dashboard V2', component: DC020ShmDashboardV2 },
-      { id: 'dc030-dashboard', name: 'DC-030: SHM Dashboard V3', component: DC030ShmDashboardV3 },
-      { id: 'dc040-dashboard', name: 'DC-040: SHM Dashboard V4', component: DC040ShmDashboardV4 },
-      { id: 'dc050-dashboard', name: 'DC-050: SHM Dashboard V5', component: DC050ShmDashboardV5 },
-      { id: 'dc060-dashboard', name: 'DC-060: SHM Dashboard V6', component: DC060ShmDashboardV6 },
-      { id: 'dc070-command-center', name: 'DC-070: Command Center', component: DC070CommandCenter },
-      { id: 'dc080-enhanced-ccc-v1', name: 'DC-080: Enhanced CCC V1', component: DC080EnhancedCccV1 },
-      { id: 'dc090-enhanced-ccc-v4', name: 'DC-090: Enhanced CCC V4', component: DC090EnhancedCccV4 },
-      { id: 'dc100-enhanced-ccc-v5', name: 'DC-100: Enhanced CCC V5', component: DC100EnhancedCccV5 },
-      { id: 'dc110-enhanced-ccc-v6', name: 'DC-110: Enhanced CCC V6', component: DC110EnhancedCccV6 },
-      { id: 'dc120-enhanced-ccc-v4-alt', name: 'DC-120: Enhanced CCC V4 Alt', component: DC120EnhancedCccV4Alt },
-      { id: 'dc130-enhanced-ccc-v5-alt', name: 'DC-130: Enhanced CCC V5 Alt', component: DC130EnhancedCccV5Alt },
+  'Blog Post Content Components': {
+    'AC Series - Phase 3 (Advanced Content)': [
+      {
+        id: 'ac-faq-accordion',
+        name: 'AC-FAQAccordion: Interactive FAQ Section',
+        component: ACFAQAccordion,
+      },
+      {
+        id: 'ac-milestone-celebration',
+        name: 'AC-MilestoneCelebration: Achievement Display',
+        component: ACMilestoneCelebration,
+      },
+      {
+        id: 'ac-profit-command-dashboard',
+        name: 'AC-ProfitCommandDashboard: Revenue Analytics',
+        component: ACProfitCommandDashboard,
+      },
     ],
-  },
-  'Mobile Command Center': {
-    'MC Series': [
-      { id: 'mc010-dashboard', name: 'MC-010: Mobile Dashboard', component: MC010Dashboard },
-      { id: 'mc020-order', name: 'MC-020: Mobile Order Symphony', component: MC020Order },
-      { id: 'mc030-navbar', name: 'MC-030: Mobile Navigation', component: MC030Navbar },
+    'AC Series - Phase 2 (Content Structure)': [
+      {
+        id: 'ac-author-briefing',
+        name: 'AC-AuthorBriefing: Author Information Card',
+        component: ACAuthorBriefing,
+      },
+      {
+        id: 'ac-callout-advanced',
+        name: 'AC-Callout-Advanced: Enhanced Callout Box',
+        component: ACCalloutAdvanced,
+      },
     ],
-  },
-  'Navigation Command': {
-    'NC Series': [
-      { id: 'nc020-sidebar', name: 'NC-020: Desktop Sidebar', component: NC020Sidebar },
-      { id: 'nc030-header', name: 'NC-030: Executive Header', component: NC030ExecutiveHeader },
+    'AC Series - Phase 1 (Core Components)': [
+      {
+        id: 'ac-article-hero',
+        name: 'AC-ArticleHero: Article Header Section',
+        component: ACArticleHero,
+      },
+      {
+        id: 'ac-callout',
+        name: 'AC-Callout: Information Callout Box',
+        component: ACCallout,
+      },
+      {
+        id: 'ac-data-table',
+        name: 'AC-DataTable: Responsive Data Display',
+        component: ACDataTable,
+      },
+      {
+        id: 'ac-key-takeaways',
+        name: 'AC-KeyTakeaways: Summary Points',
+        component: ACKeyTakeawaysComponent,
+      },
+      {
+        id: 'ac-table-of-contents',
+        name: 'AC-TableOfContents: Navigation TOC',
+        component: ACTableOfContents,
+      },
     ],
-  },
-  'Security Components': {
-    'SC Series': [{ id: 'sc010-security', name: 'SC-010: Security Card', component: SC010SecurityCard }],
-  },
-  'Profile Management': {
-    'PM Series': [{ id: 'pm010-profile', name: 'PM-010: User Profile', component: PM010UserProfile }],
-  },
-  'Settings & Utilities': {
-    'SU Series': [
-      { id: 'su010-404', name: 'SU-010: 404 Not Found', component: SU010NotFound },
-      { id: 'su020-cookie', name: 'SU-020: Cookie Policy', component: SU020CookiePolicy },
-      { id: 'su030-theme', name: 'SU-030: Theme Switcher', component: SU030ThemeSwitcher },
-    ],
-  },
-  'Content & Privacy': {
-    'CP Series': [
-      { id: 'cp010-hero', name: 'CP-010: Hero Section', component: CP010Hero },
-      { id: 'cp020-missions', name: 'CP-020: Open Missions', component: CP020OpenMissions },
-    ],
-  },
-  'Legal Components': {
-    'LP Series': [{ id: 'lp010-legal', name: 'LP-010: Legal Page', component: LP010Legal }],
   },
   'Blog Page Components': {
     'BP Series': [
-      { id: 'bp-complete-hub', name: 'BP: Complete Content Hub', component: BPCompleteContentHub },
-      { id: 'bp-toolbar', name: 'BP: Content Hub Toolbar', component: BPContentHubToolbar },
-      { id: 'bp-post-card', name: 'BP: Post Card', component: BPPostCard },
+      {
+        id: 'bp-complete-content-hub',
+        name: 'BP-Complete-Content-Hub: Full Blog Layout',
+        component: BPCompleteContentHub,
+      },
+      {
+        id: 'bp-content-hub-toolbar',
+        name: 'BP-Content-Hub-Toolbar: Blog Management Tools',
+        component: BPContentHubToolbar,
+      },
+      {
+        id: 'bp-post-card',
+        name: 'BP-PostCard: Article Preview Card',
+        component: BPPostCard,
+      },
     ],
   },
-  'Article Components': {
-    'AC Series - Foundation': [
-      { id: 'ac-article-hero', name: 'AC: Article Hero', component: ACArticleHero },
-      { id: 'ac-callout', name: 'AC: Callout', component: ACCallout },
-      { id: 'ac-data-table', name: 'AC: Data Table', component: ACDataTable },
-      { id: 'ac-key-takeaways', name: 'AC: Key Takeaways', component: ACKeyTakeawaysComponent },
-      { id: 'ac-table-of-contents', name: 'AC: Table of Contents', component: ACTableOfContents },
+  'Dashboard Components': {
+    'DC Series': [
+      { id: 'dc010', name: 'DC-010: SHM Dashboard', component: DC010ShmDashboard },
+      { id: 'dc020', name: 'DC-020: SHM Dashboard V2', component: DC020ShmDashboardV2 },
+      { id: 'dc030', name: 'DC-030: SHM Dashboard V3', component: DC030ShmDashboardV3 },
+      { id: 'dc040', name: 'DC-040: SHM Dashboard V4', component: DC040ShmDashboardV4 },
+      { id: 'dc050', name: 'DC-050: SHM Dashboard V5', component: DC050ShmDashboardV5 },
+      { id: 'dc060', name: 'DC-060: SHM Dashboard V6', component: DC060ShmDashboardV6 },
+      { id: 'dc070', name: 'DC-070: Command Center', component: DC070CommandCenter },
+      { id: 'dc080', name: 'DC-080: Enhanced CCC V1', component: DC080EnhancedCccV1 },
+      { id: 'dc090', name: 'DC-090: Enhanced CCC V4', component: DC090EnhancedCccV4 },
+      { id: 'dc100', name: 'DC-100: Enhanced CCC V5', component: DC100EnhancedCccV5 },
+      { id: 'dc110', name: 'DC-110: Enhanced CCC V6', component: DC110EnhancedCccV6 },
+      { id: 'dc120', name: 'DC-120: Enhanced CCC V4 Alt', component: DC120EnhancedCccV4Alt },
+      { id: 'dc130', name: 'DC-130: Enhanced CCC V5 Alt', component: DC130EnhancedCccV5Alt },
     ],
-    'AC Series - Batch 1': [
-      { id: 'ac-author-briefing', name: 'AC: Author Briefing', component: ACAuthorBriefing },
-      { id: 'ac-callout-advanced', name: 'AC: Advanced Callout', component: ACCalloutAdvanced },
-      { id: 'ac-command-list', name: 'AC: Command List', component: ACCommandList },
-      { id: 'ac-explore-further', name: 'AC: Explore Further', component: ACExploreFurther },
-      { id: 'ac-share-dossier', name: 'AC: Share Dossier', component: ACShareDossier },
+  },
+  'Mobile Components': {
+    'MC Series': [
+      { id: 'mc010', name: 'MC-010: Dashboard', component: MC010Dashboard },
+      { id: 'mc020', name: 'MC-020: Order', component: MC020Order },
+      { id: 'mc030', name: 'MC-030: Navbar', component: MC030Navbar },
     ],
-    'AC Series - Batch 2': [
-      { id: 'ac-faq-accordion', name: 'AC: FAQ Accordion', component: ACFAQAccordion },
-      { id: 'ac-milestone-celebration', name: 'AC: Milestone Celebration', component: ACMilestoneCelebration },
-      { id: 'ac-profit-command', name: 'AC: Profit Command Dashboard', component: ACProfitCommandDashboard },
-      { id: 'ac-summons-forge', name: 'AC: Summons to the Forge', component: ACSummonsToTheForge },
-      { id: 'ac-testimonial-block', name: 'AC: Testimonial Block', component: ACTestimonialBlock },
-      { id: 'ac-tiktok-metrics', name: 'AC: TikTok Metrics', component: ACTikTokMetrics },
+  },
+  'Navigation Components': {
+    'NC Series': [
+      { id: 'nc020', name: 'NC-020: Sidebar', component: NC020Sidebar },
+      { id: 'nc030', name: 'NC-030: Executive Header', component: NC030ExecutiveHeader },
     ],
+  },
+  'User Experience Components': {
+    'UX Series': [],
+  },
+  'Data & Analytics Components': {
+    'DA Series': [],
+  },
+  'Business Intelligence Components': {
+    'BI Series': [],
+  },
+  'Account Management Components': {
+    'AM Series': [],
+  },
+  'Order Management Components': {
+    'OM Series': [],
+  },
+  'Settings & Utilities': {
+    'SU Series': [
+      { id: 'su010', name: 'SU-010: Not Found', component: SU010NotFound },
+      { id: 'su020', name: 'SU-020: Cookie Policy', component: SU020CookiePolicy },
+      { id: 'su030', name: 'SU-030: Theme Switcher', component: SU030ThemeSwitcher },
+    ],
+  },
+  'Profile Management': {
+    'PM Series': [{ id: 'pm010', name: 'PM-010: User Profile', component: PM010UserProfile }],
+  },
+  'Security Components': {
+    'SC Series': [{ id: 'sc010', name: 'SC-010: Security Card', component: SC010SecurityCard }],
+  },
+  'Content & Privacy Components': {
+    'CP Series': [
+      { id: 'cp010', name: 'CP-010: Hero', component: CP010Hero },
+      { id: 'cp020', name: 'CP-020: Open Missions', component: CP020OpenMissions },
+    ],
+  },
+  'Legal Pages': {
+    'LP Series': [{ id: 'lp010', name: 'LP-010: Legal', component: LP010Legal }],
   },
 };
 
-const UnifiedComponentBrowser: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('Migrated Components');
+export default function UnifiedComponentBrowser(): React.JSX.Element {
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedSeries, setSelectedSeries] = useState<string>('');
-  const [selectedComponent, setSelectedComponent] = useState<ComponentItem | null>(null);
-  const [isGridView, setIsGridView] = useState<boolean>(true);
+  const [selectedComponent, setSelectedComponent] = useState<string>('');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Auto-select first series when category changes
+  // Get URL parameters for direct component access
   useEffect(() => {
-    const firstSeries = Object.keys(componentCategories[selectedCategory] || {})[0];
-    setSelectedSeries(firstSeries);
-    setSelectedComponent(null);
-  }, [selectedCategory]);
-
-  // Auto-select first component when series changes
-  useEffect(() => {
-    if (selectedSeries && componentCategories[selectedCategory]?.[selectedSeries]) {
-      const firstComponent = componentCategories[selectedCategory][selectedSeries][0];
-      setSelectedComponent(firstComponent);
+    const urlParams = new URLSearchParams(window.location.search);
+    const component = urlParams.get('component');
+    if (component) {
+      // Find the component in categories
+      for (const [categoryName, series] of Object.entries(componentCategories)) {
+        for (const [seriesName, components] of Object.entries(series)) {
+          const foundComponent = components.find((c) => c.id === component);
+          if (foundComponent) {
+            setSelectedCategory(categoryName);
+            setSelectedSeries(seriesName);
+            setSelectedComponent(component);
+            return;
+          }
+        }
+      }
     }
-  }, [selectedSeries, selectedCategory]);
+  }, []);
 
-  const currentComponents = componentCategories[selectedCategory]?.[selectedSeries] || [];
+  // Get available categories
+  const categories = Object.keys(componentCategories);
+
+  // Get available series for selected category
+  const availableSeries = selectedCategory ? Object.keys(componentCategories[selectedCategory]) : [];
+
+  // Get available components for selected series
+  const availableComponents =
+    selectedCategory && selectedSeries ? componentCategories[selectedCategory][selectedSeries] : [];
+
+  // Get current component
+  const currentComponent = availableComponents.find((c) => c.id === selectedComponent);
+
+  const handleReset = () => {
+    setSelectedCategory('');
+    setSelectedSeries('');
+    setSelectedComponent('');
+    // Update URL
+    window.history.pushState({}, '', window.location.pathname);
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setSelectedSeries('');
+    setSelectedComponent('');
+  };
+
+  const handleSeriesChange = (series: string) => {
+    setSelectedSeries(series);
+    setSelectedComponent('');
+  };
+
+  const handleComponentSelect = (componentId: string) => {
+    setSelectedComponent(componentId);
+    // Update URL
+    const newUrl = `${window.location.pathname}?component=${componentId}`;
+    window.history.pushState({}, '', newUrl);
+  };
+
+  // Navigation functions
+  const getCurrentIndex = () => availableComponents.findIndex((c) => c.id === selectedComponent);
 
   const goToPrevious = () => {
-    if (!selectedComponent) return;
-    const currentIndex = currentComponents.findIndex((comp) => comp.id === selectedComponent.id);
+    const currentIndex = getCurrentIndex();
     if (currentIndex > 0) {
-      setSelectedComponent(currentComponents[currentIndex - 1]);
+      handleComponentSelect(availableComponents[currentIndex - 1].id);
     }
   };
 
   const goToNext = () => {
-    if (!selectedComponent) return;
-    const currentIndex = currentComponents.findIndex((comp) => comp.id === selectedComponent.id);
-    if (currentIndex < currentComponents.length - 1) {
-      setSelectedComponent(currentComponents[currentIndex + 1]);
+    const currentIndex = getCurrentIndex();
+    if (currentIndex < availableComponents.length - 1) {
+      handleComponentSelect(availableComponents[currentIndex + 1].id);
     }
   };
 
-  const resetView = () => {
-    setSelectedCategory('Migrated Components');
-    setSelectedSeries('Phase 1 - Streamlined Migration');
-    setSelectedComponent(null);
-  };
+  const canGoToPrevious = () => getCurrentIndex() > 0;
+  const canGoToNext = () => getCurrentIndex() < availableComponents.length - 1;
 
-  const renderComponentDisplay = () => {
-    if (!selectedComponent) {
-      return (
-        <div className='flex h-full items-center justify-center text-muted-foreground'>
-          Select a component to preview
-        </div>
-      );
-    }
-
-    const Component = selectedComponent.component;
+  if (currentComponent) {
+    const CurrentComponentToRender = currentComponent.component;
     return (
-      <div className='h-full w-full overflow-auto'>
-        <Component />
-      </div>
-    );
-  };
-
-  const renderComponentGrid = () => {
-    return (
-      <div className='grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
-        {currentComponents.map((component) => (
-          <motion.div
-            key={component.id}
-            className='group relative cursor-pointer overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md'
-            onClick={() => setSelectedComponent(component)}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <div className='aspect-video w-full overflow-hidden bg-muted/30'>
-              <div className='h-full w-full origin-top-left scale-50 transform'>
-                <div className='h-[200%] w-[200%]'>
-                  <component.component />
-                </div>
+      <div className='min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900'>
+        {/* Fixed Header */}
+        <div className='fixed left-0 right-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/95'>
+          <div className='flex items-center justify-between p-4'>
+            <div className='flex items-center gap-4'>
+              <Button onClick={handleReset} variant='ghost' size='sm' className='gap-2'>
+                <Home className='h-4 w-4' />
+                Browse
+              </Button>
+              <div className='text-sm text-slate-600 dark:text-slate-300'>
+                {selectedCategory} → {selectedSeries}
               </div>
             </div>
-            <div className='p-3'>
-              <h3 className='font-medium text-foreground'>{component.name}</h3>
-              <p className='text-xs text-muted-foreground'>ID: {component.id}</p>
+            <div className='flex items-center gap-2'>
+              <Button onClick={goToPrevious} disabled={!canGoToPrevious()} variant='ghost' size='sm'>
+                <ChevronLeft className='h-4 w-4' />
+              </Button>
+              <span className='px-2 text-sm text-slate-600 dark:text-slate-300'>
+                {getCurrentIndex() + 1} of {availableComponents.length}
+              </span>
+              <Button onClick={goToNext} disabled={!canGoToNext()} variant='ghost' size='sm'>
+                <ChevronRight className='h-4 w-4' />
+              </Button>
             </div>
-          </motion.div>
-        ))}
-      </div>
-    );
-  };
+          </div>
+        </div>
 
-  const renderComponentList = () => {
-    return (
-      <div className='space-y-2'>
-        {currentComponents.map((component) => (
-          <motion.div
-            key={component.id}
-            className={`cursor-pointer rounded-lg border p-3 transition-all hover:shadow-sm ${
-              selectedComponent?.id === component.id ? 'border-primary bg-primary/5' : 'bg-background'
-            }`}
-            onClick={() => setSelectedComponent(component)}
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
-          >
-            <h3 className='font-medium text-foreground'>{component.name}</h3>
-            <p className='text-xs text-muted-foreground'>ID: {component.id}</p>
-          </motion.div>
-        ))}
+        {/* Component Display */}
+        <div className='pt-16'>
+          <CurrentComponentToRender />
+        </div>
       </div>
     );
-  };
+  }
 
   return (
-    <div className='flex h-screen flex-col bg-background'>
-      {/* Header */}
-      <div className='border-b bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
-        <div className='flex flex-wrap items-center justify-between gap-4'>
-          <div className='flex items-center gap-2'>
-            <Button variant='outline' size='sm' onClick={resetView}>
-              <Home className='h-4 w-4' />
-            </Button>
-            <h1 className='text-lg font-semibold'>Component Browser</h1>
-            <Button variant='outline' size='sm' onClick={() => setIsGridView(!isGridView)}>
-              {isGridView ? <List className='h-4 w-4' /> : <Grid3X3 className='h-4 w-4' />}
-            </Button>
+    <div className='min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6 dark:from-slate-950 dark:to-slate-900'>
+      <div className='mx-auto max-w-7xl'>
+        {/* Header */}
+        <div className='mb-8'>
+          <div className='mb-4 flex items-center justify-between'>
+            <div>
+              <h1 className='mb-2 text-3xl font-bold text-slate-900 dark:text-slate-100'>
+                CreatorFlow Component Browser
+              </h1>
+              <p className='text-slate-600 dark:text-slate-400'>
+                Explore and test all components in the CreatorFlow design system
+              </p>
+            </div>
+            <div className='flex items-center gap-2'>
+              <Button onClick={() => setViewMode('grid')} variant={viewMode === 'grid' ? 'default' : 'ghost'} size='sm'>
+                <Grid3X3 className='h-4 w-4' />
+              </Button>
+              <Button onClick={() => setViewMode('list')} variant={viewMode === 'list' ? 'default' : 'ghost'} size='sm'>
+                <List className='h-4 w-4' />
+              </Button>
+              <Button onClick={handleReset} variant='ghost' size='sm'>
+                <RotateCcw className='h-4 w-4' />
+              </Button>
+            </div>
           </div>
 
-          <div className='flex items-center gap-2'>
-            {selectedComponent && (
-              <>
-                <Button
-                  variant='outline'
-                  size='sm'
-                  onClick={goToPrevious}
-                  disabled={currentComponents.indexOf(selectedComponent) === 0}
-                >
-                  <ChevronLeft className='h-4 w-4' />
-                </Button>
-                <Button
-                  variant='outline'
-                  size='sm'
-                  onClick={goToNext}
-                  disabled={currentComponents.indexOf(selectedComponent) === currentComponents.length - 1}
-                >
-                  <ChevronRight className='h-4 w-4' />
-                </Button>
-                <Button variant='outline' size='sm' onClick={() => setSelectedComponent(null)}>
-                  <RotateCcw className='h-4 w-4' />
-                </Button>
-              </>
-            )}
+          {/* Navigation Selectors */}
+          <div className='mb-6 grid grid-cols-1 gap-4 md:grid-cols-3'>
+            <div>
+              <label className='mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300'>Category</label>
+              <Select value={selectedCategory} onValueChange={handleCategoryChange}>
+                <SelectTrigger>
+                  <SelectValue placeholder='Select a category' />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((category) => (
+                    <SelectItem key={category} value={category}>
+                      {category}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <label className='mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300'>Series</label>
+              <Select value={selectedSeries} onValueChange={handleSeriesChange} disabled={!selectedCategory}>
+                <SelectTrigger>
+                  <SelectValue placeholder='Select a series' />
+                </SelectTrigger>
+                <SelectContent>
+                  {availableSeries.map((series) => (
+                    <SelectItem key={series} value={series}>
+                      {series}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <label className='mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300'>Component</label>
+              <Select value={selectedComponent} onValueChange={handleComponentSelect} disabled={!selectedSeries}>
+                <SelectTrigger>
+                  <SelectValue placeholder='Select a component' />
+                </SelectTrigger>
+                <SelectContent>
+                  {availableComponents.map((component) => (
+                    <SelectItem key={component.id} value={component.id}>
+                      {component.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
 
-        <div className='mt-4 flex flex-wrap gap-2'>
-          <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-            <SelectTrigger className='w-[200px]'>
-              <SelectValue placeholder='Select category' />
-            </SelectTrigger>
-            <SelectContent>
-              {Object.keys(componentCategories).map((category) => (
-                <SelectItem key={category} value={category}>
-                  {category}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Select value={selectedSeries} onValueChange={setSelectedSeries}>
-            <SelectTrigger className='w-[250px]'>
-              <SelectValue placeholder='Select series' />
-            </SelectTrigger>
-            <SelectContent>
-              {Object.keys(componentCategories[selectedCategory] || {}).map((series) => (
-                <SelectItem key={series} value={series}>
-                  {series}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className='flex flex-1 overflow-hidden'>
-        {/* Sidebar */}
-        <div className='w-96 border-r bg-muted/30 p-4'>
-          <div className='h-full overflow-auto'>
-            <h2 className='mb-3 font-medium text-foreground'>
-              {selectedSeries} ({currentComponents.length})
+        {/* Component Grid/List */}
+        {selectedSeries && (
+          <div className='space-y-6'>
+            <h2 className='text-2xl font-semibold text-slate-900 dark:text-slate-100'>
+              {selectedCategory} → {selectedSeries}
             </h2>
-            {isGridView ? renderComponentGrid() : renderComponentList()}
-          </div>
-        </div>
 
-        {/* Preview Area */}
-        <div className='flex-1 overflow-hidden'>
-          <AnimatePresence mode='wait'>
-            <motion.div
-              key={selectedComponent?.id || 'empty'}
-              className='h-full w-full'
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-            >
-              {renderComponentDisplay()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={`${selectedCategory}-${selectedSeries}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className={viewMode === 'grid' ? 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3' : 'space-y-4'}
+              >
+                {availableComponents.map((component) => (
+                  <motion.div
+                    key={component.id}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className='cursor-pointer rounded-lg border border-slate-200 bg-white p-4 transition-all duration-200 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800'
+                    onClick={() => handleComponentSelect(component.id)}
+                  >
+                    <div className='mb-2 flex items-center justify-between'>
+                      <h3 className='truncate font-medium text-slate-900 dark:text-slate-100'>{component.name}</h3>
+                      <div className='flex items-center text-xs text-slate-500 dark:text-slate-400'>{component.id}</div>
+                    </div>
+                    <p className='text-sm text-slate-600 dark:text-slate-400'>Click to preview this component</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        )}
+
+        {/* Category Overview */}
+        {!selectedCategory && (
+          <div className='space-y-8'>
+            <h2 className='text-2xl font-semibold text-slate-900 dark:text-slate-100'>All Categories</h2>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+              {categories.map((category) => {
+                const seriesCount = Object.keys(componentCategories[category]).length;
+                const componentCount = Object.values(componentCategories[category]).reduce(
+                  (acc, series) => acc + series.length,
+                  0
+                );
+
+                return (
+                  <motion.div
+                    key={category}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className='cursor-pointer rounded-lg border border-slate-200 bg-white p-6 transition-all duration-200 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800'
+                    onClick={() => handleCategoryChange(category)}
+                  >
+                    <h3 className='mb-2 text-lg font-semibold text-slate-900 dark:text-slate-100'>{category}</h3>
+                    <div className='flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400'>
+                      <span>{seriesCount} series</span>
+                      <span>{componentCount} components</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
-};
-
-export default UnifiedComponentBrowser;
+}

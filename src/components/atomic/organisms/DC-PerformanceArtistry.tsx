@@ -54,7 +54,7 @@ const DCPerformanceArtistry = () => {
         visible: {
           opacity: 1,
           y: 0,
-          transition: { type: 'spring' },
+          transition: { type: 'spring' as any },
         },
       }}
       initial='hidden'

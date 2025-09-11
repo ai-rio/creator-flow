@@ -67,14 +67,14 @@ const FlowVisualization: React.FC<FlowVisualizationProps> = ({
   return (
     <motion.div
       className='rounded-executive border border-border bg-background/95 p-strategic shadow-xl backdrop-blur-lg'
-      variants={containerVariants}
+      variants={containerVariants as any}
       initial='hidden'
       animate='visible'
     >
-      <motion.h2 variants={itemVariants} className='mb-tactical text-heading-lg font-bold text-foreground'>
+      <motion.h2 variants={itemVariants as any} className='mb-tactical text-heading-lg font-bold text-foreground'>
         {title}
       </motion.h2>
-      <motion.p variants={itemVariants} className='mb-strategic text-body-md text-muted-foreground'>
+      <motion.p variants={itemVariants as any} className='mb-strategic text-body-md text-muted-foreground'>
         {subtitle}
       </motion.p>
 
@@ -105,7 +105,7 @@ const FlowVisualization: React.FC<FlowVisualizationProps> = ({
         </div>
 
         {stages.map((stage) => (
-          <motion.div key={stage.name} variants={itemVariants} className='z-10 text-center'>
+          <motion.div key={stage.name} variants={itemVariants as any} className='z-10 text-center'>
             <div className='mx-auto flex h-16 w-16 items-center justify-center rounded-full border-4 border-border bg-background'>
               <stage.Icon size={32} className={stage.color} />
             </div>
@@ -120,7 +120,7 @@ const FlowVisualization: React.FC<FlowVisualizationProps> = ({
       {metrics.length > 0 && (
         <div className='space-y-strategic border-t border-border pt-strategic'>
           {metrics.map((metric, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={index} variants={itemVariants as any}>
               {metric.percentage !== undefined ? (
                 <>
                   <div className='mb-tactical flex items-center justify-between'>

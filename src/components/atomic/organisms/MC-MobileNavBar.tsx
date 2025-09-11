@@ -88,7 +88,7 @@ const NavButton = ({ item, isActive, onClick }: { item: NavItem; isActive: boole
       <motion.div
         layoutId='active-nav-indicator'
         className={cn('absolute inset-0 -z-10 rounded-full', 'bg-primary/10 dark:bg-primary/20')}
-        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+        transition={{ type: 'spring' as any, stiffness: 350, damping: 30 }}
       />
     )}
   </motion.button>
@@ -118,7 +118,7 @@ export function MobileNavBar({ activeTab = 'dashboard', onTabChange, onCreateAct
     <motion.div
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 0.5 }}
+      transition={{ type: 'spring' as any, stiffness: 120, damping: 20, delay: 0.5 }}
       className={cn('fixed bottom-2 left-2 right-2 z-40', className)}
     >
       <GlassPane className='rounded-2xl p-2'>

@@ -82,11 +82,11 @@ const FeedbackWidget: React.FC<FeedbackWidgetProps> = ({ isOpen, onClose, onSubm
           <div className='absolute inset-0 bg-background/80 backdrop-blur-sm' onClick={onClose} />
 
           <motion.div
-            variants={containerVariants}
+            variants={containerVariants as any}
             initial='hidden'
             animate='visible'
             exit='exit'
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            transition={{ type: 'spring' as any, stiffness: 300, damping: 30 }}
             className='relative w-full max-w-md'
           >
             <div className='rounded-executive border border-border bg-background/95 p-strategic shadow-xl backdrop-blur-lg'>

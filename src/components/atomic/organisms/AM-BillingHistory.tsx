@@ -87,7 +87,7 @@ const BillingHistory: React.FC<BillingHistoryProps> = ({
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
+      transition={{ duration: 0.5, type: 'spring' as any, stiffness: 120 }}
       className='w-full max-w-5xl'
     >
       <div className='rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20'>

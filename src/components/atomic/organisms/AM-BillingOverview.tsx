@@ -51,7 +51,7 @@ const UsageBar: React.FC<{ current: number; limit: number; label: string }> = ({
           className='h-2.5 rounded-full bg-purple-600 dark:bg-purple-400'
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
-          transition={{ duration: 1, type: 'spring', stiffness: 80 }}
+          transition={{ duration: 1, type: 'spring' as any, stiffness: 80 }}
         />
       </div>
     </div>
@@ -84,7 +84,7 @@ const BillingOverview: React.FC<BillingOverviewProps> = ({
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, type: 'spring', stiffness: 120 }}
+      transition={{ duration: 0.5, type: 'spring' as any, stiffness: 120 }}
       className='w-full max-w-4xl'
     >
       <div className='rounded-2xl border border-slate-900/10 bg-white/30 shadow-lg backdrop-blur-xl dark:border-slate-100/10 dark:bg-slate-800/20'>
@@ -131,7 +131,7 @@ const BillingOverview: React.FC<BillingOverviewProps> = ({
             onClick={onManageSubscription}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            transition={{ type: 'spring' as any, stiffness: 400, damping: 15 }}
             className='rounded-lg bg-teal-600 px-6 py-3 font-bold text-white shadow-md transition-all duration-300 hover:shadow-lg dark:bg-teal-500 dark:text-slate-900 dark:hover:shadow-[0px_0px_12px_rgba(29,255,233,0.5)]'
           >
             Manage Subscription & Billing

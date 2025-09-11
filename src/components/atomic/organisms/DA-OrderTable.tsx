@@ -23,10 +23,10 @@ interface OrderTableProps {
 }
 
 const priorityConfig = {
-  high: { Icon: Flame, variant: 'destructive' as const },
-  urgent: { Icon: Zap, variant: 'secondary' as const },
-  standard: { Icon: Target, variant: 'default' as const },
-  automated: { Icon: Bot, variant: 'outline' as const },
+  high: { Icon: Flame, variant: 'destructive' as any },
+  urgent: { Icon: Zap, variant: 'secondary' as any },
+  standard: { Icon: Target, variant: 'default' as any },
+  automated: { Icon: Bot, variant: 'outline' as any },
 };
 
 const impactConfig = {
@@ -80,7 +80,7 @@ const OrderTable: React.FC<OrderTableProps> = ({
                 <th className='p-tactical text-left text-body-sm font-semibold text-muted-foreground'>Value</th>
               </tr>
             </thead>
-            <motion.tbody variants={containerVariants} initial='hidden' animate='visible'>
+            <motion.tbody variants={containerVariants as any} initial='hidden' animate='visible'>
               {orders.map((order) => {
                 const Priority = priorityConfig[order.priority];
                 const Impact = impactConfig[order.impact];

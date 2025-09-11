@@ -53,7 +53,7 @@ const StrategicInsights: React.FC<StrategicInsightsProps> = ({
       x: 0,
       rotate: 0,
       scale: 1,
-      transition: { type: 'spring' as const, stiffness: 260, damping: 25 },
+      transition: { type: 'spring' as any as any, stiffness: 260, damping: 25 },
     },
   };
 
@@ -81,7 +81,7 @@ const StrategicInsights: React.FC<StrategicInsightsProps> = ({
       className='rounded-executive border border-border bg-background/95 shadow-xl backdrop-blur-lg'
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.1 }}
+      transition={{ type: 'spring' as any, stiffness: 200, damping: 25, delay: 0.1 }}
     >
       <motion.div
         animate={{ y: [-2, 2, -2], rotate: [-0.3, 0.3, -0.3] }}
@@ -104,13 +104,16 @@ const StrategicInsights: React.FC<StrategicInsightsProps> = ({
 
         <motion.ul
           className='space-y-tactical p-strategic'
-          variants={containerVariants}
+          variants={containerVariants as any}
           initial='hidden'
           animate='visible'
         >
           {insights.map((insight, index) => (
             <HeartbeatWrapper key={index} isHeartbeat={insight.isHeartbeat}>
-              <motion.li className='flex items-start gap-tactical rounded-premium p-tactical' variants={itemVariants}>
+              <motion.li
+                className='flex items-start gap-tactical rounded-premium p-tactical'
+                variants={itemVariants as any}
+              >
                 <insight.Icon className={`mt-0.5 h-icon-md w-icon-md flex-shrink-0 ${insight.color}`} />
                 <p className='text-body-md text-foreground'>
                   {insight.text}
