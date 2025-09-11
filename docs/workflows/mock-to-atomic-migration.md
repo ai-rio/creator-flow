@@ -11,6 +11,137 @@ This workflow documents the process of migrating mock components to production-r
 - Knowledge of CreatorFlow design token system
 - Access to component browser for testing
 
+## Component Browser Cleanup Workflow
+
+### Critical System Requirements
+
+**MANDATORY:** After migrating components, the component browser cleanup is essential for system stability. Failure to properly clean up will cause:
+
+- TypeScript compilation errors
+- ESLint hanging/timeouts
+- Runtime ReferenceErrors
+- Component browser crashes
+
+### Step-by-Step Cleanup Process
+
+#### Step 1: Remove Source File
+
+```bash
+# Delete the original mock component file
+rm src/components/mocks/[COMPONENT-NAME].tsx
+```
+
+#### Step 2: Remove Broken Imports
+
+```typescript
+// In src/components/mocks/UnifiedComponentBrowser.tsx
+// Remove import statements for deleted files
+
+// REMOVE THESE LINES:
+// import NC010Header from './NC-010-Header';
+// import UX010Modals from './UX-010-Modals';
+// import AM010BillingOverview from './AM-010-BillingOverview';
+```
+
+#### Step 3: Remove Component References from Categories
+
+```typescript
+// Remove component entries from respective categories
+
+// BEFORE (broken references):
+'Navigation Components': {
+  'NC Series': [
+    { id: 'nc010', name: 'NC-010: Header', component: NC010Header }, // ❌ REMOVE
+    { id: 'nc020', name: 'NC-020: Sidebar', component: NC020Sidebar },
+  ],
+},
+
+// AFTER (clean references):
+'Navigation Components': {
+  'NC Series': [
+    { id: 'nc020', name: 'NC-020: Sidebar', component: NC020Sidebar }, // ✅ Keep existing
+  ],
+},
+
+// For fully migrated series, use empty array:
+'User Experience Components': {
+  'UX Series': [], // ✅ All components migrated to atomic
+},
+```
+
+#### Step 4: Critical System Validation
+
+```bash
+# 1. TypeScript validation (MANDATORY)
+bunx tsc --noEmit src/components/mocks/UnifiedComponentBrowser.tsx
+
+# 2. ESLint validation (MANDATORY)
+bunx eslint src/components/mocks/UnifiedComponentBrowser.tsx
+
+# 3. Runtime validation (MANDATORY)
+# Visit: http://localhost:3000/en/component-browser
+# - Verify no console errors
+# - Test category dropdowns work
+# - Confirm atomic components accessible
+```
+
+### Complete Cleanup Checklist
+
+**File Operations:**
+
+- [ ] Source file deleted from `/src/components/mocks/`
+- [ ] Import statement removed from `UnifiedComponentBrowser.tsx`
+- [ ] Component reference removed from category array
+
+**System Validation:**
+
+- [ ] TypeScript check passes (zero errors)
+- [ ] ESLint check passes (no blocking errors)
+- [ ] Component browser loads without runtime errors
+- [ ] Category dropdowns function properly
+- [ ] No ReferenceError in browser console
+
+**Atomic Access:**
+
+- [ ] Atomic version accessible via component browser
+- [ ] Direct URL works: `/en/component-browser?component=atomic-[id]`
+- [ ] Component renders without errors
+
+### Common Critical Issues
+
+**Issue: ReferenceError: [Component] is not defined**
+
+```typescript
+// Problem: Import removed but reference still exists
+{ id: 'nc010', name: 'NC-010: Header', component: NC010Header }, // ❌
+
+// Solution: Remove the entire component entry
+// Don't just comment it out - delete the line completely
+```
+
+**Issue: TypeScript/ESLint hanging**
+
+```bash
+# Problem: Module resolution errors cause infinite loops
+# Solution: Remove ALL broken imports before running type-check
+```
+
+### Migration Status Reference
+
+**Fully Migrated Series (Use Empty Arrays):**
+
+- User Experience Components → UX Series: []
+- Account Management Components → AM Series: []
+- Data & Analytics Components → DA Series: []
+- Sidebar Components → SB Series: []
+
+**System Requirements for Stability:**
+
+1. **Zero TypeScript errors** - System will hang with TS errors
+2. **Zero module resolution errors** - Broken imports cause runtime failures
+3. **Valid component references** - All referenced components must exist
+4. **Proper category structure** - Empty arrays for migrated series
+
 ## Migration Process
 
 ### Phase 1: Analysis & Planning
