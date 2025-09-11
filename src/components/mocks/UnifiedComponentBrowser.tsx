@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Grid3X3, Home, List, RotateCcw } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
-import { GlobalThemeToggle } from '@/components/ui/theme-toggle';
+import { Button } from '@/components/ui/button';
 
 // import DesktopHeaderDemo from './02DesktopHeaderDemo'; // RENAMED TO NC-010
 // import DesktopToastNotifications from './03DesktopToastNotifications'; // RENAMED TO UX-040
@@ -550,7 +550,9 @@ export default function UnifiedComponentBrowser({
             {!isCollapsed && <span className='text-sm font-medium text-foreground'>Component Browser</span>}
           </div>
           <div className='flex items-center gap-1'>
-            <GlobalThemeToggle />
+            <Button variant='outline' size='sm'>
+              Theme
+            </Button>
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
               className='rounded p-1 text-muted-foreground hover:bg-accent hover:text-foreground'
