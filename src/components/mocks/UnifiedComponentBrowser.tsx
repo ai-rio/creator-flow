@@ -294,29 +294,21 @@ const componentCategories: ComponentCategories = {
   },
   'Navigation Components': {
     'NC Series': [
-      { id: 'nc010', name: 'NC-010: Header', component: NC010Header },
       { id: 'nc020', name: 'NC-020: Sidebar', component: NC020Sidebar },
       { id: 'nc030', name: 'NC-030: Executive Header', component: NC030ExecutiveHeader },
     ],
   },
   'User Experience Components': {
-    'UX Series': [
-      { id: 'ux010', name: 'UX-010: Modals', component: UX010Modals },
-      { id: 'ux020', name: 'UX-020: Onboarding Tour', component: UX020OnboardingTour },
-      { id: 'ux030', name: 'UX-030: Feedback Widget', component: UX030FeedbackWidget },
-      { id: 'ux040', name: 'UX-040: Toast Notifications', component: UX040ToastNotifications },
-    ],
+    'UX Series': [],
   },
   'Order Management Components': {
     'OM Series': [
       { id: 'om010', name: 'OM-010: System Stats', component: OM010SystemStats },
-      { id: 'om020', name: 'OM-020: Flow Visualization', component: OM020FlowVisualization },
       { id: 'om030', name: 'OM-030: Sub Navbar', component: OM030SubNavbar },
     ],
   },
   'Business Intelligence Components': {
     'BI Series': [
-      { id: 'bi010', name: 'BI-010: Strategic Insights', component: BI010StrategicInsights },
       { id: 'bi020', name: 'BI-020: Business Symphony', component: BI020BusinessSymphony },
       { id: 'bi030', name: 'BI-030: Strategic Command', component: BI030StrategicCommand },
       { id: 'bi040', name: 'BI-040: Liberation Orchestra', component: BI040LiberationOrchestra },
@@ -324,27 +316,19 @@ const componentCategories: ComponentCategories = {
     ],
   },
   'Account Management Components': {
-    'AM Series': [
-      { id: 'am010', name: 'AM-010: Billing Overview', component: AM010BillingOverview },
-      { id: 'am020', name: 'AM-020: Billing History', component: AM020BillingHistory },
-      { id: 'am030', name: 'AM-030: Payment Method', component: AM030PaymentMethod },
-      { id: 'am040', name: 'AM-040: Email Notifications', component: AM040EmailNotifications },
-    ],
+    'AM Series': [],
   },
   'Data & Analytics Components': {
-    'DA Series': [{ id: 'da010', name: 'DA-010: Order Table', component: DA010OrderTable }],
+    'DA Series': [],
   },
   'Profile Management Components': {
     'PM Series': [{ id: 'pm010', name: 'PM-010: User Profile', component: PM010UserProfile }],
   },
   'Security & Compliance Components': {
-    'SC Series': [
-      { id: 'sc010-security', name: 'SC-010: Security Card', component: SC010SecurityCard },
-      { id: 'sc010-strategic', name: 'SC-010: Strategic Command Center', component: SC010StrategicCommandCenter },
-    ],
+    'SC Series': [{ id: 'sc010-security', name: 'SC-010: Security Card', component: SC010SecurityCard }],
   },
   'Sidebar Components': {
-    'SB Series': [{ id: 'sb010', name: 'SB-010: Admin Sidebar', component: SB010AdminSidebar }],
+    'SB Series': [],
   },
   'Mobile Components': {
     'MC Series': [
