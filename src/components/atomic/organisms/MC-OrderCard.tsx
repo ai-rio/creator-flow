@@ -107,8 +107,8 @@ export function OrderCard({
             <div className='text-right'>
               <p className='text-lg font-bold text-foreground'>${order?.value?.toFixed(2) || '0.00'}</p>
               <div className='mt-1 flex items-center justify-end gap-1.5'>
-                <StatusIcon type={getStatusIconType(order.status)} size={16} />
-                <p className='text-xs font-semibold text-foreground/60'>{order.status}</p>
+                <StatusIcon type={getStatusIconType(order?.status)} size={16} />
+                <p className='text-xs font-semibold text-foreground/60'>{order?.status || 'Unknown'}</p>
               </div>
             </div>
           </div>
