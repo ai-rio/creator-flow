@@ -1,155 +1,79 @@
-/**
- * Organism Components - Complex Compositions with Business Logic
- *
- * Organisms are complex components composed of molecules and atoms.
- * They contain business logic, context-aware functionality, and API integration.
- *
- * Characteristics:
- * - Composed of molecules and atoms
- * - Complex business logic
- * - Context-aware functionality
- * - API integration and data management
- * - Advanced state management
- */
+// Strategic Command Components
+export { default as SCStrategicCommand } from './SC-StrategicCommand';
 
-// Migrated Dashboard Components from DC- Series
-import AdminDashboardHeader from './AdminDashboardHeader';
-// Migrated Automation & Business Intelligence Components
-import ALAutomationOrchestra from './AL-AutomationOrchestra';
-import { BillingHistory } from './AM-BillingHistory';
-import { BillingOverview } from './AM-BillingOverview';
-import { PaymentMethods } from './AM-PaymentMethods';
-import { SecuritySettings } from './AM-SecuritySettings';
-import BIExecutiveIntelligence from './BI-ExecutiveIntelligence';
-import { StrategicInsights } from './BI-StrategicInsights';
-import { OrderTable } from './DA-OrderTable';
-import DCBusinessIntelligence from './DC-BusinessIntelligence';
-import DCCrisisCommand from './DC-CrisisCommand';
-import DCEmergencyControls from './DC-EmergencyControls';
-import DCHealthOverview from './DC-HealthOverview';
-import DCPerformanceArtistry from './DC-PerformanceArtistry';
-// Migrated Navigation Components
-import NCNavigationHeader from './NC-NavigationHeader';
-// Migrated Order Management Components
-import { FlowVisualization } from './OM-FlowVisualization';
-// Migrated Sidebar Components
-import SBAdminSidebar from './SB-AdminSidebar';
-// Migrated Security & Command Components
-import SCStrategicCommand from './SC-StrategicCommand';
-import UXDestructiveModal from './UX-DestructiveModal';
-import { FeedbackWidget } from './UX-FeedbackWidget';
-import { OnboardingTour } from './UX-OnboardingTour';
-import UXStandardModal from './UX-StandardModal';
-import { ToastContainer } from './UX-ToastNotifications';
+// Navigation Components
+export { default as NCNavigationHeader } from './NC-NavigationHeader';
 
-// Export individual components
-export { AdminDashboardHeader };
-export { BillingOverview };
-export { BillingHistory };
-export { PaymentMethods };
-export { SecuritySettings };
-export { OrderTable };
-export { DCHealthOverview };
-export { DCPerformanceArtistry };
-export { DCBusinessIntelligence };
-export { DCCrisisCommand };
-export { DCEmergencyControls };
-export { NCNavigationHeader };
-export { SCStrategicCommand };
-export { SBAdminSidebar };
-export { UXDestructiveModal };
-export { UXStandardModal };
-export { FlowVisualization };
-export { OnboardingTour };
-export { FeedbackWidget };
-export { ToastContainer };
-export { ALAutomationOrchestra };
-export { BIExecutiveIntelligence };
-export { StrategicInsights };
+// Sidebar Components
+export { default as SBAdminSidebar } from './SB-AdminSidebar';
 
-// Dashboard Organisms
-// export { DashboardHeader } from './DashboardHeader';
-// export type { DashboardHeaderProps } from './DashboardHeader';
+// Dashboard Command Center Components
+export { default as DCCommandCenter } from '../compositions/dashboard/DC-CommandCenter';
+export { default as DCBusinessIntelligence } from './DC-BusinessIntelligence';
+export { default as DCCrisisCommand } from './DC-CrisisCommand';
+export { default as DCEmergencyControls } from './DC-EmergencyControls';
+export { default as DCHealthOverview } from './DC-HealthOverview';
+export { default as DCPerformanceArtistry } from './DC-PerformanceArtistry';
 
-// Data Organisms
-// export { ChartContainer } from './ChartContainer';
-// export type { ChartContainerProps } from './ChartContainer';
-// export { DataTable } from './DataTable';
-// export type { DataTableProps } from './DataTable';
-// export { AnalyticsPanel } from './AnalyticsPanel';
-// export type { AnalyticsPanelProps } from './AnalyticsPanel';
+// Business Intelligence Components
+export { default as BIExecutiveIntelligence } from './BI-ExecutiveIntelligence';
 
-// Navigation Organisms
-// export { NavigationSidebar } from './NavigationSidebar';
-// export type { NavigationSidebarProps } from './NavigationSidebar';
+// Automation Components
+export { default as ALAutomationOrchestra } from './AL-AutomationOrchestra';
 
-// Content Organisms
-// export { ContentEditor } from './ContentEditor';
-// export type { ContentEditorProps } from './ContentEditor';
+// User Experience Components
+export { default as UXDestructiveModal } from './UX-DestructiveModal';
+export * as UXFeedbackWidget from './UX-FeedbackWidget';
+export { default as UXFeedbackWidgetDemo } from './UX-FeedbackWidgetDemo';
+export * as UXOnboardingTour from './UX-OnboardingTour';
+export { default as UXOnboardingTourDemo } from './UX-OnboardingTourDemo';
+export { default as UXStandardModal } from './UX-StandardModal';
+export * as UXToastNotifications from './UX-ToastNotifications';
+export { default as UXToastNotificationsDemo } from './UX-ToastNotificationsDemo';
 
-// Management Organisms
-// export { UserManagement } from './UserManagement';
-// export type { UserManagementProps } from './UserManagement';
+// Order Management Components
+export * as OMFlowVisualization from './OM-FlowVisualization';
+export { default as OMFlowVisualizationDemo } from './OM-FlowVisualizationDemo';
 
-// Grouped exports for domain-specific usage
-export const DataAnalyticsOrganisms = {
-  OrderTable,
-};
+// Business Intelligence Components
+export * as BIStrategicInsights from './BI-StrategicInsights';
+export { default as BIStrategicInsightsDemo } from './BI-StrategicInsightsDemo';
 
-export const AnalyticsManagementOrganisms = {
-  BillingOverview,
-  BillingHistory,
-  PaymentMethods,
-  SecuritySettings,
-};
+// Account Management Components
+export * as AMBillingHistory from './AM-BillingHistory';
+export { default as AMBillingHistoryDemo } from './AM-BillingHistoryDemo';
+export * as AMBillingOverview from './AM-BillingOverview';
+export { default as AMBillingOverviewDemo } from './AM-BillingOverviewDemo';
+export * as AMPaymentMethods from './AM-PaymentMethods';
+export { default as AMPaymentMethodsDemo } from './AM-PaymentMethodsDemo';
+export * as AMSecuritySettings from './AM-SecuritySettings';
+export { default as AMSecuritySettingsDemo } from './AM-SecuritySettingsDemo';
 
-export const DashboardOrganisms = {
-  AdminDashboardHeader,
-  DCHealthOverview,
-  DCPerformanceArtistry,
-  DCBusinessIntelligence,
-  DCCrisisCommand,
-  DCEmergencyControls,
-  // DashboardHeader,
-};
+// Data Analytics Components
+export * as DAOrderTable from './DA-OrderTable';
+export { default as DAOrderTableDemo } from './DA-OrderTableDemo';
 
-export const SecurityOrganisms = {
-  SCStrategicCommand,
-};
+// Mobile Components
+export { default as MCMobileExecutiveHeader } from './MC-MobileExecutiveHeader';
+export { default as MCMobileNavBar } from './MC-MobileNavBar';
+export { default as MCOrderCard } from './MC-OrderCard';
+export { default as MCOrderCardDemo } from './MC-OrderCard-Demo';
+export { default as MCOrderFilters } from './MC-OrderFilters';
+export { default as MCOrderManagement } from './MC-OrderManagement';
+export { default as MCOrderManagementDemo } from './MC-OrderManagement-Demo';
 
-export const NavigationOrganisms = {
-  NCNavigationHeader,
-  SBAdminSidebar,
-  // NavigationSidebar,
-};
+// Inventory Management Components - Phase 5 Migration (IM-010 Series)
+export { default as IMInventoryCommand } from '../compositions/IM-InventoryCommand';
+export { default as IMCriticalStock } from './IM-CriticalStock';
+export { default as IMInventoryHeader } from './IM-InventoryHeader';
+export { default as IMSyncStatus } from './IM-SyncStatus';
 
-export const AutomationOrganisms = {
-  ALAutomationOrchestra,
-};
+// Inventory Management Components - Phase 6 Migration (IM-020 Series - Management Focus)
+export { default as IMManagementFocus } from '../compositions/IM-ManagementFocus';
+export { default as IMCriticalStockAlerts } from './IM-CriticalStockAlerts';
+export { default as IMInventoryGallery } from './IM-InventoryGallery';
+export { default as IMManagementHeader } from './IM-ManagementHeader';
+export { default as IMSubNavBar } from './IM-SubNavBar';
 
-export const BusinessIntelligenceOrganisms = {
-  BIExecutiveIntelligence,
-  StrategicInsights,
-};
-
-export const OrderManagementOrganisms = {
-  FlowVisualization,
-};
-
-export const UserExperienceOrganisms = {
-  UXStandardModal,
-  UXDestructiveModal,
-  OnboardingTour,
-  FeedbackWidget,
-  ToastContainer,
-};
-
-export const ContentOrganisms = {
-  // ContentEditor,
-};
-
-export const ManagementOrganisms = {
-  // UserManagement,
-};
-
-// Note: Individual component exports will be uncommented as components are migrated
+// Home Page Components
+export { default as HPHero } from './HP-Hero';

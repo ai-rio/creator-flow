@@ -74,7 +74,7 @@ const IM_StockAlert: React.FC<IMStockAlertProps> = ({
 }) => {
   const config = severityConfig[severity];
 
-  const formattedSuggestion = suggestion.toLocaleString();
+  const formattedSuggestion = suggestion?.toLocaleString() || '0';
   const confidencePercent = Math.round(confidence * 100);
 
   return (

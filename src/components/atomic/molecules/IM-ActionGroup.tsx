@@ -59,7 +59,7 @@ const IM_ActionGroup: React.FC<IMActionGroupProps> = ({
 
   return (
     <div className={`${containerClasses} ${className}`} role='group' aria-label='Inventory actions'>
-      {actions.map((action, index) => (
+      {actions?.map((action, index) => (
         <div key={`${action.label}-${index}`} className={direction === 'horizontal' ? 'min-w-20 flex-1' : ''}>
           <IMActionButton
             variant={action.variant || 'secondary'}

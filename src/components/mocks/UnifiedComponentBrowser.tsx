@@ -141,6 +141,9 @@ import AMBillingHistoryDemo from '../atomic/organisms/AM-BillingHistoryDemo';
 import * as DAOrderTable from '../atomic/organisms/DA-OrderTable';
 import DAOrderTableDemo from '../atomic/organisms/DA-OrderTableDemo';
 
+// Home Page Components
+import HPHero from '../atomic/organisms/HP-Hero';
+
 // Mobile components
 import MCOrderCard from '../atomic/organisms/MC-OrderCard';
 import MCOrderManagement from '../atomic/organisms/MC-OrderManagement';
@@ -193,6 +196,13 @@ interface ComponentCategories {
 // Define component categories and their series with descriptions
 const componentCategories: ComponentCategories = {
   'Atomic Design Components': {
+    'Phase 7 - Home Page Migration (HP Series)': [
+      {
+        id: 'hp-hero',
+        name: 'MIGRATED: Home Page Hero Section (HP-010 Hero)',
+        component: HPHero,
+      },
+    ],
     'Phase 6 - Management Focus Migration (IM-020)': [
       {
         id: 'im-020-management-focus',

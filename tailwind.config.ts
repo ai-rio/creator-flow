@@ -214,6 +214,11 @@ const config: Config = {
         creative: ['Poppins', ...fontFamily.sans],
       },
       fontSize: {
+        // Mobile-first Hero Typography (responsive)
+        'hero-title': ['2.25rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }], // 36px mobile, scales to 60px desktop
+        'hero-subtitle': ['1.125rem', { lineHeight: '1.3', fontWeight: '600' }], // 18px mobile, scales to 20px desktop
+        'hero-description': ['1rem', { lineHeight: '1.6' }], // 16px - consistent across devices
+
         'display-xl': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
         'display-lg': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
         'display-md': ['2.25rem', { lineHeight: '1.2' }],
@@ -253,6 +258,14 @@ const config: Config = {
 
       // Real Spacing System (extracted from component padding/margins)
       spacing: {
+        // Mobile-first Hero Spacing
+        'hero-title-mobile': '1.5rem', // 24px - Mobile title spacing
+        'hero-title-desktop': '2.5rem', // 40px - Desktop title spacing
+        'hero-section-mobile': '2.5rem', // 40px - Mobile section spacing
+        'hero-section-desktop': '4rem', // 64px - Desktop section spacing
+        'hero-button-mobile': '2rem', // 32px - Mobile button spacing
+        'hero-button-desktop': '2.5rem', // 40px - Desktop button spacing
+
         // Legacy spacing (maintained for compatibility)
         xs: '0.25rem', // 4px
         sm: '0.5rem', // 8px
@@ -277,6 +290,7 @@ const config: Config = {
         content: '65ch', // Optimal reading line length
         'content-hero': '50%', // Hero content width
         'content-sidebar': '25%', // Sidebar content width
+        hero: '56rem', // 896px - Hero section max width (equivalent to max-w-4xl)
         // Sidebar widths (from component analysis)
         'sidebar-expanded': '16rem', // 256px - Expanded sidebar
         'sidebar-collapsed': '4.5rem', // 72px - Collapsed sidebar
