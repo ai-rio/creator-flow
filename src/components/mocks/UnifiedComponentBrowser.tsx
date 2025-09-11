@@ -45,23 +45,16 @@ import MC010Dashboard from './MC-010-Dashboard';
 import MC020Order from './MC-020-Order';
 import MC030Navbar from './MC-030-Navbar';
 // Navigation Components (NC-)
-import NC010Header from './NC-010-Header';
 import NC020Sidebar from './NC-020-Sidebar';
 import NC030ExecutiveHeader from './NC-030-ExecutiveHeader';
 // Order Management Components (OM-)
 import OM010SystemStats from './OM-010-SystemStats';
-import OM020FlowVisualization from './OM-020-FlowVisualization';
 import OM030SubNavbar from './OM-030-SubNavbar';
 // Business Intelligence Components (BI-)
-import BI010StrategicInsights from './BI-010-StrategicInsights';
 import BI020BusinessSymphony from './BI-020-BusinessSymphony';
 import BI030StrategicCommand from './BI-030-StrategicCommand';
 import BI040LiberationOrchestra from './BI-040-LiberationOrchestra';
 import BI050IntelBriefing from './BI-050-IntelBriefing';
-// User Experience Components (UX-)
-import UX010Modals from './UX-010-Modals';
-import UX020OnboardingTour from './UX-020-OnboardingTour';
-import UX030FeedbackWidget from './UX-030-FeedbackWidget';
 // Inventory Management Components (IM-)
 import IM010CriticalStock from './IM-010-CriticalStock';
 import IM020ManagementFocus from './IM-020-ManagementFocus';
