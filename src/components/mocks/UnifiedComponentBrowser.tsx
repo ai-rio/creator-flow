@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, Grid3X3, Home, List, RotateCcw } from 'lucid
 import React, { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // import DesktopHeaderDemo from './02DesktopHeaderDemo'; // RENAMED TO NC-010
 // import DesktopToastNotifications from './03DesktopToastNotifications'; // RENAMED TO UX-040
@@ -573,37 +574,42 @@ export default function UnifiedComponentBrowser({
             {/* Category Selection */}
             <div className='mb-4'>
               <label className='mb-2 block text-xs font-medium text-muted-foreground'>Category</label>
-              <select
+              <Select
                 value={selectedCategory}
-                onChange={(e) => {
-                  setSelectedCategory(e.target.value);
-                  const firstSeries = Object.keys(componentCategories[e.target.value] || {})[0];
+                onValueChange={(value: string) => {
+                  setSelectedCategory(value);
+                  const firstSeries = Object.keys(componentCategories[value] || {})[0];
                   if (firstSeries) setSelectedSeries(firstSeries);
                 }}
-                className='w-full rounded border border-border bg-background p-2 text-sm text-foreground'
               >
-                {Object.keys(componentCategories).map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className='w-full'>
+                  <SelectValue placeholder='Select category' />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.keys(componentCategories).map((category) => (
+                    <SelectItem key={category} value={category}>
+                      {category}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Series Selection */}
             <div className='mb-4'>
               <label className='mb-2 block text-xs font-medium text-muted-foreground'>Series</label>
-              <select
-                value={selectedSeries}
-                onChange={(e) => setSelectedSeries(e.target.value)}
-                className='w-full rounded border border-border bg-background p-2 text-sm text-foreground'
-              >
-                {Object.keys(componentCategories[selectedCategory] || {}).map((series) => (
-                  <option key={series} value={series}>
-                    {series}
-                  </option>
-                ))}
-              </select>
+              <Select value={selectedSeries} onValueChange={setSelectedSeries}>
+                <SelectTrigger className='w-full'>
+                  <SelectValue placeholder='Select series' />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.keys(componentCategories[selectedCategory] || {}).map((series) => (
+                    <SelectItem key={series} value={series}>
+                      {series}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Component List */}
