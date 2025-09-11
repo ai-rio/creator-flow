@@ -146,6 +146,7 @@ import HPHero from '../atomic/organisms/HP-Hero';
 import HPHeaderVariant from '../atomic/organisms/HP-HeaderVariant';
 import HPBenefitsReel from '../atomic/organisms/HP-BenefitsReel';
 import HPManifesto from '../atomic/organisms/HP-Manifesto';
+import HPInteractiveShowcase from '../atomic/organisms/HP-InteractiveShowcase';
 
 // Mobile components
 import MCOrderCard from '../atomic/organisms/MC-OrderCard';
@@ -219,6 +220,11 @@ const componentCategories: ComponentCategories = {
         id: 'hp-manifesto',
         name: 'MIGRATED: Interactive Manifesto Cards (HP-040 Manifesto)',
         component: HPManifesto,
+      },
+      {
+        id: 'hp-interactive-showcase',
+        name: 'MIGRATED: Interactive Data Showcase (HP-050 InteractiveShowcase) - NEEDS REVIEW',
+        component: HPInteractiveShowcase,
       },
     ],
     'Phase 6 - Management Focus Migration (IM-020)': [
