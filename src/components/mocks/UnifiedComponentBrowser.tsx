@@ -144,6 +144,7 @@ import DAOrderTableDemo from '../atomic/organisms/DA-OrderTableDemo';
 // Home Page Components
 import HPHero from '../atomic/organisms/HP-Hero';
 import HPHeaderVariant from '../atomic/organisms/HP-HeaderVariant';
+import HPBenefitsReel from '../atomic/organisms/HP-BenefitsReel';
 
 // Mobile components
 import MCOrderCard from '../atomic/organisms/MC-OrderCard';
@@ -207,6 +208,11 @@ const componentCategories: ComponentCategories = {
         id: 'hp-header-variant',
         name: 'MIGRATED: Animated Header Variant (HP-010 Header Variant)',
         component: HPHeaderVariant,
+      },
+      {
+        id: 'hp-benefits-reel',
+        name: 'MIGRATED: Benefits Reel Showcase (HP-030 Benefits Reel)',
+        component: HPBenefitsReel,
       },
     ],
     'Phase 6 - Management Focus Migration (IM-020)': [

@@ -259,6 +259,11 @@ const config: Config = {
 
       // Real Spacing System (extracted from component padding/margins)
       spacing: {
+        // Benefits Reel Spacing (from HP-030-BenefitsReel-Showcase)
+        'benefits-title': '1rem', // 16px - Title margin bottom (equivalent to mb-4)
+        'benefits-description': '4rem', // 64px - Description margin bottom (equivalent to mb-16)
+        'benefits-progress': '2rem', // 32px - Progress indicator right position (equivalent to right-8)
+
         // Header Variant Spacing (from HP-010-Header-Variant)
         'header-inset': '1rem', // 16px - Header left/right/top positioning (equivalent to left-4 right-4 top-4)
         'header-padding': '1rem', // 16px - Header internal padding (equivalent to px-4)
