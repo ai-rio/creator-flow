@@ -6,9 +6,5 @@ interface PageProps {
 
 export default async function ComponentBrowserPage({ searchParams }: PageProps) {
   const params = await searchParams;
-  return (
-    <UnifiedComponentBrowser 
-      initialComponent={params.component || 'a1'} 
-    />
-  );
+  return <UnifiedComponentBrowser {...({ initialComponent: params.component || 'a1' } as any)} />;
 }

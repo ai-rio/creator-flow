@@ -8,5 +8,5 @@ export default function DxSeriesBrowser() {
   const searchParams = useSearchParams();
   const component = searchParams.get('component') || 'nc010';
 
-  return <UnifiedComponentBrowser initialComponent={component} />;
+  return <UnifiedComponentBrowser {...({ initialComponent: component } as any)} />;
 }
