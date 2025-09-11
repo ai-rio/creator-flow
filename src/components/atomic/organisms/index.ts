@@ -76,4 +76,5 @@ export { default as IMManagementHeader } from './IM-ManagementHeader';
 export { default as IMSubNavBar } from './IM-SubNavBar';
 
 // Home Page Components
+export { default as HPHeaderVariant } from './HP-HeaderVariant';
 export { default as HPHero } from './HP-Hero';
