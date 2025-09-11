@@ -2,7 +2,7 @@
 'use client';
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { ArrowRight, Bolt } from 'lucide-react';
+import { ArrowRight, Bolt, Menu, X } from 'lucide-react';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -24,30 +24,75 @@ const ThemeProvider: React.FC<any> = ({ children }: any) => {
 // Main Header Variant Component
 const HPHeaderVariant = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
+  const [lastScrollY, setLastScrollY] = useState<number>(0);
 
-  useMotionValueEvent(scrollY, 'change', (latest: any) => {
-    setIsScrolled(latest > 50);
+  useMotionValueEvent(scrollY, 'change', (latest: number) => {
+    const isScrollingUp = latest < lastScrollY;
+    const isAtTop = latest < 50;
+
+    // Expand header if scrolling up OR at top of page
+    setIsScrolled(!(isScrollingUp || isAtTop));
+    setLastScrollY(latest);
   });
 
   return (
-    <header className='fixed left-tactical right-tactical top-tactical z-header'>
+    <header className='fixed left-header-inset right-header-inset top-header-inset z-header'>
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
-        className='relative mx-auto w-full max-w-content overflow-hidden rounded-premium border border-border/20 bg-background/40 shadow-lg backdrop-blur-xl'
+        className='relative mx-auto w-full max-w-header-container overflow-hidden rounded-lg border border-border/20 bg-background/40 shadow-lg backdrop-blur-xl'
       >
         <Spark />
         <motion.div
           animate={{ height: isScrolled ? '60px' : '80px' }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className='flex items-center justify-between px-tactical'
+          className='flex items-center justify-between px-header-padding'
         >
           <Logo />
           <Navigation isScrolled={isScrolled} />
-          <CTA isScrolled={isScrolled} />
+          <div className='flex items-center gap-header-gap'>
+            <CTA isScrolled={isScrolled} />
+            <MobileMenuButton isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
+          </div>
         </motion.div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className='overflow-hidden border-t border-border/20 md:hidden'
+            >
+              <div className='flex flex-col gap-header-gap p-header-padding'>
+                {['Features', 'Pricing', 'Testimonials'].map((link) => (
+                  <motion.a
+                    key={link}
+                    href='#'
+                    className='text-body-md font-medium text-muted-foreground transition-colors hover:text-foreground'
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link}
+                  </motion.a>
+                ))}
+                <Button
+                  className='mt-header-gap w-full rounded-premium bg-brand-purple-600 text-white hover:bg-brand-purple-500'
+                  asChild
+                >
+                  <motion.a href='#' whileTap={{ scale: 0.95 }} onClick={() => setIsMobileMenuOpen(false)}>
+                    Start Free Trial
+                  </motion.a>
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </header>
   );
@@ -81,7 +126,7 @@ const Logo = () => (
       transition={{ type: 'spring', stiffness: 400, damping: 15, delay: 0.5 }}
       variants={{ hover: { scale: 1.2, rotate: 15 } }}
     >
-      <Bolt className='h-icon-md w-icon-md text-brand-teal-primary' />
+      <Bolt className='h-icon-md w-icon-md text-brand-blue-700 dark:text-brand-blue-400' />
     </motion.div>
     <span className='text-foreground'>CreatorFlow</span>
   </motion.a>
@@ -123,7 +168,7 @@ const CTA = ({ isScrolled }: any) => (
       {isScrolled ? (
         <Button
           size='icon'
-          className='bg-brand-purple-primary hover:bg-brand-purple-secondary relative h-9 w-9 rounded-full text-white'
+          className='relative h-9 w-9 rounded-full bg-brand-purple-600 text-white hover:bg-brand-purple-500'
           asChild
         >
           <motion.a
@@ -140,7 +185,7 @@ const CTA = ({ isScrolled }: any) => (
         </Button>
       ) : (
         <Button
-          className='bg-brand-purple-primary hover:bg-brand-purple-secondary relative rounded-premium px-tactical py-tactical text-body-md font-semibold text-white'
+          className='relative rounded-lg bg-brand-purple-600 px-header-padding py-tactical text-body-md font-semibold text-white hover:bg-brand-purple-500'
           asChild
         >
           <motion.a
@@ -157,6 +202,28 @@ const CTA = ({ isScrolled }: any) => (
         </Button>
       )}
     </AnimatePresence>
+  </div>
+);
+
+const MobileMenuButton = ({ isOpen, setIsOpen }: any) => (
+  <div className='md:hidden'>
+    <motion.button
+      onClick={() => setIsOpen(!isOpen)}
+      className='rounded-tactical flex h-9 w-9 items-center justify-center text-foreground'
+      whileTap={{ scale: 0.9 }}
+    >
+      <AnimatePresence mode='wait' initial={false}>
+        <motion.div
+          key={isOpen ? 'close' : 'menu'}
+          initial={{ rotate: -90, opacity: 0 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          exit={{ rotate: 90, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {isOpen ? <X className='h-icon-sm w-icon-sm' /> : <Menu className='h-icon-sm w-icon-sm' />}
+        </motion.div>
+      </AnimatePresence>
+    </motion.button>
   </div>
 );
 

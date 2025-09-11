@@ -74,9 +74,10 @@ const config: Config = {
           600: '#7c3aed',
         },
         'brand-blue': {
-          400: '#60a5fa',
+          400: '#60a5fa', // blue-400 for dark theme logo
           500: '#3b82f6',
           600: '#2563eb',
+          700: '#1d4ed8', // blue-700 for light theme logo
         },
 
         // Real Background System (from dark theme components)
@@ -258,6 +259,11 @@ const config: Config = {
 
       // Real Spacing System (extracted from component padding/margins)
       spacing: {
+        // Header Variant Spacing (from HP-010-Header-Variant)
+        'header-inset': '1rem', // 16px - Header left/right/top positioning (equivalent to left-4 right-4 top-4)
+        'header-padding': '1rem', // 16px - Header internal padding (equivalent to px-4)
+        'header-gap': '1rem', // 16px - Header element spacing (equivalent to gap-4)
+
         // Mobile-first Hero Spacing
         'hero-title-mobile': '1.5rem', // 24px - Mobile title spacing
         'hero-title-desktop': '2.5rem', // 40px - Desktop title spacing
@@ -291,6 +297,7 @@ const config: Config = {
         'content-hero': '50%', // Hero content width
         'content-sidebar': '25%', // Sidebar content width
         hero: '56rem', // 896px - Hero section max width (equivalent to max-w-4xl)
+        'header-container': '72rem', // 1152px - Header container max width (equivalent to max-w-6xl)
         // Sidebar widths (from component analysis)
         'sidebar-expanded': '16rem', // 256px - Expanded sidebar
         'sidebar-collapsed': '4.5rem', // 72px - Collapsed sidebar
