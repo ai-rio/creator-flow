@@ -34,7 +34,7 @@ interface OrderCardProps {
 
 // ==================== HELPER FUNCTIONS ====================
 
-const getStatusIconType = (status: string) => {
+const getStatusIconType = (status?: string) => {
   switch (status) {
     case 'Auto-Processing':
       return 'auto-processing';
@@ -45,7 +45,7 @@ const getStatusIconType = (status: string) => {
   }
 };
 
-const getSourceIconType = (source: string) => {
+const getSourceIconType = (source?: string) => {
   switch (source) {
     case 'viral':
       return 'viral';
@@ -97,11 +97,11 @@ export function OrderCard({
           <div className='flex items-start justify-between'>
             <div>
               <div className='flex items-center gap-2'>
-                {order.source === 'viral' && <StatusIcon type={getSourceIconType(order.source)} size={20} />}
-                <p className='text-lg font-bold text-foreground'>{order.id}</p>
+                {order?.source === 'viral' && <StatusIcon type={getSourceIconType(order?.source)} size={20} />}
+                <p className='text-lg font-bold text-foreground'>{order?.id}</p>
               </div>
               <p className='text-sm text-foreground/60'>
-                {order.customer} • {order.product}
+                {order?.customer} • {order?.product}
               </p>
             </div>
             <div className='text-right'>
