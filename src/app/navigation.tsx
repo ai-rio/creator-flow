@@ -5,6 +5,7 @@ import { AccountMenu } from '@/components/account-menu';
 import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
+import { HeaderThemeToggle } from '@/components/ui/theme-toggle';
 import { getSession } from '@/features/account/controllers/get-session';
 
 import { signOut } from './(auth)/auth-actions';
@@ -13,7 +14,10 @@ export async function Navigation() {
   const session = await getSession();
 
   return (
-    <div className='relative flex items-center gap-6'>
+    <div className='relative flex items-center gap-4'>
+      {/* Theme toggle - always visible */}
+      <HeaderThemeToggle className='flex-shrink-0' />
+
       {session ? (
         <AccountMenu signOut={signOut} />
       ) : (
@@ -25,11 +29,15 @@ export async function Navigation() {
             <SheetTrigger className='block lg:hidden'>
               <IoMenu size={28} />
             </SheetTrigger>
-            <SheetContent className='w-full bg-black'>
+            <SheetContent className='w-full border-border bg-background'>
               <SheetHeader>
                 <Logo />
-                <SheetDescription className='py-8'>
-                  <Button variant='sexy' className='flex-shrink-0' asChild>
+                <SheetDescription className='space-y-4 py-8'>
+                  {/* Theme toggle in mobile menu */}
+                  <div className='flex justify-center'>
+                    <HeaderThemeToggle />
+                  </div>
+                  <Button variant='sexy' className='w-full flex-shrink-0' asChild>
                     <Link href='/signup'>Get started for free</Link>
                   </Button>
                 </SheetDescription>

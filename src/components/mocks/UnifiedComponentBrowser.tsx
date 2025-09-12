@@ -146,7 +146,11 @@ import HPHero from '../atomic/organisms/HP-Hero';
 import HPHeaderVariant from '../atomic/organisms/HP-HeaderVariant';
 import HPBenefitsReel from '../atomic/organisms/HP-BenefitsReel';
 import HPManifesto from '../atomic/organisms/HP-Manifesto';
+import HPTestimonialsShowcase from '../atomic/organisms/HP-TestimonialsShowcase';
 import HPInteractiveShowcase from '../atomic/organisms/HP-InteractiveShowcase';
+
+// MvpBlocks Components
+import TestimonialsCarousel from '../mvpblocks/testimonials-carousel';
 
 // Mobile components
 import MCOrderCard from '../atomic/organisms/MC-OrderCard';
@@ -225,6 +229,16 @@ const componentCategories: ComponentCategories = {
         id: 'hp-interactive-showcase',
         name: 'MIGRATED: Interactive Data Showcase (HP-050 InteractiveShowcase) - NEEDS REVIEW',
         component: HPInteractiveShowcase,
+      },
+      {
+        id: 'hp-testimonials-showcase',
+        name: 'MIGRATED: Testimonials Wall of Growth (HP-060 Testimonials)',
+        component: HPTestimonialsShowcase,
+      },
+      {
+        id: 'mvpblocks-testimonials-carousel',
+        name: 'MvpBlocks: Creator Success Stories Carousel',
+        component: TestimonialsCarousel,
       },
     ],
     'Phase 6 - Management Focus Migration (IM-020)': [

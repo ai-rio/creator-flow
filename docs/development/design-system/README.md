@@ -28,10 +28,18 @@ The CreatorFlow Design System serves as the **definitive source of truth** for C
 
 Core design system specifications and technical requirements:
 
+- **[S000-DRAFT-Brand-Color-System-Overview.md](./01-specifications/S000-DRAFT-Brand-Color-System-Overview.md)** - Master navigation guide for brand colors and comprehensive color system structure
 - **[S001-DRAFT-design-system-overview.md](./01-specifications/S001-DRAFT-design-system-overview.md)** - Complete design system philosophy and structure
 - **[S002-DRAFT-design-tokens.md](./01-specifications/S002-DRAFT-design-tokens.md)** - Comprehensive color, typography, and spacing system
 - **[S003-DRAFT-responsive-design-system.md](./01-specifications/S003-DRAFT-responsive-design-system.md)** - Mobile-first creator workflow optimization
 - **[S004-DRAFT-component-patterns.md](./01-specifications/S004-DRAFT-component-patterns.md)** - 50+ documented component implementations
+- **[S005-DRAFT-Core-Brand-Colors.md](./01-specifications/S005-DRAFT-Core-Brand-Colors.md)** - Primary brand palette and design tokens for teal-purple gradient system
+- **[S006-DRAFT-Semantic-Color-System.md](./01-specifications/S006-DRAFT-Semantic-Color-System.md)** - Info, success, warning, danger color variants with accessibility compliance
+- **[S007-DRAFT-Theme-System.md](./01-specifications/S007-DRAFT-Theme-System.md)** - Dark/light theme implementation guidelines and switching mechanisms
+- **[S008-DRAFT-Glassmorphism-Guide.md](./01-specifications/S008-DRAFT-Glassmorphism-Guide.md)** - Advanced visual effects with brand colors for premium CEO-level experience
+- **[S009-DRAFT-Component-Color-Patterns.md](./01-specifications/S009-DRAFT-Component-Color-Patterns.md)** - Common color usage patterns across 50+ documented components
+- **[S010-DRAFT-Accessibility-Standards.md](./01-specifications/S010-DRAFT-Accessibility-Standards.md)** - Color contrast compliance and accessibility guidelines for WCAG 2.1
+- **[S011-DRAFT-Design-Token-Architecture.md](./01-specifications/S011-DRAFT-Design-Token-Architecture.md)** - Systematic approach to design token naming and organization for scalable development
 
 ### 02-implementation/
 
@@ -85,7 +93,7 @@ className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
 
 ### Design Tokens (200+ Extracted)
 
-- **Brand Colors**: Teal-purple gradient system (#0d9488 + #8b5cf6)
+- **Brand Colors**: Comprehensive teal-purple gradient system with semantic variants, theme support, and accessibility compliance
 - **Typography**: CEO-level weights (800-900) with premium hierarchy
 - **Spacing**: Mobile-first responsive system (4px-96px scale)
 - **Animations**: Framer Motion spring configurations

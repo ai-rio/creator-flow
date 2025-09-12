@@ -12,6 +12,7 @@ import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5'
 import { Logo } from '@/components/logo';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { TolgeeClientProvider } from '@/components/tolgee-provider';
+import { FloatingThemeToggle } from '@/components/ui/theme-toggle';
 import { Toaster } from '@/components/ui/toaster';
 import { locales } from '@/lib/i18n/config';
 import { cn } from '@/utils/cn';
@@ -55,12 +56,19 @@ export default async function LocaleLayout({
     <html lang={locale} className='scroll-smooth' suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased transition-colors duration-300',
           montserrat.variable,
           montserratAlternates.variable
         )}
       >
-        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false} disableTransitionOnChange={false}>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem={true}
+          disableTransitionOnChange={false}
+          storageKey='creatorflow-theme'
+          themes={['light', 'dark', 'system']}
+        >
           <TolgeeClientProvider>
             <NextIntlClientProvider messages={messages}>
               <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
@@ -70,6 +78,10 @@ export default async function LocaleLayout({
                 </main>
                 <Footer />
               </div>
+
+              {/* Floating theme toggle for quick access */}
+              <FloatingThemeToggle />
+
               <Toaster />
               <Analytics />
             </NextIntlClientProvider>
@@ -91,45 +103,53 @@ async function AppBar() {
 
 function Footer() {
   return (
-    <footer className='mt-8 flex flex-col gap-8 text-neutral-400 lg:mt-32'>
+    <footer className='mt-8 flex flex-col gap-8 text-muted-foreground lg:mt-32'>
       <div className='flex flex-col justify-between gap-8 lg:flex-row'>
         <div>
           <Logo />
         </div>
         <div className='grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-4 lg:gap-16'>
           <div className='flex flex-col gap-2 lg:gap-6'>
-            <div className='font-semibold text-neutral-100'>Product</div>
+            <div className='font-semibold text-foreground'>Product</div>
             <nav className='flex flex-col gap-2 lg:gap-6'>
-              <Link href='/pricing'>Pricing</Link>
+              <Link href='/pricing' className='transition-colors hover:text-foreground'>
+                Pricing
+              </Link>
             </nav>
           </div>
           <div className='flex flex-col gap-2 lg:gap-6'>
-            <div className='font-semibold text-neutral-100'>Company</div>
+            <div className='font-semibold text-foreground'>Company</div>
             <nav className='flex flex-col gap-2 lg:gap-6'>
-              <Link href='/about-us'>About Us</Link>
-              <Link href='/privacy'>Privacy</Link>
+              <Link href='/about-us' className='transition-colors hover:text-foreground'>
+                About Us
+              </Link>
+              <Link href='/privacy' className='transition-colors hover:text-foreground'>
+                Privacy
+              </Link>
             </nav>
           </div>
           <div className='flex flex-col gap-2 lg:gap-6'>
-            <div className='font-semibold text-neutral-100'>Support</div>
+            <div className='font-semibold text-foreground'>Support</div>
             <nav className='flex flex-col gap-2 lg:gap-6'>
-              <Link href='/support'>Get Support</Link>
+              <Link href='/support' className='transition-colors hover:text-foreground'>
+                Get Support
+              </Link>
             </nav>
           </div>
           <div className='flex flex-col gap-2 lg:gap-6'>
-            <div className='font-semibold text-neutral-100'>Follow us</div>
+            <div className='font-semibold text-foreground'>Follow us</div>
             <nav className='flex flex-col gap-2 lg:gap-6'>
-              <Link href='#'>
+              <Link href='#' className='transition-colors hover:text-foreground'>
                 <span className='flex items-center gap-2'>
                   <IoLogoTwitter size={22} /> <span>Twitter</span>
                 </span>
               </Link>
-              <Link href='#'>
+              <Link href='#' className='transition-colors hover:text-foreground'>
                 <span className='flex items-center gap-2'>
                   <IoLogoFacebook size={22} /> <span>Facebook</span>
                 </span>
               </Link>
-              <Link href='#'>
+              <Link href='#' className='transition-colors hover:text-foreground'>
                 <span className='flex items-center gap-2'>
                   <IoLogoInstagram size={22} /> <span>Instagram</span>
                 </span>
@@ -138,8 +158,8 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className='border-t border-zinc-800 py-6 text-center'>
-        <span className='text-neutral4 text-xs'>Copyright {new Date().getFullYear()} © CreatorFlow</span>
+      <div className='border-t border-border py-6 text-center'>
+        <span className='text-xs text-muted-foreground'>Copyright {new Date().getFullYear()} © CreatorFlow</span>
       </div>
     </footer>
   );
