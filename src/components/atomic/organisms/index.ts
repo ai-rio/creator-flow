@@ -77,6 +77,22 @@ export { default as IMSubNavBar } from './IM-SubNavBar';
 
 // Home Page Components
 export { default as HPBenefitsReel } from './HP-BenefitsReel';
+export { default as HPFinalCTA } from './HP-FinalCTA';
+export { default as HPFooter } from './HP-Footer';
 export { default as HPHeaderVariant } from './HP-HeaderVariant';
 export { default as HPHero } from './HP-Hero';
 export { default as HPManifesto } from './HP-Manifesto';
+export { default as HPPricingTiers } from './HP-PricingTiers';
+
+// Feature Page Components
+export { default as FPDigitalTwinCommand } from './FP-DigitalTwinCommand';
+export { default as FPLogisticsCoPilot } from './FP-LogisticsCoPilot';
+export { default as FPOrderManagement } from './FP-OrderManagement';
+
+// Architectural Principles Components
+export { default as APArchitecturalHero } from './AP-ArchitecturalHero';
+export { default as APMissionManifesto } from './AP-MissionManifesto';
+export { default as APTeamArchitects } from './AP-TeamArchitects';
+
+// Legal Pages Components
+export { default as LPLegalCovenant } from './LP-LegalCovenant';

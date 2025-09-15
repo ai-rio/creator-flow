@@ -1,43 +1,27 @@
+/* eslint-disable */
+'use client';
+
 import { AnimatePresence, motion, useSpring, useTransform } from 'framer-motion';
 import { BadgeDollarSign, Bot, Moon, Sun, TerminalSquare } from 'lucide-react';
-import * as React from 'react';
-import { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// --- TypeScript Interfaces ---
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
+import { Button } from '@/components/ui/button';
 
-interface ComponentProps {
-  children?: React.ReactNode;
-  className?: string;
-}
+// Theme Context & Provider
+const ThemeContext = createContext<any>(null);
+const useTheme = () => useContext(ThemeContext);
 
-// --- Configuration & Theming ---
-const darkTheme = {
-  background: '#0A090F',
-  textPrimary: 'text-white',
-  textSecondary: 'text-slate-300',
-  glassBg: 'bg-black/20',
-  border: 'border-slate-100/10',
-  glow: 'shadow-[0_0_60px_-15px_rgba(45,212,191,0.2)]',
-  activeGlow: 'shadow-[0_0_80px_-15px_rgba(45,212,191,0.4)]',
-  numberColor: 'text-teal-300',
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove(theme === 'dark' ? 'light' : 'dark');
+    root.classList.add(theme);
+  }, [theme]);
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };
 
-const lightTheme = {
-  background: 'linear-gradient(180deg, #fafafa 0%, #eef2ff 100%)',
-  textPrimary: 'text-slate-900',
-  textSecondary: 'text-slate-600',
-  glassBg: 'bg-white/60',
-  border: 'border-slate-300',
-  glow: 'shadow-[0_0_60px_-15px_rgba(13,148,136,0.15)]',
-  activeGlow: 'shadow-[0_0_80px_-15px_rgba(13,148,136,0.3)]',
-  numberColor: 'text-teal-600',
-};
-
-// --- Manifesto Data ---
+// Manifesto Data
 const doctrines = [
   {
     id: 'automate',
@@ -68,7 +52,7 @@ const doctrines = [
   },
 ];
 
-// --- Animated Counter ---
+// Animated Counter Component
 const AnimatedCounter: React.FC<any> = ({ value, isVisible, prefix = false, unit }: any) => {
   const spring = useSpring(0, { mass: 0.8, stiffness: 100, damping: 20 });
 
@@ -97,8 +81,8 @@ const AnimatedCounter: React.FC<any> = ({ value, isVisible, prefix = false, unit
   );
 };
 
-// --- Doctrine Card Component ---
-const DoctrineCard: React.FC<any> = ({ doctrine, isActive, onClick, theme }: any) => {
+// Doctrine Card Component
+const DoctrineCard: React.FC<any> = ({ doctrine, isActive, onClick }: any) => {
   const isSpecialUnit = doctrine.proof[0].unit.includes(' ');
 
   const cardVariants = {
@@ -111,35 +95,39 @@ const DoctrineCard: React.FC<any> = ({ doctrine, isActive, onClick, theme }: any
     <motion.div
       layout
       onClick={onClick}
-      className={`relative min-h-[450px] w-full max-w-sm cursor-pointer rounded-3xl border p-8 transition-shadow duration-500 ${
-        theme.glassBg
-      } ${theme.border} ${isActive ? theme.activeGlow : theme.glow}`}
+      className={`relative min-h-[450px] w-full cursor-pointer rounded-premium border border-border/20 bg-card/60 p-strategic backdrop-blur-lg transition-shadow duration-500 ${
+        isActive ? 'shadow-[0_0_80px_-15px_rgba(45,212,191,0.4)]' : 'shadow-[0_0_60px_-15px_rgba(45,212,191,0.2)]'
+      }`}
       variants={cardVariants}
       animate={isActive ? 'active' : 'dormant'}
       whileHover='primed'
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
-      <motion.div layout='position' className='flex items-center gap-4'>
-        <doctrine.Icon className={`h-8 w-8 ${theme.textPrimary}`} />
-        <h2 className={`text-2xl font-bold ${theme.textPrimary}`}>{doctrine.title}</h2>
+      <motion.div layout='position' className='flex items-center gap-tactical'>
+        <doctrine.Icon className='h-icon-lg w-icon-lg text-foreground' />
+        <h2 className='text-heading-lg font-bold text-foreground'>{doctrine.title}</h2>
       </motion.div>
 
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className='mt-6'
+            className='mt-tactical'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.3 } }}
             exit={{ opacity: 0 }}
           >
-            <p className={`text-lg leading-relaxed ${theme.textSecondary}`}>{doctrine.principle}</p>
-            <div className='mt-8 space-y-4'>
+            <p className='text-body-lg leading-relaxed text-muted-foreground'>{doctrine.principle}</p>
+            <div className='mt-strategic space-y-tactical'>
               {doctrine.proof.map((p: any, i: any) => (
                 <div key={i}>
-                  <div className={`text-5xl font-black ${theme.numberColor} ${isSpecialUnit ? 'text-4xl' : ''}`}>
+                  <div
+                    className={`text-metric-2xl font-black text-brand-teal-primary ${
+                      isSpecialUnit ? 'text-metric-xl' : ''
+                    }`}
+                  >
                     <AnimatedCounter value={p.value} isVisible={isActive} prefix={p.prefix} unit={p.unit} />
                   </div>
-                  <p className={`mt-1 ${theme.textSecondary}`}>{p.label}</p>
+                  <p className='mt-1 text-muted-foreground'>{p.label}</p>
                 </div>
               ))}
             </div>
@@ -150,75 +138,83 @@ const DoctrineCard: React.FC<any> = ({ doctrine, isActive, onClick, theme }: any
   );
 };
 
-// --- Main Component ---
-export default function AP020OurMission(): React.JSX.Element {
-  const [theme, setTheme] = useState<string>('dark');
+// Main Mission Manifesto Component
+const MissionManifesto = () => {
+  const { theme, setTheme } = useTheme();
   const [activeId, setActiveId] = useState<any>(doctrines[1].id);
-  const currentTheme = theme === 'dark' ? darkTheme : lightTheme;
 
   return (
-    <div style={{ background: currentTheme.background }} className='font-sans antialiased'>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display.swap');`}</style>
+    <div className='min-h-screen bg-background font-sans antialiased'>
       <ThemeToggleButton theme={theme} setTheme={setTheme} />
-      <div className='mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center space-y-8 overflow-hidden px-4 py-24'>
+      <div className='mx-auto flex min-h-screen w-full flex-col items-center justify-center space-y-strategic overflow-hidden px-tactical py-command'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className='text-center'
         >
-          <h1 className={`text-5xl font-black md:text-7xl ${currentTheme.textPrimary}`}>
+          <h1 className='text-heading-2xl md:text-heading-3xl font-black text-foreground'>
             A Manifesto of Intervention.
           </h1>
-          <p className={`mx-auto mt-4 max-w-3xl text-lg md:text-xl ${currentTheme.textSecondary}`}>
+          <p className='md:text-heading-sm mx-auto mt-tactical max-w-prose text-body-lg text-muted-foreground'>
             Our platform is not built on features, but on core beliefs. These three doctrines govern every line of code
             we write and every decision we make.
           </p>
         </motion.div>
 
-        <div className='flex w-full flex-col items-center justify-center pt-16 md:flex-row md:items-start md:space-x-4'>
+        <div className='flex w-full flex-col items-center justify-center pt-command md:flex-row md:items-start md:space-x-tactical'>
           {doctrines.map((d) => (
-            <div key={d.id} className='my-4 w-full md:my-0 md:w-1/3'>
-              <DoctrineCard
-                doctrine={d}
-                isActive={activeId === d.id}
-                onClick={() => setActiveId(d.id)}
-                theme={currentTheme}
-              />
+            <div key={d.id} className='my-tactical w-full md:my-0 md:w-1/3'>
+              <DoctrineCard doctrine={d} isActive={activeId === d.id} onClick={() => setActiveId(d.id)} />
             </div>
           ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
-// --- Theme Toggle Button ---
+// Theme Toggle Button Component
 const ThemeToggleButton: React.FC<any> = ({ theme, setTheme }: any) => {
-  const buttonClasses =
-    theme === 'dark'
-      ? 'bg-white/5 border-slate-100/10 text-slate-200'
-      : 'bg-slate-800/5 border-slate-300 text-slate-800';
   return (
-    <motion.button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className={`fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border backdrop-blur-xl ${buttonClasses}`}
-      aria-label='Toggle theme'
+    <motion.div
+      className='fixed bottom-tactical right-tactical z-modal'
       whileHover={{ scale: 1.1, rotate: 15 }}
       whileTap={{ scale: 0.9, rotate: -15 }}
       transition={{ type: 'spring', stiffness: 400, damping: 15 }}
     >
-      <AnimatePresence mode='wait' initial={false}>
-        <motion.div
-          key={theme}
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 20, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-        </motion.div>
-      </AnimatePresence>
-    </motion.button>
+      <Button
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        variant='outline'
+        size='icon'
+        className='h-12 w-12 rounded-full border-border/20 bg-card/80 backdrop-blur-xl'
+        aria-label='Toggle theme'
+      >
+        <AnimatePresence mode='wait' initial={false}>
+          <motion.div
+            key={theme}
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 20, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {theme === 'dark' ? <Sun className='h-icon-sm w-icon-sm' /> : <Moon className='h-icon-sm w-icon-sm' />}
+          </motion.div>
+        </AnimatePresence>
+      </Button>
+    </motion.div>
   );
 };
+
+// Export wrapper
+const AppContent = () => {
+  return <MissionManifesto />;
+};
+
+export default function App(): React.JSX.Element {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}

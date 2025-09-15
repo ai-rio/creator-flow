@@ -79,7 +79,7 @@ import CP020OpenMissions from './CP-020-OpenMissions';
 // import CookiePolicyBar from './Cookie-Policy-Bar'; // RENAMED TO SU-020
 // import CreatorFlowThemeSwitcher from './CreatorFlow-Theme-Switcher'; // RENAMED TO SU-030
 // import GDPRDataSovereignty from './GDPR-Data-Sovereignty'; // RENAMED TO SU-040
-import LP010Legal from './LP-010-Legal';
+// import LP010Legal from './LP-010-Legal'; // MIGRATED TO LP-LegalCovenant
 // import NotFound404 from './404-NotFound'; // RENAMED TO SU-010
 // Blog Page Components
 import BPCompleteContentHub from './blog-page/BP-Complete-Content-Hub';
@@ -145,9 +145,25 @@ import DAOrderTableDemo from '../atomic/organisms/DA-OrderTableDemo';
 import HPHero from '../atomic/organisms/HP-Hero';
 import HPHeaderVariant from '../atomic/organisms/HP-HeaderVariant';
 import HPBenefitsReel from '../atomic/organisms/HP-BenefitsReel';
+import HPFinalCTA from '../atomic/organisms/HP-FinalCTA';
+import HPFooter from '../atomic/organisms/HP-Footer';
 import HPManifesto from '../atomic/organisms/HP-Manifesto';
+import HPPricingTiers from '../atomic/organisms/HP-PricingTiers';
 import HPTestimonialsShowcase from '../atomic/organisms/HP-TestimonialsShowcase';
 import HPInteractiveShowcase from '../atomic/organisms/HP-InteractiveShowcase';
+
+// Architectural Principles Components
+import APArchitecturalHero from '../atomic/organisms/AP-ArchitecturalHero';
+import APMissionManifesto from '../atomic/organisms/AP-MissionManifesto';
+import APTeamArchitects from '../atomic/organisms/AP-TeamArchitects';
+
+// Legal Pages Components
+import LPLegalCovenant from '../atomic/organisms/LP-LegalCovenant';
+
+// Feature Page Components
+import FPDigitalTwinCommand from '../atomic/organisms/FP-DigitalTwinCommand';
+import FPLogisticsCoPilot from '../atomic/organisms/FP-LogisticsCoPilot';
+import FPOrderManagement from '../atomic/organisms/FP-OrderManagement';
 
 // MvpBlocks Components
 import TestimonialsCarousel from '../mvpblocks/testimonials-carousel';
@@ -236,9 +252,58 @@ const componentCategories: ComponentCategories = {
         component: HPTestimonialsShowcase,
       },
       {
+        id: 'hp-pricing-tiers',
+        name: 'MIGRATED: Pricing Tiers Section (HP-070 PricingTiers)',
+        component: HPPricingTiers,
+      },
+      {
+        id: 'hp-final-cta',
+        name: 'MIGRATED: Final CTA with Star Vortex (HP-080 FinalCTA)',
+        component: HPFinalCTA,
+      },
+      {
+        id: 'hp-footer',
+        name: 'MIGRATED: Footer with Social Links (HP-090 Footer)',
+        component: HPFooter,
+      },
+      {
         id: 'mvpblocks-testimonials-carousel',
         name: 'MvpBlocks: Creator Success Stories Carousel',
         component: TestimonialsCarousel,
+      },
+    ],
+    'Phase 8 - Feature Page Migration (FP Series)': [
+      {
+        id: 'fp-order-management',
+        name: 'MIGRATED: Interactive Order Management Grid (FP-020 OrderManagement)',
+        component: FPOrderManagement,
+      },
+      {
+        id: 'fp-digital-twin-command',
+        name: 'MIGRATED: Digital Twin Command Center (FP-030 DigitalTwinCommand)',
+        component: FPDigitalTwinCommand,
+      },
+      {
+        id: 'fp-logistics-copilot',
+        name: 'MIGRATED: AI Logistics Co-Pilot (FP-040 LogisticsCoPilot)',
+        component: FPLogisticsCoPilot,
+      },
+    ],
+    'Phase 9 - Architectural Principles Migration (AP Series)': [
+      {
+        id: 'ap-architectural-hero',
+        name: 'MIGRATED: Architectural Principles Hero (AP-010 Hero)',
+        component: APArchitecturalHero,
+      },
+      {
+        id: 'ap-mission-manifesto',
+        name: 'MIGRATED: Mission Manifesto (AP-020 OurMission)',
+        component: APMissionManifesto,
+      },
+      {
+        id: 'ap-team-architects',
+        name: 'MIGRATED: Team Architects (AP-030 TheTeam)',
+        component: APTeamArchitects,
       },
     ],
     'Phase 6 - Management Focus Migration (IM-020)': [
@@ -686,7 +751,9 @@ const componentCategories: ComponentCategories = {
     ],
   },
   'Legal Pages': {
-    'LP Series': [{ id: 'lp010', name: 'LP-010: Legal', component: LP010Legal }],
+    'LP Series': [
+      { id: 'lp-legal-covenant', name: 'MIGRATED: Legal Covenant (LP-010 Legal)', component: LPLegalCovenant },
+    ],
   },
 };
 
