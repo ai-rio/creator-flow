@@ -11,7 +11,9 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
 
+import { detectWebGL } from '@/components/atomic/atoms/three-js/ThreeJSLoader';
 import {
   type AorticVesselConfig,
   type AorticVesselInstance,
@@ -40,45 +42,15 @@ export interface UseThreeJSReturn {
 }
 
 /**
- * Detects WebGL support
+ * Validates Three.js is properly loaded and available
  */
-const detectWebGL = (): boolean => {
+const validateThreeJS = (): boolean => {
   try {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    return !!(context && (context as WebGLRenderingContext).getParameter);
+    // Check if bundled Three.js is available
+    return !!(THREE && THREE.WebGLRenderer && THREE.Scene && THREE.Camera);
   } catch (e) {
     return false;
   }
-};
-
-/**
- * Loads Three.js dynamically
- */
-const loadThreeJS = async (): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    if (typeof window !== 'undefined' && (window as any).THREE) {
-      resolve();
-      return;
-    }
-
-    const existingScript = document.getElementById('three-js-script');
-    if (existingScript) {
-      existingScript.addEventListener('load', () => resolve());
-      existingScript.addEventListener('error', () => reject(new Error('Failed to load Three.js')));
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.id = 'three-js-script';
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.async = true;
-
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load Three.js from CDN'));
-
-    document.head.appendChild(script);
-  });
 };
 
 /**
@@ -121,8 +93,10 @@ export const useThreeJS = (theme: 'light' | 'dark', config: UseThreeJSConfig = {
         throw new Error('WebGL is not supported in this browser');
       }
 
-      // Load Three.js
-      await loadThreeJS();
+      // Validate bundled Three.js is available
+      if (!validateThreeJS()) {
+        throw new Error('Three.js library is not properly loaded');
+      }
 
       // Get optimal configuration
       const deviceType = detectDeviceType();
@@ -175,12 +149,6 @@ export const useThreeJS = (theme: 'light' | 'dark', config: UseThreeJSConfig = {
     }
   }, []);
 
-  // Retry initialization
-  const retry = useCallback(() => {
-    dispose();
-    initializeThreeJS();
-  }, [initializeThreeJS]);
-
   // Dispose instance
   const dispose = useCallback(() => {
     if (instanceRef.current) {
@@ -195,6 +163,12 @@ export const useThreeJS = (theme: 'light' | 'dark', config: UseThreeJSConfig = {
 
     setIsLoaded(false);
   }, []);
+
+  // Retry initialization
+  const retry = useCallback(() => {
+    dispose();
+    initializeThreeJS();
+  }, [dispose, initializeThreeJS]);
 
   // Initialize on mount
   useEffect(() => {

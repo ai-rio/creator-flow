@@ -1,11 +1,11 @@
 /**
  * ThreeJSLoader - CreatorFlow Three.js Integration
  *
- * Atomic component for loading Three.js library with proper error handling
- * and loading states. Provides WebGL detection and fallback support.
+ * Atomic component for WebGL detection and loading indicator for Three.js scenes.
+ * Uses bundled Three.js package for security and reliability.
  *
  * @author CreatorFlow Team
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 'use client';
@@ -13,6 +13,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertTriangle, Loader2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import * as THREE from 'three';
 
 export interface ThreeJSLoaderProps {
   onLoad: () => void;
@@ -31,7 +32,7 @@ export interface ThreeJSLoadingState {
 /**
  * Detects WebGL support in the browser
  */
-const detectWebGL = (): boolean => {
+export const detectWebGL = (): boolean => {
   try {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -42,35 +43,15 @@ const detectWebGL = (): boolean => {
 };
 
 /**
- * Loads Three.js library from CDN with proper error handling
+ * Validates Three.js is properly loaded and available
  */
-const loadThreeJS = async (): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    // Check if Three.js is already loaded
-    if (typeof window !== 'undefined' && (window as any).THREE) {
-      resolve();
-      return;
-    }
-
-    // Check if script is already loading
-    const existingScript = document.getElementById('three-js-script');
-    if (existingScript) {
-      existingScript.addEventListener('load', () => resolve());
-      existingScript.addEventListener('error', () => reject(new Error('Failed to load Three.js')));
-      return;
-    }
-
-    // Create and load script
-    const script = document.createElement('script');
-    script.id = 'three-js-script';
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.async = true;
-
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load Three.js from CDN'));
-
-    document.head.appendChild(script);
-  });
+const validateThreeJS = (): boolean => {
+  try {
+    // Check if bundled Three.js is available
+    return !!(THREE && THREE.WebGLRenderer && THREE.Scene && THREE.Camera);
+  } catch (e) {
+    return false;
+  }
 };
 
 /**
@@ -104,8 +85,10 @@ export const ThreeJSLoader: React.FC<ThreeJSLoaderProps> = ({
           throw new Error('WebGL is not supported in this browser');
         }
 
-        // Load Three.js
-        await loadThreeJS();
+        // Validate bundled Three.js is available
+        if (!validateThreeJS()) {
+          throw new Error('Three.js library is not properly loaded');
+        }
 
         setState((prev) => ({
           ...prev,
@@ -222,7 +205,10 @@ export const useThreeJSLoader = () => {
         throw new Error('WebGL is not supported in this browser');
       }
 
-      await loadThreeJS();
+      // Validate bundled Three.js is available
+      if (!validateThreeJS()) {
+        throw new Error('Three.js library is not properly loaded');
+      }
 
       setState((prev) => ({
         ...prev,

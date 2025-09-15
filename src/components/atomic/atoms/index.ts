@@ -45,7 +45,6 @@ export const DisplayElements = {
 };
 
 // CreatorFlow Enhanced Atoms
-export { GlassPane } from './GlassPane';
-export * from './shader-backgrounds';
+// Note: Three.js WebGL components are managed separately via three-js/ directory
 
 // Note: Individual component exports will be uncommented as components are migrated

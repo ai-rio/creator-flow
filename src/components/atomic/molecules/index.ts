@@ -55,6 +55,6 @@ export const ControlMolecules = {
 };
 
 // CreatorFlow Enhanced Molecules
-export { default as ColorPaletteSwitcher } from './ColorPaletteSwitcher';
+// Note: Three.js WebGL components and their controls are managed separately
 
 // Note: Individual component exports will be uncommented as components are migrated
