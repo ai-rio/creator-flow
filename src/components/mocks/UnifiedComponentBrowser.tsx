@@ -82,9 +82,9 @@ import CP020OpenMissions from './CP-020-OpenMissions';
 // import LP010Legal from './LP-010-Legal'; // MIGRATED TO LP-LegalCovenant
 // import NotFound404 from './404-NotFound'; // RENAMED TO SU-010
 // Blog Page Components
-import BPCompleteContentHub from './blog-page/BP-Complete-Content-Hub';
-import BPContentHubToolbar from './blog-page/BP-Content-Hub-Toolbar';
-import BPPostCard from './blog-page/BP-PostCard';
+// import BPCompleteContentHub from './blog-page/BP-Complete-Content-Hub'; // MIGRATED TO BP-CompleteContentHub
+// import BPContentHubToolbar from './blog-page/BP-Content-Hub-Toolbar'; // MIGRATED TO BP-ContentHubToolbar
+// import BPPostCard from './blog-page/BP-PostCard'; // MIGRATED TO BP-PostCard
 // Blog Post Components (AC Series)
 import ACArticleHero from './blog-post/AC-ArticleHero';
 import ACCallout from './blog-post/AC-Callout';
@@ -159,6 +159,11 @@ import APTeamArchitects from '../atomic/organisms/AP-TeamArchitects';
 
 // Legal Pages Components
 import LPLegalCovenant from '../atomic/organisms/LP-LegalCovenant';
+
+// Blog Page Components
+import BPContentHubToolbar from '../atomic/organisms/BP-ContentHubToolbar';
+import BPPostCard from '../atomic/organisms/BP-PostCard';
+import BPCompleteContentHub from '../atomic/organisms/BP-CompleteContentHub';
 
 // Feature Page Components
 import FPDigitalTwinCommand from '../atomic/organisms/FP-DigitalTwinCommand';
@@ -671,17 +676,17 @@ const componentCategories: ComponentCategories = {
     'BP Series': [
       {
         id: 'bp-complete-content-hub',
-        name: 'BP-Complete-Content-Hub: Full Blog Layout',
+        name: 'MIGRATED: Full Blog Layout (BP-Complete-Content-Hub)',
         component: BPCompleteContentHub,
       },
       {
         id: 'bp-content-hub-toolbar',
-        name: 'BP-Content-Hub-Toolbar: Blog Management Tools',
+        name: 'MIGRATED: Blog Management Tools (BP-Content-Hub-Toolbar)',
         component: BPContentHubToolbar,
       },
       {
         id: 'bp-post-card',
-        name: 'BP-PostCard: Article Preview Card',
+        name: 'MIGRATED: Article Preview Card (BP-PostCard)',
         component: BPPostCard,
       },
     ],
