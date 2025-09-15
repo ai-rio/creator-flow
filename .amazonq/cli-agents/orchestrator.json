@@ -6,7 +6,7 @@
   "tools": ["*"],
   "toolAliases": {
     "@memory/read_memory": "memory_read",
-    "@memory/write_memory": "memory_write", 
+    "@memory/write_memory": "memory_write",
     "@filesystem/read_file": "file_read",
     "@filesystem/write_file": "file_write",
     "@supabase/query": "db_query",
@@ -16,7 +16,7 @@
   },
   "allowedTools": [
     "fs_read",
-    "fs_write", 
+    "fs_write",
     "execute_bash",
     "use_aws",
     "@memory/*",
@@ -31,33 +31,13 @@
   ],
   "toolsSettings": {
     "fs_write": {
-      "allowedPaths": [
-        ".amazonq/**/*",
-        ".claude/**/*", 
-        "src/**/*",
-        "docs/**/*",
-        "scripts/**/*",
-        "tests/**/*"
-      ]
+      "allowedPaths": [".amazonq/**/*"]
     },
     "execute_bash": {
-      "allowedCommands": [
-        "bun *",
-        "npm *", 
-        "git *",
-        "ls *",
-        "find *",
-        "grep *"
-      ]
+      "allowedCommands": ["bun *", "npm *", "git *", "ls *", "find *", "grep *"]
     }
   },
-  "resources": [
-    "file://.amazonq/rules",
-    "file://.claude/agents/**/*.md",
-    "file://docs/architecture/**/*.md",
-    "file://docs/development/**/*.md",
-    "file://docs/features/**/*.md"
-  ],
+  "resources": ["file://.amazonq/rules"],
   "hooks": {
     "agentSpawn": [
       {

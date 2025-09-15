@@ -54,4 +54,7 @@ export const ControlMolecules = {
   // FilterControls,
 };
 
+// CreatorFlow Enhanced Molecules
+export { default as ColorPaletteSwitcher } from './ColorPaletteSwitcher';
+
 // Note: Individual component exports will be uncommented as components are migrated

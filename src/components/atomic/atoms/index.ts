@@ -44,4 +44,8 @@ export const DisplayElements = {
   // Spinner,
 };
 
+// CreatorFlow Enhanced Atoms
+export { GlassPane } from './GlassPane';
+export * from './shader-backgrounds';
+
 // Note: Individual component exports will be uncommented as components are migrated

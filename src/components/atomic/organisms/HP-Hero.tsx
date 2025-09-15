@@ -1,25 +1,10 @@
-/* eslint-disable */
 'use client';
 
 import { motion } from 'framer-motion';
 import { CheckCircle, ShieldCheck, TrendingUp } from 'lucide-react';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React from 'react';
 
 import { Button } from '@/components/ui/button';
-
-// Theme Context & Provider
-const ThemeContext = createContext<any>(null);
-const useTheme = () => useContext(ThemeContext);
-
-const ThemeProvider: React.FC<any> = ({ children }: any) => {
-  const [theme, setTheme] = useState<string>('dark');
-  useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove(theme === 'dark' ? 'light' : 'dark');
-    root.classList.add(theme);
-  }, [theme]);
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
-};
 
 // Main Hero Component
 const HPHero = () => {
@@ -33,42 +18,36 @@ const HPHero = () => {
   } as any;
 
   return (
-    <div className='via-brand-teal-50 to-brand-purple-50 relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-background dark:from-background dark:via-muted dark:to-background'>
-      <div className='absolute left-1/2 top-1/2 h-[1000px] w-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-teal-primary/5 blur-[200px]' />
+    <div className='relative flex min-h-screen items-center justify-center overflow-hidden'>
+      <div className='absolute left-1/2 top-1/2 h-[1000px] w-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/5 blur-[200px]' />
 
       <motion.div
-        className='relative z-10 mx-auto max-w-hero px-tactical text-center'
+        className='relative z-10 mx-auto max-w-4xl px-6 text-center'
         variants={containerVariants}
         initial='hidden'
         animate='visible'
       >
         <motion.h1
           variants={itemVariants}
-          className='bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-hero-title font-extrabold tracking-tight text-transparent md:text-6xl'
+          className='bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-5xl font-extrabold tracking-tight text-transparent md:text-6xl'
         >
           Stop Drowning in Orders.
           <br />
           Start Commanding Your Growth.
         </motion.h1>
 
-        <motion.p
-          variants={itemVariants}
-          className='mt-hero-title-mobile text-hero-subtitle font-semibold text-foreground md:mt-hero-title-desktop md:text-xl'
-        >
+        <motion.p variants={itemVariants} className='mt-6 text-xl font-semibold text-foreground md:mt-8 md:text-2xl'>
           The All-in-One Platform for Automated Order Processing, Inventory Sync, and Shipping for TikTok Shops.
         </motion.p>
 
-        <motion.p
-          variants={itemVariants}
-          className='mx-auto mt-tactical max-w-2xl text-hero-description text-muted-foreground'
-        >
+        <motion.p variants={itemVariants} className='mx-auto mt-6 max-w-2xl text-lg text-muted-foreground'>
           We turn operational chaos into a CEO-level command center, so you can scale from 50 to 500+ orders a
           day—effortlessly.
         </motion.p>
 
-        <motion.div variants={itemVariants} className='mt-hero-button-mobile md:mt-hero-button-desktop'>
+        <motion.div variants={itemVariants} className='mt-8 md:mt-10'>
           <Button
-            className='min-h-12 rounded-premium bg-brand-teal-primary px-8 py-4 text-lg font-bold text-white shadow-lg shadow-brand-teal-primary/30 transition-all hover:shadow-xl hover:shadow-brand-teal-primary/50 md:min-h-14'
+            className='min-h-12 rounded-lg bg-violet-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-violet-600/30 transition-all hover:shadow-xl hover:shadow-violet-600/50 md:min-h-14'
             asChild
           >
             <motion.a
@@ -82,7 +61,7 @@ const HPHero = () => {
           </Button>
         </motion.div>
 
-        <motion.div variants={itemVariants} className='mt-hero-section-mobile md:mt-hero-section-desktop'>
+        <motion.div variants={itemVariants} className='mt-12 md:mt-16'>
           <CommandCenterSnippet />
         </motion.div>
       </motion.div>
@@ -91,11 +70,11 @@ const HPHero = () => {
 };
 
 const CommandCenterSnippet = () => (
-  <div className='relative rounded-executive bg-gradient-to-b from-muted/50 to-transparent p-xs'>
-    <div className='rounded-premium border border-border/20 bg-background/80 p-strategic shadow-2xl backdrop-blur-2xl'>
-      <div className='mb-strategic flex items-center justify-between'>
-        <h3 className='text-heading-sm font-semibold text-foreground'>Live Operations Overview</h3>
-        <div className='text-body-xs text-success flex items-center gap-tactical'>
+  <div className='relative rounded-2xl bg-gradient-to-b from-muted/50 to-transparent p-1'>
+    <div className='rounded-xl border border-border/20 bg-background/80 p-6 shadow-2xl backdrop-blur-2xl'>
+      <div className='mb-6 flex items-center justify-between'>
+        <h3 className='text-lg font-semibold text-foreground'>Live Operations Overview</h3>
+        <div className='flex items-center gap-2 text-sm text-green-500'>
           <motion.div
             className='h-2 w-2 rounded-full bg-current'
             animate={{ scale: [1, 1.2, 1] }}
@@ -104,12 +83,12 @@ const CommandCenterSnippet = () => (
           <span>LIVE</span>
         </div>
       </div>
-      <div className='grid grid-cols-1 gap-strategic text-left md:grid-cols-3'>
-        <MetricCard Icon={TrendingUp} label='Orders Processed Today' value='1,204' color='text-brand-teal-primary' />
-        <HeartbeatMetricCard Icon={ShieldCheck} label='Automation Savings' value='$4,567' color='text-success' />
-        <MetricCard Icon={CheckCircle} label='Inventory Sync' value='99.98%' color='text-brand-purple-primary' />
+      <div className='grid grid-cols-1 gap-6 text-left md:grid-cols-3'>
+        <MetricCard Icon={TrendingUp} label='Orders Processed Today' value='1,204' color='text-violet-600' />
+        <HeartbeatMetricCard Icon={ShieldCheck} label='Automation Savings' value='$4,567' color='text-green-500' />
+        <MetricCard Icon={CheckCircle} label='Inventory Sync' value='99.98%' color='text-blue-600' />
       </div>
-      <div className='relative mt-strategic h-24'>
+      <div className='relative mt-6 h-24'>
         <AnimatedLineGraph />
       </div>
     </div>
@@ -118,11 +97,11 @@ const CommandCenterSnippet = () => (
 
 const MetricCard = ({ Icon, label, value, color }: any) => (
   <div>
-    <div className='flex items-center gap-tactical'>
-      <Icon className={`h-icon-sm w-icon-sm ${color}`} />
-      <span className='text-body-sm text-muted-foreground'>{label}</span>
+    <div className='flex items-center gap-2'>
+      <Icon className={`h-5 w-5 ${color}`} />
+      <span className='text-sm text-muted-foreground'>{label}</span>
     </div>
-    <p className='mt-xs text-metric-lg font-bold text-foreground'>{value}</p>
+    <p className='mt-1 text-2xl font-bold text-foreground'>{value}</p>
   </div>
 );
 
@@ -130,17 +109,17 @@ const HeartbeatMetricCard = ({ Icon, label, value, color }: any) => (
   <motion.div
     animate={{ scale: [1, 1.01, 1] }}
     transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-    className='rounded-premium p-xs'
+    className='rounded-lg p-2'
     style={{
       backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(74, 222, 128, 0.1), transparent 70%)',
     }}
   >
-    <div className='flex items-center gap-tactical'>
-      <Icon className={`h-icon-sm w-icon-sm ${color}`} />
-      <span className='text-body-sm text-muted-foreground'>{label}</span>
+    <div className='flex items-center gap-2'>
+      <Icon className={`h-5 w-5 ${color}`} />
+      <span className='text-sm text-muted-foreground'>{label}</span>
     </div>
     <motion.p
-      className='mt-xs text-metric-lg font-bold text-foreground'
+      className='mt-1 text-2xl font-bold text-foreground'
       animate={{ scale: [1, 1.03, 1] }}
       transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
     >
@@ -180,15 +159,4 @@ const AnimatedLineGraph = () => (
   </svg>
 );
 
-// Export wrapper
-const AppContent = () => {
-  return <HPHero />;
-};
-
-export default function App(): React.JSX.Element {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
-}
+export default HPHero;

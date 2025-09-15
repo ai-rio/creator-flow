@@ -57,7 +57,9 @@
       "Bash(bun list:*)",
       "Bash(netstat:*)",
       "Bash(sed:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(bun:*)",
+      "Bash(timeout:*)"
     ],
     "deny": [],
     "ask": []
