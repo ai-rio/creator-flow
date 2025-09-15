@@ -86,9 +86,7 @@ import CP020OpenMissions from './CP-020-OpenMissions';
 // import BPContentHubToolbar from './blog-page/BP-Content-Hub-Toolbar'; // MIGRATED TO BP-ContentHubToolbar
 // import BPPostCard from './blog-page/BP-PostCard'; // MIGRATED TO BP-PostCard
 // Blog Post Components (AC Series)
-import ACArticleHero from './blog-post/AC-ArticleHero';
 import ACCallout from './blog-post/AC-Callout';
-import ACDataTable from './blog-post/AC-DataTable';
 import ACKeyTakeawaysComponent from './blog-post/AC-KeyTakeaways Component';
 import ACTableOfContents from './blog-post/AC-TableOfContents';
 // New batch 2 components
@@ -96,8 +94,6 @@ import ACFAQAccordion from './blog-post/AC-FAQAccordion';
 import ACMilestoneCelebration from './blog-post/AC-MilestoneCelebration';
 import ACProfitCommandDashboard from './blog-post/AC-ProfitCommandDashboard';
 // Batch 1 components
-import ACAuthorBriefing from './blog-post/AC-AuthorBriefing';
-import ACCalloutAdvanced from './blog-post/AC-Callout-Advanced';
 // import ACCodeSnippet from './blog-post/AC-CodeSnippet';
 // import ACContentStructure from './blog-post/AC-ContentStructure';
 // import ACFeaturedImage from './blog-post/AC-FeaturedImage';
@@ -206,6 +202,26 @@ import IMGlassPane from '../atomic/molecules/IM-GlassPane';
 import IMStockLevelBar from '../atomic/molecules/IM-StockLevelBar';
 import IMThemeToggle from '../atomic/atoms/IM-ThemeToggle';
 import IMBrandIcon from '../atomic/atoms/IM-BrandIcon';
+
+// Article Components - Atomic Migration
+import ACArticleHeroAtomic from '../atomic/organisms/AC-ArticleHero';
+import ACInformationalBriefing from '../atomic/organisms/AC-InformationalBriefing';
+import ACMissionAccomplished from '../atomic/organisms/AC-MissionAccomplished';
+import ACProceedWithCaution from '../atomic/organisms/AC-ProceedWithCaution';
+import ACCriticalAlert from '../atomic/organisms/AC-CriticalAlert';
+import ACAuthorBriefingAtomic from '../atomic/organisms/AC-AuthorBriefing';
+import ACCommandListAtomic from '../atomic/organisms/AC-CommandList';
+import ACDataTableAtomic from '../atomic/organisms/AC-DataTable';
+import { AC_ExploreFurther } from '../atomic/organisms/AC-ExploreFurther';
+import { AC_FAQAccordion } from '../atomic/organisms/AC-FAQAccordion';
+import { AC_KeyTakeaways } from '../atomic/organisms/AC-KeyTakeaways';
+import { AC_MilestoneCelebration } from '../atomic/organisms/AC-MilestoneCelebration';
+import { AC_ProfitCommandDashboard } from '../atomic/organisms/AC-ProfitCommandDashboard';
+import { AC_ShareDossier } from '../atomic/organisms/AC-ShareDossier';
+import { AC_SummonsToTheForge } from '../atomic/organisms/AC-SummonsToTheForge';
+import { AC_TableOfContents } from '../atomic/organisms/AC-TableOfContents';
+import { AC_TestimonialBlock } from '../atomic/organisms/AC-TestimonialBlock';
+import { AC_TikTokMetrics } from '../atomic/organisms/AC-TikTokMetrics';
 
 // Type definitions for component structure
 interface ComponentItem {
@@ -612,6 +628,96 @@ const componentCategories: ComponentCategories = {
         name: 'DA: Order Table (Demo)',
         component: DAOrderTableDemo,
       },
+      {
+        id: 'atomic-ac-article-hero',
+        name: 'AC: Article Hero Section (Migrated)',
+        component: ACArticleHeroAtomic,
+      },
+      {
+        id: 'atomic-ac-informational-briefing',
+        name: 'AC: Informational Briefing (Article Component)',
+        component: ACInformationalBriefing,
+      },
+      {
+        id: 'atomic-ac-mission-accomplished',
+        name: 'AC: Mission Accomplished (Article Component)',
+        component: ACMissionAccomplished,
+      },
+      {
+        id: 'atomic-ac-proceed-with-caution',
+        name: 'AC: Proceed with Caution (Article Component)',
+        component: ACProceedWithCaution,
+      },
+      {
+        id: 'atomic-ac-critical-alert',
+        name: 'AC: Critical Alert (Article Component)',
+        component: ACCriticalAlert,
+      },
+      {
+        id: 'atomic-ac-author-briefing',
+        name: 'AC: Author Briefing (Article Component)',
+        component: ACAuthorBriefingAtomic,
+      },
+      {
+        id: 'atomic-ac-command-list',
+        name: 'AC: Command List (Article Component)',
+        component: ACCommandListAtomic,
+      },
+      {
+        id: 'atomic-ac-data-table',
+        name: 'AC: Data Table (Article Component)',
+        component: ACDataTableAtomic,
+      },
+      {
+        id: 'atomic-ac-explore-further',
+        name: 'AC: Explore Further (Article Component)',
+        component: AC_ExploreFurther,
+      },
+      {
+        id: 'atomic-ac-faq-accordion',
+        name: 'AC: FAQ Accordion (Article Component)',
+        component: AC_FAQAccordion,
+      },
+      {
+        id: 'atomic-ac-key-takeaways',
+        name: 'AC: Key Takeaways (Article Component)',
+        component: AC_KeyTakeaways,
+      },
+      {
+        id: 'atomic-ac-milestone-celebration',
+        name: 'AC: Milestone Celebration (Article Component)',
+        component: AC_MilestoneCelebration,
+      },
+      {
+        id: 'atomic-ac-profit-command-dashboard',
+        name: 'AC: Profit Command Dashboard (Article Component)',
+        component: AC_ProfitCommandDashboard,
+      },
+      {
+        id: 'atomic-ac-share-dossier',
+        name: 'AC: Share Dossier (Article Component)',
+        component: AC_ShareDossier,
+      },
+      {
+        id: 'atomic-ac-summons-to-the-forge',
+        name: 'AC: Summons to the Forge (Article Component)',
+        component: AC_SummonsToTheForge,
+      },
+      {
+        id: 'atomic-ac-table-of-contents',
+        name: 'AC: Table of Contents (Article Component)',
+        component: AC_TableOfContents,
+      },
+      {
+        id: 'atomic-ac-testimonial-block',
+        name: 'AC: Testimonial Block (Article Component)',
+        component: AC_TestimonialBlock,
+      },
+      {
+        id: 'atomic-ac-tiktok-metrics',
+        name: 'AC: TikTok Metrics (Article Component)',
+        component: AC_TikTokMetrics,
+      },
     ],
   },
   'Blog Post Content Components': {
@@ -632,33 +738,12 @@ const componentCategories: ComponentCategories = {
         component: ACProfitCommandDashboard,
       },
     ],
-    'AC Series - Phase 2 (Content Structure)': [
-      {
-        id: 'ac-author-briefing',
-        name: 'AC-AuthorBriefing: Author Information Card',
-        component: ACAuthorBriefing,
-      },
-      {
-        id: 'ac-callout-advanced',
-        name: 'AC-Callout-Advanced: Enhanced Callout Box',
-        component: ACCalloutAdvanced,
-      },
-    ],
+    'AC Series - Phase 2 (Content Structure)': [],
     'AC Series - Phase 1 (Core Components)': [
-      {
-        id: 'ac-article-hero',
-        name: 'AC-ArticleHero: Article Header Section',
-        component: ACArticleHero,
-      },
       {
         id: 'ac-callout',
         name: 'AC-Callout: Information Callout Box',
         component: ACCallout,
-      },
-      {
-        id: 'ac-data-table',
-        name: 'AC-DataTable: Responsive Data Display',
-        component: ACDataTable,
       },
       {
         id: 'ac-key-takeaways',

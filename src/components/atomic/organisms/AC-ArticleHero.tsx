@@ -1,19 +1,34 @@
-import * as React from 'react';
-import { useEffect, useRef, useState } from 'react';
+/* eslint-disable */
+'use client';
 
-// --- TypeScript Interfaces ---
-interface ThemeToggleProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
+import { motion } from 'framer-motion';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-interface ComponentProps {
-  children?: React.ReactNode;
+// Theme Context & Provider
+const ThemeContext = createContext<any>(null);
+const useTheme = () => useContext(ThemeContext);
+
+const ThemeProvider: React.FC<any> = ({ children }: any) => {
+  const [theme, setTheme] = useState<string>('dark');
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove(theme === 'dark' ? 'light' : 'dark');
+    root.classList.add(theme);
+  }, [theme]);
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+};
+
+// Component Props Interface
+interface ArticleHeroProps {
+  category?: string;
+  title?: string;
+  author?: string;
+  date?: string;
   className?: string;
 }
 
-// --- Style Component for Genesis Artifact Effects (Self-Contained) ---
-const HighEndStyle: React.FC<any> = ({ theme }: any) => {
+// Style Component for Animation Effects
+const ArticleHeroStyles: React.FC<{ theme: string }> = ({ theme }) => {
   const accentColor = theme === 'dark' ? '45, 212, 191' : '147, 51, 234';
   return (
     <style>{`
@@ -72,7 +87,6 @@ const HighEndStyle: React.FC<any> = ({ theme }: any) => {
             position: relative;
             z-index: 10;
             text-align: center;
-            color: ${theme === 'dark' ? '#fff' : '#000'};
         }
         .hero-category {
             opacity: 0;
@@ -122,24 +136,24 @@ const HighEndStyle: React.FC<any> = ({ theme }: any) => {
   );
 };
 
-// --- Component: AC-ArticleHero (Genesis Artifact - Reforged) ---
-const AC_ArticleHero: React.FC<any> = ({ category, title, author, date, theme = 'dark' }: any) => {
+// Main Component
+const AC_ArticleHero: React.FC<ArticleHeroProps> = ({
+  category = 'Master Implementation Plan',
+  title = 'The Genesis Artifact',
+  author = 'Commander Thorne',
+  date = '2025-09-09',
+  className = '',
+}) => {
+  const { theme } = useTheme();
   const [isInitializing, setIsInitializing] = useState<boolean>(false);
 
   useEffect(() => {
-    // Trigger the animation sequence shortly after the component mounts.
     const timer = setTimeout(() => setIsInitializing(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  const themeClasses = {
-    dark: { text: 'text-slate-300', title: 'text-white' },
-    light: { text: 'text-slate-700', title: 'text-black' },
-  };
-  const currentTheme = (themeClasses as any)[theme];
-
   // Split title into characters for the forging animation
-  const titleChars = title.split('').map((char: any, index: any) => (
+  const titleChars = title.split('').map((char: string, index: number) => (
     <span key={index} className='hero-title-char' style={{ animationDelay: `${2 + index * 0.05}s` }}>
       {char === ' ' ? '\u00A0' : char}
     </span>
@@ -147,22 +161,22 @@ const AC_ArticleHero: React.FC<any> = ({ category, title, author, date, theme = 
 
   return (
     <>
-      <HighEndStyle theme={theme} />
-      <div className={`hero-artifact ${isInitializing ? 'is-initializing' : ''}`}>
+      <ArticleHeroStyles theme={theme} />
+      <div className={`hero-artifact ${isInitializing ? 'is-initializing' : ''} ${className}`}>
         <div className='hero-layer hero-grid-layer'></div>
         <div className='hero-layer hero-nebula-layer'></div>
         <div className='final-flash'></div>
 
-        <div className={`hero-content ${currentTheme.text}`}>
+        <div className='hero-content text-foreground'>
           <p
-            className={`hero-category font-mono text-lg font-bold uppercase tracking-widest ${
-              theme === 'dark' ? 'text-teal-400' : 'text-purple-600'
+            className={`hero-category font-mono text-body-lg font-bold uppercase tracking-widest ${
+              theme === 'dark' ? 'text-brand-teal-primary' : 'text-brand-purple-600'
             }`}
           >
             {category}
           </p>
-          <h1 className={`hero-title ${currentTheme.title}`}>{titleChars}</h1>
-          <div className='hero-meta font-semibold'>
+          <h1 className='hero-title text-foreground'>{titleChars}</h1>
+          <div className='hero-meta font-semibold text-muted-foreground'>
             <span>By {author}</span>
             <span className='mx-2'>&bull;</span>
             <span>{date}</span>
@@ -173,44 +187,24 @@ const AC_ArticleHero: React.FC<any> = ({ category, title, author, date, theme = 
   );
 };
 
-// --- Visualization App ---
-export default function App(): React.JSX.Element {
-  const [theme, setTheme] = useState<string>('dark');
-
-  const pageThemes = {
-    dark: 'bg-[#0A090F]',
-    light: 'bg-gradient-to-b from-indigo-100 to-white',
-  };
-
-  const heroData = {
-    category: 'Master Implementation Plan',
-    title: 'The Genesis Artifact',
-    author: 'Commander Thorne',
-    date: '2025-09-09',
-  };
-
+// Export wrapper
+const AppContent = () => {
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-500 ${(pageThemes as any)[theme]}`}>
-      {/* A key is used here to force re-mount and re-play the animation */}
-      <AC_ArticleHero key={theme} {...heroData} theme={theme} />
+    <AC_ArticleHero
+      category='Master Implementation Plan'
+      title='The Genesis Artifact'
+      author='Commander Thorne'
+      date='2025-09-09'
+    />
+  );
+};
 
-      <div className='fixed right-4 top-4 z-20'>
-        <button
-          onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-          className={`focus-outline-none relative inline-flex h-8 w-14 items-center rounded-full transition-colors duration-300 focus:ring-2 focus:ring-offset-2 ${
-            theme === 'dark'
-              ? 'bg-teal-500 focus:ring-teal-400 focus:ring-offset-[#0A090F]'
-              : 'bg-purple-600 focus:ring-purple-500 focus:ring-offset-gray-100'
-          }`}
-          aria-label='Toggle theme'
-        >
-          <span
-            className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform duration-300 ${
-              theme === 'dark' ? 'translate-x-1' : 'translate-x-7'
-            }`}
-          />
-        </button>
-      </div>
+export default function App(): React.JSX.Element {
+  return (
+    <div className='min-h-screen bg-background'>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
     </div>
   );
 }
