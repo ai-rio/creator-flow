@@ -13,7 +13,7 @@
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 
-import HPHero from './HP-Hero';
+import HPHero from '../../../design-system/prototypes/homepage/HP-Hero';
 import ThreeJSHeroAnimation from './ThreeJS-HeroAnimation';
 
 export interface EnhancedHeroSectionProps {

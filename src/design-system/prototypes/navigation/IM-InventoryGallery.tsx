@@ -7,8 +7,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 
-import { IM_GlassPane } from '../molecules/IM-GlassPane';
-import { IM_StockLevelBar } from '../molecules/IM-StockLevelBar';
+import { IM_GlassPane } from '../../../components/atomic/molecules/IM-GlassPane';
+import { IM_StockLevelBar } from '../../../components/atomic/molecules/IM-StockLevelBar';
 
 /**
  * IM-InventoryGallery - Inventory Art Gallery Component

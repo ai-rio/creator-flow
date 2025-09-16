@@ -8,9 +8,9 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 
-import IMActionGroup from '../molecules/IM-ActionGroup';
-import IMMetricCard from '../molecules/IM-MetricCard';
-import IMStockAlert from '../molecules/IM-StockAlert';
+import IMActionGroup from '../../../components/atomic/molecules/IM-ActionGroup';
+import IMMetricCard from '../../../components/atomic/molecules/IM-MetricCard';
+import IMStockAlert from '../../../components/atomic/molecules/IM-StockAlert';
 
 /**
  * IM-CriticalStock - Organism component for critical stock management

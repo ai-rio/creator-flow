@@ -1,29 +1,24 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Star, TrendingUp, Users, Zap } from 'lucide-react';
+import { TrendingUp, Users, Zap } from 'lucide-react';
 import React from 'react';
 
-import AnimatedBeam from '@/components/magicui/animated-beam';
 // Magic UI imports
 import NumberTicker from '@/components/magicui/number-ticker';
-import Particles from '@/components/magicui/particles';
 // UI component imports
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
 
+import HPHero from '../../../../design-system/prototypes/homepage/HP-Hero';
+import HPPricingTiersApp from '../../../../design-system/prototypes/homepage/HP-PricingTiers';
+import HPTestimonialsShowcaseApp from '../../../../design-system/prototypes/homepage/HP-TestimonialsShowcase';
 import { EnhancedCTA, MagneticButton } from '../../molecules/BentoInteractions';
-import { ConversionCTA, LikeButton } from '../../molecules/ConversionMicroInteractions';
+import { LikeButton } from '../../molecules/ConversionMicroInteractions';
 import DataFlowVisualization from '../../organisms/DataFlowVisualization';
 import { AccessibilityMotionProvider, useMotionPreferences } from '../layouts/AccessibilityMotionProvider';
 // Enhanced atomic component imports
 import { BentoCard, BentoGrid, BentoSection } from '../layouts/BentoGrid';
-
-// Organism imports (we'll use placeholders for now, can be enhanced with actual organisms)
-// import { Hero } from '../../organisms/HP-Hero';
-// import { BenefitsReel } from '../../organisms/HP-BenefitsReel';
-// import { PricingTiers } from '../../organisms/HP-PricingTiers';
-// import { TestimonialsShowcase } from '../../organisms/HP-TestimonialsShowcase';
 
 // ==================== TYPE DEFINITIONS ====================
 
@@ -38,65 +33,6 @@ export interface BentoHomepageProps {
   stats?: HomepageStats;
   className?: string;
 }
-
-// ==================== HERO BENTO COMPONENT ====================
-
-const HeroBento: React.FC = () => {
-  const { enableParticles, enableCelebrations } = useMotionPreferences();
-
-  return (
-    <div className='relative h-full overflow-hidden'>
-      {/* Enhanced background effects */}
-      <div className='absolute inset-0'>
-        {enableParticles && (
-          <Particles
-            className='absolute inset-0'
-            quantity={50}
-            ease={80}
-            color='#2dd4bf'
-            staticity={30}
-            vx={0.1}
-            vy={0.1}
-          />
-        )}
-        <div className='absolute inset-0 bg-gradient-to-br from-brand-teal-500/10 via-transparent to-brand-purple-500/10' />
-      </div>
-
-      {/* Hero content */}
-      <div className='relative z-10 flex h-full flex-col justify-center p-8 text-center'>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <h1 className='mb-4 text-4xl font-bold text-foreground lg:text-6xl'>
-            TikTok Shop
-            <br />
-            <span className='bg-gradient-to-r from-brand-teal-500 to-brand-purple-500 bg-clip-text text-transparent'>
-              Automation
-            </span>
-          </h1>
-          <p className='mx-auto mb-8 max-w-md text-lg text-muted-foreground'>
-            Automate your entire fulfillment process. From viral videos to delivered packages.
-          </p>
-          <div className='flex flex-col justify-center gap-4 sm:flex-row'>
-            <EnhancedCTA
-              text='Start Free Trial'
-              description='No credit card required'
-              variant='hero'
-              enableMagnetic={true}
-              enableParticles={enableCelebrations}
-            />
-            <MagneticButton variant='ghost' size='lg' className='group' magneticStrength={0.2}>
-              <Play className='mr-2 h-4 w-4 transition-transform group-hover:scale-110' />
-              Watch Demo
-            </MagneticButton>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
 
 // ==================== STATS SHOWCASE COMPONENT ====================
 
@@ -205,75 +141,54 @@ const FeaturesGrid: React.FC = () => {
   );
 };
 
-// ==================== TESTIMONIAL COMPONENT ====================
+// ==================== ORGANISM WRAPPERS FOR BENTO CARDS ====================
 
-const TestimonialBento: React.FC = () => {
+// Wrapper for HP-PricingTiers that adapts it to bento card size
+const HPPricingTiersBento: React.FC = () => {
   return (
-    <div className='p-8 text-center'>
-      <div className='mb-6'>
-        <div className='mb-4 flex justify-center gap-1'>
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className='h-5 w-5 fill-amber-400 text-amber-400' />
-          ))}
-        </div>
-        <blockquote className='mb-4 text-lg font-medium text-foreground'>
-          &ldquo;CreatorFlow turned my chaotic fulfillment into a smooth machine. Now I focus on creating, not
-          shipping.&rdquo;
-        </blockquote>
-        <div className='flex items-center justify-center gap-3'>
-          <div className='h-10 w-10 rounded-full bg-gradient-to-br from-brand-teal-400 to-brand-purple-400' />
-          <div className='text-left'>
-            <p className='font-semibold text-foreground'>Sarah Chen</p>
-            <p className='text-sm text-muted-foreground'>@sarahcreates • 2.3M followers</p>
-          </div>
-        </div>
-      </div>
+    <div className='pricing-bento-wrapper relative h-full w-full overflow-hidden'>
+      <style jsx global>{`
+        .pricing-bento-wrapper .min-h-screen {
+          height: 100% !important;
+          min-height: 300px !important;
+        }
+        .pricing-bento-wrapper [class*='h-[420px]'] {
+          height: auto !important;
+          min-height: 300px !important;
+        }
+        .pricing-bento-wrapper [class*='w-[320px]'] {
+          width: 100% !important;
+          max-width: 280px !important;
+        }
+        .pricing-bento-wrapper .fixed {
+          position: absolute !important;
+        }
+        .pricing-bento-wrapper .grid {
+          gap: 1rem !important;
+        }
+      `}</style>
+      <HPPricingTiersApp />
     </div>
   );
 };
 
-// ==================== PRICING PREVIEW COMPONENT ====================
-
-const PricingPreview: React.FC = () => {
+// Wrapper for HP-TestimonialsShowcase that adapts it to bento card
+const HPTestimonialsShowcaseBento: React.FC = () => {
   return (
-    <div className='p-6'>
-      <div className='mb-6 text-center'>
-        <h3 className='mb-2 text-xl font-bold text-foreground'>Simple Pricing</h3>
-        <p className='text-muted-foreground'>Start free, scale as you grow</p>
-      </div>
-
-      <div className='space-y-4'>
-        <div className='rounded-lg border border-border bg-card/50 p-4'>
-          <div className='mb-2 flex items-center justify-between'>
-            <span className='font-semibold text-foreground'>Starter</span>
-            <span className='text-2xl font-bold text-foreground'>Free</span>
-          </div>
-          <p className='mb-3 text-sm text-muted-foreground'>Up to 100 orders/month</p>
-          <ConversionCTA size='sm' variant='success' className='w-full'>
-            Get Started
-          </ConversionCTA>
-        </div>
-
-        <div className='rounded-lg border-2 border-primary bg-primary/5 p-4'>
-          <div className='mb-2 flex items-center justify-between'>
-            <span className='font-semibold text-foreground'>Pro</span>
-            <div className='text-right'>
-              <span className='text-2xl font-bold text-foreground'>$49</span>
-              <span className='text-sm text-muted-foreground'>/month</span>
-            </div>
-          </div>
-          <p className='mb-3 text-sm text-muted-foreground'>Up to 5,000 orders/month</p>
-          <ConversionCTA
-            size='sm'
-            variant='primary'
-            className='w-full'
-            enableSuccessAnimation={true}
-            conversionOptimized={true}
-          >
-            Start Free Trial
-          </ConversionCTA>
-        </div>
-      </div>
+    <div className='testimonials-bento-container relative h-full w-full overflow-hidden'>
+      <style jsx global>{`
+        .testimonials-bento-container .aspect-\\[4\\/3\\] {
+          height: 200px !important;
+          aspect-ratio: unset !important;
+        }
+        .testimonials-bento-container .scroller {
+          animation-duration: 60s !important;
+        }
+        .testimonials-bento-container .autoscroll-container {
+          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
+        }
+      `}</style>
+      <HPTestimonialsShowcaseApp />
     </div>
   );
 };
@@ -318,30 +233,6 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
   return (
     <AccessibilityMotionProvider respectSystemPreferences={true} enableUserPreferences={true}>
       <div className={cn('min-h-screen bg-background', className)}>
-        {/* Navigation Header */}
-        <motion.header
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className='sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm'
-        >
-          <div className='container mx-auto px-4 py-4'>
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center gap-2'>
-                <Zap className='h-6 w-6 text-brand-teal-600 dark:text-brand-teal-400' />
-                <span className='text-lg font-bold text-foreground'>CreatorFlow</span>
-              </div>
-              <div className='flex items-center gap-4'>
-                <MagneticButton variant='ghost' size='sm'>
-                  Login
-                </MagneticButton>
-                <ConversionCTA variant='primary' size='sm'>
-                  Sign Up
-                </ConversionCTA>
-              </div>
-            </div>
-          </div>
-        </motion.header>
-
         {/* Hero Section with Enhanced Bento Grid */}
         <BentoSection
           title='The Future of TikTok Shop Automation'
@@ -349,7 +240,7 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
           className='container mx-auto px-4'
         >
           <BentoGrid enableAdvancedMotion={true} motionVariant='cascade'>
-            {/* Hero Bento - Takes center stage */}
+            {/* Hero Bento - Now using HP-Hero organism */}
             <BentoCard
               size='hero'
               className='lg:col-span-2 lg:row-span-2'
@@ -358,7 +249,7 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
               interactionType='magnetic'
               magneticStrength={0.5}
             >
-              <HeroBento />
+              <HPHero />
             </BentoCard>
 
             {/* Stats Showcase */}
@@ -408,7 +299,7 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
               icon={Users}
               interactionType='standard'
             >
-              <TestimonialBento />
+              <HPTestimonialsShowcaseBento />
             </BentoCard>
 
             {/* Pricing Preview */}
@@ -420,7 +311,7 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
               interactionType='premium'
               hoverScale={1.04}
             >
-              <PricingPreview />
+              <HPPricingTiersBento />
             </BentoCard>
           </BentoGrid>
         </BentoSection>

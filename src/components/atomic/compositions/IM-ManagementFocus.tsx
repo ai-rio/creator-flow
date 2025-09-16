@@ -4,10 +4,10 @@
 import { motion } from 'framer-motion';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { IM_CriticalStockAlerts } from '../organisms/IM-CriticalStockAlerts';
-import { IM_InventoryGallery } from '../organisms/IM-InventoryGallery';
-import { IM_ManagementHeader } from '../organisms/IM-ManagementHeader';
-import { IM_SubNavBar } from '../organisms/IM-SubNavBar';
+import { IM_CriticalStockAlerts } from '../../../design-system/prototypes/navigation/IM-CriticalStockAlerts';
+import { IM_InventoryGallery } from '../../../design-system/prototypes/navigation/IM-InventoryGallery';
+import { IM_ManagementHeader } from '../../../design-system/prototypes/navigation/IM-ManagementHeader';
+import { IM_SubNavBar } from '../../../design-system/prototypes/navigation/IM-SubNavBar';
 import { IM_SyncMetrics } from '../molecules/IM-SyncMetrics';
 
 /**

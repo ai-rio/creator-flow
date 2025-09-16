@@ -56,12 +56,20 @@ All comprehensive project information is stored in memory files. Access via:
 
 All feature planning MUST follow MoSCoW prioritization: Must Have → Should Have → Could Have → Won't Have
 
+### **Frontend Assembly Documentation (SINGLE SOURCE OF TRUTH)**
+
+- **P001-REVISED**: Use `docs/development/frontend-assembly/00-planning/P001-REVISED-organism-integration-strategy.md` as THE definitive source for all frontend assembly work
+- **Organism Integration**: Leverage existing 88 sophisticated atomic organisms instead of recreating functionality
+- **Non-Destructive Enhancement**: Preserve existing layout, auth, themes, localization infrastructure
+- **Documentation Consolidation**: DO NOT create scattered implementation docs - reference P001-REVISED
+
 ### **CreatorFlow Specialization**
 
 - **TikTok Shop Integration**: Test webhook handling and API rate limits
 - **Order Processing**: Handle high-volume scenarios with proper error handling
 - **Security**: Implement proper webhook signature verification
 - **UI**: Use shadcn/ui components with accessibility compliance
+- **Atomic Design**: Leverage sophisticated organisms from `src/components/atomic/organisms/` rather than building simple implementations
 
 ### **Agent Workflow**
 

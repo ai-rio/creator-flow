@@ -7,7 +7,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { Card } from '@/components/ui/card';
 
-import IMStatusIndicator from '../atoms/IM-StatusIndicator';
+import IMStatusIndicator from '../../../components/atomic/atoms/IM-StatusIndicator';
 
 /**
  * IM-InventoryHeader - Organism component for inventory management header

@@ -3,9 +3,9 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { IM_CriticalStock } from '../organisms/IM-CriticalStock';
-import { IM_InventoryHeader } from '../organisms/IM-InventoryHeader';
-import { IM_SyncStatus } from '../organisms/IM-SyncStatus';
+import { IM_CriticalStock } from '../../../design-system/prototypes/navigation/IM-CriticalStock';
+import { IM_InventoryHeader } from '../../../design-system/prototypes/navigation/IM-InventoryHeader';
+import { IM_SyncStatus } from '../../../design-system/prototypes/navigation/IM-SyncStatus';
 
 /**
  * IM-InventoryCommand - Composition component for complete inventory management

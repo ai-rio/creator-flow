@@ -8,9 +8,9 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-import IM_BrandIcon from '../atoms/IM-BrandIcon';
-import IM_ThemeToggle from '../atoms/IM-ThemeToggle';
-import { IM_GlassPane } from '../molecules/IM-GlassPane';
+import IM_BrandIcon from '../../../components/atomic/atoms/IM-BrandIcon';
+import IM_ThemeToggle from '../../../components/atomic/atoms/IM-ThemeToggle';
+import { IM_GlassPane } from '../../../components/atomic/molecules/IM-GlassPane';
 
 /**
  * IM-ManagementHeader - Inventory Management Header Component
