@@ -6,27 +6,31 @@
  */
 
 // Bento Page Compositions
+export type { BentoAboutPageProps } from './BentoAboutPage';
+export { BentoAboutPage } from './BentoAboutPage';
+export type { BentoContactPageProps } from './BentoContactPage';
+export { BentoContactPage } from './BentoContactPage';
 export type { BentoHomepageProps, HomepageStats } from './BentoHomepage';
 export { BentoHomepage } from './BentoHomepage';
+export type { BentoPricingPageProps } from './BentoPricingPage';
+export { BentoPricingPage } from './BentoPricingPage';
 
 // Import components for grouped exports
+import { BentoAboutPage } from './BentoAboutPage';
+import { BentoContactPage } from './BentoContactPage';
 import { BentoHomepage } from './BentoHomepage';
-
-// Page Compositions (will be uncommented as they are implemented)
-// export { LandingPageComposition } from './LandingPageComposition';
-// export { AboutPageComposition } from './AboutPageComposition';
-// export { PricingPageComposition } from './PricingPageComposition';
+import { BentoPricingPage } from './BentoPricingPage';
 
 // Grouped page compositions for easy import
 export const PageCompositions = {
   BentoHomepage,
-  // LandingPage: LandingPageComposition,
-  // AboutPage: AboutPageComposition,
-  // PricingPage: PricingPageComposition,
+  BentoPricingPage,
+  BentoAboutPage,
+  BentoContactPage,
 };
 
 // Page types for TypeScript support
-export type PageType = 'homepage' | 'landing' | 'about' | 'pricing' | 'dashboard';
+export type PageType = 'homepage' | 'pricing' | 'about' | 'contact' | 'dashboard';
 
 // Page configuration interface
 export interface PageConfig {
@@ -38,4 +42,4 @@ export interface PageConfig {
   animations?: boolean;
 }
 
-// Note: Individual exports will be uncommented as pages are implemented
+// All public pages are now implemented with bento grid layouts

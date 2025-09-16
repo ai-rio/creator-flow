@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Play, Star, TrendingUp, Users, Zap } from 'lucide-react';
 import React from 'react';
 
+import AnimatedBeam from '@/components/magicui/animated-beam';
 // Magic UI imports
 import NumberTicker from '@/components/magicui/number-ticker';
 import Particles from '@/components/magicui/particles';
@@ -11,7 +12,11 @@ import Particles from '@/components/magicui/particles';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
 
-// Atomic component imports
+import { EnhancedCTA, MagneticButton } from '../../molecules/BentoInteractions';
+import { ConversionCTA, LikeButton } from '../../molecules/ConversionMicroInteractions';
+import DataFlowVisualization from '../../organisms/DataFlowVisualization';
+import { AccessibilityMotionProvider, useMotionPreferences } from '../layouts/AccessibilityMotionProvider';
+// Enhanced atomic component imports
 import { BentoCard, BentoGrid, BentoSection } from '../layouts/BentoGrid';
 
 // Organism imports (we'll use placeholders for now, can be enhanced with actual organisms)
@@ -37,11 +42,23 @@ export interface BentoHomepageProps {
 // ==================== HERO BENTO COMPONENT ====================
 
 const HeroBento: React.FC = () => {
+  const { enableParticles, enableCelebrations } = useMotionPreferences();
+
   return (
     <div className='relative h-full overflow-hidden'>
-      {/* Background effects */}
+      {/* Enhanced background effects */}
       <div className='absolute inset-0'>
-        <Particles className='absolute inset-0' quantity={50} ease={80} color='#2dd4bf' />
+        {enableParticles && (
+          <Particles
+            className='absolute inset-0'
+            quantity={50}
+            ease={80}
+            color='#2dd4bf'
+            staticity={30}
+            vx={0.1}
+            vy={0.1}
+          />
+        )}
         <div className='absolute inset-0 bg-gradient-to-br from-brand-teal-500/10 via-transparent to-brand-purple-500/10' />
       </div>
 
@@ -63,14 +80,17 @@ const HeroBento: React.FC = () => {
             Automate your entire fulfillment process. From viral videos to delivered packages.
           </p>
           <div className='flex flex-col justify-center gap-4 sm:flex-row'>
-            <Button size='lg' className='hover:bg-brand-teal-700 bg-brand-teal-600'>
-              Start Free Trial
-              <ArrowRight className='ml-2 h-4 w-4' />
-            </Button>
-            <Button variant='outline' size='lg' className='group'>
+            <EnhancedCTA
+              text='Start Free Trial'
+              description='No credit card required'
+              variant='hero'
+              enableMagnetic={true}
+              enableParticles={enableCelebrations}
+            />
+            <MagneticButton variant='ghost' size='lg' className='group' magneticStrength={0.2}>
               <Play className='mr-2 h-4 w-4 transition-transform group-hover:scale-110' />
               Watch Demo
-            </Button>
+            </MagneticButton>
           </div>
         </motion.div>
       </div>
@@ -81,30 +101,59 @@ const HeroBento: React.FC = () => {
 // ==================== STATS SHOWCASE COMPONENT ====================
 
 const StatsShowcase: React.FC<{ stats: HomepageStats }> = ({ stats }) => {
+  const { enableCelebrations } = useMotionPreferences();
+
   return (
     <div className='grid grid-cols-2 gap-6 p-8'>
       <div className='text-center'>
-        <div className='mb-2 text-3xl font-bold text-brand-teal-600 dark:text-brand-teal-400'>
-          <NumberTicker value={stats.creatorsServed} />+
+        <div className='mb-2'>
+          <NumberTicker
+            value={stats.creatorsServed}
+            variant='metric'
+            enableCreatorFlowEffects={true}
+            enableCelebration={enableCelebrations}
+            milestoneValues={[1000, 5000, 10000]}
+            suffix='+'
+          />
         </div>
         <p className='text-sm text-muted-foreground'>Creators Served</p>
       </div>
       <div className='text-center'>
-        <div className='mb-2 text-3xl font-bold text-brand-purple-600 dark:text-brand-purple-400'>
-          <NumberTicker value={stats.ordersProcessed} />
-          K+
+        <div className='mb-2'>
+          <NumberTicker
+            value={stats.ordersProcessed}
+            variant='metric'
+            enableCreatorFlowEffects={true}
+            suffix='K+'
+            className='text-brand-purple-600 dark:text-brand-purple-400'
+          />
         </div>
         <p className='text-sm text-muted-foreground'>Orders Processed</p>
       </div>
       <div className='text-center'>
-        <div className='mb-2 text-3xl font-bold text-emerald-600 dark:text-emerald-400'>
-          <NumberTicker value={stats.automationSavings} />%
+        <div className='mb-2'>
+          <NumberTicker
+            value={stats.automationSavings}
+            variant='metric'
+            enableCreatorFlowEffects={true}
+            suffix='%'
+            className='text-success-green-600 dark:text-success-green-400'
+          />
         </div>
         <p className='text-sm text-muted-foreground'>Time Saved</p>
       </div>
       <div className='text-center'>
-        <div className='mb-2 text-3xl font-bold text-amber-600 dark:text-amber-400'>
-          <NumberTicker value={stats.satisfactionRate} decimalPlaces={1} />%
+        <div className='mb-2'>
+          <NumberTicker
+            value={stats.satisfactionRate}
+            variant='metric'
+            enableCreatorFlowEffects={true}
+            decimalPlaces={1}
+            suffix='%'
+            className='text-warning-amber-600 dark:text-warning-amber-400'
+            enableCelebration={enableCelebrations}
+            milestoneValues={[95, 98, 99]}
+          />
         </div>
         <p className='text-sm text-muted-foreground'>Satisfaction</p>
       </div>
@@ -200,9 +249,9 @@ const PricingPreview: React.FC = () => {
             <span className='text-2xl font-bold text-foreground'>Free</span>
           </div>
           <p className='mb-3 text-sm text-muted-foreground'>Up to 100 orders/month</p>
-          <Button variant='outline' size='sm' className='w-full'>
+          <ConversionCTA size='sm' variant='success' className='w-full'>
             Get Started
-          </Button>
+          </ConversionCTA>
         </div>
 
         <div className='rounded-lg border-2 border-primary bg-primary/5 p-4'>
@@ -214,11 +263,38 @@ const PricingPreview: React.FC = () => {
             </div>
           </div>
           <p className='mb-3 text-sm text-muted-foreground'>Up to 5,000 orders/month</p>
-          <Button size='sm' className='w-full'>
+          <ConversionCTA
+            size='sm'
+            variant='primary'
+            className='w-full'
+            enableSuccessAnimation={true}
+            conversionOptimized={true}
+          >
             Start Free Trial
-          </Button>
+          </ConversionCTA>
         </div>
       </div>
+    </div>
+  );
+};
+
+// ==================== DATA FLOW SHOWCASE COMPONENT ====================
+
+const DataFlowShowcase: React.FC = () => {
+  return (
+    <div className='p-6'>
+      <div className='mb-4 text-center'>
+        <h3 className='mb-2 text-xl font-bold text-foreground'>Live System Integration</h3>
+        <p className='text-sm text-muted-foreground'>Watch your business flow in real-time</p>
+      </div>
+
+      <DataFlowVisualization
+        variant='homepage'
+        enableRealTimeEffects={true}
+        showMetrics={false}
+        interactive={true}
+        className='h-64'
+      />
     </div>
   );
 };
@@ -240,110 +316,148 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('min-h-screen bg-background', className)}>
-      {/* Navigation Header */}
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className='sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm'
-      >
-        <div className='container mx-auto px-4 py-4'>
-          <div className='flex items-center justify-between'>
-            <div className='flex items-center gap-2'>
-              <Zap className='h-6 w-6 text-brand-teal-600 dark:text-brand-teal-400' />
-              <span className='text-lg font-bold text-foreground'>CreatorFlow</span>
-            </div>
-            <div className='flex items-center gap-4'>
-              <Button variant='ghost' size='sm'>
-                Login
-              </Button>
-              <Button size='sm'>Sign Up</Button>
-            </div>
-          </div>
-        </div>
-      </motion.header>
-
-      {/* Hero Section with Bento Grid */}
-      <BentoSection
-        title='The Future of TikTok Shop Automation'
-        subtitle="Join thousands of creators who've automated their fulfillment"
-        className='container mx-auto px-4'
-      >
-        <BentoGrid>
-          {/* Hero Bento - Takes center stage */}
-          <BentoCard size='hero' className='lg:col-span-2 lg:row-span-2' delay={0.1}>
-            <HeroBento />
-          </BentoCard>
-
-          {/* Stats Showcase */}
-          <BentoCard
-            name='Trusted by Creators'
-            description='Real numbers from real creators'
-            size='medium'
-            delay={0.2}
-            icon={TrendingUp}
-          >
-            <StatsShowcase stats={stats} />
-          </BentoCard>
-
-          {/* Features Overview */}
-          <BentoCard
-            name='Key Features'
-            description='Everything you need to automate your shop'
-            size='medium'
-            delay={0.3}
-            icon={Zap}
-          >
-            <FeaturesGrid />
-          </BentoCard>
-
-          {/* Testimonial */}
-          <BentoCard
-            name='Creator Success'
-            description='See what creators are saying'
-            size='large'
-            delay={0.4}
-            icon={Users}
-          >
-            <TestimonialBento />
-          </BentoCard>
-
-          {/* Pricing Preview */}
-          <BentoCard
-            name='Simple Pricing'
-            description="Start free, upgrade when you're ready"
-            size='medium'
-            delay={0.5}
-          >
-            <PricingPreview />
-          </BentoCard>
-        </BentoGrid>
-      </BentoSection>
-
-      {/* Call to Action Section */}
-      <section className='container mx-auto px-4 py-16 text-center'>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+    <AccessibilityMotionProvider respectSystemPreferences={true} enableUserPreferences={true}>
+      <div className={cn('min-h-screen bg-background', className)}>
+        {/* Navigation Header */}
+        <motion.header
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className='sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm'
         >
-          <h2 className='mb-4 text-3xl font-bold text-foreground lg:text-4xl'>Ready to Automate Your Success?</h2>
-          <p className='mx-auto mb-8 max-w-2xl text-lg text-muted-foreground'>
-            Join the automation revolution. Start free and scale your TikTok Shop without the headaches.
-          </p>
-          <div className='flex flex-col justify-center gap-4 sm:flex-row'>
-            <Button size='lg' className='hover:bg-brand-teal-700 bg-brand-teal-600'>
-              Start Your Free Trial
-              <ArrowRight className='ml-2 h-4 w-4' />
-            </Button>
-            <Button variant='outline' size='lg'>
-              Book a Demo
-            </Button>
+          <div className='container mx-auto px-4 py-4'>
+            <div className='flex items-center justify-between'>
+              <div className='flex items-center gap-2'>
+                <Zap className='h-6 w-6 text-brand-teal-600 dark:text-brand-teal-400' />
+                <span className='text-lg font-bold text-foreground'>CreatorFlow</span>
+              </div>
+              <div className='flex items-center gap-4'>
+                <MagneticButton variant='ghost' size='sm'>
+                  Login
+                </MagneticButton>
+                <ConversionCTA variant='primary' size='sm'>
+                  Sign Up
+                </ConversionCTA>
+              </div>
+            </div>
           </div>
-        </motion.div>
-      </section>
-    </div>
+        </motion.header>
+
+        {/* Hero Section with Enhanced Bento Grid */}
+        <BentoSection
+          title='The Future of TikTok Shop Automation'
+          subtitle="Join thousands of creators who've automated their fulfillment"
+          className='container mx-auto px-4'
+        >
+          <BentoGrid enableAdvancedMotion={true} motionVariant='cascade'>
+            {/* Hero Bento - Takes center stage */}
+            <BentoCard
+              size='hero'
+              className='lg:col-span-2 lg:row-span-2'
+              delay={0.1}
+              motionVariant='hero'
+              interactionType='magnetic'
+              magneticStrength={0.5}
+            >
+              <HeroBento />
+            </BentoCard>
+
+            {/* Stats Showcase */}
+            <BentoCard
+              name='Trusted by Creators'
+              description='Real numbers from real creators'
+              size='medium'
+              delay={0.2}
+              icon={TrendingUp}
+              interactionType='premium'
+              hoverScale={1.05}
+            >
+              <StatsShowcase stats={stats} />
+            </BentoCard>
+
+            {/* Features Overview */}
+            <BentoCard
+              name='Key Features'
+              description='Everything you need to automate your shop'
+              size='medium'
+              delay={0.3}
+              icon={Zap}
+              interactionType='magnetic'
+              magneticStrength={0.3}
+            >
+              <FeaturesGrid />
+            </BentoCard>
+
+            {/* Data Flow Visualization */}
+            <BentoCard
+              name='Live System Flow'
+              description='See your automation in action'
+              size='large'
+              delay={0.4}
+              icon={TrendingUp}
+              interactionType='premium'
+            >
+              <DataFlowShowcase />
+            </BentoCard>
+
+            {/* Testimonial */}
+            <BentoCard
+              name='Creator Success'
+              description='See what creators are saying'
+              size='medium'
+              delay={0.5}
+              icon={Users}
+              interactionType='standard'
+            >
+              <TestimonialBento />
+            </BentoCard>
+
+            {/* Pricing Preview */}
+            <BentoCard
+              name='Simple Pricing'
+              description="Start free, upgrade when you're ready"
+              size='medium'
+              delay={0.6}
+              interactionType='premium'
+              hoverScale={1.04}
+            >
+              <PricingPreview />
+            </BentoCard>
+          </BentoGrid>
+        </BentoSection>
+
+        {/* Enhanced Call to Action Section */}
+        <section className='container mx-auto px-4 py-16 text-center'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className='mb-4 text-3xl font-bold text-foreground lg:text-4xl'>Ready to Automate Your Success?</h2>
+            <p className='mx-auto mb-8 max-w-2xl text-lg text-muted-foreground'>
+              Join the automation revolution. Start free and scale your TikTok Shop without the headaches.
+            </p>
+            <div className='flex flex-col justify-center gap-4 sm:flex-row'>
+              <EnhancedCTA
+                text='Start Your Free Trial'
+                description='Join 10,000+ creators'
+                variant='conversion'
+                enableMagnetic={true}
+                enableParticles={true}
+              />
+              <MagneticButton variant='secondary' size='lg' magneticStrength={0.3}>
+                Book a Demo
+              </MagneticButton>
+            </div>
+
+            {/* Like button for engagement */}
+            <div className='mt-8 flex justify-center'>
+              <LikeButton variant='heart' size='lg' count={1247} liked={false} />
+            </div>
+          </motion.div>
+        </section>
+      </div>
+    </AccessibilityMotionProvider>
   );
 };
 

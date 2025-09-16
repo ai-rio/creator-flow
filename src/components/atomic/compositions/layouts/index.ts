@@ -9,6 +9,10 @@
 export type { BentoCardProps, BentoGridProps, BentoSectionProps } from './BentoGrid';
 export { BentoCard, BentoGrid, BentoSection } from './BentoGrid';
 
+// Enhanced Motion System
+export * from './AccessibilityMotionProvider';
+export * from './BentoMotion';
+
 // Layout Compositions (will be uncommented as they are implemented)
 // export { DashboardLayout } from './DashboardLayout';
 // export { ContentLayout } from './ContentLayout';

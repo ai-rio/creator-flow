@@ -57,4 +57,8 @@ export const ControlMolecules = {
 // CreatorFlow Enhanced Molecules
 // Note: Three.js WebGL components and their controls are managed separately
 
+// Enhanced Interaction Components
+export * from './BentoInteractions';
+export * from './ConversionMicroInteractions';
+
 // Note: Individual component exports will be uncommented as components are migrated

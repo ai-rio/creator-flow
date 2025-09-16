@@ -22,6 +22,12 @@ export interface AnimatedBeamProps {
   startYOffset?: number;
   endXOffset?: number;
   endYOffset?: number;
+  // Enhanced CreatorFlow features
+  variant?: 'default' | 'tiktok' | 'revenue' | 'data' | 'viral';
+  enablePulse?: boolean;
+  enableParticles?: boolean;
+  intensity?: 'low' | 'medium' | 'high';
+  enableCreatorFlowEffects?: boolean;
 }
 
 export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
@@ -42,10 +48,62 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   startYOffset = 0,
   endXOffset = 0,
   endYOffset = 0,
+  // Enhanced CreatorFlow features
+  variant = 'default',
+  enablePulse = false,
+  enableParticles = false,
+  intensity = 'medium',
+  enableCreatorFlowEffects = false,
 }) => {
   const id = useId();
+  const particleId = useId();
   const [pathD, setPathD] = useState('');
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
+
+  // CreatorFlow variant configurations
+  const variantConfigs = {
+    default: {
+      gradientStart: gradientStartColor,
+      gradientStop: gradientStopColor,
+      pathColor: pathColor,
+      pathWidth: pathWidth,
+    },
+    tiktok: {
+      gradientStart: '#ff0050',
+      gradientStop: '#25f4ee',
+      pathColor: '#ff0050',
+      pathWidth: 3,
+    },
+    revenue: {
+      gradientStart: '#22c55e',
+      gradientStop: '#14b8a6',
+      pathColor: '#22c55e',
+      pathWidth: 4,
+    },
+    data: {
+      gradientStart: '#3b82f6',
+      gradientStop: '#8b5cf6',
+      pathColor: '#3b82f6',
+      pathWidth: 2,
+    },
+    viral: {
+      gradientStart: '#ff0050',
+      gradientStop: '#fbbf24',
+      pathColor: '#ff0050',
+      pathWidth: 5,
+    },
+  };
+
+  const config = variantConfigs[variant];
+
+  // Intensity-based settings
+  const intensitySettings = {
+    low: { particleCount: 2, animationSpeed: 0.5, opacity: 0.6 },
+    medium: { particleCount: 4, animationSpeed: 1, opacity: 0.8 },
+    high: { particleCount: 8, animationSpeed: 1.5, opacity: 1 },
+  };
+
+  const settings = intensitySettings[intensity];
 
   const updatePath = useCallback(() => {
     if (containerRef.current && fromRef.current && toRef.current) {
@@ -90,32 +148,99 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       className={cn('pointer-events-none absolute left-0 top-0 transform-gpu', className)}
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
     >
-      <path d={pathD} stroke={pathColor} strokeWidth={pathWidth} strokeOpacity={pathOpacity} fill='none' />
+      {/* Base path */}
       <path
         d={pathD}
-        strokeWidth={pathWidth}
+        stroke={config.pathColor}
+        strokeWidth={config.pathWidth}
+        strokeOpacity={pathOpacity}
+        fill='none'
+      />
+
+      {/* Main animated beam */}
+      <path
+        d={pathD}
+        strokeWidth={config.pathWidth}
         stroke={`url(#${id})`}
-        strokeOpacity='1'
+        strokeOpacity={settings.opacity}
         fill='none'
         strokeLinecap='round'
         strokeDasharray='0 9999'
-        className='animate-pulse'
+        className={enablePulse ? 'animate-pulse' : ''}
       >
         <animate
           attributeName='stroke-dasharray'
           values={reverse ? '0 9999;75 9999;0 9999' : '0 9999;75 9999;0 9999'}
-          dur={`${duration}s`}
+          dur={`${duration / settings.animationSpeed}s`}
           begin={`${delay}s`}
           repeatCount='indefinite'
         />
       </path>
+
+      {/* Enhanced pulse effect for CreatorFlow */}
+      {enableCreatorFlowEffects && enablePulse && (
+        <path
+          d={pathD}
+          strokeWidth={config.pathWidth + 2}
+          stroke={config.gradientStart}
+          strokeOpacity='0.3'
+          fill='none'
+          strokeLinecap='round'
+        >
+          <animate
+            attributeName='stroke-opacity'
+            values='0.1;0.5;0.1'
+            dur={`${duration * 0.7}s`}
+            begin={`${delay}s`}
+            repeatCount='indefinite'
+          />
+        </path>
+      )}
+
+      {/* Particle effects */}
+      {enableParticles &&
+        Array.from({ length: settings.particleCount }).map((_, i) => (
+          <circle
+            key={i}
+            r={variant === 'viral' ? '4' : '2'}
+            fill={config.gradientStart}
+            opacity={settings.opacity * 0.8}
+          >
+            <animateMotion
+              dur={`${(duration + i) / settings.animationSpeed}s`}
+              begin={`${delay + i * 0.5}s`}
+              repeatCount='indefinite'
+              path={pathD}
+            />
+            <animate
+              attributeName='opacity'
+              values={`0;${settings.opacity * 0.8};0`}
+              dur={`${duration / settings.animationSpeed}s`}
+              begin={`${delay + i * 0.5}s`}
+              repeatCount='indefinite'
+            />
+          </circle>
+        ))}
+
+      {/* Gradient definitions */}
       <defs>
         <linearGradient className={cn('transform-gpu')} id={id} x1='0%' x2='100%' y1='0%' y2='0%'>
-          <stop stopColor={gradientStartColor} stopOpacity='0' />
-          <stop stopColor={gradientStartColor} />
-          <stop offset='32.5%' stopColor={gradientStopColor} />
-          <stop offset='100%' stopColor={gradientStopColor} stopOpacity='0' />
+          <stop stopColor={config.gradientStart} stopOpacity='0' />
+          <stop stopColor={config.gradientStart} />
+          <stop offset='32.5%' stopColor={config.gradientStop} />
+          <stop offset='100%' stopColor={config.gradientStop} stopOpacity='0' />
         </linearGradient>
+
+        {/* Enhanced glow gradient for CreatorFlow */}
+        {enableCreatorFlowEffects && (
+          <filter id={`glow-${id}`}>
+            <feGaussianBlur stdDeviation='3' result='coloredBlur' />
+            <feMerge>
+              <feMergeNode in='coloredBlur' />
+              <feMergeNode in='SourceGraphic' />
+            </feMerge>
+          </filter>
+        )}
       </defs>
     </svg>
   );

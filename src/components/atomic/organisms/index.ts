@@ -101,3 +101,6 @@ export { default as LPLegalCovenant } from './LP-LegalCovenant';
 export { default as BPCompleteContentHub } from './BP-CompleteContentHub';
 export { default as BPContentHubToolbar } from './BP-ContentHubToolbar';
 export { default as BPPostCard } from './BP-PostCard';
+
+// Data Visualization Components
+export { default as DataFlowVisualization } from './DataFlowVisualization';
