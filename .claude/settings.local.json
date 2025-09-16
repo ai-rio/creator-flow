@@ -60,7 +60,8 @@
       "Bash(find:*)",
       "Bash(bun:*)",
       "Bash(timeout:*)",
-      "mcp__serena__find_referencing_symbols"
+      "mcp__serena__find_referencing_symbols",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []
