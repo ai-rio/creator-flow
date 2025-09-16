@@ -247,9 +247,8 @@ const AnimatedPath: React.FC<AnimatedPathProps> = ({
             key={i}
             r='3'
             fill={color}
-            initial={{ offsetDistance: '0%', opacity: 0 }}
+            initial={{ opacity: 0 }}
             animate={{
-              offsetDistance: '100%',
               opacity: [0, 1, 0],
             }}
             transition={{

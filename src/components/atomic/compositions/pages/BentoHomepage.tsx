@@ -237,7 +237,7 @@ export const BentoHomepage: React.FC<BentoHomepageProps> = ({
         <BentoSection
           title='The Future of TikTok Shop Automation'
           subtitle="Join thousands of creators who've automated their fulfillment"
-          className='container mx-auto px-4'
+          className='container mx-auto px-4 pt-24'
         >
           <BentoGrid enableAdvancedMotion={true} motionVariant='cascade'>
             {/* Hero Bento - Now using HP-Hero organism */}

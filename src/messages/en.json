@@ -1,7 +1,7 @@
 {
   "navigation": {
     "dashboard": "Dashboard",
-    "orders": "Orders", 
+    "orders": "Orders",
     "analytics": "Analytics",
     "settings": "Settings"
   },
@@ -9,7 +9,7 @@
     "title": "Order Management",
     "status": {
       "received": "Received",
-      "processing": "Processing", 
+      "processing": "Processing",
       "shipped": "Shipped",
       "delivered": "Delivered"
     }
@@ -18,6 +18,37 @@
     "login": "Login",
     "signup": "Sign Up",
     "logout": "Logout"
+  },
+  "account": {
+    "title": "Account",
+    "subtitle": "We partnered with Stripe for a simplified billing.",
+    "noSubscription": "No subscription",
+    "noSubscriptionDescription": "You are not subscribed to any plan.",
+    "manageSubscription": "Manage subscription",
+    "choosePlan": "Choose a plan"
+  },
+  "dashboard": {
+    "title": "CreatorFlow CEO Command Center"
+  },
+  "header": {
+    "actions": {
+      "newReport": "New Report",
+      "createWorkflow": "Create Workflow",
+      "addTeamMember": "Add Team Member"
+    },
+    "userMenu": {
+      "accountSettings": "Account Settings",
+      "billingSubscription": "Billing & Subscription",
+      "helpCenter": "Help Center",
+      "signOut": "Sign Out"
+    },
+    "search": {
+      "placeholder": "Global Search (Orders, Products, Intel...)"
+    },
+    "user": {
+      "username": "@ceo",
+      "tier": "Creator Tier"
+    }
   },
   "errors": {
     "pageNotFound": "Page not found",

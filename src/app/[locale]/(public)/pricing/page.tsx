@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 
-// Bento grid pricing page import
-import { BentoPricingPage } from '@/components/atomic/compositions/pages/BentoPricingPage';
+import { PricingSection } from '@/features/pricing/components/pricing-section';
 
 export const metadata: Metadata = {
   title: 'CreatorFlow Pricing - Scale Your TikTok Shop Automation',
@@ -22,17 +21,29 @@ export const metadata: Metadata = {
 };
 
 /**
- * CreatorFlow Pricing Page with Enhanced Bento Grid Layout
+ * CreatorFlow Pricing Page with Stripe Integration
  *
  * Features:
- * - Mobile-first responsive pricing tables
- * - Bento grid layout with animated components
- * - Currency localization support
- * - Stripe integration preview
- * - Feature comparison tables
- * - Conversion-optimized design
- * - SEO-optimized with structured data
+ * - Real Stripe checkout integration
+ * - Dynamic pricing from database
+ * - Functional plan selection
+ * - Mobile-responsive design
  */
 export default function PricingPage() {
-  return <BentoPricingPage className='relative' />;
+  return (
+    <div className='min-h-screen bg-background'>
+      <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8'>
+        <div className='text-center'>
+          <h1 className='text-4xl font-bold tracking-tight text-foreground sm:text-6xl'>Simple, transparent pricing</h1>
+          <p className='mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground'>
+            Choose the perfect plan for your TikTok Shop automation needs. Start free and scale as you grow.
+          </p>
+        </div>
+
+        <div className='mt-16'>
+          <PricingSection />
+        </div>
+      </div>
+    </div>
+  );
 }

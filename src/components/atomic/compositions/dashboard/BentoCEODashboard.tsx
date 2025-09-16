@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { BarChart3, BrainCircuit, Command, Palette, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 // Magic UI imports
@@ -156,6 +157,8 @@ export const BentoCEODashboard: React.FC<BentoCEODashboardProps> = ({
   className,
   userId = 'ceo',
 }) => {
+  const t = useTranslations('dashboard');
+
   return (
     <div className={cn('min-h-screen bg-background', className)}>
       {/* Mobile CEO Header */}
@@ -168,7 +171,7 @@ export const BentoCEODashboard: React.FC<BentoCEODashboardProps> = ({
           <div className='flex items-center gap-3'>
             <div className='flex items-center gap-2'>
               <Zap className='h-6 w-6 text-brand-teal-600 dark:text-brand-teal-400' />
-              <h1 className='text-lg font-bold text-foreground'>CreatorFlow CEO</h1>
+              <h1 className='text-lg font-bold text-foreground'>{t('title')}</h1>
             </div>
             <div className='flex items-center gap-1 text-xs'>
               <span>🎯</span>

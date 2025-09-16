@@ -173,8 +173,15 @@ export function useReducedMotion(): boolean {
 export function useScrollAnimation() {
   const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const element = ref.current;
     if (!element) return;
 

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 // Import our new bento CEO dashboard system
 import { BentoCEODashboard } from '@/components/atomic/compositions/dashboard/BentoCEODashboard';
+import { getSession } from '@/features/account/controllers/get-session';
 
 export const metadata: Metadata = {
   title: 'CreatorFlow CEO Dashboard - Business Intelligence & Automation Control',
@@ -21,7 +23,14 @@ export const metadata: Metadata = {
  * - Localization-ready with NextIntl integration
  * - Performance-optimized for <2 second mobile load times
  */
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  // Check authentication
+  const session = await getSession();
+
+  if (!session) {
+    redirect('/login');
+  }
+
   // Real-time business metrics - in production these would come from API
   const dashboardStats = {
     todayRevenue: 18420, // Today's revenue in dollars
@@ -31,5 +40,5 @@ export default function DashboardPage() {
     systemHealth: 'excellent' as const, // Overall system health status
   };
 
-  return <BentoCEODashboard stats={dashboardStats} userId='ceo' className='min-h-screen' />;
+  return <BentoCEODashboard stats={dashboardStats} userId={session.user.id} className='min-h-screen' />;
 }

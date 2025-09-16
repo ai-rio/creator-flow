@@ -2,7 +2,7 @@
   "navigation": {
     "dashboard": "Painel",
     "orders": "Pedidos",
-    "analytics": "Análises", 
+    "analytics": "Análises",
     "settings": "Configurações"
   },
   "orders": {
@@ -10,7 +10,7 @@
     "status": {
       "received": "Recebido",
       "processing": "Processando",
-      "shipped": "Enviado", 
+      "shipped": "Enviado",
       "delivered": "Entregue"
     }
   },
@@ -18,6 +18,37 @@
     "login": "Entrar",
     "signup": "Cadastrar",
     "logout": "Sair"
+  },
+  "account": {
+    "title": "Conta",
+    "subtitle": "Fizemos parceria com o Stripe para uma cobrança simplificada.",
+    "noSubscription": "Sem assinatura",
+    "noSubscriptionDescription": "Você não está inscrito em nenhum plano.",
+    "manageSubscription": "Gerenciar assinatura",
+    "choosePlan": "Escolher um plano"
+  },
+  "dashboard": {
+    "title": "Centro de Comando CEO CreatorFlow"
+  },
+  "header": {
+    "actions": {
+      "newReport": "Novo Relatório",
+      "createWorkflow": "Criar Fluxo de Trabalho",
+      "addTeamMember": "Adicionar Membro da Equipe"
+    },
+    "userMenu": {
+      "accountSettings": "Configurações da Conta",
+      "billingSubscription": "Cobrança e Assinatura",
+      "helpCenter": "Central de Ajuda",
+      "signOut": "Sair"
+    },
+    "search": {
+      "placeholder": "Busca Global (Pedidos, Produtos, Intel...)"
+    },
+    "user": {
+      "username": "@ceo",
+      "tier": "Nível Criador"
+    }
   },
   "errors": {
     "pageNotFound": "Página não encontrada",

@@ -7,7 +7,11 @@ import { getURL } from '@/utils/get-url';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
+  // Extract locale from URL
+  const url = new URL(request.url);
+  const locale = url.pathname.split('/')[1];
+
   // 1. Get the user from session
   const session = await getSession();
 
@@ -25,10 +29,10 @@ export async function GET() {
   }
 
   // 3. Create portal link and redirect user
-  const { url } = await stripeAdmin.billingPortal.sessions.create({
+  const { url: portalUrl } = await stripeAdmin.billingPortal.sessions.create({
     customer,
-    return_url: `${getURL()}/dashboard`,
+    return_url: `${getURL()}/${locale}/account`,
   });
 
-  redirect(url);
+  return redirect(portalUrl);
 }
