@@ -54,6 +54,36 @@
     "pageNotFound": "Página no encontrada",
     "goHome": "Ir al Inicio"
   },
+  "footer": {
+    "brand": {
+      "tagline": "El centro de comando automatizado para creadores ambiciosos de TikTok Shop."
+    },
+    "sections": {
+      "product": {
+        "title": "Producto",
+        "features": "Funcionalidades",
+        "pricing": "Precios",
+        "changelog": "Registro de cambios"
+      },
+      "company": {
+        "title": "Empresa",
+        "about": "Sobre nosotros",
+        "contact": "Contacto",
+        "blog": "Blog"
+      },
+      "legal": {
+        "title": "Legal",
+        "privacy": "Política de Privacidad",
+        "terms": "Términos de Servicio"
+      }
+    },
+    "social": {
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram"
+    },
+    "copyright": "© {year} CreatorFlow. Todos los derechos reservados."
+  },
   "test": {
     "welcome": "¡Bienvenido a CreatorFlow!",
     "description": "Esta es una página de prueba para la integración de Tolgee."
