@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ArrowRight, Bolt, Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -40,10 +41,12 @@ const Logo = () => (
 );
 
 const Navigation = ({ isScrolled }: { isScrolled: boolean }) => {
+  const t = useTranslations('header');
+
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Testimonials', href: '#testimonials' },
+    { name: t('navigation.features'), href: '#features' },
+    { name: t('navigation.pricing'), href: '#pricing' },
+    { name: t('navigation.testimonials'), href: '#testimonials' },
   ];
 
   return (
@@ -75,6 +78,7 @@ const Navigation = ({ isScrolled }: { isScrolled: boolean }) => {
 };
 
 const CTA = ({ isScrolled }: { isScrolled: boolean }) => {
+  const t = useTranslations('header');
   // For now, we'll assume unauthenticated since this is client-side
   // In a real implementation, you'd use a client-side auth hook
   const isAuthenticated = false; // TODO: Replace with actual auth state
@@ -114,7 +118,7 @@ const CTA = ({ isScrolled }: { isScrolled: boolean }) => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              {isAuthenticated ? 'Dashboard' : 'Start Free Trial'}
+              {isAuthenticated ? t('cta.dashboard') : t('cta.startTrial')}
             </motion.a>
           </Button>
         )}
@@ -146,6 +150,7 @@ const MobileMenuButton = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (
 );
 
 export const HomepageHeader = () => {
+  const t = useTranslations('header');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -166,9 +171,9 @@ export const HomepageHeader = () => {
   });
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Testimonials', href: '#testimonials' },
+    { name: t('navigation.features'), href: '#features' },
+    { name: t('navigation.pricing'), href: '#pricing' },
+    { name: t('navigation.testimonials'), href: '#testimonials' },
   ];
 
   return (
@@ -220,7 +225,7 @@ export const HomepageHeader = () => {
                   asChild
                 >
                   <motion.a href='/login' whileTap={{ scale: 0.95 }} onClick={() => setIsMobileMenuOpen(false)}>
-                    Start Free Trial
+                    {t('cta.startTrial')}
                   </motion.a>
                 </Button>
               </div>

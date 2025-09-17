@@ -61,7 +61,12 @@
       "Bash(bun:*)",
       "Bash(timeout:*)",
       "mcp__serena__find_referencing_symbols",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(npx eslint:*)",
+      "Bash(ss:*)",
+      "mcp__shadcn__search_items_in_registries",
+      "mcp__shadcn__get_item_examples_from_registries",
+      "mcp__shadcn__get_add_command_for_items"
     ],
     "deny": [],
     "ask": []

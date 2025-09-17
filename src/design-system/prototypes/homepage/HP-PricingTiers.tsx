@@ -233,10 +233,10 @@ const Starfield = () => (
   >
     <svg width='100%' height='100%' className='absolute inset-0'>
       {Array.from({ length: 150 }).map((_, i) => {
-        const cx = Math.random() * 100;
-        const cy = Math.random() * 100;
-        const r = Math.random() * 0.75 + 0.25;
-        const duration = Math.random() * 5 + 5;
+        const cx = (i * 37) % 100;
+        const cy = (i * 73) % 100;
+        const r = (i % 4) * 0.25 + 0.25;
+        const duration = (i % 5) + 5;
         return (
           <motion.circle
             key={i}

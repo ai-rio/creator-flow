@@ -98,14 +98,14 @@ const StarVortex = () => (
       <rect width='100%' height='100%' fill='url(#nebula)' />
       {Array.from({ length: 200 }).map((_, i) => {
         const angle = (i / 200) * Math.PI * 2;
-        const radius = Math.random() * 50 + 5;
-        const duration = Math.random() * 10 + 10;
+        const radius = (i % 50) + 5;
+        const duration = (i % 10) + 10;
         return (
           <motion.circle
             key={i}
             cx='50%'
             cy='50%'
-            r={Math.random() * 0.75 + 0.25}
+            r={(i % 4) * 0.25 + 0.25}
             fill='white'
             animate={{
               x: `${radius * Math.cos(angle)}%`,
@@ -117,7 +117,7 @@ const StarVortex = () => (
               duration,
               repeat: Infinity,
               ease: 'linear',
-              delay: Math.random() * -duration,
+              delay: (i % 10) * -1,
             }}
           />
         );

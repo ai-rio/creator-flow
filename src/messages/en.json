@@ -31,6 +31,15 @@
     "title": "CreatorFlow CEO Command Center"
   },
   "header": {
+    "navigation": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "testimonials": "Testimonials"
+    },
+    "cta": {
+      "dashboard": "Dashboard",
+      "startTrial": "Start Free Trial"
+    },
     "actions": {
       "newReport": "New Report",
       "createWorkflow": "Create Workflow",
@@ -55,6 +64,8 @@
     "goHome": "Go to Home"
   },
   "footer": {
+    "testTitle": "TEST RED FOOTER",
+    "pathLabel": "Path:",
     "brand": {
       "tagline": "The automated command center for ambitious TikTok Shop creators."
     },
@@ -82,7 +93,7 @@
       "facebook": "Facebook",
       "instagram": "Instagram"
     },
-    "copyright": "© {year} CreatorFlow. All rights reserved."
+    "copyright": "© 2025 CreatorFlow. All rights reserved."
   },
   "test": {
     "welcome": "Welcome to CreatorFlow!",

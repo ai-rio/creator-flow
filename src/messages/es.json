@@ -31,6 +31,15 @@
     "title": "Centro de Comando CEO CreatorFlow"
   },
   "header": {
+    "navigation": {
+      "features": "Funcionalidades",
+      "pricing": "Precios",
+      "testimonials": "Testimonios"
+    },
+    "cta": {
+      "dashboard": "Panel",
+      "startTrial": "Comenzar Prueba Gratuita"
+    },
     "actions": {
       "newReport": "Nuevo Reporte",
       "createWorkflow": "Crear Flujo de Trabajo",
@@ -55,6 +64,8 @@
     "goHome": "Ir al Inicio"
   },
   "footer": {
+    "testTitle": "PIE DE PÁGINA ROJO DE PRUEBA",
+    "pathLabel": "Ruta:",
     "brand": {
       "tagline": "El centro de comando automatizado para creadores ambiciosos de TikTok Shop."
     },
@@ -82,7 +93,7 @@
       "facebook": "Facebook",
       "instagram": "Instagram"
     },
-    "copyright": "© {year} CreatorFlow. Todos los derechos reservados."
+    "copyright": "© 2025 CreatorFlow. Todos los derechos reservados."
   },
   "test": {
     "welcome": "¡Bienvenido a CreatorFlow!",

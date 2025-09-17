@@ -627,7 +627,7 @@ export const LikeButton: React.FC<LikeButtonProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          {count.toLocaleString()}
+          {count >= 1000 ? `${(count / 1000).toFixed(1)}k` : count.toString()}
         </motion.span>
       )}
 
