@@ -26,13 +26,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className='scroll-smooth' suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased transition-colors duration-300',
           montserrat.variable,
           montserratAlternates.variable
         )}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute='class'

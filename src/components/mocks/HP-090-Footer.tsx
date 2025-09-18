@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Bolt, Instagram, Linkedin, Moon, Sun, Twitter } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
@@ -33,40 +34,56 @@ export default function FooterShowcase(): React.JSX.Element {
 
 // --- HP-090-Footer Component ---
 const HP090Footer = () => {
+  const t = useTranslations('footer');
+
   const linkSections = [
-    { title: 'Product', links: ['Features', 'Pricing', 'Testimonials'] },
-    { title: 'Company', links: ['About Us', 'Careers', 'Contact'] },
-    { title: 'Legal', links: ['Privacy Policy', 'Terms of Service'] },
+    {
+      title: t('sections.product.title'),
+      links: [t('sections.product.features'), t('sections.product.pricing'), t('sections.product.testimonials')],
+    },
+    {
+      title: t('sections.company.title'),
+      links: [t('sections.company.about'), t('sections.company.careers'), t('sections.company.contact')],
+    },
+    { title: t('sections.legal.title'), links: [t('sections.legal.privacy'), t('sections.legal.terms')] },
   ];
   const socialLinks = [{ Icon: Twitter }, { Icon: Instagram }, { Icon: Linkedin }];
 
   return (
-    <footer className='relative w-full overflow-hidden bg-slate-200/50 dark:bg-black/20'>
-      <div className='relative z-10 mx-auto max-w-6xl px-8 py-16'>
-        {/* Event Horizon Separator */}
-        <div className='mb-16 h-px w-full bg-gradient-to-r from-transparent via-blue-500/50 to-transparent' />
-
+    <footer className='-mx-4 -mt-1 w-screen bg-background transition-colors duration-300'>
+      <div className='mx-auto max-w-6xl px-8 pb-16 pt-0'>
+        {/* Main Footer Content */}
         <div className='grid grid-cols-1 gap-12 md:grid-cols-5'>
+          {/* Brand Section */}
           <div className='md:col-span-2'>
-            <a href='#' className='flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-slate-100'>
-              <Bolt className='h-6 w-6 text-blue-600 dark:text-blue-400' />
+            <a href='#' className='flex items-center gap-2 text-xl font-bold text-foreground'>
+              <Bolt className='h-6 w-6 text-primary' />
               CreatorFlow
             </a>
-            <p className='mt-4 max-w-xs text-sm text-slate-600 dark:text-slate-400'>
-              The automated command center for ambitious TikTok Shop creators.
-            </p>
+            <p className='mt-4 max-w-xs text-sm text-muted-foreground'>{t('brand.tagline')}</p>
+
+            {/* Social Links - Mobile Optimized */}
+            <div className='mt-6 flex gap-4 md:hidden'>
+              {socialLinks.map((social, i) => (
+                <a
+                  key={i}
+                  href='#'
+                  className='flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:text-primary'
+                >
+                  <social.Icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
 
+          {/* Navigation Links */}
           {linkSections.map((section) => (
             <div key={section.title}>
-              <h3 className='font-semibold text-slate-800 dark:text-slate-200'>{section.title}</h3>
+              <h3 className='font-semibold text-foreground'>{section.title}</h3>
               <ul className='mt-4 space-y-3'>
                 {section.links.map((link) => (
                   <li key={link}>
-                    <a
-                      href='#'
-                      className='text-sm text-slate-600 transition-colors hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400'
-                    >
+                    <a href='#' className='text-sm text-muted-foreground transition-colors hover:text-primary'>
                       {link}
                     </a>
                   </li>
@@ -76,17 +93,14 @@ const HP090Footer = () => {
           ))}
         </div>
 
-        <div className='mt-16 flex flex-col items-center justify-between border-t border-slate-900/10 pt-8 dark:border-slate-100/10 md:flex-row'>
-          <p className='text-sm text-slate-600 dark:text-slate-400'>
-            © {new Date().getFullYear()} CreatorFlow. All rights reserved.
-          </p>
-          <div className='mt-4 flex gap-6 md:mt-0'>
+        {/* Bottom Section */}
+        <div className='mt-16 flex flex-col items-center justify-between border-t border-border pt-8 md:flex-row'>
+          <p className='text-sm text-muted-foreground'>{t('copyright')}</p>
+
+          {/* Desktop Social Links */}
+          <div className='mt-4 hidden gap-6 md:mt-0 md:flex'>
             {socialLinks.map((social, i) => (
-              <a
-                key={i}
-                href='#'
-                className='text-slate-600 transition-colors hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400'
-              >
+              <a key={i} href='#' className='text-muted-foreground transition-colors hover:text-primary'>
                 <social.Icon size={20} />
               </a>
             ))}
@@ -101,7 +115,7 @@ const HP090Footer = () => {
 const ThemeToggleButton = ({ theme, setTheme }: any) => (
   <motion.button
     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-    className='fixed right-4 top-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-slate-900/10 bg-slate-200/50 text-slate-800 backdrop-blur-xl dark:border-slate-100/10 dark:bg-white/5 dark:text-slate-200'
+    className='fixed right-4 top-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background/50 text-foreground backdrop-blur-xl'
     aria-label='Toggle theme'
     whileHover={{ scale: 1.1, rotate: 15 }}
     whileTap={{ scale: 0.9, rotate: -15 }}

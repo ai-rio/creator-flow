@@ -74,13 +74,13 @@
         "title": "Product",
         "features": "Features",
         "pricing": "Pricing",
-        "changelog": "Changelog"
+        "testimonials": "Testimonials"
       },
       "company": {
         "title": "Company",
         "about": "About",
-        "contact": "Contact",
-        "blog": "Blog"
+        "careers": "Careers",
+        "contact": "Contact"
       },
       "legal": {
         "title": "Legal",
@@ -90,8 +90,8 @@
     },
     "social": {
       "twitter": "Twitter",
-      "facebook": "Facebook",
-      "instagram": "Instagram"
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
     },
     "copyright": "© 2025 CreatorFlow. All rights reserved."
   },
