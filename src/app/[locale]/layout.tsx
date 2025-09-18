@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5';
 
 import ConditionalFooter from '@/components/layout/ConditionalFooter';
@@ -23,6 +23,9 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   if (!locales.includes(locale as any)) notFound();
+
+  // Enable static rendering and set the locale
+  setRequestLocale(locale);
 
   // Providing all messages to the client
   // side is the easiest way to get started

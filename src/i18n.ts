@@ -1,30 +1,23 @@
-import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 
-import { locales } from './lib/i18n/config';
-
 export default getRequestConfig(async ({ locale }) => {
-  console.log('i18n config - locale:', locale);
-
-  if (!locale || !locales.includes(locale as any)) {
-    locale = 'en';
+  console.log('i18n config - received locale param:', locale);
+  
+  // Use the locale parameter directly if provided
+  let finalLocale = locale;
+  
+  // Final validation and fallback
+  if (!finalLocale || !['en', 'es', 'pt-br'].includes(finalLocale)) {
+    finalLocale = 'en';
   }
 
-  console.log('i18n config - final locale:', locale);
+  console.log('i18n config - final locale:', finalLocale);
 
-  try {
-    const messages = (await import(`./messages/${locale}.json`)).default;
-    console.log('i18n config - loaded messages for:', locale, 'keys:', Object.keys(messages));
-    return {
-      locale,
-      messages,
-    };
-  } catch (error) {
-    console.error(`Failed to load messages for locale ${locale}:`, error);
-    const fallbackMessages = (await import(`./messages/en.json`)).default;
-    return {
-      locale: 'en',
-      messages: fallbackMessages,
-    };
-  }
+  const messages = (await import(`./messages/${finalLocale}.json`)).default;
+  console.log('i18n config - loaded messages for:', finalLocale);
+  
+  return {
+    locale: finalLocale,
+    messages
+  };
 });

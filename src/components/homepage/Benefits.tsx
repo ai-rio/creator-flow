@@ -2,6 +2,7 @@
 
 import { animate, AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { PackageCheck, ShieldCheck, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
@@ -12,42 +13,43 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * seamless integration with the Hero section.
  *
  * UPDATED: Now uses CreatorFlow theme system with proper theme awareness
+ * and internationalization support
  */
 
-// Benefits data for CreatorFlow
-const benefits = [
-  {
-    Icon: ShieldCheck,
-    title: 'Automation Savings',
-    description:
-      'Save an average of $27,000/month in operational costs with a fully automated order and shipping workflow.',
-    value: 27000,
-    prefix: '$',
-    suffix: '/mo',
-    color: 'green',
-  },
-  {
-    Icon: PackageCheck,
-    title: 'Inventory Accuracy',
-    description: 'Prevent $8,400/month in costly oversells with real-time, sub-5-second inventory tracking.',
-    value: 8400,
-    prefix: '$',
-    suffix: '/mo',
-    color: 'purple',
-  },
-  {
-    Icon: Zap,
-    title: 'Processing Speed',
-    description: 'Reduce order import times from 12 minutes down to 30 seconds.',
-    value: 24, // Represents 12m -> 30s as a multiplier
-    prefix: '24x',
-    suffix: 'Faster',
-    color: 'blue',
-  },
-];
-
 export function Benefits() {
+  const t = useTranslations('homepage.benefits');
   const targetRef = useRef(null);
+
+  // Benefits data for CreatorFlow with translations
+  const benefits = [
+    {
+      Icon: ShieldCheck,
+      title: t('automationSavings.title'),
+      description: t('automationSavings.description'),
+      value: 27000,
+      prefix: '$',
+      suffix: '/mo',
+      color: 'green',
+    },
+    {
+      Icon: PackageCheck,
+      title: t('inventoryAccuracy.title'),
+      description: t('inventoryAccuracy.description'),
+      value: 8400,
+      prefix: '$',
+      suffix: '/mo',
+      color: 'purple',
+    },
+    {
+      Icon: Zap,
+      title: t('processingSpeed.title'),
+      description: t('processingSpeed.description'),
+      value: 24, // Represents 12m -> 30s as a multiplier
+      prefix: '24x',
+      suffix: 'Faster',
+      color: 'blue',
+    },
+  ];
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start start', 'end end'],
@@ -86,11 +88,10 @@ export function Benefits() {
         {/* Content */}
         <div className='relative flex flex-col items-center px-8 text-center'>
           <h2 className='mb-4 bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-3xl font-extrabold tracking-tight text-transparent md:text-5xl'>
-            Automate Operations. Amplify Revenue.
+            {t('title')}
           </h2>
           <p className='mx-auto mb-16 max-w-2xl text-base text-muted-foreground'>
-            CreatorFlow isn&apos;t just a tool—it&apos;s a measurable competitive advantage. See the real-world impact
-            on your bottom line.
+            {t('description')}
           </p>
           <AnimatePresence mode='wait'>
             <BenefitCard key={activeIndex} data={benefits[activeIndex]} />

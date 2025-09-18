@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CheckCircle, ShieldCheck, TrendingUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 /**
  * HOMEPAGE HERO SECTION
@@ -10,8 +11,11 @@ import { CheckCircle, ShieldCheck, TrendingUp } from 'lucide-react';
  * for the actual CreatorFlow homepage.
  *
  * UPDATED: Now uses CreatorFlow theme system with proper theme awareness
+ * and internationalization support
  */
 export function Hero() {
+  const t = useTranslations('homepage.hero');
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
@@ -39,17 +43,17 @@ export function Hero() {
           variants={itemVariants}
           className='text-5xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl'
         >
-          Scale Your TikTok Shop
+          {t('title')}
           <br />
           <span className='bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent'>
-            From Chaos to Command
+            {t('subtitle')}
           </span>
         </motion.h1>
 
         <motion.p variants={itemVariants} className='mx-auto mt-8 max-w-3xl text-xl text-muted-foreground md:text-2xl'>
-          The only fulfillment automation platform built for viral TikTok creators.
+          {t('description')}
           <br />
-          Transform 50 orders into 500+ without breaking a sweat.
+          {t('subdescription')}
         </motion.p>
 
         <motion.div variants={itemVariants} className='mt-12 flex flex-col gap-4 sm:flex-row sm:justify-center'>
@@ -59,7 +63,7 @@ export function Hero() {
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring' as any, stiffness: 300, damping: 20 }}
           >
-            Start Building
+            {t('actions.startBuilding')}
           </motion.button>
           <motion.button
             className='rounded-lg border border-border bg-transparent px-8 py-4 text-lg font-semibold text-foreground transition-all hover:bg-accent'
@@ -67,7 +71,7 @@ export function Hero() {
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring' as any, stiffness: 300, damping: 20 }}
           >
-            Request a demo
+            {t('actions.requestDemo')}
           </motion.button>
         </motion.div>
 
@@ -79,46 +83,50 @@ export function Hero() {
   );
 }
 
-const CommandCenterSnippet = () => (
-  <div className='relative rounded-xl bg-gradient-to-b from-muted/50 to-transparent p-1'>
-    <div className='rounded-[11px] border border-border bg-card/80 p-6 shadow-2xl backdrop-blur-2xl'>
-      <div className='mb-6 flex items-center justify-between'>
-        <h3 className='font-semibold text-card-foreground'>Live Operations Overview</h3>
-        <div className='flex items-center gap-2 text-xs text-green-600 dark:text-green-400'>
-          <motion.div
-            className='h-2 w-2 rounded-full bg-current'
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 1, repeat: Infinity }}
+const CommandCenterSnippet = () => {
+  const t = useTranslations('homepage.hero.liveOverview');
+
+  return (
+    <div className='relative rounded-xl bg-gradient-to-b from-muted/50 to-transparent p-1'>
+      <div className='rounded-[11px] border border-border bg-card/80 p-6 shadow-2xl backdrop-blur-2xl'>
+        <div className='mb-6 flex items-center justify-between'>
+          <h3 className='font-semibold text-card-foreground'>{t('title')}</h3>
+          <div className='flex items-center gap-2 text-xs text-green-600 dark:text-green-400'>
+            <motion.div
+              className='h-2 w-2 rounded-full bg-current'
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            />
+            <span>{t('status')}</span>
+          </div>
+        </div>
+        <div className='grid grid-cols-1 gap-6 text-left md:grid-cols-3'>
+          <MetricCard
+            Icon={TrendingUp}
+            label={t('metrics.ordersProcessed')}
+            value='1,204'
+            color='text-blue-600 dark:text-blue-400'
           />
-          <span>LIVE</span>
+          <HeartbeatMetricCard
+            Icon={ShieldCheck}
+            label={t('metrics.automationSavings')}
+            value='$4,567'
+            color='text-green-600 dark:text-green-400'
+          />
+          <MetricCard
+            Icon={CheckCircle}
+            label={t('metrics.inventorySync')}
+            value='99.98%'
+            color='text-purple-600 dark:text-purple-400'
+          />
+        </div>
+        <div className='relative mt-6 h-24'>
+          <AnimatedLineGraph />
         </div>
       </div>
-      <div className='grid grid-cols-1 gap-6 text-left md:grid-cols-3'>
-        <MetricCard
-          Icon={TrendingUp}
-          label='Orders Processed Today'
-          value='1,204'
-          color='text-blue-600 dark:text-blue-400'
-        />
-        <HeartbeatMetricCard
-          Icon={ShieldCheck}
-          label='Automation Savings'
-          value='$4,567'
-          color='text-green-600 dark:text-green-400'
-        />
-        <MetricCard
-          Icon={CheckCircle}
-          label='Inventory Sync'
-          value='99.98%'
-          color='text-purple-600 dark:text-purple-400'
-        />
-      </div>
-      <div className='relative mt-6 h-24'>
-        <AnimatedLineGraph />
-      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MetricCard = ({ Icon, label, value, color }: any) => (
   <div>

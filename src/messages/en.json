@@ -95,6 +95,108 @@
     },
     "copyright": "© 2025 CreatorFlow. All rights reserved."
   },
+  "homepage": {
+    "hero": {
+      "title": "Scale Your TikTok Shop",
+      "subtitle": "From Chaos to Command",
+      "description": "The only fulfillment automation platform built for viral TikTok creators.",
+      "subdescription": "Transform 50 orders into 500+ without breaking a sweat.",
+      "actions": {
+        "startBuilding": "Start Building",
+        "requestDemo": "Request a demo"
+      },
+      "liveOverview": {
+        "title": "Live Operations Overview",
+        "status": "LIVE",
+        "metrics": {
+          "ordersProcessed": "Orders Processed Today",
+          "automationSavings": "Automation Savings",
+          "inventorySync": "Inventory Sync"
+        }
+      }
+    },
+    "benefits": {
+      "title": "Automate Operations. Amplify Revenue.",
+      "description": "CreatorFlow isn't just a tool—it's a measurable competitive advantage. See the real-world impact on your bottom line.",
+      "automationSavings": {
+        "title": "Automation Savings",
+        "description": "Save an average of $27,000/month in operational costs with a fully automated order and shipping workflow.",
+        "value": "$27k/mo"
+      },
+      "inventoryAccuracy": {
+        "title": "Inventory Accuracy",
+        "description": "Prevent $8,400/month in costly oversells with real-time, sub-5-second inventory tracking.",
+        "value": "$8.4k/mo"
+      },
+      "processingSpeed": {
+        "title": "Processing Speed",
+        "description": "Reduce order import times from 12 minutes down to 30 seconds.",
+        "value": "24x Faster"
+      }
+    },
+    "showcase": {
+      "title": "The Data Weave.",
+      "subtitle": "Where TikTok Shop data threads are woven into a tapestry of command.",
+      "metrics": {
+        "totalRevenue": "Total Revenue",
+        "todaysOrders": "Today's Orders", 
+        "repeatCustomers": "Repeat Customers"
+      },
+      "cards": {
+        "revenueMasterpiece": "Revenue Masterpiece",
+        "clickToExpand": "Click to expand",
+        "automationLiberation": "Automation Liberation",
+        "savingHours": "Saving an average of",
+        "hoursPerWeek": "hours per week",
+        "satisfaction": "satisfaction"
+      },
+      "analytics": {
+        "title": "TikTok Shop Analytics",
+        "liveData": "Live Data",
+        "description": "Real-time CreatorFlow performance metrics and trends",
+        "monthlyRevenue": "Monthly Revenue",
+        "orderVolume": "Order Volume",
+        "vsLastMonth": "vs last month",
+        "processing": "Processing",
+        "automatedFulfillment": "automated fulfillment"
+      }
+    },
+    "testimonials": {
+      "title": "What Creators Say",
+      "subtitle": "Join the creators who turned chaos into command. Their success is our foundation.",
+      "quotes": {
+        "viral_creator": "CreatorFlow didn't just organize my business, it unlocked a new level of growth I never thought possible.",
+        "ecom_queen": "The automation saved me over 40 hours a week. It's like having a full-time operations manager.",
+        "tiktok_hustler": "Inventory syncing is flawless. I haven't oversold a single item since switching.",
+        "gadget_guru": "My order processing went from 15 minutes to literally 15 seconds. Game changer.",
+        "style_sensei": "The CEO dashboard gives me the clarity to make real, data-driven decisions. My revenue is up 40%.",
+        "crafty_creator": "I can finally focus on creating, not logistics. CreatorFlow handles everything."
+      },
+      "metrics": {
+        "ordersPerDay": "Orders/Day",
+        "savedPerMonth": "Saved/Mo",
+        "accuracy": "Accuracy",
+        "faster": "Faster",
+        "revenue": "Revenue",
+        "focus": "Focus"
+      }
+    },
+    "cta": {
+      "title": "Ready to Scale Your TikTok Shop?",
+      "subtitle": "Join thousands of creators who've transformed chaos into command",
+      "description": "Start your 14-day free trial and see why CreatorFlow is the #1 choice for viral TikTok creators.",
+      "actions": {
+        "startFreeTrial": "Start Free Trial",
+        "bookDemo": "Book a Demo"
+      },
+      "features": {
+        "noSetupFees": "No setup fees",
+        "setupTime": "Setup in 5 Minutes",
+        "cancelAnytime": "Cancel anytime",
+        "fullSupport": "Full support included"
+      }
+    }
+  },
   "test": {
     "welcome": "Welcome to CreatorFlow!",
     "description": "This is a test page for Tolgee integration."

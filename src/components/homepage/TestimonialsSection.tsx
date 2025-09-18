@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 /**
  * HOMEPAGE TESTIMONIALS SECTION
@@ -10,50 +11,48 @@ import { Star } from 'lucide-react';
  * for the actual CreatorFlow homepage.
  *
  * UPDATED: Now uses CreatorFlow theme system with proper theme awareness
+ * and internationalization support
  */
 
 // --- Mock Data for Creator Testimonials ---
-const testimonials = [
+const getTestimonials = (t: any) => [
   {
     handle: '@viral_creator',
-    quote: "CreatorFlow didn't just organize my business, it unlocked a new level of growth I never thought possible.",
-    metric: '500+ Orders/Day',
+    quote: t('quotes.viral_creator'),
+    metric: '500+ ' + t('metrics.ordersPerDay'),
     img: 'https://placehold.co/100x100/1e293b/ffffff?text=VC',
   },
   {
     handle: '@ecom_queen',
-    quote: "The automation saved me over 40 hours a week. It's like having a full-time operations manager.",
-    metric: '$27k Saved/Mo',
+    quote: t('quotes.ecom_queen'),
+    metric: '$27k ' + t('metrics.savedPerMonth'),
     img: 'https://placehold.co/100x100/475569/ffffff?text=EQ',
   },
   {
     handle: '@tiktok_hustler',
-    quote: "Inventory syncing is flawless. I haven't oversold a single item since switching.",
-    metric: '99.9% Accuracy',
+    quote: t('quotes.tiktok_hustler'),
+    metric: '99.9% ' + t('metrics.accuracy'),
     img: 'https://placehold.co/100x100/64748b/ffffff?text=TH',
   },
   {
     handle: '@gadget_guru',
-    quote: 'My order processing went from 15 minutes to literally 15 seconds. Game changer.',
-    metric: '60x Faster',
+    quote: t('quotes.gadget_guru'),
+    metric: '60x ' + t('metrics.faster'),
     img: 'https://placehold.co/100x100/1e293b/ffffff?text=GG',
   },
   {
     handle: '@style_sensei',
-    quote: 'The CEO dashboard gives me the clarity to make real, data-driven decisions. My revenue is up 40%.',
-    metric: '+40% Revenue',
+    quote: t('quotes.style_sensei'),
+    metric: '+40% ' + t('metrics.revenue'),
     img: 'https://placehold.co/100x100/475569/ffffff?text=SS',
   },
   {
     handle: '@crafty_creator',
-    quote: 'I can finally focus on creating, not logistics. CreatorFlow handles everything.',
-    metric: '100% Focus',
+    quote: t('quotes.crafty_creator'),
+    metric: '100% ' + t('metrics.focus'),
     img: 'https://placehold.co/100x100/64748b/ffffff?text=CC',
   },
 ];
-
-// Extend testimonials for seamless infinite scroll
-const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
 // --- Testimonial Card Component ---
 const TestimonialCard = ({ handle, quote, metric, img }: any) => {
@@ -92,6 +91,12 @@ const TestimonialCard = ({ handle, quote, metric, img }: any) => {
 
 // --- Main Testimonials Section ---
 export function TestimonialsSection() {
+  const t = useTranslations('homepage.testimonials');
+  const testimonials = getTestimonials(t);
+  
+  // Extend testimonials for seamless infinite scroll
+  const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
+
   return (
     <section className='-mx-4 w-screen bg-background py-24 transition-colors duration-300'>
       <style jsx>{`
@@ -120,7 +125,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            The Wall of Growth
+            {t('title')}
           </motion.h2>
           <motion.p
             className='mx-auto mt-4 max-w-2xl text-base text-muted-foreground'
@@ -129,7 +134,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            Join the creators who turned chaos into command. Their success is our foundation.
+            {t('subtitle')}
           </motion.p>
         </div>
 

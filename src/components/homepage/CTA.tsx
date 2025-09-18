@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 /**
  * HOMEPAGE CTA SECTION
@@ -63,6 +64,8 @@ const StarVortex = () => (
 
 // --- Main CTA Section ---
 export function CTA() {
+  const t = useTranslations('homepage.cta');
+
   return (
     <>
       {/* Global CSS for exact supernova button effect */}
@@ -123,7 +126,7 @@ export function CTA() {
               }}
               className='bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-4xl font-black tracking-tight text-transparent md:text-6xl'
             >
-              Ready to Command Your Growth?
+              {t('title')}
             </motion.h2>
 
             {/* Supporting Copy */}
@@ -140,8 +143,7 @@ export function CTA() {
               }}
               className='mx-auto mt-6 max-w-2xl text-lg text-muted-foreground'
             >
-              Join thousands of creators who transformed chaos into profit. Start your journey to TikTok Shop mastery
-              today.
+              {t('subtitle')}
             </motion.p>
 
             {/* CTA Button (EXACT MATCH) */}
@@ -175,7 +177,7 @@ export function CTA() {
                   damping: 15,
                 }}
               >
-                Start Your 14-Day Free Trial
+                {t('actions.startFreeTrial')}
               </motion.a>
             </motion.div>
 
@@ -195,15 +197,15 @@ export function CTA() {
               <div className='flex flex-wrap items-center justify-center gap-6'>
                 <span className='flex items-center gap-2'>
                   <div className='h-2 w-2 rounded-full bg-green-500'></div>
-                  No Credit Card Required
+                  {t('features.noSetupFees')}
                 </span>
                 <span className='flex items-center gap-2'>
                   <div className='h-2 w-2 rounded-full bg-blue-500'></div>
-                  Setup in 5 Minutes
+                  {t('features.setupTime')}
                 </span>
                 <span className='flex items-center gap-2'>
                   <div className='h-2 w-2 rounded-full bg-purple-500'></div>
-                  Cancel Anytime
+                  {t('features.cancelAnytime')}
                 </span>
               </div>
             </motion.div>

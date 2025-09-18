@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Clock, DollarSign, Repeat, ShoppingCart, TrendingDown, TrendingUp, Users, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { Area, AreaChart, CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis } from 'recharts';
 
@@ -20,13 +21,6 @@ import { ChartConfig, ChartContainer } from '@/components/ui/chart';
  * - Performance-optimized particle system
  * - Enhanced hover effects and micro-interactions
  */
-
-// CreatorFlow TikTok Shop Metrics Data
-const kpiData = [
-  { title: 'Total Revenue', value: '$128,430', trend: 12.5, Icon: DollarSign, color: 'hsl(142 76% 36%)' },
-  { title: "Today's Orders", value: '3,152', trend: 8.3, Icon: ShoppingCart, color: 'hsl(217 91% 60%)' },
-  { title: 'Repeat Customers', value: '28.9%', trend: -2.1, Icon: Repeat, color: 'hsl(262 83% 58%)' },
-];
 
 // TikTok Shop Analytics Data
 const revenueData = Array.from({ length: 30 }, (_, i) => ({
@@ -54,6 +48,15 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function InteractiveShowcase() {
+  const t = useTranslations('homepage.showcase');
+  
+  // CreatorFlow TikTok Shop Metrics Data
+  const kpiData = [
+    { title: t('metrics.totalRevenue'), value: '$128,430', trend: 12.5, Icon: DollarSign, color: 'hsl(142 76% 36%)' },
+    { title: t('metrics.todaysOrders'), value: '3,152', trend: 8.3, Icon: ShoppingCart, color: 'hsl(217 91% 60%)' },
+    { title: t('metrics.repeatCustomers'), value: '28.9%', trend: -2.1, Icon: Repeat, color: 'hsl(262 83% 58%)' },
+  ];
+
   const [isMounted, setIsMounted] = useState(false);
   const [activeChart, setActiveChart] = useState<string | null>(null);
   const targetRef = useRef<HTMLDivElement>(null);
@@ -93,7 +96,7 @@ export function InteractiveShowcase() {
 
         {/* Headlines */}
         <motion.div className='absolute z-10 text-center' style={{ opacity: headlineOpacity, y: headlineY }}>
-          <h2 className='katana-heading text-6xl font-black tracking-tight md:text-8xl'>The Data Weave.</h2>
+          <h2 className='katana-heading text-6xl font-black tracking-tight md:text-8xl'>{t('title')}</h2>
         </motion.div>
 
         <motion.div
@@ -101,7 +104,7 @@ export function InteractiveShowcase() {
           style={{ opacity: subheadlineOpacity, y: subheadlineY }}
         >
           <h3 className='text-xl font-bold text-muted-foreground md:text-2xl'>
-            Where TikTok Shop data threads are woven into a tapestry of command.
+            {t('subtitle')}
           </h3>
         </motion.div>
 
@@ -119,14 +122,14 @@ export function InteractiveShowcase() {
             {kpiData.map((kpi, i) => (
               <Enhanced_KPI_Card key={kpi.title} scrollYProgress={scrollYProgress} i={i} {...kpi} />
             ))}
-            <Enhanced_Revenue_Card scrollYProgress={scrollYProgress} onChartClick={() => setActiveChart('revenue')} />
-            <Enhanced_Automation_Card scrollYProgress={scrollYProgress} />
+            <Enhanced_Revenue_Card scrollYProgress={scrollYProgress} onChartClick={() => setActiveChart('revenue')} t={t} />
+            <Enhanced_Automation_Card scrollYProgress={scrollYProgress} t={t} />
           </div>
         </motion.div>
 
         {/* Evil Chart Popper Overlay */}
         <AnimatePresence>
-          {activeChart && <EvilChartPopper chartType={activeChart} onClose={() => setActiveChart(null)} />}
+          {activeChart && <EvilChartPopper chartType={activeChart} onClose={() => setActiveChart(null)} t={t} />}
         </AnimatePresence>
       </div>
 
@@ -211,7 +214,7 @@ const Enhanced_KPI_Card: React.FC<any> = ({ title, value, trend, Icon, color, i,
   );
 };
 
-const Enhanced_Revenue_Card: React.FC<any> = ({ scrollYProgress, onChartClick }: any) => {
+const Enhanced_Revenue_Card: React.FC<any> = ({ scrollYProgress, onChartClick, t }: any) => {
   const [pathD, setPathD] = useState<string>('');
   const [isHovered, setIsHovered] = useState(false);
   const chartContainerRef = useRef(null);
@@ -272,12 +275,12 @@ const Enhanced_Revenue_Card: React.FC<any> = ({ scrollYProgress, onChartClick }:
         <div className='relative z-10'>
           <div className='mb-4 flex items-center justify-between'>
             <h3 className='flex items-center gap-2 font-bold text-foreground'>
-              Revenue Masterpiece
+              {t('cards.revenueMasterpiece')}
               <motion.div animate={{ rotate: isHovered ? 360 : 0 }} transition={{ duration: 0.5 }}>
                 <TrendingUp className='h-4 w-4 text-primary' />
               </motion.div>
             </h3>
-            <Badge variant='default'>Click to expand</Badge>
+            <Badge variant='default'>{t('cards.clickToExpand')}</Badge>
           </div>
 
           <div className='mt-2 h-[90%] w-full' ref={chartContainerRef}>
@@ -306,7 +309,7 @@ const Enhanced_Revenue_Card: React.FC<any> = ({ scrollYProgress, onChartClick }:
   );
 };
 
-const Enhanced_Automation_Card: React.FC<any> = ({ scrollYProgress }: any) => {
+const Enhanced_Automation_Card: React.FC<any> = ({ scrollYProgress, t }: any) => {
   const z = useTransform(scrollYProgress, [0.38, 0.48], [1000, 0]);
   const opacity = useTransform(scrollYProgress, [0.38, 0.48], [0, 1]);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -343,10 +346,10 @@ const Enhanced_Automation_Card: React.FC<any> = ({ scrollYProgress }: any) => {
             <Zap className='h-8 w-8 text-primary' />
           </motion.div>
 
-          <p className='mt-4 text-xl font-bold text-foreground'>Automation Liberation</p>
+          <p className='mt-4 text-xl font-bold text-foreground'>{t('cards.automationLiberation')}</p>
           <p className='mt-2 flex items-center gap-2 text-muted-foreground'>
             <Clock className='h-4 w-4' />
-            Saving an average of <span className='font-bold text-foreground'>12 hours</span> per week.
+            {t('cards.savingHours')} <span className='font-bold text-foreground'>12</span> {t('cards.hoursPerWeek')}.
           </p>
 
           <motion.div
@@ -357,7 +360,7 @@ const Enhanced_Automation_Card: React.FC<any> = ({ scrollYProgress }: any) => {
           >
             <Badge variant='secondary' className='text-xs'>
               <Users className='mr-1 h-3 w-3' />
-              98% satisfaction
+              98% {t('cards.satisfaction')}
             </Badge>
           </motion.div>
         </div>
@@ -367,7 +370,7 @@ const Enhanced_Automation_Card: React.FC<any> = ({ scrollYProgress }: any) => {
 };
 
 // Evil Chart Popper Component
-const EvilChartPopper: React.FC<{ chartType: string; onClose: () => void }> = ({ chartType, onClose }) => {
+const EvilChartPopper: React.FC<{ chartType: string; onClose: () => void; t: any }> = ({ chartType, onClose, t }) => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   // Spring animations for the popper
@@ -405,12 +408,12 @@ const EvilChartPopper: React.FC<{ chartType: string; onClose: () => void }> = ({
               <div>
                 <CardTitle className='flex items-center gap-2 text-2xl'>
                   <TrendingUp className='h-6 w-6 text-primary' />
-                  TikTok Shop Analytics
+                  {t('analytics.title')}
                   <Badge variant='default' className='ml-2'>
-                    Live Data
+                    {t('analytics.liveData')}
                   </Badge>
                 </CardTitle>
-                <CardDescription>Real-time CreatorFlow performance metrics and trends</CardDescription>
+                <CardDescription>{t('analytics.description')}</CardDescription>
               </div>
               <button onClick={onClose} className='rounded-full p-2 transition-colors hover:bg-muted'>
                 ✕
@@ -421,7 +424,7 @@ const EvilChartPopper: React.FC<{ chartType: string; onClose: () => void }> = ({
             <div className='mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2'>
               <div className='space-y-2'>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Monthly Revenue</span>
+                  <span className='text-sm text-muted-foreground'>{t('analytics.monthlyRevenue')}</span>
                   <span className='text-2xl font-bold text-primary'>${springY.get().toFixed(0)}</span>
                 </div>
                 <div className='flex items-center gap-2'>
@@ -429,20 +432,20 @@ const EvilChartPopper: React.FC<{ chartType: string; onClose: () => void }> = ({
                     <TrendingUp className='mr-1 h-3 w-3' />
                     +24.5%
                   </Badge>
-                  <span className='text-sm text-muted-foreground'>vs last month</span>
+                  <span className='text-sm text-muted-foreground'>{t('analytics.vsLastMonth')}</span>
                 </div>
               </div>
               <div className='space-y-2'>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Order Volume</span>
+                  <span className='text-sm text-muted-foreground'>{t('analytics.orderVolume')}</span>
                   <span className='text-2xl font-bold text-blue-500'>{Math.round(springY.get() / 50)}</span>
                 </div>
                 <div className='flex items-center gap-2'>
                   <Badge variant='secondary'>
                     <ShoppingCart className='mr-1 h-3 w-3' />
-                    Processing
+                    {t('analytics.processing')}
                   </Badge>
-                  <span className='text-sm text-muted-foreground'>automated fulfillment</span>
+                  <span className='text-sm text-muted-foreground'>{t('analytics.automatedFulfillment')}</span>
                 </div>
               </div>
             </div>
