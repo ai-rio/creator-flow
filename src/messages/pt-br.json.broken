@@ -1,0 +1,231 @@
+{
+  "navigation": {
+    "dashboard": "Painel",
+    "orders": "Pedidos",
+    "analytics": "Análises",
+    "settings": "Configurações"
+  },
+  "orders": {
+    "title": "Gestão de Pedidos",
+    "status": {
+      "received": "Recebido",
+      "processing": "Processando",
+      "shipped": "Enviado",
+      "delivered": "Entregue"
+    }
+  },
+  "auth": {
+    "login": "Entrar",
+    "signup": "Cadastrar",
+    "logout": "Sair"
+  },
+  "account": {
+    "title": "Conta",
+    "subtitle": "Fizemos parceria com o Stripe para uma cobrança simplificada.",
+    "noSubscription": "Sem assinatura",
+    "noSubscriptionDescription": "Você não está inscrito em nenhum plano.",
+    "manageSubscription": "Gerenciar assinatura",
+    "choosePlan": "Escolher um plano"
+  },
+  "dashboard": {
+    "title": "Centro de Comando CEO CreatorFlow"
+  },
+  "header": {
+    "navigation": {
+      "features": "Funcionalidades",
+      "pricing": "Preços",
+      "testimonials": "Depoimentos"
+    },
+    "cta": {
+      "dashboard": "Painel",
+      "startTrial": "Começar Teste Gratuito"
+    },
+    "actions": {
+      "newReport": "Novo Relatório",
+      "createWorkflow": "Criar Fluxo de Trabalho",
+      "addTeamMember": "Adicionar Membro da Equipe"
+    },
+    "userMenu": {
+      "accountSettings": "Configurações da Conta",
+      "billingSubscription": "Cobrança e Assinatura",
+      "helpCenter": "Central de Ajuda",
+      "signOut": "Sair"
+    },
+    "search": {
+      "placeholder": "Busca Global (Pedidos, Produtos, Intel...)"
+    },
+    "user": {
+      "username": "@ceo",
+      "tier": "Nível Criador"
+    }
+  },
+  "errors": {
+    "pageNotFound": "Página não encontrada",
+    "goHome": "Ir para Início"
+  },
+  "footer": {
+    "testTitle": "RODAPÉ VERMELHO DE TESTE",
+    "pathLabel": "Caminho:",
+    "brand": {
+      "tagline": "O centro de comando automatizado para criadores ambiciosos do TikTok Shop."
+    },
+    "sections": {
+      "product": {
+        "title": "Produto",
+        "features": "Funcionalidades",
+        "pricing": "Preços",
+        "testimonials": "Depoimentos"
+      },
+      "company": {
+        "title": "Empresa",
+        "about": "Sobre Nós",
+        "careers": "Carreiras",
+        "contact": "Contato"
+      },
+      "legal": {
+        "title": "Legal",
+        "privacy": "Política de Privacidade",
+        "terms": "Termos de Serviço"
+      }
+    },
+    "social": {
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "copyright": "© 2025 CreatorFlow. Todos os direitos reservados."
+  },
+  "homepage": {
+    "hero": {
+      "title": "Escale Sua TikTok Shop",
+      "subtitle": "Do Caos ao Comando",
+      "description": "A única plataforma de automação de fulfillment construída para criadores virais do TikTok.",
+      "subdescription": "Transforme 50 pedidos em 500+ sem suar a camisa.",
+      "actions": {
+        "startBuilding": "Começar a Construir",
+        "requestDemo": "Solicitar uma demo"
+      },
+      "liveOverview": {
+        "title": "Visão Geral de Operações ao Vivo",
+        "status": "AO VIVO",
+        "metrics": {
+          "ordersProcessed": "Pedidos Processados Hoje",
+          "automationSavings": "Economia de Automação",
+          "inventorySync": "Sincronização de Estoque"
+        }
+      }
+    },
+    "benefits": {
+      "title": "Automatize Operações. Amplifique Receita.",
+      "description": "CreatorFlow não é apenas uma ferramenta—é uma vantagem competitiva mensurável. Veja o impacto real nos seus resultados.",
+      "automationSavings": {
+        "title": "Economia de Automação",
+        "description": "Economize uma média de $27,000/mês em custos operacionais com um fluxo de trabalho de pedidos e envios totalmente automatizado.",
+        "value": "$27k/mês"
+      },
+      "inventoryAccuracy": {
+        "title": "Precisão de Estoque",
+        "description": "Previna $8,400/mês em vendas excessivas custosas com rastreamento de estoque em tempo real, sub-5 segundos.",
+        "value": "$8.4k/mês"
+      },
+      "processingSpeed": {
+        "title": "Velocidade de Processamento",
+        "description": "Reduza os tempos de importação de pedidos de 12 minutos para 30 segundos.",
+        "value": "24x Mais Rápido"
+      }
+    },
+    "showcase": {
+      "title": "Análises do TikTok Shop",
+      "metrics": {
+        "totalRevenue": "Receita Total",
+        "todaysOrders": "Pedidos de Hoje",
+        "repeatCustomers": "Clientes Recorrentes"
+      }
+    },
+    "showcase": {
+      "title": "A Trama de Dados.",
+      "subtitle": "Onde os fios de dados do TikTok Shop são tecidos em uma tapeçaria de comando.",
+      "metrics": {
+        "totalRevenue": "Receita Total",
+        "todaysOrders": "Pedidos de Hoje",
+        "repeatCustomers": "Clientes Recorrentes"
+      },
+      "cards": {
+        "revenueMasterpiece": "Obra-Prima da Receita",
+        "clickToExpand": "Clique para expandir",
+        "automationLiberation": "Libertação da Automação",
+        "savingHours": "Economizando uma média de",
+        "hoursPerWeek": "horas por semana",
+        "satisfaction": "satisfação"
+      },
+      "analytics": {
+        "title": "Análises do TikTok Shop",
+        "liveData": "Dados ao Vivo",
+        "description": "Métricas e tendências de desempenho do CreatorFlow em tempo real",
+        "monthlyRevenue": "Receita Mensal",
+        "orderVolume": "Volume de Pedidos",
+        "vsLastMonth": "vs mês passado",
+        "processing": "Processando",
+        "automatedFulfillment": "cumprimento automatizado"
+      }
+    },
+      "title": "O Que Os Criadores Dizem",
+      "subtitle": "Junte-se aos criadores que transformaram caos em comando. Seu sucesso é nossa base.",
+      "quotes": {
+        "viral_creator": "CreatorFlow não apenas organizou meu negócio, desbloqueou um novo nível de crescimento que nunca pensei ser possível.",
+        "ecom_queen": "A automação me economizou mais de 40 horas por semana. É como ter um gerente de operações em tempo integral.",
+        "tiktok_hustler": "A sincronização de estoque é perfeita. Não vendi em excesso nem um único item desde que mudei.",
+        "gadget_guru": "Meu processamento de pedidos passou de 15 minutos para literalmente 15 segundos. Mudança total.",
+        "style_sensei": "O painel CEO me dá a clareza para tomar decisões reais baseadas em dados. Minha receita subiu 40%.",
+        "crafty_creator": "Finalmente posso focar em criar, não em logística. CreatorFlow cuida de tudo."
+      },
+      "metrics": {
+        "ordersPerDay": "Pedidos/Dia",
+        "savedPerMonth": "Economizado/Mês",
+        "accuracy": "Precisão",
+        "faster": "Mais Rápido",
+        "revenue": "Receita",
+        "focus": "Foco"
+      }
+    },
+    "testimonials": {
+      "title": "O Que Os Criadores Dizem",
+      "subtitle": "Junte-se aos criadores que transformaram caos em comando. Seu sucesso é nossa base.",
+      "quotes": {
+        "viral_creator": "CreatorFlow não apenas organizou meu negócio, desbloqueou um novo nível de crescimento que nunca pensei ser possível.",
+        "ecom_queen": "A automação me economizou mais de 40 horas por semana. É como ter um gerente de operações em tempo integral.",
+        "tiktok_hustler": "A sincronização de estoque é perfeita. Não vendi em excesso nem um único item desde que mudei.",
+        "gadget_guru": "Meu processamento de pedidos passou de 15 minutos para literalmente 15 segundos. Mudança total.",
+        "style_sensei": "O painel CEO me dá a clareza para tomar decisões reais baseadas em dados. Minha receita subiu 40%.",
+        "crafty_creator": "Finalmente posso focar em criar, não em logística. CreatorFlow cuida de tudo."
+      },
+      "metrics": {
+        "ordersPerDay": "Pedidos/Dia",
+        "savedPerMonth": "Economizado/Mês",
+        "accuracy": "Precisão",
+        "faster": "Mais Rápido",
+        "revenue": "Receita",
+        "focus": "Foco"
+      }
+    },
+    "cta": {
+      "title": "Pronto para Escalar Sua TikTok Shop?",
+      "subtitle": "Junte-se a milhares de criadores que transformaram caos em comando",
+      "description": "Comece seu teste gratuito de 14 dias e veja por que CreatorFlow é a escolha #1 para criadores virais do TikTok.",
+      "actions": {
+        "startFreeTrial": "Começar Teste Gratuito",
+        "bookDemo": "Agendar uma Demo"
+      },
+      "features": {
+        "noSetupFees": "Sem taxas de configuração",
+        "setupTime": "Configuração em 5 Minutos",
+        "cancelAnytime": "Cancele a qualquer momento",
+        "fullSupport": "Suporte completo incluído"
+      }
+    }
+  },
+  "test": {
+    "welcome": "Bem-vindo ao CreatorFlow!",
+    "description": "Esta é uma página de teste para integração Tolgee."
+  }
+}

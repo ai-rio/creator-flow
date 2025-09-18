@@ -139,7 +139,7 @@
       "subtitle": "Where TikTok Shop data threads are woven into a tapestry of command.",
       "metrics": {
         "totalRevenue": "Total Revenue",
-        "todaysOrders": "Today's Orders",
+        "todaysOrders": "Today's Orders", 
         "repeatCustomers": "Repeat Customers"
       },
       "cards": {
@@ -198,7 +198,7 @@
     }
   },
   "test": {
-    "welcome": "¡Bienvenido a CreatorFlow!",
-    "description": "Esta es una página de prueba para la integración de Tolgee."
+    "welcome": "Welcome to CreatorFlow!",
+    "description": "This is a test page for Tolgee integration."
   }
 }

@@ -1,91 +1,91 @@
 {
   "navigation": {
-    "dashboard": "Painel",
-    "orders": "Pedidos",
-    "analytics": "Análises",
-    "settings": "Configurações"
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "analytics": "Analytics",
+    "settings": "Settings"
   },
   "orders": {
-    "title": "Gestão de Pedidos",
+    "title": "Order Management",
     "status": {
-      "received": "Recebido",
-      "processing": "Processando",
-      "shipped": "Enviado",
-      "delivered": "Entregue"
+      "received": "Received",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
     }
   },
   "auth": {
-    "login": "Entrar",
-    "signup": "Cadastrar",
-    "logout": "Sair"
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout"
   },
   "account": {
-    "title": "Conta",
-    "subtitle": "Fizemos parceria com o Stripe para uma cobrança simplificada.",
-    "noSubscription": "Sem assinatura",
-    "noSubscriptionDescription": "Você não está inscrito em nenhum plano.",
-    "manageSubscription": "Gerenciar assinatura",
-    "choosePlan": "Escolher um plano"
+    "title": "Account",
+    "subtitle": "We partnered with Stripe for a simplified billing.",
+    "noSubscription": "No subscription",
+    "noSubscriptionDescription": "You are not subscribed to any plan.",
+    "manageSubscription": "Manage subscription",
+    "choosePlan": "Choose a plan"
   },
   "dashboard": {
-    "title": "Centro de Comando CEO CreatorFlow"
+    "title": "CreatorFlow CEO Command Center"
   },
   "header": {
     "navigation": {
-      "features": "Funcionalidades",
-      "pricing": "Preços",
-      "testimonials": "Depoimentos"
+      "features": "Features",
+      "pricing": "Pricing",
+      "testimonials": "Testimonials"
     },
     "cta": {
-      "dashboard": "Painel",
-      "startTrial": "Começar Teste Gratuito"
+      "dashboard": "Dashboard",
+      "startTrial": "Start Free Trial"
     },
     "actions": {
-      "newReport": "Novo Relatório",
-      "createWorkflow": "Criar Fluxo de Trabalho",
-      "addTeamMember": "Adicionar Membro da Equipe"
+      "newReport": "New Report",
+      "createWorkflow": "Create Workflow",
+      "addTeamMember": "Add Team Member"
     },
     "userMenu": {
-      "accountSettings": "Configurações da Conta",
-      "billingSubscription": "Cobrança e Assinatura",
-      "helpCenter": "Central de Ajuda",
-      "signOut": "Sair"
+      "accountSettings": "Account Settings",
+      "billingSubscription": "Billing & Subscription",
+      "helpCenter": "Help Center",
+      "signOut": "Sign Out"
     },
     "search": {
-      "placeholder": "Busca Global (Pedidos, Produtos, Intel...)"
+      "placeholder": "Global Search (Orders, Products, Intel...)"
     },
     "user": {
       "username": "@ceo",
-      "tier": "Nível Criador"
+      "tier": "Creator Tier"
     }
   },
   "errors": {
-    "pageNotFound": "Página não encontrada",
-    "goHome": "Ir para Início"
+    "pageNotFound": "Page not found",
+    "goHome": "Go to Home"
   },
   "footer": {
-    "testTitle": "RODAPÉ VERMELHO DE TESTE",
-    "pathLabel": "Caminho:",
+    "testTitle": "TEST RED FOOTER",
+    "pathLabel": "Path:",
     "brand": {
-      "tagline": "O centro de comando automatizado para criadores ambiciosos do TikTok Shop."
+      "tagline": "The automated command center for ambitious TikTok Shop creators."
     },
     "sections": {
       "product": {
-        "title": "Produto",
-        "features": "Funcionalidades",
-        "pricing": "Preços",
-        "testimonials": "Depoimentos"
+        "title": "Product",
+        "features": "Features",
+        "pricing": "Pricing",
+        "testimonials": "Testimonials"
       },
       "company": {
-        "title": "Empresa",
-        "about": "Sobre Nós",
-        "careers": "Carreiras",
-        "contact": "Contato"
+        "title": "Company",
+        "about": "About",
+        "careers": "Careers",
+        "contact": "Contact"
       },
       "legal": {
         "title": "Legal",
-        "privacy": "Política de Privacidade",
-        "terms": "Termos de Serviço"
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
       }
     },
     "social": {
@@ -93,134 +93,107 @@
       "instagram": "Instagram",
       "linkedin": "LinkedIn"
     },
-    "copyright": "© 2025 CreatorFlow. Todos os direitos reservados."
+    "copyright": "© 2025 CreatorFlow. All rights reserved."
   },
   "homepage": {
     "hero": {
-      "title": "Escale Sua TikTok Shop",
-      "subtitle": "Do Caos ao Comando",
-      "description": "A única plataforma de automação de fulfillment construída para criadores virais do TikTok.",
-      "subdescription": "Transforme 50 pedidos em 500+ sem suar a camisa.",
+      "title": "Scale Your TikTok Shop",
+      "subtitle": "From Chaos to Command",
+      "description": "The only fulfillment automation platform built for viral TikTok creators.",
+      "subdescription": "Transform 50 orders into 500+ without breaking a sweat.",
       "actions": {
-        "startBuilding": "Começar a Construir",
-        "requestDemo": "Solicitar uma demo"
+        "startBuilding": "Start Building",
+        "requestDemo": "Request a demo"
       },
       "liveOverview": {
-        "title": "Visão Geral de Operações ao Vivo",
-        "status": "AO VIVO",
+        "title": "Live Operations Overview",
+        "status": "LIVE",
         "metrics": {
-          "ordersProcessed": "Pedidos Processados Hoje",
-          "automationSavings": "Economia de Automação",
-          "inventorySync": "Sincronização de Estoque"
+          "ordersProcessed": "Orders Processed Today",
+          "automationSavings": "Automation Savings",
+          "inventorySync": "Inventory Sync"
         }
       }
     },
     "benefits": {
-      "title": "Automatize Operações. Amplifique Receita.",
-      "description": "CreatorFlow não é apenas uma ferramenta—é uma vantagem competitiva mensurável. Veja o impacto real nos seus resultados.",
+      "title": "Automate Operations. Amplify Revenue.",
+      "description": "CreatorFlow isn't just a tool—it's a measurable competitive advantage. See the real-world impact on your bottom line.",
       "automationSavings": {
-        "title": "Economia de Automação",
-        "description": "Economize uma média de $27,000/mês em custos operacionais com um fluxo de trabalho de pedidos e envios totalmente automatizado.",
-        "value": "$27k/mês"
+        "title": "Automation Savings",
+        "description": "Save an average of $27,000/month in operational costs with a fully automated order and shipping workflow.",
+        "value": "$27k/mo"
       },
       "inventoryAccuracy": {
-        "title": "Precisão de Estoque",
-        "description": "Previna $8,400/mês em vendas excessivas custosas com rastreamento de estoque em tempo real, sub-5 segundos.",
-        "value": "$8.4k/mês"
+        "title": "Inventory Accuracy",
+        "description": "Prevent $8,400/month in costly oversells with real-time, sub-5-second inventory tracking.",
+        "value": "$8.4k/mo"
       },
       "processingSpeed": {
-        "title": "Velocidade de Processamento",
-        "description": "Reduza os tempos de importação de pedidos de 12 minutos para 30 segundos.",
-        "value": "24x Mais Rápido"
+        "title": "Processing Speed",
+        "description": "Reduce order import times from 12 minutes down to 30 seconds.",
+        "value": "24x Faster"
       }
     },
     "showcase": {
-      "title": "Análises do TikTok Shop",
+      "title": "The Data Weave.",
+      "subtitle": "Where TikTok Shop data threads are woven into a tapestry of command.",
       "metrics": {
-        "totalRevenue": "Receita Total",
-        "todaysOrders": "Pedidos de Hoje",
-        "repeatCustomers": "Clientes Recorrentes"
-      }
-    },
-    "showcase": {
-      "title": "A Trama de Dados.",
-      "subtitle": "Onde os fios de dados do TikTok Shop são tecidos em uma tapeçaria de comando.",
-      "metrics": {
-        "totalRevenue": "Receita Total",
-        "todaysOrders": "Pedidos de Hoje",
-        "repeatCustomers": "Clientes Recorrentes"
+        "totalRevenue": "Total Revenue",
+        "todaysOrders": "Today's Orders",
+        "repeatCustomers": "Repeat Customers"
       },
       "cards": {
-        "revenueMasterpiece": "Obra-Prima da Receita",
-        "clickToExpand": "Clique para expandir",
-        "automationLiberation": "Libertação da Automação",
-        "savingHours": "Economizando uma média de",
-        "hoursPerWeek": "horas por semana",
-        "satisfaction": "satisfação"
+        "revenueMasterpiece": "Revenue Masterpiece",
+        "clickToExpand": "Click to expand",
+        "automationLiberation": "Automation Liberation",
+        "savingHours": "Saving an average of",
+        "hoursPerWeek": "hours per week",
+        "satisfaction": "satisfaction"
       },
       "analytics": {
-        "title": "Análises do TikTok Shop",
-        "liveData": "Dados ao Vivo",
-        "description": "Métricas e tendências de desempenho do CreatorFlow em tempo real",
-        "monthlyRevenue": "Receita Mensal",
-        "orderVolume": "Volume de Pedidos",
-        "vsLastMonth": "vs mês passado",
-        "processing": "Processando",
-        "automatedFulfillment": "cumprimento automatizado"
-      }
-    },
-      "title": "O Que Os Criadores Dizem",
-      "subtitle": "Junte-se aos criadores que transformaram caos em comando. Seu sucesso é nossa base.",
-      "quotes": {
-        "viral_creator": "CreatorFlow não apenas organizou meu negócio, desbloqueou um novo nível de crescimento que nunca pensei ser possível.",
-        "ecom_queen": "A automação me economizou mais de 40 horas por semana. É como ter um gerente de operações em tempo integral.",
-        "tiktok_hustler": "A sincronização de estoque é perfeita. Não vendi em excesso nem um único item desde que mudei.",
-        "gadget_guru": "Meu processamento de pedidos passou de 15 minutos para literalmente 15 segundos. Mudança total.",
-        "style_sensei": "O painel CEO me dá a clareza para tomar decisões reais baseadas em dados. Minha receita subiu 40%.",
-        "crafty_creator": "Finalmente posso focar em criar, não em logística. CreatorFlow cuida de tudo."
-      },
-      "metrics": {
-        "ordersPerDay": "Pedidos/Dia",
-        "savedPerMonth": "Economizado/Mês",
-        "accuracy": "Precisão",
-        "faster": "Mais Rápido",
-        "revenue": "Receita",
-        "focus": "Foco"
+        "title": "TikTok Shop Analytics",
+        "liveData": "Live Data",
+        "description": "Real-time CreatorFlow performance metrics and trends",
+        "monthlyRevenue": "Monthly Revenue",
+        "orderVolume": "Order Volume",
+        "vsLastMonth": "vs last month",
+        "processing": "Processing",
+        "automatedFulfillment": "automated fulfillment"
       }
     },
     "testimonials": {
-      "title": "O Que Os Criadores Dizem",
-      "subtitle": "Junte-se aos criadores que transformaram caos em comando. Seu sucesso é nossa base.",
+      "title": "What Creators Say",
+      "subtitle": "Join the creators who turned chaos into command. Their success is our foundation.",
       "quotes": {
-        "viral_creator": "CreatorFlow não apenas organizou meu negócio, desbloqueou um novo nível de crescimento que nunca pensei ser possível.",
-        "ecom_queen": "A automação me economizou mais de 40 horas por semana. É como ter um gerente de operações em tempo integral.",
-        "tiktok_hustler": "A sincronização de estoque é perfeita. Não vendi em excesso nem um único item desde que mudei.",
-        "gadget_guru": "Meu processamento de pedidos passou de 15 minutos para literalmente 15 segundos. Mudança total.",
-        "style_sensei": "O painel CEO me dá a clareza para tomar decisões reais baseadas em dados. Minha receita subiu 40%.",
-        "crafty_creator": "Finalmente posso focar em criar, não em logística. CreatorFlow cuida de tudo."
+        "viral_creator": "CreatorFlow didn't just organize my business, it unlocked a new level of growth I never thought possible.",
+        "ecom_queen": "The automation saved me over 40 hours a week. It's like having a full-time operations manager.",
+        "tiktok_hustler": "Inventory syncing is flawless. I haven't oversold a single item since switching.",
+        "gadget_guru": "My order processing went from 15 minutes to literally 15 seconds. Game changer.",
+        "style_sensei": "The CEO dashboard gives me the clarity to make real, data-driven decisions. My revenue is up 40%.",
+        "crafty_creator": "I can finally focus on creating, not logistics. CreatorFlow handles everything."
       },
       "metrics": {
-        "ordersPerDay": "Pedidos/Dia",
-        "savedPerMonth": "Economizado/Mês",
-        "accuracy": "Precisão",
-        "faster": "Mais Rápido",
-        "revenue": "Receita",
-        "focus": "Foco"
+        "ordersPerDay": "Orders/Day",
+        "savedPerMonth": "Saved/Mo",
+        "accuracy": "Accuracy",
+        "faster": "Faster",
+        "revenue": "Revenue",
+        "focus": "Focus"
       }
     },
     "cta": {
-      "title": "Pronto para Escalar Sua TikTok Shop?",
-      "subtitle": "Junte-se a milhares de criadores que transformaram caos em comando",
-      "description": "Comece seu teste gratuito de 14 dias e veja por que CreatorFlow é a escolha #1 para criadores virais do TikTok.",
+      "title": "Ready to Scale Your TikTok Shop?",
+      "subtitle": "Join thousands of creators who've transformed chaos into command",
+      "description": "Start your 14-day free trial and see why CreatorFlow is the #1 choice for viral TikTok creators.",
       "actions": {
-        "startFreeTrial": "Começar Teste Gratuito",
-        "bookDemo": "Agendar uma Demo"
+        "startFreeTrial": "Start Free Trial",
+        "bookDemo": "Book a Demo"
       },
       "features": {
-        "noSetupFees": "Sem taxas de configuração",
-        "setupTime": "Configuração em 5 Minutos",
-        "cancelAnytime": "Cancele a qualquer momento",
-        "fullSupport": "Suporte completo incluído"
+        "noSetupFees": "No setup fees",
+        "setupTime": "Setup in 5 Minutes",
+        "cancelAnytime": "Cancel anytime",
+        "fullSupport": "Full support included"
       }
     }
   },
