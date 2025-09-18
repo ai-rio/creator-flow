@@ -13,6 +13,8 @@
 - ✅ Preserves sophisticated animations
 - ✅ Perfect theme system integration
 - ✅ Seamless visual continuity
+- ✅ **Translation-first architecture**
+- ✅ **Zero translation debt**
 
 ❌ **Atomic Decomposition (DEPRECATED)**
 
@@ -59,7 +61,267 @@
 # Keep only the essential component logic
 ```
 
-### Step 2: Full Theme Integration (MANDATORY)
+### Step 2: Translation-First Integration (MANDATORY)
+
+**CRITICAL**: Translation setup is done BEFORE theme integration to prevent translation debt.
+
+#### 2.1 Identify Text Content
+
+```bash
+# Scan the extracted component for ALL text content
+# ✅ Look for: button labels, headings, descriptions, placeholders, tooltips
+# ✅ Include: dynamic text with variables {name}, {count}, etc.
+# ✅ Find: rich text with links, formatting, or embedded components
+```
+
+#### 2.2 Create Translation Keys Following Atomic Convention
+
+```typescript
+// Translation Key Naming Convention:
+// components.atomic.{level}.{componentName}.{key}
+
+// ✅ ATOMS (basic UI elements)
+components.atomic.atoms.Button.label;
+components.atomic.atoms.Input.placeholder;
+
+// ✅ MOLECULES (simple combinations)
+components.atomic.molecules.SearchField.placeholder;
+components.atomic.molecules.MetricsCard.title;
+
+// ✅ ORGANISMS (complex components)
+components.atomic.organisms.CommandCenter.title;
+components.atomic.organisms.CommandCenter.subtitle;
+components.atomic.organisms.CommandCenter.actions.strategicResponse;
+```
+
+#### 2.3 Add Translation Keys to ALL Language Files
+
+**English (`src/messages/en.json`):**
+
+```json
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CommandCenter": {
+          "title": "Strategic Command Center",
+          "subtitle": "Real-time operations overview",
+          "metrics": {
+            "revenue": "+ ${amount} in {timeframe} ({orderCount} orders)",
+            "automated": "{percentage}% automated fulfillment"
+          },
+          "actions": {
+            "strategicResponse": "Strategic Response",
+            "processing": "Processing...",
+            "viewDetails": "View Details"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Spanish (`src/messages/es.json`):**
+
+```json
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CommandCenter": {
+          "title": "Centro de Comando Estratégico",
+          "subtitle": "Visión general de operaciones en tiempo real",
+          "metrics": {
+            "revenue": "+ ${amount} en {timeframe} ({orderCount} pedidos)",
+            "automated": "{percentage}% cumplimiento automatizado"
+          },
+          "actions": {
+            "strategicResponse": "Respuesta Estratégica",
+            "processing": "Procesando...",
+            "viewDetails": "Ver Detalles"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Portuguese (`src/messages/pt-br.json`):**
+
+```json
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CommandCenter": {
+          "title": "Centro de Comando Estratégico",
+          "subtitle": "Visão geral das operações em tempo real",
+          "metrics": {
+            "revenue": "+ ${amount} em {timeframe} ({orderCount} pedidos)",
+            "automated": "{percentage}% cumprimento automatizado"
+          },
+          "actions": {
+            "strategicResponse": "Resposta Estratégica",
+            "processing": "Processando...",
+            "viewDetails": "Ver Detalhes"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### 2.4 Implement Translation-Aware Component
+
+```typescript
+// ✅ SERVER COMPONENTS (Preferred for static content)
+import { getTranslations } from 'next-intl/server';
+
+export default async function CommandCenter() {
+  const t = await getTranslations('components.atomic.organisms.CommandCenter');
+
+  return (
+    <div className='max-w-content rounded-executive bg-background p-strategic transition-colors duration-300'>
+      <h2 className='text-heading-lg text-warning-amber-500'>{t('title')}</h2>
+      <p className='text-body-md text-muted-foreground'>{t('subtitle')}</p>
+      <div className='mt-strategic'>
+        <p className='text-metric-lg text-foreground'>
+          {t('metrics.revenue', {
+            amount: '8,921',
+            timeframe: '6h',
+            orderCount: '347',
+          })}
+        </p>
+        <p className='text-body-sm text-muted-foreground'>{t('metrics.automated', { percentage: '94' })}</p>
+      </div>
+      <button className='mt-tactical rounded-premium bg-foreground px-strategic py-tactical text-background'>
+        {t('actions.strategicResponse')}
+      </button>
+    </div>
+  );
+}
+```
+
+```typescript
+// ✅ CLIENT COMPONENTS (When interactivity needed)
+'use client';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+
+export default function InteractiveCommandCenter() {
+  const t = useTranslations('components.atomic.organisms.CommandCenter');
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleStrategicResponse = async () => {
+    setIsProcessing(true);
+    // Strategic response logic
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsProcessing(false);
+  };
+
+  return (
+    <div className='max-w-content rounded-executive bg-background p-strategic transition-colors duration-300'>
+      <h2 className='text-heading-lg text-warning-amber-500'>{t('title')}</h2>
+      <button
+        onClick={handleStrategicResponse}
+        disabled={isProcessing}
+        className='mt-tactical rounded-premium bg-foreground px-strategic py-tactical text-background disabled:opacity-50'
+      >
+        {isProcessing ? t('actions.processing') : t('actions.strategicResponse')}
+      </button>
+    </div>
+  );
+}
+```
+
+#### 2.5 Rich Text Components (For Complex Content)
+
+```typescript
+// For translations with embedded components/links
+'use client';
+import { useTranslations } from 'next-intl';
+import RichText, { richTextTagSets } from '@/components/ui/RichText';
+
+export default function ComponentWithRichText() {
+  const t = useTranslations('components.atomic.organisms.CommandCenter');
+
+  const handleStrategicAction = () => {
+    // Strategic panel logic
+    console.log('Opening strategic panel...');
+  };
+
+  return (
+    <div className='space-y-tactical'>
+      {/* Basic rich text with default tags */}
+      <RichText>
+        {(tags) =>
+          t.rich('basicDescription', {
+            ...tags,
+            strong: (chunks) => <strong className='text-brand-teal-primary'>{chunks}</strong>,
+          })
+        }
+      </RichText>
+
+      {/* Rich text with custom interactive elements */}
+      <RichText>
+        {(tags) =>
+          t.rich('interactiveDescription', {
+            ...tags,
+            strategicLink: (chunks) => (
+              <button
+                onClick={handleStrategicAction}
+                className='text-brand-teal-primary underline transition-colors hover:text-brand-teal-primary/80'
+              >
+                {chunks}
+              </button>
+            ),
+            metric: (chunks) => <span className='text-2xl font-bold text-foreground'>{chunks}</span>,
+          })
+        }
+      </RichText>
+
+      {/* Command center specific rich text */}
+      <RichText>
+        {(tags) =>
+          t.rich('commandDescription', {
+            ...tags,
+            ...richTextTagSets.commandTags,
+            alert: (chunks) => (
+              <span className='inline-flex items-center gap-1 font-medium text-warning-amber-500'>
+                <span className='h-2 w-2 animate-pulse rounded-full bg-warning-amber-500'></span>
+                {chunks}
+              </span>
+            ),
+          })
+        }
+      </RichText>
+    </div>
+  );
+}
+```
+
+#### 2.6 Translation Validation
+
+```bash
+# MANDATORY: Validate all translations exist
+bun run validate-translations  # Comprehensive validation with detailed reporting
+
+# Expected output:
+# ✅ All translations are valid!
+# OR detailed error report with missing keys
+
+# Verify translations load correctly in browser
+bun run dev
+# Visit: /en/, /es/, /pt-br/ and confirm all text displays properly
+
+# Check browser console for translation errors
+# Should show NO "MISSING_MESSAGE" or translation warnings
+```
+
+### Step 3: Full Theme Integration (MANDATORY)
 
 ```typescript
 // ✅ ALWAYS use proper theme classes
@@ -73,7 +335,7 @@ className = 'bg-background text-foreground transition-colors duration-300';
 background: 'hsl(var(--primary) / 0.05)';
 ```
 
-### Step 3: Layout Integration
+### Step 4: Layout Integration
 
 ```typescript
 // ✅ Break out of layout constraints when needed
@@ -83,7 +345,7 @@ className = 'relative -mx-4 w-screen';
 className = 'pb-16 pt-24';
 ```
 
-### Step 4: Component Structure
+### Step 5: Component Structure
 
 ```bash
 # Create in proper directory
@@ -94,7 +356,7 @@ className = 'pb-16 pt-24';
 # ✅ Layout components: /src/components/layout/
 ```
 
-### Step 5: Integration Testing
+### Step 6: Integration Testing
 
 ```bash
 # MANDATORY checks
@@ -152,6 +414,19 @@ className = 'pb-16 pt-24 px-8';
 ```
 
 ## Quality Checklist
+
+### ✅ Translation Integration
+
+- [ ] ALL text content uses translation keys
+- [ ] Translation keys follow atomic convention: `components.atomic.{level}.{componentName}.{key}`
+- [ ] Keys exist in ALL language files (en.json, es.json, pt-br.json)
+- [ ] Rich text components used for complex content with links/formatting
+- [ ] Server components use `getTranslations` hook
+- [ ] Client components use `useTranslations` hook
+- [ ] No hardcoded strings anywhere in component
+- [ ] Translation validation passes (no MISSING_MESSAGE errors)
+- [ ] Dynamic text properly uses variables (e.g., `{amount}`, `{count}`)
+- [ ] Component tested in all supported locales (/en/, /es/, /pt-br/)
 
 ### ✅ Full Integration Compliance
 

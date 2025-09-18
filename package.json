@@ -48,7 +48,8 @@
     "auto:status": "node scripts/automation-status.js",
     "auto:config": "node scripts/automation-config.js",
     "vscode:setup": "node scripts/vscode-integration.js",
-    "vscode:setup-full": "node scripts/vscode-integration.js --full"
+    "vscode:setup-full": "node scripts/vscode-integration.js --full",
+    "validate-translations": "tsx scripts/validate-translations.ts"
   },
   "dependencies": {
     "@anthropic-ai/claude-code": "^1.0.117",

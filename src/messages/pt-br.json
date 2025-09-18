@@ -64,28 +64,28 @@
     "goHome": "Go to Home"
   },
   "footer": {
-    "testTitle": "TEST RED FOOTER",
-    "pathLabel": "Path:",
+    "testTitle": "RODAPÉ DE TESTE",
+    "pathLabel": "Caminho:",
     "brand": {
-      "tagline": "The automated command center for ambitious TikTok Shop creators."
+      "tagline": "O centro de comando automatizado para criadores ambiciosos do TikTok Shop."
     },
     "sections": {
       "product": {
-        "title": "Product",
-        "features": "Features",
-        "pricing": "Pricing",
-        "testimonials": "Testimonials"
+        "title": "Produto",
+        "features": "Recursos",
+        "pricing": "Preços",
+        "testimonials": "Depoimentos"
       },
       "company": {
-        "title": "Company",
-        "about": "About",
-        "careers": "Careers",
-        "contact": "Contact"
+        "title": "Empresa",
+        "about": "Sobre",
+        "careers": "Carreiras",
+        "contact": "Contato"
       },
       "legal": {
         "title": "Legal",
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service"
+        "privacy": "Política de Privacidade",
+        "terms": "Termos de Serviço"
       }
     },
     "social": {
@@ -93,107 +93,107 @@
       "instagram": "Instagram",
       "linkedin": "LinkedIn"
     },
-    "copyright": "© 2025 CreatorFlow. All rights reserved."
+    "copyright": "© 2025 CreatorFlow. Todos os direitos reservados."
   },
   "homepage": {
     "hero": {
-      "title": "Scale Your TikTok Shop",
-      "subtitle": "From Chaos to Command",
-      "description": "The only fulfillment automation platform built for viral TikTok creators.",
-      "subdescription": "Transform 50 orders into 500+ without breaking a sweat.",
+      "title": "Escale Sua TikTok Shop",
+      "subtitle": "Do Caos ao Comando",
+      "description": "A única plataforma de automação de fulfillment criada para criadores virais do TikTok.",
+      "subdescription": "Transforme 50 pedidos em 500+ sem suar a camisa.",
       "actions": {
-        "startBuilding": "Start Building",
-        "requestDemo": "Request a demo"
+        "startBuilding": "Começar a Construir",
+        "requestDemo": "Solicitar uma Demo"
       },
       "liveOverview": {
-        "title": "Live Operations Overview",
-        "status": "LIVE",
+        "title": "Visão Geral de Operações em Tempo Real",
+        "status": "AO VIVO",
         "metrics": {
-          "ordersProcessed": "Orders Processed Today",
-          "automationSavings": "Automation Savings",
-          "inventorySync": "Inventory Sync"
+          "ordersProcessed": "Pedidos Processados Hoje",
+          "automationSavings": "Economia com Automação",
+          "inventorySync": "Sincronização de Estoque"
         }
       }
     },
     "benefits": {
-      "title": "Automate Operations. Amplify Revenue.",
-      "description": "CreatorFlow isn't just a tool—it's a measurable competitive advantage. See the real-world impact on your bottom line.",
+      "title": "Automatize Operações. Multiplique a Receita.",
+      "description": "CreatorFlow não é apenas uma ferramenta - é uma vantagem competitiva mensurável. Veja o impacto real no seu resultado final.",
       "automationSavings": {
-        "title": "Automation Savings",
-        "description": "Save an average of $27,000/month in operational costs with a fully automated order and shipping workflow.",
-        "value": "$27k/mo"
+        "title": "Economia com Automação",
+        "description": "Economize em média R$135.000/mês em custos operacionais com um fluxo de pedidos e envios totalmente automatizado.",
+        "value": "$27k/mês"
       },
       "inventoryAccuracy": {
-        "title": "Inventory Accuracy",
-        "description": "Prevent $8,400/month in costly oversells with real-time, sub-5-second inventory tracking.",
-        "value": "$8.4k/mo"
+        "title": "Precisão de Estoque",
+        "description": "Evite R$42.000/mês em vendas por falta de estoque com rastreamento de inventário em tempo real, em menos de 5 segundos.",
+        "value": "$8.4k/mês"
       },
       "processingSpeed": {
-        "title": "Processing Speed",
-        "description": "Reduce order import times from 12 minutes down to 30 seconds.",
-        "value": "24x Faster"
+        "title": "Velocidade de Processamento",
+        "description": "Reduza o tempo de importação de pedidos de 12 minutos para apenas 30 segundos.",
+        "value": "24x Mais Rápido"
       }
     },
     "showcase": {
-      "title": "The Data Weave.",
-      "subtitle": "Where TikTok Shop data threads are woven into a tapestry of command.",
+      "title": "A Trama de Dados.",
+      "subtitle": "Onde os fios de dados do TikTok Shop se tecem em um mosaico de controle.",
       "metrics": {
-        "totalRevenue": "Total Revenue",
-        "todaysOrders": "Today's Orders",
-        "repeatCustomers": "Repeat Customers"
+        "totalRevenue": "Receita Total",
+        "todaysOrders": "Pedidos de Hoje",
+        "repeatCustomers": "Clientes Recorrentes"
       },
       "cards": {
-        "revenueMasterpiece": "Revenue Masterpiece",
-        "clickToExpand": "Click to expand",
-        "automationLiberation": "Automation Liberation",
-        "savingHours": "Saving an average of",
-        "hoursPerWeek": "hours per week",
-        "satisfaction": "satisfaction"
+        "revenueMasterpiece": "Obra-Prima de Receita",
+        "clickToExpand": "Expandir",
+        "automationLiberation": "Liberação de Automação",
+        "savingHours": "Economizando em média",
+        "hoursPerWeek": "horas por semana",
+        "satisfaction": "satisfação"
       },
       "analytics": {
-        "title": "TikTok Shop Analytics",
-        "liveData": "Live Data",
-        "description": "Real-time CreatorFlow performance metrics and trends",
-        "monthlyRevenue": "Monthly Revenue",
-        "orderVolume": "Order Volume",
-        "vsLastMonth": "vs last month",
-        "processing": "Processing",
-        "automatedFulfillment": "automated fulfillment"
+        "title": "Analytics do TikTok Shop",
+        "liveData": "Dados em Tempo Real",
+        "description": "Métricas e tendências de desempenho do CreatorFlow em tempo real",
+        "monthlyRevenue": "Receita Mensal",
+        "orderVolume": "Volume de Pedidos",
+        "vsLastMonth": "vs mês anterior",
+        "processing": "Processando",
+        "automatedFulfillment": "fulfillment automatizado"
       }
     },
     "testimonials": {
-      "title": "What Creators Say",
-      "subtitle": "Join the creators who turned chaos into command. Their success is our foundation.",
+      "title": "O Que os Criadores Dizem",
+      "subtitle": "Junte-se aos criadores que transformaram o caos em comando. Seu sucesso é nossa base.",
       "quotes": {
-        "viral_creator": "CreatorFlow didn't just organize my business, it unlocked a new level of growth I never thought possible.",
-        "ecom_queen": "The automation saved me over 40 hours a week. It's like having a full-time operations manager.",
-        "tiktok_hustler": "Inventory syncing is flawless. I haven't oversold a single item since switching.",
-        "gadget_guru": "My order processing went from 15 minutes to literally 15 seconds. Game changer.",
-        "style_sensei": "The CEO dashboard gives me the clarity to make real, data-driven decisions. My revenue is up 40%.",
-        "crafty_creator": "I can finally focus on creating, not logistics. CreatorFlow handles everything."
+        "viral_creator": "CreatorFlow não apenas organizou meu negócio, ele abriu um novo nível de crescimento que eu nunca imaginei ser possível.",
+        "ecom_queen": "A automação me economizou mais de 40 horas por semana. É como ter um gerente de operações em tempo integral.",
+        "tiktok_hustler": "A sincronização de estoque é impecável. Não vendi um único item a mais desde que mudei.",
+        "gadget_guru": "Meu processamento de pedidos passou de 15 minutos para literalmente 15 segundos. Um verdadeiro divisor de águas.",
+        "style_sensei": "O painel do CEO me dá a clareza para tomar decisões realmente baseadas em dados. Minha receita aumentou 40%.",
+        "crafty_creator": "Finalmente posso me concentrar em criar, não em logística. CreatorFlow cuida de tudo."
       },
       "metrics": {
-        "ordersPerDay": "Orders/Day",
-        "savedPerMonth": "Saved/Mo",
-        "accuracy": "Accuracy",
-        "faster": "Faster",
-        "revenue": "Revenue",
-        "focus": "Focus"
+        "ordersPerDay": "Pedidos/Dia",
+        "savedPerMonth": "Economia/Mês",
+        "accuracy": "Precisão",
+        "faster": "Mais Rápido",
+        "revenue": "Receita",
+        "focus": "Foco"
       }
     },
     "cta": {
-      "title": "Ready to Scale Your TikTok Shop?",
-      "subtitle": "Join thousands of creators who've transformed chaos into command",
-      "description": "Start your 14-day free trial and see why CreatorFlow is the #1 choice for viral TikTok creators.",
+      "title": "Pronto para Escalar Sua TikTok Shop?",
+      "subtitle": "Junte-se a milhares de criadores que transformaram o caos em comando",
+      "description": "Inicie seu teste grátis de 14 dias e descubra por que o CreatorFlow é a escolha #1 para criadores virais do TikTok.",
       "actions": {
-        "startFreeTrial": "Start Free Trial",
-        "bookDemo": "Book a Demo"
+        "startFreeTrial": "Iniciar Teste Grátis",
+        "bookDemo": "Agendar Demo"
       },
       "features": {
-        "noSetupFees": "No setup fees",
-        "setupTime": "Setup in 5 Minutes",
-        "cancelAnytime": "Cancel anytime",
-        "fullSupport": "Full support included"
+        "noSetupFees": "Sem taxas de configuração",
+        "setupTime": "Configure em 5 Minutos",
+        "cancelAnytime": "Cancele a qualquer momento",
+        "fullSupport": "Suporte completo incluso"
       }
     }
   },

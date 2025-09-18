@@ -4,14 +4,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const createNextIntlPlugin = require('next-intl/plugin');
-const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig = {
   // Temporarily disable ESLint during build to focus on functionality
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
+
   // Configure external image domains
   images: {
     remotePatterns: [
@@ -33,13 +33,13 @@ const nextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  
+
   // Override default serverExternalPackages to exclude prettier
   // This allows prettier dependencies to be bundled instead of treated as external
   serverExternalPackages: [
     // Include common external packages but exclude prettier-related ones
     'canvas',
-    'sharp'
+    'sharp',
     // Note: By not including 'prettier' here, it will be bundled
   ],
 
@@ -49,16 +49,16 @@ const nextConfig = {
       '.js': ['.js', '.ts', '.tsx'],
       '.mjs': ['.mjs', '.js', '.ts', '.tsx'],
     };
-    
+
     // Fix recharts selector issue
     config.resolve.alias = {
       ...config.resolve.alias,
-      'recharts': require.resolve('recharts'),
+      recharts: require.resolve('recharts'),
     };
-    
+
     return config;
   },
-  
+
   // Security headers for production
   async headers() {
     return [
@@ -85,27 +85,28 @@ const nextConfig = {
           // Content Security Policy with Stripe support
           {
             key: 'Content-Security-Policy',
-            value: process.env.NODE_ENV === 'development' 
-              ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vercel.live https://va.vercel-scripts.com https://app.formbricks.com https://maps.googleapis.com https://*.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com http://127.0.0.1:54321 http://localhost:54321 https://app.formbricks.com https://us.i.posthog.com https://*.posthog.com https://maps.googleapis.com https://*.googleapis.com data:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://hcaptcha.com https://*.hcaptcha.com blob:; object-src 'none'; base-uri 'self'; form-action 'self';"
-              : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vercel.live https://va.vercel-scripts.com https://app.formbricks.com https://maps.googleapis.com https://*.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com https://app.formbricks.com https://us.i.posthog.com https://*.posthog.com https://maps.googleapis.com https://*.googleapis.com data:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://hcaptcha.com https://*.hcaptcha.com blob:; object-src 'none'; base-uri 'self'; form-action 'self';"
+            value:
+              process.env.NODE_ENV === 'development'
+                ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vercel.live https://va.vercel-scripts.com https://app.formbricks.com https://maps.googleapis.com https://*.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com http://127.0.0.1:54321 http://localhost:54321 https://app.formbricks.com https://us.i.posthog.com https://*.posthog.com https://maps.googleapis.com https://*.googleapis.com data:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://hcaptcha.com https://*.hcaptcha.com blob:; object-src 'none'; base-uri 'self'; form-action 'self';"
+                : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://js.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vercel.live https://va.vercel-scripts.com https://app.formbricks.com https://maps.googleapis.com https://*.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.stripe.com https://m.stripe.network https://hcaptcha.com https://*.hcaptcha.com https://vitals.vercel-insights.com wss://ws-us3.pusher.com https://app.formbricks.com https://us.i.posthog.com https://*.posthog.com https://maps.googleapis.com https://*.googleapis.com data:; frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://hcaptcha.com https://*.hcaptcha.com blob:; object-src 'none'; base-uri 'self'; form-action 'self';",
           },
         ],
       },
     ];
   },
-  
+
   experimental: {
     // Disable problematic optimizations for now
     // optimizeCss: true,
     scrollRestoration: true,
   },
-  
+
   // Enable standalone output for Docker deployment
   output: 'standalone',
-  
+
   // Optimize builds
   compress: true,
   poweredByHeader: false,
-};;;
+};
 
 module.exports = withNextIntl(withBundleAnalyzer(nextConfig));

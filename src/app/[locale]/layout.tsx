@@ -9,7 +9,7 @@ import { ConditionalHeader } from '@/components/layout/ConditionalHeader';
 import { Logo } from '@/components/logo';
 import { LocaleHtmlWrapper } from '@/components/providers/locale-html-wrapper';
 import { FloatingThemeToggle } from '@/components/ui/theme-toggle';
-import { locales } from '@/lib/i18n/config';
+import { routing } from '@/i18n/routing';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,7 +22,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!locales.includes(locale as any)) notFound();
+  if (!routing.locales.includes(locale as any)) notFound();
 
   // Enable static rendering and set the locale
   setRequestLocale(locale);

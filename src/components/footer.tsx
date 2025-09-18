@@ -1,34 +1,37 @@
 import { Bolt } from 'lucide-react';
 import Link from 'next/link';
-
-const links = [
-  {
-    title: 'Features',
-    href: '#',
-  },
-  {
-    title: 'Solution',
-    href: '#',
-  },
-  {
-    title: 'Customers',
-    href: '#',
-  },
-  {
-    title: 'Pricing',
-    href: '#',
-  },
-  {
-    title: 'Help',
-    href: '#',
-  },
-  {
-    title: 'About',
-    href: '#',
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export default function FooterSection() {
+  const t = useTranslations('footer');
+
+  const links = [
+    {
+      title: t('sections.product.features'),
+      href: '#',
+    },
+    {
+      title: t('sections.product.pricing'),
+      href: '#',
+    },
+    {
+      title: t('sections.product.testimonials'),
+      href: '#',
+    },
+    {
+      title: t('sections.company.about'),
+      href: '#',
+    },
+    {
+      title: t('sections.company.careers'),
+      href: '#',
+    },
+    {
+      title: t('sections.company.contact'),
+      href: '#',
+    },
+  ];
+
   return (
     <footer className='pb-16 pt-0 md:pb-32'>
       <div className='mx-auto max-w-5xl px-6'>
@@ -53,7 +56,7 @@ export default function FooterSection() {
             href='#'
             target='_blank'
             rel='noopener noreferrer'
-            aria-label='X/Twitter'
+            aria-label={t('social.twitter')}
             className='block text-muted-foreground hover:text-primary'
           >
             <svg className='size-6' xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'>
@@ -67,7 +70,7 @@ export default function FooterSection() {
             href='#'
             target='_blank'
             rel='noopener noreferrer'
-            aria-label='LinkedIn'
+            aria-label={t('social.linkedin')}
             className='block text-muted-foreground hover:text-primary'
           >
             <svg className='size-6' xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'>
@@ -114,7 +117,7 @@ export default function FooterSection() {
             href='#'
             target='_blank'
             rel='noopener noreferrer'
-            aria-label='Instagram'
+            aria-label={t('social.instagram')}
             className='block text-muted-foreground hover:text-primary'
           >
             <svg className='size-6' xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'>
@@ -139,10 +142,7 @@ export default function FooterSection() {
             </svg>
           </Link>
         </div>
-        <span className='block text-center text-sm text-muted-foreground'>
-          {' '}
-          © {new Date().getFullYear()} CreatorFlow, All rights reserved
-        </span>
+        <span className='block text-center text-sm text-muted-foreground'>{t('copyright')}</span>
       </div>
     </footer>
   );
