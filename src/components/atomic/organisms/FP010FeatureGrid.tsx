@@ -118,7 +118,7 @@ export async function FP010FeatureGrid() {
         {features.map((feature, index) => (
           <FP010FeatureCard
             key={index}
-            icon={feature.icon}
+            iconName={feature.iconName}
             title={feature.title}
             description={feature.description}
             benefits={feature.benefits}

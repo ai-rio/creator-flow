@@ -35,3 +35,9 @@ export { default as ThreeJSHeroAnimation } from './ThreeJS-HeroAnimation';
 export { FP010FeatureComparison } from './FP010FeatureComparison';
 export { FP010FeatureGrid } from './FP010FeatureGrid';
 export { FP010FeatureHero } from './FP010FeatureHero';
+
+// FP-030 Digital Twin Command Components
+export { FP030DigitalTwinCommand } from './FP030DigitalTwinCommand';
+
+// FP-050 Data Prism Components
+export { FP050DataPrism } from './FP050DataPrism';

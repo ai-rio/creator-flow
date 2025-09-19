@@ -53,6 +53,38 @@
         }
       },
       "organisms": {
+        "FP050DataPrism": {
+          "hero": {
+            "title": "O Oráculo do Crescimento.",
+            "description": "Nosso motor de análise decifra seu passado para prever seu futuro, revelando as tendências ocultas que impulsionarão sua próxima onda de crescimento."
+          },
+          "facets": {
+            "bestseller": {
+              "title": "Qual será meu próximo sucesso de vendas?"
+            },
+            "golden_hour": {
+              "title": "Quando é minha \"hora dourada\"?"
+            },
+            "customers": {
+              "title": "Onde estão meus novos clientes?"
+            }
+          },
+          "insights": {
+            "bestseller": {
+              "title": "Previsão de Demanda: Moletom do Criador",
+              "description": "A análise preditiva sugere um aumento de 175% na demanda durante o próximo trimestre."
+            },
+            "golden_hour": {
+              "title": "Hora Dourada Identificada",
+              "description": "Sua atividade de vendas pico ocorre consistentemente entre 19-21h nas quintas-feiras."
+            },
+            "customers": {
+              "title": "Ponto Quente de Novos Clientes",
+              "description": "Um grupo significativo de novos clientes surgiu no Noroeste do Pacífico.",
+              "region": "Região do Noroeste do Pacífico"
+            }
+          }
+        },
         "FP010FeatureComparison": {
           "actions": {
             "compareFeatures": "Comparar Todos os Recursos",
@@ -193,6 +225,51 @@
           },
           "subtitle": "Suíte Completa de Recursos",
           "title": "Transforme Sua TikTok Shop em uma Potência de Automação"
+        },
+        "FP030DigitalTwinCommand": {
+          "hero": {
+            "title": "Seu Inventário, em Foco.",
+            "description": "A clareza em tempo real é a visão estratégica que você precisa para proteger ativos e aproveitar oportunidades, entregue instantaneamente."
+          },
+          "pods": {
+            "itemsLabel": "Itens",
+            "at_risk": {
+              "title": "Em Risco"
+            },
+            "opportunity": {
+              "title": "Oportunidade"
+            },
+            "secure": {
+              "title": "Estoque Seguro"
+            }
+          },
+          "briefing": {
+            "at_risk": {
+              "title": "Relatório de Risco"
+            },
+            "opportunity": {
+              "title": "Relatório de Oportunidade"
+            },
+            "secure": {
+              "title": "Relatório de Estoque Seguro"
+            }
+          },
+          "items": {
+            "cap-1": "Boné de Edição Limitada",
+            "shirt-1": "Camiseta Viral",
+            "hoodie-0": "Moletom do Criador",
+            "hoodie-1": "Moletom do Criador",
+            "hoodie-2": "Moletom do Criador",
+            "hoodie-3": "Moletom do Criador",
+            "hoodie-4": "Moletom do Criador",
+            "hoodie-5": "Moletom do Criador",
+            "hoodie-6": "Moletom do Criador",
+            "hoodie-7": "Moletom do Criador",
+            "mug-0": "Caneca do Criador",
+            "mug-1": "Caneca do Criador",
+            "mug-2": "Caneca do Criador",
+            "mug-3": "Caneca do Criador"
+          }
         },
         "FPOrderManagement": {
           "orderStream": {

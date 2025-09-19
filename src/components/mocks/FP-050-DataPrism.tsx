@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 import { Clock, MapPin, Moon, Sun, TrendingUp, Zap } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
@@ -40,10 +41,10 @@ const lightTheme = {
 };
 
 // --- Data ---
-const facets = [
-  { id: 'bestseller', Icon: TrendingUp, title: "What's my next bestseller?" },
-  { id: 'golden_hour', Icon: Clock, title: 'When is my "golden hour"?' },
-  { id: 'customers', Icon: MapPin, title: 'Where are my new customers?' },
+const getFacets = (t: any) => [
+  { id: 'bestseller', Icon: TrendingUp, title: t('components.atomic.organisms.fp050DataPrism.facets.bestseller') },
+  { id: 'golden_hour', Icon: Clock, title: t('components.atomic.organisms.fp050DataPrism.facets.goldenHour') },
+  { id: 'customers', Icon: MapPin, title: t('components.atomic.organisms.fp050DataPrism.facets.customers') },
 ];
 
 const forecastData = [
@@ -74,15 +75,18 @@ export default function App(): React.JSX.Element {
 
 // --- The Definitive FP-050 "Data Prism" ---
 const FP050DataPrism: React.FC<any> = ({ theme }: any) => {
+  const { t } = useTranslation('features');
+  const facets = getFacets(t);
   const [activeFacet, setActiveFacet] = React.useState(facets[0].id);
 
   return (
     <div className='flex min-h-screen w-full flex-col items-center justify-center p-4'>
       <div className='text-center'>
-        <h2 className={`text-6xl font-black md:text-8xl ${theme.textPrimary}`}>The Oracle of Growth.</h2>
+        <h2 className={`text-6xl font-black md:text-8xl ${theme.textPrimary}`}>
+          {t('components.atomic.organisms.fp050DataPrism.headline')}
+        </h2>
         <p className={`mx-auto mt-4 max-w-3xl text-lg ${theme.textSecondary}`}>
-          Our analytics engine deciphers your past to predict your future, revealing the hidden trends that will drive
-          your next wave of growth.
+          {t('components.atomic.organisms.fp050DataPrism.subheadline')}
         </p>
       </div>
 
@@ -141,45 +145,53 @@ const FacetButton = ({ facet, isActive, onClick, theme }: any) => (
   </motion.button>
 );
 
-const BestsellerChart = ({ theme }: any) => (
-  <div>
-    <h3 className={`text-xl font-bold ${theme.textPrimary}`}>Demand Forecast: Creator Hoodie</h3>
-    <p className={`mt-1 text-sm ${theme.textSecondary}`}>
-      Predictive analysis suggests a 175% increase in demand over the next quarter.
-    </p>
-    <div className='mt-4 h-80 w-full'>
-      <ResponsiveContainer>
-        <AreaChart data={forecastData}>
-          <defs>
-            <linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
-              <stop offset='5%' stopColor={theme.sparkColor} stopOpacity={0.8} />
-              <stop offset='95%' stopColor={theme.sparkColor} stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis dataKey='name' stroke={theme.textSecondary} fontSize={12} />
-          <YAxis stroke={theme.textSecondary} fontSize={12} />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: theme.glassBg,
-              border: `1px solid ${theme.border}`,
-              borderRadius: '0.5rem',
-            }}
-          />
-          <Area type='monotone' dataKey='forecast' stroke={theme.sparkColor} strokeWidth={2} fill='url(#colorUv)' />
-        </AreaChart>
-      </ResponsiveContainer>
+const BestsellerChart = ({ theme }: any) => {
+  const { t } = useTranslation('features');
+  return (
+    <div>
+      <h3 className={`text-xl font-bold ${theme.textPrimary}`}>
+        {t('components.atomic.organisms.fp050DataPrism.sections.bestseller.title')}
+      </h3>
+      <p className={`mt-1 text-sm ${theme.textSecondary}`}>
+        {t('components.atomic.organisms.fp050DataPrism.sections.bestseller.description')}
+      </p>
+      <div className='mt-4 h-80 w-full'>
+        <ResponsiveContainer>
+          <AreaChart data={forecastData}>
+            <defs>
+              <linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
+                <stop offset='5%' stopColor={theme.sparkColor} stopOpacity={0.8} />
+                <stop offset='95%' stopColor={theme.sparkColor} stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <XAxis dataKey='name' stroke={theme.textSecondary} fontSize={12} />
+            <YAxis stroke={theme.textSecondary} fontSize={12} />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: theme.glassBg,
+                border: `1px solid ${theme.border}`,
+                borderRadius: '0.5rem',
+              }}
+            />
+            <Area type='monotone' dataKey='forecast' stroke={theme.sparkColor} strokeWidth={2} fill='url(#colorUv)' />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const GoldenHourHeatmap: React.FC<any> = ({ theme }: any) => {
+  const { t } = useTranslation('features');
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
     <div>
-      <h3 className={`text-xl font-bold ${theme.textPrimary}`}>Golden Hour Identified</h3>
+      <h3 className={`text-xl font-bold ${theme.textPrimary}`}>
+        {t('components.atomic.organisms.fp050DataPrism.sections.goldenHour.title')}
+      </h3>
       <p className={`mt-1 text-sm ${theme.textSecondary}`}>
-        Your peak sales activity consistently occurs between 7-9 PM on Thursdays.
+        {t('components.atomic.organisms.fp050DataPrism.sections.goldenHour.description')}
       </p>
       <div className='mt-4'>
         <div className='flex'>
@@ -227,34 +239,39 @@ const GoldenHourHeatmap: React.FC<any> = ({ theme }: any) => {
   );
 };
 
-const CustomerInsight = ({ theme }: any) => (
-  <div>
-    <h3 className={`text-xl font-bold ${theme.textPrimary}`}>New Customer Hotspot</h3>
-    <p className={`mt-1 text-sm ${theme.textSecondary}`}>
-      A significant pocket of new customers has emerged in the Pacific Northwest.
-    </p>
-    <div
-      className={`relative mt-4 flex h-80 w-full items-center justify-center overflow-hidden rounded-lg ${
-        theme === darkTheme ? 'bg-black/10' : 'bg-slate-200/50'
-      }`}
-    >
-      <WorldMapIllustration color={theme.sparkColor} />
-      <div className='relative z-10 flex items-center'>
-        <MapPin
-          size={64}
-          className='animate-pulse'
-          style={{ color: theme.sparkColor, filter: `drop-shadow(0 0 10px ${theme.sparkColor})` }}
-        />
-        <p
-          className={`ml-4 text-4xl font-black ${theme.textPrimary}`}
-          style={{ textShadow: `0 0 10px ${theme.background === '#0A090F' ? '#0A090F' : 'rgba(255,255,255,0.7)'}` }}
-        >
-          PNW Region
-        </p>
+const CustomerInsight = ({ theme }: any) => {
+  const { t } = useTranslation('features');
+  return (
+    <div>
+      <h3 className={`text-xl font-bold ${theme.textPrimary}`}>
+        {t('components.atomic.organisms.fp050DataPrism.sections.customerInsight.title')}
+      </h3>
+      <p className={`mt-1 text-sm ${theme.textSecondary}`}>
+        {t('components.atomic.organisms.fp050DataPrism.sections.customerInsight.description')}
+      </p>
+      <div
+        className={`relative mt-4 flex h-80 w-full items-center justify-center overflow-hidden rounded-lg ${
+          theme === darkTheme ? 'bg-black/10' : 'bg-slate-200/50'
+        }`}
+      >
+        <WorldMapIllustration color={theme.sparkColor} />
+        <div className='relative z-10 flex items-center'>
+          <MapPin
+            size={64}
+            className='animate-pulse'
+            style={{ color: theme.sparkColor, filter: `drop-shadow(0 0 10px ${theme.sparkColor})` }}
+          />
+          <p
+            className={`ml-4 text-4xl font-black ${theme.textPrimary}`}
+            style={{ textShadow: `0 0 10px ${theme.background === '#0A090F' ? '#0A090F' : 'rgba(255,255,255,0.7)'}` }}
+          >
+            {t('components.atomic.organisms.fp050DataPrism.sections.customerInsight.region')}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const WorldMapIllustration = ({ color }: any) => (
   <svg className='absolute h-full w-full opacity-20' viewBox='0 0 1000 500'>

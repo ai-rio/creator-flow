@@ -53,6 +53,38 @@
         }
       },
       "organisms": {
+        "FP050DataPrism": {
+          "hero": {
+            "title": "El Oráculo del Crecimiento.",
+            "description": "Nuestro motor de análisis descifra tu pasado para predecir tu futuro, revelando las tendencias ocultas que impulsarán tu próxima ola de crecimiento."
+          },
+          "facets": {
+            "bestseller": {
+              "title": "¿Cuál será mi próximo éxito de ventas?"
+            },
+            "golden_hour": {
+              "title": "¿Cuándo es mi \"hora dorada\"?"
+            },
+            "customers": {
+              "title": "¿Dónde están mis nuevos clientes?"
+            }
+          },
+          "insights": {
+            "bestseller": {
+              "title": "Pronóstico de Demanda: Sudadera del Creador",
+              "description": "El análisis predictivo sugiere un aumento del 175% en la demanda durante el próximo trimestre."
+            },
+            "golden_hour": {
+              "title": "Hora Dorada Identificada",
+              "description": "Tu actividad de ventas pico ocurre consistentemente entre las 7-9 PM los jueves."
+            },
+            "customers": {
+              "title": "Punto Caliente de Nuevos Clientes",
+              "description": "Un grupo significativo de nuevos clientes ha surgido en el Noroeste del Pacífico.",
+              "region": "Región del Noroeste del Pacífico"
+            }
+          }
+        },
         "FP010FeatureComparison": {
           "actions": {
             "compareFeatures": "Comparar Todas las Características",
@@ -193,6 +225,51 @@
           },
           "subtitle": "Suite Completa de Características",
           "title": "Transforma Tu TikTok Shop en una Potencia de Automatización"
+        },
+        "FP030DigitalTwinCommand": {
+          "hero": {
+            "title": "Tu Inventario, en Foco.",
+            "description": "La claridad en tiempo real es la visión estratégica que necesitas para proteger activos y aprovechar oportunidades, entregada instantáneamente."
+          },
+          "pods": {
+            "itemsLabel": "Artículos",
+            "at_risk": {
+              "title": "En Riesgo"
+            },
+            "opportunity": {
+              "title": "Oportunidad"
+            },
+            "secure": {
+              "title": "Stock Seguro"
+            }
+          },
+          "briefing": {
+            "at_risk": {
+              "title": "Informe de Riesgo"
+            },
+            "opportunity": {
+              "title": "Informe de Oportunidad"
+            },
+            "secure": {
+              "title": "Informe de Stock Seguro"
+            }
+          },
+          "items": {
+            "cap-1": "Gorra de Edición Limitada",
+            "shirt-1": "Camiseta Viral",
+            "hoodie-0": "Sudadera de Creador",
+            "hoodie-1": "Sudadera de Creador",
+            "hoodie-2": "Sudadera de Creador",
+            "hoodie-3": "Sudadera de Creador",
+            "hoodie-4": "Sudadera de Creador",
+            "hoodie-5": "Sudadera de Creador",
+            "hoodie-6": "Sudadera de Creador",
+            "hoodie-7": "Sudadera de Creador",
+            "mug-0": "Taza de Creador",
+            "mug-1": "Taza de Creador",
+            "mug-2": "Taza de Creador",
+            "mug-3": "Taza de Creador"
+          }
         },
         "FPOrderManagement": {
           "orderStream": {

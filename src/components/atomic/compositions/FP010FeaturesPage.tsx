@@ -5,6 +5,8 @@ import { FP010FeatureComparison } from '@/components/atomic/organisms/FP010Featu
 import { FP010FeatureGrid } from '@/components/atomic/organisms/FP010FeatureGrid';
 import { FP010FeatureHero } from '@/components/atomic/organisms/FP010FeatureHero';
 import FP020OrderManagement from '@/components/atomic/organisms/FP020OrderManagement';
+import { FP030DigitalTwinCommand } from '@/components/atomic/organisms/FP030DigitalTwinCommand';
+import { FP050DataPrism } from '@/components/atomic/organisms/FP050DataPrism';
 
 /**
  * FP010FeaturesPage - Complete Features Page Composition
@@ -15,7 +17,9 @@ import FP020OrderManagement from '@/components/atomic/organisms/FP020OrderManage
  * Structure:
  * - Hero Section (FP010FeatureHero)
  * - Features Grid (FP010FeatureGrid)
+ * - Digital Twin Command Center (FP030DigitalTwinCommand)
  * - Interactive Order Management Demo (FP020OrderManagement)
+ * - Data Analytics Prism (FP050DataPrism)
  * - Feature Comparison (FP010FeatureComparison)
  * - Call-to-Action Section
  * - Breadcrumbs navigation
@@ -48,9 +52,19 @@ export async function FP010FeaturesPage() {
         <FP010FeatureGrid />
       </section>
 
+      {/* Digital Twin Command Center */}
+      <section className='relative bg-gradient-to-br from-background via-muted/10 to-background py-16 sm:py-24'>
+        <FP030DigitalTwinCommand />
+      </section>
+
       {/* Interactive Order Management Demo */}
       <section className='relative bg-gradient-to-br from-bg-dark-primary to-bg-dark-secondary py-16 sm:py-24'>
         <FP020OrderManagement className='mx-auto max-w-7xl' initialOrderCount={30} theme='dark' />
+      </section>
+
+      {/* Data Analytics Prism */}
+      <section className='relative bg-gradient-to-br from-primary/5 via-background to-muted/10 py-16 sm:py-24'>
+        <FP050DataPrism />
       </section>
 
       {/* Feature Comparison */}

@@ -53,6 +53,38 @@
         }
       },
       "organisms": {
+        "FP050DataPrism": {
+          "hero": {
+            "title": "The Oracle of Growth.",
+            "description": "Our analytics engine deciphers your past to predict your future, revealing the hidden trends that will drive your next wave of growth."
+          },
+          "facets": {
+            "bestseller": {
+              "title": "What will be my next bestseller?"
+            },
+            "golden_hour": {
+              "title": "When is my \"golden hour\"?"
+            },
+            "customers": {
+              "title": "Where are my new customers?"
+            }
+          },
+          "insights": {
+            "bestseller": {
+              "title": "Demand Forecast: Creator Hoodie",
+              "description": "Predictive analysis suggests a 175% increase in demand over the next quarter."
+            },
+            "golden_hour": {
+              "title": "Golden Hour Identified",
+              "description": "Your peak sales activity consistently occurs between 7-9 PM on Thursdays."
+            },
+            "customers": {
+              "title": "New Customer Hotspot",
+              "description": "A significant cluster of new customers has emerged in the Pacific Northwest.",
+              "region": "Pacific Northwest Region"
+            }
+          }
+        },
         "FP010FeatureComparison": {
           "actions": {
             "compareFeatures": "Compare All Features",
@@ -193,6 +225,51 @@
           },
           "subtitle": "Complete Feature Suite",
           "title": "Transform Your TikTok Shop Into an Automation Powerhouse"
+        },
+        "FP030DigitalTwinCommand": {
+          "hero": {
+            "title": "Your Inventory, in Focus.",
+            "description": "Real-time clarity is the strategic overview you need to protect assets and seize opportunities, delivered instantly."
+          },
+          "pods": {
+            "itemsLabel": "Items",
+            "at_risk": {
+              "title": "At Risk"
+            },
+            "opportunity": {
+              "title": "Opportunity"
+            },
+            "secure": {
+              "title": "Secure Stock"
+            }
+          },
+          "briefing": {
+            "at_risk": {
+              "title": "At Risk Briefing"
+            },
+            "opportunity": {
+              "title": "Opportunity Briefing"
+            },
+            "secure": {
+              "title": "Secure Stock Briefing"
+            }
+          },
+          "items": {
+            "cap-1": "Limited Edition Cap",
+            "shirt-1": "Viral T-Shirt",
+            "hoodie-0": "Creator Hoodie",
+            "hoodie-1": "Creator Hoodie",
+            "hoodie-2": "Creator Hoodie",
+            "hoodie-3": "Creator Hoodie",
+            "hoodie-4": "Creator Hoodie",
+            "hoodie-5": "Creator Hoodie",
+            "hoodie-6": "Creator Hoodie",
+            "hoodie-7": "Creator Hoodie",
+            "mug-0": "Creator Mug",
+            "mug-1": "Creator Mug",
+            "mug-2": "Creator Mug",
+            "mug-3": "Creator Mug"
+          }
         },
         "FPOrderManagement": {
           "orderStream": {

@@ -72,7 +72,12 @@
       "Bash(fi)",
       "Bash(done)",
       "Bash(do)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(npx tsc:*)",
+      "mcp__shadcn__get_project_registries",
+      "Bash(python3:*)",
+      "Bash(jq:*)",
+      "Bash(__NEW_LINE__ echo \"🔍 SUMMARY OF CHANGES MADE:\")"
     ],
     "deny": [],
     "ask": []
