@@ -19,16 +19,14 @@
       "legal": {
         "privacy": "Política de Privacidade",
         "terms": "Termos de Serviço",
-        "title": "Legal"
+        "title": "Legal",
+        "gdpr": "Soberania de Dados"
       },
       "product": {
         "features": "Recursos",
         "pricing": "Preços",
         "testimonials": "Depoimentos",
         "title": "Produto"
-      },
-      "legal": {
-        "title": "Legal"
       }
     },
     "social": {

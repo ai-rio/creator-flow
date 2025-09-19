@@ -28,11 +28,15 @@ export default function FooterSection() {
     },
     {
       title: t('sections.company.contact'),
-      href: '#',
+      href: '/contact',
     },
     {
       title: t('sections.legal.title'),
       href: '/legal',
+    },
+    {
+      title: t('sections.legal.gdpr'),
+      href: '/gdpr',
     },
   ];
 

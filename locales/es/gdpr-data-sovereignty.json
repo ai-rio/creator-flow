@@ -1,0 +1,40 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TPGDPRDataSovereignty": {
+          "hero": {
+            "title": "Protocolo de Soberanía de Datos",
+            "description": "Eres el propietario soberano de tus datos. Esto no es una política para leer; es un centro de comando para que controles el ciclo de vida de tus datos."
+          },
+          "rights": {
+            "access": {
+              "title": "Solicitar Dossier Completo de Datos",
+              "description": "Inicia un proceso seguro y automatizado para descargar un dossier completo de la información de tu cuenta, datos operacionales y registros del sistema.",
+              "button": "Solicitar Dossier"
+            },
+            "erasure": {
+              "title": "Iniciar Protocolo 'Derecho al Olvido'",
+              "description": "Ejecuta el borrado permanente e irreversible de toda tu cuenta. Esta acción no se puede deshacer.",
+              "button": "Iniciar Protocolo"
+            }
+          },
+          "compilation": {
+            "step1": "Recopilando Datos de Cuenta...",
+            "step2": "Compilando Registros Operacionales...",
+            "step3": "Encriptando Dossier Seguro...",
+            "step4": "Listo para Transmisión.",
+            "download": "Descargar Dossier Seguro"
+          },
+          "modal": {
+            "title": "Confirmación Final Requerida",
+            "description": "Esta acción es permanente y no se puede deshacer. Todos tus datos serán programados para borrado irreversible. ¿Estás absolutamente seguro de que deseas proceder?",
+            "cancel": "Cancelar",
+            "confirm": "Confirmar Borrado",
+            "success": "El protocolo 'Derecho al Olvido' ha sido iniciado."
+          }
+        }
+      }
+    }
+  }
+}

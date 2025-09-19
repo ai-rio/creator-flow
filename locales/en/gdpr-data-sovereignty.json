@@ -1,0 +1,40 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TPGDPRDataSovereignty": {
+          "hero": {
+            "title": "Data Sovereignty Protocol",
+            "description": "You are the sovereign owner of your data. This is not a policy to be read; it is a command center for you to control your data's lifecycle."
+          },
+          "rights": {
+            "access": {
+              "title": "Request Full Data Dossier",
+              "description": "Initiate a secure, automated process to download a complete dossier of your account information, operational data, and system logs.",
+              "button": "Request Dossier"
+            },
+            "erasure": {
+              "title": "Initiate 'Right to be Forgotten' Protocol",
+              "description": "Execute the permanent and irreversible erasure of your entire account. This action cannot be undone.",
+              "button": "Initiate Protocol"
+            }
+          },
+          "compilation": {
+            "step1": "Collating Account Data...",
+            "step2": "Compiling Operational Logs...",
+            "step3": "Encrypting Secure Dossier...",
+            "step4": "Ready for Transmission.",
+            "download": "Download Secure Dossier"
+          },
+          "modal": {
+            "title": "Final Confirmation Required",
+            "description": "This action is permanent and cannot be undone. All of your data will be queued for irreversible erasure. Are you absolutely certain you wish to proceed?",
+            "cancel": "Cancel",
+            "confirm": "Confirm Erasure",
+            "success": "'Right to be Forgotten' protocol has been initiated."
+          }
+        }
+      }
+    }
+  }
+}

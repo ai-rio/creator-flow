@@ -1,0 +1,40 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TPGDPRDataSovereignty": {
+          "hero": {
+            "title": "Protocolo de Soberania de Dados",
+            "description": "Você é o proprietário soberano dos seus dados. Isso não é uma política para ser lida; é um centro de comando para você controlar o ciclo de vida dos seus dados."
+          },
+          "rights": {
+            "access": {
+              "title": "Solicitar Dossiê Completo de Dados",
+              "description": "Inicie um processo seguro e automatizado para baixar um dossiê completo das informações da sua conta, dados operacionais e logs do sistema.",
+              "button": "Solicitar Dossiê"
+            },
+            "erasure": {
+              "title": "Iniciar Protocolo 'Direito ao Esquecimento'",
+              "description": "Execute o apagamento permanente e irreversível de toda a sua conta. Esta ação não pode ser desfeita.",
+              "button": "Iniciar Protocolo"
+            }
+          },
+          "compilation": {
+            "step1": "Coletando Dados da Conta...",
+            "step2": "Compilando Logs Operacionais...",
+            "step3": "Criptografando Dossiê Seguro...",
+            "step4": "Pronto para Transmissão.",
+            "download": "Baixar Dossiê Seguro"
+          },
+          "modal": {
+            "title": "Confirmação Final Necessária",
+            "description": "Esta ação é permanente e não pode ser desfeita. Todos os seus dados serão programados para apagamento irreversível. Você tem certeza absoluta de que deseja prosseguir?",
+            "cancel": "Cancelar",
+            "confirm": "Confirmar Apagamento",
+            "success": "O protocolo 'Direito ao Esquecimento' foi iniciado."
+          }
+        }
+      }
+    }
+  }
+}
