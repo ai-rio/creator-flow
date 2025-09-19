@@ -1,0 +1,27 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CP010Hero": {
+          "manifesto": {
+            "headline": "This Is Not a Job Application.",
+            "body": [
+              "We do not have 'open roles.' We have critical missions in the relentless campaign against operational chaos.",
+              "Our enemy is mediocrity. Our battlefield is the knife's edge between a creator's viral moment and their catastrophic collapse.",
+              "We are not a family. We are a small, elite team of architects obsessed with forging perfect systems under extreme pressure.",
+              "Read our philosophy of 'Flying Fly Dead.' Internalize our 'Think Hard and Dig Deep' methodology. If these principles do not resonate with you on a fundamental level, we thank you for your time. This is not the place for you.",
+              "We do not offer ping pong tables. Our reward is the rare opportunity to build something definitive. The 'perk' is the forge itself.",
+              "If you believe your best work is still ahead of you and that 'good enough' is a betrayal, then proceed.",
+              "Show us not your resume, but your thinking."
+            ],
+            "prompt": "Accept the Standard & Proceed"
+          },
+          "authenticated": {
+            "welcome": "> AUTHENTICATION SUCCESSFUL. WELCOME, ARCHITECT.",
+            "revealing": "> Revealing open missions..."
+          }
+        }
+      }
+    }
+  }
+}

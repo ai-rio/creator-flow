@@ -1,6 +1,7 @@
 import { Bolt } from 'lucide-react';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 export default function FooterSection() {
   const t = useTranslations('footer');
@@ -24,7 +25,7 @@ export default function FooterSection() {
     },
     {
       title: t('sections.company.careers'),
-      href: '#',
+      href: '/careers',
     },
     {
       title: t('sections.company.contact'),

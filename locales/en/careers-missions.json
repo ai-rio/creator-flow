@@ -1,0 +1,58 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CP020OpenMissions": {
+          "header": {
+            "title": "Active Missions"
+          },
+          "navigation": {
+            "previous": "Previous mission",
+            "next": "Next mission"
+          },
+          "missions": {
+            "shipping": {
+              "title": "Architect the Multi-Carrier Shipping System",
+              "directive": "The single greatest threat to a creator's profitability is the 'shipping tax'—a silent killer composed of non-optimized rates, manual processing, and operational friction. Your mission is to architect and build a definitive, multi-carrier rate shopping engine from first principles, transforming shipping from a creator's biggest cost center into a new source of competitive advantage and profit.",
+              "successCriteria": [
+                "Achieve a 15-25% average shipping cost reduction.",
+                "Execute label generation in under 30 seconds.",
+                "Maintain 99.5% uptime across all carrier API integrations.",
+                "Provide strategic, actionable tracking intelligence."
+              ]
+            },
+            "analytics": {
+              "title": "Forge the Predictive Analytics Engine",
+              "directive": "Creator growth is driven by momentum, but momentum creates chaos. The mission is to build an analytics engine that transforms raw sales data into predictive wisdom. This system must forecast inventory needs, identify emerging product trends, and provide clear, actionable insights that allow creators to make strategic decisions before they become operational emergencies.",
+              "successCriteria": [
+                "Reduce stockouts by 78% through accurate demand forecasting.",
+                "Deliver growth analytics with <5 minute data freshness.",
+                "Maintain <500ms query response for all standard reports.",
+                "Achieve a 23% average revenue increase for creators using the engine."
+              ]
+            }
+          },
+          "successCriteria": {
+            "title": "Success Criteria (Non-Negotiable)"
+          },
+          "acceptMission": "Accept Mission & Submit Protocol",
+          "modal": {
+            "title": "Transmit Protocol",
+            "missionLabel": "Mission",
+            "headerLabel": "Secure Transmission Header",
+            "form": {
+              "codename": "Codename / Alias",
+              "email": "Secure Channel (Email)",
+              "proofOfWork": "Proof of Work (URL)"
+            },
+            "challenge": {
+              "title": "The Challenge",
+              "description": "In 500 words or less, outline your first-principles approach to architecting a system that achieves the non-negotiable success criteria. We are not looking for a list of technologies; we are looking for your strategic and architectural philosophy."
+            },
+            "submit": "Transmit Protocol"
+          }
+        }
+      }
+    }
+  }
+}

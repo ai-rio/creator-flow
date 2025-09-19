@@ -46,6 +46,8 @@ export { FP050DataPrism } from './FP050DataPrism';
 export { default as LegalPage } from './LegalPage';
 
 // Contact Page Components
+export { CP010Hero } from './CP010Hero';
+export { CP020OpenMissions } from './CP020OpenMissions';
 export { TP010Contact } from './TP010Contact';
 export { TP404NotFound } from './TP404NotFound';
 export { TPCookiePolicyBar } from './TPCookiePolicyBar';

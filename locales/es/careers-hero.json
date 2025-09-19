@@ -1,0 +1,27 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CP010Hero": {
+          "manifesto": {
+            "headline": "Esto No Es Una Solicitud de Empleo.",
+            "body": [
+              "No tenemos 'puestos abiertos.' Tenemos misiones críticas en la campaña implacable contra el caos operacional.",
+              "Nuestro enemigo es la mediocridad. Nuestro campo de batalla es el filo de la navaja entre el momento viral de un creador y su colapso catastrófico.",
+              "No somos una familia. Somos un equipo pequeño y élite de arquitectos obsesionados con forjar sistemas perfectos bajo presión extrema.",
+              "Lee nuestra filosofía de 'Flying Fly Dead.' Internaliza nuestra metodología 'Think Hard and Dig Deep.' Si estos principios no resuenan contigo a un nivel fundamental, te agradecemos tu tiempo. Este no es el lugar para ti.",
+              "No ofrecemos mesas de ping pong. Nuestra recompensa es la rara oportunidad de construir algo definitivo. El 'beneficio' es la forja misma.",
+              "Si crees que tu mejor trabajo aún está por delante y que 'suficientemente bueno' es una traición, entonces procede.",
+              "Muéstranos no tu currículum, sino tu pensamiento."
+            ],
+            "prompt": "Acepta el Estándar y Procede"
+          },
+          "authenticated": {
+            "welcome": "> AUTENTICACIÓN EXITOSA. BIENVENIDO, ARQUITECTO.",
+            "revealing": "> Revelando misiones abiertas..."
+          }
+        }
+      }
+    }
+  }
+}

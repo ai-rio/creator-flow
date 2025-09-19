@@ -1,0 +1,58 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CP020OpenMissions": {
+          "header": {
+            "title": "Missões Ativas"
+          },
+          "navigation": {
+            "previous": "Missão anterior",
+            "next": "Próxima missão"
+          },
+          "missions": {
+            "shipping": {
+              "title": "Arquiteto do Sistema Multi-Transportadora",
+              "directive": "A maior ameaça à lucratividade de um criador é o 'imposto de envio'—um assassino silencioso composto de tarifas não otimizadas, processamento manual e fricção operacional. Sua missão é arquitetar e construir um motor definitivo de comparação de tarifas multi-transportadora a partir de primeiros princípios, transformando o envio do maior centro de custos de um criador em uma nova fonte de vantagem competitiva e lucro.",
+              "successCriteria": [
+                "Alcançar uma redução média de custos de envio de 15-25%.",
+                "Executar geração de etiquetas em menos de 30 segundos.",
+                "Manter 99.5% de tempo de atividade em todas as integrações de API de transportadoras.",
+                "Fornecer inteligência de rastreamento estratégica e acionável."
+              ]
+            },
+            "analytics": {
+              "title": "Forjar o Motor de Análise Preditiva",
+              "directive": "O crescimento do criador é impulsionado pelo momentum, mas o momentum cria caos. A missão é construir um motor de análise que transforme dados de vendas brutos em sabedoria preditiva. Este sistema deve prever necessidades de estoque, identificar tendências emergentes de produtos e fornecer insights claros e acionáveis que permitam aos criadores tomar decisões estratégicas antes que se tornem emergências operacionais.",
+              "successCriteria": [
+                "Reduzir faltas de estoque em 78% através de previsão precisa de demanda.",
+                "Entregar análises de crescimento com <5 minutos de atualização de dados.",
+                "Manter <500ms de resposta de consulta para todos os relatórios padrão.",
+                "Alcançar um aumento médio de receita de 23% para criadores usando o motor."
+              ]
+            }
+          },
+          "successCriteria": {
+            "title": "Critérios de Sucesso (Não Negociáveis)"
+          },
+          "acceptMission": "Aceitar Missão e Enviar Protocolo",
+          "modal": {
+            "title": "Protocolo de Transmissão",
+            "missionLabel": "Missão",
+            "headerLabel": "Cabeçalho de Transmissão Segura",
+            "form": {
+              "codename": "Nome de Código / Alias",
+              "email": "Canal Seguro (Email)",
+              "proofOfWork": "Prova de Trabalho (URL)"
+            },
+            "challenge": {
+              "title": "O Desafio",
+              "description": "Em 500 palavras ou menos, descreva sua abordagem de primeiros princípios para arquitetar um sistema que alcance os critérios de sucesso não negociáveis. Não estamos procurando uma lista de tecnologias; estamos procurando sua filosofia estratégica e arquitetônica."
+            },
+            "submit": "Transmitir Protocolo"
+          }
+        }
+      }
+    }
+  }
+}

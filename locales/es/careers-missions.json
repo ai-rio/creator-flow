@@ -1,0 +1,58 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "CP020OpenMissions": {
+          "header": {
+            "title": "Misiones Activas"
+          },
+          "navigation": {
+            "previous": "Misión anterior",
+            "next": "Siguiente misión"
+          },
+          "missions": {
+            "shipping": {
+              "title": "Arquitecto del Sistema Multi-Transportista",
+              "directive": "La mayor amenaza para la rentabilidad de un creador es el 'impuesto de envío'—un asesino silencioso compuesto de tarifas no optimizadas, procesamiento manual y fricción operacional. Tu misión es arquitectar y construir un motor definitivo de comparación de tarifas multi-transportista desde primeros principios, transformando el envío de el mayor centro de costos de un creador en una nueva fuente de ventaja competitiva y beneficio.",
+              "successCriteria": [
+                "Lograr una reducción promedio de costos de envío del 15-25%.",
+                "Ejecutar generación de etiquetas en menos de 30 segundos.",
+                "Mantener 99.5% de tiempo de actividad en todas las integraciones de API de transportistas.",
+                "Proporcionar inteligencia de seguimiento estratégica y accionable."
+              ]
+            },
+            "analytics": {
+              "title": "Forjar el Motor de Análisis Predictivo",
+              "directive": "El crecimiento del creador es impulsado por el impulso, pero el impulso crea caos. La misión es construir un motor de análisis que transforme datos de ventas en bruto en sabiduría predictiva. Este sistema debe pronosticar necesidades de inventario, identificar tendencias emergentes de productos y proporcionar insights claros y accionables que permitan a los creadores tomar decisiones estratégicas antes de que se conviertan en emergencias operacionales.",
+              "successCriteria": [
+                "Reducir desabastecimientos en 78% a través de pronósticos precisos de demanda.",
+                "Entregar análisis de crecimiento con <5 minutos de frescura de datos.",
+                "Mantener <500ms de respuesta de consulta para todos los reportes estándar.",
+                "Lograr un aumento promedio de ingresos del 23% para creadores usando el motor."
+              ]
+            }
+          },
+          "successCriteria": {
+            "title": "Criterios de Éxito (No Negociables)"
+          },
+          "acceptMission": "Aceptar Misión y Enviar Protocolo",
+          "modal": {
+            "title": "Protocolo de Transmisión",
+            "missionLabel": "Misión",
+            "headerLabel": "Encabezado de Transmisión Segura",
+            "form": {
+              "codename": "Nombre en Clave / Alias",
+              "email": "Canal Seguro (Email)",
+              "proofOfWork": "Prueba de Trabajo (URL)"
+            },
+            "challenge": {
+              "title": "El Desafío",
+              "description": "En 500 palabras o menos, describe tu enfoque de primeros principios para arquitectar un sistema que logre los criterios de éxito no negociables. No buscamos una lista de tecnologías; buscamos tu filosofía estratégica y arquitectónica."
+            },
+            "submit": "Transmitir Protocolo"
+          }
+        }
+      }
+    }
+  }
+}

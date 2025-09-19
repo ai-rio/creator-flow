@@ -62,6 +62,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
       notFound,
       cookiePolicyBar,
       gdprDataSovereignty,
+      careersHero,
+      careersMissions,
     ] = await Promise.all([
       safeLoadModule(locale as any, 'common'),
       safeLoadModule(locale as any, 'homepage'),
@@ -74,6 +76,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
       safeLoadModule(locale as any, '404-not-found'),
       safeLoadModule(locale as any, 'cookie-policy-bar'),
       safeLoadModule(locale as any, 'gdpr-data-sovereignty'),
+      safeLoadModule(locale as any, 'careers-hero'),
+      safeLoadModule(locale as any, 'careers-missions'),
     ]);
 
     // Debug: Check if any module has flat keys
@@ -89,6 +93,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
       notFound,
       cookiePolicyBar,
       gdprDataSovereignty,
+      careersHero,
+      careersMissions,
     };
     for (const [moduleName, moduleData] of Object.entries(modules)) {
       const flatKeys = Object.keys(moduleData).filter((key) => key.includes('.'));
@@ -111,6 +117,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
       notFound,
       cookiePolicyBar,
       gdprDataSovereignty,
+      careersHero,
+      careersMissions,
     ]) {
       messages = deepMerge(messages, moduleData);
     }
@@ -154,6 +162,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
         notFound,
         cookiePolicyBar,
         gdprDataSovereignty,
+        careersHero,
+        careersMissions,
       ] = await Promise.all([
         safeLoadModule(fallbackLocale as any, 'common'),
         safeLoadModule(fallbackLocale as any, 'homepage'),
@@ -166,6 +176,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
         safeLoadModule(fallbackLocale as any, '404-not-found'),
         safeLoadModule(fallbackLocale as any, 'cookie-policy-bar'),
         safeLoadModule(fallbackLocale as any, 'gdpr-data-sovereignty'),
+        safeLoadModule(fallbackLocale as any, 'careers-hero'),
+        safeLoadModule(fallbackLocale as any, 'careers-missions'),
       ]);
 
       const fallbackMessages = {
@@ -180,6 +192,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
         ...notFound,
         ...cookiePolicyBar,
         ...gdprDataSovereignty,
+        ...careersHero,
+        ...careersMissions,
       };
 
       console.log('🚀 REQUEST CONFIG - Using fallback messages for:', fallbackLocale);
