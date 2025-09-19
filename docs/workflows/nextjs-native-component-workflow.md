@@ -27,6 +27,8 @@ This workflow replaces the complex mock-to-atomic migration with **specialist ag
 
 ## Specialist Agent Workflow
 
+> **📋 MANDATORY Integration Checklist**: **MUST** complete the [Component Integration Checklist](./component-integration-checklist.md) before proceeding with any component integration. This checklist prevents critical layout, theme, and i18n issues.
+
 ### Phase 1: Motion Specialist Agent Deployment
 
 **Purpose**: Preserve and enhance sophisticated animations from mock components
@@ -181,7 +183,20 @@ import { ComponentName } from '@/components/atomic/organisms/ComponentName';
 
 ## Complete Workflow Implementation
 
-### Step 1: Analyze Source Component
+### Step 1: **MANDATORY** Pre-Integration Validation
+
+```bash
+# REQUIRED: Complete component integration checklist
+# File: docs/workflows/component-integration-checklist.md
+# Status: [ ] Layout Integration
+# Status: [ ] Theme Integration
+# Status: [ ] Internationalization
+# Status: [ ] Hydration & SSR
+# Status: [ ] TypeScript Compliance
+# Status: [ ] Performance & Accessibility
+```
+
+### Step 2: Analyze Source Component
 
 ```bash
 # Examine the mock component structure
@@ -194,7 +209,20 @@ cat src/components/mocks/[COMPONENT-NAME].tsx
 # - Visual complexity and design system usage
 ```
 
-### Step 2: Deploy Motion Specialist Agent
+### Step 2: Analyze Source Component
+
+```bash
+# Examine the mock component structure
+cat src/components/mocks/[COMPONENT-NAME].tsx
+
+# Identify key features:
+# - Animation patterns (Framer Motion variants)
+# - Data structures and state management
+# - Interaction patterns and user flows
+# - Visual complexity and design system usage
+```
+
+### Step 3: Deploy Motion Specialist Agent
 
 ```typescript
 // Agent deployment for animation enhancement
@@ -206,7 +234,7 @@ cat src/components/mocks/[COMPONENT-NAME].tsx
 // 4. Add accessibility compliance
 ```
 
-### Step 3: Deploy UI Translator Agent
+### Step 4: Deploy UI Translator Agent
 
 ```bash
 # Agent deployment for comprehensive i18n
@@ -219,7 +247,7 @@ cat src/components/mocks/[COMPONENT-NAME].tsx
 # - locales/pt-br/features.json
 ```
 
-### Step 4: Integrate Component
+### Step 5: Integrate Component
 
 ```typescript
 // 1. Add to organism index exports
@@ -236,20 +264,27 @@ import { ComponentName } from '@/components/atomic/organisms/ComponentName';
 // 4. Validate responsive design
 ```
 
-### Step 5: Validate & Test
+### Step 6: **MANDATORY** Final Validation
+
+### Step 6: **MANDATORY** Final Validation
 
 ```bash
-# Run validation commands
-bun run type-check
-bun run lint
-bun run test
+# REQUIRED: Complete all checklist items before commit
+# Reference: docs/workflows/component-integration-checklist.md
 
-# Test all locales manually
+# Run validation commands
+bun run type-check  # MUST pass
+bun run lint        # MUST pass
+bun run test        # MUST pass
+
+# Test all locales manually (REQUIRED)
 # localhost:3001 (EN)
 # localhost:3001/es (ES)
 # localhost:3001/pt-br (PT-BR)
 
-# Verify theme switching works across all locales
+# Verify theme switching works across all locales (REQUIRED)
+# Verify no duplicate UI elements (header/footer/theme toggles)
+# Verify proper layout integration
 ```
 
 ## Agent Commands Pattern (Actual Scripts Used)

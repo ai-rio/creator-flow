@@ -50,17 +50,18 @@ export default getRequestConfig(async ({ requestLocale }) => {
     const { safeLoadModule, validateTranslations } = await import('../lib/i18n/error-handling');
 
     // Load modular translation files with error handling
-    const [common, homepage, features, auth, dashboard, test] = await Promise.all([
+    const [common, homepage, features, auth, dashboard, test, legal] = await Promise.all([
       safeLoadModule(locale as any, 'common'),
       safeLoadModule(locale as any, 'homepage'),
       safeLoadModule(locale as any, 'features'),
       safeLoadModule(locale as any, 'auth'),
       safeLoadModule(locale as any, 'dashboard'),
       safeLoadModule(locale as any, 'test'),
+      safeLoadModule(locale as any, 'legal'),
     ]);
 
     // Debug: Check if any module has flat keys
-    const modules = { common, homepage, features, auth, dashboard, test };
+    const modules = { common, homepage, features, auth, dashboard, test, legal };
     for (const [moduleName, moduleData] of Object.entries(modules)) {
       const flatKeys = Object.keys(moduleData).filter((key) => key.includes('.'));
       if (flatKeys.length > 0) {
@@ -70,7 +71,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
     // Deep merge all translation modules into a single messages object
     let messages = {};
-    for (const moduleData of [common, homepage, features, auth, dashboard, test]) {
+    for (const moduleData of [common, homepage, features, auth, dashboard, test, legal]) {
       messages = deepMerge(messages, moduleData);
     }
 
@@ -83,7 +84,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       'total keys:',
       Object.keys(messages).length
     );
-    console.log('🚀 REQUEST CONFIG - modules loaded: common, homepage, features, auth, dashboard, test');
+    console.log('🚀 REQUEST CONFIG - modules loaded: common, homepage, features, auth, dashboard, test, legal');
 
     return {
       locale,
@@ -99,13 +100,14 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
       const { safeLoadModule } = await import('../lib/i18n/error-handling');
 
-      const [common, homepage, features, auth, dashboard, test] = await Promise.all([
+      const [common, homepage, features, auth, dashboard, test, legal] = await Promise.all([
         safeLoadModule(fallbackLocale as any, 'common'),
         safeLoadModule(fallbackLocale as any, 'homepage'),
         safeLoadModule(fallbackLocale as any, 'features'),
         safeLoadModule(fallbackLocale as any, 'auth'),
         safeLoadModule(fallbackLocale as any, 'dashboard'),
         safeLoadModule(fallbackLocale as any, 'test'),
+        safeLoadModule(fallbackLocale as any, 'legal'),
       ]);
 
       const fallbackMessages = {
@@ -115,6 +117,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
         ...auth,
         ...dashboard,
         ...test,
+        ...legal,
       };
 
       console.log('🚀 REQUEST CONFIG - Using fallback messages for:', fallbackLocale);

@@ -41,3 +41,6 @@ export { FP030DigitalTwinCommand } from './FP030DigitalTwinCommand';
 
 // FP-050 Data Prism Components
 export { FP050DataPrism } from './FP050DataPrism';
+
+// Legal Page Components
+export { default as LegalPage } from './LegalPage';

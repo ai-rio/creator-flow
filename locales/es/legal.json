@@ -1,0 +1,43 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "legalPage": {
+          "hero": {
+            "title": "El Pacto de Claridad",
+            "description": "Los documentos legales son necesarios, pero no deberían ser confusos. Estos son los principios fundamentales y legibles que rigen nuestra relación. Esta es nuestra promesa para ti."
+          },
+          "covenant": {
+            "dataOwnership": {
+              "title": "Tus Datos te Pertenecen. Punto.",
+              "content": "Los datos de tu negocio, información de clientes y análisis son únicamente tuyos. Somos custodios de tus datos, no propietarios. Nunca los venderemos, compartiremos o usaremos para ningún propósito que no sea proporcionar y mejorar el servicio CreatorFlow por el que pagas."
+            },
+            "uptime": {
+              "title": "Nuestro Tiempo Activo es tu Línea de Vida.",
+              "content": "Entendemos que el tiempo de inactividad de la plataforma equivale a ingresos perdidos. Estamos arquitecturados para confiabilidad de nivel empresarial y nos comprometemos a un 99.9% de tiempo activo, como se describe en nuestro Acuerdo de Nivel de Servicio. Cuando no cumplamos este estándar, seremos transparentes y lo corregiremos."
+            },
+            "billing": {
+              "title": "La Facturación será Clara y Justa.",
+              "content": "Los costos de tu suscripción serán transparentes y basados en los niveles de uso que selecciones. No habrá tarifas ocultas o cargos sorpresa. Puedes actualizar, degradar o cancelar tu plan en cualquier momento, sin preguntas."
+            },
+            "toolRelationship": {
+              "title": "Somos una Herramienta, Tú eres el Arquitecto.",
+              "content": "CreatorFlow es una herramienta operacional poderosa, pero tú eres el último responsable de las decisiones para tu negocio. Nuestra relación se basa en este entendimiento compartido. Somos responsables del rendimiento y confiabilidad de nuestra plataforma; tú eres responsable de las decisiones estratégicas que tomes usándola."
+            }
+          },
+          "viewFullLegal": {
+            "buttonText": "Ver Pacto Legal Completo"
+          },
+          "modal": {
+            "title": "Pacto Legal Completo",
+            "closeButton": "Cerrar modal",
+            "fullLegalText": "Este es un marcador de posición para los Términos de Servicio legales completos y sin abreviar. Este documento contendría todas las cláusulas, definiciones y requisitos legales necesarios, asegurando cumplimiento completo y protección legal. Sería redactado por profesionales legales para ser integral y vinculante. Las secciones clave incluirían: Definiciones, Cuentas de Usuario, Uso Permitido, Suscripción y Facturación, Propiedad de Datos y Privacidad, Acuerdo de Nivel de Servicio (SLA), Propiedad Intelectual, Descargos de Responsabilidad, Limitación de Responsabilidad, Indemnización, Ley Aplicable y Cambios a los Términos. Para el propósito de este prototipo definitivo, reconocemos su necesidad y colocamos este texto aquí para representar donde residiría el documento legalmente vinculante, accesible después de que el usuario haya sido presentado con el 'Resumen Definitivo' claro y legible de nuestros principios fundamentales."
+          },
+          "themeToggle": {
+            "ariaLabel": "Cambiar tema"
+          }
+        }
+      }
+    }
+  }
+}

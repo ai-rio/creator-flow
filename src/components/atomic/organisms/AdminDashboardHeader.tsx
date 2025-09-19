@@ -1,4 +1,6 @@
 /* eslint-disable */
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Book, Bot, ChevronDown, Flame, LogOut, Moon, Radio, Sun, Target, User, Wrench, Zap } from 'lucide-react';

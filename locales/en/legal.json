@@ -1,0 +1,43 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "legalPage": {
+          "hero": {
+            "title": "The Covenant of Clarity",
+            "description": "Legal documents are necessary, but they shouldn't be confusing. These are the core, human-readable principles that govern our relationship. This is our promise to you."
+          },
+          "covenant": {
+            "dataOwnership": {
+              "title": "You Own Your Data. Period.",
+              "content": "Your business data, customer information, and analytics are yours alone. We are the custodians of your data, not the owners. We will never sell it, share it, or use it for any purpose other than providing and improving the CreatorFlow service you pay for."
+            },
+            "uptime": {
+              "title": "Our Uptime is Your Lifeline.",
+              "content": "We understand that platform downtime equals lost revenue. We are architected for enterprise-grade reliability and commit to a 99.9% uptime, as outlined in our Service Level Agreement. When we fail to meet this standard, we will be transparent and make it right."
+            },
+            "billing": {
+              "title": "Billing will be Clear and Fair.",
+              "content": "Your subscription costs will be transparent and based on the usage tiers you select. There will be no hidden fees or surprise charges. You can upgrade, downgrade, or cancel your plan at any time, with no questions asked."
+            },
+            "toolRelationship": {
+              "title": "We are a Tool, You are the Architect.",
+              "content": "CreatorFlow is a powerful operational tool, but you are the ultimate decision-maker for your business. Our relationship is based on this shared understanding. We are responsible for the performance and reliability of our platform; you are responsible for the strategic decisions you make using it."
+            }
+          },
+          "viewFullLegal": {
+            "buttonText": "View Full Legal Covenant"
+          },
+          "modal": {
+            "title": "Full Legal Covenant",
+            "closeButton": "Close modal",
+            "fullLegalText": "This is a placeholder for the full, unabridged legal Terms of Service. This document would contain all the necessary clauses, definitions, and legal requirements, ensuring full compliance and legal protection. It would be drafted by legal professionals to be comprehensive and binding. Key sections would include: Definitions, User Accounts, Permitted Use, Subscription and Billing, Data Ownership and Privacy, Service Level Agreement (SLA), Intellectual Property, Disclaimers, Limitation of Liability, Indemnification, Governing Law, and Changes to Terms. For the purpose of this definitive prototype, we acknowledge its necessity and place this text here to represent where the legally binding document would reside, accessible after the user has been presented with the clear, human-readable 'Definitive Summary' of our core principles."
+          },
+          "themeToggle": {
+            "ariaLabel": "Toggle theme"
+          }
+        }
+      }
+    }
+  }
+}

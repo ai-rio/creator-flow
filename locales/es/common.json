@@ -26,6 +26,9 @@
         "pricing": "Precios",
         "testimonials": "Testimonios",
         "title": "Producto"
+      },
+      "legal": {
+        "title": "Legal"
       }
     },
     "social": {

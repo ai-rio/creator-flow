@@ -30,6 +30,10 @@ export default function FooterSection() {
       title: t('sections.company.contact'),
       href: '#',
     },
+    {
+      title: t('sections.legal.title'),
+      href: '/legal',
+    },
   ];
 
   return (

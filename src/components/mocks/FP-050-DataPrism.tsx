@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { AnimatePresence, motion } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { Clock, MapPin, Moon, Sun, TrendingUp, Zap } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
@@ -75,7 +75,7 @@ export default function App(): React.JSX.Element {
 
 // --- The Definitive FP-050 "Data Prism" ---
 const FP050DataPrism: React.FC<any> = ({ theme }: any) => {
-  const { t } = useTranslation('features');
+  const t = useTranslations('features');
   const facets = getFacets(t);
   const [activeFacet, setActiveFacet] = React.useState(facets[0].id);
 
@@ -146,7 +146,7 @@ const FacetButton = ({ facet, isActive, onClick, theme }: any) => (
 );
 
 const BestsellerChart = ({ theme }: any) => {
-  const { t } = useTranslation('features');
+  const t = useTranslations('features');
   return (
     <div>
       <h3 className={`text-xl font-bold ${theme.textPrimary}`}>
@@ -182,7 +182,7 @@ const BestsellerChart = ({ theme }: any) => {
 };
 
 const GoldenHourHeatmap: React.FC<any> = ({ theme }: any) => {
-  const { t } = useTranslation('features');
+  const t = useTranslations('features');
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
@@ -240,7 +240,7 @@ const GoldenHourHeatmap: React.FC<any> = ({ theme }: any) => {
 };
 
 const CustomerInsight = ({ theme }: any) => {
-  const { t } = useTranslation('features');
+  const t = useTranslations('features');
   return (
     <div>
       <h3 className={`text-xl font-bold ${theme.textPrimary}`}>
