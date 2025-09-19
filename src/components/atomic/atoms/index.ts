@@ -30,6 +30,12 @@
 // export { Spinner } from './Spinner';
 // export type { SpinnerProps } from './Spinner';
 
+// FP-010 Features Page Components
+export type { FP010FeatureBadgeProps } from './FP010FeatureBadge';
+export { FP010FeatureBadge } from './FP010FeatureBadge';
+export type { FP010FeatureButtonProps } from './FP010FeatureButton';
+export { FP010FeatureButton } from './FP010FeatureButton';
+
 // Grouped exports for common usage patterns
 export const FormElements = {
   // Button,

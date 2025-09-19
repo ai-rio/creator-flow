@@ -34,6 +34,10 @@
 // export { FilterControls } from './FilterControls';
 // export type { FilterControlsProps } from './FilterControls';
 
+// FP-010 Features Page Components
+export type { FP010FeatureCardProps } from './FP010FeatureCard';
+export { FP010FeatureCard } from './FP010FeatureCard';
+
 // Grouped exports for common patterns
 export const BusinessMolecules = {
   // MetricsCard,

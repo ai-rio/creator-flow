@@ -71,7 +71,8 @@
       "Bash(do if [[ ! \"$file\" =~ \"_base-agent-template\" ]])",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(do)"
+      "Bash(do)",
+      "Bash(kill:*)"
     ],
     "deny": [],
     "ask": []

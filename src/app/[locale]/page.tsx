@@ -1,25 +1,43 @@
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { HomepageClient } from '@/components/pages/HomepageClient';
+import { generateLocaleParams } from '@/lib/i18n/static-generation';
 
-export const metadata: Metadata = {
-  title: 'CreatorFlow - Scale Your TikTok Shop from 50 to 500+ Orders per Day',
-  description:
-    'The only fulfillment automation platform built for viral TikTok creators. Transform chaos into profit with CEO-grade automation.',
-  openGraph: {
-    title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
-    description:
-      'Scale your TikTok Shop from 50 to 500+ orders per day. Built for viral moments, designed for sustainable growth.',
-    type: 'website',
-    url: '/',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
-    description: 'The only platform that keeps up with TikTok&apos;s pace',
-  },
-};
+// Generate static parameters for all locales
+export function generateStaticParams() {
+  return generateLocaleParams();
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  // Load localized metadata
+  const t = await getTranslations({ locale, namespace: 'homepage' });
+
+  return {
+    title: 'CreatorFlow - Scale Your TikTok Shop from 50 to 500+ Orders per Day',
+    description: t('hero.description'),
+    openGraph: {
+      title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
+      description: t('hero.description'),
+      type: 'website',
+      url: '/',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
+      description: t('hero.description'),
+    },
+    alternates: {
+      languages: {
+        en: '/en',
+        es: '/es',
+        'pt-br': '/pt-br',
+      },
+    },
+  };
+}
 
 /**
  * INSTANT HOMEPAGE BUILT FROM MOCKS
@@ -29,9 +47,9 @@ export const metadata: Metadata = {
  */
 export default async function LocaleRootPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  
+
   // Enable static rendering and set the locale
   setRequestLocale(locale);
-  
+
   return <HomepageClient />;
 }

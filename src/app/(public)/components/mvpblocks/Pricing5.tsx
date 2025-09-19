@@ -1,10 +1,26 @@
 'use client';
 
-import { BuildingIcon,CheckIcon, CrownIcon, StarIcon, ZapIcon } from 'lucide-react';
+import { BuildingIcon, CheckIcon, CrownIcon, StarIcon, ZapIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
+
+// Icon rendering function
+const renderIcon = (iconName?: string, className = 'w-6 h-6') => {
+  switch (iconName) {
+    case 'zap':
+      return <ZapIcon className={className} />;
+    case 'star':
+      return <StarIcon className={className} />;
+    case 'crown':
+      return <CrownIcon className={className} />;
+    case 'building':
+      return <BuildingIcon className={className} />;
+    default:
+      return <ZapIcon className={className} />;
+  }
+};
 
 interface PricingTier {
   name: string;
@@ -13,7 +29,7 @@ interface PricingTier {
   features: string[];
   cta: string;
   popular?: boolean;
-  icon?: React.ReactNode;
+  iconName?: string; // Changed from icon to iconName
 }
 
 interface Pricing5Props {
@@ -31,22 +47,22 @@ const defaultTiers: PricingTier[] = [
     name: 'Starter',
     price: { monthly: 49, annually: 39 },
     description: 'Perfect for new TikTok Shop creators',
-    icon: <ZapIcon className="w-6 h-6" />,
+    iconName: 'zap',
     features: [
       'Up to 50 orders/day',
       'Basic TikTok Shop integration',
       'Standard shipping automation',
       'Email support',
-      'Basic analytics dashboard'
+      'Basic analytics dashboard',
     ],
     cta: 'Start Free Trial',
-    popular: false
+    popular: false,
   },
   {
     name: 'Creator',
     price: { monthly: 99, annually: 79 },
     description: 'Most popular for growing creators',
-    icon: <StarIcon className="w-6 h-6" />,
+    iconName: 'star',
     features: [
       'Up to 200 orders/day',
       'Advanced TikTok Shop features',
@@ -54,16 +70,16 @@ const defaultTiers: PricingTier[] = [
       'Priority support',
       'Advanced analytics & insights',
       'Viral spike handling',
-      'Custom branding'
+      'Custom branding',
     ],
     cta: 'Start Free Trial',
-    popular: true
+    popular: true,
   },
   {
     name: 'Pro',
     price: { monthly: 199, annually: 159 },
     description: 'For established creator businesses',
-    icon: <CrownIcon className="w-6 h-6" />,
+    iconName: 'crown',
     features: [
       'Up to 500 orders/day',
       'Premium TikTok Shop features',
@@ -72,16 +88,16 @@ const defaultTiers: PricingTier[] = [
       'Business intelligence suite',
       'API access',
       'Team collaboration tools',
-      'White-label options'
+      'White-label options',
     ],
     cta: 'Start Free Trial',
-    popular: false
+    popular: false,
   },
   {
     name: 'Enterprise',
     price: { monthly: 'Custom', annually: 'Custom' },
     description: 'For creator agencies & large brands',
-    icon: <BuildingIcon className="w-6 h-6" />,
+    iconName: 'building',
     features: [
       'Unlimited orders',
       'Custom TikTok integrations',
@@ -90,40 +106,35 @@ const defaultTiers: PricingTier[] = [
       'Custom analytics & reporting',
       'SLA guarantees',
       'Advanced security features',
-      'Multi-brand management'
+      'Multi-brand management',
     ],
     cta: 'Contact Sales',
-    popular: false
-  }
+    popular: false,
+  },
 ];
 
 export function Pricing5({
-  title = "Choose Your Growth Plan",
-  subtitle = "Transparent pricing that scales with your TikTok Shop success",
+  title = 'Choose Your Growth Plan',
+  subtitle = 'Transparent pricing that scales with your TikTok Shop success',
   tiers = defaultTiers,
   billingToggle = true,
   enterpriseContact = true,
-  guarantee = "30-day money-back guarantee",
-  className = ""
+  guarantee = '30-day money-back guarantee',
+  className = '',
 }: Pricing5Props) {
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (
-    <section className={`mvp-pricing-5 py-20 bg-gradient-to-b from-background to-muted/20 ${className}`}>
-      <div className="container mx-auto px-4">
-        
+    <section className={`mvp-pricing-5 bg-gradient-to-b from-background to-muted/20 py-20 ${className}`}>
+      <div className='container mx-auto px-4'>
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="heading-executive text-4xl md:text-5xl mb-4">
-            {title}
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            {subtitle}
-          </p>
+        <div className='mb-16 text-center'>
+          <h2 className='heading-executive mb-4 text-4xl md:text-5xl'>{title}</h2>
+          <p className='mx-auto mb-8 max-w-3xl text-xl text-muted-foreground'>{subtitle}</p>
 
           {/* Billing Toggle */}
           {billingToggle && (
-            <div className="flex items-center justify-center gap-4 mb-8">
+            <div className='mb-8 flex items-center justify-center gap-4'>
               <span className={`text-sm font-medium ${!isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
                 Monthly
               </span>
@@ -141,83 +152,77 @@ export function Pricing5({
               </button>
               <span className={`text-sm font-medium ${isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
                 Annual
-                <span className="ml-1 text-automation-500 font-semibold">(Save 20%)</span>
+                <span className='ml-1 font-semibold text-automation-500'>(Save 20%)</span>
               </span>
             </div>
           )}
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className='mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`pricing-card relative rounded-2xl p-8 border-2 transition-all duration-300 hover:shadow-xl ${
+              className={`pricing-card relative rounded-2xl border-2 p-8 transition-all duration-300 hover:shadow-xl ${
                 tier.popular
-                  ? 'border-executive-500 bg-gradient-to-b from-executive-50 to-executive-100 shadow-executive animate-authority-glow'
-                  : 'border-border bg-card hover:border-executive-200'
+                  ? 'animate-authority-glow border-executive-500 bg-gradient-to-b from-executive-50 to-executive-100 shadow-executive'
+                  : 'hover:border-executive-200 border-border bg-card'
               }`}
             >
               {tier.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-executive-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                <div className='absolute -top-4 left-1/2 -translate-x-1/2 transform'>
+                  <div className='rounded-full bg-executive-500 px-4 py-1 text-sm font-semibold text-white'>
                     Most Popular
                   </div>
                 </div>
               )}
 
               {/* Tier Header */}
-              <div className="text-center mb-8">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
-                  tier.popular 
-                    ? 'bg-executive-500 text-white' 
-                    : 'bg-muted text-muted-foreground'
-                }`}>
-                  {tier.icon}
+              <div className='mb-8 text-center'>
+                <div
+                  className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${
+                    tier.popular ? 'bg-executive-500 text-white' : 'bg-muted text-muted-foreground'
+                  }`}
+                >
+                  {renderIcon(tier.iconName)}
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {tier.name}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {tier.description}
-                </p>
+                <h3 className='mb-2 text-2xl font-bold text-foreground'>{tier.name}</h3>
+                <p className='text-sm text-muted-foreground'>{tier.description}</p>
               </div>
 
               {/* Price */}
-              <div className="text-center mb-8">
-                <div className="price-text">
+              <div className='mb-8 text-center'>
+                <div className='price-text'>
                   {typeof tier.price.monthly === 'number' ? (
                     <>
-                      <span className="text-4xl font-bold text-foreground">
+                      <span className='text-4xl font-bold text-foreground'>
                         ${isAnnual ? tier.price.annually : tier.price.monthly}
                       </span>
-                      <span className="text-muted-foreground">/month</span>
+                      <span className='text-muted-foreground'>/month</span>
                       {isAnnual && typeof tier.price.annually === 'number' && (
-                        <div className="text-sm text-automation-500 font-medium mt-1">
+                        <div className='mt-1 text-sm font-medium text-automation-500'>
                           ${((tier.price.monthly as number) - (tier.price.annually as number)) * 12} saved annually
                         </div>
                       )}
                     </>
                   ) : (
-                    <span className="text-4xl font-bold text-foreground">
-                      {tier.price.monthly}
-                    </span>
+                    <span className='text-4xl font-bold text-foreground'>{tier.price.monthly}</span>
                   )}
                 </div>
               </div>
 
               {/* Features */}
-              <div className="space-y-4 mb-8">
+              <div className='mb-8 space-y-4'>
                 {tier.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      tier.popular 
-                        ? 'bg-executive-500' 
-                        : 'bg-automation-500'
-                    }`}>
-                      <CheckIcon className="w-3 h-3 text-white" />
+                  <div key={featureIndex} className='flex items-start gap-3'>
+                    <div
+                      className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${
+                        tier.popular ? 'bg-executive-500' : 'bg-automation-500'
+                      }`}
+                    >
+                      <CheckIcon className='h-3 w-3 text-white' />
                     </div>
-                    <span className="text-sm text-foreground">{feature}</span>
+                    <span className='text-sm text-foreground'>{feature}</span>
                   </div>
                 ))}
               </div>
@@ -228,10 +233,10 @@ export function Pricing5({
                   tier.popular
                     ? 'button-executive'
                     : tier.name === 'Enterprise'
-                    ? 'bg-muted hover:bg-muted/80 text-foreground'
+                    ? 'bg-muted text-foreground hover:bg-muted/80'
                     : 'bg-primary hover:bg-primary/90'
                 }`}
-                size="lg"
+                size='lg'
               >
                 {tier.cta}
               </Button>
@@ -241,9 +246,9 @@ export function Pricing5({
 
         {/* Guarantee */}
         {guarantee && (
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-              <CheckIcon className="w-4 h-4 text-automation-500" />
+          <div className='mt-16 text-center'>
+            <div className='inline-flex items-center gap-2 text-sm text-muted-foreground'>
+              <CheckIcon className='h-4 w-4 text-automation-500' />
               {guarantee}
             </div>
           </div>
@@ -251,10 +256,10 @@ export function Pricing5({
 
         {/* Enterprise Contact */}
         {enterpriseContact && (
-          <div className="text-center mt-8">
-            <p className="text-sm text-muted-foreground">
+          <div className='mt-8 text-center'>
+            <p className='text-sm text-muted-foreground'>
               Need a custom solution?{' '}
-              <Link href="/contact" className="text-executive-500 hover:text-executive-600 font-medium">
+              <Link href='/contact' className='font-medium text-executive-500 hover:text-executive-600'>
                 Contact our sales team
               </Link>{' '}
               for enterprise pricing.

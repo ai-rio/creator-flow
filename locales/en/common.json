@@ -1,0 +1,73 @@
+{
+  "errors": {
+    "goHome": "Go to Home",
+    "pageNotFound": "Page not found"
+  },
+  "footer": {
+    "brand": {
+      "tagline": "The automated command center for ambitious TikTok Shop creators."
+    },
+    "copyright": "© 2025 CreatorFlow. All rights reserved.",
+    "pathLabel": "Path:",
+    "sections": {
+      "company": {
+        "about": "About",
+        "careers": "Careers",
+        "contact": "Contact",
+        "title": "Company"
+      },
+      "legal": {
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "title": "Legal"
+      },
+      "product": {
+        "features": "Features",
+        "pricing": "Pricing",
+        "testimonials": "Testimonials",
+        "title": "Product"
+      }
+    },
+    "social": {
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "testTitle": "TEST RED FOOTER"
+  },
+  "header": {
+    "actions": {
+      "addTeamMember": "Add Team Member",
+      "createWorkflow": "Create Workflow",
+      "newReport": "New Report"
+    },
+    "cta": {
+      "dashboard": "Dashboard",
+      "startTrial": "Start Free Trial"
+    },
+    "navigation": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "testimonials": "Testimonials"
+    },
+    "search": {
+      "placeholder": "Global Search (Orders, Products, Intel...)"
+    },
+    "user": {
+      "tier": "Creator Tier",
+      "username": "@ceo"
+    },
+    "userMenu": {
+      "accountSettings": "Account Settings",
+      "billingSubscription": "Billing & Subscription",
+      "helpCenter": "Help Center",
+      "signOut": "Sign Out"
+    }
+  },
+  "navigation": {
+    "analytics": "Analytics",
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "settings": "Settings"
+  }
+}

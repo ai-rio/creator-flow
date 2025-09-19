@@ -1,0 +1,104 @@
+{
+  "homepage": {
+    "benefits": {
+      "automationSavings": {
+        "description": "Economize em média R$135.000/mês em custos operacionais com um fluxo de pedidos e envios totalmente automatizado.",
+        "title": "Economia com Automação",
+        "value": "$27k/mês"
+      },
+      "description": "CreatorFlow não é apenas uma ferramenta - é uma vantagem competitiva mensurável. Veja o impacto real no seu resultado final.",
+      "inventoryAccuracy": {
+        "description": "Evite R$42.000/mês em vendas por falta de estoque com rastreamento de inventário em tempo real, em menos de 5 segundos.",
+        "title": "Precisão de Estoque",
+        "value": "$8.4k/mês"
+      },
+      "processingSpeed": {
+        "description": "Reduza o tempo de importação de pedidos de 12 minutos para apenas 30 segundos.",
+        "title": "Velocidade de Processamento",
+        "value": "24x Mais Rápido"
+      },
+      "title": "Automatize Operações. Multiplique a Receita."
+    },
+    "cta": {
+      "actions": {
+        "bookDemo": "Agendar Demo",
+        "startFreeTrial": "Iniciar Teste Grátis"
+      },
+      "description": "Inicie seu teste grátis de 14 dias e descubra por que o CreatorFlow é a escolha #1 para criadores virais do TikTok.",
+      "features": {
+        "cancelAnytime": "Cancele a qualquer momento",
+        "fullSupport": "Suporte completo incluso",
+        "noSetupFees": "Sem taxas de configuração",
+        "setupTime": "Configure em 5 Minutos"
+      },
+      "subtitle": "Junte-se a milhares de criadores que transformaram o caos em comando",
+      "title": "Pronto para Escalar Sua TikTok Shop?"
+    },
+    "hero": {
+      "actions": {
+        "requestDemo": "Solicitar uma Demo",
+        "startBuilding": "Começar a Construir"
+      },
+      "description": "A única plataforma de automação de fulfillment criada para criadores virais do TikTok.",
+      "liveOverview": {
+        "metrics": {
+          "automationSavings": "Economia com Automação",
+          "inventorySync": "Sincronização de Estoque",
+          "ordersProcessed": "Pedidos Processados Hoje"
+        },
+        "status": "AO VIVO",
+        "title": "Visão Geral de Operações em Tempo Real"
+      },
+      "subdescription": "Transforme 50 pedidos em 500+ sem suar a camisa.",
+      "subtitle": "Do Caos ao Comando",
+      "title": "Escale Sua TikTok Shop"
+    },
+    "showcase": {
+      "analytics": {
+        "automatedFulfillment": "fulfillment automatizado",
+        "description": "Métricas e tendências de desempenho do CreatorFlow em tempo real",
+        "liveData": "Dados em Tempo Real",
+        "monthlyRevenue": "Receita Mensal",
+        "orderVolume": "Volume de Pedidos",
+        "processing": "Processando",
+        "title": "Analytics do TikTok Shop",
+        "vsLastMonth": "vs mês anterior"
+      },
+      "cards": {
+        "automationLiberation": "Liberação de Automação",
+        "clickToExpand": "Expandir",
+        "hoursPerWeek": "horas por semana",
+        "revenueMasterpiece": "Obra-Prima de Receita",
+        "satisfaction": "satisfação",
+        "savingHours": "Economizando em média"
+      },
+      "metrics": {
+        "repeatCustomers": "Clientes Recorrentes",
+        "todaysOrders": "Pedidos de Hoje",
+        "totalRevenue": "Receita Total"
+      },
+      "subtitle": "Onde os fios de dados do TikTok Shop se tecem em um mosaico de controle.",
+      "title": "A Trama de Dados."
+    },
+    "testimonials": {
+      "metrics": {
+        "accuracy": "Precisão",
+        "faster": "Mais Rápido",
+        "focus": "Foco",
+        "ordersPerDay": "Pedidos/Dia",
+        "revenue": "Receita",
+        "savedPerMonth": "Economia/Mês"
+      },
+      "quotes": {
+        "crafty_creator": "Finalmente posso me concentrar em criar, não em logística. CreatorFlow cuida de tudo.",
+        "ecom_queen": "A automação me economizou mais de 40 horas por semana. É como ter um gerente de operações em tempo integral.",
+        "gadget_guru": "Meu processamento de pedidos passou de 15 minutos para literalmente 15 segundos. Um verdadeiro divisor de águas.",
+        "style_sensei": "O painel do CEO me dá a clareza para tomar decisões realmente baseadas em dados. Minha receita aumentou 40%.",
+        "tiktok_hustler": "A sincronização de estoque é impecável. Não vendi um único item a mais desde que mudei.",
+        "viral_creator": "CreatorFlow não apenas organizou meu negócio, ele abriu um novo nível de crescimento que eu nunca imaginei ser possível."
+      },
+      "subtitle": "Junte-se aos criadores que transformaram o caos em comando. Seu sucesso é nossa base.",
+      "title": "O Que os Criadores Dizem"
+    }
+  }
+}

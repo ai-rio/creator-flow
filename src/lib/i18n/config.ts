@@ -1,4 +1,7 @@
-export const locales = ['en', 'pt-br', 'es'] as const;
-export const defaultLocale = 'en' as const;
+import { routing } from '@/i18n/routing';
 
-export type Locale = typeof locales[number];
+// Use the routing configuration from next-intl
+export const locales = routing.locales;
+export const defaultLocale = routing.defaultLocale;
+
+export type Locale = (typeof locales)[number];

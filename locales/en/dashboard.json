@@ -1,0 +1,31 @@
+{
+  "account": {
+    "choosePlan": "Choose a plan",
+    "manageSubscription": "Manage subscription",
+    "noSubscription": "No subscription",
+    "noSubscriptionDescription": "You are not subscribed to any plan.",
+    "subtitle": "We partnered with Stripe for a simplified billing.",
+    "title": "Account"
+  },
+  "dashboard": {
+    "title": "CreatorFlow CEO Command Center"
+  },
+  "orders": {
+    "orderStream": {
+      "headers": {
+        "orderId": "ORDER ID",
+        "status": "STATUS",
+        "value": "VALUE"
+      }
+    },
+    "status": {
+      "delivered": "Delivered",
+      "flagged": "Flagged",
+      "processed": "Processed",
+      "processing": "Processing",
+      "received": "Received",
+      "shipped": "Shipped"
+    },
+    "title": "Order Management"
+  }
+}

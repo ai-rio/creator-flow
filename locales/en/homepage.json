@@ -1,0 +1,104 @@
+{
+  "homepage": {
+    "benefits": {
+      "automationSavings": {
+        "description": "Save an average of $27,000/month in operational costs with a fully automated order and shipping workflow.",
+        "title": "Automation Savings",
+        "value": "$27k/mo"
+      },
+      "description": "CreatorFlow isn't just a tool—it's a measurable competitive advantage. See the real-world impact on your bottom line.",
+      "inventoryAccuracy": {
+        "description": "Prevent $8,400/month in costly oversells with real-time, sub-5-second inventory tracking.",
+        "title": "Inventory Accuracy",
+        "value": "$8.4k/mo"
+      },
+      "processingSpeed": {
+        "description": "Reduce order import times from 12 minutes down to 30 seconds.",
+        "title": "Processing Speed",
+        "value": "24x Faster"
+      },
+      "title": "Automate Operations. Amplify Revenue."
+    },
+    "cta": {
+      "actions": {
+        "bookDemo": "Book a Demo",
+        "startFreeTrial": "Start Free Trial"
+      },
+      "description": "Start your 14-day free trial and see why CreatorFlow is the #1 choice for viral TikTok creators.",
+      "features": {
+        "cancelAnytime": "Cancel anytime",
+        "fullSupport": "Full support included",
+        "noSetupFees": "No setup fees",
+        "setupTime": "Setup in 5 Minutes"
+      },
+      "subtitle": "Join thousands of creators who've transformed chaos into command",
+      "title": "Ready to Scale Your TikTok Shop?"
+    },
+    "hero": {
+      "actions": {
+        "requestDemo": "Request a demo",
+        "startBuilding": "Start Building"
+      },
+      "description": "The only fulfillment automation platform built for viral TikTok creators.",
+      "liveOverview": {
+        "metrics": {
+          "automationSavings": "Automation Savings",
+          "inventorySync": "Inventory Sync",
+          "ordersProcessed": "Orders Processed Today"
+        },
+        "status": "LIVE",
+        "title": "Live Operations Overview"
+      },
+      "subdescription": "Transform 50 orders into 500+ without breaking a sweat.",
+      "subtitle": "From Chaos to Command",
+      "title": "Scale Your TikTok Shop"
+    },
+    "showcase": {
+      "analytics": {
+        "automatedFulfillment": "automated fulfillment",
+        "description": "Real-time CreatorFlow performance metrics and trends",
+        "liveData": "Live Data",
+        "monthlyRevenue": "Monthly Revenue",
+        "orderVolume": "Order Volume",
+        "processing": "Processing",
+        "title": "TikTok Shop Analytics",
+        "vsLastMonth": "vs last month"
+      },
+      "cards": {
+        "automationLiberation": "Automation Liberation",
+        "clickToExpand": "Click to expand",
+        "hoursPerWeek": "hours per week",
+        "revenueMasterpiece": "Revenue Masterpiece",
+        "satisfaction": "satisfaction",
+        "savingHours": "Saving an average of"
+      },
+      "metrics": {
+        "repeatCustomers": "Repeat Customers",
+        "todaysOrders": "Today's Orders",
+        "totalRevenue": "Total Revenue"
+      },
+      "subtitle": "Where TikTok Shop data threads are woven into a tapestry of command.",
+      "title": "The Data Weave."
+    },
+    "testimonials": {
+      "metrics": {
+        "accuracy": "Accuracy",
+        "faster": "Faster",
+        "focus": "Focus",
+        "ordersPerDay": "Orders/Day",
+        "revenue": "Revenue",
+        "savedPerMonth": "Saved/Mo"
+      },
+      "quotes": {
+        "crafty_creator": "I can finally focus on creating, not logistics. CreatorFlow handles everything.",
+        "ecom_queen": "The automation saved me over 40 hours a week. It's like having a full-time operations manager.",
+        "gadget_guru": "My order processing went from 15 minutes to literally 15 seconds. Game changer.",
+        "style_sensei": "The CEO dashboard gives me the clarity to make real, data-driven decisions. My revenue is up 40%.",
+        "tiktok_hustler": "Inventory syncing is flawless. I haven't oversold a single item since switching.",
+        "viral_creator": "CreatorFlow didn't just organize my business, it unlocked a new level of growth I never thought possible."
+      },
+      "subtitle": "Join the creators who turned chaos into command. Their success is our foundation.",
+      "title": "What Creators Say"
+    }
+  }
+}

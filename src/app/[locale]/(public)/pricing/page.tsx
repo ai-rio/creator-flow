@@ -1,24 +1,42 @@
 import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { PricingSection } from '@/features/pricing/components/pricing-section';
+import { generateLocaleParams } from '@/lib/i18n/static-generation';
 
-export const metadata: Metadata = {
-  title: 'CreatorFlow Pricing - Scale Your TikTok Shop Automation',
-  description:
-    'Simple, transparent pricing for TikTok Shop automation. Start free and scale with usage-based plans designed for viral creators.',
-  openGraph: {
-    title: 'CreatorFlow Pricing - TikTok Shop Automation Plans',
+// Generate static parameters for all locales
+export function generateStaticParams() {
+  return generateLocaleParams();
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    title: 'CreatorFlow Pricing - Scale Your TikTok Shop Automation',
     description:
-      'Compare our pricing plans and find the perfect fit for your TikTok Shop automation needs. Start free, upgrade as you grow.',
-    type: 'website',
-    url: '/pricing',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CreatorFlow Pricing - Scale Your TikTok Shop',
-    description: 'Simple pricing plans designed for TikTok creators',
-  },
-};
+      'Simple, transparent pricing for TikTok Shop automation. Start free and scale with usage-based plans designed for viral creators.',
+    openGraph: {
+      title: 'CreatorFlow Pricing - TikTok Shop Automation Plans',
+      description:
+        'Compare our pricing plans and find the perfect fit for your TikTok Shop automation needs. Start free, upgrade as you grow.',
+      type: 'website',
+      url: '/pricing',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'CreatorFlow Pricing - Scale Your TikTok Shop',
+      description: 'Simple pricing plans designed for TikTok creators',
+    },
+    alternates: {
+      languages: {
+        en: '/en/pricing',
+        es: '/es/pricing',
+        'pt-br': '/pt-br/pricing',
+      },
+    },
+  };
+}
 
 /**
  * CreatorFlow Pricing Page with Stripe Integration
@@ -29,7 +47,12 @@ export const metadata: Metadata = {
  * - Functional plan selection
  * - Mobile-responsive design
  */
-export default function PricingPage() {
+export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
+  // Enable static rendering and set the locale
+  setRequestLocale(locale);
+
   return (
     <div className='min-h-screen bg-background'>
       <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8'>

@@ -7,6 +7,9 @@ const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig = {
+  // Note: i18n config is handled by next-intl middleware for App Router
+  // DO NOT add i18n property here - it conflicts with next-intl's App Router setup
+
   // Temporarily disable ESLint during build to focus on functionality
   eslint: {
     ignoreDuringBuilds: true,

@@ -30,3 +30,8 @@ export { default as AdminDashboardHeader } from './AdminDashboardHeader';
 // Data Visualization Components
 export { default as DataFlowVisualization } from './DataFlowVisualization';
 export { default as ThreeJSHeroAnimation } from './ThreeJS-HeroAnimation';
+
+// FP-010 Features Page Components
+export { FP010FeatureComparison } from './FP010FeatureComparison';
+export { FP010FeatureGrid } from './FP010FeatureGrid';
+export { FP010FeatureHero } from './FP010FeatureHero';

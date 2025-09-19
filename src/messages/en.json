@@ -11,7 +11,16 @@
       "received": "Received",
       "processing": "Processing",
       "shipped": "Shipped",
-      "delivered": "Delivered"
+      "delivered": "Delivered",
+      "flagged": "Flagged",
+      "processed": "Processed"
+    },
+    "orderStream": {
+      "headers": {
+        "orderId": "ORDER ID",
+        "value": "VALUE",
+        "status": "STATUS"
+      }
     }
   },
   "auth": {
@@ -139,7 +148,7 @@
       "subtitle": "Where TikTok Shop data threads are woven into a tapestry of command.",
       "metrics": {
         "totalRevenue": "Total Revenue",
-        "todaysOrders": "Today's Orders", 
+        "todaysOrders": "Today's Orders",
         "repeatCustomers": "Repeat Customers"
       },
       "cards": {
@@ -194,6 +203,226 @@
         "setupTime": "Setup in 5 Minutes",
         "cancelAnytime": "Cancel anytime",
         "fullSupport": "Full support included"
+      }
+    }
+  },
+  "components": {
+    "atomic": {
+      "atoms": {
+        "FP010FeatureIcon": {
+          "alt": "Feature icon"
+        },
+        "FP010FeatureBadge": {
+          "new": "NEW",
+          "popular": "POPULAR",
+          "trending": "TRENDING"
+        },
+        "FP010FeatureButton": {
+          "learnMore": "Learn More",
+          "getStarted": "Get Started",
+          "tryNow": "Try Now",
+          "comingSoon": "Coming Soon"
+        }
+      },
+      "molecules": {
+        "FP010FeatureCard": {
+          "readMore": "Read More",
+          "collapse": "Collapse",
+          "moreDetails": "More Details"
+        },
+        "FP010FeatureMetric": {
+          "increase": "increase",
+          "decrease": "decrease",
+          "stable": "stable",
+          "processing": "Processing..."
+        }
+      },
+      "organisms": {
+        "FP010FeatureHero": {
+          "title": "Transform Your TikTok Shop Into an Automation Powerhouse",
+          "subtitle": "Complete Feature Suite",
+          "description": "Every tool you need to scale from chaos to command. Built specifically for viral TikTok creators who refuse to let logistics limit their growth.",
+          "stats": {
+            "automatedOrders": "Orders automated daily",
+            "timesSaved": "Time saved per week",
+            "accuracyRate": "Inventory accuracy",
+            "automatedOrdersValue": "10,000+",
+            "timesSavedValue": "40 hours",
+            "accuracyRateValue": "99.8%"
+          },
+          "actions": {
+            "exploreFeatures": "Explore All Features",
+            "startFreeTrial": "Start Free Trial"
+          }
+        },
+        "FPOrderManagement": {
+          "title": "One Stream. Total Control.",
+          "subtitle": "CreatorFlow unifies every order into a singular, intelligent pipeline. Hover over a capability to see its direct impact.",
+          "pillars": {
+            "validation": "State Machine Validation",
+            "workflow": "Workflow Rules Engine",
+            "sync": "Real-time Status Sync",
+            "integration": "Integration Layer"
+          },
+          "orderStream": {
+            "headers": {
+              "orderId": "ORDER ID",
+              "value": "VALUE",
+              "status": "STATUS"
+            },
+            "status": {
+              "active": "ACTIVE",
+              "flagged": "FLAGGED",
+              "processed": "PROCESSED"
+            }
+          }
+        },
+        "FP010FeatureGrid": {
+          "title": "Complete TikTok Shop Automation Suite",
+          "subtitle": "Everything you need to scale",
+          "features": {
+            "orderAutomation": {
+              "title": "Real-Time Order Processing",
+              "description": "Automatically import, process, and route orders from TikTok Shop in under 30 seconds. No manual data entry, no delays.",
+              "benefits": [
+                "30-second order processing",
+                "Zero manual intervention",
+                "Automatic routing to fulfillment",
+                "Real-time status updates"
+              ],
+              "metrics": {
+                "speed": "95% faster processing",
+                "accuracy": "99.8% accuracy rate"
+              }
+            },
+            "shippingIntelligence": {
+              "title": "Intelligent Shipping Optimization",
+              "description": "Compare rates across UPS, FedEx, and USPS instantly. Generate labels in bulk. Track everything automatically.",
+              "benefits": [
+                "Multi-carrier rate comparison",
+                "Bulk label generation",
+                "Automatic tracking updates",
+                "Smart packaging optimization"
+              ],
+              "metrics": {
+                "savings": "Save $2-5 per shipment",
+                "speed": "10x faster label creation"
+              }
+            },
+            "analyticsDashboard": {
+              "title": "Creator Performance Analytics",
+              "description": "Real-time insights into your TikTok Shop performance. Track viral content impact on sales, identify trends, optimize inventory.",
+              "benefits": [
+                "Viral content → sales correlation",
+                "Real-time revenue tracking",
+                "Inventory optimization alerts",
+                "Customer behavior insights"
+              ],
+              "metrics": {
+                "visibility": "360° business view",
+                "insights": "Actionable data points"
+              }
+            },
+            "tiktokIntegration": {
+              "title": "Seamless TikTok Shop Sync",
+              "description": "Native integration with TikTok Shop API. Real-time inventory sync, automatic product updates, zero overselling.",
+              "benefits": [
+                "Real-time inventory sync",
+                "Automatic product updates",
+                "Zero overselling protection",
+                "Instant order notifications"
+              ],
+              "metrics": {
+                "sync": "Sub-5 second sync",
+                "uptime": "99.9% reliability"
+              }
+            },
+            "scalingTools": {
+              "title": "Enterprise Scaling Tools",
+              "description": "Bulk operations, workflow automation, team management. Scale from 50 to 5,000+ orders without adding overhead.",
+              "benefits": [
+                "Bulk order operations",
+                "Custom workflow automation",
+                "Team role management",
+                "API integration ready"
+              ],
+              "metrics": {
+                "scale": "Handle 10,000+ orders",
+                "efficiency": "90% less manual work"
+              }
+            },
+            "inventoryManagement": {
+              "title": "Smart Inventory Control",
+              "description": "Predictive inventory alerts, automatic reorder points, multi-location sync. Never run out of stock during viral moments.",
+              "benefits": [
+                "Predictive stock alerts",
+                "Automatic reorder points",
+                "Multi-location inventory",
+                "Viral spike protection"
+              ],
+              "metrics": {
+                "accuracy": "99.8% stock accuracy",
+                "prevention": "Zero stockouts"
+              }
+            }
+          }
+        },
+        "FP010FeatureComparison": {
+          "title": "CreatorFlow vs. Generic Solutions",
+          "subtitle": "Built for TikTok creators, not generic e-commerce",
+          "categories": {
+            "tiktokIntegration": "TikTok Shop Integration",
+            "processingSpeed": "Order Processing Speed",
+            "viralHandling": "Viral Spike Handling",
+            "creatorTools": "Creator-Specific Tools",
+            "automation": "Automation Depth",
+            "support": "Creator Support"
+          },
+          "creatorflow": {
+            "name": "CreatorFlow",
+            "tiktokIntegration": "Native API integration",
+            "processingSpeed": "30 seconds",
+            "viralHandling": "Auto-scales for viral moments",
+            "creatorTools": "Built-in creator analytics",
+            "automation": "Full workflow automation",
+            "support": "Creator success team"
+          },
+          "competitors": {
+            "name": "Generic Tools",
+            "tiktokIntegration": "Basic webhook support",
+            "processingSpeed": "5-15 minutes",
+            "viralHandling": "Manual scaling required",
+            "creatorTools": "Generic e-commerce metrics",
+            "automation": "Limited automation",
+            "support": "General support"
+          },
+          "actions": {
+            "startTrial": "Start Free Trial",
+            "compareFeatures": "Compare All Features"
+          }
+        }
+      },
+      "compositions": {
+        "FP010FeaturesPage": {
+          "metadata": {
+            "title": "CreatorFlow Features - Complete TikTok Shop Automation Suite",
+            "description": "Discover all CreatorFlow features: real-time order processing, intelligent shipping, creator analytics, and TikTok Shop integration. Built for viral creators."
+          },
+          "breadcrumbs": {
+            "home": "Home",
+            "features": "Features"
+          },
+          "cta": {
+            "title": "Ready to Transform Your TikTok Shop?",
+            "description": "Join thousands of creators who've turned chaos into command with CreatorFlow's complete automation suite.",
+            "actions": {
+              "startFreeTrial": "Start 14-Day Free Trial",
+              "scheduleDemo": "Schedule Live Demo",
+              "pricing": "View Pricing"
+            },
+            "guarantee": "14-day free trial • No setup fees • Cancel anytime"
+          }
+        }
       }
     }
   },
