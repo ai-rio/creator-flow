@@ -1,0 +1,35 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TPCookiePolicyBar": {
+          "title": "Activate Data Protocol",
+          "description": "We use a limited set of protocols to operate and enhance the system. You have precise command.",
+          "protocols": {
+            "core": {
+              "title": "Core Protocol (Required)",
+              "description": "For system security, authentication, and core functionality. Cannot be disabled."
+            },
+            "performance": {
+              "title": "Performance Protocol",
+              "description": "Anonymous analytics to help us identify bottlenecks and improve platform speed."
+            },
+            "growth": {
+              "title": "Growth Protocol",
+              "description": "Data to help us improve our outreach to future architects and creators."
+            }
+          },
+          "buttons": {
+            "customize": "Customize",
+            "activateSelected": "Activate Selected",
+            "activateAll": "Activate All Protocols",
+            "saveActivate": "Save & Activate"
+          },
+          "customize": {
+            "title": "Customize Data Protocol"
+          }
+        }
+      }
+    }
+  }
+}

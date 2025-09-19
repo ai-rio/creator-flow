@@ -1,0 +1,35 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TPCookiePolicyBar": {
+          "title": "Ativar Protocolo de Dados",
+          "description": "Usamos um conjunto limitado de protocolos para operar e aprimorar o sistema. Você tem controle preciso.",
+          "protocols": {
+            "core": {
+              "title": "Protocolo Central (Obrigatório)",
+              "description": "Para segurança do sistema, autenticação e funcionalidade central. Não pode ser desabilitado."
+            },
+            "performance": {
+              "title": "Protocolo de Performance",
+              "description": "Análises anônimas para nos ajudar a identificar gargalos e melhorar a velocidade da plataforma."
+            },
+            "growth": {
+              "title": "Protocolo de Crescimento",
+              "description": "Dados para nos ajudar a melhorar nosso alcance para futuros arquitetos e criadores."
+            }
+          },
+          "buttons": {
+            "customize": "Personalizar",
+            "activateSelected": "Ativar Selecionados",
+            "activateAll": "Ativar Todos os Protocolos",
+            "saveActivate": "Salvar e Ativar"
+          },
+          "customize": {
+            "title": "Personalizar Protocolo de Dados"
+          }
+        }
+      }
+    }
+  }
+}

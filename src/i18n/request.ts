@@ -50,20 +50,22 @@ export default getRequestConfig(async ({ requestLocale }) => {
     const { safeLoadModule, validateTranslations } = await import('../lib/i18n/error-handling');
 
     // Load modular translation files with error handling
-    const [common, homepage, features, auth, dashboard, test, legal, contact, notFound] = await Promise.all([
-      safeLoadModule(locale as any, 'common'),
-      safeLoadModule(locale as any, 'homepage'),
-      safeLoadModule(locale as any, 'features'),
-      safeLoadModule(locale as any, 'auth'),
-      safeLoadModule(locale as any, 'dashboard'),
-      safeLoadModule(locale as any, 'test'),
-      safeLoadModule(locale as any, 'legal'),
-      safeLoadModule(locale as any, 'contact'),
-      safeLoadModule(locale as any, '404-not-found'),
-    ]);
+    const [common, homepage, features, auth, dashboard, test, legal, contact, notFound, cookiePolicyBar] =
+      await Promise.all([
+        safeLoadModule(locale as any, 'common'),
+        safeLoadModule(locale as any, 'homepage'),
+        safeLoadModule(locale as any, 'features'),
+        safeLoadModule(locale as any, 'auth'),
+        safeLoadModule(locale as any, 'dashboard'),
+        safeLoadModule(locale as any, 'test'),
+        safeLoadModule(locale as any, 'legal'),
+        safeLoadModule(locale as any, 'contact'),
+        safeLoadModule(locale as any, '404-not-found'),
+        safeLoadModule(locale as any, 'cookie-policy-bar'),
+      ]);
 
     // Debug: Check if any module has flat keys
-    const modules = { common, homepage, features, auth, dashboard, test, legal, contact, notFound };
+    const modules = { common, homepage, features, auth, dashboard, test, legal, contact, notFound, cookiePolicyBar };
     for (const [moduleName, moduleData] of Object.entries(modules)) {
       const flatKeys = Object.keys(moduleData).filter((key) => key.includes('.'));
       if (flatKeys.length > 0) {
@@ -73,7 +75,18 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
     // Deep merge all translation modules into a single messages object
     let messages = {};
-    for (const moduleData of [common, homepage, features, auth, dashboard, test, legal, contact, notFound]) {
+    for (const moduleData of [
+      common,
+      homepage,
+      features,
+      auth,
+      dashboard,
+      test,
+      legal,
+      contact,
+      notFound,
+      cookiePolicyBar,
+    ]) {
       messages = deepMerge(messages, moduleData);
     }
 
@@ -104,17 +117,19 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
       const { safeLoadModule } = await import('../lib/i18n/error-handling');
 
-      const [common, homepage, features, auth, dashboard, test, legal, contact, notFound] = await Promise.all([
-        safeLoadModule(fallbackLocale as any, 'common'),
-        safeLoadModule(fallbackLocale as any, 'homepage'),
-        safeLoadModule(fallbackLocale as any, 'features'),
-        safeLoadModule(fallbackLocale as any, 'auth'),
-        safeLoadModule(fallbackLocale as any, 'dashboard'),
-        safeLoadModule(fallbackLocale as any, 'test'),
-        safeLoadModule(fallbackLocale as any, 'legal'),
-        safeLoadModule(fallbackLocale as any, 'contact'),
-        safeLoadModule(fallbackLocale as any, '404-not-found'),
-      ]);
+      const [common, homepage, features, auth, dashboard, test, legal, contact, notFound, cookiePolicyBar] =
+        await Promise.all([
+          safeLoadModule(fallbackLocale as any, 'common'),
+          safeLoadModule(fallbackLocale as any, 'homepage'),
+          safeLoadModule(fallbackLocale as any, 'features'),
+          safeLoadModule(fallbackLocale as any, 'auth'),
+          safeLoadModule(fallbackLocale as any, 'dashboard'),
+          safeLoadModule(fallbackLocale as any, 'test'),
+          safeLoadModule(fallbackLocale as any, 'legal'),
+          safeLoadModule(fallbackLocale as any, 'contact'),
+          safeLoadModule(fallbackLocale as any, '404-not-found'),
+          safeLoadModule(fallbackLocale as any, 'cookie-policy-bar'),
+        ]);
 
       const fallbackMessages = {
         ...common,
@@ -126,6 +141,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
         ...legal,
         ...contact,
         ...notFound,
+        ...cookiePolicyBar,
       };
 
       console.log('🚀 REQUEST CONFIG - Using fallback messages for:', fallbackLocale);
