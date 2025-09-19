@@ -1,0 +1,52 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TP010Contact": {
+          "hero": {
+            "title": "Communication Nexus",
+            "description": "How can the architects assist you? Select your intent to open the appropriate secure channel."
+          },
+          "triage": {
+            "support": {
+              "title": "Technical & Platform Support",
+              "subtitle": "For active creators requiring operational assistance."
+            },
+            "press": {
+              "title": "Press & Media Inquiries",
+              "subtitle": "For journalists, analysts, and content creators."
+            },
+            "partnerships": {
+              "title": "Partnership & Integration",
+              "subtitle": "For technology partners and strategic alliances."
+            },
+            "general": {
+              "title": "General Inquiry",
+              "subtitle": "For all other communication."
+            }
+          },
+          "content": {
+            "support": {
+              "description": "Please access our dedicated support portal for priority assistance.",
+              "button": "Access Support Portal"
+            },
+            "press": {
+              "publication": "Publication",
+              "subject": "Topic / Subject",
+              "message": "Your message...",
+              "button": "Transmit Inquiry"
+            },
+            "partnerships": {
+              "description": "For partnership proposals, please contact our strategic alliances team directly."
+            },
+            "general": {
+              "email": "Your Email",
+              "message": "Your message...",
+              "button": "Send Message"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TP404NotFound": {
+          "title": "Error de Transmisión: Ruta Inválida",
+          "description": "La ruta que solicitaste no es un vector reconocido dentro de nuestra arquitectura actual. El sistema está estable. Tu sesión es segura. Por favor selecciona un destino estratégico válido a continuación.",
+          "options": {
+            "home": {
+              "title": "Regresar al Centro de Comando",
+              "subtitle": "Ir a la Página Principal"
+            },
+            "features": {
+              "title": "Revisar el Arsenal",
+              "subtitle": "Explorar Características"
+            },
+            "contact": {
+              "title": "Abrir un Canal Seguro",
+              "subtitle": "Contáctanos"
+            }
+          }
+        }
+      }
+    }
+  }
+}

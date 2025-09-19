@@ -1,0 +1,52 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TP010Contact": {
+          "hero": {
+            "title": "Nexo de Comunicación",
+            "description": "¿Cómo pueden ayudarte los arquitectos? Selecciona tu intención para abrir el canal seguro apropiado."
+          },
+          "triage": {
+            "support": {
+              "title": "Soporte Técnico y de Plataforma",
+              "subtitle": "Para creadores activos que requieren asistencia operacional."
+            },
+            "press": {
+              "title": "Consultas de Prensa y Medios",
+              "subtitle": "Para periodistas, analistas y creadores de contenido."
+            },
+            "partnerships": {
+              "title": "Asociaciones e Integración",
+              "subtitle": "Para socios tecnológicos y alianzas estratégicas."
+            },
+            "general": {
+              "title": "Consulta General",
+              "subtitle": "Para toda otra comunicación."
+            }
+          },
+          "content": {
+            "support": {
+              "description": "Por favor accede a nuestro portal de soporte dedicado para asistencia prioritaria.",
+              "button": "Acceder al Portal de Soporte"
+            },
+            "press": {
+              "publication": "Publicación",
+              "subject": "Tema / Asunto",
+              "message": "Tu mensaje...",
+              "button": "Transmitir Consulta"
+            },
+            "partnerships": {
+              "description": "Para propuestas de asociación, por favor contacta directamente a nuestro equipo de alianzas estratégicas."
+            },
+            "general": {
+              "email": "Tu Email",
+              "message": "Tu mensaje...",
+              "button": "Enviar Mensaje"
+            }
+          }
+        }
+      }
+    }
+  }
+}

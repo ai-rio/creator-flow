@@ -1,0 +1,26 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "TP404NotFound": {
+          "title": "Transmission Error: Invalid Route",
+          "description": "The path you requested is not a recognized vector within our current architecture. The system is stable. Your session is secure. Please select a valid strategic destination below.",
+          "options": {
+            "home": {
+              "title": "Return to Command Center",
+              "subtitle": "Go to the Homepage"
+            },
+            "features": {
+              "title": "Review the Armory",
+              "subtitle": "Explore Features"
+            },
+            "contact": {
+              "title": "Open a Secure Channel",
+              "subtitle": "Contact Us"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -44,3 +44,7 @@ export { FP050DataPrism } from './FP050DataPrism';
 
 // Legal Page Components
 export { default as LegalPage } from './LegalPage';
+
+// Contact Page Components
+export { TP010Contact } from './TP010Contact';
+export { TP404NotFound } from './TP404NotFound';
