@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
-// Bento grid about page import
-import { BentoAboutPage } from '@/components/atomic/compositions/pages/BentoAboutPage';
+// Simple about page import
+import { SimpleAboutPage } from '@/components/atomic/compositions/pages/SimpleAboutPage';
 
 export const metadata: Metadata = {
   title: 'About CreatorFlow - Built by Creators, for Creators',
@@ -22,16 +22,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * CreatorFlow About Page with Enhanced Bento Grid Layout
+ * CreatorFlow About Page with Simple Layout
  *
  * Features:
  * - Mobile-first responsive design
- * - Team showcase with creator backgrounds
- * - Mission statement and company values
- * - Trust signals and social proof
- * - Company milestones and achievements
+ * - Full-width AP010Hero component
+ * - Clean, minimal layout
  * - SEO-optimized with structured data
  */
 export default function AboutPage() {
-  return <BentoAboutPage className='relative' />;
+  return <SimpleAboutPage />;
 }

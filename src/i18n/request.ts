@@ -54,6 +54,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       common,
       homepage,
       features,
+      about,
       auth,
       dashboard,
       test,
@@ -68,6 +69,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       safeLoadModule(locale as any, 'common'),
       safeLoadModule(locale as any, 'homepage'),
       safeLoadModule(locale as any, 'features'),
+      safeLoadModule(locale as any, 'about'),
       safeLoadModule(locale as any, 'auth'),
       safeLoadModule(locale as any, 'dashboard'),
       safeLoadModule(locale as any, 'test'),
@@ -85,6 +87,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       common,
       homepage,
       features,
+      about,
       auth,
       dashboard,
       test,
@@ -109,6 +112,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       common,
       homepage,
       features,
+      about,
       auth,
       dashboard,
       test,
@@ -133,7 +137,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       Object.keys(messages).length
     );
     console.log(
-      '🚀 REQUEST CONFIG - modules loaded: common, homepage, features, auth, dashboard, test, legal, contact, 404-not-found'
+      '🚀 REQUEST CONFIG - modules loaded: common, homepage, features, about, auth, dashboard, test, legal, contact, 404-not-found'
     );
 
     return {
@@ -154,6 +158,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
         common,
         homepage,
         features,
+        about,
         auth,
         dashboard,
         test,
@@ -168,6 +173,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
         safeLoadModule(fallbackLocale as any, 'common'),
         safeLoadModule(fallbackLocale as any, 'homepage'),
         safeLoadModule(fallbackLocale as any, 'features'),
+        safeLoadModule(fallbackLocale as any, 'about'),
         safeLoadModule(fallbackLocale as any, 'auth'),
         safeLoadModule(fallbackLocale as any, 'dashboard'),
         safeLoadModule(fallbackLocale as any, 'test'),
@@ -184,6 +190,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
         ...common,
         ...homepage,
         ...features,
+        ...about,
         ...auth,
         ...dashboard,
         ...test,

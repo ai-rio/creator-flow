@@ -1,5 +1,6 @@
 'use client';
 
+import { HP070PricingTiers } from '@/components/atomic/organisms/HP070PricingTiers';
 import { Benefits } from '@/components/homepage/Benefits';
 import { CTA } from '@/components/homepage/CTA';
 import { Hero } from '@/components/homepage/Hero';
@@ -14,7 +15,7 @@ import { TestimonialsSection } from '@/components/homepage/TestimonialsSection';
  * Ensures seamless visual flow between sections.
  *
  * COMPLETE CONVERSION FLOW:
- * Hero → Benefits → InteractiveShowcase → Testimonials → CTA → [Seamless Footer]
+ * Hero → Benefits → InteractiveShowcase → Testimonials → Pricing → CTA → [Seamless Footer]
  *
  * SEAMLESS INTEGRATION:
  * - Zero gaps between CTA and Footer
@@ -29,6 +30,7 @@ export function HomepageClient() {
       <Benefits />
       <InteractiveShowcase />
       <TestimonialsSection />
+      <HP070PricingTiers />
       <CTA />
       {/* Footer handled by ConditionalFooter in layout - seamlessly connects */}
     </div>

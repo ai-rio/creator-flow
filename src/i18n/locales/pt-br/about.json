@@ -1,0 +1,30 @@
+{
+  "components": {
+    "atomic": {
+      "organisms": {
+        "AP010Hero": {
+          "title": "Os Arquitetos da Escala.",
+          "subtitle": "Construímos a estrutura de comando definitiva por uma razão: garantir que seu momento viral se torne um empreendimento duradouro, não um colapso operacional.",
+          "principles": {
+            "scalability": {
+              "title": "Escalabilidade",
+              "description": "Projetado para picos virais de 10x. Nossos sistemas antecipam seu sucesso, garantindo que você nunca perca um pedido."
+            },
+            "reliability": {
+              "title": "Confiabilidade",
+              "description": "Construído sobre infraestrutura de nível empresarial. Fornecemos a estabilidade que você precisa para construir um negócio duradouro."
+            },
+            "clarity": {
+              "title": "Clareza",
+              "description": "Transformamos complexidade operacional em sabedoria acionável, dando-lhe uma visão clara de todo o seu negócio."
+            },
+            "velocity": {
+              "title": "Velocidade",
+              "description": "Automatize tarefas repetitivas e acelere seu processo de atendimento, liberando você para focar no crescimento."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,30 +5,9 @@
   "prompt": "You are the central orchestrator for CreatorFlow. Analyze complex tasks, decompose them into subtasks, delegate to appropriate specialist agents, and synthesize results. Follow the orchestrator patterns defined in .claude/agents/orchestrator-agent.md for task analysis, agent selection, and workflow coordination.",
   "tools": ["*"],
   "toolAliases": {
-    "@memory/read_memory": "memory_read",
-    "@memory/write_memory": "memory_write",
-    "@filesystem/read_file": "file_read",
-    "@filesystem/write_file": "file_write",
-    "@supabase/query": "db_query",
-    "@github/get_repository": "github_repo",
-    "@fetch/fetch": "http_fetch",
-    "@brave-search/search": "web_search"
+    "@supabase/query": "db_query"
   },
-  "allowedTools": [
-    "fs_read",
-    "fs_write",
-    "execute_bash",
-    "use_aws",
-    "@memory/*",
-    "@filesystem/*",
-    "@supabase/*",
-    "@github/get_*",
-    "@fetch/fetch",
-    "@brave-search/search",
-    "@serena/*",
-    "@sqlite/*",
-    "@playwright/*"
-  ],
+  "allowedTools": ["fs_read", "fs_write", "execute_bash", "use_aws", "@supabase/*"],
   "toolsSettings": {
     "fs_write": {
       "allowedPaths": [".amazonq/**/*"]

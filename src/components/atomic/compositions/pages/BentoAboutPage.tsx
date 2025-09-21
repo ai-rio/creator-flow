@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
 
+import { AP010Hero } from '../../organisms/AP010Hero';
 // Atomic component imports
 import { BentoCard, BentoGrid, BentoSection } from '../layouts/BentoGrid';
 
@@ -115,43 +116,6 @@ const milestones: CompanyMilestone[] = [
     metric: '2,500+ Creators',
   },
 ];
-
-// ==================== ABOUT HERO BENTO ====================
-
-const AboutHeroBento: React.FC = () => {
-  return (
-    <div className='relative h-full overflow-hidden'>
-      {/* Background effects */}
-      <div className='absolute inset-0'>
-        <Particles className='absolute inset-0' quantity={40} ease={80} color='#7c3aed' />
-        <div className='absolute inset-0 bg-gradient-to-br from-brand-purple-500/10 via-transparent to-brand-teal-500/10' />
-      </div>
-
-      {/* Hero content */}
-      <div className='relative z-10 flex h-full flex-col justify-center p-8 text-center'>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <h1 className='mb-4 text-4xl font-bold text-foreground lg:text-6xl'>
-            Built by
-            <br />
-            <span className='bg-gradient-to-r from-brand-purple-500 to-brand-teal-500 bg-clip-text text-transparent'>
-              Creators
-            </span>
-          </h1>
-          <p className='mx-auto mb-8 max-w-md text-lg text-muted-foreground'>
-            We&apos;ve been where you are. We built CreatorFlow to solve our own problems.
-          </p>
-          <Badge variant='secondary' className='text-sm'>
-            Founded in 2022 • San Francisco, CA
-          </Badge>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
 
 // ==================== TEAM MEMBER CARD ====================
 
@@ -358,7 +322,7 @@ export const BentoAboutPage: React.FC<BentoAboutPageProps> = ({ className }) => 
         <BentoGrid>
           {/* About Hero */}
           <BentoCard size='hero' className='lg:col-span-2' delay={0.1}>
-            <AboutHeroBento />
+            <AP010Hero />
           </BentoCard>
 
           {/* Company Stats */}

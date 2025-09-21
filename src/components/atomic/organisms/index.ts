@@ -45,6 +45,12 @@ export { FP050DataPrism } from './FP050DataPrism';
 // Legal Page Components
 export { default as LegalPage } from './LegalPage';
 
+// Homepage Components
+export { HP070PricingTiers } from './HP070PricingTiers';
+
+// About Page Components
+export { AP010Hero } from './AP010Hero';
+
 // Contact Page Components
 export { CP010Hero } from './CP010Hero';
 export { CP020OpenMissions } from './CP020OpenMissions';

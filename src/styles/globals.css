@@ -834,6 +834,10 @@
 
 /* Real Animation Classes (From working components) */
 @layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
   .animate-heartbeat {
     animation: heartbeat 2s ease-in-out infinite;
   }

@@ -211,7 +211,13 @@ export const BentoCard: React.FC<BentoCardProps> = ({
     <>
       {background && <div className='absolute inset-0 z-0 overflow-hidden rounded-xl'>{background}</div>}
 
-      <div className='relative z-10 flex h-full flex-col p-6'>
+      <div
+        className={cn(
+          'relative z-10 flex h-full flex-col',
+          // Only add padding if there's header content or CTA
+          name || Icon || description || cta ? 'p-6' : 'p-0'
+        )}
+      >
         {(name || Icon || description) && (
           <div className='mb-4 flex-shrink-0'>
             {Icon && (

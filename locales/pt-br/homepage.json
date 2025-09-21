@@ -99,6 +99,50 @@
       },
       "subtitle": "Junte-se aos criadores que transformaram o caos em comando. Seu sucesso é nossa base.",
       "title": "O Que os Criadores Dizem"
+    },
+    "pricing": {
+      "title": "Encontre Sua Órbita.",
+      "subtitle": "Selecione o plano perfeito para impulsionar sua marca de uma única faísca para uma presença galáctica.",
+      "mostPopular": "Mais Popular",
+      "cta": "Inicie seu teste de 14 dias",
+      "billing": {
+        "monthly": "Mensal",
+        "yearly": "Anual",
+        "save": "Economize 20%",
+        "perMonth": "mês",
+        "perYear": "ano"
+      },
+      "plans": {
+        "launch": {
+          "name": "Lançamento",
+          "description": "Para o criador solo que está decolando.",
+          "features": {
+            "0": "500 Pedidos/Mês",
+            "1": "Automação Básica",
+            "2": "Suporte da Comunidade"
+          }
+        },
+        "ascend": {
+          "name": "Ascender",
+          "description": "O centro de comando para escalar seu império.",
+          "features": {
+            "0": "2.000 Pedidos/Mês",
+            "1": "Automação Avançada",
+            "2": "Insights de IA",
+            "3": "Suporte Prioritário"
+          }
+        },
+        "galaxy": {
+          "name": "Galáxia",
+          "description": "Para marcas estabelecidas dominando seu mercado.",
+          "features": {
+            "0": "10.000 Pedidos/Mês",
+            "1": "Suíte de Automação Completa",
+            "2": "Acesso à API",
+            "3": "Agente Dedicado"
+          }
+        }
+      }
     }
   }
 }

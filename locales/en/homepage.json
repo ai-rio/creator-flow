@@ -99,6 +99,50 @@
       },
       "subtitle": "Join the creators who turned chaos into command. Their success is our foundation.",
       "title": "What Creators Say"
+    },
+    "pricing": {
+      "title": "Find Your Orbit.",
+      "subtitle": "Select the perfect plan to propel your brand from a single spark to a galactic presence.",
+      "mostPopular": "Most Popular",
+      "cta": "Start your 14 day trial",
+      "billing": {
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "save": "Save 20%",
+        "perMonth": "mo",
+        "perYear": "yr"
+      },
+      "plans": {
+        "launch": {
+          "name": "Launch",
+          "description": "For the solo creator taking flight.",
+          "features": {
+            "0": "500 Orders/Mo",
+            "1": "Basic Automation",
+            "2": "Community Support"
+          }
+        },
+        "ascend": {
+          "name": "Ascend",
+          "description": "The command center for scaling your empire.",
+          "features": {
+            "0": "2,000 Orders/Mo",
+            "1": "Advanced Automation",
+            "2": "AI Insights",
+            "3": "Priority Support"
+          }
+        },
+        "galaxy": {
+          "name": "Galaxy",
+          "description": "For established brands dominating their market.",
+          "features": {
+            "0": "10,000 Orders/Mo",
+            "1": "Full Automation Suite",
+            "2": "API Access",
+            "3": "Dedicated Agent"
+          }
+        }
+      }
     }
   }
 }
