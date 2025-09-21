@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import React, { useCallback, useState } from 'react';
 
-import { Card } from '@/components/ui/card';
-
 // Team member interface
 interface TeamMember {
   name: string;
@@ -69,30 +67,32 @@ const TeamMemberCard = React.memo(({ member }: { member: TeamMember }) => {
       }}
     >
       <motion.div
-        className='absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20'
+        className='absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/10 to-purple-500/10 dark:from-teal-500/20 dark:to-purple-500/20'
         variants={glowVariants}
         animate={isHovered ? 'visible' : 'hidden'}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
       />
-      <Card className='relative h-full w-full rounded-[23px] border border-border/50 bg-card/50 p-6 backdrop-blur-xl'>
-        <motion.div
-          style={{ rotateY: isHovered ? 0 : -5 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className='flex h-full flex-col'
-        >
+      <motion.div
+        style={{ rotateY: isHovered ? 0 : -15 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className='relative h-full w-full rounded-[23px] border border-slate-300 bg-white/50 p-6 backdrop-blur-xl dark:border-slate-100/10 dark:bg-black/30'
+      >
+        <div className='flex h-full flex-col'>
           <Image
             src={member.imageUrl}
             alt={member.name}
             width={160}
             height={160}
-            className='h-40 w-40 rounded-full border-2 border-border/20 object-cover'
+            className='h-40 w-40 rounded-full border-2 border-slate-300 object-cover dark:border-slate-100/10'
           />
-          <h3 className='mt-4 text-2xl font-bold text-foreground'>{member.name}</h3>
-          <p className='font-semibold text-primary'>{member.role}</p>
-          <div className='my-4 h-px flex-shrink-0 bg-border/20' />
-          <p className='flex-grow text-lg italic text-muted-foreground'>&ldquo;{member.philosophy}&rdquo;</p>
-        </motion.div>
-      </Card>
+          <h3 className='mt-4 text-2xl font-bold text-slate-900 dark:text-white'>{member.name}</h3>
+          <p className='font-semibold text-teal-400'>{member.role}</p>
+          <div className='my-4 h-px flex-shrink-0 bg-slate-300 dark:bg-slate-100/10' />
+          <p className='flex-grow text-lg italic text-slate-600 dark:text-slate-400'>
+            &ldquo;{member.philosophy}&rdquo;
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
   );
 });
@@ -148,7 +148,8 @@ export function AP030TheTeam() {
       <div className='mx-auto flex w-full max-w-7xl flex-col items-center justify-center space-y-8 overflow-hidden px-4 py-24'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className='text-center'
         >
@@ -167,7 +168,8 @@ export function AP030TheTeam() {
           className='flex w-full justify-center pt-16'
           variants={containerVariants}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={{ once: true }}
         >
           <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>
             {teamMembers.map((member) => (
