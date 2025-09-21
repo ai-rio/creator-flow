@@ -52,6 +52,9 @@ export { HP070PricingTiers } from './HP070PricingTiers';
 export { AP010Hero } from './AP010Hero';
 export { AP020OurMission } from './AP020OurMission';
 
+// Blog Page Components
+export { BP010CompleteContentHub } from './BP010CompleteContentHub';
+
 // Contact Page Components
 export { CP010Hero } from './CP010Hero';
 export { CP020OpenMissions } from './CP020OpenMissions';

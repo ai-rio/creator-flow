@@ -11,23 +11,21 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-
-  // Load localized metadata
-  const t = await getTranslations({ locale, namespace: 'homepage' });
+  const t = await getTranslations({ locale, namespace: 'homepage.metadata' });
 
   return {
-    title: 'CreatorFlow - Scale Your TikTok Shop from 50 to 500+ Orders per Day',
-    description: t('hero.description'),
+    title: t('title'),
+    description: t('description'),
     openGraph: {
-      title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
-      description: t('hero.description'),
+      title: t('openGraph.title'),
+      description: t('openGraph.description'),
       type: 'website',
       url: '/',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'CreatorFlow - TikTok Shop Fulfillment Automation',
-      description: t('hero.description'),
+      title: t('twitter.title'),
+      description: t('twitter.description'),
     },
     alternates: {
       languages: {

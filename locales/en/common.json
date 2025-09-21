@@ -1,4 +1,24 @@
 {
+  "components": {
+    "atomic": {
+      "organisms": {
+        "BP010CompleteContentHub": {
+          "featured": {
+            "label": "FEATURED",
+            "by": "by",
+            "cta": "Read Article"
+          },
+          "toolbar": {
+            "searchPlaceholder": "Search articles..."
+          },
+          "posts": {
+            "title": "Latest",
+            "subtitle": "Articles"
+          }
+        }
+      }
+    }
+  },
   "errors": {
     "goHome": "Go to Home",
     "pageNotFound": "Page not found"

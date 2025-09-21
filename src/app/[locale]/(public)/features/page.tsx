@@ -11,24 +11,21 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'components.atomic.compositions.FP010FeaturesPage.metadata',
-  });
+  const t = await getTranslations({ locale, namespace: 'features.metadata' });
 
   return {
     title: t('title'),
     description: t('description'),
     openGraph: {
-      title: t('title'),
-      description: t('description'),
+      title: t('openGraph.title'),
+      description: t('openGraph.description'),
       type: 'website',
       url: '/features',
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
+      title: t('twitter.title'),
+      description: t('twitter.description'),
     },
     alternates: {
       languages: {

@@ -1,0 +1,16 @@
+{
+  "blog": {
+    "metadata": {
+      "title": "Blog - CreatorFlow | Insights e Estratégias para Sucesso no TikTok Shop",
+      "description": "Descubra insights, estratégias e novidades da equipe CreatorFlow. Aprenda como escalar seu TikTok Shop e dominar a economia de criadores.",
+      "openGraph": {
+        "title": "Blog CreatorFlow - Estratégias de Crescimento para TikTok Shop",
+        "description": "Insights especializados sobre escalabilidade de operações no TikTok Shop, estratégias de automação e tendências da economia de criadores."
+      },
+      "twitter": {
+        "title": "Blog CreatorFlow - Insights da Economia de Criadores",
+        "description": "Estratégias e insights para sucesso no TikTok Shop"
+      }
+    }
+  }
+}

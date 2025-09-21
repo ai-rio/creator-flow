@@ -11,24 +11,21 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-
-  // Load localized metadata - using existing namespace since contact is nested
-  const t = await getTranslations({ locale, namespace: 'homepage' });
+  const t = await getTranslations({ locale, namespace: 'contact.metadata' });
 
   return {
-    title: 'Contact CreatorFlow - Get Help with TikTok Shop Automation',
-    description:
-      "Get in touch with our team for support, partnerships, or general inquiries. We're here to help you scale your TikTok Shop.",
+    title: t('title'),
+    description: t('description'),
     openGraph: {
-      title: 'Contact CreatorFlow - TikTok Shop Automation Support',
-      description: 'Need help with your TikTok Shop automation? Our team of creator economy experts is here to help.',
+      title: t('openGraph.title'),
+      description: t('openGraph.description'),
       type: 'website',
       url: '/contact',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Contact CreatorFlow',
-      description: 'Get help with your TikTok Shop automation',
+      title: t('twitter.title'),
+      description: t('twitter.description'),
     },
     alternates: {
       languages: {
