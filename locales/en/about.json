@@ -23,6 +23,44 @@
               "description": "Automate repetitive tasks and accelerate your fulfillment process, freeing you to focus on growth."
             }
           }
+        },
+        "AP020OurMission": {
+          "hero": {
+            "title": "A Manifesto of Intervention.",
+            "description": "Our platform is not built on features, but on core beliefs. These three doctrines govern every line of code we write and every decision we make."
+          },
+          "doctrines": {
+            "automate": {
+              "title": "Automate Everything.",
+              "principle": "Your time is a strategic asset, not an operational expense. We are fundamentally opposed to manual tasks that drain creative energy.",
+              "proof": {
+                "0": {
+                  "label": "Reclaimed for growth"
+                }
+              }
+            },
+            "defend": {
+              "title": "Defend Every Dollar.",
+              "principle": "Profitability at scale is a non-negotiable architectural requirement. Every sale must be a victory, not a liability.",
+              "proof": {
+                "0": {
+                  "label": "In oversell losses prevented"
+                },
+                "1": {
+                  "label": "Average profit increase on shipping"
+                }
+              }
+            },
+            "command": {
+              "title": "Command, Don't Manage.",
+              "principle": "Scaling should grant you more control, not more complexity. We transform operational chaos into strategic clarity.",
+              "proof": {
+                "0": {
+                  "label": "For definitive business intelligence"
+                }
+              }
+            }
+          }
         }
       }
     }

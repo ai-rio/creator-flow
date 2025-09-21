@@ -50,6 +50,7 @@ export { HP070PricingTiers } from './HP070PricingTiers';
 
 // About Page Components
 export { AP010Hero } from './AP010Hero';
+export { AP020OurMission } from './AP020OurMission';
 
 // Contact Page Components
 export { CP010Hero } from './CP010Hero';

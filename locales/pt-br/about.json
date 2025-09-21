@@ -23,6 +23,44 @@
               "description": "Automatize tarefas repetitivas e acelere seu processo de atendimento, liberando você para focar no crescimento."
             }
           }
+        },
+        "AP020OurMission": {
+          "hero": {
+            "title": "Um Manifesto de Intervenção.",
+            "description": "Nossa plataforma não é construída sobre recursos, mas sobre crenças fundamentais. Essas três doutrinas governam cada linha de código que escrevemos e cada decisão que tomamos."
+          },
+          "doctrines": {
+            "automate": {
+              "title": "Automatizar Tudo.",
+              "principle": "Seu tempo é um ativo estratégico, não uma despesa operacional. Somos fundamentalmente opostos a tarefas manuais que drenam energia criativa.",
+              "proof": {
+                "0": {
+                  "label": "Recuperadas para crescimento"
+                }
+              }
+            },
+            "defend": {
+              "title": "Defender Cada Dólar.",
+              "principle": "Lucratividade em escala é um requisito arquitetônico não negociável. Cada venda deve ser uma vitória, não uma responsabilidade.",
+              "proof": {
+                "0": {
+                  "label": "Em perdas por sobrevenda prevenidas"
+                },
+                "1": {
+                  "label": "Aumento médio de lucro em envios"
+                }
+              }
+            },
+            "command": {
+              "title": "Comandar, Não Gerenciar.",
+              "principle": "Escalar deveria conceder mais controle, não mais complexidade. Transformamos caos operacional em clareza estratégica.",
+              "proof": {
+                "0": {
+                  "label": "Para inteligência empresarial definitiva"
+                }
+              }
+            }
+          }
         }
       }
     }
