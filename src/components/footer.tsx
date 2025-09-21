@@ -21,7 +21,7 @@ export default function FooterSection() {
     },
     {
       title: t('sections.company.about'),
-      href: '#',
+      href: '/about',
     },
     {
       title: t('sections.company.careers'),
