@@ -61,6 +61,34 @@
               }
             }
           }
+        },
+        "AP030TheTeam": {
+          "hero": {
+            "title": "As Mentes Por Trás da Máquina.",
+            "description": "CreatorFlow é o produto de uma obsessão coletiva. Conheça os arquitetos que fundiram engenharia de nível empresarial com uma compreensão íntima da economia de criadores."
+          },
+          "members": {
+            "alex": {
+              "name": "Alex Thorne",
+              "role": "Arquiteto Principal de Sistemas",
+              "philosophy": "A elegância de um sistema é medida por sua resistência sob pressão máxima. Construímos o CreatorFlow para ser inquebrantável durante uma tempestade viral."
+            },
+            "lena": {
+              "name": "Dra. Lena Petrova",
+              "role": "Inteligência de Crescimento",
+              "philosophy": "Dados são ruído inútil. Sabedoria acionável é a única métrica que importa. Meu trabalho é transformar dados brutos em seu próximo movimento estratégico."
+            },
+            "marcus": {
+              "name": "Marcus Cole",
+              "role": "Líder de Experiência do Criador",
+              "philosophy": "Cada clique, cada pixel, cada interação está adicionando ao caos ou contribuindo para o comando. Não há meio termo."
+            },
+            "sofia": {
+              "name": "Sofia Chen",
+              "role": "Automação e Cumprimento",
+              "philosophy": "Automatizamos o previsível para que nossos criadores possam dominar o imprevisível. Tarefas repetitivas são o inimigo do crescimento criativo."
+            }
+          }
         }
       }
     }

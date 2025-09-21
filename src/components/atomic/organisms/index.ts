@@ -1,3 +1,6 @@
+// About Page Components
+export { AP030TheTeam } from './AP030TheTeam';
+
 // Business Intelligence Components
 export { default as BIExecutiveIntelligence } from './BI-ExecutiveIntelligence';
 export { StrategicInsights as BIStrategicInsights } from './BI-StrategicInsights';

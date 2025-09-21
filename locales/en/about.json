@@ -61,6 +61,34 @@
               }
             }
           }
+        },
+        "AP030TheTeam": {
+          "hero": {
+            "title": "The Minds Behind the Machine.",
+            "description": "CreatorFlow is the product of a collective obsession. Meet the architects who fused enterprise-grade engineering with an intimate understanding of the creator economy."
+          },
+          "members": {
+            "alex": {
+              "name": "Alex Thorne",
+              "role": "Lead Systems Architect",
+              "philosophy": "A system's elegance is measured by its resilience under maximum pressure. We built CreatorFlow to be unbreakable during a viral storm."
+            },
+            "lena": {
+              "name": "Dr. Lena Petrova",
+              "role": "Growth Intelligence",
+              "philosophy": "Data is useless noise. Actionable wisdom is the only metric that matters. My work is to turn raw data into your next strategic move."
+            },
+            "marcus": {
+              "name": "Marcus Cole",
+              "role": "Creator Experience Lead",
+              "philosophy": "Every click, every pixel, every interaction is either adding to the chaos or contributing to command. There is no middle ground."
+            },
+            "sofia": {
+              "name": "Sofia Chen",
+              "role": "Automation & Fulfillment",
+              "philosophy": "We automate the predictable so our creators can master the unpredictable. Repetitive tasks are the enemy of creative growth."
+            }
+          }
         }
       }
     }

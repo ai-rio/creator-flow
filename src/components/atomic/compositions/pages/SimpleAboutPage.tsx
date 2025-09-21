@@ -2,6 +2,7 @@
 
 import { AP010Hero } from '../../organisms/AP010Hero';
 import { AP020OurMission } from '../../organisms/AP020OurMission';
+import { AP030TheTeam } from '../../organisms/AP030TheTeam';
 
 export const SimpleAboutPage = () => {
   return (
@@ -11,6 +12,9 @@ export const SimpleAboutPage = () => {
       </section>
       <section className='w-full'>
         <AP020OurMission />
+      </section>
+      <section className='w-full'>
+        <AP030TheTeam />
       </section>
     </div>
   );
