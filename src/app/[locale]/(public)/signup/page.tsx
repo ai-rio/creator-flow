@@ -3,10 +3,10 @@ import { redirect } from 'next/navigation';
 import { getSession } from '@/features/account/controllers/get-session';
 import { getSubscription } from '@/features/account/controllers/get-subscription';
 
-import { signInWithEmail, signInWithOAuth } from '../../../(auth)/auth-actions';
-import { AuthUI } from '../../../(auth)/auth-ui';
+import { SignupClient } from './signup-client';
 
-export default async function SignupPage() {
+export default async function SignupPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const [session, subscription] = await Promise.all([getSession(), getSubscription()]);
 
   // Redirect authenticated users
@@ -18,11 +18,5 @@ export default async function SignupPage() {
     redirect('/dashboard');
   }
 
-  return (
-    <div className='flex min-h-screen items-center justify-center py-12'>
-      <div className='w-full max-w-md'>
-        <AuthUI mode='signup' signInWithOAuth={signInWithOAuth} signInWithEmail={signInWithEmail} />
-      </div>
-    </div>
-  );
+  return <SignupClient locale={locale} />;
 }

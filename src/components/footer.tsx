@@ -9,19 +9,23 @@ export default function FooterSection() {
   const links = [
     {
       title: t('sections.product.features'),
-      href: '#',
+      href: '/features',
     },
     {
       title: t('sections.product.pricing'),
-      href: '#',
+      href: '/pricing',
     },
     {
       title: t('sections.product.testimonials'),
-      href: '#',
+      href: '#testimonials',
     },
     {
       title: t('sections.company.about'),
       href: '/about',
+    },
+    {
+      title: t('sections.company.blog'),
+      href: '/blog',
     },
     {
       title: t('sections.company.careers'),

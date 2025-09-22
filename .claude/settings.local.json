@@ -77,7 +77,14 @@
       "mcp__shadcn__get_project_registries",
       "Bash(python3:*)",
       "Bash(jq:*)",
-      "Bash(__NEW_LINE__ echo \"🔍 SUMMARY OF CHANGES MADE:\")"
+      "Bash(__NEW_LINE__ echo \"🔍 SUMMARY OF CHANGES MADE:\")",
+      "Read(//home/carlos/**)",
+      "Bash(npm install:*)",
+      "Read(//home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/**)",
+      "Bash(/home/linuxbrew/.linuxbrew/bin/node /home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/index.js --version)",
+      "Bash(/home/linuxbrew/.linuxbrew/bin/node /home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/index.js)",
+      "Bash(/home/linuxbrew/.linuxbrew/bin/node /home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/cli.js --help)",
+      "Bash(bunx eslint:*)"
     ],
     "deny": [],
     "ask": []

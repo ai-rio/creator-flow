@@ -12,16 +12,18 @@ import { toast } from '@/components/ui/use-toast';
 import { ActionResponse } from '@/types/action-response';
 
 const titleMap = {
-  login: 'Login to UPDATE_THIS_WITH_YOUR_APP_DISPLAY_NAME',
-  signup: 'Join UPDATE_THIS_WITH_YOUR_APP_DISPLAY_NAME and start generating banners for free',
+  login: 'Login to CreatorFlow',
+  signup: 'Join CreatorFlow and start scaling your TikTok Shop',
 } as const;
 
 export function AuthUI({
   mode,
+  locale,
   signInWithOAuth,
   signInWithEmail,
 }: {
   mode: 'login' | 'signup';
+  locale: string;
   signInWithOAuth: (provider: 'github' | 'google') => Promise<ActionResponse>;
   signInWithEmail: (formData: FormData) => Promise<ActionResponse>;
 }) {
@@ -34,7 +36,7 @@ export function AuthUI({
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     const email = formData.get('email') as string;
-    
+
     const response = await signInWithEmail(formData);
 
     if (response?.error) {
@@ -124,11 +126,11 @@ export function AuthUI({
       {mode === 'signup' && (
         <span className='text-neutral5 m-auto max-w-sm text-sm'>
           By clicking continue, you agree to our{' '}
-          <Link href='/terms' className='underline'>
+          <Link href={`/${locale}/terms`} className='underline'>
             Terms of Service
           </Link>{' '}
           and{' '}
-          <Link href='/privacy' className='underline'>
+          <Link href={`/${locale}/privacy`} className='underline'>
             Privacy Policy
           </Link>
           .

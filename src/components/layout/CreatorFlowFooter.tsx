@@ -45,6 +45,7 @@ export function CreatorFlowFooter({ className }: CreatorFlowFooterProps) {
       title: t('sections.company.title'),
       links: [
         { name: t('sections.company.about'), href: '/about' },
+        { name: t('sections.company.blog'), href: '/blog' },
         { name: t('sections.company.careers'), href: '/careers' },
         { name: t('sections.company.contact'), href: '/contact' },
       ],
@@ -54,6 +55,8 @@ export function CreatorFlowFooter({ className }: CreatorFlowFooterProps) {
       links: [
         { name: t('sections.legal.privacy'), href: '/privacy' },
         { name: t('sections.legal.terms'), href: '/terms' },
+        { name: t('sections.legal.title'), href: '/legal' },
+        { name: t('sections.legal.gdpr'), href: '/gdpr' },
       ],
     },
   ];

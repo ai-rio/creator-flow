@@ -1,12 +1,10 @@
+'use server';
+
 import { redirect } from 'next/navigation';
 
 import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+import { ActionResponse } from '@/types/action-response';
 import { getURL } from '@/utils/get-url';
-
-export type ActionResponse = {
-  data: any;
-  error: any;
-};
 
 export async function signInWithOAuth(provider: 'google' | 'github', locale: string = 'en'): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient();
