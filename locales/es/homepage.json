@@ -1,5 +1,17 @@
 {
   "homepage": {
+    "metadata": {
+      "title": "CreatorFlow - Escala Tu TikTok Shop",
+      "description": "La única plataforma de automatización de fulfillment construida para creadores virales de TikTok. Transforma 50 pedidos en 500+ sin sudar.",
+      "openGraph": {
+        "title": "CreatorFlow - Escala Tu TikTok Shop",
+        "description": "La única plataforma de automatización de fulfillment construida para creadores virales de TikTok. Transforma 50 pedidos en 500+ sin sudar."
+      },
+      "twitter": {
+        "title": "CreatorFlow - Escala Tu TikTok Shop",
+        "description": "La única plataforma de automatización de fulfillment construida para creadores virales de TikTok. Transforma 50 pedidos en 500+ sin sudar."
+      }
+    },
     "benefits": {
       "automationSavings": {
         "description": "Ahorra un promedio de $27,000/mes en costos operativos con un flujo de pedidos y envíos completamente automatizado.",

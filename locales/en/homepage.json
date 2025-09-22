@@ -1,5 +1,17 @@
 {
   "homepage": {
+    "metadata": {
+      "title": "CreatorFlow - Scale Your TikTok Shop",
+      "description": "The only fulfillment automation platform built for viral TikTok creators. Transform 50 orders into 500+ without breaking a sweat.",
+      "openGraph": {
+        "title": "CreatorFlow - Scale Your TikTok Shop",
+        "description": "The only fulfillment automation platform built for viral TikTok creators. Transform 50 orders into 500+ without breaking a sweat."
+      },
+      "twitter": {
+        "title": "CreatorFlow - Scale Your TikTok Shop",
+        "description": "The only fulfillment automation platform built for viral TikTok creators. Transform 50 orders into 500+ without breaking a sweat."
+      }
+    },
     "benefits": {
       "automationSavings": {
         "description": "Save an average of $27,000/month in operational costs with a fully automated order and shipping workflow.",

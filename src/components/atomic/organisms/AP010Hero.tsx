@@ -92,7 +92,7 @@ function AP010HeroComponent() {
   }, []);
 
   return (
-    <div className='relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/50 p-8 text-center'>
+    <div className='relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-background via-muted/5 to-background p-8 pt-24 text-center'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -100,8 +100,8 @@ function AP010HeroComponent() {
         className='mb-8 will-change-transform'
         style={{ transform: 'translate3d(0, 0, 0)' }}
       >
-        <h1 className='mb-2 text-3xl font-black text-primary md:text-4xl'>{t('title')}</h1>
-        <p className='mx-auto mt-2 max-w-md text-sm text-muted-foreground md:text-base'>{t('subtitle')}</p>
+        <h1 className='mb-2 text-5xl font-black text-foreground md:text-7xl'>{t('title')}</h1>
+        <p className='mx-auto mt-2 max-w-md text-lg text-muted-foreground md:text-xl'>{t('subtitle')}</p>
       </motion.div>
 
       <div

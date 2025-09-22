@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import React, { useCallback, useState } from 'react';
 
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+
 // Team member interface
 interface TeamMember {
   name: string;
@@ -60,14 +62,14 @@ const TeamMemberCard = React.memo(({ member }: { member: TeamMember }) => {
       variants={cardVariants}
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
-      className='relative h-[450px] w-80 rounded-3xl p-px will-change-transform'
+      className='relative w-full max-w-sm will-change-transform'
       style={{
         perspective: '1000px',
         transform: 'translate3d(0, 0, 0)',
       }}
     >
       <motion.div
-        className='absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/10 to-purple-500/10 dark:from-teal-500/20 dark:to-purple-500/20'
+        className='absolute inset-0 rounded-xl bg-gradient-to-br from-teal-500/10 to-purple-500/10 dark:from-teal-500/20 dark:to-purple-500/20'
         variants={glowVariants}
         animate={isHovered ? 'visible' : 'hidden'}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -75,23 +77,25 @@ const TeamMemberCard = React.memo(({ member }: { member: TeamMember }) => {
       <motion.div
         style={{ rotateY: isHovered ? 0 : -15 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className='relative h-full w-full rounded-[23px] border border-slate-300 bg-white/50 p-6 backdrop-blur-xl dark:border-slate-100/10 dark:bg-black/30'
+        className='relative'
       >
-        <div className='flex h-full flex-col'>
-          <Image
-            src={member.imageUrl}
-            alt={member.name}
-            width={160}
-            height={160}
-            className='h-40 w-40 rounded-full border-2 border-slate-300 object-cover dark:border-slate-100/10'
-          />
-          <h3 className='mt-4 text-2xl font-bold text-slate-900 dark:text-white'>{member.name}</h3>
-          <p className='font-semibold text-teal-400'>{member.role}</p>
-          <div className='my-4 h-px flex-shrink-0 bg-slate-300 dark:bg-slate-100/10' />
-          <p className='flex-grow text-lg italic text-slate-600 dark:text-slate-400'>
-            &ldquo;{member.philosophy}&rdquo;
-          </p>
-        </div>
+        <Card className='border-slate-300 bg-white/50 backdrop-blur-xl dark:border-slate-100/10 dark:bg-black/30'>
+          <CardHeader className='pb-4 text-center'>
+            <Image
+              src={member.imageUrl}
+              alt={member.name}
+              width={160}
+              height={160}
+              className='mx-auto h-32 w-32 rounded-full border-2 border-slate-300 object-cover dark:border-slate-100/10'
+            />
+            <h3 className='text-xl font-bold text-slate-900 dark:text-white'>{member.name}</h3>
+            <p className='font-semibold text-teal-400'>{member.role}</p>
+          </CardHeader>
+          <CardContent className='pt-0'>
+            <div className='mb-4 h-px bg-slate-300 dark:bg-slate-100/10' />
+            <p className='text-base italic text-slate-600 dark:text-slate-400'>&ldquo;{member.philosophy}&rdquo;</p>
+          </CardContent>
+        </Card>
       </motion.div>
     </motion.div>
   );
@@ -171,7 +175,7 @@ export function AP030TheTeam() {
           whileInView='visible'
           viewport={{ once: true }}
         >
-          <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>
+          <div className='grid max-w-7xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-4'>
             {teamMembers.map((member) => (
               <TeamMemberCard key={member.name} member={member} />
             ))}
