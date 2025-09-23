@@ -60,6 +60,7 @@ export { default as EnhancedHeroSection } from './EnhancedHeroSection';
 export { FP010FeatureComparison } from './FP010FeatureComparison';
 export { FP010FeatureGrid } from './FP010FeatureGrid';
 export { FP010FeatureHero } from './FP010FeatureHero';
+export { default as FP010ScalingChallenges } from './FP010ScalingChallenges';
 
 // FP-020 Order Management Components
 export { default as FP020OrderManagement } from './FP020OrderManagement';

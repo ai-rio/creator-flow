@@ -3,12 +3,14 @@ import type { Metadata } from 'next';
 import { CP010Hero } from '@/components/atomic/organisms';
 
 interface CareersPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: CareersPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
   return {
     title: `Careers - CreatorFlow`,
     description:

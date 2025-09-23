@@ -1,4 +1,18 @@
 {
+  "contact": {
+    "metadata": {
+      "title": "Fale Conosco - CreatorFlow | Obtenha Suporte e Conecte-se com Nossa Equipe",
+      "description": "Conecte-se com a equipe da CreatorFlow para suporte técnico, consultas de parceria, relações com a imprensa ou perguntas gerais. Múltiplos canais seguros disponíveis para criadores.",
+      "openGraph": {
+        "title": "Contatar CreatorFlow - Centro de Suporte e Parcerias",
+        "description": "Obtenha suporte técnico, explore parcerias, ou conecte-se com nossa equipe para consultas de imprensa e perguntas gerais."
+      },
+      "twitter": {
+        "title": "Suporte CreatorFlow",
+        "description": "Conecte-se com nossa equipe para suporte, parcerias e consultas"
+      }
+    }
+  },
   "components": {
     "atomic": {
       "organisms": {

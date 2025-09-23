@@ -1,4 +1,18 @@
 {
+  "contact": {
+    "metadata": {
+      "title": "Contact Us - CreatorFlow | Get Support & Connect with Our Team",
+      "description": "Connect with the CreatorFlow team for technical support, partnership inquiries, press relations, or general questions. Multiple secure channels available for creators.",
+      "openGraph": {
+        "title": "Contact CreatorFlow - Support & Partnership Hub",
+        "description": "Get technical support, explore partnerships, or connect with our team for press inquiries and general questions."
+      },
+      "twitter": {
+        "title": "Contact CreatorFlow Support",
+        "description": "Connect with our team for support, partnerships, and inquiries"
+      }
+    }
+  },
   "components": {
     "atomic": {
       "organisms": {

@@ -3,12 +3,14 @@ import type { Metadata } from 'next';
 import { TPGDPRDataSovereignty } from '@/components/atomic/organisms';
 
 interface GDPRPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: GDPRPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
   return {
     title: `Data Sovereignty Protocol - CreatorFlow`,
     description:

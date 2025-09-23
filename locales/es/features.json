@@ -23,19 +23,71 @@
             "features": "Características",
             "home": "Inicio"
           },
+          "transitions": {
+            "fromPromiseToProblem": {
+              "title": "Pero Primero, Abordemos la Realidad",
+              "description": "Todos los creadores chocan con la misma pared de escalamiento. Cuando tu TikTok Shop comienza a generar más de 50 pedidos por día, los procesos manuales empiezan a colapsar. Esto es lo que sucede:"
+            },
+            "fromProblemToSolution": {
+              "title": "La Transformación CreatorFlow",
+              "description": "¿Qué pasaría si pudieras eliminar cada punto de dolor y escalar sin esfuerzo de 50 a 500+ pedidos por día?",
+              "tagline": "Del Caos al Control en 30 Segundos"
+            },
+            "fromOverviewToProcess": {
+              "title": "Ve la Magia en Acción",
+              "description": "Observa cómo CreatorFlow procesa pedidos en tiempo real, convirtiendo un volumen abrumador en automatización fluida."
+            },
+            "fromProcessToAdvanced": {
+              "title": "Más Allá de la Automatización Básica",
+              "description": "Una vez que tu base es sólida, desbloquea inteligencia avanzada que predice y previene problemas antes de que ocurran."
+            },
+            "fromAdvancedToResults": {
+              "title": "Los Datos Detrás del Éxito",
+              "description": "Ve los análisis e insights que ayudan a los creadores a tomar decisiones más inteligentes y acelerar el crecimiento."
+            },
+            "fromResultsToChoice": {
+              "title": "Por Qué los Creadores Eligen CreatorFlow",
+              "description": "Compáranos con soluciones genéricas y ve por qué los creadores de TikTok consistentemente eligen CreatorFlow para escalar sus tiendas."
+            },
+            "fromChoiceToAction": {
+              "title": "¿Listo para Transformar Tu Viaje de Escalamiento?",
+              "description": "Únete a miles de creadores que ya han hecho el salto del caos al control."
+            }
+          },
           "cta": {
+            "scalingTitle": "Deja de Luchar contra la Escala. Comienza a Comandarla.",
+            "scalingDescription": "Transforma tu TikTok Shop de una lucha diaria en una máquina de éxito automatizada. Escala de 50 a 500+ pedidos sin romper tu flujo de trabajo o tu cordura.",
+            "metrics": {
+              "ordersPerDay": "Pedidos procesados diariamente",
+              "processingTime": "Tiempo promedio de procesamiento",
+              "accuracy": "Tasa de precisión de pedidos"
+            },
             "actions": {
+              "startScalingNow": "Comenzar a Escalar Ahora",
+              "scheduleScalingDemo": "Agendar Demo de Escalamiento",
+              "scalingPlans": "Ver Planes de Escalamiento"
+            },
+            "scalingGuarantee": "Garantía de escalamiento de 14 días • Cero complejidad de configuración • Cancela cuando quieras",
+            "description": "Únete a miles de creadores que han transformado el caos en control con la suite completa de automatización de CreatorFlow.",
+            "guarantee": "Prueba gratis de 14 días • Sin costos de configuración • Cancela cuando quieras",
+            "title": "¿Listo para Transformar Tu TikTok Shop?",
+            "actions_old": {
               "pricing": "Ver Precios",
               "scheduleDemo": "Agendar Demo en Vivo",
               "startFreeTrial": "Iniciar Prueba Gratis de 14 Días"
-            },
-            "description": "Únete a miles de creadores que han transformado el caos en control con la suite completa de automatización de CreatorFlow.",
-            "guarantee": "Prueba gratis de 14 días • Sin costos de configuración • Cancela cuando quieras",
-            "title": "¿Listo para Transformar Tu TikTok Shop?"
+            }
           },
           "metadata": {
+            "title": "Características de CreatorFlow - Suite Completa de Automatización de TikTok Shop",
             "description": "Descubre todas las características de CreatorFlow: procesamiento de pedidos en tiempo real, envío inteligente, análisis para creadores e integración con TikTok Shop. Construido para creadores virales.",
-            "title": "Características de CreatorFlow - Suite Completa de Automatización de TikTok Shop"
+            "openGraph": {
+              "title": "Características de CreatorFlow - Escala de 50 a 500+ Pedidos",
+              "description": "Suite completa de automatización para TikTok Shop. Procesamiento de pedidos en tiempo real, envío inteligente, análisis para creadores. Transforma los desafíos de escalamiento en éxito."
+            },
+            "twitter": {
+              "title": "Características de CreatorFlow - Automatización TikTok Shop",
+              "description": "Escala tu TikTok Shop de 50 a 500+ pedidos con automatización completa. Procesamiento de pedidos, envío, análisis - todo en una plataforma."
+            }
           }
         }
       },
@@ -53,6 +105,95 @@
         }
       },
       "organisms": {
+        "FP010ScalingChallenges": {
+          "title": "El Punto de Quiebre de 50 Pedidos",
+          "subtitle": "Cuando el éxito de TikTok se encuentra con la realidad operativa, cada creador choca con la misma pared devastadora. Los procesos manuales que funcionaban para 10 pedidos colapsan completamente con 50+.",
+          "metrics": {
+            "ordersPerDay": "Caos de pedidos/día",
+            "workDays": "Días de trabajo de horas",
+            "errorRate": "Aumento de tasa de errores",
+            "timeForGrowth": "Tiempo para crecimiento"
+          },
+          "painPoints": {
+            "orders": {
+              "title": "Desbordamiento de Pedidos",
+              "impact": "50+ pedidos acumulándose",
+              "description": "Tu TikTok Shop está generando más pedidos de los que puedes procesar manualmente. Cada pedido requiere entrada de datos, validación y enrutamiento - multiplicado por 50+ diarios.",
+              "consequence": "Los pedidos se acumulan, los clientes esperan, y te quedas atrás cada día"
+            },
+            "inventory": {
+              "title": "Caos de Stock",
+              "impact": "Desajuste de inventario",
+              "description": "Con seguimiento manual, tu TikTok Shop muestra productos como disponibles cuando en realidad están agotados. La sobreventa se convierte en una pesadilla diaria.",
+              "consequence": "Clientes enojados, pedidos cancelados y reputación dañada"
+            },
+            "shipping": {
+              "title": "Retrasos de Envío",
+              "impact": "Procesamiento de 3-5 días",
+              "description": "Crear etiquetas de envío una por una, comparar tarifas manualmente y rastrear paquetes individualmente convierte el envío en un trabajo de tiempo completo.",
+              "consequence": "Los envíos retrasados matan la satisfacción del cliente y los negocios repetidos"
+            },
+            "time": {
+              "title": "Agotamiento de Tiempo",
+              "impact": "Días de 16+ horas",
+              "description": "Lo que comenzó como un trabajo secundario ahora consume todo tu día. El procesamiento de pedidos, servicio al cliente y gestión de inventario no dejan tiempo para crear contenido.",
+              "consequence": "El agotamiento del creador lleva a la disminución de la calidad del contenido y estancamiento del crecimiento"
+            },
+            "customers": {
+              "title": "Clientes Enojados",
+              "impact": "Quejas en aumento",
+              "description": "Procesamiento retrasado, errores de envío y errores de inventario crean una inundación de quejas de clientes. Tu reputación comienza a sufrir.",
+              "consequence": "Las malas reseñas y el boca a boca dañan el potencial de crecimiento de tu marca"
+            },
+            "stress": {
+              "title": "Abrumamiento Viral",
+              "impact": "Colapso del sistema",
+              "description": "Cuando tu contenido se vuelve viral y los pedidos se disparan a 200+ en un día, tu sistema manual colapsa completamente. El éxito se convierte en tu mayor problema.",
+              "consequence": "Los momentos virales se convierten en desastres operativos en lugar de oportunidades de crecimiento"
+            }
+          },
+          "demo": {
+            "description": "Haz clic abajo para ver qué tan rápido se descomponen los procesos manuales a escala:",
+            "breakingDown": "Sistemas sobrecargándose... Procesos manuales fallando..."
+          },
+          "solution": {
+            "title": "Aquí es Donde CreatorFlow Cambia Todo",
+            "description": "En lugar de ahogarte en trabajo manual, ¿qué pasaría si cada pedido fuera procesado en 30 segundos? ¿Qué pasaría si los picos virales se convirtieran en oportunidades de ganancia en lugar de pesadillas?"
+          },
+          "buttons": {
+            "demonstrateBreakdown": "Muéstrame el Colapso",
+            "seeAutomation": "Ver la Solución de Automatización",
+            "reset": "Reiniciar Demo"
+          }
+        },
+        "FP010FeatureHero": {
+          "title": "De 50 a 500+ Pedidos: La Solución Completa de Escalamiento",
+          "subtitle": "Detén el Colapso Manual. Comienza el Éxito de Escalamiento.",
+          "description": "Cada creador choca con la pared de 50 pedidos donde los procesos manuales colapsan. CreatorFlow transforma ese punto de quiebre en tu avance de escalamiento - llevándote del caos operativo al comando automatizado.",
+          "journey": {
+            "problem": "50 pedidos = caos",
+            "scaling": "La automatización entra",
+            "success": "500+ pedidos sin esfuerzo"
+          },
+          "stats": {
+            "scalingTransformation": "Transformación de escalamiento",
+            "scalingTransformationValue": "50→500+",
+            "scalingTransformationSubtitle": "Capacidad de pedidos por día",
+            "automationSpeed": "Velocidad de automatización",
+            "automationSpeedValue": "30 seg",
+            "automationSpeedSubtitle": "Por procesamiento de pedido",
+            "creatorSuccess": "Tasa de éxito del creador",
+            "creatorSuccessValue": "99.8%",
+            "creatorSuccessSubtitle": "Escalamiento sin colapso"
+          },
+          "actions": {
+            "seeScalingChallenges": "Ver el Desafío de Escalamiento",
+            "startScalingJourney": "Comenzar Tu Viaje de Escalamiento"
+          },
+          "testimonial": {
+            "preview": "\"CreatorFlow salvó mi negocio cuando choqué con la pared de 50 pedidos\" - @CreadorTikTok"
+          }
+        },
         "FP050DataPrism": {
           "hero": {
             "title": "El Oráculo del Crecimiento.",
@@ -208,23 +349,6 @@
           },
           "subtitle": "Todo lo que necesitas para escalar",
           "title": "Suite Completa de Automatización de TikTok Shop"
-        },
-        "FP010FeatureHero": {
-          "actions": {
-            "exploreFeatures": "Explorar Todas las Características",
-            "startFreeTrial": "Iniciar Prueba Gratis"
-          },
-          "description": "Todas las herramientas que necesitas para escalar del caos al control. Diseñado específicamente para creadores virales de TikTok que se niegan a dejar que la logística limite su crecimiento.",
-          "stats": {
-            "accuracyRate": "Precisión de inventario",
-            "accuracyRateValue": "99.8%",
-            "automatedOrders": "Pedidos automatizados diariamente",
-            "automatedOrdersValue": "10,000+",
-            "timesSaved": "Tiempo ahorrado por semana",
-            "timesSavedValue": "40 horas"
-          },
-          "subtitle": "Suite Completa de Características",
-          "title": "Transforma Tu TikTok Shop en una Potencia de Automatización"
         },
         "FP030DigitalTwinCommand": {
           "hero": {

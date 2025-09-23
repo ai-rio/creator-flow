@@ -84,7 +84,9 @@
       "Bash(/home/linuxbrew/.linuxbrew/bin/node /home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/index.js --version)",
       "Bash(/home/linuxbrew/.linuxbrew/bin/node /home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/index.js)",
       "Bash(/home/linuxbrew/.linuxbrew/bin/node /home/linuxbrew/.linuxbrew/lib/node_modules/@playwright/mcp/cli.js --help)",
-      "Bash(bunx eslint:*)"
+      "Bash(bunx eslint:*)",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_click"
     ],
     "deny": [],
     "ask": []

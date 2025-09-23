@@ -3,12 +3,14 @@ import type { Metadata } from 'next';
 import { CP020OpenMissions } from '@/components/atomic/organisms';
 
 interface CareersMissionsPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: CareersMissionsPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
   return {
     title: `Active Missions - CreatorFlow Careers`,
     description:

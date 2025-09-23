@@ -21,7 +21,7 @@ interface Pod {
   Icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   title: string;
   colorClass: string;
-  colorValue: string;
+  colorToken: string;
 }
 
 interface FP030DigitalTwinCommandProps {
@@ -49,29 +49,29 @@ const pods: Pod[] = [
     id: 'at_risk',
     Icon: AlertTriangle,
     title: 'At Risk',
-    colorClass: 'text-red-500 dark:text-red-400',
-    colorValue: '#ef4444',
+    colorClass: 'text-destructive',
+    colorToken: 'hsl(var(--destructive))',
   },
   {
     id: 'opportunity',
     Icon: TrendingUp,
     title: 'Opportunity',
-    colorClass: 'text-purple-500 dark:text-purple-400',
-    colorValue: '#8b5cf6',
+    colorClass: 'text-primary',
+    colorToken: 'hsl(var(--primary))',
   },
   {
     id: 'secure',
     Icon: Package,
     title: 'Secure Stock',
-    colorClass: 'text-teal-500 dark:text-teal-400',
-    colorValue: '#14b8a6',
+    colorClass: 'text-brand-teal-primary',
+    colorToken: 'hsl(var(--brand-teal-primary))',
   },
 ];
 
 // Core Data Visualization Component
 const DataCore: React.FC<{ activePod: string | null }> = ({ activePod }) => {
   const activePodData = activePod ? pods.find((p) => p.id === activePod) : null;
-  const coreColor = activePodData?.colorValue || '#14b8a6';
+  const coreColor = activePodData?.colorToken || 'hsl(var(--brand-teal-primary))';
 
   return (
     <div className='col-span-1 col-start-2 row-span-2 flex items-center justify-center'>
@@ -79,6 +79,7 @@ const DataCore: React.FC<{ activePod: string | null }> = ({ activePod }) => {
         className='relative h-48 w-48 md:h-64 md:w-64'
         animate={{ scale: activePod ? 1.1 : 1 }}
         transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+        style={{ transform: 'translate3d(0, 0, 0)' }} // GPU acceleration
       >
         {/* Outer ring */}
         <motion.div className='absolute inset-0 rounded-full border-2 opacity-30' style={{ borderColor: coreColor }} />
@@ -133,8 +134,9 @@ const StrategicPod: React.FC<{
       <Card
         className={cn(
           'relative flex h-32 w-full max-w-xs items-center justify-center gap-4 p-6',
-          'border-border/40 bg-background/40 backdrop-blur-md',
-          'transition-all duration-300 hover:border-border/60'
+          'border-border/40 bg-background/80 backdrop-blur-sm',
+          'transition-all duration-300 hover:border-border/60 hover:bg-background/90',
+          'hover:scale-105 hover:shadow-lg'
         )}
       >
         <pod.Icon className={cn('h-8 w-8', pod.colorClass)} />
@@ -173,9 +175,9 @@ const BriefingTooltip: React.FC<{ activePod: string | null }> = ({ activePod }) 
         style={position[activePod as keyof typeof position]}
         className='absolute z-10 w-64'
       >
-        <Card className='border-border/40 bg-background/90 backdrop-blur-md'>
-          <div className='border-b p-4' style={{ borderColor: podData.colorValue }}>
-            <h4 className='font-bold' style={{ color: podData.colorValue }}>
+        <Card className='border-border/40 bg-background/95 shadow-lg backdrop-blur-md'>
+          <div className='border-b p-4' style={{ borderColor: podData.colorToken }}>
+            <h4 className='font-bold' style={{ color: podData.colorToken }}>
               {t(`briefing.${activePod}.title`)}
             </h4>
           </div>
@@ -201,11 +203,11 @@ export const FP030DigitalTwinCommand: React.FC<FP030DigitalTwinCommandProps> = (
 
   return (
     <TooltipProvider>
-      <div className={cn('flex min-h-screen w-full flex-col items-center justify-center p-4', className)}>
+      <div className={cn('flex min-h-screen w-full flex-col items-center justify-center p-4 lg:p-8', className)}>
         {/* Hero Section */}
-        <div className='text-center'>
+        <div className='mb-8 max-w-6xl text-center'>
           <motion.h2
-            className='text-6xl font-black text-foreground md:text-8xl'
+            className='mb-6 bg-gradient-to-r from-brand-teal-400 to-brand-purple-400 bg-clip-text text-4xl font-black text-foreground text-transparent md:text-6xl lg:text-7xl'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -213,7 +215,7 @@ export const FP030DigitalTwinCommand: React.FC<FP030DigitalTwinCommandProps> = (
             {t('hero.title')}
           </motion.h2>
           <motion.p
-            className='mx-auto mt-4 max-w-3xl text-lg text-muted-foreground'
+            className='mx-auto max-w-4xl text-lg leading-relaxed text-muted-foreground md:text-xl'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -229,6 +231,10 @@ export const FP030DigitalTwinCommand: React.FC<FP030DigitalTwinCommandProps> = (
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
+          style={{
+            perspective: '2000px',
+            transform: 'translate3d(0, 0, 0)', // GPU acceleration
+          }}
         >
           <DataCore activePod={activePod} />
           {pods.map((pod) => (
@@ -236,6 +242,9 @@ export const FP030DigitalTwinCommand: React.FC<FP030DigitalTwinCommandProps> = (
           ))}
           <BriefingTooltip activePod={activePod} />
         </motion.div>
+
+        {/* Enhanced visual background with system theme integration */}
+        <div className='absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/5 via-transparent to-secondary/5' />
       </div>
     </TooltipProvider>
   );

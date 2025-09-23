@@ -23,19 +23,71 @@
             "features": "Features",
             "home": "Home"
           },
+          "transitions": {
+            "fromPromiseToProblem": {
+              "title": "But First, Let's Address the Reality",
+              "description": "Every creator hits the same scaling wall. When your TikTok Shop starts generating 50+ orders per day, manual processes begin to break down. Here's what happens:"
+            },
+            "fromProblemToSolution": {
+              "title": "The CreatorFlow Transformation",
+              "description": "What if you could eliminate every single pain point and scale effortlessly from 50 to 500+ orders per day?",
+              "tagline": "From Chaos to Command in 30 Seconds"
+            },
+            "fromOverviewToProcess": {
+              "title": "See the Magic in Action",
+              "description": "Watch how CreatorFlow processes orders in real-time, turning overwhelming volume into smooth automation."
+            },
+            "fromProcessToAdvanced": {
+              "title": "Beyond Basic Automation",
+              "description": "Once your foundation is solid, unlock advanced intelligence that predicts and prevents problems before they happen."
+            },
+            "fromAdvancedToResults": {
+              "title": "The Data Behind the Success",
+              "description": "See the analytics and insights that help creators make smarter decisions and accelerate growth."
+            },
+            "fromResultsToChoice": {
+              "title": "Why Creators Choose CreatorFlow",
+              "description": "Compare us to generic solutions and see why TikTok creators consistently choose CreatorFlow for scaling their shops."
+            },
+            "fromChoiceToAction": {
+              "title": "Ready to Transform Your Scaling Journey?",
+              "description": "Join thousands of creators who've already made the leap from chaos to command."
+            }
+          },
           "cta": {
+            "scalingTitle": "Stop Fighting the Scale. Start Commanding It.",
+            "scalingDescription": "Transform your TikTok Shop from a daily struggle into an automated success machine. Scale from 50 to 500+ orders without breaking your workflow or your sanity.",
+            "metrics": {
+              "ordersPerDay": "Orders processed daily",
+              "processingTime": "Average processing time",
+              "accuracy": "Order accuracy rate"
+            },
             "actions": {
+              "startScalingNow": "Start Scaling Now",
+              "scheduleScalingDemo": "Schedule Scaling Demo",
+              "scalingPlans": "View Scaling Plans"
+            },
+            "scalingGuarantee": "14-day scaling guarantee • Zero setup complexity • Cancel anytime",
+            "description": "Join thousands of creators who've turned chaos into command with CreatorFlow's complete automation suite.",
+            "guarantee": "14-day free trial • No setup fees • Cancel anytime",
+            "title": "Ready to Transform Your TikTok Shop?",
+            "actions_old": {
               "pricing": "View Pricing",
               "scheduleDemo": "Schedule Live Demo",
               "startFreeTrial": "Start 14-Day Free Trial"
-            },
-            "description": "Join thousands of creators who've turned chaos into command with CreatorFlow's complete automation suite.",
-            "guarantee": "14-day free trial • No setup fees • Cancel anytime",
-            "title": "Ready to Transform Your TikTok Shop?"
+            }
           },
           "metadata": {
+            "title": "CreatorFlow Features - Complete TikTok Shop Automation Suite",
             "description": "Discover all CreatorFlow features: real-time order processing, intelligent shipping, creator analytics, and TikTok Shop integration. Built for viral creators.",
-            "title": "CreatorFlow Features - Complete TikTok Shop Automation Suite"
+            "openGraph": {
+              "title": "CreatorFlow Features - Scale from 50 to 500+ Orders",
+              "description": "Complete TikTok Shop automation suite. Real-time order processing, intelligent shipping, creator analytics. Transform scaling challenges into success."
+            },
+            "twitter": {
+              "title": "CreatorFlow Features - TikTok Shop Automation",
+              "description": "Scale your TikTok Shop from 50 to 500+ orders with complete automation. Order processing, shipping, analytics - all in one platform."
+            }
           }
         }
       },
@@ -53,6 +105,95 @@
         }
       },
       "organisms": {
+        "FP010ScalingChallenges": {
+          "title": "The 50-Order Breaking Point",
+          "subtitle": "When TikTok success meets operational reality, every creator hits the same devastating wall. Manual processes that worked for 10 orders completely collapse at 50+.",
+          "metrics": {
+            "ordersPerDay": "Orders/day chaos",
+            "workDays": "Hour work days",
+            "errorRate": "Error rate increase",
+            "timeForGrowth": "Time for growth"
+          },
+          "painPoints": {
+            "orders": {
+              "title": "Order Overflow",
+              "impact": "50+ orders backing up",
+              "description": "Your TikTok Shop is generating more orders than you can process manually. Each order requires data entry, validation, and routing - multiplied by 50+ daily.",
+              "consequence": "Orders pile up, customers wait, and you fall behind every single day"
+            },
+            "inventory": {
+              "title": "Stock Chaos",
+              "impact": "Inventory mismatch",
+              "description": "With manual tracking, your TikTok Shop shows products as available when they're actually out of stock. Overselling becomes a daily nightmare.",
+              "consequence": "Angry customers, cancelled orders, and damaged reputation"
+            },
+            "shipping": {
+              "title": "Shipping Delays",
+              "impact": "3-5 day processing",
+              "description": "Creating shipping labels one by one, comparing rates manually, and tracking packages individually turns shipping into a full-time job.",
+              "consequence": "Delayed shipments kill customer satisfaction and repeat business"
+            },
+            "time": {
+              "title": "Time Burnout",
+              "impact": "16+ hour days",
+              "description": "What started as a side hustle now consumes your entire day. Order processing, customer service, and inventory management leave no time for content creation.",
+              "consequence": "Creator burnout leads to declining content quality and growth stagnation"
+            },
+            "customers": {
+              "title": "Angry Customers",
+              "impact": "Rising complaints",
+              "description": "Delayed processing, shipping errors, and inventory mistakes create a flood of customer complaints. Your reputation starts suffering.",
+              "consequence": "Bad reviews and word-of-mouth damage your brand's growth potential"
+            },
+            "stress": {
+              "title": "Viral Overwhelm",
+              "impact": "System breakdown",
+              "description": "When your content goes viral and orders spike to 200+ in a day, your manual system completely collapses. Success becomes your biggest problem.",
+              "consequence": "Viral moments turn into operational disasters instead of growth opportunities"
+            }
+          },
+          "demo": {
+            "description": "Click below to see how quickly manual processes break down at scale:",
+            "breakingDown": "Systems overloading... Manual processes failing..."
+          },
+          "solution": {
+            "title": "This Is Where CreatorFlow Changes Everything",
+            "description": "Instead of drowning in manual work, what if every order was processed in 30 seconds? What if viral spikes became profit opportunities instead of nightmares?"
+          },
+          "buttons": {
+            "demonstrateBreakdown": "Show Me the Breakdown",
+            "seeAutomation": "See the Automation Solution",
+            "reset": "Reset Demo"
+          }
+        },
+        "FP010FeatureHero": {
+          "title": "From 50 to 500+ Orders: The Complete Scaling Solution",
+          "subtitle": "Stop the Manual Breakdown. Start Scaling Success.",
+          "description": "Every creator hits the 50-order wall where manual processes collapse. CreatorFlow transforms that breaking point into your scaling breakthrough - taking you from operational chaos to automated command.",
+          "journey": {
+            "problem": "50 orders = chaos",
+            "scaling": "Automation kicks in",
+            "success": "500+ orders effortlessly"
+          },
+          "stats": {
+            "scalingTransformation": "Scaling transformation",
+            "scalingTransformationValue": "50→500+",
+            "scalingTransformationSubtitle": "Orders per day capacity",
+            "automationSpeed": "Automation speed",
+            "automationSpeedValue": "30 sec",
+            "automationSpeedSubtitle": "Per order processing",
+            "creatorSuccess": "Creator success rate",
+            "creatorSuccessValue": "99.8%",
+            "creatorSuccessSubtitle": "Scaling without breakdown"
+          },
+          "actions": {
+            "seeScalingChallenges": "See the Scaling Challenge",
+            "startScalingJourney": "Start Your Scaling Journey"
+          },
+          "testimonial": {
+            "preview": "\"CreatorFlow saved my business when I hit the 50-order wall\" - @TikTokCreator"
+          }
+        },
         "FP050DataPrism": {
           "hero": {
             "title": "The Oracle of Growth.",
@@ -208,23 +349,6 @@
           },
           "subtitle": "Everything you need to scale",
           "title": "Complete TikTok Shop Automation Suite"
-        },
-        "FP010FeatureHero": {
-          "actions": {
-            "exploreFeatures": "Explore All Features",
-            "startFreeTrial": "Start Free Trial"
-          },
-          "description": "Every tool you need to scale from chaos to command. Built specifically for viral TikTok creators who refuse to let logistics limit their growth.",
-          "stats": {
-            "accuracyRate": "Inventory accuracy",
-            "accuracyRateValue": "99.8%",
-            "automatedOrders": "Orders automated daily",
-            "automatedOrdersValue": "10,000+",
-            "timesSaved": "Time saved per week",
-            "timesSavedValue": "40 hours"
-          },
-          "subtitle": "Complete Feature Suite",
-          "title": "Transform Your TikTok Shop Into an Automation Powerhouse"
         },
         "FP030DigitalTwinCommand": {
           "hero": {

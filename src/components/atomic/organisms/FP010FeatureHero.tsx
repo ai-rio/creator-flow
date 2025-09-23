@@ -23,36 +23,40 @@ const renderIcon = (iconName: string, className?: string) => {
 /**
  * FP010FeatureHero - Main Features Page Hero Section
  *
- * Translation-first organism component showcasing CreatorFlow's core value proposition.
+ * Translation-first organism component showcasing CreatorFlow's scaling transformation story.
+ * Updated to focus on the 50-500 orders scaling challenge and creator journey narrative.
  * Server-rendered with full i18n support and CreatorFlow theme integration.
  *
  * Features:
- * - Hero title and description with translations
- * - Key metrics display with animated counters
- * - Call-to-action buttons
- * - CreatorFlow brand theming
+ * - Scaling challenge focused messaging (50→500+ orders)
+ * - Creator journey metrics and pain points
+ * - Call-to-action buttons with narrative progression
+ * - CreatorFlow brand theming with scaling emphasis
  */
 export async function FP010FeatureHero() {
   const t = await getTranslations('components.atomic.organisms.FP010FeatureHero');
 
-  const stats = [
+  const scalingStats = [
     {
       iconName: 'trending-up',
-      label: t('stats.automatedOrders'),
-      value: t('stats.automatedOrdersValue'),
+      label: t('stats.scalingTransformation'),
+      value: t('stats.scalingTransformationValue'),
       color: 'text-brand-teal-primary',
+      subtitle: t('stats.scalingTransformationSubtitle'),
     },
     {
       iconName: 'zap',
-      label: t('stats.timesSaved'),
-      value: t('stats.timesSavedValue'),
+      label: t('stats.automationSpeed'),
+      value: t('stats.automationSpeedValue'),
       color: 'text-warning-amber-500',
+      subtitle: t('stats.automationSpeedSubtitle'),
     },
     {
       iconName: 'shield-check',
-      label: t('stats.accuracyRate'),
-      value: t('stats.accuracyRateValue'),
+      label: t('stats.creatorSuccess'),
+      value: t('stats.creatorSuccessValue'),
       color: 'text-success-emerald-500',
+      subtitle: t('stats.creatorSuccessSubtitle'),
     },
   ];
 
@@ -64,20 +68,35 @@ export async function FP010FeatureHero() {
           <FP010FeatureBadge variant='trending' />
         </div>
 
-        {/* Main heading */}
+        {/* Main heading - Updated for scaling focus */}
         <h1 className='text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl'>{t('title')}</h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Scaling challenge emphasis */}
         <div className='mt-6'>
           <p className='text-xl font-medium text-primary'>{t('subtitle')}</p>
         </div>
 
-        {/* Description */}
+        {/* Description - Creator journey narrative */}
         <p className='mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground'>{t('description')}</p>
 
-        {/* Stats Grid */}
+        {/* Scaling Journey Indicator */}
+        <div className='mt-8 flex items-center justify-center space-x-4 text-sm text-muted-foreground'>
+          <span className='rounded-full bg-red-100 px-3 py-1 text-red-700 dark:bg-red-900 dark:text-red-300'>
+            {t('journey.problem')}
+          </span>
+          <span className='text-2xl'>→</span>
+          <span className='rounded-full bg-yellow-100 px-3 py-1 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'>
+            {t('journey.scaling')}
+          </span>
+          <span className='text-2xl'>→</span>
+          <span className='rounded-full bg-green-100 px-3 py-1 text-green-700 dark:bg-green-900 dark:text-green-300'>
+            {t('journey.success')}
+          </span>
+        </div>
+
+        {/* Scaling Stats Grid */}
         <div className='mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3'>
-          {stats.map((stat, index) => (
+          {scalingStats.map((stat, index) => (
             <div
               key={index}
               className='rounded-executive border border-border/20 bg-card p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg'
@@ -88,26 +107,32 @@ export async function FP010FeatureHero() {
                 </div>
               </div>
               <div className='mb-2 text-3xl font-bold text-foreground'>{stat.value}</div>
-              <div className='text-sm text-muted-foreground'>{stat.label}</div>
+              <div className='mb-1 text-sm font-medium text-muted-foreground'>{stat.label}</div>
+              <div className='text-xs text-muted-foreground/70'>{stat.subtitle}</div>
             </div>
           ))}
         </div>
 
-        {/* Call-to-Action Buttons */}
+        {/* Call-to-Action Buttons - Journey focused */}
         <div className='mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row'>
-          <Link href='#features-grid'>
+          <Link href='#scaling-challenges'>
             <FP010FeatureButton variant='primary' size='lg'>
-              {t('actions.exploreFeatures')}
+              {t('actions.seeScalingChallenges')}
             </FP010FeatureButton>
           </Link>
           <Link href='/pricing'>
             <FP010FeatureButton variant='secondary' size='lg'>
-              {t('actions.startFreeTrial')}
+              {t('actions.startScalingJourney')}
             </FP010FeatureButton>
           </Link>
         </div>
 
-        {/* Visual enhancement - gradient background */}
+        {/* Creator testimonial hint */}
+        <div className='mt-8 text-center'>
+          <p className='text-sm italic text-muted-foreground'>{t('testimonial.preview')}</p>
+        </div>
+
+        {/* Visual enhancement - gradient background with scaling theme */}
         <div className='absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/5 via-transparent to-secondary/5' />
       </div>
     </div>
